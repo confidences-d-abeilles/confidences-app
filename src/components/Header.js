@@ -6,10 +6,10 @@ export default class Header extends Component {
 
 	render () {
 		return (
-			<nav className="navbar navbar-toggleable-md navbar-light bg-faded">
+			<nav className="navbar navbar-toggleable-md navbar-light">
 				<div className="container">
 					<Link className="navbar-brand" to="/">
-						<img src={logoSquare} width="64" height="64" alt="Logo Confidences d'Abeilles" />
+						<img src={logoSquare} width="auto" height="64" alt="Logo Confidences d'Abeilles" />
 					</Link>
 					<div className="collapse navbar-collapse" style={{justifyContent: 'space-between'}} id="navbarNav">
 						<ul className="navbar-nav">
@@ -32,11 +32,11 @@ export default class Header extends Component {
 									<a className="dropdown-item" href="#">A propos</a>
 									<a className="dropdown-item" href="#">Contact</a>
 									<a className="dropdown-item" href="#">Jobs</a>
-									<a className="dropdown-item" href="#">Blog</a>
+									<a className="dropdown-item" href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog</a>
 								</div>
 							</li>
 							<li className="nav-item">
-								&nbsp;&nbsp;<a className="btn btn-primary" href="#">Se connecter</a>
+								&nbsp;&nbsp;<Link className="btn btn-primary" to="/login">Se connecter</Link>
 						</li>
 						<li className="nav-item">
 							&nbsp;&nbsp;<a className="btn btn-primary" href="#" data-toggle="modal" data-target="#createAccount">Créer un compte</a>
@@ -51,8 +51,8 @@ export default class Header extends Component {
 									</button>
 								</div>
 								<div className="modal-body text-center">
-									<a href="/company/signup" className="btn btn-primary">Une Entreprise</a><br />
-									<a href="/individual/signup" className="btn btn-primary">Un Particulier</a>
+									<a href="/company/signup" className="btn btn-warning">Une Entreprise</a><br /><br />
+									<a href="/individual/signup" className="btn btn-warning">Un Particulier</a>
 								</div>
 							</div>
 						</div>

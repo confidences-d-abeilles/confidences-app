@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
-import logo from '../../assets/img/logo.png';
+import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 
 export default class CompanyManage extends Component {
 
-    render () {
-        return (
-            <div>
-                <h1>Dashboard Entreprise</h1>
-                <img src={logo} alt="Logo entreprise" width="25%" />
-                <p>
-                    Adresse de facturation
-                </p>
-                <p>
-                    Adresse de livraison
-                </p>
-                <button>Voir ma page</button>
-                <button>Modifier ma page</button>
-                <button>Telecharger les fichiers modeles pour vos etiquettes</button>
-                <button>Envoyer le logo a apposer sur vos etiquettes de pots de miel</button>
-                <button>Soumettre un visuel pour vos etiquettes de pots de miel</button>
-                <button>Se deconnecter</button>
-            </div>
-        );
-    }
+	render () {
+		return (
+			<div className="container py-4">
+				<div className="row">
+					<div className="col-3">
+						<img src={imgPlaceholder} alt="Logo entreprise" className="img-fluid img-thumbnail" />
+						<br /><br />
+						<ul className="list-group">
+							<li className="list-group-item active">Mon parrainage en cours</li>
+							<li className="list-group-item">Mes informations</li>
+							<li className="list-group-item">Ma page dediee</li>
+							<li className="list-group-item">Personnalisation</li>
+							<li className="list-group-item">Mes factures</li>
+							<li className="list-group-item">Deconnexion</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
