@@ -20,7 +20,7 @@ export default class Header extends Component {
 								<Link className="nav-link" to="/individual/presentation">Particulier</Link>
 							</li>
 							<li className="nav-item">
-								<a className="nav-link" href="#">Partenaire</a>
+								<Link className="nav-link" to="/contributor/presentation">Partenaire</Link>
 							</li>
 						</ul>
 						<ul className="navbar-nav pull-xs-right">
@@ -52,6 +52,7 @@ export default class Header extends Component {
 								</div>
 								<div className="modal-body text-center">
 									<a href="/company/signup" className="btn btn-warning">Une Entreprise</a><br /><br />
+									<a href="/contributor/signup" className="btn btn-warning">Un Partenaire</a><br /><br />
 									<a href="/individual/signup" className="btn btn-warning">Un Particulier</a>
 								</div>
 							</div>

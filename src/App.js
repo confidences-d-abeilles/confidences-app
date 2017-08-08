@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 //AA
 
+import ContributorPresentation from './components/contributor/Presentation';
 import ContributorSignup from './components/contributor/Signup';
 import ContributorManage from './components/contributor/Manage';
 
@@ -52,6 +53,7 @@ class App extends Component {
 							<Route exact path="/" component={Home} />
 							<Route exact path="/login" component={Login} />
 
+							<Route exact path="/contributor/presentation" component={ContributorPresentation} />
 							<Route exact path="/contributor/signup" component={ContributorSignup} />
 							<Route exact path="/contributor/manage" component={ContributorManage} />
 
