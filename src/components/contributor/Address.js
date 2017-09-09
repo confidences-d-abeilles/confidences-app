@@ -4,7 +4,7 @@ import { request } from '../../services/NetService';
 import { handleChange } from '../../services/FormService';
 import { isLoggedIn } from '../../services/AuthService';
 
-export default class CompanyAddress extends Component {
+export default class ContributorAddress extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -24,7 +24,7 @@ export default class CompanyAddress extends Component {
 				message: 'Veuillez renseigner les champs obligatoires.'
 			});
 		} else {
-			request('/user/baddress/create', 'POST', JSON.stringify(this.state), 'json', (status, message,content) => {
+			request('/user/baddress/add', 'POST', JSON.stringify(this.state), 'json', (status, message,content) => {
 				if (status)
 				{
 					this.setState({
@@ -39,10 +39,13 @@ export default class CompanyAddress extends Component {
         return (
 			<div className="container py-4">
 				{(isLoggedIn())?null:<Redirect to="/" />}
+				{(this.state.redirect)?
+				<Redirect to="/contributor/wish" />
+				:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
-							<div className="progress-bar" role="progressbar" style={{width: '60%'}}></div>
+							<div className="progress-bar" role="progressbar" style={{width: '50%'}}></div>
 						</div>
 					</div>
 				</div>
@@ -69,9 +72,7 @@ export default class CompanyAddress extends Component {
 						</form>
 					</div>
 				</div>
-				{(this.state.redirect)?
-				<Redirect to="/company/wish" />
-				:null}
+
 			</div>
         );
     }

@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 
+import MyAccount from './components/MyAccount';
+import Logout from './components/Logout';
+
 //AA
 
 import ContributorPresentation from './components/contributor/Presentation';
 import ContributorSignup from './components/contributor/Signup';
+import ContributorAddress from './components/contributor/Address';
+import ContributorWish from './components/contributor/Wish';
+import ContributorCheckout from './components/contributor/Checkout';
 import ContributorManage from './components/contributor/Manage';
 
 //particulier
@@ -51,10 +57,15 @@ class App extends Component {
 						<Header />
 						<div className="container">
 							<Route exact path="/" component={Home} />
+							<Route exact path="/logout" component={Logout} />
+							<Route exact path="/account" component={MyAccount} />
 							<Route exact path="/login" component={Login} />
 
 							<Route exact path="/contributor/presentation" component={ContributorPresentation} />
 							<Route exact path="/contributor/signup" component={ContributorSignup} />
+							<Route exact path="/contributor/checkout" component={ContributorCheckout} />
+							<Route exact path="/contributor/wish" component={ContributorWish} />
+							<Route exact path="/contributor/address" component={ContributorAddress} />
 							<Route exact path="/contributor/manage" component={ContributorManage} />
 
 							<Route exact path="/individual/presentation" component={IndividualPresentation} />
@@ -72,7 +83,7 @@ class App extends Component {
 							<Route exact path="/company/wish" component={CompanyWish} />
 							<Route exact path="/company/checkout" component={CompanyCheckout} />
 							<Route exact path="/company/end" component={CompanyEnd} />
-							<Route exact path="/company/manage" component={CompanyManage} />
+							<Route path="/company/manage" component={CompanyManage} />
 
 							<Route exact path="/company/page" component={CompanyPage} />
 
