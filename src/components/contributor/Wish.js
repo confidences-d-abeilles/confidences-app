@@ -14,7 +14,7 @@ export default class ContributorWish extends Component {
 	}
 
 	selectContract() {
-		request('/user/contract/add', 'POST', JSON.stringify(this.state), 'json', (status, message,content) => {
+		request('/user/contract/create', 'POST', JSON.stringify(this.state), 'json', (status, message,content) => {
 			if (status)
 			{
 				this.setState({

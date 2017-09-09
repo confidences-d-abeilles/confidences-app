@@ -11,6 +11,8 @@ import ContributorAddress from './components/contributor/Address';
 import ContributorWish from './components/contributor/Wish';
 import ContributorCheckout from './components/contributor/Checkout';
 import ContributorManage from './components/contributor/Manage';
+import ContributorApproach from './components/contributor/Approach';
+import ContributorLead from './components/contributor/Lead';
 
 //particulier
 
@@ -55,7 +57,7 @@ class App extends Component {
 				<div id="wrapper">
 					<div id="noFooter">
 						<Header />
-						<div className="container">
+						<div className="container-fluid">
 							<Route exact path="/" component={Home} />
 							<Route exact path="/logout" component={Logout} />
 							<Route exact path="/account" component={MyAccount} />
@@ -65,8 +67,10 @@ class App extends Component {
 							<Route exact path="/contributor/signup" component={ContributorSignup} />
 							<Route exact path="/contributor/checkout" component={ContributorCheckout} />
 							<Route exact path="/contributor/wish" component={ContributorWish} />
+							<Route exact path="/contributor/approach" component={ContributorApproach} />
+							<Route exact path="/contributor/lead" component={ContributorLead} />
 							<Route exact path="/contributor/address" component={ContributorAddress} />
-							<Route exact path="/contributor/manage" component={ContributorManage} />
+							<Route path="/contributor/manage" component={ContributorManage} />
 
 							<Route exact path="/individual/presentation" component={IndividualPresentation} />
 							<Route exact path="/individual/signup" component={IndividualSignup} />
@@ -74,7 +78,7 @@ class App extends Component {
 							<Route exact path="/individual/wish" component={IndividualWish} />
 							<Route exact path="/individual/checkout" component={IndividualCheckout} />
 							<Route exact path="/individual/end" component={IndividualEnd} />
-							<Route exact path="/individual/manage" component={IndividualManage} />
+							<Route path="/individual/manage" component={IndividualManage} />
 
 							<Route exact path="/company/presentation" component={CompanyPresentation} />
 							<Route exact path="/company/signup" component={CompanySignup} />

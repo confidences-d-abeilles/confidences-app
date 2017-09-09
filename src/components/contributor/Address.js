@@ -24,7 +24,7 @@ export default class ContributorAddress extends Component {
 				message: 'Veuillez renseigner les champs obligatoires.'
 			});
 		} else {
-			request('/user/baddress/add', 'POST', JSON.stringify(this.state), 'json', (status, message,content) => {
+			request('/user/baddress/create', 'POST', JSON.stringify(this.state), 'json', (status, message,content) => {
 				if (status)
 				{
 					this.setState({
