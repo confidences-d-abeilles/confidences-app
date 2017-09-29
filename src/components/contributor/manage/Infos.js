@@ -11,7 +11,7 @@ export default class ContributorManageInfos extends Component {
 	render () {
 		return (
 			<Router>
-			<p>
+			<div>
 				Mes informations
 				<ul className="nav nav-tabs">
 					<li className="nav-item">
@@ -28,7 +28,7 @@ export default class ContributorManageInfos extends Component {
 					<Route exact path="/contributor/manage/infos" component={ContributorManageInfosSocial} />
 					<Route exact path="/contributor/manage/infos/bank" component={ContributorManageInfosBank} />
 				</div>
-			</p>
+			</div>
 		</Router>
 		);
 	}

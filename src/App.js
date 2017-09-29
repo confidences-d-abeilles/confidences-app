@@ -91,7 +91,7 @@ class App extends Component {
 
 							<Route exact path="/company/page" component={CompanyPage} />
 
-							<Route exact path="/admin" component={AdminManage} />
+							<Route exact path="/admin/manage" component={AdminManage} />
 							<Route exact path="/ruches/list" component={RuchesList} />
 						</div>
 					</div>

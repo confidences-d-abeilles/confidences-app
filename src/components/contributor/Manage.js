@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { request } from '../../services/NetService';
 import ContributorManageDashboard from './manage/Dashboard';
-import ContributorManageInfos from './manage/Infos.js';
+import ContributorManageInfos from './manage/Infos';
 import ContributorManageApproaches from './manage/Approaches';
+import ContributorManageConditions from './manage/Conditions';
+import ContributorManageContract from './manage/Contract';
+import ContributorManageHelp from './manage/Help';
+
+
 
 import {
 	BrowserRouter as Router,
@@ -10,7 +15,7 @@ import {
 	Link
 } from 'react-router-dom';
 
-import imgPlaceholder from '../../assets/img/img-placeholder.gif';
+import profile from '../../assets/img/profile.png';
 
 export default class ContributorManage extends Component {
 
@@ -40,15 +45,15 @@ export default class ContributorManage extends Component {
 				<div className="container-fluid py-4">
 					<div className="row">
 						<div className="col-3">
-							<img src={imgPlaceholder} alt="Logo entreprise" className="img-fluid img-thumbnail" />
-							<br /><br />
+							<img src={profile} alt="Logo entreprise" className="img-fluid" />
+							<br />
 							<ul className="list-group">
 								<Link to="/contributor/manage"><li className="list-group-item">Tableau de bord</li></Link>
 								<Link to="/contributor/manage/infos"><li className="list-group-item ">Mes informations</li></Link>
 								<Link to="/contributor/manage/approaches"><li className="list-group-item">Mes demarches</li></Link>
-								<Link to="/contributor/manage/c"><li className="list-group-item">Personnalisation</li></Link>
-								<Link to="/contributor/manage/dashboard"><li className="list-group-item">Mes factures</li></Link>
-								<Link to="/contributor/manage/dashboard"><li className="list-group-item">Deconnexion</li></Link>
+								<Link to="/contributor/manage/contract"><li className="list-group-item">Mon contrat</li></Link>
+								<Link to="/contributor/manage/conditions"><li className="list-group-item">Conditions spécifiques</li></Link>
+								<Link to="/contributor/manage/help"><li className="list-group-item">Aide</li></Link>
 							</ul>
 						</div>
 						<div className="col-9">
@@ -69,6 +74,9 @@ export default class ContributorManage extends Component {
 								</div>
 							</div>
 							<Route exact path="/contributor/manage" component={ContributorManageDashboard} />
+							<Route exact path="/contributor/manage/conditions" component={ContributorManageConditions} />
+							<Route exact path="/contributor/manage/contract" component={ContributorManageContract} />
+							<Route exact path="/contributor/manage/help" component={ContributorManageHelp} />
 							<Route path="/contributor/manage/infos" component={ContributorManageInfos} />
 							<Route exact path="/contributor/manage/approaches" component={ContributorManageApproaches} />
 						</div>

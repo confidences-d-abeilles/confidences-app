@@ -107,7 +107,7 @@ export default class ContributorSignup extends Component {
 								<input type="password" name="confirmation" className="form-control" placeholder="Confirmation du mot de passe" onChange={handleChange.bind(this)} />
 							</div>
 							<p>Vous avez deja un compte ? <Link to="/login">Connectez vous</Link></p>
-							<input type="submit" className="btn btn-primary" onClick={this.register.bind(this)} />
+							<input type="submit" value="Valider" className="btn btn-primary" onClick={this.register.bind(this)} />
 						</form>
 					</div>
 				</div>
