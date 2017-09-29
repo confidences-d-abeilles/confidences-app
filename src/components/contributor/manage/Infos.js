@@ -12,7 +12,7 @@ export default class ContributorManageInfos extends Component {
 		return (
 			<Router>
 			<div>
-				Mes informations
+				<h2>Informations</h2>
 				<ul className="nav nav-tabs">
 					<li className="nav-item">
 						<Link className="nav-link" to="/contributor/manage/infos">Mes coordonnees</Link>

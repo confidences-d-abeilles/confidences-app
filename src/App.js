@@ -67,7 +67,7 @@ class App extends Component {
 							<Route exact path="/contributor/signup" component={ContributorSignup} />
 							<Route exact path="/contributor/checkout" component={ContributorCheckout} />
 							<Route exact path="/contributor/wish" component={ContributorWish} />
-							<Route exact path="/contributor/approach" component={ContributorApproach} />
+							<Route path="/contributor/approach" component={ContributorApproach} />
 							<Route exact path="/contributor/lead" component={ContributorLead} />
 							<Route exact path="/contributor/address" component={ContributorAddress} />
 							<Route path="/contributor/manage" component={ContributorManage} />
