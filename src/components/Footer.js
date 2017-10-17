@@ -44,8 +44,8 @@ export default class Footer extends Component {
 							<ul>
 								<li><Link to="#" className="noStyleLink">FAQ</Link></li>
 								<li><Link to="#" className="noStyleLink">Presse</Link></li>
-								<li><Link to="#" className="noStyleLink">Mentions légales</Link></li>
-								<li><Link to="#" className="noStyleLink">CGU</Link></li>
+								<li><Link to="/mentions_legales" className="noStyleLink">Mentions légales</Link></li>
+								<li><Link to="/cgv" className="noStyleLink">CGV</Link></li>
 							</ul>
 						</div>
 					</div>

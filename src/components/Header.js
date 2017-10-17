@@ -79,7 +79,7 @@ export default class Header extends Component {
 							:
 							<ul className="navbar-nav pull-xs-right">
 								<li className="nav-item dropdown">
-									<a className="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										La société
 									</a>
 									<div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

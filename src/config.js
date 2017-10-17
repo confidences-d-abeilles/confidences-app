@@ -1,6 +1,6 @@
 
 
 module.exports = {
-    server_url : 'http://localhost:1337',
-	cdn_url : 'http://localhost:1337'
+    server_url : 'https://dev586.confidencesdabeilles.fr/api',
+	cdn_url : 'https://dev586.confidencesdabeilles.fr/cdn'
 }
