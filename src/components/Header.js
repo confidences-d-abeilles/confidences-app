@@ -97,7 +97,7 @@ export default class Header extends Component {
 									&nbsp;&nbsp;<a className="btn btn-primary" href="#" data-toggle="modal" data-target="#createAccount">Créer un compte</a>
 								</li>
 
-								<div className="modal fade" id="createAccount" tabindex="-1" role="dialog">
+								<div className="modal fade" id="createAccount" tabIndex="-1" role="dialog">
 									<div className="modal-dialog" role="document">
 										<div className="modal-content">
 											<div className="modal-header">

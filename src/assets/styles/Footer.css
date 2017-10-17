@@ -28,12 +28,6 @@ footer a, footer a:hover, footer a:focus
 	text-decoration: none;
 }
 
-.footer-container
-{
-	display: flex;
-	justify-content: space-between;
-}
-
 .footerHalf
 {
     flex: 1;

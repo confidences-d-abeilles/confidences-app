@@ -9,8 +9,9 @@ export default class Footer extends Component {
 	render () {
 		return (
 			<footer className="bg-faded">
-				<div className="container footer-container">
-					<div className="footerHalf">
+				<div className="container">
+				<div className="row">
+					<div className="col-lg-6">
 						<div>
 							<Link to="/"><img src={logo} alt="Logo Confidences d'Abeilles" height="128px" /></Link><br /><br />
 							<a href="https://www.facebook.com/confidencesdabeille" target="_blank" rel="noopener noreferrer"><FontAwesome name='facebook-official' size="2x" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -19,8 +20,8 @@ export default class Footer extends Component {
 							<a href="https://www.linkedin.com/company-beta/11010483/" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
 						</div>
 					</div>
-					<div className="footerHalf">
-						<div>
+					<div className="col-lg-6 row">
+						<div className="col-lg-4">
 							<h2>Services</h2>
 							<ul>
 								<li><Link to="/company/signup" className="noStyleLink">Entreprise</Link></li>
@@ -29,7 +30,7 @@ export default class Footer extends Component {
 								<li><Link to="#" className="noStyleLink">Tarifs</Link></li>
 							</ul>
 						</div>
-						<div>
+						<div className="col-lg-4">
 							<h2>La société</h2>
 							<ul>
 								<li><Link to="#" className="noStyleLink">A propos</Link></li>
@@ -38,7 +39,7 @@ export default class Footer extends Component {
 								<li><a href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
 							</ul>
 						</div>
-						<div>
+						<div className="col-lg-4">
 							<h2>Ressources</h2>
 							<ul>
 								<li><Link to="#" className="noStyleLink">FAQ</Link></li>
@@ -49,6 +50,7 @@ export default class Footer extends Component {
 						</div>
 					</div>
 				</div>
+			</div>
 			</footer>
 		);
 	}
