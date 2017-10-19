@@ -66,7 +66,7 @@ export default class ContributorManage extends Component {
 						</ul>
 					</div>
 					<div className="col-9">
-							{(!this.state.loading && this.state.contracts.length == 0)?
+							{(this.state.contracts.length == 0 || !this.state.contracts[0].signed)?
 								<div className="row">
 									<div className="alert alert-warning">Attention, vous n'avez pas encore signé de contract, vous ne pouvez donc démarcher d'entreprise pour l'instant.</div>
 									<Link to="/contributor/wish"><li className="list-group-item ">Choisir un contrat</li></Link>

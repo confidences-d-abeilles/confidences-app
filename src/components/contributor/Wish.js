@@ -11,12 +11,23 @@ export default class ContributorWish extends Component {
 		this.state = {
 			duration: 1
 		}
+		this.getContract();
 	}
 
 	selectContract() {
 		request('/user/contract/create', 'POST', JSON.stringify(this.state), 'json', (status, message,content) => {
 			if (status)
 			{
+				this.setState({
+					redirect: true
+				});
+			}
+		});
+	}
+
+	getContract() {
+		request('/contract', 'GET', null, 'json', (status, massage, content) => {
+			if (status) {
 				this.setState({
 					redirect: true
 				});

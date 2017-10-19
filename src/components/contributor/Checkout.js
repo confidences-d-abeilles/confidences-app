@@ -8,8 +8,16 @@ export default class ContributorCheckout extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-
 		}
+		this.getContract();
+	}
+
+	getContract() {
+		request('/contract', 'GET', null, 'json', (status, massage, content) => {
+			if (status) {
+
+			}
+		});
 	}
 
 	proceed() {
