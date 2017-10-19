@@ -45,8 +45,8 @@ export default class Header extends Component {
 										La société
 									</a>
 									<div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-										<a className="dropdown-item" href="#">A propos</a>
-										<a className="dropdown-item" href="#">Contact</a>
+										<a className="dropdown-item" href="https://confidencesdabeilles.fr/histoire">A propos</a>
+										<a className="dropdown-item" href="https://confidencesdabeilles.fr/contact">Contact</a>
 										<a className="dropdown-item" href="#">Jobs</a>
 										<a className="dropdown-item" href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog</a>
 									</div>

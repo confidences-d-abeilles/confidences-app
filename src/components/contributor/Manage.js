@@ -31,11 +31,18 @@ export default class ContributorManage extends Component {
 
 	componentWillMount() {
 		request('/user', 'GET', null, 'json', (status, message, content) => {
+			let cleads = 0;
 			if (status) {
+				content.leads.map((lead) => {
+					if (lead.converted) {
+						cleads++;
+					}
+				})
 				this.setState({
 					loading: false,
 					balance: content.balance,
 					leads: content.leads.length,
+					cleads: cleads,
 					contracts: content.contracts
 				});
 			}
@@ -44,7 +51,7 @@ export default class ContributorManage extends Component {
 
 	render () {
 		return (
-			<div className="container-fluid py-4">
+			<div className="container py-4">
 				<div className="row">
 					<div className="col-3">
 						<img src={profile} alt="Logo entreprise" className="img-fluid" />
@@ -68,7 +75,7 @@ export default class ContributorManage extends Component {
 								<div className="row">
 									<div className="col-8">
 										Entreprises demarchees : {this.state.leads} / 10<br />
-										Conversion : y / {this.state.leads}<br />
+									Conversion : {this.state.cleads} / {this.state.leads}<br />
 										Cagnotte : {this.state.balance} €<br />
 									</div>
 									<div className="col-4">
