@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { login } from '../../services/AuthService';
-import { handleChange } from '../../services/FormService';
-import { Redirect } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link, Redirect } from 'react-router-dom'
+import { handleChange } from '../services/FormService'
+import { login } from '../services/AuthService'
+import request from '../services/Net.js'
+var NotificationSystem = require('react-notification-system');
 
-var config = require('../../config.js');
+var config = require('../config.js');
 
-export default class CompanySignup extends Component {
+export default class Signup extends Component {
 
 	constructor(props) {
 		super(props);
@@ -17,9 +18,22 @@ export default class CompanySignup extends Component {
 			phone: '',
 			password: '',
 			confirmation: '',
-			user_type: 2,
+			user_type: this.getType(this.props.match.params.type),
 			message: '',
 			redirect: false
+		}
+	}
+
+	getType(type) {
+		switch (type) {
+			case 'individual':
+				return 1;
+			case 'contributor':
+				return 2;
+			case 'company':
+				return 3;
+			default:
+				return 0;
 		}
 	}
 
@@ -28,7 +42,7 @@ export default class CompanySignup extends Component {
 		this.setState({
 			message: ''
 		});
-		if (!this.state.firstname || !this.state.name || !this.state.email || !this.state.phone || !this.state.password || !this.state.confirmation) {
+		if (0) {
 			this.setState({
 				message: 'Veillez a bien renseigner tous les champs.'
 			});
@@ -38,46 +52,56 @@ export default class CompanySignup extends Component {
 					message: 'Le mot de passe et sa confirmation ne sont pas identiques.'
 				});
 			} else {
-				fetch(config.server_url+'/user/signup', {
-					method: 'POST',
-					body: JSON.stringify(this.state)
-				}).then((data) => {
-		            return data.json();
-		        }).then((data) => {
-					if (!data.status) {
-						this.setState({
-							message: data.message
-						});
-					} else {
-						fetch(config.server_url+'/user/auth', {
-							method: 'POST',
-							body: JSON.stringify({
-								email: this.state.email,
-								password: this.state.password
-							})
-						}).then((data) => {
-				            return data.json();
-				        }).then((data) => {
-							login(data.content.id, data.content.token, data.content.user_type);
-							this.setState({
-								redirect: true
-							});
-						});
+				request({
+					method: 'post',
+					url: '/user',
+					data : {
+						firstname : this.state.firstname,
+						name : this.state.name,
+						email : this.state.email,
+						phone : this.state.phone,
+						password : this.state.password,
+						user_type : this.state.user_type
 					}
-		        });
+				}, this.refs.notificationSystem)
+				.then((res) => {
+				})
+				.catch((err) => {
+				});
+				// then((data) => {
+				// 	if (!data.status) {
+				// 		this.setState({
+				// 			message: data.message
+				// 		});
+				// 	} else {
+				// 		fetch(config.server_url+'/user/auth', {
+				// 			method: 'POST',
+				// 			body: JSON.stringify({
+				// 				email: this.state.email,
+				// 				password: this.state.password
+				// 			})
+				// 		}).then((data) => {
+				//             return data.json();
+				//         }).then((data) => {
+				// 			login(data.content.id, data.content.token, data.content.user_type);
+				// 			this.setState({
+				// 				redirect: true
+				// 			});
+				// 		});
+				// 	}
+		        // });
 			}
 		}
 	}
 
-    render () {
-        return (
+	render () {
+		return (
 			<div className="container py-4">
-				{(this.state.redirect)?
-					<Redirect to="/company/identity" />:null}
+				<NotificationSystem ref="notificationSystem" />
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
-							<div className="progress-bar" role="progressbar" style={{width: '20%'}}></div>
+							<div className="progress-bar" role="progressbar" style={{width: '25%'}}></div>
 						</div>
 					</div>
 				</div>
@@ -111,8 +135,9 @@ export default class CompanySignup extends Component {
 						</form>
 					</div>
 				</div>
-
+				{(this.state.redirect)?
+					<Redirect to="/individual/address" />:null}
 			</div>
-        );
-    }
+		);
+	}
 }

@@ -1,6 +1,6 @@
 
 
 module.exports = {
-    server_url : 'https://api.parrainage.confidencesdabeilles.fr',
-	cdn_url : 'https://cdn.parrainage.confidencesdabeilles.fr'
+    server_url : 'http://localhost:1337',
+	cdn_url : 'http://localhost:1337'
 }

@@ -57,24 +57,6 @@ export default class Header extends Component {
 								<li className="nav-item">
 									&nbsp;&nbsp;<Link className="btn btn-primary" to="/logout">Deconnexion</Link>
 								</li>
-
-								<div className="modal fade" id="createAccount" role="dialog">
-									<div className="modal-dialog" role="document">
-										<div className="modal-content">
-											<div className="modal-header">
-												<h5 className="modal-title" id="exampleModalLabel">Je suis ...</h5>
-												<button type="button" className="close" data-dismiss="modal">
-													<span aria-hidden="true">&times;</span>
-												</button>
-											</div>
-											<div className="modal-body text-center">
-												<a href="/company/signup" className="btn btn-warning">Une Entreprise</a><br /><br />
-												<a href="/contributor/signup" className="btn btn-warning">Un Partenaire</a><br /><br />
-												<a href="/individual/signup" className="btn btn-warning">Un Particulier</a>
-											</div>
-										</div>
-									</div>
-								</div>
 							</ul>
 							:
 							<ul className="navbar-nav pull-xs-right">
@@ -97,7 +79,7 @@ export default class Header extends Component {
 									&nbsp;&nbsp;<a className="btn btn-primary" href="#" data-toggle="modal" data-target="#createAccount">Créer un compte</a>
 								</li>
 
-								<div className="modal fade" id="createAccount" tabIndex="-1" role="dialog">
+								<div className="modal fade" id="createAccount" role="dialog">
 									<div className="modal-dialog" role="document">
 										<div className="modal-content">
 											<div className="modal-header">
@@ -107,9 +89,9 @@ export default class Header extends Component {
 												</button>
 											</div>
 											<div className="modal-body text-center">
-												<a href="/company/signup" className="btn btn-warning">Une Entreprise</a><br /><br />
-												<a href="/contributor/signup" className="btn btn-warning">Un Partenaire</a><br /><br />
-												<a href="/individual/signup" className="btn btn-warning">Un Particulier</a>
+												<a href="/signup/company" className="btn btn-warning">Une Entreprise</a><br /><br />
+												<a href="/signup/contributor" className="btn btn-warning">Un Partenaire</a><br /><br />
+												<a href="/signup/individual" className="btn btn-warning">Un Particulier</a>
 											</div>
 										</div>
 									</div>

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { handleChange } from '../services/FormService';
 import { login } from '../services/AuthService';
-
-import 'whatwg-fetch';
+import request from '../services/Net.js'
+var NotificationSystem = require('react-notification-system');
 
 var config = require('../config.js');
 
@@ -25,26 +25,21 @@ export default class Signup extends Component {
 			message: ''
 		});
 		if (!this.state.email || !this.state.password) {
-			this.setState({
-				message: 'Merci de bien vouloir renseigner tous les champs.'
-			})
+			this.refs.notificationSystem.addNotification({
+	      		message: "Merci de renseigner tous les champs",
+	      		level: 'warning'
+      	  });
 		} else {
-			fetch(config.server_url+'/user/auth', {
-				method: 'POST',
-				body: JSON.stringify(this.state)
-			}).then((data) => {
-				return data.json();
-			}).then((data) => {
-				if (!data.status) {
-					this.setState({
-						message: data.message
-					});
-				} else {
-					login(data.content.id, data.content.token, data.content.user_type);
-					this.setState({
-						redirect: true
-					});
+			request({
+				url : '/authenticate',
+				method : 'POST',
+				data : {
+					email : this.state.email,
+					password : this.state.password
 				}
+			}, this.refs.notificationSystem).then((res) => {
+				login(res.id, res.token, res.user_type);
+			}).catch((err) => {
 			});
 		}
 	}
@@ -52,6 +47,7 @@ export default class Signup extends Component {
 	render () {
 		return (
 			<div className="container py-4">
+				<NotificationSystem ref="notificationSystem" />
 				<div className="row justify-content-center">
 					<div className="col-4">
 						<form className="text-center">

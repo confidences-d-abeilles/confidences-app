@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
+
 import MyAccount from './components/MyAccount';
 import Logout from './components/Logout';
 
 //AA
 
 import ContributorPresentation from './components/contributor/Presentation';
-import ContributorSignup from './components/contributor/Signup';
 import ContributorAddress from './components/contributor/Address';
 import ContributorWish from './components/contributor/Wish';
 import ContributorCheckout from './components/contributor/Checkout';
@@ -17,7 +17,6 @@ import ContributorLead from './components/contributor/Lead';
 //particulier
 
 import IndividualPresentation from './components/individual/Presentation';
-import IndividualSignup from './components/individual/Signup';
 import IndividualAddress from './components/individual/Address';
 import IndividualWish from './components/individual/Wish';
 import IndividualCheckout from './components/individual/Checkout';
@@ -27,7 +26,6 @@ import IndividualManage from './components/individual/Manage';
 //company
 
 import CompanyPresentation from './components/company/Presentation';
-import CompanySignup from './components/company/Signup';
 import CompanyIdentity from './components/company/Identity';
 import CompanyAddress from './components/company/Address';
 import CompanyWish from './components/company/Wish';
@@ -45,6 +43,7 @@ import Login from './components/Login';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import Signup from './components/Signup';
 import Cgv from './components/Cgv';
 import Mentions from './components/Mentions';
 
@@ -67,7 +66,6 @@ class App extends Component {
 							<Route exact path="/login" component={Login} />
 
 							<Route exact path="/contributor/presentation" component={ContributorPresentation} />
-							<Route exact path="/contributor/signup" component={ContributorSignup} />
 							<Route exact path="/contributor/checkout" component={ContributorCheckout} />
 							<Route exact path="/contributor/wish" component={ContributorWish} />
 							<Route path="/contributor/approach" component={ContributorApproach} />
@@ -76,7 +74,6 @@ class App extends Component {
 							<Route path="/contributor/manage" component={ContributorManage} />
 
 							<Route exact path="/individual/presentation" component={IndividualPresentation} />
-							<Route exact path="/individual/signup" component={IndividualSignup} />
 							<Route exact path="/individual/address" component={IndividualAddress} />
 							<Route exact path="/individual/wish" component={IndividualWish} />
 							<Route exact path="/individual/checkout" component={IndividualCheckout} />
@@ -84,7 +81,6 @@ class App extends Component {
 							<Route path="/individual/manage" component={IndividualManage} />
 
 							<Route exact path="/company/presentation" component={CompanyPresentation} />
-							<Route exact path="/company/signup" component={CompanySignup} />
 							<Route exact path="/company/identity" component={CompanyIdentity} />
 							<Route exact path="/company/address" component={CompanyAddress} />
 							<Route exact path="/company/wish" component={CompanyWish} />
@@ -93,6 +89,7 @@ class App extends Component {
 							<Route path="/company/manage" component={CompanyManage} />
 
 							<Route exact path="/company/page" component={CompanyPage} />
+							<Route exact path="/signup/:type" component={Signup} />
 
 							<Route exact path="/admin/manage" component={AdminManage} />
 							<Route exact path="/ruches/list" component={RuchesList} />
@@ -107,5 +104,6 @@ class App extends Component {
 		);
 	}
 }
+
 
 export default App;
