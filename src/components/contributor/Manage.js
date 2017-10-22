@@ -8,7 +8,6 @@ import ContributorManageContract from './manage/Contract';
 import ContributorManageHelp from './manage/Help';
 
 import {
-	BrowserRouter as Router,
 	Route,
 	Link
 } from 'react-router-dom';

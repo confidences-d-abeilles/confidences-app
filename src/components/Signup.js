@@ -5,8 +5,6 @@ import { login } from '../services/AuthService'
 import request from '../services/Net.js'
 var NotificationSystem = require('react-notification-system');
 
-var config = require('../config.js');
-
 export default class Signup extends Component {
 
 	constructor(props) {

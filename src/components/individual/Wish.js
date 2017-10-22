@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { handleChange } from '../../services/FormService';
 import { request } from '../../services/NetService';
 import { isLoggedIn } from '../../services/AuthService';

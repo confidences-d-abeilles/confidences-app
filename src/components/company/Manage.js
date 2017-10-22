@@ -18,41 +18,39 @@ export default class CompanyManage extends Component {
 		super(props);
 		this.state = {
 			redirect: false,
-			user : '',
-			loading: true
+			user : null
 		}
 	}
 
 	componentDidMount() {
 		request({
-			url : '/user',
+			url : '/user/me',
 			method : 'get'
 		}, this.refs.notif)
 		.then((res) => {
-			this.onBoard(res);
 			this.setState({
-				user : res,
-				loading : false
+				user : res
 			});
 		})
 		.catch((err) => {});
 	}
 
-	onBoard(user) {
-		console.log(user);
-		switch (user.onboard) {
-			case 1:
-				this.setState({
-					redirect: 'identity'
-				});
-				break;
-			case 2:
-				this.setState({
-					redirect: 'address'
-				});
-				break;
-			default:
-				break;
+	checkInfos() {
+		if (!this.state.user.company_name) {
+			return (<Redirect to="/company/identity" />);
+		}
+		if (this.state.user.addresses && !this.state.user.addresses[0]) {
+			return (<Redirect to="/company/address" />);
+		}
+		if (this.state.user && this.state.user.bundles[0] && !this.state.user.bundles[0].paid) {
+			return (
+				<p className="alert alert-danger">Vous n'avez pas encore reglé votre parrainage. <Link to="/company/checkout">Cliquez ici</Link> pour le faire maintenant</p>
+			);
+		}
+		if (this.state.user && this.state.user.bundles[0]) {
+			return (<p>Nous parrainons {this.state.user.bundles[0].hives} ruches</p>);
+		} else {
+			return (<Redirect to="/company/wish" />);
 		}
 	}
 
@@ -76,16 +74,11 @@ export default class CompanyManage extends Component {
 						<div className="col-9">
 							<div className="row">
 								<div className="col-12">
-									{(this.state.loading)?'':
-										(this.state.user && this.state.user.bundles[0] && !this.state.user.bundles[0].paid)?
-										<p className="alert alert-danger">Vous n'avez pas encore reglé votre parrainage. <Link to="/company/checkout">Cliquez ici</Link> pour le faire maintenant</p>:
-										(this.state.user && this.state.user.bundles[0])?
-										<p>Nous parrainons {this.state.user.bundles[0].hives} ruches</p>
-									:<Redirect to="/company/wish" />}
+									{(this.state.user)?this.checkInfos():''}
 								</div>
 							</div>
 							<div className="row py-4">
-								<div className="col-6 text-center"><Link to="#"><button className="btn btn-secondary">Ma page</button></Link></div>
+								<div className="col-6 text-center"><Link to={(this.state.user)?'/'+this.state.user.company_name:''}><button className="btn btn-secondary">Ma page</button></Link></div>
 								<div className="col-6 text-center"><Link to="#"><button className="btn btn-secondary">Personnaliser ma page</button></Link></div>
 							</div>
 							<div className="row">

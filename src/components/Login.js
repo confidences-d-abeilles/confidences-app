@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { handleChange } from '../services/FormService';
 import { login } from '../services/AuthService';
 import request from '../services/Net.js'
 var NotificationSystem = require('react-notification-system');
-
-var config = require('../config.js');
 
 export default class Signup extends Component {
 

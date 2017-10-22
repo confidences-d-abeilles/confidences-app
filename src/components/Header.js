@@ -65,9 +65,9 @@ export default class Header extends Component {
 										La société
 									</a>
 									<div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-										<a className="dropdown-item" href="#">A propos</a>
-										<a className="dropdown-item" href="#">Contact</a>
-										<a className="dropdown-item" href="#">Jobs</a>
+										<Link className="dropdown-item" to="/about">A propos</Link>
+										<Link className="dropdown-item" to="/contact">Contact</Link>
+										<Link className="dropdown-item" to="/jobs">Jobs</Link>
 										<a className="dropdown-item" href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog</a>
 									</div>
 								</li>
@@ -76,7 +76,7 @@ export default class Header extends Component {
 									&nbsp;&nbsp;<Link className="btn btn-primary" to="/login">Se connecter</Link>
 								</li>
 								<li className="nav-item">
-									&nbsp;&nbsp;<a className="btn btn-primary" href="#" data-toggle="modal" data-target="#createAccount">Créer un compte</a>
+									&nbsp;&nbsp;<a className="btn btn-primary" href="/" data-toggle="modal" data-target="#createAccount">Créer un compte</a>
 								</li>
 
 								<div className="modal fade" id="createAccount" role="dialog">

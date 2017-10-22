@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import request from '../../services/Net';
-import { handleChange } from '../../services/FormService';
 import NotificationSystem from 'react-notification-system';
 
 export default class CompanyCheckout extends Component {
@@ -64,7 +63,7 @@ export default class CompanyCheckout extends Component {
 				redirect: true
 			});
 		}).catch((err) => {
-			
+
 		});
 	}
 
