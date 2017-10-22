@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { handleChange } from '../../services/FormService';
-import { request } from '../../services/NetService';
+import request from '../../services/Net';
 import { Redirect } from 'react-router-dom';
+import NotificationSystem from 'react-notification-system';
 
 export default class CompanyWish extends Component {
 
@@ -14,20 +15,24 @@ export default class CompanyWish extends Component {
 	}
 
 	createBundle() {
-		request('/user/bundle/create', 'POST', JSON.stringify({
-			hives : this.state.hives
-		}), 'json', (status, message, content) => {
-			if (status) {
-				this.setState({
-					redirect : true
-				});
+		request({
+			url : '/bundle',
+			method : 'post',
+			data : {
+				hives : this.state.hives
 			}
+		}, this.refs.notif)
+		.then((res) => {
+			this.setState({ redirect : true})
+		})
+		.catch((err) => {
 		});
 	}
 
     render () {
         return (
 			<div className="container py-4">
+				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/company/checkout" />:null}
 				<div className="row justify-content-center">
 					<div className="col">

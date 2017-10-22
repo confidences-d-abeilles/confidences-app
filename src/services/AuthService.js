@@ -1,11 +1,13 @@
 
 import { redirect } from './RedirectService';
+import { client } from './Net';
 
 
 export function login(id, token, user_type) {
 	localStorage.setItem('id', id);
 	localStorage.setItem('token', token);
     localStorage.setItem('user_type', user_type);
+	client.defaults.headers.common['Authorization'] = 'Bearer '+token;
 }
 
 export function logout() {
@@ -17,6 +19,7 @@ export function logout() {
 export function isLoggedIn(expected) {
     const token = localStorage.getItem('token');
     if (token) {
+		client.defaults.headers.common['Authorization'] = 'Bearer '+token;
         return true;
     } else {
         return false;

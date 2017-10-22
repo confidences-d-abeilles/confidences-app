@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { request } from '../../services/NetService';
 import { handleChange } from '../../services/FormService';
 import { isLoggedIn } from '../../services/AuthService';

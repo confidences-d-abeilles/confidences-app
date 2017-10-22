@@ -13,14 +13,14 @@ export default class CompanyManageDashboard extends Component {
 	}
 
 	componentWillMount() {
-		request('/user', 'GET', null, 'json', (status, message, content) => {
-			if (status) {
-				this.setState({
-					hives : content.bundles[0].hives,
-					loading: false
-				});
-			}
-		});
+		// request('/user', 'GET', null, 'json', (status, message, content) => {
+		// 	if (status) {
+		// 		this.setState({
+		// 			hives : content.bundles[0].hives,
+		// 			loading: false
+		// 		});
+		// 	}
+		// });
 	}
 
 	render () {

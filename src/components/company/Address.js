@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { request } from '../../services/NetService';
+import { Redirect } from 'react-router-dom';
+import request from '../../services/Net';
 import { handleChange } from '../../services/FormService';
 import { isLoggedIn } from '../../services/AuthService';
+import NotificationSystem from 'react-notification-system';
 
 export default class CompanyAddress extends Component {
 	constructor(props) {
@@ -20,24 +21,35 @@ export default class CompanyAddress extends Component {
 	addAddress(e) {
 		e.preventDefault();
 		if (!this.state.address1 || !this.state.city || !this.state.zipcode) {
-			this.setState({
-				message: 'Veuillez renseigner les champs obligatoires.'
-			});
+			this.refs.notif.addNotification({
+				message : "Merci de rendeigner tous les champs",
+				level : 'warning'
+			})
 		} else {
-			request('/user/baddress/create', 'POST', JSON.stringify(this.state), 'json', (status, message,content) => {
-				if (status)
-				{
-					this.setState({
-						redirect: true
-					});
+			request({
+				url : '/address',
+				method: 'post',
+				data : {
+					address1 : this.state.address1,
+					address2 : this.state.address2,
+					city : this.state.city,
+					zipcode : this.state.zipcode,
+					type : 1
 				}
-			});
+			}, this.refs.notif)
+			.then((res) => {
+				this.setState({
+					redirect: true
+				});
+			})
+			.catch((err) => {});
 		}
 	}
 
     render () {
         return (
 			<div className="container py-4">
+				<NotificationSystem ref="notif" />
 				{(isLoggedIn())?null:<Redirect to="/" />}
 				<div className="row justify-content-center">
 					<div className="col">
@@ -70,7 +82,7 @@ export default class CompanyAddress extends Component {
 					</div>
 				</div>
 				{(this.state.redirect)?
-				<Redirect to="/company/wish" />
+					<Redirect to="/company/wish" />
 				:null}
 			</div>
         );

@@ -2,16 +2,18 @@ import axios from 'axios';
 
 var config = require('../config.js');
 
-const client = axios.create({
+export const client = axios.create({
   baseURL: config.server_url
 });
 
 const request = function(options, notificationSystem) {
   	const onSuccess = function(response) {
-		notificationSystem.addNotification({
-			message: response.data.message,
-			level: 'success'
-		});
+		if (response.data.message) {
+			notificationSystem.addNotification({
+				message: response.data.message,
+				level: 'success'
+			});
+		}
 		return response.data.payload;
 	}
 

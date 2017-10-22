@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { request } from '../../services/NetService';
+import request from '../../services/Net';
 import { handleChange } from '../../services/FormService';
+import NotificationSystem from 'react-notification-system';
 
 export default class CompanyCheckout extends Component {
 
@@ -17,44 +18,60 @@ export default class CompanyCheckout extends Component {
 			redirect: false,
 			hives: 0
 		}
-		this.getBillingAddress();
 	}
 
-	getBillingAddress() {
-		request('/user', 'GET', null, 'json', (status, message, content) => {
-			if (status) {
-				this.setState({
-					billing_name: content.name,
-					billing_firstname: content.firstname,
-					billing_address1: content.baddress[0].line1,
-					billing_address2: content.baddress[0].line2,
-					billing_zipcode: content.baddress[0].zipcode,
-					billing_city: content.baddress[0].city,
-					hives: content.bundles[0].hives,
-					duplicate: true
-				})
-			}
+	componentDidMount() {
+		request({
+			url : '/user',
+			method : 'get'
+		}, this.refs.notif)
+		.then((res) => {
+			this.setState({
+				billing_name: res.name,
+				billing_firstname: res.firstname,
+				billing_address1: res.addresses[0].line1,
+				billing_address2: res.addresses[0].line2,
+				billing_zipcode: res.addresses[0].zipcode,
+				billing_city: res.addresses[0].city,
+				hives: res.bundles[0].hives,
+				duplicate: true
+			})
+			request({
+				url : '/address',
+				method : 'post',
+				data : {
+					address1 : this.state.billing_address1,
+					address2 : this.state.billing_address2,
+					zipcode : this.state.billing_zipcode,
+					city : this.state.billing_city,
+					type : 2
+				}
+			}, this.refs.notif);
 		});
+
 	}
 
 	proceed() {
-		request('/user/daddress/create', 'POST', JSON.stringify({
-			address1: this.state.billing_address1,
-			address2: this.state.billing_address2,
-			city: this.state.billing_city,
-			zipcode: this.state.billing_zipcode
-		}), 'json', (status, message, content) => {
-			if (status) {
-				this.setState({
-					redirect: true
-				});
+		request({
+			url : '/bundle',
+			method : 'put',
+			data : {
+				paid: true
 			}
+		}, this.refs.notif)
+		.then((res) => {
+			this.setState({
+				redirect: true
+			});
+		}).catch((err) => {
+			
 		});
 	}
 
     render () {
         return (
 			<div className="container py-4">
+				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/account" />:null}
 				<div className="row justify-content-center">
 					<div className="col">

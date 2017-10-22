@@ -39,6 +39,9 @@ export default class Signup extends Component {
 				}
 			}, this.refs.notificationSystem).then((res) => {
 				login(res.id, res.token, res.user_type);
+				this.setState({
+					redirect: true
+				})
 			}).catch((err) => {
 			});
 		}

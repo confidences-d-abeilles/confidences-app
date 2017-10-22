@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { handleChange } from '../../services/FormService';
-import { request } from '../../services/NetService';
+import  request from '../../services/Net';
+import NotificationSystem from 'react-notification-system';
 
 export default class CompanyIdentity extends Component {
 
@@ -11,24 +12,42 @@ export default class CompanyIdentity extends Component {
 			company_name: '',
 			siret: '',
 			job: '',
-			website: ''
+			website: '',
+			redirect : false
 		}
 	}
 
 	identify(e) {
 		e.preventDefault();
-		request('/user/identify', 'POST', JSON.stringify(this.state), 'json', (status, message, content) => {
-			if (status) {
-				this.setState({
-					redirect: true
+		if (!this.state.company_name || !this.state.siret || !this.state.job) {
+			this.refs.notif.addNotification({
+				message: "Merci de renseigner tous les champs",
+				level: 'warning'
+			})
+		} else {
+			request({
+				url : '/user',
+				method : 'put',
+				data : {
+					company_name : this.state.company_name,
+					siret : this.state.siret,
+					job : this.state.job,
+					website : this.state.website,
+					onboard : 2
+				}}, this.refs.notif)
+				.then((res) => {
+					this.setState({
+						redirect : true
+					})
 				})
-			}
-		});
+				.catch((err) => {});
+		}
 	}
 
     render () {
         return (
 			<div className="container py-4">
+				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/company/address" />:null}
 				<div className="row justify-content-center">
 					<div className="col">

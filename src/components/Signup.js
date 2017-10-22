@@ -28,9 +28,9 @@ export default class Signup extends Component {
 		switch (type) {
 			case 'individual':
 				return 1;
-			case 'contributor':
-				return 2;
 			case 'company':
+				return 2;
+			case 'contributor':
 				return 3;
 			default:
 				return 0;
@@ -68,28 +68,6 @@ export default class Signup extends Component {
 				})
 				.catch((err) => {
 				});
-				// then((data) => {
-				// 	if (!data.status) {
-				// 		this.setState({
-				// 			message: data.message
-				// 		});
-				// 	} else {
-				// 		fetch(config.server_url+'/user/auth', {
-				// 			method: 'POST',
-				// 			body: JSON.stringify({
-				// 				email: this.state.email,
-				// 				password: this.state.password
-				// 			})
-				// 		}).then((data) => {
-				//             return data.json();
-				//         }).then((data) => {
-				// 			login(data.content.id, data.content.token, data.content.user_type);
-				// 			this.setState({
-				// 				redirect: true
-				// 			});
-				// 		});
-				// 	}
-		        // });
 			}
 		}
 	}
