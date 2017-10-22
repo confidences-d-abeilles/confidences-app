@@ -7,8 +7,6 @@ import ContributorManageConditions from './manage/Conditions';
 import ContributorManageContract from './manage/Contract';
 import ContributorManageHelp from './manage/Help';
 
-
-
 import {
 	BrowserRouter as Router,
 	Route,

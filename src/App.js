@@ -46,6 +46,9 @@ import Footer from './components/Footer';
 import Signup from './components/Signup';
 import Cgv from './components/Cgv';
 import Mentions from './components/Mentions';
+import About from './components/About';
+import Contact from './components/Contact';
+import Jobs from './components/Jobs';
 
 import {
 	BrowserRouter as Router,
@@ -94,6 +97,9 @@ class App extends Component {
 							<Route exact path="/admin/manage" component={AdminManage} />
 							<Route exact path="/ruches/list" component={RuchesList} />
 
+							<Route exact path="/about" component={About} />
+							<Route exact path="/contact" component={Contact} />
+							<Route exact path="/jobs" component={Jobs} />
 							<Route exact path="/cgv" component={Cgv} />
 							<Route exact path="/mentions_legales" component={Mentions} />
 						</div>
