@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
+import { Redirect } from 'react-router-dom'
 
 
 export default class CompanyPage extends Component {
@@ -9,7 +10,8 @@ export default class CompanyPage extends Component {
 	constructor(props) {
 		super (props)
 		this.state = {
-			user : null
+			user : null,
+			redirect : false
 		}
 	}
 
@@ -21,12 +23,17 @@ export default class CompanyPage extends Component {
 			this.setState({
 				user : res
 			})
-		}).catch((err) => {})
+		}).catch((err) => {
+			this.setState({
+				redirect: true
+			})
+		})
 	}
 
     render () {
         return (
             <div className="container">
+				{(this.state.redirect)?<Redirect to="/" />:null}
 				<NotificationSystem ref="notif" />
 				<div className="row">
 					<div className="col cover">
@@ -55,7 +62,7 @@ export default class CompanyPage extends Component {
 				<div className="row">
 					<div className="col">
 						<h2 className="text-center">Les ruches que nous parrainons</h2>
-						
+
 					</div>
 				</div>
             </div>
