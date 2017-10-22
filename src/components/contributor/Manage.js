@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { request } from '../../services/NetService';
+import request from '../../services/Net';
 import ContributorManageDashboard from './manage/Dashboard';
 import ContributorManageInfos from './manage/Infos';
 import ContributorManageApproaches from './manage/Approaches';
@@ -30,23 +30,16 @@ export default class ContributorManage extends Component {
 	}
 
 	componentWillMount() {
-		request('/user', 'GET', null, 'json', (status, message, content) => {
-			let cleads = 0;
-			if (status) {
-				content.leads.map((lead) => {
-					if (lead.converted) {
-						cleads++;
-					}
-				})
-				this.setState({
-					loading: false,
-					balance: content.balance,
-					leads: content.leads.length,
-					cleads: cleads,
-					contracts: content.contracts
-				});
-			}
-		});
+		request({
+			url : '/user',
+			method : 'get'
+		}, this.refs.notif)
+		.then((res) => {
+			this.setState({
+				user : res,
+				loading : false
+			})
+		})
 	}
 
 	render () {
@@ -66,7 +59,8 @@ export default class ContributorManage extends Component {
 						</ul>
 					</div>
 					<div className="col-9">
-							{(this.state.contracts.length == 0 || !this.state.contracts[0].signed)?
+							{(!this.state.loading)?
+								(this.state.user.contracts.length == 0 || !this.state.user.contracts[0].signed)?
 								<div className="row">
 									<div className="alert alert-warning">Attention, vous n'avez pas encore signé de contract, vous ne pouvez donc démarcher d'entreprise pour l'instant.</div>
 									<Link to="/contributor/wish"><li className="list-group-item ">Choisir un contrat</li></Link>
@@ -86,7 +80,9 @@ export default class ContributorManage extends Component {
 											<button className="btn btn-secondary">Retirer ma cagnotte</button>
 										</p>
 									</div>
-								</div>}
+								</div>
+								:''
+							}
 
 						<Route exact path="/contributor/manage" component={ContributorManageDashboard} />
 						<Route exact path="/contributor/manage/conditions" component={ContributorManageConditions} />

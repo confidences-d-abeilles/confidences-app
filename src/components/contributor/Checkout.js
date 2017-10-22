@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { request } from '../../services/NetService';
+import request from '../../services/Net';
 import { handleChange } from '../../services/FormService';
+import NotificationSystem from 'react-notification-system';
 
 export default class ContributorCheckout extends Component {
 
@@ -9,30 +10,27 @@ export default class ContributorCheckout extends Component {
 		super(props);
 		this.state = {
 		}
-		this.getContract();
 	}
 
-	getContract() {
-		request('/contract', 'GET', null, 'json', (status, massage, content) => {
-			if (status) {
-
-			}
-		});
+	componenentDidMount() {
 	}
 
 	proceed() {
-		request('/user/contract/sign', 'GET', null, 'json', (status, message, content) => {
-			if (status) {
-				this.setState({
-					redirect: true
-				});
+		request({
+			url : '/contract',
+			method : 'put',
+			data : {
+				signed : true
 			}
-		});
+		}, this.refs.notif).then((res) => {
+			this.setState({ redirect : true });
+		}).catch((err) => {})
 	}
 
     render () {
         return (
 			<div className="container py-4">
+				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/contributor/manage" />:null}
 				<div className="row justify-content-center">
 					<div className="col">

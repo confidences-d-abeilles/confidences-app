@@ -1,43 +1,37 @@
 import React, { Component } from 'react';
-import { request } from '../../services/NetService';
+import request from '../../services/Net';
 import { handleChange } from '../../services/FormService';
 import { isLoggedIn } from '../../services/AuthService';
 import { Redirect } from 'react-router-dom';
+import NotificationSystem from 'react-notification-system';
 
 export default class ContributorWish extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			duration: 1
+			duration: 1,
+			redirect : false
 		}
-		this.getContract();
 	}
 
 	selectContract() {
-		request('/user/contract/create', 'POST', JSON.stringify(this.state), 'json', (status, message,content) => {
-			if (status)
-			{
-				this.setState({
-					redirect: true
-				});
+		request({
+			url : '/contract',
+			method : 'post',
+			data : {
+				duration : 1
 			}
-		});
-	}
-
-	getContract() {
-		request('/contract', 'GET', null, 'json', (status, massage, content) => {
-			if (status) {
-				this.setState({
-					redirect: true
-				});
-			}
-		});
+		}, this.refs.notif)
+		.then((res) => {
+			this.setState({ redirect : true})
+		})
 	}
 
 	render () {
 		return (
 			<div className="container py-4">
+				<NotificationSystem ref="notif" />
 				{(isLoggedIn())?null:<Redirect to="/" />}
 				{(this.state.redirect)?
 				<Redirect to="/contributor/checkout" />
@@ -58,10 +52,8 @@ export default class ContributorWish extends Component {
 								<option value="3">3 ans</option>
 							</select>
 						</p>
-
-
 						<p className="text-center">
-						<button onClick={this.selectContract.bind(this)}>Continuer</button>
+						<button onClick={this.selectContract.bind(this)} className="btn btn-primary">Continuer</button>
 						</p>
 					</div>
 				</div>

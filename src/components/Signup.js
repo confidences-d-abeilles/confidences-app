@@ -39,42 +39,48 @@ export default class Signup extends Component {
 
 	register(e) {
 		e.preventDefault();
-		this.setState({
-			message: ''
-		});
-		if (0) {
-			this.setState({
-				message: 'Veillez a bien renseigner tous les champs.'
+		if (this.state.password !== this.state.confirmation) {
+			this.refs.notificationSystem.addNotification({
+				message: "Le mot de passe et sa confirmation ne sont pas identiques",
+				level: 'error'
 			});
 		} else {
-			if (this.state.password !== this.state.confirmation) {
-				this.setState({
-					message: 'Le mot de passe et sa confirmation ne sont pas identiques.'
-				});
-			} else {
+			request({
+				method: 'post',
+				url: '/user',
+				data : {
+					firstname : this.state.firstname,
+					name : this.state.name,
+					email : this.state.email,
+					phone : this.state.phone,
+					password : this.state.password,
+					user_type : this.state.user_type
+				}
+			}, this.refs.notificationSystem)
+			.then((res) => {
 				request({
-					method: 'post',
-					url: '/user',
+					url: '/authenticate',
+					method : 'post',
 					data : {
-						firstname : this.state.firstname,
-						name : this.state.name,
 						email : this.state.email,
-						phone : this.state.phone,
-						password : this.state.password,
-						user_type : this.state.user_type
+						password : this.state.password
 					}
-				}, this.refs.notificationSystem)
-				.then((res) => {
+				}, this.refs.notificationSystem).then((res) => {
+					login(res.id, res.token, res.user_type);
+					this.setState({
+						redirect : true
+					})
 				})
-				.catch((err) => {
-				});
-			}
+			})
+			.catch((err) => {
+			});
 		}
 	}
 
 	render () {
 		return (
 			<div className="container py-4">
+				{(this.state.redirect)?<Redirect to="/account" />:''}
 				<NotificationSystem ref="notificationSystem" />
 				<div className="row justify-content-center">
 					<div className="col">
