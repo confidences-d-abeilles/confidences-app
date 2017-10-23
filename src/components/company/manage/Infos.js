@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import request from '../../../services/Net'
+import NotificationSystem from 'react-notification-system'
 
 export default class CompanyManageInfos extends Component {
 
@@ -25,6 +26,7 @@ export default class CompanyManageInfos extends Component {
 	render () {
 		return (
 			<div>
+				<NotificationSystem ref="notif" />
 				<div className="row my-2">
 					<div className="col">
 						<h2 className="text-center">
