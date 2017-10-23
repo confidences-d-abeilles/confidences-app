@@ -28,7 +28,7 @@ class App extends Component {
 					<Route path="/ruches" component={Wrapper} />
 					<Route path="/admin" component={Wrapper} />
 					<Route path="/signup" component={Wrapper} />
-					<Route path="/:company_name" component={CompanyPage} />
+					<Route path="/:namespace" component={CompanyPage} />
 					<Route path="/" component={Wrapper} />
 				</Switch>
 			</Router>

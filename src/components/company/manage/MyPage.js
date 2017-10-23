@@ -15,12 +15,40 @@ export default class CompanyManageMyPage extends Component {
 	}
 
 	componentWillMount() {
+		this.get()
+	}
+
+	get() {
 		request({
 			url : '/user/me',
 			method: 'get'
 		}, this.refs.notif).then((res) => {
-			this.setState({ user : res})
+			this.setState({
+				user : res,
+				name : res.company_name,
+				namespace : res.namespace,
+				description : res.description,
+				involvement : res.involvement
+			});
 		}).catch((err) => {})
+	}
+
+	submit(e) {
+		e.preventDefault();
+		request({
+			url : '/user',
+			method : 'put',
+			data : {
+				company_name : this.state.name,
+				namespace : this.state.namespace,
+				description : this.state.description,
+				involvement : this.state.involvement
+			}
+		}, this.refs.notif).then((res) => {
+			this.get()
+		}).catch((err) => {
+
+		});
 	}
 
 	render () {
@@ -33,7 +61,7 @@ export default class CompanyManageMyPage extends Component {
 						<a href={require('../../../assets/page_ent.pdf')} target="_blank" className="btn btn-secondary">Comment personaliser ma page ?</a>
 					</div>
 					<div className="col text-center">
-						<Link to={(this.state.user)?"/"+this.state.user.company_name:'/'} className="btn btn-secondary">Voir ma page</Link>
+						<Link to={(this.state.user)?"/"+this.state.user.namespace:'/'} className="btn btn-secondary">Voir ma page</Link>
 					</div>
 				</div>
 				<form>
@@ -58,7 +86,9 @@ export default class CompanyManageMyPage extends Component {
 					<div className="form-group">
 						<textarea name="involvement" className="form-control" value={this.state.involvement} onChange={handleChange.bind(this)} placeholder="Engagement environnemental (optionnel) ..." />
 					</div>
-					<div className="form-group"></div>
+					<div className="form-group">
+						<input type="submit" value="Modifier ma page" className="btn btn-primary" onClick={this.submit.bind(this)} />
+					</div>
 
 				</form>
 			</div>

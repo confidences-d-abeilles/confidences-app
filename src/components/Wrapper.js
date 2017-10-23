@@ -52,7 +52,7 @@ import Jobs from './Jobs';
 
 
 export default class Wrapper extends Component {
-	
+
 	render () {
 		return (
 			<div id="wrapper">
@@ -90,7 +90,7 @@ export default class Wrapper extends Component {
 
 							<Route exact path="/signup/:type" component={Signup} />
 
-							<Route exact path="/admin/manage" component={AdminManage} />
+							<Route path="/admin/manage" component={AdminManage} />
 							<Route exact path="/ruches/list" component={RuchesList} />
 
 							<Route exact path="/about" component={About} />

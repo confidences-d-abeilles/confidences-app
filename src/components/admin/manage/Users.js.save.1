@@ -1,0 +1,57 @@
+al
+
+
+
+
+
+
+
+
+
+
+
+
+
+Qimport React, { Component } from 'react'
+import request from '../../../services/Net'
+import NotificationSystem from 'react-notification-system'
+
+export default class AdminManageUsers extends Component {
+
+	constructor(props) {
+		super(props)
+		this.state = {}
+	}
+
+	componentDidMount() {
+		this.getUsers();
+	}
+
+	getUsers() {
+		request({
+			url: '/users',
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			console.log(res)
+			return (
+				res.map((user) => {
+					<tr><td>user.email</td></tr>
+				})
+			)
+		})
+	}
+
+	render () {
+		return (
+			<div className="row">
+				<NotificationSystem ref="notif" />
+				<div className="col">
+					<h2 className="text-center">Gérer les utilisateurs</h2>
+					<table>
+					{this.getUsers()}
+					</table>
+				</div>
+			</div>
+		)
+	}
+}

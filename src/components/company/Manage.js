@@ -68,7 +68,7 @@ export default class CompanyManage extends Component {
 								<Link to="/company/manage/mypage"><li className="list-group-item">Ma page dediee</li></Link>
 								<Link to="/company/manage/customize"><li className="list-group-item">Personnalisation</li></Link>
 								<Link to="/company/manage/dashboard"><li className="list-group-item">Mes factures</li></Link>
-								<Link to="/company/manage/dashboard"><li className="list-group-item">Deconnexion</li></Link>
+								<Link to="/logout"><li className="list-group-item">Deconnexion</li></Link>
 							</ul>
 						</div>
 						<div className="col-9">
