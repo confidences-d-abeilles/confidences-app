@@ -19,7 +19,7 @@ export default class CompanyPage extends Component {
 
 	componentWillMount() {
 		request({
-			url : 'user?namespace='+this.props.match.params.namespace,
+			url : 'users/namespace/'+this.props.match.params.namespace,
 			method : 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
