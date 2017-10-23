@@ -24,9 +24,32 @@ export default class CompanyManageDashboard extends Component {
 
 	render () {
 		return (
-			<div className="row py-4">
-				<NotificationSystem ref="notif" />
-				<div className="col text-center"><Link to={(this.state.user)?'/'+this.state.user.namespace:''}><button className="btn btn-secondary">Consulter ma page entreprise</button></Link></div>
+			<div>
+				<div className="row py-4">
+					<NotificationSystem ref="notif" />
+					<div className="col text-center"><Link to={(this.state.user)?'/'+this.state.user.namespace:''}><button className="btn btn-secondary">Consulter ma page entreprise</button></Link></div>
+				</div>
+				<div className="row">
+					<div className="col">
+						{(this.state.user)?
+							this.state.user.news.map((actu) => {
+								const date = new Date(actu.createdAt);
+								console.log(date);
+								return (
+									<div className="card my-2" key={actu.id}>
+										<div className="card-block">
+											<div className="card-subtitile text-muted">
+												{date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()+' à '+date.getHours()+'h'+date.getMinutes()}
+											</div>
+											<div className="card-text">
+												{actu.content}
+											</div>
+										</div>
+									</div>
+								)
+							}):''}
+					</div>
+				</div>
 			</div>
 		);
 	}

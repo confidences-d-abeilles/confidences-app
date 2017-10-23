@@ -49,10 +49,11 @@ export default class AdminManageUsers extends Component {
 				<NotificationSystem ref="notif" />
 				<div className="col">
 					<h2 className="text-center">Gérer les utilisateurs</h2>
-					<table>
+					<table className="table">
 						<tbody>
+							<tr><th>Email</th><th>Type d'utilisateur</th><th>Actions</th></tr>
 							{this.state.users.map((user) => {
-									return (<tr key={user.id}><td>{user.email}</td><td><button onClick={this.promoteUser.bind(this, user.id)} className="btn btn-primary">Promouvoir</button><button onClick={this.deleteUser.bind(this, user.id)} className="btn btn-primary">Supprimer</button></td></tr>)
+									return (<tr key={user.id}><td>{user.email}</td><td>{user.user_type}</td><td><button onClick={this.promoteUser.bind(this, user.id)} className="btn btn-primary btn-sm">Promouvoir</button><button onClick={this.deleteUser.bind(this, user.id)} className="btn btn-primary btn-sm">Supprimer</button></td></tr>)
 							})}
 						</tbody>
 					</table>

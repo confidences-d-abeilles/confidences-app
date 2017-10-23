@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import request from '../../services/Net';
 import CompanyManageDashboard from './manage/Dashboard';
-import CompanyManageInfos from './manage/Infos.js';
-import CompanyManageMyPage from './manage/MyPage.js';
+import CompanyManageInfos from './manage/Infos';
+import CompanyManageMyPage from './manage/MyPage';
+import CompanyManageBills from './manage/Bills'
+import CompanyManageCustomize from './manage/Customize'
 
 import {
 	BrowserRouter as Router,
@@ -52,7 +54,7 @@ export default class CompanyManage extends Component {
 		if (this.state.user && !this.state.user.bundles[0]) {
 			return (<Redirect to="/company/wish" />);
 		}
-	}
+	}mypage
 
 	render () {
 		return (
@@ -67,7 +69,7 @@ export default class CompanyManage extends Component {
 								<Link to="/company/manage/infos"><li className="list-group-item">Mes informations</li></Link>
 								<Link to="/company/manage/mypage"><li className="list-group-item">Ma page dediee</li></Link>
 								<Link to="/company/manage/customize"><li className="list-group-item">Personnalisation</li></Link>
-								<Link to="/company/manage/dashboard"><li className="list-group-item">Mes factures</li></Link>
+								<Link to="/company/manage/bills"><li className="list-group-item">Mes factures</li></Link>
 								<Link to="/logout"><li className="list-group-item">Deconnexion</li></Link>
 							</ul>
 						</div>
@@ -80,8 +82,10 @@ export default class CompanyManage extends Component {
 							<div className="row">
 								<div className="col-12">
 									<Route exact path="/company/manage" component={CompanyManageDashboard} />
-										<Route exact path="/company/manage/infos" component={CompanyManageInfos} />
+									<Route exact path="/company/manage/infos" component={CompanyManageInfos} />
 									<Route exact path="/company/manage/mypage" component={CompanyManageMyPage} />
+									<Route exact path="/company/manage/customize" component={CompanyManageCustomize} />
+									<Route exact path="/company/manage/bills" component={CompanyManageBills} />
 								</div>
 							</div>
 						</div>
