@@ -5,9 +5,9 @@ export default class CompanyManageInfos extends Component {
 
 	render () {
 		return (
-			<p className="lead">
+			<h2 className="text-center">
 				Mes informations
-			</p>
+			</h2>
 		);
 	}
 }

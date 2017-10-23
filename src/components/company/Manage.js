@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import request from '../../services/Net';
 import CompanyManageDashboard from './manage/Dashboard';
 import CompanyManageInfos from './manage/Infos.js';
+import CompanyManageMyPage from './manage/MyPage.js';
+
 import {
 	BrowserRouter as Router,
 	Route,
@@ -47,9 +49,7 @@ export default class CompanyManage extends Component {
 				<p className="alert alert-danger">Vous n'avez pas encore reglé votre parrainage. <Link to="/company/checkout">Cliquez ici</Link> pour le faire maintenant</p>
 			);
 		}
-		if (this.state.user && this.state.user.bundles[0]) {
-			return (<p>Nous parrainons {this.state.user.bundles[0].hives} ruches</p>);
-		} else {
+		if (this.state.user && !this.state.user.bundles[0]) {
 			return (<Redirect to="/company/wish" />);
 		}
 	}
@@ -63,7 +63,7 @@ export default class CompanyManage extends Component {
 							<img src={imgPlaceholder} alt="Logo entreprise" className="img-fluid img-thumbnail" />
 							<br /><br />
 							<ul className="list-group">
-								<Link to="/company/manage"><li className="list-group-item active">Tableau de bord</li></Link>
+								<Link to="/company/manage"><li className="list-group-item">Tableau de bord</li></Link>
 								<Link to="/company/manage/infos"><li className="list-group-item">Mes informations</li></Link>
 								<Link to="/company/manage/mypage"><li className="list-group-item">Ma page dediee</li></Link>
 								<Link to="/company/manage/customize"><li className="list-group-item">Personnalisation</li></Link>
@@ -77,14 +77,11 @@ export default class CompanyManage extends Component {
 									{(this.state.user)?this.checkInfos():''}
 								</div>
 							</div>
-							<div className="row py-4">
-								<div className="col-6 text-center"><Link to={(this.state.user)?'/'+this.state.user.company_name:''}><button className="btn btn-secondary">Ma page</button></Link></div>
-								<div className="col-6 text-center"><Link to="#"><button className="btn btn-secondary">Personnaliser ma page</button></Link></div>
-							</div>
 							<div className="row">
 								<div className="col-12">
 									<Route exact path="/company/manage" component={CompanyManageDashboard} />
-									<Route exact path="/company/manage/infos" component={CompanyManageInfos} />
+										<Route exact path="/company/manage/infos" component={CompanyManageInfos} />
+									<Route exact path="/company/manage/mypage" component={CompanyManageMyPage} />
 								</div>
 							</div>
 						</div>

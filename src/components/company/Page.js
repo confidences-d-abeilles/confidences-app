@@ -4,6 +4,8 @@ import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import { Redirect } from 'react-router-dom'
 
+import FooterPage from './FooterPage'
+
 
 export default class CompanyPage extends Component {
 
@@ -47,7 +49,7 @@ export default class CompanyPage extends Component {
 					</div>
 					<div className="col">
 						<p className="lead">
-							De nombreuses entreprises font confiance à Esker pour automatiser les tâches manuelles ou à faible valeur ajoutée au sein de leurs processus de gestion Purchase-to-Pay (P2P) et Order-to-Cash (O2C). Gestion des commandes, facturation, règlement ou encore recouvrement des factures, les solutions de dématérialisation Esker aident les entreprises à gagner en efficacité et en visibilité là où elles en ont le plus besoin.
+							{(this.state.user)?this.state.user.description:null}
 						</p>
 					</div>
 				</div>
@@ -55,16 +57,21 @@ export default class CompanyPage extends Component {
 					<div className="col">
 						<h2 className="text-center">Notre engagement pour la biodiversité</h2>
 						<p className="lead">
-							Dans ce paragraphe, vous êtes invités à décrire votre démarche, en quoi elle consiste selon vous, qu'est ce qui vous a poussé à investir dans un parrainage et pourquoi c'est important. Vous êtes libre de modifier ce paragraphe, ainsi que toutes les informations qui figurent sur cette page à tout moment depuis votre espace personnel. Confidences d'Abeilles vous félicite et vous remercie pour la confiance que vous leur avez accordée.
+							{(this.state.user)?this.state.user.involvement:null}
 						</p>
 					</div>
 				</div>
 				<div className="row">
 					<div className="col">
 						<h2 className="text-center">Les ruches que nous parrainons</h2>
-
 					</div>
 				</div>
+				<div className="row">
+					<div className="col">
+						<h2 className="text-center">Les dernières actualités</h2>
+					</div>
+				</div>
+				<FooterPage />
             </div>
         );
     }

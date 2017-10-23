@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { request } from '../../../services/NetService';
+import { Link } from 'react-router-dom'
 
 export default class CompanyManageDashboard extends Component {
 
@@ -13,22 +13,14 @@ export default class CompanyManageDashboard extends Component {
 	}
 
 	componentWillMount() {
-		// request('/user', 'GET', null, 'json', (status, message, content) => {
-		// 	if (status) {
-		// 		this.setState({
-		// 			hives : content.bundles[0].hives,
-		// 			loading: false
-		// 		});
-		// 	}
-		// });
+		
 	}
 
 	render () {
 		return (
-			<p className="lead">
-				{(this.state.loading)?'Chargement en cours...':'Nous parrainons '+this.state.hives+' ruches.'}
-
-			</p>
+			<div className="row py-4">
+				<div className="col text-center"><Link to={(this.state.user)?'/'+this.state.user.company_name:''}><button className="btn btn-secondary">Consulter ma page entreprise</button></Link></div>
+			</div>
 		);
 	}
 }
