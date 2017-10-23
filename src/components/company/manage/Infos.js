@@ -10,7 +10,7 @@ export default class CompanyManageInfos extends Component {
 		this.state = {}
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.get();
 	}
 

@@ -13,7 +13,7 @@ export default class CompanyManageDashboard extends Component {
 		}
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		request({
 			url : '/user/me',
 			method : 'get',

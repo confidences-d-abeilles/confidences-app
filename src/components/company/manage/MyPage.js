@@ -14,8 +14,8 @@ export default class CompanyManageMyPage extends Component {
 		}
 	}
 
-	componentWillMount() {
-		this.get()
+	componentDidMount() {
+		this.get();
 	}
 
 	get() {

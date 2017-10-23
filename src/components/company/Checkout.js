@@ -21,7 +21,7 @@ export default class CompanyCheckout extends Component {
 
 	componentDidMount() {
 		request({
-			url : '/user',
+			url : '/user/me',
 			method : 'get'
 		}, this.refs.notif)
 		.then((res) => {

@@ -19,7 +19,7 @@ export default class CompanyIdentity extends Component {
 
 	identify(e) {
 		e.preventDefault();
-		if (!this.state.company_name || !this.state.siret || !this.state.job) {
+		if (!this.state.company_name || !this.state.siren || !this.state.job) {
 			this.refs.notif.addNotification({
 				message: "Merci de renseigner tous les champs",
 				level: 'warning'
