@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import request from '../../services/Net';
 import AdminManageUsers from './manage/Users'
 import AdminManageNews from './manage/News'
+import AdminManageFaq from './manage/Faq'
 
 import {
 	BrowserRouter as Router,
@@ -33,6 +34,7 @@ export default class CompanyManage extends Component {
 							<ul className="list-group">
 								<Link to="/admin/manage/users"><li className="list-group-item">Gerer les utilisateurs</li></Link>
 								<Link to="/admin/manage/news"><li className="list-group-item">Gerer les news</li></Link>
+								<Link to="/admin/manage/faq"><li className="list-group-item">Gerer la FAQ</li></Link>
 							</ul>
 						</div>
 						<div className="col-9">
@@ -45,6 +47,7 @@ export default class CompanyManage extends Component {
 								<div className="col-12">
 									<Route exact path="/admin/manage/users" component={AdminManageUsers} />
 									<Route exact path="/admin/manage/news" component={AdminManageNews} />
+									<Route exact path="/admin/manage/faq" component={AdminManageFaq} />
 								</div>
 							</div>
 						</div>

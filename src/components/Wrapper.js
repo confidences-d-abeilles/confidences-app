@@ -49,6 +49,7 @@ import Mentions from './Mentions';
 import About from './About';
 import Contact from './Contact';
 import Jobs from './Jobs';
+import Faq from './Faq';
 
 
 export default class Wrapper extends Component {
@@ -93,6 +94,7 @@ export default class Wrapper extends Component {
 							<Route path="/admin/manage" component={AdminManage} />
 							<Route exact path="/ruches/list" component={RuchesList} />
 
+							<Route exact path="/faq" component={Faq} />
 							<Route exact path="/about" component={About} />
 							<Route exact path="/contact" component={Contact} />
 							<Route exact path="/jobs" component={Jobs} />

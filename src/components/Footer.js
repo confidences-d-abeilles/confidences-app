@@ -42,7 +42,7 @@ export default class Footer extends Component {
 						<div className="col-lg-4">
 							<h2>Ressources</h2>
 							<ul>
-								<li><Link to="#" className="noStyleLink">FAQ</Link></li>
+								<li><Link to="/faq" className="noStyleLink">FAQ</Link></li>
 								<li><Link to="#" className="noStyleLink">Presse</Link></li>
 								<li><Link to="/mentions_legales" className="noStyleLink">Mentions légales</Link></li>
 								<li><Link to="/cgv" className="noStyleLink">CGV</Link></li>
