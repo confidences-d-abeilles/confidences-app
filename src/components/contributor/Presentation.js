@@ -13,7 +13,7 @@ export default class ContributorPresentation extends Component {
 						<p>
 							Rejoignez-nous, aidez-nous a faire grossir le projet et prenez votre envol !
 						</p>
-						<Link to="/company/signup" className="btn btn-secondary">Devenir apporteur d'affaires</Link>
+						<Link to="/signup/contributor" className="btn btn-secondary">Devenir apporteur d'affaires</Link>
 					</div>
 					<div className="col">
 						<img src={imgPlaceholder} alt="Empty img space" />

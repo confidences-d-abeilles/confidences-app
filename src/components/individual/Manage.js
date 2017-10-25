@@ -41,9 +41,6 @@ export default class IndividualManage extends Component {
 						</ul>
 					</div>
 					<div>
-						{(this.state.user && this.state.user.onboard == 1)?<Link to="/individual/address" className="btn btn-primary">Reprendre a l'etape 2 de l'inscription</Link>:<p></p>}
-						{(this.state.user && this.state.user.onboard == 2)?<Link to="/individual/wish" className="btn btn-primary">Reprendre a l'etape 3 de l'inscription</Link>:<p></p>}
-						{(this.state.user && this.state.user.onboard == 3)?<Link to="/individual/checkout" className="btn btn-primary">Reprendre a l'etape 4 de l'inscription</Link>:<p></p>}
 					</div>
 				</div>
 			</div>

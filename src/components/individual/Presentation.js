@@ -13,7 +13,7 @@ export default class IndividualPresentation extends Component {
 						<p>
 							Il ne vous reste que quelques informations a saisir et ca sera fait !
 						</p>
-						<Link to="/individual/signup" className="btn btn-secondary">Demarrer</Link>
+						<Link to="/signup/individual" className="btn btn-secondary">Demarrer</Link>
 					</div>
 					<div className="col">
 						<img src={imgPlaceholder} alt="Empty img space" />

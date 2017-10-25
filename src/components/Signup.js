@@ -117,8 +117,6 @@ export default class Signup extends Component {
 						</form>
 					</div>
 				</div>
-				{(this.state.redirect)?
-					<Redirect to="/individual/address" />:null}
 			</div>
 		);
 	}

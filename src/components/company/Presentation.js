@@ -16,7 +16,7 @@ export default class CompanyPresentation extends Component {
 							de 3 minutes et voilà ! Vous avez accès à la
 							page dédiée à votre entreprise.
 						</p>
-						<Link to="/company/signup" className="btn btn-secondary">Demarrer</Link>
+						<Link to="/signup/company" className="btn btn-secondary">Demarrer</Link>
 					</div>
 					<div className="col">
 						<img src={imgPlaceholder} alt="Empty img space" />
@@ -79,7 +79,7 @@ export default class CompanyPresentation extends Component {
 				</div>
 				<div className="row align-items-center">
 					<div className="col text-center">
-						<Link to="/company/signup" className="btn btn-primary">Demarrer</Link>
+						<Link to="/signup/company" className="btn btn-primary">Demarrer</Link>
 					</div>
 					<div className="col text-center">
 						<a href="https://confidencesdabeilles.fr/parrainer-ruche/entreprise" className="btn btn-primary" target="_blank" rel="noopener noreferrer">En savoir plus</a>

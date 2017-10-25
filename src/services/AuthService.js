@@ -8,6 +8,7 @@ export function login(id, token, user_type) {
 	localStorage.setItem('token', token);
     localStorage.setItem('user_type', user_type);
 	client.defaults.headers.common['Authorization'] = 'Bearer '+token;
+	return true;
 }
 
 export function logout() {
