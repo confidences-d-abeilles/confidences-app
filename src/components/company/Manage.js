@@ -16,6 +16,8 @@ import NotificationSystem from 'react-notification-system';
 
 import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 
+const config = require('../../config.js');
+
 export default class CompanyManage extends Component {
 
 	constructor(props) {
@@ -54,7 +56,7 @@ export default class CompanyManage extends Component {
 		if (this.state.user && !this.state.user.bundles[0]) {
 			return (<Redirect to="/company/wish" />);
 		}
-	}mypage
+	}
 
 	render () {
 		return (
@@ -62,7 +64,7 @@ export default class CompanyManage extends Component {
 					<NotificationSystem ref="notif" />
 					<div className="row">
 						<div className="col-3">
-							<img src={imgPlaceholder} alt="Logo entreprise" className="img-fluid img-thumbnail" />
+							<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:imgPlaceholder} alt="Logo entreprise" className="img-fluid img-thumbnail" />
 							<br /><br />
 							<ul className="list-group">
 								<Link to="/company/manage"><li className="list-group-item">Tableau de bord</li></Link>

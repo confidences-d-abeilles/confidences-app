@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom'
 
 import FooterPage from './FooterPage'
 
+const config = require('../../config.js');
 
 export default class CompanyPage extends Component {
 
@@ -17,7 +18,7 @@ export default class CompanyPage extends Component {
 		}
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		request({
 			url : 'users/namespace/'+this.props.match.params.namespace,
 			method : 'get'
@@ -39,13 +40,13 @@ export default class CompanyPage extends Component {
 				<NotificationSystem ref="notif" />
 				<div className="row">
 					<div className="col cover">
-						<img src={require('../../assets/img/hive.jpg')} className="img-fluid" alt="Cover picture" />
+						<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.cover:null} className="img-fluid" alt="Cover picture" />
 						<h1>{(this.state.user)?this.state.user.company_name:null}</h1>
 					</div>
 				</div>
 				<div className="row align-items-center">
-					<div className="col">
-						<img src={require('../../assets/img/logo_esker.jpg')} alt="Logo entreprise" className="img-fluid" />
+					<div className="col logo">
+						<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:null} alt="Logo entreprise" className="img-fluid" />
 					</div>
 					<div className="col">
 						<p className="lead">
@@ -53,14 +54,16 @@ export default class CompanyPage extends Component {
 						</p>
 					</div>
 				</div>
-				<div className="row">
-					<div className="col">
-						<h2 className="text-center">Notre engagement pour la biodiversité</h2>
-						<p className="lead">
-							{(this.state.user)?this.state.user.involvement:null}
-						</p>
+				{(this.state.user && this.state.user.involvement)?
+					<div className="row">
+						<div className="col">
+							<h2 className="text-center">Notre engagement pour la biodiversité</h2>
+							<p className="lead">
+								{this.state.user.involvement}
+							</p>
+						</div>
 					</div>
-				</div>
+				:''}
 				<div className="row">
 					<div className="col">
 						<h2 className="text-center">Les ruches que nous parrainons</h2>

@@ -10,7 +10,10 @@ export default class CompanyManageMyPage extends Component {
 	constructor (props) {
 		super (props);
 		this.state = {
-
+			name : '',
+			namespace : '',
+			description : '',
+			involvement : ''
 		}
 	}
 
@@ -35,14 +38,23 @@ export default class CompanyManageMyPage extends Component {
 
 	submit(e) {
 		e.preventDefault();
+		const formData = new FormData();
+		formData.append('company_name', this.state.name);
+		formData.append('namespace', this.state.namespace);
+		formData.append('description', this.state.description);
+		formData.append('involvement', this.state.involvement);
+		if (document.getElementById("cover").files[0]) {
+			formData.append('cover', document.getElementById("cover").files[0]);
+		}
+		if (document.getElementById("logo").files[0]) {
+			formData.append('logo', document.getElementById("logo").files[0]);
+		}
 		request({
 			url : '/user',
 			method : 'put',
-			data : {
-				company_name : this.state.name,
-				namespace : this.state.namespace,
-				description : this.state.description,
-				involvement : this.state.involvement
+			data : formData,
+			headers : {
+				'content-type': 'multipart/form-data'
 			}
 		}, this.refs.notif).then((res) => {
 			this.get()
@@ -74,11 +86,11 @@ export default class CompanyManageMyPage extends Component {
 					</div>
 					<div className="form-group">
 						<label>Photo de couverture de votre page</label>
-						<input type="file" className="form-control" name="cover" />
+						<input type="file" className="form-control" name="cover" id="cover" />
 					</div>
 					<div className="form-group">
 						<label>Logo de votre entreprise</label>
-						<input type="file" className="form-control" name="logo" />
+						<input type="file" className="form-control" name="logo" id="logo" />
 					</div>
 					<div className="form-group">
 						<textarea name="description" className="form-control" value={this.state.description} onChange={handleChange.bind(this)} placeholder="Présentation brève de la société ..." />

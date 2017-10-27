@@ -19,6 +19,9 @@ export default class Home extends Component {
 				<strong>Directeur de la publication :</strong> Gaëtan EKSZTEROWICZ<br /><br />
 
 				<strong>Déclaration CNIL :</strong><br />
+				Conformément à la loi &quot; Informatique et Libertés &quot;, le traitement des informations nominatives
+				relatives aux clients à fait l&#39;objet d&#39;une déclaration auprès de la Commission Nationale de
+				l&#39;Informatique et des Libertés (CNIL) sous le numéro 1943859<br /><br />
 				<strong>Hébergement du présent site</strong><br />
 				Le prestataire assurant le stockage direct et permanent du site est la société 1&1 Internet SARL<br />
 				7, place de la Gare – BP 70109 – 57201 Sarreguemines Cedex<br />

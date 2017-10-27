@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
 import imgPlaceholder from '../assets/img/img-placeholder.gif';
+import NotificationSystem from 'react-notification-system'
+import request from '../services/Net'
+
+const config = require('../config.js');
 
 export default class Home extends Component {
+
+	constructor (props) {
+		super (props)
+		this.state = {}
+	}
+	componentDidMount() {
+		request({
+			url : '/users',
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			this.setState({ users : res });
+		})
+	}
 
     render () {
         return (
 			<div className="container py-4">
-
+				<NotificationSystem ref="notif" />
 				<div className="row align-items-center">
 					<div className="col">
 						<h1>Parrainez une ruche, aidez-nous à protéger les abeilles</h1>
@@ -44,6 +61,18 @@ export default class Home extends Component {
 							aussi d’avoir lancés plusieurs néophytes dans le grand bain de l’apiculture !
 						</p>
 						<h2 className="text-center my-4">Ils parrainent déjà des ruches</h2>
+						{(this.state.users)?
+							<div id="parrains">
+							{this.state.users.map((user) => {
+								return (
+									<div>
+										<img src={config.cdn_url+'/'+user.logo} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name} />
+									</div>
+								)
+							})}
+								<hr />
+							</div>
+							:null}
 						<p>
 							Vous voulez apporter votre pierre à l’édifice et participer à cette belle aventure ? Nous vous
 							proposons de parrainer une ruche. En échange de quoi, les butineuses vous feront découvrir

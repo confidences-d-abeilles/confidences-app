@@ -34,7 +34,6 @@ export default class CompanyManageDashboard extends Component {
 						{(this.state.user)?
 							this.state.user.news.map((actu) => {
 								const date = new Date(actu.createdAt);
-								console.log(date);
 								return (
 									<div className="card my-2" key={actu.id}>
 										<div className="card-block">

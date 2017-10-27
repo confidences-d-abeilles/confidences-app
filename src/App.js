@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { isLoggedIn } from './services/AuthService';
 import CompanyPage from './components/company/Page';
 import Wrapper from './components/Wrapper';
 
@@ -10,6 +10,12 @@ import {
 } from 'react-router-dom';
 
 class App extends Component {
+
+	constructor (props) {
+		super (props);
+		isLoggedIn(true);
+	}
+
 	render() {
 		return (
 			<Router>
