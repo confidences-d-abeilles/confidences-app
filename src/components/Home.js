@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import imgPlaceholder from '../assets/img/img-placeholder.gif';
 import NotificationSystem from 'react-notification-system'
 import request from '../services/Net'
+import { Link } from 'react-router-dom'
 
 const config = require('../config.js');
 
@@ -70,7 +71,9 @@ export default class Home extends Component {
 							{this.state.users.map((user) => {
 								return (
 									<div>
+										<Link to={'/'+user.namespace}>
 										<img src={config.cdn_url+'/'+user.logo} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name} />
+										</Link>
 									</div>
 								)
 							})}

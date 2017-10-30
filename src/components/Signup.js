@@ -71,9 +71,19 @@ export default class Signup extends Component {
 					}
 				}, this.refs.notificationSystem).then((res) => {
 					login(res.id, res.token, res.user_type);
-					this.setState({
-						redirect : true
-					})
+					if (res.user_type == 2) {
+						this.setState({
+							redirect : 'company/identity'
+						})
+					} else if (res.user_type == 1) {
+						this.setState({
+							redirect : 'individual/address'
+						})
+					} else if (res.user_type == 3) {
+						this.setState({
+							redirect : 'contributor/address'
+						})
+					}
 				})
 			})
 			.catch((err) => {
@@ -84,7 +94,7 @@ export default class Signup extends Component {
 	render () {
 		return (
 			<div className="container py-4">
-				{(this.state.redirect)?<Redirect to="/account" />:''}
+				{(this.state.redirect)?<Redirect to={'/'+this.state.redirect} />:''}
 				<NotificationSystem ref="notificationSystem" />
 				<div className="row justify-content-center">
 					<div className="col">
