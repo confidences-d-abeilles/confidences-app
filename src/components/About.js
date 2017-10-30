@@ -10,11 +10,11 @@ export default class About extends Component {
 						<img src={require('../assets/img/about.jpg')} alt="Gaetan et Nicolas" className="img-fluid" />
 					</div>
 				</div>
-				<div className="row mt-4 align-items-center">
-					<div className="col">
+				<div className="row mt-4 justify-content-center align-items-center">
+					<div className="col-4">
 						<h2>« Sans la passion, Confidences d’Abeilles ne serait pas ce qu’elle est aujourd’hui »</h2>
 					</div>
-					<div className="col">
+					<div className="col-5">
 						<h3>Une évidence</h3>
 						<p>Oui, Confidences d’Abeilles c’est
 surtout une évidence ! Pas d’origine
@@ -32,8 +32,8 @@ d’Abeilles s’est donc imposée à nous comme une suite logique ; un moyen d
 de rêver les yeux ouverts.</p>
 					</div>
 				</div>
-				<div className="row">
-					<div className="col">
+				<div className="row justify-content-center ">
+					<div className="col-9">
 						<h3>Aujourd'hui</h3>
 						<p>Confidences d’Abeilles, portée par le travail de plusieurs passionnés, poursuit son vol vers
 de nouveaux horizons. Outre le travail d’apiculteur ou plutôt celui de gardien de la
@@ -49,8 +49,8 @@ développement de l’apiculture connectée de demain. Elle apporte son aide à 
 EMAPI, association d’apiculture des Mines d’Alès, dans la gestion de son rucher.</p>
 					</div>
 				</div>
-				<div className="row">
-					<div className="col">
+				<div className="row justify-content-center ">
+					<div className="col-9">
 						<h3>Remerciements</h3>
 						<p>
 							Que serait Confidences d’Abeilles sans vous ? Que serait-elle sans ses milliers de followers
