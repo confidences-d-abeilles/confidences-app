@@ -31,7 +31,11 @@ export default class CompanyManageMyPage extends Component {
 				name : res.company_name,
 				namespace : res.namespace,
 				description : res.description,
-				involvement : res.involvement
+				involvement : res.involvement,
+				link1_name: res.link1_name,
+				link1_url: res.link1_url,
+				link2_name: res.link2_name,
+				link2_url: res.link2_url
 			});
 		}).catch((err) => {})
 	}
@@ -43,6 +47,10 @@ export default class CompanyManageMyPage extends Component {
 		formData.append('namespace', this.state.namespace);
 		formData.append('description', this.state.description);
 		formData.append('involvement', this.state.involvement);
+		formData.append('link1_name', this.state.link1_name);
+		formData.append('link1_url', this.state.link1_url);
+		formData.append('link2_name', this.state.link2_name);
+		formData.append('link2_url', this.state.link2_url);
 		if (document.getElementById("cover").files[0]) {
 			formData.append('cover', document.getElementById("cover").files[0]);
 		}
@@ -96,7 +104,24 @@ export default class CompanyManageMyPage extends Component {
 						<textarea name="description" className="form-control" value={this.state.description} onChange={handleChange.bind(this)} placeholder="Présentation brève de la société ..." />
 					</div>
 					<div className="form-group">
+						<label>Notre Engagement pour la biodiversite</label>
 						<textarea name="involvement" className="form-control" value={this.state.involvement} onChange={handleChange.bind(this)} placeholder="Engagement environnemental (optionnel) ..." />
+					</div>
+					<div className="form-group">
+						<label>Nom du lien 1</label>
+						<input type="texte" name="link1_name" className="form-control" value={this.state.link1_name} onChange={handleChange.bind(this)} />
+					</div>
+					<div className="form-group">
+						<label>Url du lien 1</label>
+						<input type="texte" name="link1_url" className="form-control" value={this.state.link1_url} onChange={handleChange.bind(this)} />
+					</div>
+					<div className="form-group">
+						<label>Nom du lien 2</label>
+						<input type="texte" name="link2_name" className="form-control" value={this.state.link2_name} onChange={handleChange.bind(this)} />
+					</div>
+					<div className="form-group">
+						<label>Url du lien 2</label>
+						<input type="texte" name="link2_url" className="form-control" value={this.state.link2_url} onChange={handleChange.bind(this)} />
 					</div>
 					<div className="form-group">
 						<input type="submit" value="Modifier ma page" className="btn btn-primary" onClick={this.submit.bind(this)} />

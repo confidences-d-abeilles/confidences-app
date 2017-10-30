@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import 'babel-polyfill';
 import { isLoggedIn } from './services/AuthService';
 import CompanyPage from './components/company/Page';
 import Wrapper from './components/Wrapper';
+
 
 import {
 	BrowserRouter as Router,
