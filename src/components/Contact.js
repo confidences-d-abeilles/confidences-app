@@ -29,34 +29,34 @@ export default class Contact extends Component {
 						<form>
 							<div className="form-group">
 								<select className="form-control" value={this.state.title}>
-									<option selected disabled>Civilité...</option>
-									<option value="Mr.">Mr.</option>
+									<option selected disabled>Civilité *</option>
+									<option value="Mr.">M.</option>
 									<option value="Mme.">Mme.</option>
 								</select>
 							</div>
 							<div className="form-group">
-								<input type="text" className="form-control" value={this.state.firstname} placeholder="Prenom" />
+								<input type="text" className="form-control" value={this.state.firstname} placeholder="Prénom *" />
 							</div>
 							<div className="form-group">
-								<input type="text" className="form-control" value={this.state.name} placeholder="Nom" />
+								<input type="text" className="form-control" value={this.state.name} placeholder="Nom *" />
 							</div>
 							<div className="form-group">
-								<input type="text" className="form-control" value={this.state.job} placeholder="Fonction" />
+								<input type="text" className="form-control" value={this.state.job} placeholder="Fonction *" />
 							</div>
 							<div className="form-group">
-								<input type="email" className="form-control" value={this.state.email} placeholder="Fonction" />
+								<input type="email" className="form-control" value={this.state.email} placeholder="Email *" />
 							</div>
 							<div className="form-group">
 								<select className="form-control" value={this.state.demand}>
-									<option selected disabled>Ma demande concerne...</option>
+									<option selected disabled>Ma demande concerne *</option>
 								</select>
 							</div>
 							<div className="form-group">
-								<textarea className="form-control" value={this.state.content} placeholder="Mon message...">
+								<textarea className="form-control" value={this.state.content} placeholder="Mon message *">
 								</textarea>
 							</div>
 							<div className="form-group text-center">
-								<input type="submit" className="btn btn-primary" value="Envoyer" />
+								<input type="submit" className="btn btn-secondary" value="Envoyer" />
 							</div>
 						</form>
 					</div>
