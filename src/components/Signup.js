@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { handleChange } from '../services/FormService'
-import { login } from '../services/AuthService'
+import { login, isLoggedIn } from '../services/AuthService'
 import request from '../services/Net.js'
 var NotificationSystem = require('react-notification-system');
 
@@ -19,6 +19,12 @@ export default class Signup extends Component {
 			user_type: this.getType(this.props.match.params.type),
 			message: '',
 			redirect: false
+		}
+	}
+
+	componentDidMount() {
+		if (isLoggedIn(true)) {
+			this.setState({ redirect : true })
 		}
 	}
 
