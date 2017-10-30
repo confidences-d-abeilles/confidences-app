@@ -6,6 +6,7 @@ import ContributorManageApproaches from './manage/Approaches';
 import ContributorManageConditions from './manage/Conditions';
 import ContributorManageContract from './manage/Contract';
 import ContributorManageHelp from './manage/Help';
+import NotificationSystem from 'react-notification-system'
 
 import {
 	Route,
@@ -26,7 +27,7 @@ export default class ContributorManage extends Component {
 		}
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		request({
 			url : '/user',
 			method : 'get'
@@ -42,6 +43,7 @@ export default class ContributorManage extends Component {
 	render () {
 		return (
 			<div className="container py-4">
+				<NotificationSystem ref="notif" />
 				<div className="row">
 					<div className="col-3">
 						<img src={profile} alt="Logo entreprise" className="img-fluid" />
