@@ -40,7 +40,7 @@ export default class ContributorCheckout extends Component {
 				</div>
 				<div className="row justify-content-center">
 					<div className="col-6">
-						<h2 className="text-center my-4">Validation et singature electronique du contrat</h2>
+						<h2 className="text-center my-4">Validation et signature électronique du contrat</h2>
 						<p>
 
 						</p>

@@ -27,7 +27,12 @@ export default class Jobs extends Component {
 							apiculteurs, bien au contraire !<br />
 							Que ce soit en Communication, Community Management, Business Development,
 							Systèmes embarqués / communicants, développement web / mobile, nous sommmes
-							intéressés.<br /><br />
+							intéressés.
+						</p>
+						<p className="text-center">
+							<button className="btn btn-secondary">Postulez</button>
+						</p>
+						<p>
 							Aucune offre ne vous correspond ? Confidences d’Abeilles et ses partenaires sont toujours
 							à la recherche de personnes talentueuses, n’hésitez pas à postuler !
 						</p>

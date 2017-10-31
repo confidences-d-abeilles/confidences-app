@@ -10,7 +10,8 @@ import NotificationSystem from 'react-notification-system'
 
 import {
 	Route,
-	Link
+	Link,
+	Redirect
 } from 'react-router-dom';
 
 import profile from '../../assets/img/profile.png';
@@ -44,6 +45,9 @@ export default class ContributorManage extends Component {
 		return (
 			<div className="container py-4">
 				<NotificationSystem ref="notif" />
+				{(!this.state.loading && this.state.user.contracts.length === 0)?<Redirect to="/contributor/wish" />:''}
+				{(!this.state.loading && !this.state.user.addresses.length)?<Redirect to="/contributor/address" />:''}
+				{(!this.state.loading && this.state.user.contracts.length > 0 && !this.state.user.contracts[0].signed)?<Redirect to="/contributor/checkout" />:''}
 				<div className="row">
 					<div className="col-3">
 						<img src={profile} alt="Logo entreprise" className="img-fluid" />
@@ -58,31 +62,21 @@ export default class ContributorManage extends Component {
 						</ul>
 					</div>
 					<div className="col-9">
-							{(!this.state.loading)?
-								(this.state.user.contracts.length === 0 || !this.state.user.contracts[0].signed)?
-								<div className="row">
-									<div className="alert alert-warning">Attention, vous n'avez pas encore signé de contract, vous ne pouvez donc démarcher d'entreprise pour l'instant.</div>
-									<Link to="/contributor/wish"><li className="list-group-item ">Choisir un contrat</li></Link>
-								</div>
-								:
-								<div className="row">
-									<div className="col-8">
-										Entreprises demarchees : {this.state.leads} / 10<br />
-									Conversion : {this.state.cleads} / {this.state.leads}<br />
-										Cagnotte : {this.state.balance} €<br />
-									</div>
-									<div className="col-4">
-										<p className="text-center">
-											<Link to="/contributor/approach" className="btn btn-secondary">Demarcher une entreprise</Link>
-										</p>
-										<p className="text-center">
-											<button className="btn btn-secondary">Retirer ma cagnotte</button>
-										</p>
-									</div>
-								</div>
-								:''
-							}
-
+						<div className="row">
+							<div className="col-8">
+								Entreprises demarchees : {this.state.leads} / 10<br />
+							Conversion : {this.state.cleads} / {this.state.leads}<br />
+								Cagnotte : {this.state.balance} €<br />
+							</div>
+							<div className="col-4">
+								<p className="text-center">
+									<Link to="/contributor/approach" className="btn btn-secondary">Demarcher une entreprise</Link>
+								</p>
+								<p className="text-center">
+									<button className="btn btn-secondary">Retirer ma cagnotte</button>
+								</p>
+							</div>
+						</div>
 						<Route exact path="/contributor/manage" component={ContributorManageDashboard} />
 						<Route exact path="/contributor/manage/conditions" component={ContributorManageConditions} />
 						<Route exact path="/contributor/manage/contract" component={ContributorManageContract} />
