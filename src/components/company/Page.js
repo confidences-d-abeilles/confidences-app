@@ -40,7 +40,7 @@ export default class CompanyPage extends Component {
 				<NotificationSystem ref="notif" />
 				<div className="row">
 					<div className="col cover">
-						<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.cover:null} className="img-fluid" alt="Cover picture" />
+						<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.cover:null} className="img-fluid" alt="Cover" />
 						<h1>{(this.state.user)?this.state.user.company_name:null}</h1>
 					</div>
 				</div>

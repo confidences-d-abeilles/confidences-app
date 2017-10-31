@@ -7,7 +7,6 @@ import CompanyManageBills from './manage/Bills'
 import CompanyManageCustomize from './manage/Customize'
 
 import {
-	BrowserRouter as Router,
 	Route,
 	Link,
 	Redirect

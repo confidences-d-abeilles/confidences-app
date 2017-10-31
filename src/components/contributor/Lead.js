@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { handleChange } from '../../services/FormService';
-import { request } from '../../services/NetService';
+import request from '../../services/Net';
 
 export default class ContributorLead extends Component {
 
@@ -11,17 +11,18 @@ export default class ContributorLead extends Component {
 		this.state = {
 			redirect : false,
 			company_name: '',
-			siret: ''
+			siren: ''
 		}
 	}
 
 	addLead(e) {
 		e.preventDefault();
-		request('/lead/create', 'POST', JSON.stringify(this.state), 'json', (status, message, content) => {
-			if (status) {
-				this.setState({
-					redirect: true
-				})
+		request({
+			url : '/lead',
+			method: 'post',
+			data : {
+				company_name : this.state.company_name,
+				siren : this.state.siren
 			}
 		});
 	}
@@ -50,7 +51,7 @@ export default class ContributorLead extends Component {
 								<input type="text" name="company_name" className="form-control" placeholder="Raison sociale de l'entreprise" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" name="siret" className="form-control" placeholder="Numero de SIRET" onChange={handleChange.bind(this)} />
+								<input type="text" name="siren" className="form-control" placeholder="Numero de SIREN" onChange={handleChange.bind(this)} />
 							</div>
 							<input type="submit" className="btn btn-primary" value="Continuer" onClick={this.addLead.bind(this)} />
 						</form>

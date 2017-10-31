@@ -1,16 +1,7 @@
 
 import React, { Component } from 'react';
-import { request } from '../../../services/NetService';
-import { Link } from 'react-router-dom';
 
 export default class ContributorManageConditions extends Component {
-
-	constructor(props) {
-		super(props);
-
-	}
-
-
 
 	render () {
 		return (

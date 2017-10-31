@@ -70,9 +70,9 @@ export default class Home extends Component {
 							<div id="parrains">
 							{this.state.users.map((user) => {
 								return (
-									<div>
+									<div key={user.id}>
 										<Link to={'/'+user.namespace}>
-										<img src={config.cdn_url+'/'+user.logo} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name} />
+										<img src={(user.logo)?config.cdn_url+'/'+user.logo:''} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name} />
 										</Link>
 									</div>
 								)

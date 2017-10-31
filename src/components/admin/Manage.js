@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import request from '../../services/Net';
+// import request from '../../services/Net';
 import AdminManageUsers from './manage/Users'
 import AdminManageNews from './manage/News'
 import AdminManageFaq from './manage/Faq'
 
 import {
-	BrowserRouter as Router,
+	// BrowserRouter as Router,
 	Route,
-	Link,
-	Redirect
+	Link
 } from 'react-router-dom';
 import NotificationSystem from 'react-notification-system';
 

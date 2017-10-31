@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { request } from '../../services/NetService';
+import request from '../../services/Net';
 import { handleChange } from '../../services/FormService';
 import { isLoggedIn } from '../../services/AuthService';
+import NotificationSystem from 'react-notification-system'
 
 export default class ContributorAddress extends Component {
 	constructor(props) {
@@ -20,19 +21,29 @@ export default class ContributorAddress extends Component {
 	addAddress(e) {
 		e.preventDefault();
 		if (!this.state.address1 || !this.state.city || !this.state.zipcode) {
-			this.setState({
-				message: 'Veuillez renseigner les champs obligatoires.'
-			});
+			this.refs.notif.addNotification({
+				message : 'Merci de remplir tous les champs obligatoires',
+				level : 'warning'
+			})
 		} else {
-			request('/user/baddress/create', 'POST', JSON.stringify(this.state), 'json', (status, message,content) => {
-				if (status)
-				{
-					this.setState({
-						redirect: true
-					});
+			request({
+				url: '/address',
+				method : 'post',
+				data : {
+					address1 : this.state.address1,
+					address2 : this.state.address2,
+					city : this.state.city,
+					zipcode : this.state.zipcode,
+					type : 1
 				}
-			});
+			}, this.refs.notif).then((res) => {
+				this.setState({ redirect : true });
+			})
 		}
+	}
+
+	componentDidMount() {
+		console.log(this.refs)
 	}
 
     render () {
@@ -43,6 +54,7 @@ export default class ContributorAddress extends Component {
 				<Redirect to="/contributor/wish" />
 				:null}
 				<div className="row justify-content-center">
+					<NotificationSystem ref="notif" />
 					<div className="col">
 						<div className="progress">
 							<div className="progress-bar" role="progressbar" style={{width: '50%'}}></div>

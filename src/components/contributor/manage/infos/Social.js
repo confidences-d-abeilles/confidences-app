@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { request } from '../../../../services/NetService';
+import request from '../../../../services/Net';
+import NotificationSystem from 'react-notification-system'
 
 export default class ContributorManageInfosSocial extends Component {
 
@@ -10,30 +11,26 @@ export default class ContributorManageInfosSocial extends Component {
 		}
 	}
 
-	componentWillMount() {
-		request('/user', 'GET', null, 'json', (status, message, content) => {
-			if (status) {
+	componentDidMount() {
+		request({
+			url : '/user/me',
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			if (res) {
 				this.setState({
 					loading: false,
-					firstname: content.firstname,
-					name: content.name,
-					email: content.email,
-					baddress1: content.baddress[0].line1,
-					baddress2: content.baddress[0].line2,
-					bzipcode: content.baddress[0].zipcode,
-					bcity: content.baddress[0].city,
-					daddress1: content.baddress[0].line1,
-					daddress2: content.baddress[0].line2,
-					dzipcode: content.baddress[0].zipcode,
-					dcity: content.baddress[0].city
+					firstname: res.firstname,
+					name: res.name,
+					email: res.email,
 				})
 			}
-		})
+		});
 	}
 
 	render () {
 		return (
 			<div>
+				<NotificationSystem ref="notif" />
 				{(this.state.loading)?'Chargement en cours...':
 					<div>
 						<div className="row">

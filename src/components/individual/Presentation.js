@@ -26,8 +26,8 @@ export default class IndividualPresentation extends Component {
 						<h2 className="text-center my-4">Parrainer une ruche c'est</h2>
 					</div>
 				</div>
-				<div className="row align-items-center">
-					<div className="col">
+				<div className="row justify-content-center">
+					<div className="col-4">
 						<h3>Pour vous</h3>
 						<ul>
 							<li>Adopter une démarche participative et
@@ -49,7 +49,7 @@ export default class IndividualPresentation extends Component {
 							ravira votre famille et vos amis.</li>
 						</ul>
 					</div>
-					<div className="col">
+					<div className="col-4">
 						<h3>Pour nous les apiculteurs</h3>
 						<ul>
 							<li>C’est l’assurance de maintenir notre
@@ -68,11 +68,11 @@ export default class IndividualPresentation extends Component {
 						</ul>
 					</div>
 				</div>
-				<div className="row align-items-center">
-					<div className="col text-center">
-						<Link to="/signup/individual" className="btn btn-primary">Demarrer</Link>	
+				<div className="row align-items-center justify-content-center">
+					<div className="col-4 text-center">
+						<Link to="/signup/individual" className="btn btn-primary">Demarrer</Link>
 					</div>
-					<div className="col text-center">
+					<div className="col-4 text-center">
 						<a href="https://confidencesdabeilles.fr/parrainer-ruche/particulier" className="btn btn-primary" target="_blank" rel="noopener noreferrer">En savoir plus</a>
 					</div>
 				</div>

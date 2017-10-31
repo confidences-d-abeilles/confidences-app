@@ -10,8 +10,8 @@ export default class Jobs extends Component {
 						<img src={require('../assets/img/jobs.jpg')} alt="Gaetan et Nicolas" className="img-fluid" />
 					</div>
 				</div>
-				<div className="row mt-4 align-items-center">
-					<div className="col">
+				<div className="row mt-4 justify-content-center align-items-center">
+					<div className="col-9">
 						<p>
 							Confidences d’Abeilles c’est <strong>5.504.152 employés</strong> précisément et <strong>98% de femme</strong>. Oui,
 							vous avez bien lu ! Et au niveau du management cela se passe comment ? En fait, il faut

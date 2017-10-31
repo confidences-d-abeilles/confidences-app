@@ -19,8 +19,8 @@ export default class ContributorPresentation extends Component {
 						<img src={imgPlaceholder} alt="Empty img space" />
 					</div>
 				</div>
-				<div className="row align-items-center">
-					<div className="col">
+				<div className="row justify-content-center align-items-center">
+					<div className="col-9">
 						<h2 className="text-center my-4">Un apporteur d'affaires, c'est quoi ?</h2>
 						<p>
 							Que vous soyez etudiant en ecole de commerce, d'ingenieurs, a la FAC, en IUT, ou meme pas etudiant, peu importe en fait, vous pouvez le devenir.
@@ -30,8 +30,8 @@ export default class ContributorPresentation extends Component {
 						</p>
 					</div>
 				</div>
-				<div className="row align-items-center">
-					<div className="col">
+				<div className="row justify-content-center my-4">
+					<div className="col-4">
 						<h3>Qu'est ce que j'y gagne ?</h3>
 						<ul>
 							<li>Un contrat souple et revocable a tout moment</li>
@@ -41,7 +41,7 @@ export default class ContributorPresentation extends Component {
 							<li>Je beneficie d'une remuneration forfaitaire interessante</li>
 						</ul>
 					</div>
-					<div className="col">
+					<div className="col-4">
 						<h3>Que gagnons nous ?</h3>
 						<ul>
 							<li>Une optimisation de notre prospection</li>
@@ -51,10 +51,10 @@ export default class ContributorPresentation extends Component {
 						</ul>
 					</div>
 				</div>
-				<div className="row align-items-center">
-					<div className="col text-center">
+				<div className="row align-items-center justify-content-center">
+					<div className="col-4 text-center">
 						<a href="https://confidencesdabeilles.fr/parrainer-ruche" className="btn btn-primary" target="_blank" rel="noopener noreferrer">En savoir plus sur le contrat</a>
-					</div><div className="col text-center">
+					</div><div className="col-4 text-center">
 						<a href="https://confidencesdabeilles.fr/parrainer-ruche" className="btn btn-primary" target="_blank" rel="noopener noreferrer">En savoir plus sur l'offre de parrainage</a>
 					</div>
 				</div>

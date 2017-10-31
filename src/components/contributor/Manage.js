@@ -29,7 +29,7 @@ export default class ContributorManage extends Component {
 
 	componentDidMount() {
 		request({
-			url : '/user',
+			url : '/user/me',
 			method : 'get'
 		}, this.refs.notif)
 		.then((res) => {
@@ -59,7 +59,7 @@ export default class ContributorManage extends Component {
 					</div>
 					<div className="col-9">
 							{(!this.state.loading)?
-								(this.state.user.contracts.length == 0 || !this.state.user.contracts[0].signed)?
+								(this.state.user.contracts.length === 0 || !this.state.user.contracts[0].signed)?
 								<div className="row">
 									<div className="alert alert-warning">Attention, vous n'avez pas encore signé de contract, vous ne pouvez donc démarcher d'entreprise pour l'instant.</div>
 									<Link to="/contributor/wish"><li className="list-group-item ">Choisir un contrat</li></Link>

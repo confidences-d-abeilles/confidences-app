@@ -20,9 +20,6 @@ export default class ContributorManageInfos extends Component {
 					<li className="nav-item">
 						<Link className="nav-link" to="/contributor/manage/infos/bank">Mes informations bancaires</Link>
 					</li>
-					<li className="nav-item">
-						<a className="nav-link" href="#">Modifier mon mot de passe</a>
-					</li>
 				</ul>
 				<div>
 					<Route exact path="/contributor/manage/infos" component={ContributorManageInfosSocial} />

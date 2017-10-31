@@ -27,8 +27,8 @@ export default class CompanyPresentation extends Component {
 						<h2 className="text-center my-4">Le parrainage de ruches c’est :</h2>
 					</div>
 				</div>
-				<div className="row align-items-start">
-					<div className="col">
+				<div className="row justify-content-center align-items-start">
+					<div className="col-4">
 						<h3>Pour l'entreprise</h3>
 						<ul>
 							<li>Adopter une démarche participative et
@@ -57,7 +57,7 @@ export default class CompanyPresentation extends Component {
 							vos clients</li>
 						</ul>
 					</div>
-					<div className="col">
+					<div className="col-4">
 						<h3>Pour l'apiculteur</h3>
 						<ul>
 							<li>C’est l’assurance de maintenir notre

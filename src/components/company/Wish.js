@@ -15,7 +15,7 @@ export default class CompanyWish extends Component {
 	}
 
 	createBundle() {
-		if (this.state.hives != 0)
+		if (this.state.hives !== 0)
 		{
 			request({
 				url : '/bundle',

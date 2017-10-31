@@ -7,11 +7,11 @@ export default class MyAccount extends Component {
 	render () {
 		return (
 			<div>
-				{(isLoggedIn())?<Redirect to="/" />:null}
-				{(getUserType() == 1)?<Redirect to="/individual/manage" />:''}
-				{(getUserType() == 2)?<Redirect to="/company/manage" />:''}
-				{(getUserType() == 3)?<Redirect to="/contributor/manage" />:''}
-				{(getUserType() == 4)?<Redirect to="/admin/manage" />:''}
+				{(isLoggedIn(false))?<Redirect to="/" />:null}
+				{(getUserType() === '1')?<Redirect to="/individual/manage" />:''}
+				{(getUserType() === '2')?<Redirect to="/company/manage" />:''}
+				{(getUserType() === '3')?<Redirect to="/contributor/manage" />:''}
+				{(getUserType() === '4')?<Redirect to="/admin/manage" />:''}
 			</div>
 		)
 	}

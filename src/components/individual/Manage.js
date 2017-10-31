@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 import { request } from '../../services/NetService';
 import { isLoggedIn } from '../../services/AuthService';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 export default class IndividualManage extends Component {
 

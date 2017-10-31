@@ -19,7 +19,7 @@ const request = function(options, notificationSystem) {
 
   const onError = function(error) {
     if (error.response) {
-      if (error.response.status == 400) {
+      if (error.response.status === '400') {
 		  notificationSystem.addNotification({
     		message: error.response.data,
     		level: 'warning'

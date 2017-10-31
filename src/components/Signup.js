@@ -71,15 +71,15 @@ export default class Signup extends Component {
 					}
 				}, this.refs.notificationSystem).then((res) => {
 					login(res.id, res.token, res.user_type);
-					if (res.user_type == 2) {
+					if (res.user_type === '2') {
 						this.setState({
 							redirect : 'company/identity'
 						})
-					} else if (res.user_type == 1) {
+					} else if (res.user_type === '1') {
 						this.setState({
 							redirect : 'individual/address'
 						})
-					} else if (res.user_type == 3) {
+					} else if (res.user_type === '3') {
 						this.setState({
 							redirect : 'contributor/address'
 						})

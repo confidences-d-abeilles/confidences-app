@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { request } from '../../services/NetService';
-import { handleChange } from '../../services/FormService';
 
 export default class IndividualCheckout extends Component {
 

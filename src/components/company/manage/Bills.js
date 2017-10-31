@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import request from '../../../services/Net'
 
 export default class CompanyManageBills extends Component {
 
