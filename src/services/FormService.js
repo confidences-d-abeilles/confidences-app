@@ -8,3 +8,13 @@ export function handleChange(event) {
         [name]: value
     });
 }
+
+export function handleTick(event) {
+	const target = event.target;
+    const name = target.name;
+    const checked = target.checked;
+
+    this.setState({
+        [name]: checked
+    });
+}
