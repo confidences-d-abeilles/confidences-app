@@ -77,11 +77,11 @@ export default class CompanyPresentation extends Component {
 						</ul>
 					</div>
 				</div>
-				<div className="row align-items-center">
-					<div className="col text-center">
+				<div className="row justify-content-center align-items-center">
+					<div className="col-4 text-center">
 						<Link to="/signup/company" className="btn btn-primary">Demarrer</Link>
 					</div>
-					<div className="col text-center">
+					<div className="col-4 text-center">
 						<a href="https://confidencesdabeilles.fr/parrainer-ruche/entreprise" className="btn btn-primary" target="_blank" rel="noopener noreferrer">En savoir plus</a>
 					</div>
 				</div>
