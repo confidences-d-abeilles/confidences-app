@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { handleChange } from '../../services/FormService';
 import request from '../../services/Net';
+import NotificationSystem from 'react-notification-system';
 
 export default class ContributorLead extends Component {
 
@@ -24,12 +25,17 @@ export default class ContributorLead extends Component {
 				company_name : this.state.company_name,
 				siren : this.state.siren
 			}
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				redirect : true
+			})
 		});
 	}
 
 	render () {
 		return (
 			<div className="container py-4">
+				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?
 				<Redirect to="/account" />
 				:null}

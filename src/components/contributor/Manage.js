@@ -57,8 +57,8 @@ export default class ContributorManage extends Component {
 							<Link to="/contributor/manage/infos"><li className="list-group-item ">Mes informations</li></Link>
 							<Link to="/contributor/manage/approaches"><li className="list-group-item">Mes demarches</li></Link>
 							<Link to="/contributor/manage/contract"><li className="list-group-item">Mon contrat</li></Link>
-							<Link to="/contributor/manage/conditions"><li className="list-group-item">Conditions spécifiques</li></Link>
-							<Link to="/contributor/manage/help"><li className="list-group-item">Aide</li></Link>
+							<Link to="/contributor/manage/conditions"><li className="list-group-item disabled">Conditions spécifiques</li></Link>
+							<Link to="/contributor/manage/help"><li className="list-group-item disabled">Aide</li></Link>
 						</ul>
 					</div>
 					<div className="col-9">
@@ -73,7 +73,7 @@ export default class ContributorManage extends Component {
 									<Link to="/contributor/approach" className="btn btn-secondary">Demarcher une entreprise</Link>
 								</p>
 								<p className="text-center">
-									<button className="btn btn-secondary">Retirer ma cagnotte</button>
+									<button className="btn btn-secondary" disabled>Retirer ma cagnotte</button>
 								</p>
 							</div>
 						</div>
