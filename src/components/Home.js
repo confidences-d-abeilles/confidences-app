@@ -66,6 +66,7 @@ export default class Home extends Component {
 				<div className="row justify-content-center align-items-center my-4">
 					<div className="col">
 						<h2 className="text-center my-4">Ils parrainent déjà des ruches</h2>
+						<p className="alert alert-info">[Known Bug] la liste suivante n'est pas encore exhaustive</p>
 						{(this.state.users)?
 							<div id="parrains">
 							{this.state.users.map((user) => {
@@ -93,6 +94,7 @@ export default class Home extends Component {
 				<div className="row align-items-center">
 					<div className="col">
 						<h2 className="text-center my-4">La presse parle de nous</h2>
+						<p className="alert alert-info">[Known Bug] Données manquantes</p>
 					</div>
 				</div>
 			</div>

@@ -15,7 +15,7 @@ export default class Contact extends Component {
 						<h2 className="text-center my-4">La réponse à votre question se trouve peut-être dans notre FAQ</h2>
 						<div className="input-group">
 							<span className="input-group-addon">Rechercher : </span>
-							<input type="text" className="form-control"/>
+							<input type="text" className="form-control" disabled />
 						</div>
 					</div>
 				</div>
@@ -26,6 +26,7 @@ export default class Contact extends Component {
 				</div>
 				<div className="row justify-content-center">
 					<div className="col-lg-6">
+						<p className="alert alert-info">[Known Bug] "ma demande concerne" vide, impossible d'envoyer</p>
 						<form>
 							<div className="form-group">
 								<select className="form-control" value={this.state.title}>
@@ -56,7 +57,7 @@ export default class Contact extends Component {
 								</textarea>
 							</div>
 							<div className="form-group text-center">
-								<input type="submit" className="btn btn-secondary" value="Envoyer" />
+								<input type="submit" className="btn btn-secondary" value="Envoyer" disabled />
 							</div>
 						</form>
 					</div>
