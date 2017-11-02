@@ -1,40 +1,37 @@
 
 import React, { Component } from 'react';
-import { Document, Page } from 'react-pdf';
-import example from '../../../assets/fake.pdf';
+import request from '../../../services/Net'
+import NotificationSystem from 'react-notification-system'
+
+
+const config = require('../../../config.js')
 
 export default class ContributorManageContract extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			pageNumber: 1,
-			numPages: null
+			user : null
 		}
-
 	}
 
-	onDocumentLoad({ numPages }) {
-		this.setState({
-			numPages
-		});
-	}
-
-	nextPage() {
-
-	}
-
-	prevPage() {
-
+	componentDidMount() {
+		request({
+			url: '/user/me',
+			method : 'get'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				user : res
+			})
+		})
 	}
 
 	render () {
 		return (
 			<div>
-				<Document
-					file={example} onLoadSuccess={this.onDocumentLoad}>
-					<Page pageNumber={this.state.pageNumber} renderTextLayer={false} />
-				</Document>
+				<NotificationSystem ref="notif" />
+				<object data={(this.state.user)?config.cdn_url+"/"+this.state.user.contracts[0].filename:''} type="application/pdf" width="600" height="400">
+				</object>
 			</div>
 		);
 	}
