@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import request from '../../../../services/Net';
 import NotificationSystem from 'react-notification-system'
+import { handleChange } from '../../../../services/FormService'
 
 export default class ContributorManageInfosSocial extends Component {
 
@@ -22,9 +23,47 @@ export default class ContributorManageInfosSocial extends Component {
 					firstname: res.firstname,
 					name: res.name,
 					email: res.email,
+					school: res.school,
+					user: res
 				})
+				res.addresses.map((address) => {
+					if (address.type === 1) {
+						this.setState({
+							bid: address.id,
+							bline1: address.line1,
+							bline2: address.line2,
+							bzipcode: address.zipcode,
+							bcity: address.city
+						})
+					}
+
+					if (address.type === 2) {
+						this.setState({
+							did: address.id,
+							dline1: address.line1,
+							dline2: address.line2,
+							dzipcode: address.zipcode,
+							dcity: address.city
+						})
+					}
+				});
 			}
 		});
+	}
+
+	submitBaddress(e) {
+		e.preventDefault();
+		request({
+			url: '/address',
+			method: 'put',
+			data: {
+				id: this.state.bid,
+				line1: this.state.bline1,
+				line2: this.state.bline2,
+				zipcode: this.state.bzipcode,
+				city: this.state.bcity
+			}
+		}, this.refs.notif);
 	}
 
 	render () {
@@ -33,29 +72,74 @@ export default class ContributorManageInfosSocial extends Component {
 				<NotificationSystem ref="notif" />
 				{(this.state.loading)?'Chargement en cours...':
 					<div>
-						<div className="row">
-							<div className="col-6">
-								{this.state.firstname}<br />
-								{this.state.email}
+						<p className="alert alert-warning my-2">[Work in Progress]</p>
+						<form className="row py-4">
+							<div className="col-6 text-center">
+								<div className="form-group">
+									<input type="text" value={this.state.firstname} name="firstname" className="form-control" placeholder="Prénom" onChange={handleChange.bind(this)} />
+								</div>
+								<div className="form-group">
+									<input type="email" value={this.state.email} name="email" className="form-control" placeholder="Email" onChange={handleChange.bind(this)} />
+								</div>
 							</div>
-							<div className="col-6">
-								{this.state.name}
+							<div className="col-6 text-center">
+								<div className="form-group">
+									<input type="text" value={this.state.name} name="name" className="form-control" placeholder="Nom" onChange={handleChange.bind(this)} />
+								</div>
+								<div className="form-group">
+									<input type="text" value={this.state.school} name="school" className="form-control" placeholder="Mon école" onChange={handleChange.bind(this)} />
+								</div>
 							</div>
-						</div>
+							<div className="col text-center">
+								<div className="form-group">
+									<input type="submit" value="Enregistrer" className="btn btn-primary"/>
+								</div>
+							</div>
+						</form>
 						<div className="row">
 							<div className="col-6">
 								<span className="lead">Adresse de facturation :<br /></span>
-								{this.state.name} {this.state.firstname}<br />
-								{this.state.baddress1}<br />
-								{(this.state.baddress2)?this.state.baddress2+<br />:''}
-								{this.state.bzipcode} {this.state.bcity}<br />
+								<form key={this.state.user.id}>
+									<div className="form-group">
+										<input type="texte" name="bline1" onChange={handleChange.bind(this)} value={this.state.bline1} className="form-control" />
+									</div>
+									<div className="form-group">
+										<input type="texte" name="bline2" onChange={handleChange.bind(this)} value={this.state.bline2} className="form-control" />
+									</div>
+									<div className="form-group row">
+										<div className="col-4">
+											<input type="texte" name="bzipcode" onChange={handleChange.bind(this)} value={this.state.bzipcode} className="form-control" />
+										</div>
+										<div className="col-8">
+											<input type="texte" name="bcity" onChange={handleChange.bind(this)} value={this.state.bcity} className="form-control" />
+										</div>
+									</div>
+									<div className="form-group">
+										<input type="submit" value="Enregistrer" className="btn btn-primary" onClick={this.submitBaddress.bind(this)} />
+									</div>
+								</form>
 							</div>
 							<div className="col-6">
 								<span className="lead">Adresse de livraison :<br /></span>
-								{this.state.name} {this.state.firstname}<br />
-								{this.state.baddress1}<br />
-								{(this.state.baddress2)?this.state.baddress2+<br />:''}
-								{this.state.bzipcode} {this.state.bcity}<br />
+								<form key={this.state.user.id}>
+									<div className="form-group">
+										<input type="texte" name="bline1" value={this.state.dline1} className="form-control" />
+									</div>
+									<div className="form-group">
+										<input type="texte" name="bline2" value={this.state.dline2} className="form-control" />
+									</div>
+									<div className="form-group row">
+										<div className="col-4">
+											<input type="texte" name="dzipcode" value={this.state.dzipcode} className="form-control" />
+										</div>
+										<div className="col-8">
+											<input type="texte" name="dcity" value={this.state.dcity} className="form-control" />
+										</div>
+									</div>
+									<div className="form-group">
+										<input type="submit" value="Enregistrer" className="btn btn-primary" />
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
