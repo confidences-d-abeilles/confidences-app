@@ -34,7 +34,7 @@ export default class ContributorManageApproaches extends Component {
 							</tr>
 							{this.state.leads.map((lead) => {
 								var date = new Date(lead.createdAt);
-								return (<tr><td>{lead.company_name}</td><td>{date.getDate()}/{date.getMonth()}/{date.getFullYear()}</td></tr>)
+								return (<tr><td>{lead.company_name}</td><td>{date.getDate()}/{date.getMonth() + 1}/{date.getFullYear()}</td></tr>)
 							})}
 						</tbody>
 					</table>
