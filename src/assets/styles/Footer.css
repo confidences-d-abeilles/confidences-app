@@ -58,7 +58,8 @@ html, body, #root, #wrapper
 }
 
 #parrains div img {
-	max-height: 10em;
+	max-height: 8em;
+	max-width: 8em;
 }
 
 #wrapper
