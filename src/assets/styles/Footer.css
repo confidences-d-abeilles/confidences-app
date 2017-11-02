@@ -34,19 +34,27 @@ html, body, #root, #wrapper
 }
 
 #parrains {
-	width: auto;
-	height: 10em;
+	width: 100%;
+	height: 12em;
+	overflow-x: auto;
 	margin-bottom: 1em;
 }
 
 #parrains div {
 	float: left;
-	max-height: 10em;
-	line-height: 10em;
+	height: 10em;
+	line-height: 8em;
+	width: 10em;
+	margin: 1em;
+	padding: 1em;
+	background-color: black;
 }
 
-#parrains hr {
-	clear: both;
+#parrains div a {
+	color: #E49C00;
+	line-height: 1em;
+	font-weight: bold;
+	font-size: 1em;
 }
 
 #parrains div img {

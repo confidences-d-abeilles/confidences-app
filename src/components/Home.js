@@ -77,9 +77,12 @@ export default class Home extends Component {
 									</div>
 								)
 							})}
-								<hr />
 							</div>
 							:null}
+					</div>
+				</div>
+				<div className="row justify-content-center">
+					<div className="col-9">
 						<p>
 							Vous voulez apporter votre pierre à l’édifice et participer à cette belle aventure ? Nous vous
 							proposons de parrainer une ruche. En échange de quoi, les butineuses vous feront découvrir
