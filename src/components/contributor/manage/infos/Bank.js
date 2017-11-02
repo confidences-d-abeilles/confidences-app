@@ -6,7 +6,7 @@ export default class ContributorManageInfosBank extends Component {
 	render () {
 		return (
 			<div>
-				Nom de compte :
+				<p className="alert alert-danger my-2">[Missing feature]</p>
 			</div>
 		);
 	}
