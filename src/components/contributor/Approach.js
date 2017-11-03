@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import FontAwesome from 'react-fontawesome'
 
 export default class ContributorApproach extends Component {
 
@@ -21,7 +22,7 @@ export default class ContributorApproach extends Component {
 								<Link to="/contributor/lead" className="btn btn-secondary">Ajouter une entreprise</Link>
 							</div>
 							<div className="col my-2 text-center">
-								<Link to="/contributor/lead" className="btn btn-secondary disabled">Consulter la liste des parrains</Link>
+								<Link to="/contributor/parrains" className="btn btn-secondary">Consulter la liste des parrains</Link>
 							</div>
 						</div>
 					</div>
@@ -78,15 +79,16 @@ export default class ContributorApproach extends Component {
 								<Link to="/contributor/lead" className="btn btn-secondary">Ajouter une entreprise</Link>
 							</div>
 							<div className="col my-2 text-center">
-								<Link to="/contributor/lead" className="btn btn-secondary disabled">Consulter la liste des parrains</Link>
+								<Link to="/contributor/parrains" className="btn btn-secondary">Consulter la liste des parrains</Link>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div className="row justify-content-center">
-					<div className="col-8">
-						<h2 className="text-center my-4">Conseils pour améliorer votre taux de conversion</h2>
-						<ul>
+					<div className="col-9">
+						<a href="/contributor/approach"><p className="text-center lead my-4" data-toggle="collapse" data-target="#advices" >Conseils pour améliorer votre taux de conversion <FontAwesome name='chevron-down' size="1x" /></p></a>
+						<div className="collapse" id="advices">
+							<ul>
 							<li>Conseil n°1 : Ne pas envoyer d’email sur des boites « fourre-tout » type contact@ ou
 info@ ou encore hello@. Toujours trouver l’email du gérant / d’un responsable / d’un
 directeur. Si le mail n’est pas trouvable sur le site internet de la société, sur <a target="_blank" rel="noopener noreferrer" href="http://hunter.io">hunter.io</a>,
@@ -124,13 +126,14 @@ d’attention. Il faut toujours essayer de tisser un lien avec lui (proximité g
 connaissance en commun, loisir commun, etc.).</li>
 <li className="my-2">Conseil n°8 : Téléphoner debout si possible (aisance et assurance dans la voix qui rassure)</li>
 						</ul>
-						<div className="row">
-							<div className="col my-2 text-center">
-								<Link to="/contributor/lead" className="btn btn-secondary disabled">Supports de communication</Link>
-							</div>
-							<div className="col my-2 text-center">
-								<Link to="/faq" className="btn btn-secondary">FAQ</Link>
-							</div>
+						</div>
+						<a href="/contributor/approach" className="link-nostyle"><p className="text-center lead my-4" data-toggle="collapse" data-target="#supports" >Supports de communication <FontAwesome name='chevron-down' size="1x" /></p></a>
+						<div className="collapse" id="supports">
+							Missing content
+						</div>
+						<a href="/contributor/approach"><p className="text-center lead my-4" data-toggle="collapse" data-target="#faq" >FAQ <FontAwesome name='chevron-down' size="1x" /></p></a>
+						<div className="collapse" id="faq">
+							Missing content
 						</div>
 					</div>
 				</div>

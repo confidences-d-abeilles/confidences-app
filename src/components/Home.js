@@ -66,17 +66,20 @@ export default class Home extends Component {
 				<div className="row justify-content-center align-items-center my-4">
 					<div className="col">
 						<h2 className="text-center my-4">Ils parrainent déjà des ruches</h2>
-						<p className="alert alert-info">[Known Bug] la liste suivante n'est pas encore exhaustive</p>
 						{(this.state.users)?
 							<div id="parrains">
 							{this.state.users.map((user) => {
-								return (
-									<div key={user.id}>
-										<Link to={'/'+user.namespace}>
-										<img src={(user.logo)?config.cdn_url+'/'+user.logo:''} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name} />
-										</Link>
-									</div>
-								)
+								if (user.user_type === 1 || user.user_type  === 2) {
+									return (
+										<div key={user.id}>
+											<Link to={'/'+user.namespace}>
+											<img src={(user.logo)?config.cdn_url+'/'+user.logo:''} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name} />
+											</Link>
+										</div>
+									)
+								} else {
+									return null;
+								}
 							})}
 							</div>
 							:null}
