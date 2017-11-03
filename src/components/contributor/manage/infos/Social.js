@@ -46,9 +46,25 @@ export default class ContributorManageInfosSocial extends Component {
 							dcity: address.city
 						})
 					}
+
+					return (0);
 				});
 			}
 		});
+	}
+
+	submitInfos(e) {
+		e.preventDefault();
+		request({
+			url: '/user',
+			method: 'put',
+			data: {
+				firstname: this.state.firstname,
+				name: this.state.name,
+				email: this.state.email,
+				school: this.state.school
+			}
+		}, this.refs.notif)
 	}
 
 	submitBaddress(e) {
@@ -92,7 +108,7 @@ export default class ContributorManageInfosSocial extends Component {
 							</div>
 							<div className="col text-center">
 								<div className="form-group">
-									<input type="submit" value="Enregistrer" className="btn btn-primary"/>
+									<input type="submit" value="Enregistrer" className="btn btn-primary" onClick={this.submitInfos.bind(this)}/>
 								</div>
 							</div>
 						</form>
