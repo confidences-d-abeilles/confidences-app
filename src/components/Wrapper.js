@@ -51,6 +51,7 @@ import About from './About';
 import Contact from './Contact';
 import Jobs from './Jobs';
 import Faq from './Faq';
+import Tarifs from './Tarifs';
 
 
 export default class Wrapper extends Component {
@@ -102,6 +103,7 @@ export default class Wrapper extends Component {
 							<Route exact path="/jobs" component={Jobs} />
 							<Route exact path="/cgv" component={Cgv} />
 							<Route exact path="/mentions_legales" component={Mentions} />
+							<Route path="/tarifs" component={Tarifs} />
 						</Switch>
 					</div>
 				</div>

@@ -9,7 +9,10 @@ export default class IndividualPresentation extends Component {
 			<div className="container py-4">
 				<div className="row align-items-center">
 					<div className="col">
-						<h1>Vos abeilles n'ont jamais ete aussi proche de prendre leur envol !</h1>
+						<h1 className="text-left">Vos abeilles n’ont
+						jamais été aussi
+						proche de prendre leur
+						envol !</h1>
 						<p>
 							Pour parrainer vos premières abeilles c’est très
 							simple : complétez le formulaire d’inscription,
@@ -70,7 +73,7 @@ export default class IndividualPresentation extends Component {
 				</div>
 				<div className="row align-items-center justify-content-center">
 					<div className="col-4 text-center">
-						<Link to="/signup/individual" className="btn btn-primary">Demarrer</Link>
+						<Link to="/signup/individual" className="btn btn-primary">Parrainer une ruche</Link>
 					</div>
 					<div className="col-4 text-center">
 						<a href="https://confidencesdabeilles.fr/parrainer-ruche/particulier" className="btn btn-primary" target="_blank" rel="noopener noreferrer">En savoir plus</a>

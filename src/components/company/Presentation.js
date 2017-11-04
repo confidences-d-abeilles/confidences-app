@@ -9,7 +9,10 @@ export default class CompanyPresentation extends Component {
 			<div className="container py-4">
 				<div className="row align-items-center">
 					<div className="col text-center">
-						<h1 className="text-left">Vos abeilles n'ont jamais ete aussi proche de prendre leur envol !</h1>
+						<h1 className="text-left">Vos abeilles n’ont
+						jamais été aussi
+						proche de prendre leur
+						envol !</h1>
 						<p className="text-left">
 							Pour parrainer votre première ruche c’est très
 							simple : complétez notre formulaire en moins
@@ -79,7 +82,7 @@ export default class CompanyPresentation extends Component {
 				</div>
 				<div className="row justify-content-center align-items-center">
 					<div className="col-4 text-center">
-						<Link to="/signup/company" className="btn btn-primary">Demarrer</Link>
+						<Link to="/signup/company" className="btn btn-primary">Parrainer une ruche</Link>
 					</div>
 					<div className="col-4 text-center">
 						<a href="https://confidencesdabeilles.fr/parrainer-ruche/entreprise" className="btn btn-primary" target="_blank" rel="noopener noreferrer">En savoir plus</a>

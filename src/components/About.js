@@ -59,6 +59,7 @@ EMAPI, association d’apiculture des Mines d’Alès, dans la gestion de son ru
 							Ce qui est certain c’est qu’elle n’en serait pas là aujourd’hui ! Alors merci et continuez la
 							porter loin, très loin !
 						</p>
+						<p className="text-right my-4">Nicolas &amp; Gaëtan</p>
 					</div>
 				</div>
 			</div>
