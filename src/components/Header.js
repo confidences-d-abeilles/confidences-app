@@ -95,8 +95,8 @@ export default class Header extends Component {
 											</div>
 											<div className="modal-body text-center">
 												<a href="/signup/company" className="btn btn-warning">Une Entreprise</a><br /><br />
-												<a href="/signup/contributor" className="btn btn-warning">Un Partenaire</a><br /><br />
-												<a href="/signup/individual" className="btn btn-warning">Un Particulier</a>
+												<a href="/signup/individual" className="btn btn-warning">Un Particulier</a><br /><br />
+												<a href="/signup/contributor" className="btn btn-warning">Un Partenaire</a>
 											</div>
 										</div>
 									</div>

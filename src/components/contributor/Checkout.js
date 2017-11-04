@@ -57,11 +57,11 @@ export default class ContributorCheckout extends Component {
 					</div>
 				</div>
 				<div className="row justify-content-center">
-					<div className="col-6">
+					<div className="col-9">
 						<h2 className="text-center my-4">Validation et signature électronique du contrat</h2>
 						{this.state.contracts.map((contract) => {
 							return (
-								<object data={config.cdn_url+"/"+contract.filename} type="application/pdf" width="600" height="400">
+								<object data={config.cdn_url+"/"+contract.filename} type="application/pdf" style={{ width: '100%', height: '500px' }}>
 
 								</object>
 							)
