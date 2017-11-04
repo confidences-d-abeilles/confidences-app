@@ -23,6 +23,7 @@ export default class ContributorManage extends Component {
 		this.state = {
 			balance : 0,
 			leads: 0,
+			cleads: 0,
 			contracts: [],
 			loading : true
 		}
@@ -36,8 +37,16 @@ export default class ContributorManage extends Component {
 		.then((res) => {
 			this.setState({
 				user : res,
-				loading : false
+				loading : false,
+				leads : res.leads.length
 			})
+			res.leads.map((lead) => {
+				if (lead.converted) {
+					this.setState({
+						cleads: this.state.cleads + 1
+					})
+				}
+			});
 		})
 	}
 

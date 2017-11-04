@@ -32,6 +32,15 @@ export default class ContributorLead extends Component {
 		});
 	}
 
+	handleSiren(event) {
+		const target = event.target;
+	    const name = target.name;
+	    const value = target.value.replace(/ /g,'');
+	    this.setState({
+	        [name]: value
+	    });
+	}
+
 	render () {
 		return (
 			<div className="container py-4">
@@ -57,7 +66,7 @@ export default class ContributorLead extends Component {
 								<input type="text" name="company_name" className="form-control" placeholder="Raison sociale de l'entreprise" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" name="siren" className="form-control" placeholder="Numero de SIREN" onChange={handleChange.bind(this)} />
+								<input type="text" name="siren" className="form-control" placeholder="Numero de SIREN" onChange={this.handleSiren.bind(this)} />
 							</div>
 							<input type="submit" className="btn btn-primary" value="Continuer" onClick={this.addLead.bind(this)} />
 						</form>

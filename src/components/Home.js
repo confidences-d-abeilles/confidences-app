@@ -94,9 +94,16 @@ export default class Home extends Component {
 						</p>
 					</div>
 				</div>
+				<div className="row align-items-center justify-content-center">
+					<div className="col-4 text-center">
+						<button className="btn btn-primary" data-toggle="modal" data-target="#createAccount">Parrainer une ruche</button>
+					</div><div className="col-4 text-center">
+						<a href="https://confidencesdabeilles.fr/parrainer-ruche" className="btn btn-primary" target="_blank" rel="noopener noreferrer">Lister les ruches</a>
+					</div>
+				</div>
 				<div className="row align-items-center">
 					<div className="col">
-						<h2 className="text-center my-4">La presse parle de nous</h2>
+						<h2 className="text-center my-4">Les dernières actualités</h2>
 						<p className="alert alert-info">[Known Bug] Données manquantes</p>
 					</div>
 				</div>

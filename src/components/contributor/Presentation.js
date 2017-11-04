@@ -9,9 +9,14 @@ export default class ContributorPresentation extends Component {
 			<div className="container py-4">
 				<div className="row align-items-center">
 					<div className="col">
-						<h1>Confidences d'Abeilles c'est comme une ruche, plus on est et mieux on se porte !</h1>
+						<h1>Chez Confidences
+						d’Abeilles comme dans
+						la ruche, plus on est,
+						mieux l’on se porte !</h1>
 						<p>
-							Rejoignez-nous, aidez-nous a faire grossir le projet et prenez votre envol !
+							Rejoignez-nous, aidez-nous à installer des
+							ruches et toucher des commissions
+							intéressantes.
 						</p>
 						<Link to="/signup/contributor" className="btn btn-secondary">Devenir apporteur d'affaires</Link>
 					</div>
@@ -23,10 +28,11 @@ export default class ContributorPresentation extends Component {
 					<div className="col-9">
 						<h2 className="text-center my-4">Un apporteur d'affaires, c'est quoi ?</h2>
 						<p>
-							Que vous soyez etudiant en ecole de commerce, d'ingenieurs, a la FAC, en IUT, ou meme pas etudiant, peu importe en fait, vous pouvez le devenir.
-							Tout ce qui compte, c'est votre motivation, votre reseau et vos capacites de commercial. Votre job ?
-							Promouvoir le service de parrainage de ruches de Confidences d'Abeilles ! Votre objectif ?
-							Faire parrainer des ruches par des entreprises. Et la contrepartie ? Interessante, plutot interessante. :)
+							Que vous soyez étudiant en école de commerce, d&#39;ingénieurs, à la FAC, en IUT ou même non
+							étudiant, peu importe en fait ; la seule chose qui compte c&#39;est votre motivation, votre réseau
+							et vos compétences commerciales. Votre mission ? Promouvoir le service de parrainage de
+							ruches proposé par Confidences d&#39;Abeilles ! Votre objectif ? Faire parrainer des ruches par des
+							entreprises. Keep calm, on vous aide pour ça :)
 						</p>
 					</div>
 				</div>
@@ -34,28 +40,27 @@ export default class ContributorPresentation extends Component {
 					<div className="col-4">
 						<h3>Qu'est ce que j'y gagne ?</h3>
 						<ul>
-							<li>Un contrat souple et revocable a tout moment</li>
-							<li>Je met a profit mon reseau</li>
-							<li>Je travaille et ameliore mon approche commerciale</li>
-							<li>J'agrandi et consolide mon reseau</li>
-							<li>Je beneficie d'une remuneration forfaitaire interessante</li>
+							<li>Une commission intéressante par ruche parrainée</li>
+							<li>Un agrandissement et une consolidation de votre réseau</li>
+							<li>Une belle occasion de travailler votre approche commerciale</li>
+							<li>Un super contrat qui ne vous engage à rien au final</li>
 						</ul>
 					</div>
 					<div className="col-4">
-						<h3>Que gagnons nous ?</h3>
+						<h3>Que gagne Confidences d’Abeilles ?</h3>
 						<ul>
 							<li>Une optimisation de notre prospection</li>
-							<li>Une mise en relation et une conclusion de vente accelerees</li>
-							<li>Le developpement de notre activite</li>
-							<li>En deleguant cet aspect commercial, nous pouvons nous recentrer sur le coeur de notre activite : l'apiculture</li>
+							<li>Une mise en relation et une conclusion de parrainage accélérées</li>
+							<li>Le développement de notre activité et l’assurance de maintenir notre cheptel et de l’accroitre</li>
+							<li>Du temps pour se concentrer sur le cœur de son activité : l’apiculture</li>
 						</ul>
 					</div>
 				</div>
 				<div className="row align-items-center justify-content-center">
 					<div className="col-4 text-center">
-						<a href="https://confidencesdabeilles.fr/parrainer-ruche" className="btn btn-primary" target="_blank" rel="noopener noreferrer">En savoir plus sur le contrat</a>
+						<a href="https://confidencesdabeilles.fr/parrainer-ruche" className="btn btn-primary" target="_blank" rel="noopener noreferrer">Le contrat</a>
 					</div><div className="col-4 text-center">
-						<a href="https://confidencesdabeilles.fr/parrainer-ruche" className="btn btn-primary" target="_blank" rel="noopener noreferrer">En savoir plus sur l'offre de parrainage</a>
+						<a href="https://confidencesdabeilles.fr/parrainer-ruche" className="btn btn-primary" target="_blank" rel="noopener noreferrer">L'offre de parrainage</a>
 					</div>
 				</div>
 			</div>

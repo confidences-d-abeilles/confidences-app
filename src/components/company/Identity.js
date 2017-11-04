@@ -17,6 +17,15 @@ export default class CompanyIdentity extends Component {
 		}
 	}
 
+	handleSiren(event) {
+		const target = event.target;
+	    const name = target.name;
+	    const value = target.value.replace(/ /g,'');
+	    this.setState({
+	        [name]: value
+	    });
+	}
+
 	identify(e) {
 		e.preventDefault();
 		if (!this.state.company_name || !this.state.siren || !this.state.job) {
@@ -64,7 +73,7 @@ export default class CompanyIdentity extends Component {
 								<input type="text" className="form-control" name="company_name" placeholder="Raison sociale" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" className="form-control" name="siren" placeholder="Numero de SIREN" onChange={handleChange.bind(this)} />
+								<input type="text" className="form-control" name="siren" placeholder="Numero de SIREN" onChange={this.handleSiren.bind(this)} />
 							</div>
 							<div className="form-group">
 								<input type="text" className="form-control" name="job" placeholder="Fonction dans la societe" onChange={handleChange.bind(this)} />
