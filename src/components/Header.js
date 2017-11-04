@@ -23,7 +23,9 @@ export default class Header extends Component {
 					<div className="collapse navbar-collapse" style={{justifyContent: 'space-between'}} id="navbarNav">
 						{(isLoggedIn())?
 							<ul className="navbar-nav">
-
+								<li className="nav-item">
+									<Link className="nav-link" to="/tarifs">Tarifs</Link>
+								</li>
 							</ul>
 							:
 							<ul className="navbar-nav">
@@ -35,6 +37,9 @@ export default class Header extends Component {
 								</li>
 								<li className="nav-item">
 									<Link className="nav-link" to="/contributor/presentation">Partenaire</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link" to="/tarifs">Tarifs</Link>
 								</li>
 							</ul>
 						}
