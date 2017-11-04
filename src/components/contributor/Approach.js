@@ -20,7 +20,7 @@ export default class ContributorApproach extends Component {
 						</p>
 						<div className="row">
 							<div className="col my-2 text-center">
-								<Link to="/contributor/lead" className="btn btn-secondary">Ajouter une entreprise</Link>
+								<Link to="/contributor/prelead" className="btn btn-secondary">Ajouter une entreprise</Link>
 							</div>
 							<div className="col my-2 text-center">
 								<Link to="/contributor/parrains" className="btn btn-secondary">Consulter la liste des parrains</Link>
@@ -81,18 +81,19 @@ export default class ContributorApproach extends Component {
 						</ul>
 						<h4>Ajouter l'entreprise à votre liste des démarches effectuées</h4>
 						<p>
-							Que vous ayez choisi l'une ou l'autre des méthodes il vous faudra renseigner quelques
-							détails concernant l'entreprise contactée pour pouvoir toucher une commission. Il vous
-							suffit pour cela de cliquer sur "AJOUTER UNE ENTREPRISE" puis de compléter le petit
-							formulaire ; bien remplir le champ numéro SIREN et celle-ci sera ajoutée à votre liste. Il ne
-							vous reste plus qu'attendre une inscription et un parrainage de la part de l'entreprise que
-							vous avez contacté. Son statut sera mis à jour dans la liste des entreprises démarchées.
-							Bien entendu, une relance téléphonique augmente très fortement votre taux de
-							conversion. Retrouvez nos conseils ci-dessous.
+							Que vous ayez choisi l&#39;une ou l&#39;autre des méthodes il vous faudra renseigner quelques
+détails concernant l&#39;entreprise contactée pour pouvoir toucher une commission. Il vous
+suffit pour cela de cliquer sur &quot;AJOUTER UNE ENTREPRISE&quot; puis de compléter le petit
+formulaire ; bien remplir le champ numéro SIREN et celle-ci sera ajoutée à votre liste. Il ne
+vous reste alors plus qu&#39;à attendre une inscription et un parrainage de la part de
+l&#39;entreprise que vous avez contacté. Son statut sera mis à jour dans la liste des entreprises
+démarchées.<br /><br />
+Bien entendu, une relance téléphonique augmente très fortement votre taux de
+conversion. Retrouvez nos conseils ci-dessous.
 						</p>
 						<div className="row">
 							<div className="col my-2 text-center">
-								<Link to="/contributor/lead" className="btn btn-secondary">Ajouter une entreprise</Link>
+								<Link to="/contributor/prelead" className="btn btn-secondary">Ajouter une entreprise</Link>
 							</div>
 							<div className="col my-2 text-center">
 								<Link to="/contributor/parrains" className="btn btn-secondary">Consulter la liste des parrains</Link>
