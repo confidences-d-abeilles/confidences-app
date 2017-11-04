@@ -103,7 +103,7 @@ export default class Wrapper extends Component {
 							<Route exact path="/jobs" component={Jobs} />
 							<Route exact path="/cgv" component={Cgv} />
 							<Route exact path="/mentions_legales" component={Mentions} />
-							<Route path="/tarifs" component={Tarifs} />
+							<Route exact path="/tarifs" component={Tarifs} />
 						</Switch>
 					</div>
 				</div>

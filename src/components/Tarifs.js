@@ -12,14 +12,20 @@ export default class Tarifs extends Component {
 						<h2 className="text-center my-2">Tarifs</h2>
 						<ul className="nav nav-tabs" role="tablist">
 							<li className="nav-item">
-								<Link className="nav-link" to="/tarifs/individual">Particulier</Link>
+								<a className="nav-link active" data-toggle="tab" href="#individual">Particulier</a>
 							</li>
 							<li className="nav-item">
-								<Link className="nav-link" to="/tarifs/company">Entreprise</Link>
+								<a className="nav-link" data-toggle="tab" href="#company">Entreprise</a>
 							</li>
 						</ul>
-						<Route exact path="/tarifs/individual" component={IndividualTarifs} />
-						<Route exact path="/tarifs/company" component={CompanyTarifs} />
+						<div className="tab-content">
+							<div id="individual" className="tab-pane active" role="tabpanel">
+								<IndividualTarifs />
+							</div>
+							<div id="company" className="tab-pane" role="tabpanel">
+								<CompanyTarifs />
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -73,7 +79,7 @@ class IndividualTarifs extends Component {
 							<td>Votre nom sur une ruche</td><td>Votre nom sur une ruche</td><td>Votre nom sur une ruche</td><td>Votre nom sur une ruche</td><td>Une ruche à votre nom</td>
 						</tr>
 						<tr>
-							<td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à votre ruche avec photos & actualités</td>
+							<td>Une page dédiée à l4a ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à votre ruche avec photos & actualités</td>
 						</tr>
 						<tr>
 							<td>8 pots de 250g</td><td>16 pots de 250g</td><td>24 pots de 250g</td><td>32 pots de 250g</td><td>40 pots de 250g</td>
@@ -93,7 +99,7 @@ class CompanyTarifs extends Component {
 
 	render () {
 		return (
-			<table className="table">
+			<table className="table my-4">
 				<tbody>
 					<tr>
 						<th>1 à 4 ruches</th><th>5 ruches ou plus</th>
