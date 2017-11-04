@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link, Route } from 'react-router-dom'
 import { handleTick } from '../services/FormService'
 
 export default class Tarifs extends Component {

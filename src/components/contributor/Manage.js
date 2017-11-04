@@ -46,6 +46,7 @@ export default class ContributorManage extends Component {
 						cleads: this.state.cleads + 1
 					})
 				}
+				return null;
 			});
 		})
 	}

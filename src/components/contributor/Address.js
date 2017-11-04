@@ -14,7 +14,8 @@ export default class ContributorAddress extends Component {
 			address1: '',
 			address2: '',
 			city: '',
-			zipcode: ''
+			zipcode: '',
+			country: 'France'
 		}
 	}
 
@@ -34,6 +35,7 @@ export default class ContributorAddress extends Component {
 					address2 : this.state.address2,
 					city : this.state.city,
 					zipcode : this.state.zipcode,
+					country: this.state.country,
 					type : 1
 				}
 			}, this.refs.notif).then((res) => {
@@ -80,6 +82,14 @@ export default class ContributorAddress extends Component {
 							<div className="form-group">
 								<input type="number" name="zipcode" className="form-control" placeholder="Code postal" onChange={handleChange.bind(this)} />
 							</div>
+							<div className="form-group">
+								<input type="text" name="country" className="form-control" placeholder="Pays" value={this.state.country} onChange={handleChange.bind(this)} />
+							</div>
+							<p>
+								Remarque : votre adresse n’est utile que pour la
+								rédaction du contrat. Ne vous inquiétez pas, nous
+								n’allons pas vous contacter par voie postale.
+							</p>
 							<input type="submit" className="btn btn-primary" value="Continuer" onClick={this.addAddress.bind(this)} />
 						</form>
 					</div>

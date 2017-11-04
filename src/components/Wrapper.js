@@ -14,6 +14,8 @@ import ContributorCheckout from './contributor/Checkout';
 import ContributorManage from './contributor/Manage';
 import ContributorApproach from './contributor/Approach';
 import ContributorLead from './contributor/Lead';
+import ContributorLeadOk from './contributor/LeadOk';
+import ContributorPreLead from './contributor/PreLead';
 import ContributorParrains from './contributor/Parrains'
 
 //particulier
@@ -73,7 +75,9 @@ export default class Wrapper extends Component {
 							<Route exact path="/contributor/wish" component={ContributorWish} />
 							<Route path="/contributor/approach" component={ContributorApproach} />
 							<Route path="/contributor/parrains" component={ContributorParrains} />
+							<Route exact path="/contributor/prelead" component={ContributorPreLead} />
 							<Route exact path="/contributor/lead" component={ContributorLead} />
+							<Route exact path="/contributor/leadok" component={ContributorLeadOk} />
 							<Route exact path="/contributor/address" component={ContributorAddress} />
 							<Route path="/contributor/manage" component={ContributorManage} />
 
