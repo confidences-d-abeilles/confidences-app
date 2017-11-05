@@ -65,7 +65,7 @@ class IndividualTarifs extends Component {
 							<td>8 pots de 250g</td><td>16 pots de 250g</td><td>24 pots de 250g</td><td>32 pots de 250g</td><td>40 pots de 250g</td>
 						</tr>
 						<tr>
-							<td>8€/mois (70€/an)</td><td>14€/mois (135€/an)</td><td>19€/mois (195€/an)</td><td>23€/mois (250€/an)</td><td>27€/mois (300€/an)</td>
+							<td>8€/mois (96€/an)</td><td>14€/mois (168€/an)</td><td>19€/mois (228€/an)</td><td>23€/mois (276€/an)</td><td>27€/mois (324€/an)</td>
 						</tr>
 					</tbody>
 				</table>:
@@ -78,7 +78,7 @@ class IndividualTarifs extends Component {
 							<td>Votre nom sur une ruche</td><td>Votre nom sur une ruche</td><td>Votre nom sur une ruche</td><td>Votre nom sur une ruche</td><td>Une ruche à votre nom</td>
 						</tr>
 						<tr>
-							<td>Une page dédiée à l4a ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à votre ruche avec photos & actualités</td>
+							<td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à votre ruche avec photos & actualités</td>
 						</tr>
 						<tr>
 							<td>8 pots de 250g</td><td>16 pots de 250g</td><td>24 pots de 250g</td><td>32 pots de 250g</td><td>40 pots de 250g</td>

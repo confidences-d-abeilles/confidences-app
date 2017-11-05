@@ -10,6 +10,7 @@ import Logout from './Logout';
 import ContributorPresentation from './contributor/Presentation';
 import ContributorAddress from './contributor/Address';
 import ContributorWish from './contributor/Wish';
+import ContributorFinal from './contributor/Final';
 import ContributorCheckout from './contributor/Checkout';
 import ContributorManage from './contributor/Manage';
 import ContributorApproach from './contributor/Approach';
@@ -73,6 +74,7 @@ export default class Wrapper extends Component {
 							<Route exact path="/contributor/presentation" component={ContributorPresentation} />
 							<Route exact path="/contributor/checkout" component={ContributorCheckout} />
 							<Route exact path="/contributor/wish" component={ContributorWish} />
+							<Route exact path="/contributor/final" component={ContributorFinal} />
 							<Route path="/contributor/approach" component={ContributorApproach} />
 							<Route path="/contributor/parrains" component={ContributorParrains} />
 							<Route exact path="/contributor/prelead" component={ContributorPreLead} />
