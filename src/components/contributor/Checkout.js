@@ -48,7 +48,7 @@ export default class ContributorCheckout extends Component {
         return (
 			<div className="container py-4">
 				<NotificationSystem ref="notif" />
-				{(this.state.redirect)?<Redirect to="/contributor/manage" />:null}
+				{(this.state.redirect)?<Redirect to="/contributor/final" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">

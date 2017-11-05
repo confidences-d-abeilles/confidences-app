@@ -81,7 +81,7 @@ export default class CompanyManageMyPage extends Component {
 						<a href={require('../../../assets/page_ent.pdf')} target="_blank" className="btn btn-secondary">Comment personaliser ma page ?</a>
 					</div>
 					<div className="col text-center">
-						<Link to={(this.state.user)?"/"+this.state.user.namespace:'/'} className="btn btn-secondary">Voir ma page</Link>
+						<a href={(this.state.user)?"/"+this.state.user.namespace:'/'} target="_blank" className="btn btn-secondary">Voir ma page</a>
 					</div>
 				</div>
 				<form>

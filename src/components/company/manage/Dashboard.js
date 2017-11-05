@@ -27,7 +27,7 @@ export default class CompanyManageDashboard extends Component {
 			<div>
 				<div className="row py-4">
 					<NotificationSystem ref="notif" />
-					<div className="col text-center"><Link to={(this.state.user)?'/'+this.state.user.namespace:''}><button className="btn btn-secondary">Consulter ma page entreprise</button></Link></div>
+					<div className="col text-center"><a href={(this.state.user)?'/'+this.state.user.namespace:''} target="_blank" className="btn btn-secondary">Consulter ma page entreprise</a></div>
 				</div>
 				<div className="row">
 					<div className="col">
