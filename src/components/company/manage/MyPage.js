@@ -113,12 +113,12 @@ export default class CompanyManageMyPage extends Component {
 						<input type="file" className="form-control" name="logo" id="logo" />
 					</div>
 					<div className="form-group">
-						<label>Présentation générale de l’entreprise</label>
-						<textarea name="description" className="form-control" value={this.state.description} onChange={handleChange.bind(this)} placeholder="Présentation générale de l’entreprise" />
+						<label>Présentation générale de l’entreprise (1000 caractères max. espaces compris)</label>
+						<textarea name="description" className="form-control" value={this.state.description} onChange={handleChange.bind(this)} placeholder="Présentation générale de l’entreprise (1000 caractères max. espaces compris)" />
 					</div>
 					<div className="form-group">
-						<label>Notre engagement en faveur de la biodiversité</label>
-						<textarea name="involvement" className="form-control" value={this.state.involvement} onChange={handleChange.bind(this)} placeholder="Notre engagement en faveur de la biodiversité" />
+						<label>Notre engagement en faveur de la biodiversité (3700 caractères max. espaces compris)</label>
+						<textarea name="involvement" className="form-control" value={this.state.involvement} onChange={handleChange.bind(this)} placeholder="Notre engagement en faveur de la biodiversité (3700 caractères max. espaces compris)" />
 					</div>
 					<div className="form-group">
 						<label>Bouton d'action 1</label>
