@@ -26,6 +26,7 @@ export default class CompanyCheckout extends Component {
 		}, this.refs.notif)
 		.then((res) => {
 			this.setState({
+				company_name: res.company_name,
 				billing_name: res.name,
 				billing_firstname: res.firstname,
 				billing_address1: res.addresses[0].line1,
@@ -83,8 +84,13 @@ export default class CompanyCheckout extends Component {
 					<div className="col-6">
 						<h2 className="text-center my-4">Confirmation et paiement</h2>
 						<p>
-							Je parraine {this.state.hives} ruches qui seront marquées à nos couleurs et recevrais {this.state.hives * 40} pots de miel de 250g produit par mes abeilles.
-							De plus, une page internet sera dédiée aux actions menées par notre entreprise en faveur des abeilles et des actualites des ruches y seront postees.
+							Je parraine {this.state.hives} ruches qui seront marquées à nos couleurs et recevrais {this.state.hives * 80} pots de miel de 125g produit par mes abeilles.
+							De plus, une page
+							internet sera dédiée à notre entreprise et aux
+							actions qu’elle mène en faveur de l’environnement.
+							Des actualités de nos ruches y seront régulièrement
+							postées et accessibles au grand public mais aussi à
+							nos partenaires.
 							<br /><br />
 							Le coût total est de {this.state.hives * 395} euros par an.
 						</p>
@@ -92,6 +98,7 @@ export default class CompanyCheckout extends Component {
 							<div className="col-6">
 								<p className="lead">Adresse de facturation</p>
 								<p>
+									{this.state.company_name}<br />
 									{this.state.billing_firstname} {this.state.billing_name}<br/>
 								{this.state.billing_address1}<br/>
 							{(this.state.billing_address2)?this.state.billing_address2+'<br />':''}

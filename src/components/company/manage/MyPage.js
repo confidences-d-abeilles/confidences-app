@@ -101,11 +101,12 @@ export default class CompanyManageMyPage extends Component {
 						<input type="file" className="form-control" name="logo" id="logo" />
 					</div>
 					<div className="form-group">
-						<textarea name="description" className="form-control" value={this.state.description} onChange={handleChange.bind(this)} placeholder="Présentation brève de la société ..." />
+						<label>Présentation générale de l’entreprise</label>
+						<textarea name="description" className="form-control" value={this.state.description} onChange={handleChange.bind(this)} placeholder="Présentation générale de l’entreprise" />
 					</div>
 					<div className="form-group">
-						<label>Notre Engagement pour la biodiversite</label>
-						<textarea name="involvement" className="form-control" value={this.state.involvement} onChange={handleChange.bind(this)} placeholder="Engagement environnemental (optionnel) ..." />
+						<label>Notre engagement en faveur de la biodiversité</label>
+						<textarea name="involvement" className="form-control" value={this.state.involvement} onChange={handleChange.bind(this)} placeholder="Notre engagement en faveur de la biodiversité" />
 					</div>
 					<div className="form-group">
 						<label>Nom du lien 1</label>
@@ -124,7 +125,7 @@ export default class CompanyManageMyPage extends Component {
 						<input type="texte" name="link2_url" className="form-control" value={this.state.link2_url} onChange={handleChange.bind(this)} />
 					</div>
 					<div className="form-group">
-						<input type="submit" value="Modifier ma page" className="btn btn-primary" onClick={this.submit.bind(this)} />
+						<input type="submit" value="Enregistrer les modifications" className="btn btn-primary" onClick={this.submit.bind(this)} />
 					</div>
 
 				</form>
