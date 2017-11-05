@@ -45,28 +45,30 @@ export default class CompanyPage extends Component {
 					</div>
 				</div>
 				<div className="row align-items-center">
-					<div className="col logo">
+					<div className="col-4 logo">
 						<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:null} alt="Logo entreprise" className="img-fluid" />
 					</div>
-					<div className="col">
+					<div className="col m-4">
 						<p className="lead">
 							{(this.state.user)?this.state.user.description:null}
 						</p>
 					</div>
 				</div>
-				<div className="row align-items-center my-4">
+				<div className="row align-items-center mb-4">
+					{(this.state.user && this.state.user.link1_url && this.state.user.link1_name)?
 					<div className="col text-center">
 						<a className="btn btn-primary" target="_blank" href={(this.state.user)?this.state.user.link1_url:null}>{(this.state.user)?this.state.user.link1_name:null}</a>
-					</div>
+					</div>:null}
+					{(this.state.user && this.state.user.link2_url && this.state.user.link2_name)?
 					<div className="col text-center">
 						<a className="btn btn-primary" target="_blank" href={(this.state.user)?this.state.user.link2_url:null}>{(this.state.user)?this.state.user.link2_name:null}</a>
-					</div>
+					</div>:null}
 				</div>
 				{(this.state.user && this.state.user.involvement)?
-					<div className="row">
-						<div className="col">
+					<div className="row justify-content-center">
+						<div className="col-9">
 							<h2 className="text-center">Notre engagement pour la biodiversité</h2>
-							<p className="lead">
+							<p className="lead m-4">
 								{this.state.user.involvement}
 							</p>
 						</div>

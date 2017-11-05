@@ -42,33 +42,45 @@ export default class CompanyManageMyPage extends Component {
 
 	submit(e) {
 		e.preventDefault();
-		const formData = new FormData();
-		formData.append('company_name', this.state.name);
-		formData.append('namespace', this.state.namespace);
-		formData.append('description', this.state.description);
-		formData.append('involvement', this.state.involvement);
-		formData.append('link1_name', this.state.link1_name);
-		formData.append('link1_url', this.state.link1_url);
-		formData.append('link2_name', this.state.link2_name);
-		formData.append('link2_url', this.state.link2_url);
-		if (document.getElementById("cover").files[0]) {
-			formData.append('cover', document.getElementById("cover").files[0]);
-		}
-		if (document.getElementById("logo").files[0]) {
-			formData.append('logo', document.getElementById("logo").files[0]);
-		}
-		request({
-			url : '/user',
-			method : 'put',
-			data : formData,
-			headers : {
-				'content-type': 'multipart/form-data'
+		if (this.state.description.length > 1000) {
+			this.refs.notif.addNotification({
+				message: "La présentation générale de votre entreprise est un peu trop longue. Merci de la raccourcir.",
+				level: 'warning'
+			})
+		} else if (this.state.involvement > 3700) {
+			this.refs.notif.addNotification({
+				message: 'Le champs "Votre engagement en faveur de la biodiversité" contient trop de caractères. Merci de le raccourcir.',
+				level: 'warning'
+			})
+		} else {
+			const formData = new FormData();
+			formData.append('company_name', this.state.name);
+			formData.append('namespace', this.state.namespace);
+			formData.append('description', this.state.description);
+			formData.append('involvement', this.state.involvement);
+			formData.append('link1_name', this.state.link1_name);
+			formData.append('link1_url', this.state.link1_url);
+			formData.append('link2_name', this.state.link2_name);
+			formData.append('link2_url', this.state.link2_url);
+			if (document.getElementById("cover").files[0]) {
+				formData.append('cover', document.getElementById("cover").files[0]);
 			}
-		}, this.refs.notif).then((res) => {
-			this.get()
-		}).catch((err) => {
+			if (document.getElementById("logo").files[0]) {
+				formData.append('logo', document.getElementById("logo").files[0]);
+			}
+			request({
+				url : '/user',
+				method : 'put',
+				data : formData,
+				headers : {
+					'content-type': 'multipart/form-data'
+				}
+			}, this.refs.notif).then((res) => {
+				this.get()
+			}).catch((err) => {
 
-		});
+			});
+		}
 	}
 
 	render () {
@@ -109,20 +121,18 @@ export default class CompanyManageMyPage extends Component {
 						<textarea name="involvement" className="form-control" value={this.state.involvement} onChange={handleChange.bind(this)} placeholder="Notre engagement en faveur de la biodiversité" />
 					</div>
 					<div className="form-group">
-						<label>Nom du lien 1</label>
-						<input type="texte" name="link1_name" className="form-control" value={this.state.link1_name} onChange={handleChange.bind(this)} />
+						<label>Bouton d'action 1</label>
+						<input type="texte" name="link1_name" className="form-control" value={this.state.link1_name} placeholder="Texte à afficher" onChange={handleChange.bind(this)} />
 					</div>
 					<div className="form-group">
-						<label>Url du lien 1</label>
-						<input type="texte" name="link1_url" className="form-control" value={this.state.link1_url} onChange={handleChange.bind(this)} />
+						<input type="texte" name="link1_url" className="form-control" value={this.state.link1_url} placeholder="URL du bouton d'action 1" onChange={handleChange.bind(this)} />
 					</div>
 					<div className="form-group">
-						<label>Nom du lien 2</label>
-						<input type="texte" name="link2_name" className="form-control" value={this.state.link2_name} onChange={handleChange.bind(this)} />
+						<label>Bouton d'action 2</label>
+						<input type="texte" name="link2_name" className="form-control" value={this.state.link2_name} placeholder="Texte à afficher" onChange={handleChange.bind(this)} />
 					</div>
 					<div className="form-group">
-						<label>Url du lien 2</label>
-						<input type="texte" name="link2_url" className="form-control" value={this.state.link2_url} onChange={handleChange.bind(this)} />
+						<input type="texte" name="link2_url" className="form-control" value={this.state.link2_url} placeholder="URL du bouton d'action 2" onChange={handleChange.bind(this)} />
 					</div>
 					<div className="form-group">
 						<input type="submit" value="Enregistrer les modifications" className="btn btn-primary" onClick={this.submit.bind(this)} />
