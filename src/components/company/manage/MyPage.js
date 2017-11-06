@@ -3,7 +3,7 @@ import { handleChange } from '../../../services/FormService'
 import { Link } from 'react-router-dom'
 import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
-
+const config = require('../../../config.js');
 
 export default class CompanyManageMyPage extends Component {
 
@@ -13,7 +13,9 @@ export default class CompanyManageMyPage extends Component {
 			name : '',
 			namespace : '',
 			description : '',
-			involvement : ''
+			involvement : '',
+			logo: null,
+			cover: null
 		}
 	}
 
@@ -30,6 +32,8 @@ export default class CompanyManageMyPage extends Component {
 				user : res,
 				name : res.company_name,
 				namespace : res.namespace,
+				logo: res.logo,
+				cover: res.cover,
 				description : res.description,
 				involvement : res.involvement,
 				link1_name: res.link1_name,
@@ -105,11 +109,11 @@ export default class CompanyManageMyPage extends Component {
 						<input type="text" placeholder="URL de votre page" name="namespace" value={this.state.namespace} onChange={handleChange.bind(this)} className="form-control" />
 					</div>
 					<div className="form-group">
-						<label>Photo de couverture de votre page</label>
+						<label>Photo de couverture de votre page {(this.state.cover)?<a href={config.cdn_url+'/'+this.state.cover} target="_blank">Visualiser l'image actuelle</a>:null}</label>
 						<input type="file" className="form-control" name="cover" id="cover" />
 					</div>
 					<div className="form-group">
-						<label>Logo de votre entreprise</label>
+						<label>Logo de votre entreprise {(this.state.logo)?<a href={config.cdn_url+'/'+this.state.logo} target="_blank">Visualiser le logo actuel</a>:null}</label>
 						<input type="file" className="form-control" name="logo" id="logo" />
 					</div>
 					<div className="form-group">
