@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import request from '../../services/Net';
 import NotificationSystem from 'react-notification-system';
+import {StripeProvider} from 'react-stripe-elements';
+import Paiement from '../utils/Paiement';
 
 export default class CompanyCheckout extends Component {
 
@@ -81,7 +83,7 @@ export default class CompanyCheckout extends Component {
 					</div>
 				</div>
 				<div className="row justify-content-center">
-					<div className="col-6">
+					<div className="col-9">
 						<h2 className="text-center my-4">Confirmation et paiement</h2>
 						<p>
 							Je parraine {this.state.hives} ruches qui seront marquées à nos couleurs et recevrais {this.state.hives * 80} pots de miel de 125g produit par mes abeilles.
@@ -111,8 +113,8 @@ export default class CompanyCheckout extends Component {
 							</div>
 						</div>
 						<p className="lead text-center">Paiement securise via Stripe</p>
-							<form className="row justify-content-center">
-								<div className="col-6">
+							<div className="row justify-content-center">
+								<form className="col-6">
 									<div className="form-group">
 										<div className="form-check">
 											<label className="form-check-label">
@@ -139,19 +141,13 @@ export default class CompanyCheckout extends Component {
 											</label>
 										</div>
 									</div>
-								</div>
+								</form>
 								<div className="col-6">
-									<div className="form-group">
-										<input type="text" className="form-control" placeholder="Numero de carte" />
-									</div>
-									<div className="form-group">
-										<input type="text" className="form-control" placeholder="Date d'expiration (MM/AAAA)" />
-									</div>
-									<div className="form-group">
-										<input type="text" className="form-control" placeholder="Code de securite" />
-									</div>
+									<StripeProvider apiKey="pk_test_mLWoutIWlytgJmEvWuSL3xSB">
+										<Paiement />
+								    </StripeProvider>
 								</div>
-							</form>
+							</div>
 						<p className="text-center">
 							<button onClick={this.proceed.bind(this)} className="btn btn-primary">Valider et payer</button>
 						</p>
