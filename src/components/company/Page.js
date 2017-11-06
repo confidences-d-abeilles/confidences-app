@@ -40,13 +40,13 @@ export default class CompanyPage extends Component {
 				<NotificationSystem ref="notif" />
 				<div className="row">
 					<div className="col cover">
-						<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.cover:null} className="img-fluid" alt="Cover" />
+						<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.cover:null} alt="Cover" />
 						<h1>{(this.state.user)?this.state.user.company_name:null}</h1>
 					</div>
 				</div>
 				<div className="row align-items-center">
 					<div className="col-4 logo">
-						<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:null} alt="Logo entreprise" className="img-fluid" />
+						<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:null} alt="Logo entreprise" />
 					</div>
 					<div className="col m-4">
 						<p className="lead">

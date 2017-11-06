@@ -5,10 +5,13 @@ html, body, #root, #wrapper
 
 .cover {
 	position: relative;
+	height: 240px;
+	width: 1200px;
 }
 
 .cover img {
-	min-width: 100%;
+	max-height: 100%;
+	max-width: 100%;
 }
 
 .cover h1 {
@@ -28,8 +31,14 @@ html, body, #root, #wrapper
    background: linear-gradient(rgba(0,0,0,0) 10%, black 80%); /* Standard syntax */
 }
 
+.logo {
+	height: 210px;
+	width: 280px;
+}
+
 .logo img {
-	max-height: 20em;
+	max-height: 100%;
+	max-width: 100%;
 	margin: 1em;
 }
 
