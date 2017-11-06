@@ -47,7 +47,7 @@ export default class CompanyManageMyPage extends Component {
 				message: "La présentation générale de votre entreprise est un peu trop longue. Merci de la raccourcir.",
 				level: 'warning'
 			})
-		} else if (this.state.involvement > 3700) {
+		} else if (this.state.involvement.length > 3700) {
 			this.refs.notif.addNotification({
 				message: 'Le champs "Votre engagement en faveur de la biodiversité" contient trop de caractères. Merci de le raccourcir.',
 				level: 'warning'
@@ -113,12 +113,12 @@ export default class CompanyManageMyPage extends Component {
 						<input type="file" className="form-control" name="logo" id="logo" />
 					</div>
 					<div className="form-group">
-						<label>Présentation générale de l’entreprise (1000 caractères max. espaces compris)</label>
-						<textarea name="description" className="form-control" value={this.state.description} onChange={handleChange.bind(this)} placeholder="Présentation générale de l’entreprise (1000 caractères max. espaces compris)" />
+						<label>Présentation générale de l’entreprise ({1000 - this.state.description.length} caractères restants)</label>
+						<textarea name="description" maxLength="1000" className="form-control" value={this.state.description} onChange={handleChange.bind(this)} placeholder="Présentation générale de l’entreprise (1000 caractères max. espaces compris)" />
 					</div>
 					<div className="form-group">
-						<label>Notre engagement en faveur de la biodiversité (3700 caractères max. espaces compris)</label>
-						<textarea name="involvement" className="form-control" value={this.state.involvement} onChange={handleChange.bind(this)} placeholder="Notre engagement en faveur de la biodiversité (3700 caractères max. espaces compris)" />
+						<label>Notre engagement en faveur de la biodiversité ({3700 - this.state.involvement.length} caractères restants)</label>
+						<textarea name="involvement" maxLength="3700" className="form-control" value={this.state.involvement} onChange={handleChange.bind(this)} placeholder="Notre engagement en faveur de la biodiversité (3700 caractères max. espaces compris)" />
 					</div>
 					<div className="form-group">
 						<label>Bouton d'action 1</label>
