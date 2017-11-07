@@ -3,6 +3,14 @@ html, body, #root, #wrapper
 	height: 100%;
 }
 
+.upload {
+	padding: 20px 10px;
+	background-color: #E1F5FE;
+	border: solid 1px #81D4FA;
+	cursor: pointer;
+	width: 100%;
+}
+
 .cover {
 	position: relative;
 	height: 240px;
