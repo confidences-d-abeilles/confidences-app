@@ -4,7 +4,7 @@ import request from '../../services/Net';
 import NotificationSystem from 'react-notification-system';
 import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
-import { handleChange } from '../../services/FormService';
+import { handleChange, handleTick } from '../../services/FormService';
 
 export default class CompanyCheckout extends Component {
 
@@ -13,14 +13,16 @@ export default class CompanyCheckout extends Component {
 		this.state = {
 			billing_name: '',
 			billing_firstname: '',
-			billing_address1: '',
-			billing_address2: '',
-			billing_zipcode: '',
-			billing_city: '',
+			baddress1: '',
+			baddress2: '',
+			bzip: '',
+			bcity: '',
 			redirect: false,
 			hives: 0,
 			paytype: '0',
-			price: 0
+			price: 0,
+			different: false,
+			saved: false
 		}
 	}
 
@@ -42,18 +44,21 @@ export default class CompanyCheckout extends Component {
 			res.addresses.map((address) => {
 				if (address.type == 1) {
 					this.setState({
-						billing_address1 : address.line1,
-						billing_address2: address.line2,
-						billing_city: address.city,
-						billing_zipcode: address.zipcode
+						baddress1 : address.line1,
+						baddress2: address.line2,
+						bcity: address.city,
+						bzip: address.zipcode,
+						bcountry: address.country
 					})
 				}
 				if (address.type == 2) {
 					this.setState({
-						billing_address1 : address.line1,
-						billing_address2: address.line2,
-						billing_city: address.city,
-						billing_zipcode: address.zipcode
+						did: address.id,
+						daddress1 : address.line1,
+						daddress2: address.line2,
+						dcity: address.city,
+						dzip: address.zipcode,
+						dcountry: address.country
 					})
 				}
 			})
@@ -70,6 +75,23 @@ export default class CompanyCheckout extends Component {
 			}
 		}, this.refs.notif).then((res) => {
 			this.setState({ redirect : true })
+		})
+	}
+
+	saveDaddress(e) {
+		e.preventDefault();
+		request({
+			url: '/address/'+this.state.did,
+			method: 'put',
+			data: {
+				line1: this.state.daddress1,
+				line2: this.state.daddress2,
+				zipcode: this.state.dzip,
+				city: this.state.dcity,
+				country: this.state.dcountry
+			}
+		}, this.refs.notif).then((res) => {
+			this.setState({ saved : true })
 		})
 	}
 
@@ -106,20 +128,46 @@ export default class CompanyCheckout extends Component {
 								<p>
 									{this.state.company_name}<br />
 									{this.state.billing_firstname} {this.state.billing_name}<br/>
-									{this.state.billing_address1}<br/>
-									{(this.state.billing_address2)?this.state.billing_address2+'<br />':''}
-									{this.state.billing_zipcode} {this.state.billing_city}<br/>
+									{this.state.baddress1}<br/>
+									{(this.state.baddress2)?<span>{this.state.baddress2}<br/></span>:''}
+									{this.state.bzip} {this.state.bcity}<br/>
+									{this.state.bcountry}
 								</p>
 							</div>
 							<div className="col-6">
-								<h3 className="text-center">Adresse de livraison</h3>
-								<p>
-									{this.state.company_name}<br />
-									{this.state.billing_firstname} {this.state.billing_name}<br/>
-									{this.state.billing_address1}<br/>
-									{(this.state.billing_address2)?this.state.billing_address2+'<br />':''}
-									{this.state.billing_zipcode} {this.state.billing_city}<br/>
-								</p>
+								<h3 className="text-center">Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
+								{this.state.different && !this.state.saved &&
+									<form>
+										<div className="form-group">
+											<input type="text" className="form-control" value={this.state.daddress1} name="daddress1" onChange={handleChange.bind(this)} />
+										</div>
+										<div className="form-group">
+											<input type="text" className="form-control" value={this.state.daddress2} name="daddress2" onChange={handleChange.bind(this)} />
+										</div>
+										<div className="form-group row">
+											<div className="col-4">
+												<input type="text" className="form-control" value={this.state.dzip} name="daddress2" onChange={handleChange.bind(this)} />
+											</div>
+											<div className="col-8">
+												<input type="text" className="form-control" value={this.state.dcity} name="daddress2" onChange={handleChange.bind(this)} />
+											</div>
+										</div>
+										<div className="form-group">
+											<input type="text" className="form-control" value={this.state.dcountry} name="dcountry" onChange={handleChange.bind(this)} />
+										</div>
+										<button className="btn btn-primary" onClick={this.saveDaddress.bind(this)}>Enregistrer</button>
+									</form>
+								}
+								{this.state.saved &&
+									<div>
+										{this.state.company_name}<br />
+										{this.state.billing_firstname} {this.state.billing_name}<br/>
+										{this.state.daddress1}<br/>
+										{(this.state.daddress1)?<span>{this.state.daddress2}<br /></span>:null}
+										{this.state.dzip} {this.state.dcity}<br/>
+										{this.state.dcountry}
+									</div>
+								}
 							</div>
 						</div>
 						<h3 className="text-center">Paiement</h3>

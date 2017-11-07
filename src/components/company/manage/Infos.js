@@ -58,7 +58,7 @@ export default class CompanyManageInfos extends Component {
 				line2: this.state.baddress2,
 				zipcode: this.state.bzip,
 				city: this.state.bcity,
-				country: this.state.bcity
+				country: this.state.bcountry
 			}
 		}, this.refs.notif);
 	}
