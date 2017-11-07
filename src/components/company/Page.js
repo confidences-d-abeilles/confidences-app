@@ -49,7 +49,7 @@ export default class CompanyPage extends Component {
 						<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:null} alt="Logo entreprise" />
 					</div>
 					<div className="col m-4">
-						<p className="lead">
+						<p>
 							{(this.state.user)?this.state.user.description:null}
 						</p>
 					</div>
@@ -66,9 +66,9 @@ export default class CompanyPage extends Component {
 				</div>
 				{(this.state.user && this.state.user.involvement)?
 					<div className="row justify-content-center">
-						<div className="col-9">
+						<div className="col">
 							<h2 className="text-center">Notre engagement pour la biodiversité</h2>
-							<p className="lead m-4">
+							<p className="m-4">
 								{this.state.user.involvement}
 							</p>
 						</div>
