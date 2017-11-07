@@ -58,7 +58,7 @@ export default class ContributorPresentation extends Component {
 				</div>
 				<div className="row align-items-center justify-content-center">
 					<div className="col-4 text-center">
-						<a href="https://confidencesdabeilles.fr/parrainer-ruche" className="btn btn-primary" target="_blank" rel="noopener noreferrer">Le contrat</a>
+						<Link to="/signup/contributor" className="btn btn-primary">Devenir apporteur d'affaires</Link>
 					</div><div className="col-4 text-center">
 						<a href="https://confidencesdabeilles.fr/parrainer-ruche" className="btn btn-primary" target="_blank" rel="noopener noreferrer">L'offre de parrainage</a>
 					</div>
