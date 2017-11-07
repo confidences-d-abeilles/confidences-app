@@ -30,7 +30,7 @@ export default class ContributorManageContract extends Component {
 		return (
 			<div>
 				<NotificationSystem ref="notif" />
-				<object data={(this.state.user)?config.cdn_url+"/AA.pdf"} type="application/pdf" style={{ width: '100%' }} height="400">
+				<object data={(this.state.user)?config.cdn_url+'/AA.pdf':null} type="application/pdf" style={{ width: '100%' }} height="400">
 				</object>
 			</div>
 		);
