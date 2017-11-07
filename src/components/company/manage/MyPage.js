@@ -110,14 +110,14 @@ export default class CompanyManageMyPage extends Component {
 					</div>
 					<div className="form-group">
 						<label>Photo de couverture de votre page {(this.state.cover)?<a href={config.cdn_url+'/'+this.state.cover} target="_blank">Visualiser l'image actuelle</a>:null}</label>
-						{(!this.state.cover)?<label htmlFor="cover" className="upload">Glisser l'image ici ou cliquez pour en séléctionner une parmi vos fichers</label>
-						:<label htmlFor="cover" className="upload">Glisser une nouvelle image ici ou cliquez pour en séléctionner une parmi vos fichers</label>}
+						{(!this.state.cover)?<label htmlFor="cover" className="upload">Glisser l'image ici ou cliquez pour en séléctionner une parmi vos fichers<br/>Taille recommandée : 1200x240</label>
+						:<label htmlFor="cover" className="upload">Glisser une nouvelle image ici ou cliquez pour en séléctionner une parmi vos fichers<br/>Taille recommandée : 1200x240</label>}
 						<input type="file" className="form-control" name="cover" id="cover" style={{display:'none'}}/>
 					</div>
 					<div className="form-group">
 						<label>Logo de votre entreprise {(this.state.logo)?<a href={config.cdn_url+'/'+this.state.logo} target="_blank">Visualiser le logo actuel</a>:null}</label>
-						{(!this.state.logo)?<label htmlFor="logo" className="upload">Glisser votre logo ici ou cliquez pour en séléctionner un parmi vos fichers</label>
-						:<label htmlFor="logo" className="upload">Glisser votre nouveau logo ici ou cliquez pour en séléctionner un parmi vos fichers</label>}
+						{(!this.state.logo)?<label htmlFor="logo" className="upload">Glisser votre logo ici ou cliquez pour en séléctionner un parmi vos fichers<br/>Taille recommandée : 280x210</label>
+						:<label htmlFor="logo" className="upload">Glisser votre nouveau logo ici ou cliquez pour en séléctionner un parmi vos fichers<br/>Taille recommandée : 280x210</label>}
 						<input type="file" className="form-control" name="logo" id="logo" style={{display:'none'}}/>
 					</div>
 					<div className="form-group">
