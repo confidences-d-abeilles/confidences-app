@@ -12,7 +12,6 @@ html, body, #root, #wrapper
 
 .cover img {
 	width: 100%;
-	transform: translateY(-50%);
 }
 
 .cover h1 {
