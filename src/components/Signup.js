@@ -111,22 +111,22 @@ export default class Signup extends Component {
 								<p className="alert alert-danger">{this.state.message}</p>
 							:null}
 							<div className="form-group">
-								<input type="text" name="firstname" className="form-control" placeholder="Prenom" onChange={handleChange.bind(this)}/>
+								<input type="text" name="firstname" className="form-control" placeholder="Prénom *" onChange={handleChange.bind(this)}/>
 							</div>
 							<div className="form-group">
-								<input type="text" name="name" className="form-control" placeholder="Nom" onChange={handleChange.bind(this)} />
+								<input type="text" name="name" className="form-control" placeholder="Nom *" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="email" name="email" className="form-control" placeholder="Adresse email" onChange={handleChange.bind(this)} />
+								<input type="email" name="email" className="form-control" placeholder="Adresse email *" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="phone" name="phone" className="form-control" placeholder="Numero de telephone" onChange={handleChange.bind(this)} />
+								<input type="phone" name="phone" className="form-control" placeholder="Numéro de telephone *" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="password" name="password" className="form-control" placeholder="Mot de passe" onChange={handleChange.bind(this)} />
+								<input type="password" name="password" className="form-control" placeholder="Mot de passe *" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="password" name="confirmation" className="form-control" placeholder="Confirmation du mot de passe" onChange={handleChange.bind(this)} />
+								<input type="password" name="confirmation" className="form-control" placeholder="Confirmation du mot de passe *" onChange={handleChange.bind(this)} />
 							</div>
 							<p>Vous avez deja un compte ? <Link to="/login">Connectez vous</Link></p>
 							<input type="submit" value="Valider" className="btn btn-primary" onClick={this.register.bind(this)} />
