@@ -49,9 +49,11 @@ export default class CompanyPage extends Component {
 						<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:null} alt="Logo entreprise" />
 					</div>
 					<div className="col m-4">
-						<p>
-							{(this.state.user)?this.state.user.description:null}
-						</p>
+						<div className="card">
+  							<div className="card-block">
+								{(this.state.user)?this.state.user.description:null}
+							</div>
+						</div>
 					</div>
 				</div>
 				<div className="row align-items-center mb-4">
