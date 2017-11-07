@@ -70,10 +70,9 @@ export default class ContributorManageInfosSocial extends Component {
 	submitBaddress(e) {
 		e.preventDefault();
 		request({
-			url: '/address',
+			url: '/address/'+this.state.bid,
 			method: 'put',
 			data: {
-				id: this.state.bid,
 				line1: this.state.bline1,
 				line2: this.state.bline2,
 				zipcode: this.state.bzipcode,

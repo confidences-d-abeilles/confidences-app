@@ -47,11 +47,18 @@ export default class CompanyManage extends Component {
 		if (this.state.user.addresses && !this.state.user.addresses[0]) {
 			return (<Redirect to="/company/address" />);
 		}
-		if (this.state.user && this.state.user.bundles[0] && !this.state.user.bundles[0].paid) {
+		if (this.state.user && this.state.user.bundles[0] && !this.state.user.bundles[0].paid && !this.state.user.bundles[0].waiting ) {
 			return (
 				<p className="alert alert-danger">Vous n'avez pas encore reglé votre parrainage. <Link to="/company/checkout">Cliquez ici</Link> pour le faire maintenant</p>
 			);
 		}
+
+		if (this.state.user && this.state.user.bundles[0] && !this.state.user.bundles[0].paid && this.state.user.bundles[0].waiting ) {
+			return (
+				<p className="alert alert-warning">La validation du règlement de votre parrainage est en cours</p>
+			);
+		}
+
 		if (this.state.user && !this.state.user.bundles[0]) {
 			return (<Redirect to="/company/wish" />);
 		}

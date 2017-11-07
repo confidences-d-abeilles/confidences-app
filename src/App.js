@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { isLoggedIn } from './services/AuthService';
 import CompanyPage from './components/company/Page';
 import Wrapper from './components/Wrapper';
-
+import {StripeProvider} from 'react-stripe-elements';
 
 import {
 	BrowserRouter as Router,
@@ -19,28 +19,30 @@ class App extends Component {
 
 	render() {
 		return (
-			<Router>
-				<Switch>
-					<Route path="/login" component={Wrapper} />
-					<Route path="/logout" component={Wrapper} />
-					<Route path="/account" component={Wrapper} />
-					<Route path="/company" component={Wrapper} />
-					<Route path="/contributor" component={Wrapper} />
-					<Route path="/individual" component={Wrapper} />
-					<Route path="/mentions_legales" component={Wrapper} />
-					<Route path="/faq" component={Wrapper} />
-					<Route path="/cgv" component={Wrapper} />
-					<Route path="/contact" component={Wrapper} />
-					<Route path="/jobs" component={Wrapper} />
-					<Route path="/about" component={Wrapper} />
-					<Route path="/tarifs" component={Wrapper} />
-					<Route path="/ruches" component={Wrapper} />
-					<Route path="/admin" component={Wrapper} />
-					<Route path="/signup" component={Wrapper} />
-					<Route path="/:namespace" component={CompanyPage} />
-					<Route path="/" component={Wrapper} />
-				</Switch>
-			</Router>
+			<StripeProvider apiKey="pk_test_mLWoutIWlytgJmEvWuSL3xSB">
+				<Router>
+					<Switch>
+						<Route path="/login" component={Wrapper} />
+						<Route path="/logout" component={Wrapper} />
+						<Route path="/account" component={Wrapper} />
+						<Route path="/company" component={Wrapper} />
+						<Route path="/contributor" component={Wrapper} />
+						<Route path="/individual" component={Wrapper} />
+						<Route path="/mentions_legales" component={Wrapper} />
+						<Route path="/faq" component={Wrapper} />
+						<Route path="/cgv" component={Wrapper} />
+						<Route path="/contact" component={Wrapper} />
+						<Route path="/jobs" component={Wrapper} />
+						<Route path="/about" component={Wrapper} />
+						<Route path="/tarifs" component={Wrapper} />
+						<Route path="/ruches" component={Wrapper} />
+						<Route path="/admin" component={Wrapper} />
+						<Route path="/signup" component={Wrapper} />
+						<Route path="/:namespace" component={CompanyPage} />
+						<Route path="/" component={Wrapper} />
+					</Switch>
+				</Router>
+			</StripeProvider>
 		);
 	}
 }

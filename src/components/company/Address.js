@@ -40,11 +40,24 @@ export default class CompanyAddress extends Component {
 				}
 			}, this.refs.notif)
 			.then((res) => {
-				this.setState({
-					redirect: true
-				});
-			})
-			.catch((err) => {});
+				request({
+					url : '/address',
+					method: 'post',
+					data : {
+						address1 : this.state.address1,
+						address2 : this.state.address2,
+						city : this.state.city,
+						zipcode : this.state.zipcode,
+						country: this.state.country,
+						type : 2
+					}
+				}, this.refs.notif)
+				.then((res) => {
+					this.setState({
+						redirect: true
+					});
+				})
+			});
 		}
 	}
 
