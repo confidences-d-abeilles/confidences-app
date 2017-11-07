@@ -37,16 +37,6 @@ export default class ContributorManageInfosSocial extends Component {
 						})
 					}
 
-					if (address.type === 2) {
-						this.setState({
-							did: address.id,
-							dline1: address.line1,
-							dline2: address.line2,
-							dzipcode: address.zipcode,
-							dcity: address.city
-						})
-					}
-
 					return (0);
 				});
 			}
@@ -113,7 +103,7 @@ export default class ContributorManageInfosSocial extends Component {
 						</form>
 						<div className="row">
 							<div className="col-6">
-								<span className="lead">Adresse de facturation :<br /></span>
+								<span className="lead">Adresse :<br /></span>
 								<form key={this.state.user.id}>
 									<div className="form-group">
 										<input type="texte" name="bline1" onChange={handleChange.bind(this)} value={this.state.bline1} className="form-control" />
@@ -131,28 +121,6 @@ export default class ContributorManageInfosSocial extends Component {
 									</div>
 									<div className="form-group">
 										<input type="submit" value="Enregistrer" className="btn btn-primary" onClick={this.submitBaddress.bind(this)} />
-									</div>
-								</form>
-							</div>
-							<div className="col-6">
-								<span className="lead">Adresse de livraison :<br /></span>
-								<form key={this.state.user.id}>
-									<div className="form-group">
-										<input type="texte" name="bline1" value={this.state.dline1} className="form-control" />
-									</div>
-									<div className="form-group">
-										<input type="texte" name="bline2" value={this.state.dline2} className="form-control" />
-									</div>
-									<div className="form-group row">
-										<div className="col-4">
-											<input type="texte" name="dzipcode" value={this.state.dzipcode} className="form-control" />
-										</div>
-										<div className="col-8">
-											<input type="texte" name="dcity" value={this.state.dcity} className="form-control" />
-										</div>
-									</div>
-									<div className="form-group">
-										<input type="submit" value="Enregistrer" className="btn btn-primary" />
 									</div>
 								</form>
 							</div>

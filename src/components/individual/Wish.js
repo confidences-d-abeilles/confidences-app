@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { handleChange } from '../../services/FormService';
-import { request } from '../../services/NetService';
+import request from '../../services/Net';
 import { isLoggedIn } from '../../services/AuthService';
 import { Redirect } from 'react-router-dom';
 
@@ -13,15 +13,9 @@ export default class IndividualWish extends Component {
 		}
 	}
 
-	selectBundle() {
-		request('/user/bundle/create', 'POST', JSON.stringify(this.state), 'json', (status, message,content) => {
-			if (status)
-			{
-				this.setState({
-					redirect: true
-				});
-			}
-		});
+	selectBundle(e) {
+		e.preventDefault();
+	
 	}
 
     render () {
@@ -39,15 +33,17 @@ export default class IndividualWish extends Component {
 					</div>
 				</div>
 				<div className="row justify-content-center">
-					<div className="col-6">
+					<form className="col-6">
 						<p className="text-center lead my-4">
 							Je decide de parrainer<br />
-						<select name="bees" onChange={handleChange.bind(this)}>
-								<option value="10000">10 000 abeilles</option>
-								<option value="20000">20 000 abeilles</option>
-								<option value="30000">30 000 abeilles</option>
-								<option value="40000">40 000 abeilles</option>
-							</select>
+							<div className="form-group">
+								<select name="bees" className="form-control" onChange={handleChange.bind(this)}>
+									<option value="10000">10 000 abeilles</option>
+									<option value="20000">20 000 abeilles</option>
+									<option value="30000">30 000 abeilles</option>
+									<option value="40000">40 000 abeilles</option>
+								</select>
+							</div>
 						</p>
 
 						<ul>
@@ -55,9 +51,9 @@ export default class IndividualWish extends Component {
 							<li>C'est aussi {this.state.bees * 8 / 10000} pots de miel produits par vos abeilles que vous recevrez !</li>
 						</ul>
 						<p className="text-center">
-						<button onClick={this.selectBundle.bind(this)}>Continuer</button>
+						<button onClick={this.selectBundle.bind(this)} className="btn btn-primary">Continuer</button>
 						</p>
-					</div>
+					</form>
 				</div>
 			</div>
         );
