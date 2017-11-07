@@ -78,7 +78,7 @@ export default class Contact extends Component {
 								<input type="text" className="form-control" name="name" value={this.state.name} placeholder="Nom *" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" className="form-control" name="job" value={this.state.job} placeholder="Fonction *" onChange={handleChange.bind(this)} />
+								<input type="text" className="form-control" name="job" value={this.state.job} placeholder="Fonction" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
 								<input type="email" className="form-control" name="email" value={this.state.email} placeholder="Email *" onChange={handleChange.bind(this)} />
