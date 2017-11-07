@@ -59,11 +59,11 @@ export default class CompanyPage extends Component {
 				<div className="row align-items-center mb-4">
 					{(this.state.user && this.state.user.link1_url && this.state.user.link1_name)?
 					<div className="col text-center">
-						<a className="btn btn-primary" target="_blank" href={(this.state.user)?this.state.user.link1_url:null}>{(this.state.user)?this.state.user.link1_name:null}</a>
+						<a className="btn btn-secondary" target="_blank" href={(this.state.user)?this.state.user.link1_url:null}>{(this.state.user)?this.state.user.link1_name:null}</a>
 					</div>:null}
 					{(this.state.user && this.state.user.link2_url && this.state.user.link2_name)?
 					<div className="col text-center">
-						<a className="btn btn-primary" target="_blank" href={(this.state.user)?this.state.user.link2_url:null}>{(this.state.user)?this.state.user.link2_name:null}</a>
+						<a className="btn btn-secondary" target="_blank" href={(this.state.user)?this.state.user.link2_url:null}>{(this.state.user)?this.state.user.link2_name:null}</a>
 					</div>:null}
 				</div>
 				{(this.state.user && this.state.user.involvement)?
