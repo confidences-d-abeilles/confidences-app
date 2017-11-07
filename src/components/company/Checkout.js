@@ -146,10 +146,10 @@ export default class CompanyCheckout extends Component {
 										</div>
 										<div className="form-group row">
 											<div className="col-4">
-												<input type="text" className="form-control" value={this.state.dzip} name="daddress2" onChange={handleChange.bind(this)} />
+												<input type="text" className="form-control" value={this.state.dzip} name="dzip" onChange={handleChange.bind(this)} />
 											</div>
 											<div className="col-8">
-												<input type="text" className="form-control" value={this.state.dcity} name="daddress2" onChange={handleChange.bind(this)} />
+												<input type="text" className="form-control" value={this.state.dcity} name="dcity" onChange={handleChange.bind(this)} />
 											</div>
 										</div>
 										<div className="form-group">
