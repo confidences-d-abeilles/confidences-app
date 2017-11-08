@@ -20,7 +20,9 @@ class PayForm extends Component {
 	console.log(config.app_url)
 
 	this.props.stripe.createSource({
-		name: this.props.for,
+		owner: {
+			name: this.props.for
+		},
 		metadata : {
 			bundle: this.props.bundle
 		}
