@@ -33,9 +33,6 @@ export default class CompanyCheckout extends Component {
 		}, this.refs.notif)
 		.then((res) => {
 			this.setState({
-				company_name: res.company_name,
-				billing_name: res.name,
-				billing_firstname: res.firstname,
 				hives: res.bundles[0].hives,
 				price: res.bundles[0].price,
 				bundle_id: res.bundles[0].id,
@@ -45,7 +42,9 @@ export default class CompanyCheckout extends Component {
 				if (address.type == 1) {
 					this.setState({
 						baddress1 : address.line1,
-						baddress2: address.line2,
+						baddress2 : address.line2,
+						baddress3 : address.line3,
+						baddress4 : address.line4,
 						bcity: address.city,
 						bzip: address.zipcode,
 						bcountry: address.country
@@ -55,7 +54,9 @@ export default class CompanyCheckout extends Component {
 					this.setState({
 						did: address.id,
 						daddress1 : address.line1,
-						daddress2: address.line2,
+						daddress2 : address.line2,
+						daddress3 : address.line3,
+						daddress4 : address.line4,
 						dcity: address.city,
 						dzip: address.zipcode,
 						dcountry: address.country
@@ -86,6 +87,8 @@ export default class CompanyCheckout extends Component {
 			data: {
 				line1: this.state.daddress1,
 				line2: this.state.daddress2,
+				line3: this.state.daddress3,
+				line4: this.state.daddress4,
 				zipcode: this.state.dzip,
 				city: this.state.dcity,
 				country: this.state.dcountry
@@ -126,10 +129,10 @@ export default class CompanyCheckout extends Component {
 							<div className="col-6">
 								<h3 className="text-center">Adresse de facturation</h3>
 								<p>
-									{this.state.company_name}<br />
-									{this.state.billing_firstname} {this.state.billing_name}<br/>
-									{this.state.baddress1}<br/>
+									{(this.state.baddress1)?<span>{this.state.baddress1}<br/></span>:''}
 									{(this.state.baddress2)?<span>{this.state.baddress2}<br/></span>:''}
+									{(this.state.baddress3)?<span>{this.state.baddress3}<br/></span>:''}
+									{(this.state.baddress4)?<span>{this.state.baddress4}<br/></span>:''}
 									{this.state.bzip} {this.state.bcity}<br/>
 									{this.state.bcountry}
 								</p>
@@ -137,12 +140,18 @@ export default class CompanyCheckout extends Component {
 							<div className="col-6">
 								<h3 className="text-center">Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
 								{this.state.different && !this.state.saved &&
-									<form>
+									<form className="text-center">
 										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress1} name="daddress1" onChange={handleChange.bind(this)} />
+											<input type="text" className="form-control" value={this.state.daddress1} name="daddress1" placeholder="Nom et prénom" onChange={handleChange.bind(this)} />
 										</div>
 										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress2} name="daddress2" onChange={handleChange.bind(this)} />
+											<input type="text" className="form-control" value={this.state.daddress2} name="daddress2" placeholder="Entreprise" onChange={handleChange.bind(this)} />
+										</div>
+										<div className="form-group">
+											<input type="text" className="form-control" value={this.state.daddress3} name="daddress3" placeholder="Ligne 1" onChange={handleChange.bind(this)} />
+										</div>
+										<div className="form-group">
+											<input type="text" className="form-control" value={this.state.daddress4} name="daddress4" placeholder="Ligne 2" onChange={handleChange.bind(this)} />
 										</div>
 										<div className="form-group row">
 											<div className="col-4">
@@ -160,10 +169,10 @@ export default class CompanyCheckout extends Component {
 								}
 								{this.state.saved &&
 									<div>
-										{this.state.company_name}<br />
-										{this.state.billing_firstname} {this.state.billing_name}<br/>
-										{this.state.daddress1}<br/>
-										{(this.state.daddress1)?<span>{this.state.daddress2}<br /></span>:null}
+										{(this.state.daddress1)?<span>{this.state.daddress1}<br /></span>:null}
+										{(this.state.daddress2)?<span>{this.state.daddress2}<br /></span>:null}
+										{(this.state.daddress3)?<span>{this.state.daddress3}<br /></span>:null}
+										{(this.state.daddress4)?<span>{this.state.daddress4}<br /></span>:null}
 										{this.state.dzip} {this.state.dcity}<br/>
 										{this.state.dcountry}
 									</div>

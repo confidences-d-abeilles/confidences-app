@@ -29,6 +29,8 @@ export default class CompanyManageInfos extends Component {
 						bid: address.id,
 						baddress1: address.line1,
 						baddress2: address.line2,
+						baddress3: address.line3,
+						baddress4: address.line4,
 						bzip: address.zipcode,
 						bcity: address.city,
 						bcountry: address.country
@@ -39,9 +41,12 @@ export default class CompanyManageInfos extends Component {
 						did: address.id,
 						daddress1: address.line1,
 						daddress2: address.line2,
+						daddress3: address.line3,
+						daddress4: address.line4,
 						dzip: address.zipcode,
 						dcity: address.city,
-						dcountry: address.country
+						dcountry: address.country,
+						dphone: address.phone
 					})
 				}
 			})
@@ -56,6 +61,8 @@ export default class CompanyManageInfos extends Component {
 			data : {
 				line1: this.state.baddress1,
 				line2: this.state.baddress2,
+				line3: this.state.baddress3,
+				line4: this.state.baddress4,
 				zipcode: this.state.bzip,
 				city: this.state.bcity,
 				country: this.state.bcountry
@@ -71,9 +78,12 @@ export default class CompanyManageInfos extends Component {
 			data : {
 				line1: this.state.daddress1,
 				line2: this.state.daddress2,
+				line3: this.state.daddress3,
+				line4: this.state.daddress4,
 				zipcode: this.state.dzip,
 				city: this.state.dcity,
-				country: this.state.dcountry
+				country: this.state.dcountry,
+				phone: this.state.dphone
 			}
 		}, this.refs.notif);
 	}
@@ -113,13 +123,19 @@ export default class CompanyManageInfos extends Component {
 					</div>
 					<div className="row">
 						{this.state.user &&
-						<form className="col-6">
+						<form className="col-6 text-center">
 							<h3 className="text-center">Mon adresse de facturation</h3>
 							<div className="form-group">
-								<input type="text" name="baddress1" onChange={handleChange.bind(this)} value={this.state.baddress1} className="form-control" placeholder="Adresse ligne 1 *"/>
+								<input type="text" name="baddress1" onChange={handleChange.bind(this)} value={this.state.baddress1} className="form-control" placeholder="Nom et prénom"/>
 							</div>
 							<div className="form-group">
-								<input type="text" name="baddress2" onChange={handleChange.bind(this)} value={this.state.baddress2} className="form-control" placeholder="Adresse ligne 2"/>
+								<input type="text" name="baddress2" onChange={handleChange.bind(this)} value={this.state.baddress2} className="form-control" placeholder="Entreprise"/>
+							</div>
+							<div className="form-group">
+								<input type="text" name="baddress3" onChange={handleChange.bind(this)} value={this.state.baddress3} className="form-control" placeholder="Adresse ligne 1"/>
+							</div>
+							<div className="form-group">
+								<input type="text" name="baddress4" onChange={handleChange.bind(this)} value={this.state.baddress4} className="form-control" placeholder="Adresse ligne 2"/>
 							</div>
 							<div className="form-group row">
 								<div className="col-4">
@@ -138,13 +154,19 @@ export default class CompanyManageInfos extends Component {
 						</form>
 						}
 						{this.state.user &&
-						<form className="col-6">
-							<h3 className="text-center">Mon adresse de livraison</h3>
+						<form className="col-6 text-center">
+							<h3 className="text-center">Mes informations de livraison</h3>
 							<div className="form-group">
-								<input type="text" name="daddress1" onChange={handleChange.bind(this)} value={this.state.daddress1} className="form-control" placeholder="Adresse ligne 1 *"/>
+								<input type="text" name="daddress1" onChange={handleChange.bind(this)} value={this.state.daddress1} className="form-control" placeholder="Nom et prénom"/>
 							</div>
 							<div className="form-group">
-								<input type="text" name="daddress2" onChange={handleChange.bind(this)} value={this.state.daddress2} className="form-control" placeholder="Adresse ligne 2"/>
+								<input type="text" name="daddress2" onChange={handleChange.bind(this)} value={this.state.daddress2} className="form-control" placeholder="Entreprise"/>
+							</div>
+							<div className="form-group">
+								<input type="text" name="daddress3" onChange={handleChange.bind(this)} value={this.state.daddress3} className="form-control" placeholder="Ligne 1"/>
+							</div>
+							<div className="form-group">
+								<input type="text" name="daddress4" onChange={handleChange.bind(this)} value={this.state.daddress4} className="form-control" placeholder="Ligne 2"/>
 							</div>
 							<div className="form-group row">
 								<div className="col-4">
@@ -156,6 +178,10 @@ export default class CompanyManageInfos extends Component {
 							</div>
 							<div className="form-group">
 								<input type="text" name="dcountry" onChange={handleChange.bind(this)} value={this.state.dcountry} className="form-control" placeholder="Pays / Etat *"/>
+							</div>
+							<hr />
+							<div className="form-group">
+								<input type="text" name="dphone" onChange={handleChange.bind(this)} value={this.state.dphone} className="form-control" placeholder="Numéro de téléphone"/>
 							</div>
 							<div className="form-group">
 								<button className="btn btn-primary" onClick={this.updateDaddress.bind(this)}>Enregistrer les modifications</button>
