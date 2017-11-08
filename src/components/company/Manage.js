@@ -70,8 +70,9 @@ export default class CompanyManage extends Component {
 					<NotificationSystem ref="notif" />
 					<div className="row">
 						<div className="col-3">
-							<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:imgPlaceholder} alt="Logo entreprise" className="img-fluid img-thumbnail" />
-							<br /><br />
+							<div style={{ height: '210px', maxWidth: '100%', flexDirection: 'column'}} className="d-flex justify-content-center align-items-center">
+								<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:imgPlaceholder} alt="Logo entreprise" style={{ maxWidth: '100%', maxHeight: '100%'}} />
+							</div>
 							<ul className="list-group">
 								<Link to="/company/manage"><li className="list-group-item">Tableau de bord</li></Link>
 								<Link to="/company/manage/infos"><li className="list-group-item">Mes informations</li></Link>

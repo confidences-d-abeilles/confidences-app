@@ -4,6 +4,7 @@ import {injectStripe} from 'react-stripe-elements';
 import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import { Redirect } from 'react-router-dom'
+const config = require('../../config.js');
 
 class PayForm extends Component {
 
@@ -16,30 +17,39 @@ class PayForm extends Component {
 
 	handleSubmit = (ev) => {
 	ev.preventDefault();
-	this.props.stripe.createToken({name: this.props.for }).then(({token}) => {
-		if (token) {
-			request({
-				url: '/pay',
-				method: 'post',
-				data : {
-					token: token,
-					bundle: this.props.bundle
-				}
-			}, this.refs.notif).then((res) => {
+	console.log(config.app_url)
+
+	this.props.stripe.createSource({
+		name: this.props.for,
+		metadata : {
+			bundle: this.props.bundle
+		}
+	}).then(({source}) => {
+		request({
+			url: '/payment/prepare',
+			method: 'post',
+			data: {
+				source: source,
+				redirect: config.app_url+'/company/final'
+			}
+		}, this.refs.notif).then((res) => {
+			if (res) {
+				window.location.replace(res.redirect.url);
+			} else {
 				setTimeout(() => {
 					this.setState({
 						redirect: true
-					})
-				}, 3000);
-			});
-		}
+					});
+				}, 3000)
+			}
+		})
 	});
   }
 
 	render () {
 		return (
 			<form onSubmit={this.handleSubmit} className="text-center" style={{ border: 'solid 1px #00E676', padding: '10px', margin: '10px', backgroundColor: '#B9F6CA' }} >
-				{(this.state.redirect)?<Redirect to={this.props.redirect} />:null}
+				{(this.state.redirect)?<Redirect to='/company/final' />:null}
 				<NotificationSystem ref="notif" />
 				<label>Numéro de carte bancaire</label>
 				<CardNumberElement style={{ base: { fontSize: '18px' }}} />
