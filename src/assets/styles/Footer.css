@@ -15,6 +15,14 @@ html, body, #root, #wrapper
 	width: 100%;
 }
 
+.active-upload {
+	padding: 20px 10px;
+	background-color: #DCEDC8;
+	border: solid 1px #AED581;
+	cursor: pointer;
+	width: 100%;
+}
+
 .cover {
 	position: relative;
 	height: 240px;

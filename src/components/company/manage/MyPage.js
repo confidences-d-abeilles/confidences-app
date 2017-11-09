@@ -3,6 +3,8 @@ import { handleChange } from '../../../services/FormService'
 import { Link } from 'react-router-dom'
 import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
+import ReactQuill from 'react-quill';
+
 const config = require('../../../config.js');
 
 export default class CompanyManageMyPage extends Component {
@@ -15,12 +17,21 @@ export default class CompanyManageMyPage extends Component {
 			description : '',
 			involvement : '',
 			logo: null,
-			cover: null
+			cover: null,
+			link1_name: '',
+			link1_url: '',
+			link2_name: '',
+			link2_url: ''
 		}
 	}
 
 	componentDidMount() {
 		this.get();
+		this.setState({
+			newLogo : (document.getElementById("logo").files[0])?document.getElementById("logo").files[0].name:null,
+			newCover : (document.getElementById("cover").files[0])?document.getElementById("cover").files[0].name:null,
+			actuImg : (document.getElementById("actu-img").files[0])?document.getElementById("actu-img").files[0].name:null
+		})
 	}
 
 	get() {
@@ -39,7 +50,8 @@ export default class CompanyManageMyPage extends Component {
 				link1_name: res.link1_name,
 				link1_url: res.link1_url,
 				link2_name: res.link2_name,
-				link2_url: res.link2_url
+				link2_url: res.link2_url,
+				actuTitle: ''
 			});
 		}).catch((err) => {})
 	}
@@ -91,6 +103,7 @@ export default class CompanyManageMyPage extends Component {
 		e.preventDefault()
 		const data = new FormData();
 		data.append('content', this.state.actu);
+		data.append('title', this.state.actuTitle);
 		if (document.getElementById("actu-img").files[0]) {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		}
@@ -129,15 +142,15 @@ export default class CompanyManageMyPage extends Component {
 					</div>
 					<div className="form-group">
 						<label>Photo de couverture de votre page {(this.state.cover)?<a href={config.cdn_url+'/'+this.state.cover} target="_blank">Visualiser l'image actuelle</a>:null}</label>
-						{(!this.state.cover)?<label htmlFor="cover" className="upload">Glisser l'image ici ou cliquez pour en séléctionner une parmi vos fichers<br/>Taille recommandée : 1200x240</label>
-						:<label htmlFor="cover" className="upload">Glisser une nouvelle image ici ou cliquez pour en séléctionner une parmi vos fichers<br/>Taille recommandée : 1200x240</label>}
-						<input type="file" className="form-control" name="cover" id="cover" style={{display:'none'}}/>
+						{(!this.state.cover)?<label htmlFor="cover" className={(this.state.newCover)?'active-upload':'upload'}>Glisser l'image ici ou cliquez pour en séléctionner une parmi vos fichers<br/>Taille recommandée : 1200x240 - {(this.state.newCover)?'Selectionné : '+this.state.newCover:"Aucun fichier séléctionné"}</label>
+						:<label htmlFor="cover" className={(this.state.newCover)?'active-upload':'upload'}>Glisser une nouvelle image ici ou cliquez pour en séléctionner une parmi vos fichers<br/>Taille recommandée : 1200x240 - {(this.state.newCover)?'Selectionné : '+this.state.newCover:"Aucun fichier séléctionné"}</label>}
+						<input type="file" className="form-control" id="cover" onChange={() => { this.setState({ newCover : document.getElementById("cover").files[0].name }) }} style={{display:'none'}}/>
 					</div>
 					<div className="form-group">
 						<label>Logo de votre entreprise {(this.state.logo)?<a href={config.cdn_url+'/'+this.state.logo} target="_blank">Visualiser le logo actuel</a>:null}</label>
-						{(!this.state.logo)?<label htmlFor="logo" className="upload">Glisser votre logo ici ou cliquez pour en séléctionner un parmi vos fichers<br/>Taille recommandée : 280x210</label>
-						:<label htmlFor="logo" className="upload">Glisser votre nouveau logo ici ou cliquez pour en séléctionner un parmi vos fichers<br/>Taille recommandée : 280x210</label>}
-						<input type="file" className="form-control" name="logo" id="logo" style={{display:'none'}}/>
+						{(!this.state.logo)?<label htmlFor="logo" className={(this.state.newLogo)?'active-upload':'upload'}>Glisser votre logo ici ou cliquez pour en séléctionner un parmi vos fichers<br/>Taille recommandée : 280x210 - {(this.state.newLogo)?'Selectionné : '+this.state.newLogo:"Aucun fichier séléctionné"}</label>
+						:<label htmlFor="logo" className={(this.state.newLogo)?'active-upload':'upload'}>Glisser votre nouveau logo ici ou cliquez pour en séléctionner un parmi vos fichers<br/>Taille recommandée : 280x210 - {(this.state.newLogo)?'Selectionné : '+this.state.newLogo:"Aucun fichier séléctionné"}</label>}
+						<input type="file" className="form-control" id="logo" onChange={() => { this.setState({ newLogo : document.getElementById("logo").files[0].name }) }} style={{display:'none'}}/>
 					</div>
 					<div className="form-group">
 						<label>Présentation générale de l’entreprise ({1000 - this.state.description.length} caractères restants)</label>
@@ -168,11 +181,27 @@ export default class CompanyManageMyPage extends Component {
 				<h3 className="text-center">Ajouter une actualité</h3>
 				<form onSubmit={this.createActu.bind(this)}>
 					<div className="form-group">
-						<textarea name="actu" className="form-control" onChange={handleChange.bind(this)} placeholder="Texte de l'actualité"></textarea>
+						<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} placeholder="Titre"/>
 					</div>
 					<div className="form-group">
-						<label htmlFor="actu-img" className="upload">Glisser une image ou cliquez pour en séléctionner un parmi vos fichers<br/>Taille recommandée : 400x300</label>
-						<input type="file" className="form-control" name="actu-img" id="actu-img" style={{display:'none'}}/>
+						<ReactQuill
+							name="actu"
+							className="form-control"
+							onChange={(value) => { this.setState({ actu: value })}}
+							defaultValue={this.state.actu}
+							placeholder="Texte de l'actualité"
+							modules={{
+								toolbar: [
+									['bold', 'italic', 'underline','strike', 'blockquote'],
+									[{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+									['link'],
+									['clean']
+								]
+							}}/>
+					</div>
+					<div className="form-group">
+						<label htmlFor="actu-img" className={(this.state.actuImg)?'active-upload':'upload'}>Glisser une image ou cliquez pour en séléctionner un parmi vos fichers<br/>Taille recommandée : 400x300 - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}</label>
+						<input type="file" className="form-control" id="actu-img" onChange={() => { this.setState({ actuImg : document.getElementById("actu-img").files[0].name }) }} style={{display:'none'}}/>
 					</div>
 					<button className="btn btn-primary">Soumettre</button>
 				</form>

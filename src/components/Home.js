@@ -35,7 +35,7 @@ export default class Home extends Component {
 							des abeilles, à la préservation de la
 							biodiversité en parrainant une ruche.
 						</p>
-						<Link to="/account"><button className="btn btn-secondary" data-toggle="modal" data-target="#createAccount">Parrainer une ruche</button></Link>
+						<Link to="/company/presentation" className="btn btn-secondary mr-4">Service entreprise</Link><Link to="/individual/presentation" className="btn btn-secondary">Service particulier</Link>
 					</div>
 					<div className="col">
 						<div id="carouselHome" className="carousel slide" data-ride="carousel">
@@ -98,7 +98,7 @@ export default class Home extends Component {
 					<div className="col-4 text-center">
 						<Link to="/account"><button className="btn btn-primary" data-toggle="modal" data-target="#createAccount">Parrainer une ruche</button></Link>
 					</div><div className="col-4 text-center">
-						<Link to="/hives" className="btn btn-primary">Lister les ruches</Link>
+						<Link to="/hives" className="btn btn-primary">Découvrir les ruches</Link>
 					</div>
 				</div>
 				<div className="row align-items-center">
