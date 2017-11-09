@@ -14,6 +14,7 @@ export default class CompanyPage extends Component {
 		super (props)
 		this.state = {
 			user : null,
+			hives: [],
 			redirect : false
 		}
 	}
@@ -26,9 +27,13 @@ export default class CompanyPage extends Component {
 			this.setState({
 				user : res
 			})
-		}).catch((err) => {
-			this.setState({
-				redirect: true
+			request({
+				url : '/hive/bundle/'+res.bundles[0].id,
+				method: 'get'
+			}, this.refs.notif).then((res) => {
+				this.setState({
+					hives: res
+				})
 			})
 		})
 	}
@@ -79,9 +84,20 @@ export default class CompanyPage extends Component {
 				<div className="row">
 					<div className="col">
 						<h2 className="text-center">Les ruches que nous parrainons</h2>
+						<div className="row">
+							{this.state.hives.map((hive) => {
+								return (
+									<div className="card col-6">
+										<div className="card-block">
+											<h4 className="card-title">
+												{hive.name}
+											</h4>
+										</div>
+									</div>
+								)
+							})}
+						</div>
 					</div>
-				</div>
-				<div className="row">
 					<div className="col">
 						<h2 className="text-center">Les dernières actualités</h2>
 					</div>

@@ -48,6 +48,9 @@ import Login from './Login';
 import Header from './Header';
 import Footer from './Footer';
 
+
+// other
+
 import Signup from './Signup';
 import Cgv from './Cgv';
 import Mentions from './Mentions';
@@ -56,6 +59,7 @@ import Contact from './Contact';
 import Jobs from './Jobs';
 import Faq from './Faq';
 import Tarifs from './Tarifs';
+import Hives from './Hives'
 
 
 export default class Wrapper extends Component {
@@ -112,6 +116,7 @@ export default class Wrapper extends Component {
 							<Route exact path="/cgv" component={Cgv} />
 							<Route exact path="/mentions_legales" component={Mentions} />
 							<Route exact path="/tarifs" component={Tarifs} />
+							<Route exact path="/hives" component={Hives} />
 						</Switch>
 					</div>
 				</div>
