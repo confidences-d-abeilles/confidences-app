@@ -3,6 +3,10 @@ html, body, #root, #wrapper
 	height: 100%;
 }
 
+#wrapper {
+	overflow-y: scroll;
+}
+
 .upload {
 	padding: 20px 10px;
 	background-color: #E1F5FE;
