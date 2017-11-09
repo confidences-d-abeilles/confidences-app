@@ -15,6 +15,7 @@ export default class CompanyPage extends Component {
 		this.state = {
 			user : null,
 			hives: [],
+			news: [],
 			redirect : false
 		}
 	}
@@ -82,9 +83,9 @@ export default class CompanyPage extends Component {
 					</div>
 				:''}
 				<div className="row">
-					<div className="col">
+					<div className="col-6">
 						<h2 className="text-center">Les ruches que nous parrainons</h2>
-						<div className="row">
+						<div className="card-dec">
 							{this.state.hives.map((hive) => {
 								return (
 									<div className="card col-6">
@@ -98,8 +99,24 @@ export default class CompanyPage extends Component {
 							})}
 						</div>
 					</div>
-					<div className="col">
+					<div className="col-6">
 						<h2 className="text-center">Les dernières actualités</h2>
+							<div className="card-deck">
+								{this.state.user && this.state.user.news.map((actu) => {
+									const date = new Date(actu.createdAt);
+									return (
+										<div className="card">
+											<img className="card-img-top img-fluid" src={config.cdn_url+'/'+actu.img} alt="Card image cap" />
+											<div className="card-block">
+												<p className="card-text">
+													{actu.content}
+												</p>
+												<p className="card-text"><small className="text-muted">{date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()}</small></p>
+											</div>
+										</div>
+									)
+								})}
+							</div>
 					</div>
 				</div>
 				<FooterPage />

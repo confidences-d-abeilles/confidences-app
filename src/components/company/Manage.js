@@ -74,12 +74,12 @@ export default class CompanyManage extends Component {
 								<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:imgPlaceholder} alt="Logo entreprise" style={{ maxWidth: '100%', maxHeight: '100%'}} />
 							</div>
 							<ul className="list-group">
-								<Link to="/company/manage"><li className="list-group-item">Tableau de bord</li></Link>
-								<Link to="/company/manage/infos"><li className="list-group-item">Mes informations</li></Link>
-								<Link to="/company/manage/mypage"><li className="list-group-item">Ma page dediee</li></Link>
-								<Link to="/company/manage/customize"><li className="list-group-item">Personnalisation</li></Link>
-								<Link to="/company/manage/bills"><li className="list-group-item">Mes factures</li></Link>
-								<Link to="/logout"><li className="list-group-item">Deconnexion</li></Link>
+								<li className="list-group-item"><Link to="/company/manage">Tableau de bord</Link></li>
+								<li className="list-group-item"><Link to="/company/manage/infos">Mes informations</Link></li>
+								<li className="list-group-item"><Link to="/company/manage/mypage">Ma page dediee</Link></li>
+								<li className="list-group-item"><Link to="/company/manage/customize">Personnalisation</Link></li>
+								<li className="list-group-item"><Link to="/company/manage/bills">Mes factures</Link></li>
+								<li className="list-group-item"><Link to="/logout">Deconnexion</Link></li>
 							</ul>
 						</div>
 						<div className="col-9">

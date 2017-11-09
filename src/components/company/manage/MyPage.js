@@ -87,6 +87,25 @@ export default class CompanyManageMyPage extends Component {
 		}
 	}
 
+	createActu(e) {
+		e.preventDefault()
+		const data = new FormData();
+		data.append('content', this.state.actu);
+		if (document.getElementById("actu-img").files[0]) {
+			data.append('img', document.getElementById('actu-img').files[0]);
+		}
+		request({
+			url: '/news',
+			method: 'post',
+			data: data,
+			header: {
+				'content-type' : 'multipart/form-data'
+			}
+		}, this.refs.notif).then((res) => {
+
+		})
+	}
+
 	render () {
 		return (
 			<div>
@@ -145,7 +164,17 @@ export default class CompanyManageMyPage extends Component {
 					<div className="form-group">
 						<input type="submit" value="Enregistrer les modifications" className="btn btn-primary" onClick={this.submit.bind(this)} />
 					</div>
-
+				</form>
+				<h3 className="text-center">Ajouter une actualité</h3>
+				<form onSubmit={this.createActu.bind(this)}>
+					<div className="form-group">
+						<textarea name="actu" className="form-control" onChange={handleChange.bind(this)} placeholder="Texte de l'actualité"></textarea>
+					</div>
+					<div className="form-group">
+						<label htmlFor="actu-img" className="upload">Glisser une image ou cliquez pour en séléctionner un parmi vos fichers<br/>Taille recommandée : 400x300</label>
+						<input type="file" className="form-control" name="actu-img" id="actu-img" style={{display:'none'}}/>
+					</div>
+					<button className="btn btn-primary">Soumettre</button>
 				</form>
 			</div>
 		)
