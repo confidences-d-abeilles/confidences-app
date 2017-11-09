@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { isLoggedIn } from './services/AuthService';
 import CompanyPage from './components/company/Page';
 import Wrapper from './components/Wrapper';
+
 import {StripeProvider} from 'react-stripe-elements';
 
 import {
@@ -38,6 +39,7 @@ class App extends Component {
 						<Route path="/ruches" component={Wrapper} />
 						<Route path="/admin" component={Wrapper} />
 						<Route path="/signup" component={Wrapper} />
+						<Route path="/hives" component={Wrapper} />
 						<Route path="/:namespace" component={CompanyPage} />
 						<Route path="/" component={Wrapper} />
 					</Switch>
