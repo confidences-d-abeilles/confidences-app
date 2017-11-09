@@ -50,11 +50,11 @@ export default class CompanyPage extends Component {
 						<h1>{(this.state.user)?this.state.user.company_name:null}</h1>
 					</div>
 				</div>
-				<div className="row align-items-center">
-					<div className="col-4 logo">
+				<div className="row align-items-center py-4">
+					<div className="col-4 logo mr-4">
 						<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:null} alt="Logo entreprise" />
 					</div>
-					<div className="col m-4">
+					<div className="col">
 						<div className="card">
   							<div className="card-block">
 								{(this.state.user)?this.state.user.description:null}
@@ -88,7 +88,7 @@ export default class CompanyPage extends Component {
 						<div className="card-dec">
 							{this.state.hives.map((hive) => {
 								return (
-									<div className="card col-6">
+									<div className="card">
 										<div className="card-block">
 											<h4 className="card-title">
 												{hive.name}
