@@ -22,7 +22,11 @@ export default class CompanyManageInfos extends Component {
 			url : '/user/me',
 			method : 'get',
 		}, this.refs.notif).then((res) => {
-			this.setState({ user : res });
+			this.setState({
+				user : res,
+				email: res.email,
+				phone: res.phone
+			});
 			res.addresses.map((address) => {
 				if (address.type === 1) {
 					this.setState({
@@ -88,6 +92,37 @@ export default class CompanyManageInfos extends Component {
 		}, this.refs.notif);
 	}
 
+	changeInfos(e) {
+		e.preventDefault()
+		request({
+			url: '/user',
+			method: 'put',
+			data: {
+				phone: this.state.phone,
+				email: this.state.email
+			}
+		}, this.refs.notif)
+	}
+
+
+	changePassword(e) {
+		e.preventDefault()
+		if (this.state.password === this.state.conf) {
+			request({
+				url: '/user',
+				method: 'put',
+				data: {
+					password: this.state.password
+				}
+			}, this.refs.notif)
+		} else {
+			this.refs.notif.addNotification({
+				message: 'Le nouveau mot de passe et sa confirmation ne correspondent pas',
+				level: 'warning'
+			})
+		}
+	}
+
 	render () {
 		return (
 			<div>
@@ -100,26 +135,42 @@ export default class CompanyManageInfos extends Component {
 					</div>
 				</div>
 					<div className="row">
+
 						{(this.state.user)?
 						<div className="col">
-							<h3 className="text-center">Mon entreprise</h3>
-							<h4>{this.state.user.company_name}</h4>
+							<h3 className="text-center">Mes informations</h3>
 							<p>
-								<strong>SIREN :</strong> {this.state.user.siren}<br />
-							</p>
-						</div>
-						:'Chargement en cours...'}
-						{(this.state.user)?
-						<div className="col">
-							<h3 className="text-center">Mes informations personnelles</h3>
-							<p>
+								<strong>Entreprise :</strong> {this.state.user.company_name}<br />
+								<strong>Siret :</strong> {this.state.user.siret}<br />
 								<strong>Nom :</strong> {this.state.user.name}<br />
 								<strong>Prénom :</strong> {this.state.user.firstname}<br />
 								<strong>Poste dans l'entreprise :</strong> {this.state.user.job}<br />
-								<strong>Numéro de téléphone :</strong> {this.state.user.phone}<br />
+								<form onSubmit={this.changeInfos.bind(this)}>
+									<div className="form-group">
+										<input type="phone" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control" placeholder="Numéro de téléphone" />
+									</div>
+									<div className="form-group">
+										<input type="email" name="email" onChange={handleChange.bind(this)} value={this.state.email} className="form-control" placeholder="Email" />
+									</div>
+									<button className="btn btn-primary">Mettre à jour</button>
+								</form>
 							</p>
 						</div>
 						:null}
+						{(this.state.user)?
+						<div className="col">
+							<h3 className="text-center">Modifier mon mot de passe</h3>
+							<form onSubmit={this.changePassword.bind(this)}>
+								<div className="form-group">
+									<input type="password" name="password" onChange={handleChange.bind(this)} value={this.state.password} className="form-control" placeholder="Nouveau mot de passe" />
+								</div>
+								<div className="form-group">
+									<input type="password" name="conf" onChange={handleChange.bind(this)} value={this.state.conf} className="form-control" placeholder="Confirmation du nouveau mot de passe" />
+								</div>
+								<button className="btn btn-primary">Enregistrer</button>
+							</form>
+						</div>
+						:'Chargement en cours...'}
 					</div>
 					<div className="row">
 						{this.state.user &&

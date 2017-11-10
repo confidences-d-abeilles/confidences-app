@@ -84,7 +84,7 @@ export default class ContributorApproach extends Component {
 							Que vous ayez choisi l&#39;une ou l&#39;autre des méthodes il vous faudra renseigner quelques
 détails concernant l&#39;entreprise contactée pour pouvoir toucher une commission. Il vous
 suffit pour cela de cliquer sur &quot;AJOUTER UNE ENTREPRISE&quot; puis de compléter le petit
-formulaire ; bien remplir le champ numéro SIREN et celle-ci sera ajoutée à votre liste. Il ne
+formulaire ; bien remplir le champ numéro siret et celle-ci sera ajoutée à votre liste. Il ne
 vous reste alors plus qu&#39;à attendre une inscription et un parrainage de la part de
 l&#39;entreprise que vous avez contacté. Son statut sera mis à jour dans la liste des entreprises
 démarchées.<br /><br />

@@ -12,20 +12,20 @@ export default class ContributorLead extends Component {
 		this.state = {
 			redirect : false,
 			company_name: '',
-			siren: '',
+			siret: '',
 			contact: 0
 		}
 	}
 
 	addLead(e) {
 		e.preventDefault();
-		if (this.state.contact !== 0 && this.state.company_name && this.state.siren) {
+		if (this.state.contact !== 0 && this.state.company_name && this.state.siret) {
 			request({
 				url : '/lead',
 				method: 'post',
 				data : {
 					company_name : this.state.company_name,
-					siren : this.state.siren,
+					siret : this.state.siret,
 					contact: this.state.contact
 				}
 			}, this.refs.notif).then((res) => {
@@ -41,7 +41,7 @@ export default class ContributorLead extends Component {
 		}
 	}
 
-	handleSiren(event) {
+	handlesiret(event) {
 		const target = event.target;
 	    const name = target.name;
 	    const value = target.value.replace(/ /g,'');
@@ -72,7 +72,7 @@ export default class ContributorLead extends Component {
 								<input type="text" name="company_name" className="form-control" placeholder="Raison sociale de l'entreprise" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" name="siren" className="form-control" placeholder="Numero de SIREN" onChange={this.handleSiren.bind(this)} />
+								<input type="text" name="siret" className="form-control" placeholder="Numero de siret" onChange={this.handlesiret.bind(this)} />
 							</div>
 							<div className="form-group">
 								<select name="contact" onChange={handleChange.bind(this)} className="form-control">

@@ -10,14 +10,14 @@ export default class CompanyIdentity extends Component {
 		super(props);
 		this.state = {
 			company_name: '',
-			siren: '',
+			siret: '',
 			job: '',
 			website: '',
 			redirect : false
 		}
 	}
 
-	handleSiren(event) {
+	handlesiret(event) {
 		const target = event.target;
 	    const name = target.name;
 	    const value = target.value.replace(/ /g,'');
@@ -28,7 +28,7 @@ export default class CompanyIdentity extends Component {
 
 	identify(e) {
 		e.preventDefault();
-		if (!this.state.company_name || !this.state.siren || !this.state.job) {
+		if (!this.state.company_name || !this.state.siret || !this.state.job) {
 			this.refs.notif.addNotification({
 				message: "Merci de renseigner tous les champs",
 				level: 'warning'
@@ -39,7 +39,7 @@ export default class CompanyIdentity extends Component {
 				method : 'put',
 				data : {
 					company_name : this.state.company_name,
-					siren : this.state.siren,
+					siret : this.state.siret,
 					job : this.state.job,
 					website : this.state.website,
 					onboard : 2
@@ -73,7 +73,7 @@ export default class CompanyIdentity extends Component {
 								<input type="text" className="form-control" name="company_name" placeholder="Raison sociale" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" className="form-control" name="siren" placeholder="Numero de SIREN" onChange={this.handleSiren.bind(this)} />
+								<input type="text" className="form-control" name="siret" placeholder="Numero de siret" onChange={this.handlesiret.bind(this)} />
 							</div>
 							<div className="form-group">
 								<input type="text" className="form-control" name="job" placeholder="Fonction dans la societe" onChange={handleChange.bind(this)} />

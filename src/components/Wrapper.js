@@ -38,6 +38,7 @@ import CompanyCheckout from './company/Checkout';
 import CompanyEnd from './company/End';
 import CompanyManage from './company/Manage';
 import CompanyFinal from './company/Final';
+import More from './company/More';
 
 //admin
 
@@ -59,8 +60,8 @@ import Contact from './Contact';
 import Jobs from './Jobs';
 import Faq from './Faq';
 import Tarifs from './Tarifs';
-import Hives from './Hives'
-
+import Hives from './Hives';
+import Forgot from './Forgot';
 
 export default class Wrapper extends Component {
 
@@ -74,6 +75,7 @@ export default class Wrapper extends Component {
 							<Route exact path="/" component={Home} />
 							<Route exact path="/logout" component={Logout} />
 							<Route exact path="/account" component={MyAccount} />
+							<Route exact path="/forgot" component={Forgot} />
 							<Route exact path="/login" component={Login} />
 
 							<Route exact path="/contributor/presentation" component={ContributorPresentation} />
@@ -96,6 +98,7 @@ export default class Wrapper extends Component {
 							<Route path="/individual/manage" component={IndividualManage} />
 
 							<Route exact path="/company/presentation" component={CompanyPresentation} />
+							<Route exact path="/company/more" component={More} />
 							<Route exact path="/company/identity" component={CompanyIdentity} />
 							<Route exact path="/company/address" component={CompanyAddress} />
 							<Route exact path="/company/wish" component={CompanyWish} />

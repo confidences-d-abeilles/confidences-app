@@ -14,6 +14,7 @@ export default class Signup extends Component {
 			name: '',
 			email: '',
 			phone: '',
+			school: '',
 			password: '',
 			confirmation: '',
 			user_type: this.getType(this.props.match.params.type),
@@ -57,6 +58,7 @@ export default class Signup extends Component {
 					name : this.state.name,
 					email : this.state.email,
 					phone : this.state.phone,
+					school : this.state.school,
 					password : this.state.password,
 					user_type : this.state.user_type
 				}
@@ -120,7 +122,7 @@ export default class Signup extends Component {
 								<input type="email" name="email" className="form-control" placeholder="Adresse email *" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="phone" name="phone" className="form-control" placeholder="Numéro de telephone *" onChange={handleChange.bind(this)} />
+								<input type={(this.state.user_type === 3)?'text':'phone'} name={(this.state.user_type === 3)?'school':'phone'} className="form-control" placeholder={(this.state.user_type === 3)?'Ecole ou établissement':'Numéro de telephone *'} onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
 								<input type="password" name="password" className="form-control" placeholder="Mot de passe *" onChange={handleChange.bind(this)} />

@@ -24,6 +24,7 @@ class App extends Component {
 				<Router>
 					<Switch>
 						<Route path="/login" component={Wrapper} />
+						<Route path="/forgot" component={Wrapper} />
 						<Route path="/logout" component={Wrapper} />
 						<Route path="/account" component={Wrapper} />
 						<Route path="/company" component={Wrapper} />
