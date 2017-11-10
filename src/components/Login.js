@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { handleChange } from '../services/FormService';
 import { login } from '../services/AuthService';
 import request from '../services/Net.js'
@@ -60,6 +60,7 @@ export default class Signup extends Component {
 							<div className="form-group">
 								<input type="password" name="password" className="form-control" placeholder="Mot de passe" onChange={handleChange.bind(this)} />
 							</div>
+							<Link to="/forgot">Mot de passe oublié ?</Link><br/>
 							<input type="submit" className="btn btn-primary" value="Se connecter" onClick={this.login.bind(this)} />
 						</form>
 					</div>

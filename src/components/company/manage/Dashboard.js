@@ -29,26 +29,6 @@ export default class CompanyManageDashboard extends Component {
 					<NotificationSystem ref="notif" />
 					<div className="col text-center"><a href={(this.state.user)?'/'+this.state.user.namespace:''} target="_blank" className="btn btn-secondary">Consulter ma page entreprise</a></div>
 				</div>
-				<div className="row">
-					<div className="col">
-						{(this.state.user)?
-							this.state.user.news.map((actu) => {
-								const date = new Date(actu.createdAt);
-								return (
-									<div className="card my-2" key={actu.id}>
-										<div className="card-block">
-											<div className="card-subtitile text-muted">
-												{date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()+' à '+date.getHours()+'h'+date.getMinutes()}
-											</div>
-											<div className="card-text">
-												{actu.content}
-											</div>
-										</div>
-									</div>
-								)
-							}):''}
-					</div>
-				</div>
 			</div>
 		);
 	}

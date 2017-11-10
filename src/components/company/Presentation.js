@@ -85,7 +85,7 @@ export default class CompanyPresentation extends Component {
 						<Link to="/signup/company" className="btn btn-primary">Parrainer une ruche</Link>
 					</div>
 					<div className="col-4 text-center">
-						<a href="https://confidencesdabeilles.fr/parrainer-ruche/entreprise" className="btn btn-primary" target="_blank" rel="noopener noreferrer">En savoir plus</a>
+						<Link to="/company/more"className="btn btn-primary">En savoir plus</Link>
 					</div>
 				</div>
 			</div>

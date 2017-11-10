@@ -77,7 +77,6 @@ export default class ContributorManageInfosSocial extends Component {
 				<NotificationSystem ref="notif" />
 				{(this.state.loading)?'Chargement en cours...':
 					<div>
-						<p className="alert alert-warning my-2">[Work in Progress]</p>
 						<form className="row py-4">
 							<div className="col-6 text-center">
 								<div className="form-group">
