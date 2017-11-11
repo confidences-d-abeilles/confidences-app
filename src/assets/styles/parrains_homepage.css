@@ -18,6 +18,9 @@
 	font-weight: bold;
 	font-size: 1em;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 #parrains a img {

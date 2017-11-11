@@ -59,6 +59,14 @@ export default class Bundle extends Component {
 		this.props.refresh();
 	}
 
+	delete( {
+		request({
+			url: '/bundle/'+this.props.id,
+			method: 'delete'
+		}, this.refs.notif);
+		this.props.refresh();
+	})
+
 	render () {
 		return (
 			<div>
@@ -83,6 +91,7 @@ export default class Bundle extends Component {
 							<button className="btn btn-primary mx-2">Associer cette ruche</button>
 						</form>
 						<button className="btn btn-primary" onClick={this.validate.bind(this)}>Valider la préparation du parrainage</button>
+						<button className="btn btn-primary" onClick={this.delete.bind(this)}>Supprimer ce parrainage</button>
 					</div>
 				:'Chargement en cours...'}
 			</div>
