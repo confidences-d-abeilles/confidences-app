@@ -41,7 +41,8 @@ export default class AdminManageFaq extends Component {
 			method : 'post',
 			data : {
 				question : this.state.newQuestion,
-				answer : this.state.newAnswer
+				answer : this.state.newAnswer,
+				type : this.state.type
 			}
 		}, this.refs.notif).then((res) => {
 			this.getQA()
@@ -61,6 +62,15 @@ export default class AdminManageFaq extends Component {
 						</div>
 						<div className="form-group">
 							<textarea className="form-control" placeholder="Réponse" name="newAnswer" onChange={handleChange.bind(this)} />
+						</div>
+						<div className="form-group">
+							<select className="form-control" name="type" onChange={handleChange.bind(this)}>
+								<option value="0" >Cible</option>
+								<option value="1">Public</option>
+								<option value="2">Apporteur d'affaire</option>
+								<option value="3">Entreprise</option>
+								<option value="4">Particulier</option>
+							</select>
 						</div>
 						<div className="form-group">
 							<input className="btn btn-primary" type="submit" value="Ajouter" onClick={this.addQA.bind(this)} />

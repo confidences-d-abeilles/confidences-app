@@ -12,9 +12,10 @@ export default class Home extends Component {
 		super (props)
 		this.state = {}
 	}
+
 	componentDidMount() {
 		request({
-			url : '/users',
+			url : '/user',
 			method: 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({ users : res });
