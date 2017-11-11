@@ -59,13 +59,13 @@ export default class Bundle extends Component {
 		this.props.refresh();
 	}
 
-	delete( {
+	delete () {
 		request({
 			url: '/bundle/'+this.props.id,
 			method: 'delete'
 		}, this.refs.notif);
 		this.props.refresh();
-	})
+	}
 
 	render () {
 		return (
