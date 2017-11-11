@@ -55,16 +55,18 @@ export default class Bundle extends Component {
 			data : {
 				state: 3
 			}
-		}, this.refs.notif);
-		this.props.refresh();
+		}, this.refs.notif).then((res) => {
+			this.props.refresh();
+		});
 	}
 
 	delete () {
 		request({
 			url: '/bundle/'+this.props.id,
 			method: 'delete'
-		}, this.refs.notif);
-		this.props.refresh();
+		}, this.refs.notif).then((res) => {
+			this.props.refresh();
+		});
 	}
 
 	render () {
