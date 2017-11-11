@@ -18,6 +18,10 @@ export default class Bundle extends Component {
 		this.get();
 	}
 
+	componentWillReceiveProps() {
+		this.get();
+	}
+
 	get() {
 		request({
 			url: '/bundle/'+this.props.id,
