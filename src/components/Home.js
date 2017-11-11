@@ -3,7 +3,9 @@ import imgPlaceholder from '../assets/img/img-placeholder.gif';
 import NotificationSystem from 'react-notification-system'
 import request from '../services/Net'
 import { Link } from 'react-router-dom'
+import '../assets/styles/parrains_homepage.css'
 
+const defaultImg = require("../assets/img/profile.png")
 const config = require('../config.js');
 
 export default class Home extends Component {
@@ -72,11 +74,10 @@ export default class Home extends Component {
 							{this.state.users.map((user) => {
 								if (user.user_type === 1 || user.user_type  === 2) {
 									return (
-										<div key={user.id}>
-											<Link to={'/'+user.namespace}>
-											<img src={(user.logo)?config.cdn_url+'/'+user.logo:''} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name} />
-											</Link>
-										</div>
+										<Link to={'/'+user.namespace}>
+										<img src={(user.logo)?config.cdn_url+'/'+user.logo:defaultImg} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name} />
+										{(user.company_name)?user.company_name:user.firstname+' '+user.name}
+										</Link>
 									)
 								} else {
 									return null;
