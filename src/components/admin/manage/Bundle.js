@@ -15,16 +15,16 @@ export default class Bundle extends Component {
 	}
 
 	componentDidMount() {
-		this.get();
+		this.get(this.props.id);
 	}
 
-	componentWillReceiveProps() {
-		this.get();
+	componentWillReceiveProps(next) {
+		this.get(next.id);
 	}
 
-	get() {
+	get(id) {
 		request({
-			url: '/bundle/'+this.props.id,
+			url: '/bundle/'+id,
 			method: 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
