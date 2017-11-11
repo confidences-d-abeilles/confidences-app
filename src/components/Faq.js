@@ -15,7 +15,7 @@ export default class Faq extends Component {
 
 	componentDidMount() {
 		request({
-			url : 'faq',
+			url : '/faq/1',
 			method : 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({

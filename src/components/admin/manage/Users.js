@@ -17,7 +17,7 @@ export default class AdminManageUsers extends Component {
 
 	getUsers() {
 		request({
-			url: '/users',
+			url: '/user',
 			method: 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
