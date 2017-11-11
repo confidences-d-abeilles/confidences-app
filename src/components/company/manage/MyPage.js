@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { handleChange } from '../../../services/FormService'
+import { handleChange, handleTick } from '../../../services/FormService'
 import { Link } from 'react-router-dom'
 import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
@@ -21,7 +21,8 @@ export default class CompanyManageMyPage extends Component {
 			link1_name: '',
 			link1_url: '',
 			link2_name: '',
-			link2_url: ''
+			link2_url: '',
+			visible: false
 		}
 	}
 
@@ -51,7 +52,7 @@ export default class CompanyManageMyPage extends Component {
 				link1_url: res.link1_url,
 				link2_name: res.link2_name,
 				link2_url: res.link2_url,
-				actuTitle: ''
+				visible: res.visible
 			});
 		}).catch((err) => {})
 	}
@@ -78,6 +79,7 @@ export default class CompanyManageMyPage extends Component {
 			formData.append('link1_url', this.state.link1_url);
 			formData.append('link2_name', this.state.link2_name);
 			formData.append('link2_url', this.state.link2_url);
+			formData.append('visible', this.state.visible);
 			if (document.getElementById("cover").files[0]) {
 				formData.append('cover', document.getElementById("cover").files[0]);
 			}
@@ -173,6 +175,9 @@ export default class CompanyManageMyPage extends Component {
 					</div>
 					<div className="form-group">
 						<input type="texte" name="link2_url" className="form-control" value={this.state.link2_url} placeholder="URL du bouton d'action 2" onChange={handleChange.bind(this)} />
+					</div>
+					<div className="form-group">
+						<input type="checkbox" name="visible" onChange={handleTick.bind(this)} checked={this.state.visible} /> Rendre ma page publique
 					</div>
 					<div className="form-group">
 						<input type="submit" value="Enregistrer les modifications" className="btn btn-primary" onClick={this.submit.bind(this)} />
