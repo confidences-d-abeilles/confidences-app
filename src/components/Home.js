@@ -15,7 +15,7 @@ export default class Home extends Component {
 
 	componentDidMount() {
 		request({
-			url : '/user',
+			url : '/user/public',
 			method: 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({ users : res });
