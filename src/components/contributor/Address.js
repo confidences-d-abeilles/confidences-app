@@ -13,6 +13,8 @@ export default class ContributorAddress extends Component {
 			message: '',
 			address1: '',
 			address2: '',
+			address3: '',
+			address4: '',
 			city: '',
 			zipcode: '',
 			country: 'France'
@@ -31,8 +33,10 @@ export default class ContributorAddress extends Component {
 				url: '/address',
 				method : 'post',
 				data : {
-					address1 : this.state.address1,
-					address2 : this.state.address2,
+					line1 : this.state.address1,
+					line2 : this.state.address2,
+					line3 : this.state.address3,
+					line4 : this.state.address4,
 					city : this.state.city,
 					zipcode : this.state.zipcode,
 					country: this.state.country,
@@ -67,14 +71,14 @@ export default class ContributorAddress extends Component {
 					<div className="col-6">
 						<form className="text-center">
 							<h2 className="text-center my-4">Votre adresse</h2>
-							{(this.state.message)?
-								<p className="alert alert-danger">{this.state.message}</p>
-								:null}
 							<div className="form-group">
-								<input type="text" name="address1" className="form-control" placeholder="Adresse ligne 1" onChange={handleChange.bind(this)} />
+								<input type="text" name="address1" className="form-control" placeholder="Nom et prénom *" value={this.state.address1} onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" name="address2" className="form-control" placeholder="Adresse ligne 2" onChange={handleChange.bind(this)} />
+								<input type="text" name="address3" className="form-control" placeholder="Adresse ligne 1 *" onChange={handleChange.bind(this)} />
+							</div>
+							<div className="form-group">
+								<input type="text" name="address4" className="form-control" placeholder="Adresse ligne 2" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
 								<input type="text" name="city" className="form-control" placeholder="Ville" onChange={handleChange.bind(this)} />
