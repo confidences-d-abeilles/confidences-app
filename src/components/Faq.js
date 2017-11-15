@@ -33,6 +33,9 @@ export default class Faq extends Component {
 						<h2 className="text-center">
 							FAQ
 						</h2>
+						<p>
+							Nous avons oublié de répondre à des questions ? Venez donc nous les soumettre <a href="https://goo.gl/forms/omh9deJlroedr5732" target="_blank">ici</a> !
+						</p>
 						{this.state.list.map((item) => {
 							return (
 								<div className="card" key="item.id">
