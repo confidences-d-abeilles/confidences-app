@@ -8,7 +8,7 @@ export default class Contact extends Component {
 	constructor(props) {
 		super (props);
 		this.state = {
-
+			message: null
 		}
 	}
 
@@ -40,7 +40,13 @@ export default class Contact extends Component {
 				demand: this.state.demand,
 				content: this.state.content
 			}
-		}, this.refs.notif)
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				content: '',
+				demand: '0',
+				message: 'Votre message a bien été envoyé. Nous allons le traiter dans les plus brefs délais.'
+			})
+		})
 	}
 
 	render () {
@@ -99,6 +105,8 @@ export default class Contact extends Component {
 								<textarea className="form-control" name="content" value={this.state.content} placeholder="Mon message *" onChange={handleChange.bind(this)}>
 								</textarea>
 							</div>
+							{this.state.message &&
+								<p className="alert alert-success">{this.state.message}</p>}
 							<div className="form-group text-center">
 								<input type="submit" className="btn btn-secondary" value="Envoyer" onClick={this.submitContact.bind(this)} />
 							</div>
