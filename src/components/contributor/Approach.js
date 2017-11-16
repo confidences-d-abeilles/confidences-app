@@ -15,8 +15,20 @@ export default class ContributorApproach extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			question: ''
+			question: '',
+			faq: []
 		}
+	}
+
+	componentDidMount() {
+		request({
+			url: '/faq/4',
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				faq: res
+			});
+		})
 	}
 
 	submitQuestion(e) {
@@ -190,43 +202,215 @@ de le recontacter ultérieurement pour ne pas le déranger. Donnez-lui trois pos
 						<div className="collapse" id="supports">
 							<p>Templates de mail pour entrer en contact avec une entreprise</p>
 							<div className="card-deck">
-								<div className="card">
+								<div className="card" data-toggle="modal" data-target="#modal1" style={{ cursor: 'pointer' }}>
 									<div className="card-block">
 										<p className="card-text text-center lead">
 											Je connais mon interlocuteur
 										</p>
 									</div>
 								</div>
-								<div className="card">
+								<div className="modal fade" id="modal1">
+								  <div className="modal-dialog modal-lg" role="document">
+								    <div className="modal-content">
+								      <div className="modal-header">
+								        <h5 className="modal-title">Je connais mon interlocuteur</h5>
+								        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">&times;</span>
+								        </button>
+								      </div>
+								      <div className="modal-body">
+								        <p>
+											Objet : Tentative de contact<br /><br />
+											Bonjour Madame, Monsieur [x],<br /><br />
+											Je me permets de vous contacter au sujet de la Responsabilité Sociétale et Environnementale (RSE)
+											des entreprises de la part de la société Confidences d’Abeilles. Elle propose aujourd’hui un service de
+											parrainage de ruches à destination d’entreprises comme la vôtre. En échange, vous recevrez des pots
+											de miel à offrir à vos équipes ou vos partenaires.<br /><br />
+											A quel moment et sur quel numéro seriez-vous joignable pour en discuter ?<br /><br />
+											Je vous souhaite une excellente journée,<br /><br />
+											[x]
+								        </p>
+								      </div>
+								      <div className="modal-footer">
+								        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+
+								<div className="card" data-toggle="modal" data-target="#modal2" style={{ cursor: 'pointer' }}>
 									<div className="card-block">
 										<p className="card-text text-center lead">
 											Je connais une personne dans la société
 										</p>
 									</div>
 								</div>
-								<div className="card">
+
+								<div className="modal fade" id="modal2">
+								  <div className="modal-dialog modal-lg" role="document">
+								    <div className="modal-content">
+								      <div className="modal-header">
+								        <h5 className="modal-title">Je connais une personne dans la société</h5>
+								        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">&times;</span>
+								        </button>
+								      </div>
+								      <div className="modal-body">
+								        <p>
+											Objet : Tentative de contact<br /><br />
+											Madame, Monsieur [x],<br /><br />
+											Ayant connaissance de votre activité par le biais de [x qui travaille chez vous] je crois savoir/pense
+											que le service proposé par Confidences d’Abeilles vous intéresse.<br /><br />
+											En effet, votre entreprise a la possibilité de parrainer des ruches et de répondre ainsi aux enjeux liés
+											à la Responsabilité Sociétale et Environnementale (RSE). En échange, vous recevrez des pots de miel
+											à offrir à vos équipes ou vos partenaires.<br /><br />
+											A quel moment et sur quel numéro seriez-vous joignable pour en discuter ?<br /><br />
+											Je vous souhaite une excellente journée,<br /><br />
+											[x]
+								        </p>
+								      </div>
+								      <div className="modal-footer">
+								        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+
+								<div className="card" data-toggle="modal" data-target="#modal3" style={{ cursor: 'pointer' }}>
 									<div className="card-block">
 										<p className="card-text text-center lead">
 											Je ne connais personne dans la société
 										</p>
 									</div>
 								</div>
+
+							<div className="modal fade" id="modal3">
+							  <div className="modal-dialog modal-lg" role="document">
+								<div className="modal-content">
+								  <div className="modal-header">
+									<h5 className="modal-title">Je ne connais personne dans la société</h5>
+									<button type="button" className="close" data-dismiss="modal" aria-label="Close">
+									  <span aria-hidden="true">&times;</span>
+									</button>
+								  </div>
+								  <div className="modal-body">
+									<p>
+										Objet : Tentative de contact<br /><br />
+										Madame, Monsieur,<br /><br />
+										Je m’appelle [x] et suis étudiant de/en [x]. Je me suis renseigné sur votre société et je pense que le
+										service proposé par Confidences d’Abeilles est susceptible de vous intéresser.<br /><br />
+										En effet, votre entreprise a la possibilité de parrainer des ruches et de répondre ainsi aux enjeux liés
+										à la Responsabilité Sociétale et Environnementale (RSE). En échange elle recevra des pots de miel
+										qu’elle pourra offrir à ses équipes ou partenaires.<br /><br />
+										A quel moment et sur quel numéro seriez-vous joignable pour en discuter ?<br /><br />
+										Je vous souhaite une excellente journée,<br /><br />
+										[x]
+									</p>
+								  </div>
+								  <div className="modal-footer">
+									<button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+								  </div>
+								</div>
+							  </div>
+							</div>
+
 							</div>
 							<div className="card-deck my-4">
-								<div className="card">
+								<div className="card" data-toggle="modal" data-target="#modal4" style={{ cursor: 'pointer' }}>
 									<div className="card-block">
 										<p className="card-text text-center lead">
 											Je relance mon contact
 										</p>
 									</div>
 								</div>
-								<div className="card">
+
+								<div className="modal fade" id="modal4">
+								  <div className="modal-dialog modal-lg" role="document">
+								    <div className="modal-content">
+								      <div className="modal-header">
+								        <h5 className="modal-title">Je relance mon contact</h5>
+								        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">&times;</span>
+								        </button>
+								      </div>
+								      <div className="modal-body">
+								        <p>
+											Objet : Je n’arrive pas à vous joindre<br /><br />
+											Madame, Monsieur [x],<br /><br />
+											Je vous ai adressé un mail il y a [x] jours à propos d’un service de parrainage de ruches. Je n’ai pas
+											reçu de réponse de votre part. Je me permets de vous relancer puisque je pense que c’est un
+											excellent moyen pour vous de répondre aux enjeux liés à la RSE.<br /><br />
+											A quel moment seriez-vous disponible par téléphone pour que je puisse vous contacter ?<br /><br />
+											Dans l’attente de vous lire je vous souhaite une excellente journée,<br /><br />
+											[x]
+								        </p>
+								      </div>
+								      <div className="modal-footer">
+								        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+
+								<div className="card" data-toggle="modal" data-target="#modal5" style={{ cursor: 'pointer' }}>
 									<div className="card-block">
 										<p className="card-text text-center lead">
 											J’ai obtenu une première réponse positive et je détaille maintenant le service par mail
 										</p>
 									</div>
 								</div>
+
+								<div className="modal fade" id="modal5">
+								  <div className="modal-dialog modal-lg" role="document">
+								    <div className="modal-content">
+								      <div className="modal-header">
+								        <h5 className="modal-title">J’ai obtenu une première réponse positive et je détaille maintenant le service par mail</h5>
+								        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">&times;</span>
+								        </button>
+								      </div>
+								      <div className="modal-body">
+								        <p>
+											Objet : L’offre de parrainage en détail<br /><br />
+											Madame, Monsieur [x],<br /><br />
+											Je vous remercie pour votre retour.<br /><br />
+											Si je devais résumer le parrainage de ruches en entreprise, je dirais ceci : c&#39;est un partenariat
+											gagnant-gagnant entre votre entreprise et les apiculteurs. En effet, le parrainage de ruche est un acte
+											fort qui s&#39;inscrit pleinement dans le plan européen de Responsabilité Sociétale et Environnementale
+											(RSE) ; disons-le clairement, c&#39;est aussi une tendance suivie par de nombreux grands groupes tels que
+											Le Point, Groupe Leader et dernièrement Intermarché. Ces derniers ont bien compris que l&#39;impact
+											d&#39;une telle action dépassait largement le cercle des collaborateurs. En plus de fédérer les employés
+											autour d&#39;un projet actuellement plébiscité de toute part, ils s&#39;adressent aussi à leurs partenaires,
+											leurs clients en démontrant l&#39;engagement pris en faveur d&#39;une noble cause. Quel cadeau plus
+											personnalisé pourrait-on offrir à la place d’un pot de miel produit par les ruches de la société à ses
+											partenaires ou à ses clients ? Ceci étonnera, intriguera et plaira à coup sûr !<br /><br />
+											Pour Confidences d&#39;Abeilles, c&#39;est l’opportunité de développer son cheptel. L&#39;installation de
+											nouvelles ruches permet d&#39;une part de lutter contre le syndrome d&#39;effondrement des colonies et
+											d&#39;autre part, en renforçant la population d&#39;abeilles et donc l&#39;action de pollinisation, c&#39;est la
+											biodiversité que l&#39;on préserve. « L’union fait la force », un adage qui se vérifie année après année sur
+											ses ruchers. Plus il y a de ruches et plus il est facile de pallier les carences de certaines, plus il est aisé
+											d’utiliser la force des unes pour tirer les autres vers le haut. Le parrainage de ruches va donc au-delà
+											d’une simple augmentation de la population d’abeilles ; c’est un épaulement de poids pour le cheptel
+											déjà en place et une assurance supplémentaire pour Confidences d’Abeilles.<br /><br />
+											Parrainer une ruche pour une entreprise est donc loin d&#39;être anodin. C’est une volonté forte et
+											résolument tournée vers l’avenir qui profite autant à l&#39;entreprise, qu’à l&#39;environnement et qu’aux
+											apiculteurs.<br /><br />
+											Vous pouvez retrouver ici une infographie présentant le service proposé et là un document exhaustif
+											avec une FAQ.<br /><br />
+											Par ailleurs, vous trouverez ci-après mes coordonnées. Je reste à votre entière disposition si vous
+											avez des questions.<br /><br />
+											Je vous souhaite une excellente journée.<br /><br />
+											[x]<br /><br />
+											[Coordonnées]
+								        </p>
+								      </div>
+								      <div className="modal-footer">
+								        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+
 								<div className="card">
 								</div>
 							</div>
@@ -251,6 +435,15 @@ de le recontacter ultérieurement pour ne pas le déranger. Donnez-lui trois pos
 									</div>
 								</div>
 							</form>
+							{this.state.faq.map((item) => {
+								return (
+									<div className="my-4" key={item.id}>
+										<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+										<p className="collapse" id={item.id}>{item.answer}</p>
+										<hr />
+									</div>
+								)
+							})}
 						</div>
 					</div>
 				</div>
