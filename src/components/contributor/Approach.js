@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome'
 import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 import pdfIcon from '../../assets/img/pdf.png';
-import infographie from '../../assets/infographie.pdf';
-import commercial from '../../assets/commercial.pdf';
+
+const config = require('../../config.js');
 
 export default class ContributorApproach extends Component {
 
@@ -204,11 +204,11 @@ de le recontacter ultérieurement pour ne pas le déranger. Donnez-lui trois pos
 								</div>
 							</div>
 							<div className="row justify-content-center align-items-center">
-								<div className="col-2"><a href={infographie} target="_blank"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
+								<div className="col-2"><a href={config.cdn_url+'/infographie.pdf'} target="_blank"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
 								<div className="col-6">Le parrainage de ruches avec Confidences d’Abeilles – Infographie</div>
 							</div>
 							<div className="row justify-content-center align-items-center my-4">
-								<div className="col-2"><a href={commercial} target="_blank"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
+								<div className="col-2"><a href={config.cdn_url+'/commercial.pdf'} target="_blank"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
 								<div className="col-6">Parrainer des ruches en France – proposition commerciale pour les entreprises</div>
 							</div>
 						</div>
