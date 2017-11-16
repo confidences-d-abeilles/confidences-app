@@ -4,6 +4,13 @@ import NotificationSystem from 'react-notification-system'
 import request from '../services/Net'
 import { Link } from 'react-router-dom'
 import '../assets/styles/parrains_homepage.css'
+import first from '../assets/img/homepage/1.jpg';
+import second from '../assets/img/homepage/2.jpg';
+import third from '../assets/img/homepage/3.jpg';
+import fourth from '../assets/img/homepage/4.jpg';
+import fifth from '../assets/img/homepage/5.jpg';
+import sixth from '../assets/img/homepage/6.jpg';
+import seventh from '../assets/img/homepage/7.jpg';
 
 const defaultImg = require("../assets/img/profile.png")
 const config = require('../config.js');
@@ -29,7 +36,7 @@ export default class Home extends Component {
 			<div className="container py-4">
 				<NotificationSystem ref="notif" />
 				<div className="row align-items-center">
-					<div className="col">
+					<div className="col-lg-6 col-sm-12">
 						<h1>Parrainez une ruche, aidez-nous à protéger les abeilles</h1>
 						<p>
 							Confidences d’Abeilles vous propose
@@ -40,17 +47,38 @@ export default class Home extends Component {
 						</p>
 						<Link to="/company/presentation" className="btn btn-secondary mr-4">Service entreprise</Link><Link to="/individual/presentation" className="btn btn-secondary">Service particulier</Link>
 					</div>
-					<div className="col">
-						<div id="carouselHome" className="carousel slide" data-ride="carousel">
+					<div className="col-lg-6 col-sm-12 my-4">
+						<div id="carouselHome" className="carousel slide" data-interval="5000" data-ride="carousel">
+							<ol className="carousel-indicators">
+								<li data-target="#carouselHome" data-slide-to="0" className="active"></li>
+								<li data-target="#carouselHome" data-slide-to="1"></li>
+								<li data-target="#carouselHome" data-slide-to="2"></li>
+								<li data-target="#carouselHome" data-slide-to="3"></li>
+								<li data-target="#carouselHome" data-slide-to="4"></li>
+								<li data-target="#carouselHome" data-slide-to="5"></li>
+								<li data-target="#carouselHome" data-slide-to="6"></li>
+							</ol>
 							<div className="carousel-inner" role="listbox">
 								<div className="carousel-item active">
-									<img className="d-block img-fluid" src={imgPlaceholder} alt="First slide" />
+									<img className="d-block" src={first} alt="First slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block img-fluid" src={imgPlaceholder} alt="Second slide" />
+									<img className="d-block" src={second} alt="First slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block img-fluid" src={imgPlaceholder} alt="Third slide" />
+									<img className="d-block" src={third} alt="First slide" />
+								</div>
+								<div className="carousel-item">
+									<img className="d-block" src={fourth} alt="First slide" />
+								</div>
+								<div className="carousel-item">
+									<img className="d-block" src={fifth} alt="First slide" />
+								</div>
+								<div className="carousel-item">
+									<img className="d-block" src={sixth} alt="First slide" />
+								</div>
+								<div className="carousel-item">
+									<img className="d-block" src={seventh} alt="First slide" />
 								</div>
 							</div>
 						</div>
