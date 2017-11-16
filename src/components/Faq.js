@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import request from '../services/Net'
 import NotificationSystem from 'react-notification-system'
-
+import FontAwesome from 'react-fontawesome'
 
 
 export default class Faq extends Component {
@@ -40,15 +40,10 @@ export default class Faq extends Component {
 						{this.state.list.map((item) => {
 							if (item.type === 1) {
 								return (
-									<div className="card my-2" key={item.id}>
-										<div className="card-header" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>
-											<h3>{item.question}</h3>
-										</div>
-										<div className="collapse" id={item.id}>
-											<div className="card-block">
-												<p className="card-text">{item.answer}</p>
-											</div>
-										</div>
+									<div className="my-4" key={item.id}>
+										<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+										<p className="collapse" id={item.id}>{item.answer}</p>
+										<hr />
 									</div>
 								)
 							} else {
@@ -59,15 +54,10 @@ export default class Faq extends Component {
 							{this.state.list.map((item) => {
 								if (item.type === 2) {
 									return (
-										<div className="card my-2" key={item.id}>
-											<div className="card-header" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>
-												<h3>{item.question}</h3>
-											</div>
-											<div className="collapse" id={item.id}>
-												<div className="card-block">
-													<p className="card-text">{item.answer}</p>
-												</div>
-											</div>
+										<div className="my-4" key={item.id}>
+											<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+											<p className="collapse" id={item.id}>{item.answer}</p>
+											<hr />
 										</div>
 									)
 								} else {
@@ -78,15 +68,10 @@ export default class Faq extends Component {
 							{this.state.list.map((item) => {
 								if (item.type === 3) {
 									return (
-										<div className="card my-2" key={item.id}>
-											<div className="card-header" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>
-												<h3>{item.question}</h3>
-											</div>
-											<div className="collapse" id={item.id}>
-												<div className="card-block">
-													<p className="card-text">{item.answer}</p>
-												</div>
-											</div>
+										<div className="my-4" key={item.id}>
+											<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+											<p className="collapse" id={item.id}>{item.answer}</p>
+											<hr />
 										</div>
 									)
 								} else {
@@ -97,15 +82,10 @@ export default class Faq extends Component {
 							{this.state.list.map((item) => {
 								if (item.type === 4) {
 									return (
-										<div className="card my-2" key={item.id}>
-											<div className="card-header" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>
-												<h3>{item.question}</h3>
-											</div>
-											<div className="collapse" id={item.id}>
-												<div className="card-block">
-													<p className="card-text">{item.answer}</p>
-												</div>
-											</div>
+										<div className="my-4" key={item.id}>
+											<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+											<p className="collapse" id={item.id}>{item.answer}</p>
+											<hr />
 										</div>
 									)
 								} else {
