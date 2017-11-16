@@ -35,6 +35,7 @@ class App extends Component {
 						<Route path="/cgv" component={Wrapper} />
 						<Route path="/contact" component={Wrapper} />
 						<Route path="/jobs" component={Wrapper} />
+						<Route path="/team" component={Wrapper} />
 						<Route path="/about" component={Wrapper} />
 						<Route path="/tarifs" component={Wrapper} />
 						<Route path="/ruches" component={Wrapper} />
