@@ -140,7 +140,7 @@ export default class ContributorApproach extends Component {
 							<ul>
 							<li>Conseil n°1 : Ne pas envoyer d’email sur des boites « fourre-tout » type contact@ ou
 info@ ou encore hello@. Toujours trouver l’email du gérant / d’un responsable / d’un
-directeur. Si le mail n’est pas trouvable sur le site internet de la société, sur <a target="_blank" rel="noopener noreferrer" href="http://hunter.io">hunter.io</a>,
+directeur. Si le mail n’est pas trouvable sur le site internet de la société, sur <a target="_blank" rel="noopener noreferrer" href="https://hunter.io/email-finder">hunter.io</a>,
 faire une recherche google « @nomdelentreprise.fr ou .com » (garder les guillemets)
 pour trouver la nomenclature des mails et donc par extension déterminer celui du
 gérant.</li>

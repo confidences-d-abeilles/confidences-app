@@ -65,11 +65,11 @@ export default class AdminManageFaq extends Component {
 						</div>
 						<div className="form-group">
 							<select className="form-control" name="type" onChange={handleChange.bind(this)}>
-								<option value="0" >Cible</option>
-								<option value="1">Public</option>
-								<option value="2">Apporteur d'affaire</option>
-								<option value="3">Entreprise</option>
-								<option value="4">Particulier</option>
+								<option value="0">Cible</option>
+								<option value="1">Général</option>
+								<option value="2">Entreprise</option>
+								<option value="3">Particulier</option>
+								<option value="4">Apporteur d'affaire</option>
 							</select>
 						</div>
 						<div className="form-group">
