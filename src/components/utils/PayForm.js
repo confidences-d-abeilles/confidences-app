@@ -60,6 +60,11 @@ class PayForm extends Component {
 				<label>Code de sécurité</label>
 				<CardCVCElement style={{ base: { fontSize: '18px' }}} />
 				<button className="btn btn-primary">Payer {this.props.price} €</button>
+				<p className="mt-4 small">Les paiements sont réalisés via le système sécurisé Stripe qui utilise le protocole
+				SSL. Les informations transmises sont cryptées et le paiement est compatible 3D
+				Secure, MasterCard SecureCode, Verified by VISA.
+				Dans un soucis de sécurité, Confidences d'Abeilles ne conserve pas vos
+				informations bancaires.</p>
 			</form>
 		)
 	}
