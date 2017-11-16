@@ -4,14 +4,41 @@ import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome'
 import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 import pdfIcon from '../../assets/img/pdf.png';
+import { handleChange } from '../../services/FormService';
+import request from '../../services/Net'
+import NotificationSystem from 'react-notification-system'
 
 const config = require('../../config.js');
 
 export default class ContributorApproach extends Component {
 
+	constructor(props) {
+		super(props)
+		this.state = {
+			question: ''
+		}
+	}
+
+	submitQuestion(e) {
+		e.preventDefault();
+		request({
+			url: '/contact',
+			method: 'post',
+			data : {
+				demand: '8',
+				content : this.state.question
+			}
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				question: ''
+			})
+		})
+	}
+
 	render () {
 		return (
 			<div className="container">
+				<NotificationSystem ref="notif" />
 				<div className="row">
 					<div className="col-6">
 						<h2 className="text-center">Comment démarcher une entreprise ?</h2>
@@ -214,7 +241,16 @@ de le recontacter ultérieurement pour ne pas le déranger. Donnez-lui trois pos
 						</div>
 						<a href="/contributor/approach"><p className="text-center lead my-4" data-toggle="collapse" data-target="#faq" >FAQ <FontAwesome name='chevron-down' /></p></a>
 						<div className="collapse" id="faq">
-							Missing content
+							<form className="my-4" onSubmit={this.submitQuestion.bind(this)}>
+								<div className="form-group row">
+									<div className="col-8">
+										<input type="text" placeholder="J'ai une question à soumettre" name="question" value={this.state.question} onChange={handleChange.bind(this)} className="form-control" />
+									</div>
+									<div className="col-4">
+										<button className="btn btn-primary">Soumettre</button>
+									</div>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
