@@ -57,6 +57,7 @@ import Signup from './Signup';
 import Cgv from './Cgv';
 import Mentions from './Mentions';
 import About from './About';
+import Team from './Team';
 import Contact from './Contact';
 import Jobs from './Jobs';
 import Faq from './Faq';
@@ -116,6 +117,7 @@ export default class Wrapper extends Component {
 
 							<Route exact path="/faq" component={Faq} />
 							<Route exact path="/about" component={About} />
+							<Route exact path="/team" component={Team} />
 							<Route exact path="/contact" component={Contact} />
 							<Route exact path="/jobs" component={Jobs} />
 							<Route exact path="/cgv" component={Cgv} />

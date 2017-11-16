@@ -88,7 +88,7 @@ export default class Home extends Component {
 					<div className="col-9">
 						<p>
 							Cette mission nous la menons avec vous, particuliers, entreprises, citoyens avertis qui nous
-							accompagner depuis nos débuts. En financement un rucher pédagogique vous nous avez déjà
+							accompagnez depuis nos débuts. En financement un rucher pédagogique vous nous avez déjà
 							permis d’organiser des journées découvertes et d’autres de formation ; nous sommes fiers
 							aussi d’avoir lancés plusieurs néophytes dans le grand bain de l’apiculture !
 						</p>
