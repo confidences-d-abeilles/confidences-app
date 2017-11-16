@@ -49,7 +49,14 @@ export default class ContributorAddress extends Component {
 	}
 
 	componentDidMount() {
-		console.log(this.refs)
+		request({
+			url: '/user/me',
+			method : 'get'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				addrss1: res.firstname+' '+res.name
+			});
+		})
 	}
 
     render () {
