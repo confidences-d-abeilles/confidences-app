@@ -115,13 +115,11 @@ export default class CompanyCheckout extends Component {
 						<h2 className="text-center my-4">Confirmation et paiement</h2>
 						<h3 className="text-center">Résumé</h3>
 						<p>
-							Je parraine {this.state.hives} ruches qui seront marquées à nos couleurs et recevrais {this.state.hives * 80} pots de miel de 125g produit par mes abeilles.
-							De plus, une page
-							internet sera dédiée à notre entreprise et aux
-							actions qu’elle mène en faveur de l’environnement.
-							Des actualités de nos ruches y seront régulièrement
-							postées et accessibles au grand public mais aussi à
-							nos partenaires.
+							Nous parrainons {this.state.hives} ruches qui seront marquées au couleur de notre entreprise. En
+							contrepartie nous recevrons {this.state.hives * 80} pots de miel de 125g produit par nos abeilles.
+							Nous bénéficions en plus d’une page internet dédiée à notre entreprise et aux
+							actions qu’elle mène en faveur de l’environnement. Des actualités de nos ruches y
+							seront régulièrement postées, accessibles au grand public et à nos partenaires.
 							<br /><br />
 							Le coût total est de {this.state.price} euros par an.
 						</p>
@@ -212,13 +210,39 @@ export default class CompanyCheckout extends Component {
 
 								{this.state.paytype === '1' &&
 									<div>
-										<p></p>
-										<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">J'ai effectué le virement</button>
+										<p>Veuillez trouver nos coordonnées bancaires pour procéder au virement</p>
+										<p>
+											<strong>Domiciliation : </strong>OLKYPAY GRENOBLE<br />
+											<strong>IBAN : </strong>FR36 1973 3000 01LU 3121 1050 436<br/>
+											<strong>BIC : </strong>OPSPFR21OKL<br/>
+										</p>
+										<p>S’il ne vous est pas possible de procéder de suite au virement nous vous invitions à
+										choisir l’option « Payer plus tard » et à ajouter Confidences d’Abeilles comme un
+										nouveau bénéficiaire sur votre compte. Une fois le bénéficiaire ajouté et le
+										virement réalisé, vous serrez invité à revenir sur cette page et à confirmer votre
+										virement.
+										De notre côté, la validation prend entre 2 et 3 jours. Un mail vous informera de la
+										bonne prise en compte de votre parrainage.</p>
+										<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement effectué</button>
 									</div>
 								}
 
 								{this.state.paytype === '2' &&
-									<Link to="/account" className="btn btn-primary">Payer plus tard</Link>
+									<div>
+										<p>
+											Vous pouvez choisir de régler votre parrainage quand bon vous semble. En cliquant
+											sur « Payer plus tard » vous serez redirigé vers votre tableau de bord. Les
+											fonctionnalités sont quelque peu bridées et <strong>votre page dédiée ne peut être
+											publiquement consultée.</strong><br /><br />
+											N’oubliez pas que pour un parrainage effectué entre :
+											<ul><li>Le 1er juillet et le 31 décembre, vous recevez le miel de vos abeilles à partir du
+											mois de mai de l’année suivante.</li>
+											<li>Le 1er janvier et le 30 juin, vous recevez le miel de vos abeilles à partir du mois
+											d’octobre.</li></ul>
+											Bonne visite sur notre plateforme !
+										</p>
+										<Link to="/account" className="btn btn-primary">Payer plus tard</Link>
+									</div>
 								}
 							</div>
 						</div>

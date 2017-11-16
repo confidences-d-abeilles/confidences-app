@@ -76,7 +76,7 @@ export default class IndividualPresentation extends Component {
 						<Link to="/signup/individual" className="btn btn-primary">Parrainer une ruche</Link>
 					</div>
 					<div className="col-4 text-center">
-						<a href="https://confidencesdabeilles.fr/parrainer-ruche/particulier" className="btn btn-primary" target="_blank" rel="noopener noreferrer">En savoir plus</a>
+						<Link to="/individual/more" className="btn btn-primary">En savoir plus</Link>
 					</div>
 				</div>
 			</div>
