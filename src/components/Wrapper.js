@@ -27,6 +27,7 @@ import IndividualWish from './individual/Wish';
 import IndividualCheckout from './individual/Checkout';
 import IndividualEnd from './individual/End';
 import IndividualManage from './individual/Manage';
+import IndividualMore from './individual/More';
 
 //company
 
@@ -38,7 +39,7 @@ import CompanyCheckout from './company/Checkout';
 import CompanyEnd from './company/End';
 import CompanyManage from './company/Manage';
 import CompanyFinal from './company/Final';
-import More from './company/More';
+import CompanyMore from './company/More';
 
 //admin
 
@@ -91,6 +92,7 @@ export default class Wrapper extends Component {
 							<Route path="/contributor/manage" component={ContributorManage} />
 
 							<Route exact path="/individual/presentation" component={IndividualPresentation} />
+							<Route exact path="/individual/more" component={IndividualMore} />
 							<Route exact path="/individual/address" component={IndividualAddress} />
 							<Route exact path="/individual/wish" component={IndividualWish} />
 							<Route exact path="/individual/checkout" component={IndividualCheckout} />
@@ -98,7 +100,7 @@ export default class Wrapper extends Component {
 							<Route path="/individual/manage" component={IndividualManage} />
 
 							<Route exact path="/company/presentation" component={CompanyPresentation} />
-							<Route exact path="/company/more" component={More} />
+							<Route exact path="/company/more" component={CompanyMore} />
 							<Route exact path="/company/identity" component={CompanyIdentity} />
 							<Route exact path="/company/address" component={CompanyAddress} />
 							<Route exact path="/company/wish" component={CompanyWish} />
