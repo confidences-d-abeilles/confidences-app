@@ -38,7 +38,7 @@ export default class Faq extends Component {
 						</p>
 						<h3>Question générales</h3>
 						{this.state.list.map((item) => {
-							if (item.type === '1') {
+							if (item.type === 1) {
 								return (
 									<div className="card" key="item.id">
 										<div className="card-block">
@@ -53,7 +53,7 @@ export default class Faq extends Component {
 						})}
 						<h3>Pour les entreprises</h3>
 							{this.state.list.map((item) => {
-								if (item.type === '2') {
+								if (item.type === 2) {
 									return (
 										<div className="card" key="item.id">
 											<div className="card-block">
@@ -68,7 +68,7 @@ export default class Faq extends Component {
 							})}
 						<h3>Pour les particuliers</h3>
 							{this.state.list.map((item) => {
-								if (item.type === '3') {
+								if (item.type === 3) {
 									return (
 										<div className="card" key="item.id">
 											<div className="card-block">
@@ -83,7 +83,7 @@ export default class Faq extends Component {
 							})}
 						<h3>Pour les apporteurs d'affaire (bientot masque)</h3>
 							{this.state.list.map((item) => {
-								if (item.type === '4') {
+								if (item.type === 4) {
 									return (
 										<div className="card" key="item.id">
 											<div className="card-block">
