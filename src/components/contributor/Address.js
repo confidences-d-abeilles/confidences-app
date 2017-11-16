@@ -54,7 +54,7 @@ export default class ContributorAddress extends Component {
 			method : 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				addrss1: res.firstname+' '+res.name
+				address1: res.firstname+' '+res.name
 			});
 		})
 	}
