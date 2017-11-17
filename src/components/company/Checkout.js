@@ -17,6 +17,7 @@ export default class CompanyCheckout extends Component {
 			baddress2: '',
 			bzip: '',
 			bcity: '',
+			bill_number: '',
 			redirect: false,
 			hives: 0,
 			paytype: '0',
@@ -37,6 +38,14 @@ export default class CompanyCheckout extends Component {
 				price: res.bundles[0].price,
 				bundle_id: res.bundles[0].id,
 				duplicate: true
+			});
+			request({
+				url: '/bill/bundle/'+res.bundles[0].id,
+				method: 'get'
+			}, this.refs.notif).then((res) => {
+				this.setState({
+					bill_number: res.number
+				});
 			});
 			res.addresses.map((address) => {
 				if (address.type == 1) {
@@ -214,7 +223,8 @@ export default class CompanyCheckout extends Component {
 										<p>
 											<strong>Domiciliation : </strong>OLKYPAY GRENOBLE<br />
 											<strong>IBAN : </strong>FR36 1973 3000 01LU 3121 1050 436<br/>
-											<strong>BIC : </strong>OPSPFR21OKL<br/>
+											<strong>BIC : </strong>OPSPFR21OKL<br/><br />
+											<strong>Numéro de facture à indiquer dans la référence du virement : </strong>{this.state.bill_number}
 										</p>
 										<p>S’il ne vous est pas possible de procéder de suite au virement nous vous invitions à
 										choisir l’option « Payer plus tard » et à ajouter Confidences d’Abeilles comme un
