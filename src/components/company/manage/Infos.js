@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import { handleChange } from '../../../services/FormService'
+import Loading from '../../utils/Loading'
 
 export default class CompanyManageInfos extends Component {
 
@@ -156,7 +157,7 @@ export default class CompanyManageInfos extends Component {
 								</form>
 							</p>
 						</div>
-						:null}
+						:<Loading />}
 						{(this.state.user)?
 						<div className="col">
 							<h3 className="text-center">Modifier mon mot de passe</h3>
@@ -170,7 +171,7 @@ export default class CompanyManageInfos extends Component {
 								<button className="btn btn-primary">Enregistrer</button>
 							</form>
 						</div>
-						:'Chargement en cours...'}
+						:null}
 					</div>
 					<div className="row">
 						{this.state.user &&
