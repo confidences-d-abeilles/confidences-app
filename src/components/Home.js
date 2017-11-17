@@ -133,8 +133,7 @@ export default class Home extends Component {
 				</div>
 				<div className="row align-items-center">
 					<div className="col">
-						<h2 className="text-center my-4">Les dernières actualités</h2>
-						<p className="alert alert-info">[Known Bug] Données manquantes</p>
+						{/*<h2 className="text-center my-4">Les dernières actualités</h2>*/}
 					</div>
 				</div>
 			</div>
