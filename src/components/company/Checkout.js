@@ -23,7 +23,7 @@ export default class CompanyCheckout extends Component {
 			paytype: '0',
 			price: 0,
 			different: false,
-			saved: false
+			saved: false,
 		}
 	}
 
@@ -107,6 +107,15 @@ export default class CompanyCheckout extends Component {
 		})
 	}
 
+	changeBundle() {
+		request({
+			url: '/bundle/'+this.state.bundle_id,
+			method: 'delete'
+		}, this.refs.notif). then((res) => {
+			this.setState({ redirect : true });
+		})
+	}
+
     render () {
         return (
 			<div className="container py-4">
@@ -131,6 +140,9 @@ export default class CompanyCheckout extends Component {
 							seront régulièrement postées, accessibles au grand public et à nos partenaires.
 							<br /><br />
 							Le coût total est de {this.state.price} euros par an.
+						</p>
+						<p className="text-center">
+							<button className="btn btn-primary" onClick={this.changeBundle.bind(this)}>Changer d'offre</button>
 						</p>
 						<div className="row justify-content-center">
 							<div className="col-6">
