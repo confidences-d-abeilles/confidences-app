@@ -60,22 +60,22 @@ export default class ContributorManage extends Component {
 				{(!this.state.loading && this.state.user.contracts.length > 0 && !this.state.user.contracts[0].signed)?<Redirect to="/contributor/checkout" />:''}
 				<div className="row">
 					<div className="col-3">
-						<img src={profile} alt="Logo entreprise" className="img-fluid" />
+						<img src={profile} alt="Logo entreprise" className="py-4 img-fluid" />
 						<br />
 						<ul className="list-group">
-							<Link to="/contributor/manage"><li className="list-group-item">Tableau de bord</li></Link>
-							<Link to="/contributor/manage/infos"><li className="list-group-item ">Mes informations</li></Link>
-							<Link to="/contributor/manage/approaches"><li className="list-group-item">Mes demarches</li></Link>
-							<Link to="/contributor/manage/contract"><li className="list-group-item">Mon contrat</li></Link>
-							<Link to="/contributor/manage/conditions"><li className="list-group-item disabled">Conditions spécifiques</li></Link>
-							<Link to="/contributor/manage/help"><li className="list-group-item disabled">Aide</li></Link>
+							<li className="list-group-item"><Link to="/contributor/manage">Tableau de bord</Link></li>
+							<li className="list-group-item"><Link to="/contributor/manage/infos">Mes informations</Link></li>
+							<li className="list-group-item"><Link to="/contributor/manage/approaches">Mes entreprises</Link></li>
+							<li className="list-group-item"><Link to="/contributor/manage/contract">Mon contrat</Link></li>
+							<li className="list-group-item"><Link to="/contributor/manage/conditions">Conditions spécifiques</Link></li>
+							<li className="list-group-item"><Link to="/contributor/manage/help">Aide</Link></li>
 						</ul>
 					</div>
 					<div className="col-9">
 						<div className="row">
 							<div className="col-8">
 								Entreprises demarchees : {this.state.leads} / 10<br />
-							Conversion : {this.state.cleads} / {this.state.leads}<br />
+								Conversion : {this.state.cleads} / {this.state.leads}<br />
 								Cagnotte : {this.state.balance} €<br />
 							</div>
 							<div className="col-4">
