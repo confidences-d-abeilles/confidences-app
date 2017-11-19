@@ -78,20 +78,8 @@ export default class Faq extends Component {
 									return null
 								}
 							})}
-						<h3 className="my-4">Pour les apporteurs d'affaire (bientot masque)</h3>
-							{this.state.list.map((item) => {
-								if (item.type === 4) {
-									return (
-										<div className="my-4" key={item.id}>
-											<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
-											<p className="collapse" id={item.id}>{item.answer}</p>
-											<hr />
-										</div>
-									)
-								} else {
-									return null
-								}
-							})}
+						<h3 className="my-4">Pour les apporteurs d'affaire</h3>
+							Si vous avez des questions à soumettre concernant cette catégorie, utilisez le formulaire disponible <a href="https://goo.gl/forms/omh9deJlroedr5732" target="_blank">ici</a> !
 					</div>
 				</div>
 			</div>
