@@ -186,7 +186,7 @@ export default class CompanyCheckout extends Component {
 								}
 							</div>
 						</div>
-						<h3 className="text-center">Paiement</h3>
+						<h3 className="text-center">Paiement sécurisé</h3>
 						<div className="row justify-content-center">
 							<form className="col-6">
 								<div className="form-group">

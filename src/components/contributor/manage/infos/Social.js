@@ -32,6 +32,8 @@ export default class ContributorManageInfosSocial extends Component {
 							bid: address.id,
 							bline1: address.line1,
 							bline2: address.line2,
+							bline3: address.line3,
+							bline4: address.line4,
 							bzipcode: address.zipcode,
 							bcity: address.city
 						})
@@ -65,6 +67,8 @@ export default class ContributorManageInfosSocial extends Component {
 			data: {
 				line1: this.state.bline1,
 				line2: this.state.bline2,
+				line3: this.state.bline3,
+				line4: this.state.bline4,
 				zipcode: this.state.bzipcode,
 				city: this.state.bcity
 			}
@@ -105,10 +109,16 @@ export default class ContributorManageInfosSocial extends Component {
 								<span className="lead">Adresse :<br /></span>
 								<form key={this.state.user.id}>
 									<div className="form-group">
-										<input type="texte" name="bline1" onChange={handleChange.bind(this)} value={this.state.bline1} className="form-control" />
+										<input type="texte" name="bline1" onChange={handleChange.bind(this)} value={this.state.bline1} className="form-control" placeholder="Nom et prénom" />
 									</div>
 									<div className="form-group">
-										<input type="texte" name="bline2" onChange={handleChange.bind(this)} value={this.state.bline2} className="form-control" />
+										<input type="texte" name="bline2" onChange={handleChange.bind(this)} value={this.state.bline2} className="form-control" placeholder="Etablissement (optionnel)" />
+									</div>
+									<div className="form-group">
+										<input type="texte" name="bline3" onChange={handleChange.bind(this)} value={this.state.bline3} className="form-control" placeholder="Ligne 1" />
+									</div>
+									<div className="form-group">
+										<input type="texte" name="bline4" onChange={handleChange.bind(this)} value={this.state.bline4} className="form-control" placeholder="Ligne 2" />
 									</div>
 									<div className="form-group row">
 										<div className="col-4">
