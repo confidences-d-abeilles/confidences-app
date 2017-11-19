@@ -200,7 +200,7 @@ de le recontacter ultérieurement pour ne pas le déranger. Donnez-lui trois pos
 						</div>
 						<a href="/contributor/approach" className="link-nostyle"><p className="text-center lead my-4" data-toggle="collapse" data-target="#supports" >Supports de communication <FontAwesome name='chevron-down' /></p></a>
 						<div className="collapse" id="supports">
-							<p>Templates de mail pour entrer en contact avec une entreprise</p>
+							<p>Exemples de mail pour entrer en contact avec une entreprise</p>
 							<div className="card-deck">
 								<div className="card" data-toggle="modal" data-target="#modal1" style={{ cursor: 'pointer' }}>
 									<div className="card-block">
