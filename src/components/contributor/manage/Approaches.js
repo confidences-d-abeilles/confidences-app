@@ -30,7 +30,7 @@ export default class ContributorManageApproaches extends Component {
 					<table className="table">
 						<tbody>
 							<tr>
-								<th>Nom de l'entreprise</th><th>Date de prise de contact</th>
+								<th>Nom de l'entreprise</th><th>Status</th><th>Nombre de ruches parrainées</th>
 							</tr>
 							{this.state.leads.map((lead) => {
 								var date = new Date(lead.createdAt);

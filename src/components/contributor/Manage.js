@@ -51,6 +51,16 @@ export default class ContributorManage extends Component {
 		})
 	}
 
+	money() {
+		request({
+			url: '/user',
+			method: 'put',
+			data: {
+				money_back: true
+			}
+		}, this.refs.notif);
+	}
+
 	render () {
 		return (
 			<div className="container py-4">
@@ -74,16 +84,16 @@ export default class ContributorManage extends Component {
 					<div className="col-9">
 						<div className="row">
 							<div className="col-8">
-								Entreprises demarchees : {this.state.leads} / 10<br />
+								Entreprises demarchées : {this.state.leads} / 10<br />
 								Conversion : {this.state.cleads} / {this.state.leads}<br />
-								Cagnotte : {this.state.balance} €<br />
+								Mon solde : {this.state.balance} €<br />
 							</div>
 							<div className="col-4">
 								<p className="text-center">
 									<Link to="/contributor/approach" className="btn btn-secondary">Demarcher une entreprise</Link>
 								</p>
 								<p className="text-center">
-									<button className="btn btn-secondary" disabled>Retirer ma cagnotte</button>
+									<button className="btn btn-secondary" onClick={this.money.bind(this)}>Récupérer mon solde</button>
 								</p>
 							</div>
 						</div>
