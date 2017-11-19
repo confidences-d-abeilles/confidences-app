@@ -58,7 +58,12 @@ export default class ContributorManage extends Component {
 			data: {
 				money_back: true
 			}
-		}, this.refs.notif);
+		}, this.refs.notif).then((res) => {
+			this.refs.notif.addNotification({
+				message: 'Votre demande a bien été prise en compte, votre virement sera effectué par nos équipes dans les plus brefs délais',
+				level: 'success'
+			});
+		});
 	}
 
 	render () {
