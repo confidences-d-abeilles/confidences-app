@@ -13,6 +13,7 @@ export default class CompanyIdentity extends Component {
 			siret: '',
 			job: '',
 			website: '',
+			namespace: '',
 			redirect : false
 		}
 	}
@@ -28,7 +29,7 @@ export default class CompanyIdentity extends Component {
 
 	identify(e) {
 		e.preventDefault();
-		if (!this.state.company_name || !this.state.siret || !this.state.job) {
+		if (!this.state.company_name || !this.state.siret || !this.state.job || !this.state.namespace) {
 			this.refs.notif.addNotification({
 				message: "Merci de renseigner tous les champs",
 				level: 'warning'
@@ -40,6 +41,7 @@ export default class CompanyIdentity extends Component {
 				data : {
 					company_name : this.state.company_name,
 					siret : this.state.siret,
+					namespace: this.state.namespace,
 					job : this.state.job,
 					website : this.state.website,
 					onboard : 2
@@ -71,6 +73,13 @@ export default class CompanyIdentity extends Component {
 							<h2 className="text-center my-4">Information sur l'entreprise</h2>
 							<div className="form-group">
 								<input type="text" className="form-control" name="company_name" placeholder="Raison sociale" onChange={handleChange.bind(this)} />
+							</div>
+							<div className="form-group">
+								<label htmlFor="namespace">Choisissez une adresse pour votre future page dédiée</label>
+								<div className="input-group">
+									<span className="input-group-addon" id="basic-addon3">https://parrainagederuches.fr/ </span>
+									<input type="text" className="form-control" onChange={handleChange.bind(this)} name="namespace" id="namespace" />
+								</div>
 							</div>
 							<div className="form-group">
 								<input type="text" className="form-control" name="siret" placeholder="Numero de siret" onChange={this.handlesiret.bind(this)} />

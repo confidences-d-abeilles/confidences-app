@@ -102,7 +102,7 @@ export default class Home extends Component {
 							{this.state.users.map((user) => {
 								if (user.user_type === 1 || user.user_type  === 2) {
 									return (
-										<Link to={'/'+user.namespace}>
+										<Link to={'/'+user.namespace} key={user.id}>
 										<img src={(user.logo)?config.cdn_url+'/'+user.logo:defaultImg} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name} />
 										{(user.company_name)?user.company_name:user.firstname+' '+user.name}
 										</Link>
