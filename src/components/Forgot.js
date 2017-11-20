@@ -8,12 +8,19 @@ export default class Forgot extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-
+			email: ''
 		}
 	}
 
 	resetPassword(e) {
 		e.preventDefault();
+		request({
+			url: '/user/ask',
+			method: 'post',
+			data: {
+				email : this.state.email
+			}
+		}, this.refs.notif)
 	}
 
 	render () {
