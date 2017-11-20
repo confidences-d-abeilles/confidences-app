@@ -81,7 +81,7 @@ export default class CompanyCheckout extends Component {
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
 			data : {
-				waiting: true
+				state: 1
 			}
 		}, this.refs.notif).then((res) => {
 			this.setState({ redirect : true })

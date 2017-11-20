@@ -64,6 +64,7 @@ import Faq from './Faq';
 import Tarifs from './Tarifs';
 import Hives from './Hives';
 import Forgot from './Forgot';
+import Reset from './Reset';
 
 export default class Wrapper extends Component {
 
@@ -78,6 +79,7 @@ export default class Wrapper extends Component {
 							<Route exact path="/logout" component={Logout} />
 							<Route exact path="/account" component={MyAccount} />
 							<Route exact path="/forgot" component={Forgot} />
+							<Route exact path="/reset/:token" component={Reset} />
 							<Route exact path="/login" component={Login} />
 
 							<Route exact path="/contributor/presentation" component={ContributorPresentation} />

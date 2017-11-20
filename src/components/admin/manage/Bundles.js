@@ -43,7 +43,7 @@ export default class AdminManageBundles extends Component {
 									{this.state.bundles.map((bundle) => {
 										return (
 											<tr className={(bundle.state == 2)?'table-danger':null} className={(bundle.state == 3)?'table-success':null} key={bundle.id}>
-												<td>{(bundle.owner)?bundle.owner.firstname+' '+bundle.owner.firstname+' ('+bundle.owner.company_name+')':'[corrupted]'}</td>
+												<td>{(bundle.owner)?bundle.owner.firstname+' '+bundle.owner.name+' ('+bundle.owner.company_name+')':'[corrupted]'}</td>
 												<td>{bundle.hives} ruches</td>
 												<td>{bundle.contain.length} ruches</td>
 												<td>{bundle.state}</td>
