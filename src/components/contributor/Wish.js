@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import request from '../../services/Net';
-import { handleChange } from '../../services/FormService';
 import { isLoggedIn } from '../../services/AuthService';
 import { Redirect } from 'react-router-dom';
 import NotificationSystem from 'react-notification-system';

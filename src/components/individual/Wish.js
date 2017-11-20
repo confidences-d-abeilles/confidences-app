@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { handleChange } from '../../services/FormService';
-import request from '../../services/Net';
 import { isLoggedIn } from '../../services/AuthService';
 import { Redirect } from 'react-router-dom';
 
@@ -15,7 +14,7 @@ export default class IndividualWish extends Component {
 
 	selectBundle(e) {
 		e.preventDefault();
-	
+
 	}
 
     render () {

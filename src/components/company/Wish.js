@@ -14,7 +14,8 @@ export default class CompanyWish extends Component {
 		}
 	}
 
-	createBundle() {
+	createBundle(e) {
+		e.preventDefault()
 		if (this.state.hives !== 0)
 		{
 			request({
@@ -50,16 +51,16 @@ export default class CompanyWish extends Component {
 					</div>
 				</div>
 				<div className="row justify-content-center">
-					<div className="col-6">
+					<form className="col-6" onSubmit={this.createBundle.bind(this)}>
 						<p className="text-center lead my-4">Nous parrainons <input type="text" placeholder={this.state.hives} name="hives" style={{ borderWidth : '0 0 1px 0', width: '1em', margin: '1em' }} onChange={handleChange.bind(this)} /> ruche(s)</p>
 						<ul>
 							<li>Cela représente plus de {this.state.hives * 50000} abeilles supplémentaires pour prendre soin de la biodiversité</li>
 							<li>C’est aussi l’équivalent de {this.state.hives * 80} pots de miel par an</li>
 						</ul>
 						<p className="text-center">
-						<button onClick={this.createBundle.bind(this)} className="btn btn-primary">Continuer</button>
+						<button  className="btn btn-primary">Continuer</button>
 						</p>
-					</div>
+					</form>
 				</div>
 			</div>
         );
