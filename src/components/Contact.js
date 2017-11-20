@@ -88,7 +88,7 @@ export default class Contact extends Component {
 						})}
 						<h3 className="my-4">Pour les entreprises</h3>
 							{this.state.list.map((item) => {
-								if (item.type === 2) {
+								if (item.type === 2 && (item.question.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 || item.answer.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 )) {
 									return (
 										<div className="my-4" key={item.id}>
 											<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
@@ -102,7 +102,7 @@ export default class Contact extends Component {
 							})}
 						<h3 className="my-4">Pour les particuliers</h3>
 							{this.state.list.map((item) => {
-								if (item.type === 3) {
+								if (item.type === 3 && (item.question.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 || item.answer.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 )) {
 									return (
 										<div className="my-4" key={item.id}>
 											<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
