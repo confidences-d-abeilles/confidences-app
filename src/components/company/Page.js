@@ -5,7 +5,7 @@ import NotificationSystem from 'react-notification-system'
 import { Redirect } from 'react-router-dom'
 import FooterPage from './FooterPage'
 import ReactHtmlParser from 'react-html-parser'
-
+import FontAwesome from 'react-fontawesome'
 const config = require('../../config.js');
 
 export default class CompanyPage extends Component {
@@ -108,9 +108,10 @@ export default class CompanyPage extends Component {
 											</div>
 											<div className="card-block col-10">
 												<h3 className="card-title">{actu.title}</h3>
-												<p className="card-text">
+												<p className="card-text collapse" id={actu.id}>
 													{ReactHtmlParser(actu.content)}
 												</p>
+												<button className="btn btn-link" data-toggle="collapse" data-target={'#'+actu.id}>Développer / Réduire <FontAwesome name='chevron-down' /></button>
 												<p className="card-text"><small className="text-muted">{date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()}</small></p>
 											</div>
 										</div>
