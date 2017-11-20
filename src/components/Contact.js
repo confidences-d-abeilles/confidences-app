@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import request from '../services/Net'
 import NotificationSystem from 'react-notification-system'
 import { handleChange } from '../services/FormService'
+import FontAwesome from 'react-fontawesome'
 
 export default class Contact extends Component {
 
 	constructor(props) {
 		super (props);
 		this.state = {
-			message: null
+			message: null,
+			list: [],
+			criteria: ''
 		}
 	}
 
@@ -22,6 +25,15 @@ export default class Contact extends Component {
 				name: res.name,
 				email: res.email,
 				job: res.job
+			})
+		})
+
+		request({
+			url : '/faq',
+			method : 'get'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				list : res
 			})
 		})
 	}
@@ -58,17 +70,53 @@ export default class Contact extends Component {
 						<h2 className="text-center my-4">La réponse à votre question se trouve peut-être dans notre FAQ</h2>
 						<div className="input-group">
 							<span className="input-group-addon">Rechercher : </span>
-							<input type="text" className="form-control" disabled />
+							<input type="text" name="criteria" onChange={handleChange.bind(this)} className="form-control" />
 						</div>
+						<h3 className="my-4">Question générales</h3>
+						{this.state.list.map((item) => {
+							if (item.type === 1 && (item.question.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 || item.answer.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 )) {
+								return (
+									<div className="my-4" key={item.id}>
+										<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+										<p className="collapse" id={item.id}>{item.answer}</p>
+										<hr />
+									</div>
+								)
+							} else {
+								return null
+							}
+						})}
+						<h3 className="my-4">Pour les entreprises</h3>
+							{this.state.list.map((item) => {
+								if (item.type === 2) {
+									return (
+										<div className="my-4" key={item.id}>
+											<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+											<p className="collapse" id={item.id}>{item.answer}</p>
+											<hr />
+										</div>
+									)
+								} else {
+									return null
+								}
+							})}
+						<h3 className="my-4">Pour les particuliers</h3>
+							{this.state.list.map((item) => {
+								if (item.type === 3) {
+									return (
+										<div className="my-4" key={item.id}>
+											<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+											<p className="collapse" id={item.id}>{item.answer}</p>
+											<hr />
+										</div>
+									)
+								} else {
+									return null
+								}
+							})}
 					</div>
-				</div>
-				<div className="row">
 					<div className="col">
 						<h2 className="my-4">Vous n'avez pas trouvé ce que vous cherchiez ?</h2>
-					</div>
-				</div>
-				<div className="row justify-content-center">
-					<div className="col-lg-6">
 						<form>
 							<div className="form-group">
 								<select className="form-control" name="title" value={this.state.title} onChange={handleChange.bind(this)}>
