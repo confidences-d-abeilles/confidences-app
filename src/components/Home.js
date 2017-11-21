@@ -12,7 +12,8 @@ import fifth from '../assets/img/homepage/5.jpg';
 import sixth from '../assets/img/homepage/6.jpg';
 import seventh from '../assets/img/homepage/7.jpg';
 import Slider from 'react-slick';
-import Loading from './utils/Loading'
+import Loading from './utils/Loading';
+import FontAwesome from 'react-fontawesome'
 
 const defaultImg = require("../assets/img/profile.png")
 const config = require('../config.js');
@@ -100,23 +101,24 @@ export default class Home extends Component {
 					<div className="col">
 						<h2 className="text-center my-4">Ils parrainent déjà des ruches</h2>
 						{(this.state.users)?
-							<Slider settings={{
+							<Slider {...{
 									dots: true,
-									infinite: true,
+									infinite: false,
 									speed: 500,
-									slidesToShow: 3,
+									slidesToShow: 4,
 									slidesToScroll: 3,
 									autoPlay: true,
-									arrows: true
+									arrows: true,
+									prevArrow: <FontAwesome name='arrow-circle-left'/>,
+									nextArrow: <FontAwesome name='arrow-circle-right'/>
 								}}>
 								{this.state.users.map((user) => {
 									if (user.user_type === 1 || user.user_type  === 2) {
 										return (
-											<div>
-												<Link to={'/'+user.namespace} key={user.id}>
-												<h3>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</h3>
-												<img src={(user.logo)?config.cdn_url+'/'+user.logo:defaultImg} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name} className="img-responsive"/>
-
+											<div key={user.id}>
+												<Link to={'/'+user.namespace}>
+													<img className="img-fluid" src={(user.logo)?config.cdn_url+'/'+user.logo:defaultImg} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name}/>
+													<h3>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</h3>
 												</Link>
 											</div>
 										)
