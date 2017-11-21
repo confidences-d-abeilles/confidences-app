@@ -63,6 +63,7 @@ import Jobs from './Jobs';
 import Faq from './Faq';
 import Tarifs from './Tarifs';
 import Hives from './Hives';
+import Hive from './Hive';
 import Forgot from './Forgot';
 import Reset from './Reset';
 
@@ -126,6 +127,7 @@ export default class Wrapper extends Component {
 							<Route exact path="/mentions_legales" component={Mentions} />
 							<Route exact path="/tarifs" component={Tarifs} />
 							<Route exact path="/hives" component={Hives} />
+							<Route exact path="/hive/:id" component={Hive} />
 						</Switch>
 					</div>
 				</div>

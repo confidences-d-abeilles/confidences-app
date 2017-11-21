@@ -6,6 +6,9 @@ import { Redirect } from 'react-router-dom'
 import FooterPage from './FooterPage'
 import ReactHtmlParser from 'react-html-parser'
 import FontAwesome from 'react-fontawesome'
+import imgPlaceholder from '../../assets/img/profile.png';
+import { Link } from 'react-router-dom'
+
 const config = require('../../config.js');
 
 export default class CompanyPage extends Component {
@@ -85,14 +88,14 @@ export default class CompanyPage extends Component {
 					</div>
 					<div className="col-6">
 						<h2 className="text-center my-4">Les ruches que nous parrainons</h2>
-						<div className="card-dec">
+						<div className="row">
 							{this.state.hives.map((hive) => {
 								return (
-									<div className="card w-50">
+									<div className="card w-25 m-3">
+										<img className="card-img-top img-fluid" src={imgPlaceholder} alt="Card image cap" />
 										<div className="card-block">
-											<h4 className="card-title">
-												{hive.name}
-											</h4>
+											<h3 className="card-title">{hive.name}</h3>
+											<Link to={'/hive/'+hive.id} className="btn">Voir en détails</Link>
 										</div>
 									</div>
 								)
@@ -111,7 +114,7 @@ export default class CompanyPage extends Component {
 												<p className="card-text collapse" id={actu.id}>
 													{ReactHtmlParser(actu.content)}
 												</p>
-												<button className="btn btn-link" data-toggle="collapse" data-target={'#'+actu.id}>Développer / Réduire <FontAwesome name='chevron-down' /></button>
+												<button className="btn btn-link" data-toggle="collapse" data-target={'#'+actu.id}>Développer / Réduire <FontAwesome name='sort' /></button>
 												<p className="card-text"><small className="text-muted">{date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()}</small></p>
 											</div>
 										</div>
