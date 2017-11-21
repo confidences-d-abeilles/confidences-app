@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import NotificationSystem from 'react-notification-system'
 import request from '../services/Net'
-import { Link } from 'react-router-dom'
 import imgPlaceholder from '../assets/img/profile.png';
+import { Link } from 'react-router-dom'
 
 export default class Hives extends Component {
 
@@ -34,11 +34,11 @@ export default class Hives extends Component {
 						<div className="row">
 							{this.state.hives.map((hive) => {
 								return (
-									<div className="card" style={{ width: '20%' }}>
+									<div className="card w-25 m-3">
 										<img className="card-img-top img-fluid" src={imgPlaceholder} alt="Card image cap" />
 										<div className="card-block">
 											<h3 className="card-title">{hive.name}</h3>
-											<Link to={'/hives/'+hive.id} className="btn">Voir en détails</Link>
+											<Link to={'/hive/'+hive.id} className="btn">Voir en détails</Link>
 										</div>
 									</div>
 								)
