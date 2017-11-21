@@ -118,7 +118,7 @@ export default class Home extends Component {
 											<div key={user.id}>
 												<Link to={'/'+user.namespace}>
 													<img className="img-fluid" src={(user.logo)?config.cdn_url+'/'+user.logo:defaultImg} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name}/>
-													<h3>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</h3>
+													<p className="py-2">{(user.company_name)?user.company_name:user.firstname+' '+user.name}</p>
 												</Link>
 											</div>
 										)
