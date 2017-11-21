@@ -11,6 +11,8 @@ import fourth from '../assets/img/homepage/4.jpg';
 import fifth from '../assets/img/homepage/5.jpg';
 import sixth from '../assets/img/homepage/6.jpg';
 import seventh from '../assets/img/homepage/7.jpg';
+import Slider from 'react-slick';
+import Loading from './utils/Loading'
 
 const defaultImg = require("../assets/img/profile.png")
 const config = require('../config.js');
@@ -98,21 +100,32 @@ export default class Home extends Component {
 					<div className="col">
 						<h2 className="text-center my-4">Ils parrainent déjà des ruches</h2>
 						{(this.state.users)?
-							<div id="parrains">
-							{this.state.users.map((user) => {
-								if (user.user_type === 1 || user.user_type  === 2) {
-									return (
-										<Link to={'/'+user.namespace} key={user.id}>
-										<img src={(user.logo)?config.cdn_url+'/'+user.logo:defaultImg} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name} />
-										{(user.company_name)?user.company_name:user.firstname+' '+user.name}
-										</Link>
-									)
-								} else {
-									return null;
-								}
-							})}
-							</div>
-							:null}
+							<Slider settings={{
+									dots: true,
+									infinite: true,
+									speed: 500,
+									slidesToShow: 3,
+									slidesToScroll: 3,
+									autoPlay: true,
+									arrows: true
+								}}>
+								{this.state.users.map((user) => {
+									if (user.user_type === 1 || user.user_type  === 2) {
+										return (
+											<div>
+												<Link to={'/'+user.namespace} key={user.id}>
+												<h3>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</h3>
+												<img src={(user.logo)?config.cdn_url+'/'+user.logo:defaultImg} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name} className="img-responsive"/>
+
+												</Link>
+											</div>
+										)
+									} else {
+										return null;
+									}
+								})}
+							</Slider>
+						:<Loading />}
 					</div>
 				</div>
 				<div className="row justify-content-center">

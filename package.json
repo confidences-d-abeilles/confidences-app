@@ -15,6 +15,7 @@
     "react-quill": "^1.1.0",
     "react-router-dom": "^4.1.2",
     "react-scripts": "^1.0.10",
+    "react-slick": "^0.15.4",
     "react-stripe-elements": "^1.2.0"
   },
   "scripts": {
