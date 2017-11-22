@@ -9,6 +9,7 @@ import FontAwesome from 'react-fontawesome'
 import imgPlaceholder from '../../assets/img/profile.png';
 import { Link } from 'react-router-dom'
 
+const defaultImg = require("../../assets/img/profile.png")
 const config = require('../../config.js');
 
 export default class CompanyPage extends Component {
@@ -39,6 +40,10 @@ export default class CompanyPage extends Component {
 					hives: res
 				})
 			})
+		}).catch((err) => {
+			this.setState({
+				redirect: true
+			})
 		})
 	}
 
@@ -50,17 +55,17 @@ export default class CompanyPage extends Component {
 				<div className="row">
 					<div className="col-6">
 						<div className="w-100 cover">
-							<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.cover:null} alt="Cover" />
+							{(this.state.user && this.state.user.cover)?<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.cover:null} alt="Cover" />:null}
 							<h1>{(this.state.user)?this.state.user.company_name:null}</h1>
 						</div>
 						<div className="row align-items-center py-4">
 							<div className="col-4 logo mr-4">
-								<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:null} alt="Logo entreprise" />
+								<img src={(this.state.user && this.state.user.logo)?config.cdn_url+'/'+this.state.user.logo:defaultImg} alt="Logo entreprise" />
 							</div>
 							<div className="col">
 								<div className="card">
 		  							<div className="card-block">
-										{(this.state.user)?this.state.user.description:null}
+										{(this.state.user && this.state.user.description)?this.state.user.description:"Cette entreprise n'a pas encore rédigé sa description"}
 									</div>
 								</div>
 							</div>
