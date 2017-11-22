@@ -38,7 +38,8 @@ export default class ContributorManage extends Component {
 			this.setState({
 				user : res,
 				loading : false,
-				leads : res.leads.length
+				leads : res.leads.length,
+				balance: res.balance
 			})
 			res.leads.map((lead) => {
 				if (lead.converted) {
