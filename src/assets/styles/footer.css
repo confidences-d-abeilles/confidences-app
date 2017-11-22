@@ -28,6 +28,11 @@ html, body, #root, #wrapper
 	height: 240px;
 	width: 1200px;
 	overflow: hidden;
+	background: red; /* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.25)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.25)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.25)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.25)); /* Standard syntax */
 }
 
 .cover img {
