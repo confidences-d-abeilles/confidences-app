@@ -4,6 +4,8 @@ import request from '../services/Net'
 import imgPlaceholder from '../assets/img/profile.png';
 import { Link } from 'react-router-dom'
 
+const config = require('../config.js')
+
 export default class Hives extends Component {
 
 	constructor(props) {
@@ -35,7 +37,7 @@ export default class Hives extends Component {
 							{this.state.hives.map((hive) => {
 								return (
 									<div className="card w-25 m-3">
-										<img className="card-img-top img-fluid" src={imgPlaceholder} alt="Card image cap" />
+										<img className="card-img-top img-fluid" src={(hive.imgs && hive.imgs[0])?config.cdn_url+'/'+hive.imgs[0]:imgPlaceholder} alt="Card image cap" />
 										<div className="card-block">
 											<h3 className="card-title">{hive.name}</h3>
 											<Link to={'/hive/'+hive.id} className="btn">Voir en détails</Link>
