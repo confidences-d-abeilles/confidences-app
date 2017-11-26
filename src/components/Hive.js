@@ -59,6 +59,15 @@ export default class Hive extends Component {
 						</div>
 						<div className="col">
 							<h3>Photos</h3>
+							<div className="row">
+								{this.state.hive.imgs.map((img) => {
+									return (
+										<div className="col-6">
+											<img src={config.cdn_url+'/'+img} key={img} alt="Photo de la ruche" className="img-fluid"/>
+										</div>
+									)
+								})}
+							</div>
 						</div>
 					</div>
 				</div>
