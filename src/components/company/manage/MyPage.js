@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
 import ReactQuill from 'react-quill';
+import Loading from '../../utils/Loading'
 
 const config = require('../../../config.js');
 
@@ -134,6 +135,7 @@ export default class CompanyManageMyPage extends Component {
 						<a href={(this.state.user)?"/"+this.state.user.namespace:'/'} target="_blank" className="btn btn-secondary">Voir ma page</a>
 					</div>
 				</div>
+				{(this.state.user)?
 				<form>
 					<div className="form-group">
 						<input type="text" placeholder="Nom de l'entreprise" name="name" value={this.state.name} onChange={handleChange.bind(this)} className="form-control" />
@@ -187,7 +189,7 @@ export default class CompanyManageMyPage extends Component {
 					<div className="form-group">
 						<input type="submit" value="Enregistrer les modifications" className="btn btn-primary" onClick={this.submit.bind(this)} />
 					</div>
-				</form>
+				</form>:<Loading />}
 				<h3 className="text-center">Ajouter une actualité</h3>
 				<form onSubmit={this.createActu.bind(this)}>
 					<div className="form-group">

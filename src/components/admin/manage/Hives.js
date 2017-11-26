@@ -129,8 +129,11 @@ export default class AdminManageHives extends Component {
 										}}/>
 								</div>
 								<div className="form-group">
-									<label htmlFor="actu-img" className={(this.state.actuImg)?'active-upload':'upload'}>Glisser une image ou cliquez pour en séléctionner un parmi vos fichers<br/>Taille recommandée : 400x300 - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}</label>
-									<input type="file" className="form-control" id="actu-img" onChange={() => { this.setState({ actuImg : document.getElementById("actu-img").files[0].name }) }} style={{display:'none'}}/>
+									<label htmlFor="actu-img" className={(this.state.actuImg)?'active-upload':'upload'} style={{ position: 'relative' }}>
+										<input type="file" className="form-control" id="actu-img" onChange={() => { this.setState({ actuImg : document.getElementById("actu-img").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
+										Glisser une image ou cliquez pour en séléctionner un parmi vos fichers<br/>
+										Taille recommandée : 400x300 - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}
+									</label>
 								</div>
 								<button className="btn btn-primary">Soumettre</button>
 							</form>
