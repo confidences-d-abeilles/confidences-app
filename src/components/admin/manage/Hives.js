@@ -72,6 +72,23 @@ export default class AdminManageHives extends Component {
 		})
 	}
 
+	addPhoto(e) {
+		e.preventDefault()
+		const data = new FormData();
+		data.append('id', this.state.selected);
+		if (document.getElementById("hive-img").files[0]) {
+			data.append("img", document.getElementById("hive-img").files[0]);
+			request({
+				url: '/hive/photo',
+				method: 'post',
+				data: data,
+				header: {
+					'content-type' : 'multipart/form-data'
+				}
+			}, this.refs.notif)
+		}
+	}
+
 	render () {
 		return (
 			<div>
@@ -137,7 +154,17 @@ export default class AdminManageHives extends Component {
 								</div>
 								<button className="btn btn-primary">Soumettre</button>
 							</form>
-						<h3>Ajouter des photos</h3>
+						<h3 className="py-4">Ajouter des photos</h3>
+						<form onSubmit={this.addPhoto.bind(this)}>
+							<div className="form-group">
+								<label htmlFor="actu-img" className={(this.state.hiveImg)?'active-upload':'upload'} style={{ position: 'relative' }}>
+									<input type="file" className="form-control" id="hive-img" onChange={() => { this.setState({ hiveImg : document.getElementById("hive-img").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
+									Glisser une image ou cliquez pour en séléctionner un parmi vos fichers<br/>
+									Taille recommandée : 400x300 - {(this.state.hiveImg)?'Selectionné : '+this.state.hiveImg:"Aucun fichier séléctionné"}
+								</label>
+							</div>
+							<button className="btn btn-primary">Ajouter cette photo</button>
+						</form>
 					</div>:<div className="col"></div>}
 				</div>
 			</div>
