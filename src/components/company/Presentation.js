@@ -7,22 +7,22 @@ export default class CompanyPresentation extends Component {
 	render () {
 		return (
 			<div className="container py-4">
-				<div className="row align-items-center">
-					<div className="col text-center">
-						<h1 className="text-left">Vos abeilles n’ont
+				<div className="row align-items-center justify-content-center">
+					<div className="col-lg-6 col-md-10 col-sm-12 text-center">
+						<h2 className="text-left">Vos abeilles n’ont
 						jamais été aussi
 						proche de prendre leur
-						envol !</h1>
+						envol !</h2>
 						<p className="text-left">
 							Pour parrainer votre première ruche c’est très
 							simple : complétez notre formulaire en moins
 							de 3 minutes et voilà ! Vous avez accès à la
 							page dédiée à votre entreprise.
 						</p>
-						<Link to="/signup/company" className="btn btn-secondary">Demarrer</Link>
+						<Link to="/signup/company" className="btn btn-secondary my-2">Demarrer</Link>
 					</div>
-					<div className="col">
-						<img src={imgPlaceholder} alt="Empty img space" />
+					<div className="col-lg-6 col-md-10 col-sm-12 my-2 text-center">
+						<img src={imgPlaceholder} alt="Empty img space" className="img-fluid" />
 					</div>
 				</div>
 				<div className="row align-items-center">
@@ -31,7 +31,7 @@ export default class CompanyPresentation extends Component {
 					</div>
 				</div>
 				<div className="row justify-content-center align-items-start">
-					<div className="col-4">
+					<div className="col-lg-4 col-md-6 col-sm-10">
 						<h3>Pour l'entreprise</h3>
 						<ul>
 							<li>Adopter une démarche participative et
@@ -60,7 +60,7 @@ export default class CompanyPresentation extends Component {
 							vos clients</li>
 						</ul>
 					</div>
-					<div className="col-4">
+					<div className="col-lg-4 col-md-6 col-sm-10">
 						<h3>Pour l'apiculteur</h3>
 						<ul>
 							<li>C’est l’assurance de maintenir notre
@@ -81,10 +81,10 @@ export default class CompanyPresentation extends Component {
 					</div>
 				</div>
 				<div className="row justify-content-center align-items-center">
-					<div className="col-4 text-center">
+					<div className="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-2 text-center">
 						<Link to="/signup/company" className="btn btn-primary">Parrainer une ruche</Link>
 					</div>
-					<div className="col-4 text-center">
+					<div className="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-2 text-center">
 						<Link to="/company/more"className="btn btn-primary">En savoir plus</Link>
 					</div>
 				</div>

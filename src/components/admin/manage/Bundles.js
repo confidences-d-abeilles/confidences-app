@@ -34,10 +34,10 @@ export default class AdminManageBundles extends Component {
 			<div className="row">
 				<NotificationSystem ref="notif" />
 				<div className="col">
-					<h2 className="text-center">Gestion des parrainages</h2>
+					<h2 className="text-center my-4">Gestion des parrainages</h2>
 					<div className="row">
 						<div className="col">
-							<table className="table">
+							<table className="table table-sm">
 								<tbody>
 									<tr><th>Propriétaire</th><th>Pack</th><th>Nombre de ruches associées</th><th>Status</th><th>Actions</th></tr>
 									{this.state.bundles.map((bundle) => {

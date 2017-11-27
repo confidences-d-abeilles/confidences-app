@@ -73,31 +73,90 @@ export default class Bundle extends Component {
 		});
 	}
 
+	getPaymentStatus(nb) {
+		switch(nb) {
+			case 0:
+			return ("Non regle");
+			break;
+			case 1:
+			return("En attente de validation");
+			break;
+			case 2:
+			return ("Paye");
+			break;
+			default:
+				return ("N / A");
+				break;
+		}
+	}
+
+	validatePayement() {
+		request({
+			url: '/payment/validate/'+this.state.bundle.id,
+			method: 'put'
+		}, this.refs.notif).then((res) => {
+			this.props.refresh();
+		})
+	}
+
 	render () {
 		return (
 			<div>
 				<NotificationSystem ref="notif" />
 				{(this.state.bundle)?
 					<div>
-						<h3>Parrainage {this.state.bundle.id}</h3>
-						Demande initiale : {this.state.bundle.hives} ruches et {this.state.bundle.bees} abeilles <br />
-						Nombre de ruches totalement ou partielement associées : {this.state.bundle.contain.length}<br />
-						<h4>Associer une ruche</h4>
-						<form className="form-inline my-2" onSubmit={this.assocHive.bind(this)}>
-							<select name="hive" onChange={handleChange.bind(this)} className="form-control">
-								<option value="0">Choisir une ruche...</option>
-								{this.state.hives.map((hive) => {
-									if (hive.occupation == 0) {
-										return (<option value={hive.id} key={hive.id}>{hive.name} (occupé à {hive.occupation}%)</option>)
-									} else {
-										return null;
-									}
-								})}
-							</select>
-							<button className="btn btn-primary mx-2">Associer cette ruche</button>
-						</form>
-						<button className="btn btn-primary" onClick={this.validate.bind(this)}>Valider la préparation du parrainage</button>
-						<button className="btn btn-primary" onClick={this.delete.bind(this)}>Supprimer ce parrainage</button>
+						<div className="card-deck mb-4">
+							<div className="card">
+								<div className="card-block">
+									<h3 className="card-title">Etat du paiement</h3>
+									<h4 className="my-4">
+											{this.getPaymentStatus(this.state.bundle.state)}
+									</h4>
+									{this.state.bundle.state === 1 && <button className="btn btn-info" onClick={this.validatePayement.bind(this)}>Valider le paiement</button>}
+								</div>
+							</div>
+							<div className="card">
+								<div className="card-block">
+									<h3 className="card-title">Etat de l'offre</h3>
+									<p className="card-text">
+										Demande initiale : {this.state.bundle.hives} ruches et {this.state.bundle.bees} abeilles <br />
+										Nombre de ruches totalement ou partielement associées : {this.state.bundle.contain.length}<br />
+									</p>
+								</div>
+							</div>
+						</div>
+						<div className="card-deck my-4">
+							<div className="card">
+								<div className="card-block">
+									<h3 className="card-title">Ruches associees</h3>
+									<p className="card-text">
+										Les ruches associees...
+									</p>
+									<form className="my-2" onSubmit={this.assocHive.bind(this)}>
+										<select name="hive" onChange={handleChange.bind(this)} className="form-control">
+											<option value="0">Choisir une ruche...</option>
+											{this.state.hives.map((hive) => {
+												if (hive.occupation == 0) {
+													return (<option value={hive.id} key={hive.id}>{hive.name} (occupé à {hive.occupation}%)</option>)
+												} else {
+													return null;
+												}
+											})}
+										</select>
+										<button className="btn btn-info my-2">Associer cette ruche</button>
+									</form>
+								</div>
+							</div>
+							<div className="card">
+								<div className="card-block">
+									<h3 className="card-title">Autre action</h3>
+									<p className="card-text">
+										<button className="btn btn-info btn-sm m-2" onClick={this.validate.bind(this)}>Valider la préparation du parrainage</button>
+										<button className="btn btn-danger btn-sm m-2" onClick={this.delete.bind(this)}>Supprimer ce parrainage</button>
+									</p>
+								</div>
+							</div>
+						</div>
 					</div>
 				:'Chargement en cours...'}
 			</div>

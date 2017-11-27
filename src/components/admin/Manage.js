@@ -5,24 +5,33 @@ import AdminManageFaq from './manage/Faq'
 import AdminManageMails from './manage/Mails'
 import AdminManageHives from './manage/Hives'
 import AdminManageBundles from './manage/Bundles'
+import request from '../../services/Net'
+import NotificationSystem from 'react-notification-system'
 
 import {
 	// BrowserRouter as Router,
 	Route,
 	Link
 } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
 
 export default class CompanyManage extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-
+			notifications: null
 		}
 	}
 
 	componentDidMount() {
+		request({
+			url: '/admin/notifications',
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				notifications: res
+			});
+		})
 	}
 
 
@@ -30,17 +39,17 @@ export default class CompanyManage extends Component {
 		return (
 				<div className="container-fluid py-4">
 					<NotificationSystem ref="notif" />
-					<div className="row">
-						<div className="col-2">
+					<div className="row justify-content-center">
+						<div className="col-lg-2 col-md-6">
 							<ul className="list-group">
 								<li className="list-group-item"><Link to="/admin/manage/users">Gerer les utilisateurs</Link></li>
 								<li className="list-group-item"><Link to="/admin/manage/faq">Gerer la FAQ</Link></li>
 								<li className="list-group-item"><Link to="/admin/manage/hives">Gerer les ruches</Link></li>
-								<li className="list-group-item"><Link to="/admin/manage/bundles">Gerer les parrainages</Link></li>
+								<li className="list-group-item"><Link to="/admin/manage/bundles">Gerer les parrainages</Link>&nbsp;{this.state.notifications && this.state.notifications.bundle > 0 && <span className="badge badge-pill badge-danger">{this.state.notifications.bundle}</span>}</li>
 								<li className="list-group-item"><Link to="/admin/manage/mails">Gerer les envois</Link></li>
 							</ul>
 						</div>
-						<div className="col-9">
+						<div className="col-lg-10 col-md-12">
 							<div className="row">
 								<div className="col-12">
 									{(this.state.user)?this.checkInfos():''}

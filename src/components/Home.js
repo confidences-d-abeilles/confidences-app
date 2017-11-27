@@ -38,8 +38,8 @@ export default class Home extends Component {
         return (
 			<div className="container py-4">
 				<NotificationSystem ref="notif" />
-				<div className="row align-items-center">
-					<div className="col-lg-6 col-sm-12">
+				<div className="row align-items-center justify-content-center">
+					<div className="col-lg-6 col-md-10 col-sm-12">
 						<h1>Parrainez une ruche, aidez-nous à protéger les abeilles</h1>
 						<p>
 							Confidences d’Abeilles vous propose
@@ -48,9 +48,12 @@ export default class Home extends Component {
 							des abeilles, à la préservation de la
 							biodiversité en parrainant une ruche.
 						</p>
-						<Link to="/company/presentation" className="btn btn-secondary mr-4">Service entreprise</Link><Link to="/individual/presentation" className="btn btn-secondary">Service particulier</Link>
+						<p className="text-center">
+							<Link to="/company/presentation" className="btn btn-secondary m-2">Service entreprise</Link>
+							<Link to="/individual/presentation" className="btn btn-secondary m-2">Service particulier</Link>
+						</p>
 					</div>
-					<div className="col-lg-6 col-sm-12 my-4">
+					<div className="col-lg-6 col-md-10 hidden-sm-down my-4">
 						<div id="carouselHome" className="carousel slide" data-interval="5000" data-ride="carousel">
 							<ol className="carousel-indicators">
 								<li data-target="#carouselHome" data-slide-to="0" className="active"></li>
@@ -87,8 +90,8 @@ export default class Home extends Component {
 						</div>
 					</div>
 				</div>
-				<div className="row justify-content-center align-items-center my-4">
-					<div className="col-9">
+				<div className="row justify-content-center align-items-center">
+					<div className="col-lg-9 col-md-10 col-sm-12">
 						<p>
 							Cette mission nous la menons avec vous, particuliers, entreprises, citoyens avertis qui nous
 							accompagnez depuis nos débuts. En financement un rucher pédagogique vous nous avez déjà
@@ -97,7 +100,7 @@ export default class Home extends Component {
 						</p>
 					</div>
 				</div>
-				<div className="row justify-content-center align-items-center my-4">
+				<div className="row justify-content-center align-items-center">
 					<div className="col">
 						<h2 className="text-center my-4">Ils parrainent déjà des ruches</h2>
 						{(this.state.users)?
@@ -131,7 +134,7 @@ export default class Home extends Component {
 					</div>
 				</div>
 				<div className="row justify-content-center">
-					<div className="col-9">
+					<div className="col-lg-9 col-md-10 col-sm-12">
 						<p>
 							Vous voulez apporter votre pierre à l’édifice et participer à cette belle aventure ? Nous vous
 							proposons de parrainer une ruche. En échange de quoi, les butineuses vous feront découvrir
@@ -140,9 +143,10 @@ export default class Home extends Component {
 					</div>
 				</div>
 				<div className="row align-items-center justify-content-center">
-					<div className="col-4 text-center">
+					<div className="col-lg-4 col-md-6 col-sm-12 text-center my-2">
 						<Link to="/account"><button className="btn btn-primary" data-toggle="modal" data-target="#createAccount">Parrainer une ruche</button></Link>
-					</div><div className="col-4 text-center">
+					</div>
+					<div className="col-lg-4 col-md-6 col-sm-12 text-center my-2">
 						<Link to="/hives" className="btn btn-primary">Découvrir les ruches</Link>
 					</div>
 				</div>
