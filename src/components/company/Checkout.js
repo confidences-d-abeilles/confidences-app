@@ -129,7 +129,7 @@ export default class CompanyCheckout extends Component {
 					</div>
 				</div>
 				<div className="row justify-content-center">
-					<div className="col-9">
+					<div className="col-lg-9 col-md-10 col-sm-12">
 						<h2 className="text-center my-4">Confirmation et paiement</h2>
 						<h3 className="text-center">Résumé</h3>
 						<p>
@@ -145,7 +145,7 @@ export default class CompanyCheckout extends Component {
 							<button className="btn btn-primary" onClick={this.changeBundle.bind(this)}>Changer d'offre</button>
 						</p>
 						<div className="row justify-content-center">
-							<div className="col-6">
+							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="text-center">Adresse de facturation</h3>
 								<p>
 									{(this.state.baddress1)?<span>{this.state.baddress1}<br/></span>:''}
@@ -156,7 +156,7 @@ export default class CompanyCheckout extends Component {
 									{this.state.bcountry}
 								</p>
 							</div>
-							<div className="col-6">
+							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="text-center">Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
 								{this.state.different && !this.state.saved &&
 									<form className="text-center">
@@ -183,7 +183,7 @@ export default class CompanyCheckout extends Component {
 										<div className="form-group">
 											<input type="text" className="form-control" value={this.state.dcountry} name="dcountry" onChange={handleChange.bind(this)} />
 										</div>
-										<button className="btn btn-primary" onClick={this.saveDaddress.bind(this)}>Enregistrer</button>
+										<button className="btn btn-primary my-2" onClick={this.saveDaddress.bind(this)}>Enregistrer</button>
 									</form>
 								}
 								{this.state.saved &&
@@ -198,9 +198,9 @@ export default class CompanyCheckout extends Component {
 								}
 							</div>
 						</div>
-						<h3 className="text-center">Paiement sécurisé</h3>
+						<h3 className="text-center my-2">Paiement sécurisé</h3>
 						<div className="row justify-content-center">
-							<form className="col-6">
+							<form className="col-lg-6 col-md-10 col-sm-12">
 								<div className="form-group">
 									<div className="form-check">
 										<label className="form-check-label">
@@ -222,7 +222,7 @@ export default class CompanyCheckout extends Component {
 									</div>
 								</div>
 							</form>
-							<div className="col-6">
+							<div className="col-lg-6 col-md-10 col-sm-12">
 								{this.state.paytype === '0' &&
 									<Elements locale="fr">
 										<PayForm price={this.state.price} bundle={this.state.bundle_id} for={this.state.company_name} redirect="/account" />

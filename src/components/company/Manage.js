@@ -49,13 +49,13 @@ export default class CompanyManage extends Component {
 		}
 		if (this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].state === 0 ) {
 			return (
-				<p className="alert alert-danger">Vous n'avez pas encore reglé votre parrainage. <Link to="/company/checkout">Cliquez ici</Link> pour le faire maintenant</p>
+				<p className="alert alert-danger mt-4">Vous n'avez pas encore reglé votre parrainage. <Link to="/company/checkout">Cliquez ici</Link> pour le faire maintenant</p>
 			);
 		}
 
 		if (this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].state === 1 ) {
 			return (
-				<p className="alert alert-warning">La validation du règlement de votre parrainage est en cours</p>
+				<p className="alert alert-warning mt-4">La validation du règlement de votre parrainage est en cours</p>
 			);
 		}
 
@@ -69,7 +69,7 @@ export default class CompanyManage extends Component {
 				<div className="container py-4">
 					<NotificationSystem ref="notif" />
 					<div className="row">
-						<div className="col-3">
+						<div className="col-lg-3 col-md-4 col-sm-12">
 							<div style={{ height: '210px', maxWidth: '100%', flexDirection: 'column'}} className="d-flex justify-content-center align-items-center">
 								<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:imgPlaceholder} alt="Logo entreprise" style={{ maxWidth: '100%', maxHeight: '100%'}} />
 							</div>
@@ -82,7 +82,7 @@ export default class CompanyManage extends Component {
 								<li className="list-group-item"><Link to="/logout">Deconnexion</Link></li>
 							</ul>
 						</div>
-						<div className="col-9">
+						<div className="col-lg-9 col-md-8 col-sm-12">
 							<div className="row">
 								<div className="col-12">
 									{(this.state.user)?this.checkInfos():''}

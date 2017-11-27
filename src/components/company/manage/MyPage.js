@@ -124,10 +124,10 @@ export default class CompanyManageMyPage extends Component {
 				<h2 className="text-center my-4">Modifier ma page</h2>
 				<div className="row mb-4">
 					<div className="col text-center">
-						<a href={require('../../../assets/page_ent.pdf')} target="_blank" className="btn btn-secondary">Comment personaliser ma page ?</a>
+						<a href={require('../../../assets/page_ent.pdf')} target="_blank" className="btn btn-secondary my-2">Comment personaliser ma page ?</a>
 					</div>
 					<div className="col text-center">
-						<a href={(this.state.user)?"/"+this.state.user.namespace:'/'} target="_blank" className="btn btn-secondary">Voir ma page</a>
+						<a href={(this.state.user)?"/"+this.state.user.namespace:'/'} target="_blank" className="btn btn-secondary my-2">Voir ma page</a>
 					</div>
 				</div>
 				{(this.state.user)?
