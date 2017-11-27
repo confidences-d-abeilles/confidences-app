@@ -14,10 +14,10 @@ export default class FooterPage extends Component {
 					<Link to="/">
 						<p className="text-center lead">
 							Un service assuré par Confidences d'Abeilles<br />
-							<img src={logo} alt="Confidences d'Abeilles Logo" height="150px" />
+						<img src={logo} alt="Confidences d'Abeilles Logo"  className="img-fluid my-4" style={{ maxHeight: '150px' }}	 />
 						</p>
 					</Link>
-					<div className="text-center lead">
+					<div className="text-center">
 						<a style={{ color : 'black' }} href="https://www.facebook.com/confidencesdabeille" target="_blank" rel="noopener noreferrer"><FontAwesome name='facebook-official' size="2x" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a style={{ color : 'black' }} href="https://twitter.com/Cosme_conf" target="_blank" rel="noopener noreferrer"><FontAwesome name='twitter' size="2x" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a style={{ color : 'black' }} href="https://www.instagram.com/confidences_dabeilles/" target="_blank" rel="noopener noreferrer"><FontAwesome name='instagram' size="2x" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

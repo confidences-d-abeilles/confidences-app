@@ -29,11 +29,6 @@ export default class CompanyManageMyPage extends Component {
 
 	componentDidMount() {
 		this.get();
-		this.setState({
-			newLogo : (document.getElementById("logo").files[0])?document.getElementById("logo").files[0].name:null,
-			newCover : (document.getElementById("cover").files[0])?document.getElementById("cover").files[0].name:null,
-			actuImg : (document.getElementById("actu-img").files[0])?document.getElementById("actu-img").files[0].name:null
-		})
 	}
 
 	get() {
@@ -184,7 +179,7 @@ export default class CompanyManageMyPage extends Component {
 						<input type="texte" name="link2_url" className="form-control" value={this.state.link2_url} placeholder="URL du bouton d'action 2" onChange={handleChange.bind(this)} />
 					</div>
 					<div className="form-group">
-						<input type="checkbox" name="visible" onChange={handleTick.bind(this)} checked={this.state.visible} /> Rendre ma page publique
+						<label htmlFor="visible"><input type="checkbox" name="visible" id="visible" onChange={handleTick.bind(this)} checked={this.state.visible} /> Rendre ma page publique</label>
 					</div>
 					<div className="form-group">
 						<input type="submit" value="Enregistrer les modifications" className="btn btn-primary" onClick={this.submit.bind(this)} />
