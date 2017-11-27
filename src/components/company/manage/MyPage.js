@@ -121,8 +121,8 @@ export default class CompanyManageMyPage extends Component {
 		return (
 			<div>
 				<NotificationSystem ref="notif" />
-				<h2 className="text-center">Modifier ma page</h2>
-				<div className="row my-4">
+				<h2 className="text-center my-4">Modifier ma page</h2>
+				<div className="row mb-4">
 					<div className="col text-center">
 						<a href={require('../../../assets/page_ent.pdf')} target="_blank" className="btn btn-secondary">Comment personaliser ma page ?</a>
 					</div>
