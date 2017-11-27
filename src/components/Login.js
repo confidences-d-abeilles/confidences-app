@@ -50,7 +50,7 @@ export default class Signup extends Component {
 			<div className="container py-4">
 				<NotificationSystem ref="notificationSystem" />
 				<div className="row justify-content-center">
-					<div className="col-4">
+					<div className="col-lg-4 col-md-6 col-sm-12">
 						<form className="text-center">
 							<h2 className="text-center my-4">Connexion</h2>
 							{(this.state.message)?<p className="alert alert-danger">{this.state.message}</p>:null}
@@ -61,7 +61,7 @@ export default class Signup extends Component {
 								<input type="password" name="password" className="form-control" placeholder="Mot de passe" onChange={handleChange.bind(this)} />
 							</div>
 							<Link to="/forgot">Mot de passe oublié ?</Link><br/>
-							<input type="submit" className="btn btn-primary" value="Se connecter" onClick={this.login.bind(this)} />
+							<input type="submit" className="btn btn-primary my-2" value="Se connecter" onClick={this.login.bind(this)} />
 						</form>
 					</div>
 				</div>

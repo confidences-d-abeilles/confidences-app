@@ -46,7 +46,7 @@ export default class CompanyManageCustomize extends Component {
 			<div className="row">
 				<NotificationSystem ref="notif" />
 				<div className="col">
-					<h2 className="text-center">Personaliser mes étiquettes</h2>
+					<h2 className="text-center my-4">Personaliser mes étiquettes</h2>
 					{this.state.current &&
 						<p className="text-center">
 							<img className="img-fluid my-2 center-block" src={config.cdn_url+'/'+this.state.current} alt="Etiquette actuelle"/>
