@@ -55,30 +55,73 @@ export default class AdminManageUsers extends Component {
 			<div className="container-fluid">
 				<div className="row">
 					<NotificationSystem ref="notif" />
-					<div className="col my-2">
-						<h2 className="text-center">Gérer les utilisateurs</h2>
-					</div>
+					<h2 className="text-center my-4">Gérer les utilisateurs</h2>
 				</div>
 				<div className="row">
-					<div className="col-3">
-						<table className="table">
-							<tbody>
-								<tr><th>Email</th><th></th></tr>
-								{this.state.users.map((user) => {
-										return (<tr key={user.id}><td>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</td><td><button className="btn btn-sm btn-link" onClick={this.selectUser.bind(this, user)}>Manage</button></td></tr>)
-								})}
-							</tbody>
-						</table>
-					</div>
 						{(this.state.selectedUser)?
-							<div className="col-9">
-								<h3>Coordonnees</h3>
-									Nom et prenom : {this.state.selectedUser.firstname} {this.state.selectedUser.name}<br />
-								{(this.state.selectedUser.company_name)?'Nom de la societe : '+this.state.selectUser.company_name+'<br />':null}
+							<div className="col-lg-9 col-md-12">
+								<div className="row">
+									<div className="col-lg-6 col-md-12 my-2">
+										<div className="card">
+											<div className="card-block">
+												<h3 className="card-title">Informations generales</h3>
+												<p className="card-text">
+													<strong>Nom et prenom :</strong> {this.state.selectedUser.firstname} {this.state.selectedUser.name}<br />
+													{(this.state.selectedUser.company_name)?<span><strong>Nom de la societe :</strong> {this.state.selectedUser.company_name}<br /></span>:null}
+													<strong>Adresse email :</strong> {this.state.selectedUser.email}<br />
+												</p>
+											</div>
+										</div>
+									</div>
+										{this.state.selectedUser.addresses && this.state.selectedUser.addresses[0] &&
+											<div className="col-lg-6 col-md-12 my-2">
+												<div className="card">
+													<div className="card-block">
+														<h3 className="card-title">Adresse de facturation</h3>
+														<p className="card-text">
+															{this.state.selectedUser.addresses[0].line1}<br />
+															{this.state.selectedUser.addresses[0].line2}<br />
+															{this.state.selectedUser.addresses[0].line3}<br />
+															{this.state.selectedUser.addresses[0].line4}<br />
+															{this.state.selectedUser.addresses[0].zipcode} {this.state.selectedUser.addresses[0].city}<br />
+															{this.state.selectedUser.addresses[0].country}
+														</p>
+													</div>
+											</div>
+										</div>
+										}
+										{this.state.selectedUser.addresses && this.state.selectedUser.addresses[1] &&
+											<div className="col-lg-6 col-md-12 my-2">
+												<div className="card">
+													<div className="card-block">
+														<h3 className="card-title">Adresse de livraison :</h3>
+														<p className="card-text">
+															{this.state.selectedUser.addresses[1].line1}<br />
+															{this.state.selectedUser.addresses[1].line2}<br />
+															{this.state.selectedUser.addresses[1].line3}<br />
+															{this.state.selectedUser.addresses[1].line4}<br />
+															{this.state.selectedUser.addresses[1].zipcode} {this.state.selectedUser.addresses[0].city}<br />
+															{this.state.selectedUser.addresses[1].country}
+														</p>
+													</div>
+												</div>
+											</div>
+										}
 							</div>
-						:<div className="col-9">
-							Cliquer sur un utilisateur dans la liste a gauche
+						</div>
+						:<div className="col-lg-9 col-md-12 col-sm-12">
+							Cliquer sur un utilisateur dans la liste
 						</div>}
+						<div className="col-3">
+							<table className="table">
+								<tbody>
+									<tr><th>Denomination</th><th></th></tr>
+									{this.state.users.map((user) => {
+										return (<tr key={user.id}><td>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</td><td><button className="btn btn-sm btn-link" onClick={this.selectUser.bind(this, user)}>Manage</button></td></tr>)
+									})}
+								</tbody>
+							</table>
+						</div>
 				</div>
 			</div>
 		)

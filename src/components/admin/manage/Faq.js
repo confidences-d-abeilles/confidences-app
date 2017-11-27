@@ -54,7 +54,7 @@ export default class AdminManageFaq extends Component {
 			<div className="row">
 				<NotificationSystem ref="notif" />
 				<div className="col">
-					<h2 className="text-center">Gerer la FAQ</h2>
+					<h2 className="text-center my-4">Gerer la FAQ</h2>
 					<form>
 						<h3>Ajouter une question / réponse</h3>
 						<div className="form-group">

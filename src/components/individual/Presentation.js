@@ -7,30 +7,30 @@ export default class IndividualPresentation extends Component {
 	render () {
 		return (
 			<div className="container py-4">
-				<div className="row align-items-center">
-					<div className="col">
-						<h1 className="text-left">Vos abeilles n’ont
+				<div className="row align-items-center justify-content-center">
+					<div className="col-lg-6 col-md-10 col-sm-12 text-center">
+						<h2 className="text-left">Vos abeilles n’ont
 						jamais été aussi
 						proche de prendre leur
-						envol !</h1>
-						<p>
+						envol !</h2>
+					<p className="text-left">
 							Pour parrainer vos premières abeilles c’est très
 							simple : complétez le formulaire d’inscription,
 							choisissez le nombre d’abeilles et voilà !
 						</p>
-						<Link to="/signup/individual" className="btn btn-secondary">Demarrer</Link>
+						<Link to="/signup/individual" className="btn btn-secondary my-2">Demarrer</Link>
 					</div>
-					<div className="col">
-						<img src={imgPlaceholder} alt="Empty img space" />
+					<div className="col-lg-6 col-md-10 col-sm-12 my-2 text-center">
+						<img src={imgPlaceholder} className="img-fluid" alt="Empty img space" />
 					</div>
 				</div>
-				<div className="row align-items-center">
-					<div className="col">
+				<div className="row align-items-center justify-content-center">
+					<div className="col-lg-9 col-md-10 col-sm-12">
 						<h2 className="text-center my-4">Parrainer une ruche c'est</h2>
 					</div>
 				</div>
 				<div className="row justify-content-center">
-					<div className="col-4">
+					<div className="col-lg-4 col-md-6 col-sm-12">
 						<h3>Pour vous</h3>
 						<ul>
 							<li>Adopter une démarche participative et
@@ -52,7 +52,7 @@ export default class IndividualPresentation extends Component {
 							ravira votre famille et vos amis.</li>
 						</ul>
 					</div>
-					<div className="col-4">
+					<div className="col-lg-4 col-md-6 col-sm-12">
 						<h3>Pour nous les apiculteurs</h3>
 						<ul>
 							<li>C’est l’assurance de maintenir notre
@@ -72,10 +72,10 @@ export default class IndividualPresentation extends Component {
 					</div>
 				</div>
 				<div className="row align-items-center justify-content-center">
-					<div className="col-4 text-center">
+					<div className="col-lg-4 col-md-6 col-sm-12 text-center m-2">
 						<Link to="/signup/individual" className="btn btn-primary">Parrainer une ruche</Link>
 					</div>
-					<div className="col-4 text-center">
+					<div className="col-lg-4 col-md-6 col-sm-12 text-center m-2">
 						<Link to="/individual/more" className="btn btn-primary">En savoir plus</Link>
 					</div>
 				</div>

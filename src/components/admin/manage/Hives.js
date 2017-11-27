@@ -95,7 +95,7 @@ export default class AdminManageHives extends Component {
 				<div className="row">
 					<NotificationSystem ref="notif" />
 					<div className="col">
-						<h2 className="text-center">Gérer les ruches</h2>
+						<h2 className="text-center my-4">Gérer les ruches</h2>
 					</div>
 				</div>
 				<div className="row">
