@@ -52,8 +52,8 @@ export default class CompanyPage extends Component {
             <div className="container-fluid">
 				{(this.state.redirect)?<Redirect to="/" />:null}
 				<NotificationSystem ref="notif" />
-				<div className="row">
-					<div className="col-6">
+				<div className="row justify-content-center">
+					<div className="col-lg-6 col-md-12">
 						<div className="w-100 cover">
 							{(this.state.user && this.state.user.cover)?<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.cover:null} alt="Cover" />:null}
 							<h1>{(this.state.user)?this.state.user.company_name:null}</h1>
@@ -91,7 +91,7 @@ export default class CompanyPage extends Component {
 							</div>
 						:''}
 					</div>
-					<div className="col-6">
+					<div className="col-lg-6 col-md-10 col-sm-12">
 						<h2 className="text-center my-4">Les ruches que nous parrainons</h2>
 						<div className="row">
 							{this.state.hives.map((hive) => {
