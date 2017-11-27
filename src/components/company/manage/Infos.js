@@ -138,7 +138,7 @@ export default class CompanyManageInfos extends Component {
 					<div className="row">
 
 						{(this.state.user)?
-						<div className="col">
+						<div className="col-lg-6 col-sm-12">
 							<h3 className="text-center">Mes informations</h3>
 							<p>
 								<strong>Entreprise :</strong> {this.state.user.company_name}<br />
@@ -159,7 +159,7 @@ export default class CompanyManageInfos extends Component {
 						</div>
 						:<Loading />}
 						{(this.state.user)?
-						<div className="col">
+						<div className="col-lg-6 col-sm-12">
 							<h3 className="text-center">Modifier mon mot de passe</h3>
 							<form onSubmit={this.changePassword.bind(this)}>
 								<div className="form-group">
@@ -168,14 +168,14 @@ export default class CompanyManageInfos extends Component {
 								<div className="form-group">
 									<input type="password" name="conf" onChange={handleChange.bind(this)} value={this.state.conf} className="form-control" placeholder="Confirmation du nouveau mot de passe" />
 								</div>
-								<button className="btn btn-primary">Enregistrer</button>
+								<button className="btn btn-primary mb-4">Enregistrer</button>
 							</form>
 						</div>
 						:null}
 					</div>
 					<div className="row">
 						{this.state.user &&
-						<form className="col-6 text-center">
+						<form className="col-lg-6 col-sm-12 text-center">
 							<h3 className="text-center">Mon adresse de facturation</h3>
 							<div className="form-group">
 								<input type="text" name="baddress1" onChange={handleChange.bind(this)} value={this.state.baddress1} className="form-control" placeholder="Nom et prénom"/>
@@ -206,7 +206,7 @@ export default class CompanyManageInfos extends Component {
 						</form>
 						}
 						{this.state.user &&
-						<form className="col-6 text-center">
+						<form className="col-lg-6 col-sm-12 text-center">
 							<h3 className="text-center">Mes informations de livraison</h3>
 							<div className="form-group">
 								<input type="text" name="daddress1" onChange={handleChange.bind(this)} value={this.state.daddress1} className="form-control" placeholder="Nom et prénom"/>
