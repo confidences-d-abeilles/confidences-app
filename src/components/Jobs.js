@@ -11,7 +11,7 @@ export default class Jobs extends Component {
 					</div>
 				</div>
 				<div className="row mt-4 justify-content-center align-items-center">
-					<div className="col-9">
+					<div className="col-lg-9 col-md-10 col-sm-12">
 						<p>
 							Confidences d’Abeilles c’est <strong>5.504.152 employés</strong> précisément et <strong>98% de femme</strong>. Oui,
 							vous avez bien lu ! Et au niveau du management cela se passe comment ? En fait, il faut
