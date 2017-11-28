@@ -3,6 +3,7 @@ import request from '../services/Net'
 import NotificationSystem from 'react-notification-system'
 import { handleChange } from '../services/FormService'
 import FontAwesome from 'react-fontawesome'
+import { isLoggedIn } from '../services/AuthService'
 
 export default class Contact extends Component {
 
@@ -16,17 +17,19 @@ export default class Contact extends Component {
 	}
 
 	componentDidMount() {
-		request({
-			url: '/user/me',
-			method: 'get'
-		}, this.refs.notif).then((res) => {
-			this.setState({
-				firstname: res.firstname,
-				name: res.name,
-				email: res.email,
-				job: res.job
+		if (isLoggedIn()) {
+			request({
+				url: '/user/me',
+				method: 'get'
+			}, this.refs.notif).then((res) => {
+				this.setState({
+					firstname: res.firstname,
+					name: res.name,
+					email: res.email,
+					job: res.job
+				})
 			})
-		})
+		}
 
 		request({
 			url : '/faq',
@@ -72,7 +75,6 @@ export default class Contact extends Component {
 							<span className="input-group-addon">Rechercher : </span>
 							<input type="text" name="criteria" onChange={handleChange.bind(this)} className="form-control" />
 						</div>
-						<h3 className="my-4">Question générales</h3>
 						{this.state.list.map((item) => {
 							if (item.type === 1 && (item.question.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 || item.answer.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 )) {
 								return (
@@ -86,7 +88,6 @@ export default class Contact extends Component {
 								return null
 							}
 						})}
-						<h3 className="my-4">Pour les entreprises</h3>
 							{this.state.list.map((item) => {
 								if (item.type === 2 && (item.question.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 || item.answer.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 )) {
 									return (
@@ -100,7 +101,6 @@ export default class Contact extends Component {
 									return null
 								}
 							})}
-						<h3 className="my-4">Pour les particuliers</h3>
 							{this.state.list.map((item) => {
 								if (item.type === 3 && (item.question.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 || item.answer.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 )) {
 									return (
