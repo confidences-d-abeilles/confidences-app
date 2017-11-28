@@ -8,24 +8,24 @@ export default class ContributorPresentation extends Component {
 		return (
 			<div className="container py-4">
 				<div className="row align-items-center">
-					<div className="col">
-						<h1>Chez Confidences
+					<div className="col-lg-6 col-md-10 col-sm-12 text-center">
+						<h2 className="text-left">Chez Confidences
 						d’Abeilles comme dans
 						la ruche, plus on est,
-						mieux l’on se porte !</h1>
-						<p>
+						mieux l’on se porte !</h2>
+						<p className="text-left">
 							Rejoignez-nous, aidez-nous à installer des
 							ruches et toucher des commissions
 							intéressantes.
 						</p>
 						<Link to="/signup/contributor" className="btn btn-secondary">Devenir apporteur d'affaires</Link>
 					</div>
-					<div className="col">
-						<img src={imgPlaceholder} alt="Empty img space" />
+					<div className="col-lg-6 col-md-10 col-sm-12 text-center">
+						<img src={imgPlaceholder} className="img-fluid mt-2" alt="Empty img space" />
 					</div>
 				</div>
 				<div className="row justify-content-center align-items-center">
-					<div className="col-9">
+					<div className="col-lg-9 col-md-10 col-sm-12">
 						<h2 className="text-center my-4">Un apporteur d'affaires, c'est quoi ?</h2>
 						<p>
 							Que vous soyez étudiant en école de commerce, d&#39;ingénieurs, à la FAC, en IUT ou même non
@@ -37,7 +37,7 @@ export default class ContributorPresentation extends Component {
 					</div>
 				</div>
 				<div className="row justify-content-center my-4">
-					<div className="col-4">
+					<div className="col-lg-4 col-md-6 col-sm-10">
 						<h3>Qu'est ce que j'y gagne ?</h3>
 						<ul>
 							<li>Une commission intéressante par ruche parrainée</li>
@@ -46,7 +46,7 @@ export default class ContributorPresentation extends Component {
 							<li>Un super contrat qui ne vous engage à rien au final</li>
 						</ul>
 					</div>
-					<div className="col-4">
+					<div className="col-lg-4 col-md-6 col-sm-10">
 						<h3>Que gagne Confidences d’Abeilles ?</h3>
 						<ul>
 							<li>Une optimisation de notre prospection</li>
@@ -57,10 +57,11 @@ export default class ContributorPresentation extends Component {
 					</div>
 				</div>
 				<div className="row align-items-center justify-content-center">
-					<div className="col-4 text-center">
-						<Link to="/signup/contributor" className="btn btn-primary">Je m'inscris</Link>
-					</div><div className="col-4 text-center">
-						<a href="https://confidencesdabeilles.fr/parrainer-ruche" className="btn btn-primary" target="_blank" rel="noopener noreferrer">L'offre de parrainage</a>
+					<div className="col-lg-4 col-md-6 col-sm-12 text-center">
+						<Link to="/signup/contributor" className="btn btn-primary my-2">Je m'inscris</Link>
+					</div>
+					<div className="col-lg-4 col-md-6 col-sm-12 text-center">
+						<a href="https://confidencesdabeilles.fr/parrainer-ruche" className="btn btn-primary my-2" target="_blank" rel="noopener noreferrer">L'offre de parrainage</a>
 					</div>
 				</div>
 			</div>

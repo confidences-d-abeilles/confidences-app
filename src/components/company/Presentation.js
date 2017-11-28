@@ -21,8 +21,8 @@ export default class CompanyPresentation extends Component {
 						</p>
 						<Link to="/signup/company" className="btn btn-secondary my-2">Demarrer</Link>
 					</div>
-					<div className="col-lg-6 col-md-10 col-sm-12 my-2 text-center">
-						<img src={imgPlaceholder} alt="Empty img space" className="img-fluid" />
+					<div className="col-lg-6 col-md-10 col-sm-12 text-center">
+						<img src={imgPlaceholder} alt="Empty img space" className="img-fluid mt-2" />
 					</div>
 				</div>
 				<div className="row align-items-center">

@@ -50,7 +50,7 @@ export default class CompanyPage extends Component {
     render () {
         return (
             <div className="container-fluid">
-				{(this.state.redirect)?<Redirect to="/" />:null}
+				
 				<NotificationSystem ref="notif" />
 				<div className="row justify-content-center">
 					<div className="col-lg-6 col-md-12">
