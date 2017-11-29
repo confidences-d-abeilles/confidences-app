@@ -65,7 +65,7 @@ export default class ContributorApproach extends Component {
 								<Link to="/contributor/prelead" className="btn btn-secondary">Ajouter une entreprise</Link>
 							</div>
 							<div className="col my-2 text-center">
-								<Link to="/contributor/parrains" className="btn btn-secondary">Consulter la liste des parrains</Link>
+								<Link to="/hives" className="btn btn-secondary">Consulter la liste des parrains</Link>
 							</div>
 						</div>
 					</div>
@@ -140,7 +140,7 @@ export default class ContributorApproach extends Component {
 								<Link to="/contributor/prelead" className="btn btn-secondary">Ajouter une entreprise</Link>
 							</div>
 							<div className="col my-2 text-center">
-								<Link to="/contributor/parrains" className="btn btn-secondary">Consulter la liste des parrains</Link>
+								<Link to="/contributor/parrains" className="btn btn-secondary">Recherche de parrains par numéro SIRET</Link>
 							</div>
 						</div>
 					</div>
