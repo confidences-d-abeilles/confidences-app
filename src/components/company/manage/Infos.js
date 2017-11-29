@@ -4,13 +4,15 @@ import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import { handleChange } from '../../../services/FormService'
 import Loading from '../../utils/Loading'
+import { Redirect } from 'react-router-dom'
+import { logout } from '../../../services/AuthService'
 
 export default class CompanyManageInfos extends Component {
 
 	constructor(props) {
 		super(props)
 		this.state = {
-
+			logout: false
 		}
 	}
 
@@ -56,6 +58,18 @@ export default class CompanyManageInfos extends Component {
 				}
 			})
 		});
+	}
+
+	deleteAccount() {
+		request({
+			url: '/user',
+			method: 'delete'
+		}, this.refs.notif).then((res) => {
+			logout();
+			this.setState({
+				logout: true
+			})
+		})
 	}
 
 	updateBaddress(e) {
@@ -127,6 +141,7 @@ export default class CompanyManageInfos extends Component {
 	render () {
 		return (
 			<div>
+				{this.state.logout && <Redirect to="/" />}
 				<NotificationSystem ref="notif" />
 				<div className="row my-2">
 					<div className="col">
@@ -169,6 +184,8 @@ export default class CompanyManageInfos extends Component {
 									<input type="password" name="conf" onChange={handleChange.bind(this)} value={this.state.conf} className="form-control" placeholder="Confirmation du nouveau mot de passe" />
 								</div>
 								<button className="btn btn-primary mb-4">Enregistrer</button>
+								<h3 className="text-center">Supprimer mon compte</h3>
+								<button onClick={this.deleteAccount.bind(this)} className="btn btn-danger">Supprimer mon compte</button>
 							</form>
 						</div>
 						:null}
