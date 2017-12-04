@@ -17,7 +17,7 @@ export default class Tarifs extends Component {
 								<a className="nav-link" data-toggle="tab" href="#company">Entreprise</a>
 							</li>
 						</ul>
-						<div className="tab-content">
+						<div className="tab-content" style={{ overflowX : 'auto' }}>
 							<div id="individual" className="tab-pane active" role="tabpanel">
 								<IndividualTarifs />
 							</div>
