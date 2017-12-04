@@ -36,21 +36,24 @@ export default class Faq extends Component {
 						<p>
 							Nous avons oublié de répondre à des questions ? Venez donc nous les soumettre <a href="https://goo.gl/forms/omh9deJlroedr5732" target="_blank">ici</a> !
 						</p>
-						<h3 className="my-4">Question générales</h3>
-						{this.state.list.map((item) => {
-							if (item.type === 1) {
-								return (
-									<div className="my-4" key={item.id}>
-										<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
-										<p className="collapse" id={item.id}>{item.answer}</p>
-										<hr />
-									</div>
-								)
-							} else {
-								return null
-							}
-						})}
-						<h3 className="my-4">Pour les entreprises</h3>
+						<h3 className="my-4" data-toggle="collapse" href="#general-wrapper" style={{ cursor: 'pointer' }}>Question générales&nbsp;<FontAwesome name='chevron-down' /></h3>
+							<div id="general-wrapper" className="collapse">
+							{this.state.list.map((item) => {
+								if (item.type === 1) {
+									return (
+										<div className="my-4" key={item.id}>
+											<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+											<p className="collapse" id={item.id}>{item.answer}</p>
+											<hr />
+										</div>
+									)
+								} else {
+									return null
+								}
+							})}
+							</div>
+						<h3 className="my-4" data-toggle="collapse" href="#company-wrapper" style={{ cursor: 'pointer' }}>Pour les entreprises&nbsp;<FontAwesome name='chevron-down' /></h3>
+							<div id="company-wrapper" className="collapse">
 							{this.state.list.map((item) => {
 								if (item.type === 2) {
 									return (
@@ -64,7 +67,9 @@ export default class Faq extends Component {
 									return null
 								}
 							})}
-						<h3 className="my-4">Pour les particuliers</h3>
+							</div>
+						<h3 className="my-4" data-toggle="collapse" href="#individual-wrapper" style={{ cursor: 'pointer' }}>Pour les particuliers&nbsp;<FontAwesome name='chevron-down' /></h3>
+						<div id="individual-wrapper" className="collapse">
 							{this.state.list.map((item) => {
 								if (item.type === 3) {
 									return (
@@ -78,8 +83,11 @@ export default class Faq extends Component {
 									return null
 								}
 							})}
-						<h3 className="my-4">Pour les apporteurs d'affaire</h3>
-							Si vous avez des questions à soumettre concernant cette catégorie, utilisez le formulaire disponible <a href="https://goo.gl/forms/omh9deJlroedr5732" target="_blank">ici</a> !
+							</div>
+						<h3 className="my-4" data-toggle="collapse" href="#contributor-wrapper" style={{ cursor: 'pointer' }}>Pour les apporteurs d'affaire&nbsp;<FontAwesome name='chevron-down' /></h3>
+							<div id="contributor-wrapper" className="collapse">
+								Si vous avez des questions à soumettre concernant cette catégorie, utilisez le formulaire disponible <a href="https://goo.gl/forms/omh9deJlroedr5732" target="_blank">ici</a> !
+							</div>
 					</div>
 				</div>
 			</div>

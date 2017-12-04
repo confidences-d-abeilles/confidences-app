@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import { isLoggedIn } from './services/AuthService';
 import CompanyPage from './components/company/Page';
 import Wrapper from './components/Wrapper';
-
 import {StripeProvider} from 'react-stripe-elements';
-
 import {
 	BrowserRouter as Router,
 	Switch,
 	Route
 } from 'react-router-dom';
+import io from 'socket.io-client'
+
+const config = require('./config.js');
+
+var socket = io(config.socket_url);
 
 class App extends Component {
 
