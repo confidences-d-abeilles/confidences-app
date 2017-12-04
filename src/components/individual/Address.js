@@ -13,9 +13,23 @@ export default class IndividualAddress extends Component {
 			message: '',
 			address1: '',
 			address2: '',
+			address3: '',
+			address4: '',
 			city: '',
-			zipcode: ''
+			zipcode: '',
+			country: 'France'
 		}
+	}
+
+	componentDidMount() {
+		request({
+			url: '/user/me',
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				address1 : res.name+' '+res.firstname
+			})
+		});
 	}
 
 	addAddress(e) {
@@ -30,16 +44,36 @@ export default class IndividualAddress extends Component {
 				url : '/address',
 				method : 'post',
 				data : {
-					address1 : this.state.address1,
-					address2 : this.state.address2,
+					line1 : this.state.address1,
+					line2 : this.state.address2,
+					line3 : this.state.address3,
+					line4 : this.state.address4,
 					city : this.state.city,
 					zipcode : this.state.zipcode,
+					country: this.state.country,
 					type : 1
 				}
-			}, this.refs.notificationSystem)
+			}, this.refs.notif)
 			.then((res) => {
-				this.setState({
-					redirect : true
+				request({
+					url : '/address',
+					method: 'post',
+					data : {
+						line1 : this.state.address1,
+						line2 : this.state.address2,
+						line3 : this.state.address3,
+						line4 : this.state.address4,
+						city : this.state.city,
+						zipcode : this.state.zipcode,
+						country: this.state.country,
+						type : 2
+					}
+				}, this.refs.notif)
+				.then((res) => {
+					console.log("done");
+					this.setState({
+						redirect: true
+					});
 				})
 			})
 			.catch((err) => {});
@@ -49,7 +83,7 @@ export default class IndividualAddress extends Component {
     render () {
         return (
 			<div className="container py-4">
-				<NotificationSystem ref="notificationSystem" />
+				<NotificationSystem ref="notif" />
 				{(isLoggedIn())?null:<Redirect to="/" />}
 				{(this.state.redirect)?
 					<Redirect to="/individual/wish" />
@@ -69,16 +103,27 @@ export default class IndividualAddress extends Component {
 								<p className="alert alert-danger">{this.state.message}</p>
 								:null}
 							<div className="form-group">
-								<input type="text" name="address1" className="form-control" placeholder="Adresse ligne 1" onChange={handleChange.bind(this)} />
+								<input type="text" name="address1" className="form-control" placeholder="Nom et prénom *" value={this.state.address1} onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" name="address2" className="form-control" placeholder="Adresse ligne 2" onChange={handleChange.bind(this)} />
+								<input type="text" name="address2" className="form-control" placeholder="Entreprise" value={this.state.address2} onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" name="city" className="form-control" placeholder="Ville" onChange={handleChange.bind(this)} />
+								<input type="text" name="address3" className="form-control" placeholder="Adresse ligne 1 *" value={this.state.address3} onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="number" name="zipcode" className="form-control" placeholder="Code postal" onChange={handleChange.bind(this)} />
+								<input type="text" name="address4" className="form-control" placeholder="Adresse ligne 2" value={this.state.address4} onChange={handleChange.bind(this)} />
+							</div>
+							<div className="form-group row">
+								<div className="col-4">
+								<input type="number" name="zipcode" className="form-control" placeholder="Code postal *" onChange={handleChange.bind(this)} />
+								</div>
+								<div className="col-8">
+									<input type="text" name="city" className="form-control" placeholder="Ville *" onChange={handleChange.bind(this)} />
+								</div>
+							</div>
+							<div className="form-group">
+								<input type="text" name="country" className="form-control" placeholder="Pays *" value={this.state.country} onChange={handleChange.bind(this)} />
 							</div>
 							<input type="submit" className="btn btn-primary" value="Continuer" onClick={this.addAddress.bind(this)} />
 						</form>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { handleChange } from '../../services/FormService';
 import { isLoggedIn } from '../../services/AuthService';
 import { Redirect } from 'react-router-dom';
+import request from '../../services/Net'
 
 export default class IndividualWish extends Component {
 
@@ -14,7 +15,16 @@ export default class IndividualWish extends Component {
 
 	selectBundle(e) {
 		e.preventDefault();
-
+		request({
+			url : '/bundle',
+			method : 'post',
+			data : {
+				bees : this.state.bees
+			}
+		}, this.refs.notif)
+		.then((res) => {
+			this.setState({ redirect : true})
+		})
 	}
 
     render () {
@@ -34,17 +44,16 @@ export default class IndividualWish extends Component {
 				<div className="row justify-content-center">
 					<form className="col-6">
 						<p className="text-center lead my-4">
-							Je decide de parrainer<br />
-							<div className="form-group">
-								<select name="bees" className="form-control" onChange={handleChange.bind(this)}>
-									<option value="10000">10 000 abeilles</option>
-									<option value="20000">20 000 abeilles</option>
-									<option value="30000">30 000 abeilles</option>
-									<option value="40000">40 000 abeilles</option>
-								</select>
-							</div>
+							Je decide de parrainer
 						</p>
-
+						<div className="form-group">
+							<select name="bees" className="form-control" onChange={handleChange.bind(this)}>
+								<option value="10000">10 000 abeilles</option>
+								<option value="20000">20 000 abeilles</option>
+								<option value="30000">30 000 abeilles</option>
+								<option value="40000">40 000 abeilles</option>
+							</select>
+						</div>
 						<ul>
 							<li>CCe sont {this.state.bees} abeilles de plus qui viendront renforcer la population du rucher et participer à la préservation de la biodiversité.</li>
 							<li>C'est aussi {this.state.bees * 8 / 10000} pots de miel produits par vos abeilles que vous recevrez !</li>

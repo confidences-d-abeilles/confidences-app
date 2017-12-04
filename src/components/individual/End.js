@@ -14,7 +14,7 @@ export default class CompanyEnd extends Component {
 							<img src={imgPlaceholder} className="img-fluid mx-auto d-block" alt="Img temp" />
 							<br />
 							Toutes l'equipe de Confidences  d'Abeilles vous remercie !<br /><br />
-						<Link to="/individual/manage" className="btn btn-primary btn-lg">Mon compte</Link>
+                        <Link to="/individual/manage" className="btn btn-primary">Mon compte</Link>
 						</p>
 					</div>
 				</div>
