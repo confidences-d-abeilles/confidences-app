@@ -225,7 +225,7 @@ export default class CompanyCheckout extends Component {
 							<div className="col-lg-6 col-md-10 col-sm-12">
 								{this.state.paytype === '0' &&
 									<Elements locale="fr">
-										<PayForm price={this.state.price} bundle={this.state.bundle_id} for={this.state.company_name} redirect="/account" />
+										<PayForm price={this.state.price} bundle={this.state.bundle_id} for={this.state.company_name} endpoint="/company/end" />
 									</Elements>
 								}
 

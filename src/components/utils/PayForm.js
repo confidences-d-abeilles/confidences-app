@@ -36,7 +36,7 @@ class PayForm extends Component {
 			method: 'post',
 			data: {
 				source: source,
-				redirect: config.app_url+'/company/final'
+				redirect: config.app_url+this.props.endpoint
 			}
 		}, this.refs.notif).then((res) => {
 			if (res) {
@@ -51,7 +51,6 @@ class PayForm extends Component {
 			<div>
 				<NotificationSystem ref="notif" />
 					<form onSubmit={this.handleSubmit} className="text-center" style={{ padding: '10px', margin: '10px'}} >
-						{(this.state.redirect)?<Redirect to='/company/final' />:null}
 						<label>Numéro de carte bancaire</label>
 						<CardNumberElement style={{ base: { fontSize: '18px' }}} />
 						<label>Date d'expiration</label>

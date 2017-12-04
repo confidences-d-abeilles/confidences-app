@@ -38,7 +38,6 @@ import CompanyWish from './company/Wish';
 import CompanyCheckout from './company/Checkout';
 import CompanyEnd from './company/End';
 import CompanyManage from './company/Manage';
-import CompanyFinal from './company/Final';
 import CompanyMore from './company/More';
 
 //admin
@@ -109,7 +108,6 @@ export default class Wrapper extends Component {
 							<Route exact path="/company/address" component={CompanyAddress} />
 							<Route exact path="/company/wish" component={CompanyWish} />
 							<Route exact path="/company/checkout" component={CompanyCheckout} />
-							<Route exact path="/company/final" component={CompanyFinal} />
 							<Route exact path="/company/end" component={CompanyEnd} />
 							<Route path="/company/manage" component={CompanyManage} />
 
