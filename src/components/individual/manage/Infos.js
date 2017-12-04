@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react'
 import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
@@ -6,6 +5,7 @@ import { handleChange } from '../../../services/FormService'
 import Loading from '../../utils/Loading'
 import { Redirect } from 'react-router-dom'
 import { logout } from '../../../services/AuthService'
+import Confirm from '../../utils/Confirm'
 
 export default class IndividualManageInfos extends Component {
 
@@ -198,8 +198,8 @@ export default class IndividualManageInfos extends Component {
 									<input type="password" name="conf" onChange={handleChange.bind(this)} value={this.state.conf} className="form-control" placeholder="Confirmation du nouveau mot de passe" />
 								</div>
 								<button className="btn btn-primary mb-4">Enregistrer</button>
-								<h3 className="text-center">Supprimer mon compte</h3>
-								<button onClick={this.deleteAccount.bind(this)} className="btn btn-danger my-4">Supprimer mon compte</button>
+								<h3 className="text-center mb-4">Supprimer mon compte</h3>
+								<Confirm action={this.deleteAccount.bind(this)} text="Supprimer mon compte" />
 							</form>
 						</div>
 						:null}
@@ -238,7 +238,7 @@ export default class IndividualManageInfos extends Component {
 						}
 						{this.state.user &&
 						<form className="col-lg-6 col-sm-12 text-center">
-							<h3 className="text-center">Mes informations de livraison</h3>
+							<h3 className="text-center mt-4">Mes informations de livraison</h3>
 							<div className="form-group">
 								<input type="text" name="daddress1" onChange={handleChange.bind(this)} value={this.state.daddress1} className="form-control" placeholder="Nom et prénom"/>
 							</div>
