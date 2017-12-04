@@ -23,7 +23,7 @@ export default class CompanyCheckout extends Component {
 			paytype: '0',
 			price: 0,
 			different: false,
-			saved: false,
+			saved: false
 		}
 	}
 
