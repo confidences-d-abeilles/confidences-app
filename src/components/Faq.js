@@ -36,7 +36,7 @@ export default class Faq extends Component {
 						<p>
 							Nous avons oublié de répondre à des questions ? Venez donc nous les soumettre <a href="https://goo.gl/forms/omh9deJlroedr5732" target="_blank">ici</a> !
 						</p>
-						<h3 className="my-4" data-toggle="collapse" href="#general-wrapper" style={{ cursor: 'pointer' }}>Question générales&nbsp;<FontAwesome name='chevron-down' /></h3>
+						<h3 className="my-4" data-toggle="collapse" href="#general-wrapper" style={{ cursor: 'pointer' }}>Général&nbsp;<FontAwesome name='chevron-down' /></h3>
 							<div id="general-wrapper" className="collapse">
 							{this.state.list.map((item) => {
 								if (item.type === 1) {
@@ -52,7 +52,7 @@ export default class Faq extends Component {
 								}
 							})}
 							</div>
-						<h3 className="my-4" data-toggle="collapse" href="#company-wrapper" style={{ cursor: 'pointer' }}>Pour les entreprises&nbsp;<FontAwesome name='chevron-down' /></h3>
+						<h3 className="my-4" data-toggle="collapse" href="#company-wrapper" style={{ cursor: 'pointer' }}>Entreprise&nbsp;<FontAwesome name='chevron-down' /></h3>
 							<div id="company-wrapper" className="collapse">
 							{this.state.list.map((item) => {
 								if (item.type === 2) {
@@ -68,7 +68,7 @@ export default class Faq extends Component {
 								}
 							})}
 							</div>
-						<h3 className="my-4" data-toggle="collapse" href="#individual-wrapper" style={{ cursor: 'pointer' }}>Pour les particuliers&nbsp;<FontAwesome name='chevron-down' /></h3>
+						<h3 className="my-4" data-toggle="collapse" href="#individual-wrapper" style={{ cursor: 'pointer' }}>Particulier&nbsp;<FontAwesome name='chevron-down' /></h3>
 						<div id="individual-wrapper" className="collapse">
 							{this.state.list.map((item) => {
 								if (item.type === 3) {
@@ -84,7 +84,7 @@ export default class Faq extends Component {
 								}
 							})}
 							</div>
-						<h3 className="my-4" data-toggle="collapse" href="#contributor-wrapper" style={{ cursor: 'pointer' }}>Pour les apporteurs d'affaire&nbsp;<FontAwesome name='chevron-down' /></h3>
+						<h3 className="my-4" data-toggle="collapse" href="#contributor-wrapper" style={{ cursor: 'pointer' }}>Partenaires&nbsp;<FontAwesome name='chevron-down' /></h3>
 							<div id="contributor-wrapper" className="collapse">
 								Si vous avez des questions à soumettre concernant cette catégorie, utilisez le formulaire disponible <a href="https://goo.gl/forms/omh9deJlroedr5732" target="_blank">ici</a> !
 							</div>
