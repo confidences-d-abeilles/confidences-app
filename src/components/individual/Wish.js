@@ -3,6 +3,7 @@ import { handleChange } from '../../services/FormService';
 import { isLoggedIn } from '../../services/AuthService';
 import { Redirect } from 'react-router-dom';
 import request from '../../services/Net'
+import NotificationSystem from 'react-notification-system'
 
 export default class IndividualWish extends Component {
 
@@ -30,6 +31,7 @@ export default class IndividualWish extends Component {
     render () {
         return (
 			<div className="container py-4">
+				<NotificationSystem ref="notif" />
 				{(isLoggedIn())?null:<Redirect to="/" />}
 				{(this.state.redirect)?
 				<Redirect to="/individual/checkout" />
