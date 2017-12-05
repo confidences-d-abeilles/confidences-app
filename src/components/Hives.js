@@ -47,17 +47,19 @@ export default class Hives extends Component {
 						{this.state.bundles?
 						<div className="row justify-content-center">
 							{this.state.bundles.map((bundle) => {
-								bundle.contain.map((hive) => {
-									return (
-										<div className="card w-25 m-3">
-											<img className="card-img-top img-fluid" src={(hive.imgs && hive.imgs[0])?config.cdn_url+'/'+hive.imgs[0]:imgPlaceholder} alt="Card image cap" />
-											<div className="card-block">
-												<h3 className="card-title">{hive.name}</h3>
-												<Link to={'/hive/'+hive.id} className="btn">Voir en détails</Link>
+								return (
+									bundle.contain.map((hive) => {
+										return (
+											<div className="card w-25 m-3">
+												<img className="card-img-top img-fluid" src={(hive.imgs && hive.imgs[0])?config.cdn_url+'/'+hive.imgs[0]:imgPlaceholder} alt="Card image cap" />
+												<div className="card-block">
+													<h3 className="card-title">{hive.name}</h3>
+													<Link to={'/hive/'+hive.id} className="btn">Voir en détails</Link>
+												</div>
 											</div>
-										</div>
-									)
-								})
+										)
+									})
+								)
 							})}
 						</div>:<Loading />}
 					</div>
