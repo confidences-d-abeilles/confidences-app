@@ -30,11 +30,11 @@ export default class ContributorManageApproaches extends Component {
 					<table className="table">
 						<tbody>
 							<tr>
-								<th>Nom de l'entreprise</th><th>Status</th><th>Nombre de ruches parrainées</th>
+								<th>Nom de l'entreprise</th><th>Status</th>
 							</tr>
 							{this.state.leads.map((lead) => {
 								var date = new Date(lead.createdAt);
-								return (<tr><td>{lead.company_name}</td><td>{date.getDate()}/{date.getMonth() + 1}/{date.getFullYear()}</td></tr>)
+								return (<tr><td>{lead.company_name}</td><td>{lead.converted?'Parrain':'Démarché seulement'}</td></tr>)
 							})}
 						</tbody>
 					</table>
