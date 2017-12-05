@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import request from '../../../services/Net'
 import { handleChange } from '../../../services/FormService'
 import NotificationSystem from 'react-notification-system'
+import Loading from '../../utils/Loading'
 
 export default class AdminManageFaq extends Component {
 
 	constructor (props) {
 		super (props)
 		this.state = {
-			items : []
+			items : null
 		}
 	}
 
@@ -76,6 +77,7 @@ export default class AdminManageFaq extends Component {
 							<input className="btn btn-primary" type="submit" value="Ajouter" onClick={this.addQA.bind(this)} />
 						</div>
 					</form>
+					{this.state.items?
 					<table className="table">
 						<tbody>
 							{this.state.items.map((item) => {
@@ -83,6 +85,7 @@ export default class AdminManageFaq extends Component {
 							})}
 						</tbody>
 					</table>
+					:<Loading />}
 				</div>
 			</div>
 		)
