@@ -1,10 +1,10 @@
-html, body, #root, #wrapper
+html, body, #root
 {
 	height: 100%;
 }
 
 #wrapper {
-	overflow-y: scroll;
+	min-height: 100%;
 	-webkit-overflow-scrolling: touch;
 }
 
