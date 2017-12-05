@@ -65,6 +65,7 @@ import Hives from './Hives';
 import Hive from './Hive';
 import Forgot from './Forgot';
 import Reset from './Reset';
+import Apply from './Apply';
 
 export default class Wrapper extends Component {
 
@@ -120,6 +121,7 @@ export default class Wrapper extends Component {
 							<Route exact path="/about" component={About} />
 							<Route exact path="/team" component={Team} />
 							<Route exact path="/contact" component={Contact} />
+							<Route exact path="/apply" component={Apply} />
 							<Route exact path="/jobs" component={Jobs} />
 							<Route exact path="/cgv" component={Cgv} />
 							<Route exact path="/mentions_legales" component={Mentions} />

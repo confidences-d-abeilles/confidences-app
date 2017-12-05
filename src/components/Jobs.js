@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Jobs extends Component {
 
@@ -30,7 +31,7 @@ export default class Jobs extends Component {
 							intéressés.
 						</p>
 						<p className="text-center">
-							<button className="btn btn-secondary">Postulez</button>
+							<Link className="btn btn-secondary" to="/apply">Postulez</Link>
 						</p>
 						<p>
 							Aucune offre ne vous correspond ? Confidences d’Abeilles et ses partenaires sont toujours

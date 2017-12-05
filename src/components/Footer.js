@@ -33,7 +33,8 @@ export default class Footer extends Component {
 							<div className="col-lg-4 col-md-4 col-sm-6 mb-4">
 								<h3 className="text-left">La société</h3>
 								<ul>
-									<li><Link to="/about" className="noStyleLink">A propos</Link></li>
+									<li><Link to="/about" className="noStyleLink">Notre histoire</Link></li>
+									<li><Link to="/team" className="noStyleLink">L'équipe</Link></li>
 									<li><Link to="/contact" className="noStyleLink">Contact</Link></li>
 									<li><Link to="/jobs" className="noStyleLink">Jobs</Link></li>
 									<li><a href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
