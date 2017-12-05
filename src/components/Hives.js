@@ -52,11 +52,11 @@ export default class Hives extends Component {
 								return (
 									bundle.contain.map((hive) => {
 										return (
-											<div className="card w-25 m-3">
+											<div className="card w-25 m-3 justify-content-between">
 												<img className="card-img-top img-fluid" src={(hive.imgs && hive.imgs[0])?config.cdn_url+'/'+hive.imgs[0]:imgPlaceholder} alt="Card image cap" />
-												<div className="card-block">
+												<div className="card-block" style={{ height: 'auto', flex: '0' }}>
 													<h3 className="card-title">{hive.name}</h3>
-													<h6 className="card-subtitle text-muted">Parrainée par {owner} depuis le {datetime.getDate()+'/'+datetime.getMonth()+'/'+datetime.getFullYear()}</h6>
+													<h6 className="card-subtitle text-muted">Parrainée par {owner} depuis le {datetime.getDate()+'/'+parseInt(datetime.getMonth()+1)+'/'+datetime.getFullYear()}</h6>
 													<Link to={'/hive/'+hive.id} className="btn">Voir en détails</Link>
 												</div>
 											</div>
