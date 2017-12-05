@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
 import Bundle from './Bundle'
+import Loading from '../../utils/Loading';
 
 export default class AdminManageBundles extends Component {
 
@@ -9,7 +10,7 @@ export default class AdminManageBundles extends Component {
 		super(props)
 
 		this.state = {
-			bundles: [],
+			bundles: null,
 			manage_id: 0
 		}
 	}
@@ -37,12 +38,13 @@ export default class AdminManageBundles extends Component {
 					<h2 className="text-center my-4">Gestion des parrainages</h2>
 					<div className="row">
 						<div className="col">
+							{this.state.bundles?
 							<table className="table table-sm">
 								<tbody>
 									<tr><th>Propriétaire</th><th>Pack</th><th>Nombre de ruches associées</th><th>Status</th><th>Actions</th></tr>
 									{this.state.bundles.map((bundle) => {
 										return (
-											<tr className={(bundle.state == 2)?'table-danger':null} className={(bundle.state == 3)?'table-success':null} key={bundle.id}>
+											<tr className={(this.state.manage_id === bundle.id)?'table-info':null} key={bundle.id}>
 												<td>{(bundle.owner)?bundle.owner.firstname+' '+bundle.owner.name+' ('+bundle.owner.company_name+')':'[corrupted]'}</td>
 												<td>{bundle.hives} ruches</td>
 												<td>{bundle.contain.length} ruches</td>
@@ -53,6 +55,7 @@ export default class AdminManageBundles extends Component {
 									})}
 								</tbody>
 							</table>
+							:<Loading />}
 						</div>
 						<div className="col">
 							{this.state.manage_id != 0 && <Bundle id={this.state.manage_id} refresh={this.get.bind(this)} />}

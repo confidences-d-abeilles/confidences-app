@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
 import { handleChange } from '../../../services/FormService'
+import Confirm from '../../utils/Confirm'
 
 export default class Bundle extends Component {
 
@@ -152,7 +153,7 @@ export default class Bundle extends Component {
 									<h3 className="card-title">Autre action</h3>
 									<p className="card-text">
 										<button className="btn btn-info btn-sm m-2" onClick={this.validate.bind(this)}>Valider la préparation du parrainage</button>
-										<button className="btn btn-danger btn-sm m-2" onClick={this.delete.bind(this)}>Supprimer ce parrainage</button>
+										<Confirm action={this.delete.bind(this)} text="Supprimer ce parrainage" />
 									</p>
 								</div>
 							</div>

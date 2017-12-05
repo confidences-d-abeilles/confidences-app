@@ -2,14 +2,15 @@ import React, { Component } from 'react'
 import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import { handleChange } from '../../../services/FormService'
-import ReactQuill from 'react-quill';
+import ReactQuill from 'react-quill'
+import Loading from '../../utils/Loading'
 
 export default class AdminManageHives extends Component {
 
 	constructor(props) {
 		super(props)
 		this.state = {
-			hives : [],
+			hives : null,
 			new: '',
 			selected: ''
 		}
@@ -105,6 +106,7 @@ export default class AdminManageHives extends Component {
 							<input type="text" className="form-control mx-2" name="new" value={this.state.new} placeholder="Nom commun de la nouvelle ruche" onChange={handleChange.bind(this)} />
 							<button type="submit" className="btn btn-primary">Créer la ruche</button>
 						</form>
+						{this.state.hives?
 						<table className="table">
 							<tbody>
 								<tr><th>Identifiant de la ruche</th><th>Nom commun de la ruche</th><th>Occupation</th><th>Actions</th></tr>
@@ -121,6 +123,7 @@ export default class AdminManageHives extends Component {
 								})}
 							</tbody>
 						</table>
+						:<Loading />}
 					</div>
 					{(this.state.selected)?
 					<div className="col">

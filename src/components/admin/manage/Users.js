@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
+import Loading from '../../utils/Loading'
 
 export default class AdminManageUsers extends Component {
 
 	constructor(props) {
 		super(props)
 		this.state = {
-			users : [],
+			users : null,
 			selectedUser: null
 		}
 	}
@@ -113,6 +114,7 @@ export default class AdminManageUsers extends Component {
 							Cliquer sur un utilisateur dans la liste
 						</div>}
 						<div className="col-3">
+							{this.state.users?
 							<table className="table">
 								<tbody>
 									<tr><th>Denomination</th><th></th></tr>
@@ -121,6 +123,7 @@ export default class AdminManageUsers extends Component {
 									})}
 								</tbody>
 							</table>
+							:<Loading />}
 						</div>
 				</div>
 			</div>
