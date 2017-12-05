@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { handleChange } from '../../services/FormService';
 import request from '../../services/Net';
 import NotificationSystem from 'react-notification-system';
@@ -13,7 +13,8 @@ export default class ContributorLead extends Component {
 			redirect : false,
 			company_name: '',
 			siret: '',
-			contact: 0
+			contact: 0,
+			error: false
 		}
 	}
 
@@ -31,6 +32,10 @@ export default class ContributorLead extends Component {
 			}, this.refs.notif).then((res) => {
 				this.setState({
 					redirect : true
+				})
+			}).catch((err) => {
+				this.setState({
+					error: true
 				})
 			});
 		} else {
@@ -84,6 +89,15 @@ export default class ContributorLead extends Component {
 									<option value="5">Autre</option>
 								</select>
 							</div>
+							{this.state.error &&
+							<p className="alert alert-warning">
+								Oups, vous ne pouvez pas ajouter
+								cette entreprise. Elle parraine déjà
+								des ruches ou a déjà été ajoutée
+								par un apporteur d’affaires. Rendez-
+								vous <Link to="/contributor/parrains">ici</Link> pour effectuer une
+								recherche des entreprises par
+								numéro SIRET.</p>}
 							<input type="submit" className="btn btn-primary" value="Continuer" onClick={this.addLead.bind(this)} />
 						</form>
 					</div>
