@@ -24,7 +24,7 @@ export default class Hives extends Component {
 			method: 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				bundle : res
+				bundles : res
 			})
 		})
 	}
