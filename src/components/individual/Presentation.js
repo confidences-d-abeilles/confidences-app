@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 import { Link } from 'react-router-dom';
+import first from '../../assets/img/P/1.jpg';
+import second from '../../assets/img/P/2.jpg';
+import third from '../../assets/img/P/3.jpg';
+import fourth from '../../assets/img/P/4.jpg';
+import fifth from '../../assets/img/P/5.jpg';
+import sixth from '../../assets/img/P/6.jpg';
 
 export default class IndividualPresentation extends Component {
 
@@ -20,8 +26,37 @@ export default class IndividualPresentation extends Component {
 						</p>
 						<Link to="/signup/individual" className="btn btn-secondary my-2">Demarrer</Link>
 					</div>
-					<div className="col-lg-6 col-md-10 col-sm-12 text-center">
-						<img src={imgPlaceholder} className="img-fluid mt-2" alt="Empty img space" />
+					<div className="col-lg-6 col-md-10 hidden-sm-down my-4">
+						<div id="carouselHome" className="carousel slide" data-interval="3000" data-ride="carousel">
+							<ol className="carousel-indicators">
+								<li data-target="#carouselHome" data-slide-to="0" className="active"></li>
+								<li data-target="#carouselHome" data-slide-to="1"></li>
+								<li data-target="#carouselHome" data-slide-to="2"></li>
+								<li data-target="#carouselHome" data-slide-to="3"></li>
+								<li data-target="#carouselHome" data-slide-to="4"></li>
+								<li data-target="#carouselHome" data-slide-to="5"></li>
+							</ol>
+							<div className="carousel-inner" role="listbox">
+								<div className="carousel-item active">
+									<img className="d-block" src={first} alt="First slide" />
+								</div>
+								<div className="carousel-item">
+									<img className="d-block" src={second} alt="Second slide" />
+								</div>
+								<div className="carousel-item">
+									<img className="d-block" src={third} alt="Third slide" />
+								</div>
+								<div className="carousel-item">
+									<img className="d-block" src={fourth} alt="Fourth slide" />
+								</div>
+								<div className="carousel-item">
+									<img className="d-block" src={fifth} alt="Fifth slide" />
+								</div>
+								<div className="carousel-item">
+									<img className="d-block" src={sixth} alt="Sixth slide" />
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div className="row align-items-center justify-content-center">
