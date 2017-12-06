@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 import { Link } from 'react-router-dom';
+import first from '../../assets/img/AA/1.jpg';
+import second from '../../assets/img/AA/2.jpg';
+import third from '../../assets/img/AA/3.jpg';
+import fourth from '../../assets/img/AA/4.jpg';
 
 export default class ContributorPresentation extends Component {
 
@@ -20,8 +24,29 @@ export default class ContributorPresentation extends Component {
 						</p>
 						<Link to="/signup/contributor" className="btn btn-secondary">Devenir apporteur d'affaires</Link>
 					</div>
-					<div className="col-lg-6 col-md-10 col-sm-12 text-center">
-						<img src={imgPlaceholder} className="img-fluid mt-2" alt="Empty img space" />
+					<div className="col-lg-6 col-md-10 hidden-sm-down my-4">
+						<div id="carouselHome" className="carousel slide" data-interval="3000" data-ride="carousel">
+							<ol className="carousel-indicators">
+								<li data-target="#carouselHome" data-slide-to="0" className="active"></li>
+								<li data-target="#carouselHome" data-slide-to="1"></li>
+								<li data-target="#carouselHome" data-slide-to="2"></li>
+								<li data-target="#carouselHome" data-slide-to="3"></li>
+							</ol>
+							<div className="carousel-inner" role="listbox">
+								<div className="carousel-item active">
+									<img className="d-block" src={first} alt="First slide" />
+								</div>
+								<div className="carousel-item">
+									<img className="d-block" src={second} alt="Second slide" />
+								</div>
+								<div className="carousel-item">
+									<img className="d-block" src={third} alt="Third slide" />
+								</div>
+								<div className="carousel-item">
+									<img className="d-block" src={fourth} alt="Fourth slide" />
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div className="row justify-content-center align-items-center">

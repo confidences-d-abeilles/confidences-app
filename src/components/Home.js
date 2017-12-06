@@ -54,7 +54,7 @@ export default class Home extends Component {
 						</p>
 					</div>
 					<div className="col-lg-6 col-md-10 hidden-sm-down my-4">
-						<div id="carouselHome" className="carousel slide" data-interval="5000" data-ride="carousel">
+						<div id="carouselHome" className="carousel slide" data-interval="3000" data-ride="carousel">
 							<ol className="carousel-indicators">
 								<li data-target="#carouselHome" data-slide-to="0" className="active"></li>
 								<li data-target="#carouselHome" data-slide-to="1"></li>
@@ -69,22 +69,22 @@ export default class Home extends Component {
 									<img className="d-block" src={first} alt="First slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={second} alt="First slide" />
+									<img className="d-block" src={second} alt="Second slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={third} alt="First slide" />
+									<img className="d-block" src={third} alt="Third slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={fourth} alt="First slide" />
+									<img className="d-block" src={fourth} alt="Fourth slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={fifth} alt="First slide" />
+									<img className="d-block" src={fifth} alt="Fifth slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={sixth} alt="First slide" />
+									<img className="d-block" src={sixth} alt="Sixth slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={seventh} alt="First slide" />
+									<img className="d-block" src={seventh} alt="Seventh slide" />
 								</div>
 							</div>
 						</div>
