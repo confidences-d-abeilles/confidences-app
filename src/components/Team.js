@@ -4,6 +4,7 @@ import Nico from '../assets/img/nico.jpg'
 import Clem from '../assets/img/clement.jpg'
 import Profile from '../assets/img/profile.png'
 import { Link } from 'react-router-dom'
+import FontAwesome from 'react-fontawesome'
 
 export default class Team extends Component {
 
@@ -16,6 +17,12 @@ export default class Team extends Component {
 						<img src={Gaetan} alt="Gaetan" className="w-50 rounded-circle"/>
 						<h3 className="text-center mt-4">GAËTAN EKSZTEROWICZ</h3>
 						<h4 className="text-center mb-4"><small>CEO & CO-FOUNDER</small></h4>
+						<p className="text-center">
+							<a href="https://www.facebook.com/popowych" target="_blank" rel="noopener noreferrer"><FontAwesome name='facebook-official' size="2x" /></a>&nbsp;&nbsp;&nbsp;
+							<a href="https://twitter.com/GaetanEksz" target="_blank" rel="noopener noreferrer"><FontAwesome name='twitter' size="2x" /></a>&nbsp;&nbsp;&nbsp;
+							<a href="mailto:gaetan@confidencesdabeilles.fr"><FontAwesome name='envelope-o' size="2x" /></a>&nbsp;&nbsp;&nbsp;
+							<a href="https://www.linkedin.com/in/gaetaneksz" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
+						</p>
 						<p className="text-justify">
 							Gaëtan est étudiant à l’Ecole des Mines d’Alès, une école d’ingénieur généraliste dans laquelle il est rentré à la suite d’une classe préparatoire en Physique-Chimie. Il s’occupe du développement du rucher, de la communication, du marketing et du design. Il rédige de plus l’essentiel des articles du site internet ainsi que ceux du blog. Il a créé en parallèle une association d’apiculture, EM’API, sur son campus universitaire et incite, autant que possible, les gens à se lancer avec une première ruche.
 						</p>
@@ -29,6 +36,11 @@ export default class Team extends Component {
 						<img src={Nico} alt="Nicolas" className="w-50 rounded-circle"/>
 						<h3 className="text-center mt-4">NICOLAS EKSZTEROWICZ</h3>
 						<h4 className="text-center mb-4"><small>DIRECTOR & CO-FOUNDER</small></h4>
+						<p className="text-center">
+							<a href="https://www.facebook.com/nicolas.ekszterowicz" target="_blank" rel="noopener noreferrer"><FontAwesome name='facebook-official' size="2x" /></a>&nbsp;&nbsp;&nbsp;
+							<a href="mailto:nicolas@confidencesdabeilles.fr"><FontAwesome name='envelope-o' size="2x" /></a>&nbsp;&nbsp;&nbsp;
+							<a href="https://www.linkedin.com/in/nicolas-ekszterowicz-113271a8/" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
+						</p>
 						<p className="text-justify">
 							Nicolas est étudiant à l’ESISAR, une école d’ingénieur des systèmes intelligents et communicants faisant partie du groupe INP de Grenoble ; « grand admissible » à la suite de son cursus à l’IUT d’Annecy en GE2I, c’est lui qui est aujourd’hui en charge du développement des interfaces sur le web, du codage, de la programmation et du design. Il travaille actuellement à la modernisation et l’automatisation de la chaine de production.
 							Ce statut ne l’empêche en rien de participer à la bonne conduite du rucher, aux récoltes et à la commercialisation.
@@ -40,6 +52,11 @@ export default class Team extends Component {
 						<img src={Clem} alt="Clement" className="w-50 rounded-circle"/>
 						<h3 className="text-center mt-4">CLEMENT CHAMPOUILLON</h3>
 						<h4 className="text-center mb-4"><small>WEB DEVELOPPER</small></h4>
+						<p className="text-center">
+							<a href="https://www.facebook.com/clement.champouillon" target="_blank" rel="noopener noreferrer"><FontAwesome name='facebook-official' size="2x" /></a>&nbsp;&nbsp;&nbsp;
+							<a href="mailto:clement@champouillon.com"><FontAwesome name='envelope-o' size="2x" /></a>&nbsp;&nbsp;&nbsp;
+							<a href="https://fr.linkedin.com/in/cl%C3%A9ment-champouillon-335668143" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
+						</p>
 					</div>
 					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
 						<img src={Profile} alt="Someone" className="w-50 rounded-circle"/>
