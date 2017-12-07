@@ -29,17 +29,23 @@ export default class CompanyPage extends Component {
 			url : 'users/namespace/'+this.props.match.params.namespace,
 			method : 'get'
 		}, this.refs.notif).then((res) => {
-			this.setState({
-				user : res
-			})
-			request({
-				url : '/hive/bundle/'+res.bundles[0].id,
-				method: 'get'
-			}, this.refs.notif).then((res) => {
+			if (res.visible) {
 				this.setState({
-					hives: res
+					user : res
 				})
-			})
+				request({
+					url : '/hive/bundle/'+res.bundles[0].id,
+					method: 'get'
+				}, this.refs.notif).then((res) => {
+					this.setState({
+						hives: res
+					})
+				})
+			} else {
+				this.setState({
+					redirect: true
+				})
+			}
 		}).catch((err) => {
 			this.setState({
 				redirect: true

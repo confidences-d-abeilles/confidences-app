@@ -106,9 +106,6 @@ export default class IndividualAddress extends Component {
 								<input type="text" name="address1" className="form-control" placeholder="Nom et prénom *" value={this.state.address1} onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" name="address2" className="form-control" placeholder="Entreprise" value={this.state.address2} onChange={handleChange.bind(this)} />
-							</div>
-							<div className="form-group">
 								<input type="text" name="address3" className="form-control" placeholder="Adresse ligne 1 *" value={this.state.address3} onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
