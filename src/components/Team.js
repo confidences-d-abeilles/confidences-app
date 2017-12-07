@@ -57,6 +57,9 @@ export default class Team extends Component {
 							<a href="mailto:clement@champouillon.com"><FontAwesome name='envelope-o' size="2x" /></a>&nbsp;&nbsp;&nbsp;
 							<a href="https://fr.linkedin.com/in/cl%C3%A9ment-champouillon-335668143" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
 						</p>
+						<p className="text-justify">
+							Clément est étudiant à l'école 42, école de developpement informatique parisienne.
+						</p>
 					</div>
 					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
 						<img src={Profile} alt="Someone" className="w-50 rounded-circle"/>
