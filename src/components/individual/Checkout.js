@@ -137,6 +137,15 @@ export default class IndividualCheckout extends Component {
 		});
 	}
 
+	changeBundle() {
+		request({
+			url: '/bundle/'+this.state.bundle_id,
+			method: 'delete'
+		}, this.refs.notif). then((res) => {
+			this.setState({ redirect : true });
+		})
+	}
+
 	handlePresent(e) {
 		e.preventDefault();
 		request({
@@ -165,7 +174,7 @@ export default class IndividualCheckout extends Component {
 							<div className="progress-bar" role="progressbar" style={{width: '100%'}}></div>
 						</div>
 					</div>
-				</div>import 'react-datepicker/dist/react-datepicker.css';
+				</div>
 				<div className="row justify-content-center">
 					<div className="col-lg-9 col-md-10 col-sm-12">
 						<h2 className="text-center my-4">Confirmation et paiement</h2>
@@ -175,6 +184,9 @@ export default class IndividualCheckout extends Component {
 							De plus, une page internet sera dédiée à ma ruche et je pourrais y retrouver des actualités sur mes abeilles.
 							<br /><br />
 							Le coût total est de {this.state.price} euros par an.
+						</p>
+						<p className="text-center">
+							<button className="btn btn-primary" onClick={this.changeBundle.bind(this)}>Changer d'offre</button>
 						</p>
 						<div className="row justify-content-center">
 							<div className="col-lg-6 col-md-10 col-sm-12">
