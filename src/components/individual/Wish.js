@@ -54,11 +54,12 @@ export default class IndividualWish extends Component {
 								<option value="20000">20 000 abeilles</option>
 								<option value="30000">30 000 abeilles</option>
 								<option value="40000">40 000 abeilles</option>
+								<option value="50000">50 000 abeilles, soit une ruche complète</option>
 							</select>
 						</div>
 						<ul>
-							<li>CCe sont {this.state.bees} abeilles de plus qui viendront renforcer la population du rucher et participer à la préservation de la biodiversité.</li>
-							<li>C'est aussi {this.state.bees * 8 / 10000} pots de miel produits par vos abeilles que vous recevrez !</li>
+							<li>Ce sont {this.state.bees} abeilles de plus qui viendront renforcer la population du rucher et participer à la préservation de la biodiversité.</li><br/>
+							<li>Vous recevrez  {this.state.bees * 8 / 10000} pots de miel à votre nom et produits par les abeilles que vous parrainez.</li>
 						</ul>
 						<p className="text-center">
 						<button onClick={this.selectBundle.bind(this)} className="btn btn-primary">Continuer</button>

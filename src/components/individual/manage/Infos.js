@@ -212,9 +212,6 @@ export default class IndividualManageInfos extends Component {
 								<input type="text" name="baddress1" onChange={handleChange.bind(this)} value={this.state.baddress1} className="form-control" placeholder="Nom et prénom"/>
 							</div>
 							<div className="form-group">
-								<input type="text" name="baddress2" onChange={handleChange.bind(this)} value={this.state.baddress2} className="form-control" placeholder="Entreprise"/>
-							</div>
-							<div className="form-group">
 								<input type="text" name="baddress3" onChange={handleChange.bind(this)} value={this.state.baddress3} className="form-control" placeholder="Adresse ligne 1"/>
 							</div>
 							<div className="form-group">
@@ -241,9 +238,6 @@ export default class IndividualManageInfos extends Component {
 							<h3 className="text-center mt-4">Mes informations de livraison</h3>
 							<div className="form-group">
 								<input type="text" name="daddress1" onChange={handleChange.bind(this)} value={this.state.daddress1} className="form-control" placeholder="Nom et prénom"/>
-							</div>
-							<div className="form-group">
-								<input type="text" name="daddress2" onChange={handleChange.bind(this)} value={this.state.daddress2} className="form-control" placeholder="Entreprise"/>
 							</div>
 							<div className="form-group">
 								<input type="text" name="daddress3" onChange={handleChange.bind(this)} value={this.state.daddress3} className="form-control" placeholder="Ligne 1"/>

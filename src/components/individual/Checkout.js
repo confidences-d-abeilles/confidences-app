@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import request from '../../services/Net';
@@ -5,6 +6,10 @@ import { handleChange, handleTick } from '../../services/FormService'
 import NotificationSystem from 'react-notification-system'
 import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default class IndividualCheckout extends Component {
 
@@ -22,7 +27,11 @@ export default class IndividualCheckout extends Component {
 			redirect: false,
 			bees: 0,
 			saved: false,
-			different: false
+			different: false,
+			present: false,
+			present_date: moment(),
+			present_email: '',
+			present_ok: false
 		}
 	}
 
@@ -74,6 +83,12 @@ export default class IndividualCheckout extends Component {
 		});
 	}
 
+	handleDateChange(date) {
+		this.setState({
+			present_date: date
+		});
+	}
+
 	setWaitingPayment() {
 		request({
 			url: '/bundle/'+this.state.bundle_id,
@@ -122,6 +137,23 @@ export default class IndividualCheckout extends Component {
 		});
 	}
 
+	handlePresent(e) {
+		e.preventDefault();
+		request({
+			url: '/bundle/'+this.state.bundle_id,
+			method: 'put',
+			data : {
+				present: this.state.present,
+				present_email: this.state.present_email,
+				present_date: this.state.present_date
+			}
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				present_ok: true
+			})
+		})
+	}
+
     render () {
         return (
 			<div className="container py-4">
@@ -133,7 +165,7 @@ export default class IndividualCheckout extends Component {
 							<div className="progress-bar" role="progressbar" style={{width: '100%'}}></div>
 						</div>
 					</div>
-				</div>
+				</div>import 'react-datepicker/dist/react-datepicker.css';
 				<div className="row justify-content-center">
 					<div className="col-lg-9 col-md-10 col-sm-12">
 						<h2 className="text-center my-4">Confirmation et paiement</h2>
@@ -198,6 +230,33 @@ export default class IndividualCheckout extends Component {
 								}
 							</div>
 						</div>
+						<div className="row justify-content-center">
+							<div className="col-lg-6 col-md-10 col-sm-12">
+								<h3 className="text-center my-2">Ce parrainage est un cadeau {!this.state.present_ok && <input type="checkbox" name="present" checked={this.state.present} onChange={handleTick.bind(this) }/>}</h3>
+								{this.state.present && !this.state.present_ok &&
+										<form onSubmit={this.handlePresent.bind(this)}>
+										<div className="form-group">
+											<input type="email" className="form-control" name="present_email" onChange={handleChange.bind(this)} placeholder="Email du bénéficiaire" />
+										</div>
+										<div className="form-group">
+											<label>Notifier l'heureux bénéficiaire à partir du :</label>
+											<DatePicker
+												dateFormat="DD/MM/YYYY"
+										        selected={this.state.present_date}
+										        onChange={this.handleDateChange.bind(this)}
+												className="form-control"
+											    />
+										</div>
+										<button className="btn btn-primary">Enregister ceci</button>
+									</form>
+								}
+								{this.state.present_ok &&
+								<p>
+									Ok ! Le bénéficiaire sera notifié à partir du {this.state.present_date.format("DD/MM/YYYY")} à l'adresse email {this.state.present_email}.
+								</p>
+								}
+							</div>
+						</div>
 						<h3 className="text-center my-2">Paiement sécurisé</h3>
 						<div className="row justify-content-center">
 							<form className="col-lg-6 col-md-10 col-sm-12">
@@ -252,10 +311,8 @@ export default class IndividualCheckout extends Component {
 								{this.state.paytype === '2' &&
 									<div>
 										<p>
-											Vous pouvez choisir de régler votre parrainage quand bon vous semble. En cliquant
-											sur « Payer plus tard » vous serez redirigé vers votre tableau de bord. Les
-											fonctionnalités sont quelque peu bridées et <strong>votre page dédiée ne peut être
-											publiquement consultée.</strong><br /><br />
+											Vous pouvez choisir de régler votre parrainage quand bon vous semble. En cliquant sur « Payer plus tard » vous serez redirigé vers votre tableau de bord. Les fonctionnalités sont quelque peu bridées.
+											En effet, nous avons besoin de la confirmation de paiement pour attribuer une ruche aux abeilles que vous souhaitez parrainer ; <strong>vous ne pouvez donc pas encore consulter la page de la ruche.</strong><br /><br />
 											N’oubliez pas que pour un parrainage effectué entre :
 											<ul><li>Le 1er juillet et le 31 décembre, vous recevez le miel de vos abeilles à partir du
 											mois de mai de l’année suivante.</li>
