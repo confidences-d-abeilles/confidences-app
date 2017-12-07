@@ -6,13 +6,16 @@ import { handleChange } from '../../../services/FormService'
 import Loading from '../../utils/Loading'
 import { Redirect } from 'react-router-dom'
 import { logout } from '../../../services/AuthService'
+import Confirm from '../../utils/Confirm'
 
 export default class CompanyManageInfos extends Component {
 
 	constructor(props) {
 		super(props)
 		this.state = {
-			logout: false
+			logout: false,
+			password: '',
+			conf: ''
 		}
 	}
 
@@ -184,8 +187,6 @@ export default class CompanyManageInfos extends Component {
 									<input type="password" name="conf" onChange={handleChange.bind(this)} value={this.state.conf} className="form-control" placeholder="Confirmation du nouveau mot de passe" />
 								</div>
 								<button className="btn btn-primary mb-4">Enregistrer</button>
-								<h3 className="text-center">Supprimer mon compte</h3>
-								<button onClick={this.deleteAccount.bind(this)} className="btn btn-danger">Supprimer mon compte</button>
 							</form>
 						</div>
 						:null}
@@ -257,6 +258,12 @@ export default class CompanyManageInfos extends Component {
 							</div>
 						</form>
 						}
+					</div>
+					<div className="row">
+						<div className="col-lg-6 col-md-10 col-sm-12">
+							<h3 className="text-center my-4">Supprimer mon compte</h3>
+							<Confirm action={this.deleteAccount.bind(this)} text="Supprimer mon compte" />
+						</div>
 					</div>
 			</div>
 		);
