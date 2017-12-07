@@ -29,7 +29,9 @@ export default class IndividualManageInfos extends Component {
 			dzip: '',
 			dcity: '',
 			dcountry: '',
-			dphone: ''
+			dphone: '',
+			password: '',
+			conf: ''
 		}
 	}
 
@@ -198,8 +200,6 @@ export default class IndividualManageInfos extends Component {
 									<input type="password" name="conf" onChange={handleChange.bind(this)} value={this.state.conf} className="form-control" placeholder="Confirmation du nouveau mot de passe" />
 								</div>
 								<button className="btn btn-primary mb-4">Enregistrer</button>
-								<h3 className="text-center mb-4">Supprimer mon compte</h3>
-								<Confirm action={this.deleteAccount.bind(this)} text="Supprimer mon compte" />
 							</form>
 						</div>
 						:null}
@@ -235,7 +235,7 @@ export default class IndividualManageInfos extends Component {
 						}
 						{this.state.user &&
 						<form className="col-lg-6 col-sm-12 text-center">
-							<h3 className="text-center mt-4">Mes informations de livraison</h3>
+							<h3 className="text-center">Mes informations de livraison</h3>
 							<div className="form-group">
 								<input type="text" name="daddress1" onChange={handleChange.bind(this)} value={this.state.daddress1} className="form-control" placeholder="Nom et prénom"/>
 							</div>
@@ -265,6 +265,12 @@ export default class IndividualManageInfos extends Component {
 							</div>
 						</form>
 						}
+					</div>
+					<div className="row">
+						<div className="col-lg-6 col-md-10 col-sm-12">
+							<h3 className="text-center mb-4">Supprimer mon compte</h3>
+							<Confirm action={this.deleteAccount.bind(this)} text="Supprimer mon compte" />
+						</div>
 					</div>
 			</div>
 		);
