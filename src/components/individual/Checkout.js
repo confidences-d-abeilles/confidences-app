@@ -108,12 +108,12 @@ export default class IndividualCheckout extends Component {
 			method: 'put',
 			data: {
 				line1: this.state.daddress1,
-				line2: this.state.daddress2,
 				line3: this.state.daddress3,
 				line4: this.state.daddress4,
 				zipcode: this.state.dzip,
 				city: this.state.dcity,
-				country: this.state.dcountry
+				country: this.state.dcountry,
+				phone: this.state.dphone
 			}
 		}, this.refs.notif).then((res) => {
 			this.setState({
@@ -193,7 +193,6 @@ export default class IndividualCheckout extends Component {
 								<h3 className="text-center">Adresse de facturation</h3>
 								<p>
 									{(this.state.baddress1)?<span>{this.state.baddress1}<br/></span>:''}
-									{(this.state.baddress2)?<span>{this.state.baddress2}<br/></span>:''}
 									{(this.state.baddress3)?<span>{this.state.baddress3}<br/></span>:''}
 									{(this.state.baddress4)?<span>{this.state.baddress4}<br/></span>:''}
 									{this.state.bzip} {this.state.bcity}<br/>
@@ -205,16 +204,13 @@ export default class IndividualCheckout extends Component {
 								{this.state.different && !this.state.saved &&
 									<form className="text-center">
 										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress1} name="daddress1" placeholder="Nom et prénom" onChange={handleChange.bind(this)} />
+											<input type="text" className="form-control" value={this.state.daddress1} name="daddress1" placeholder="Nom et prénom *" onChange={handleChange.bind(this)} />
 										</div>
 										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress2} name="daddress2" placeholder="Entreprise" onChange={handleChange.bind(this)} />
+											<input type="text" className="form-control" value={this.state.daddress3} name="daddress3" placeholder="Ligne d'adresse 1 *" onChange={handleChange.bind(this)} />
 										</div>
 										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress3} name="daddress3" placeholder="Ligne 1" onChange={handleChange.bind(this)} />
-										</div>
-										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress4} name="daddress4" placeholder="Ligne 2" onChange={handleChange.bind(this)} />
+											<input type="text" className="form-control" value={this.state.daddress4} name="daddress4" placeholder="Ligne d'adresse 2" onChange={handleChange.bind(this)} />
 										</div>
 										<div className="form-group row">
 											<div className="col-4">
@@ -227,17 +223,20 @@ export default class IndividualCheckout extends Component {
 										<div className="form-group">
 											<input type="text" className="form-control" value={this.state.dcountry} name="dcountry" onChange={handleChange.bind(this)} />
 										</div>
+										<div className="form-group">
+											<input type="text" className="form-control" value={this.state.dphone} name="dphone" onChange={handleChange.bind(this)} placeholder="Numéro de téléphone pour la livraison *" />
+										</div>
 										<button className="btn btn-primary my-2" onClick={this.saveDaddress.bind(this)}>Enregistrer</button>
 									</form>
 								}
 								{this.state.saved &&
 									<div>
 										{(this.state.daddress1)?<span>{this.state.daddress1}<br /></span>:null}
-										{(this.state.daddress2)?<span>{this.state.daddress2}<br /></span>:null}
 										{(this.state.daddress3)?<span>{this.state.daddress3}<br /></span>:null}
 										{(this.state.daddress4)?<span>{this.state.daddress4}<br /></span>:null}
 										{this.state.dzip} {this.state.dcity}<br/>
-										{this.state.dcountry}
+									{this.state.dcountry}<br />
+								{this.state.dphone}
 									</div>
 								}
 							</div>
