@@ -43,7 +43,7 @@ export default class ContributorWish extends Component {
 				</div>
 				<div className="row justify-content-center">
 					<div className="col-9">
-						<h2 className="text-center">
+						<h2 className="text-center mt-4">
 							Je m’apprête à signer un contrat de type ponctuel.
 						</h2>
 						<p className="text-center lead my-4">De quel type de contrat s’agit-il ?</p>
