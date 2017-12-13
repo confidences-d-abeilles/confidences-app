@@ -43,8 +43,7 @@ export default class CompanyIdentity extends Component {
 					siret : this.state.siret,
 					namespace: this.state.namespace,
 					job : this.state.job,
-					website : this.state.website,
-					onboard : 2
+					website : this.state.website
 				}}, this.refs.notif)
 				.then((res) => {
 					this.setState({
