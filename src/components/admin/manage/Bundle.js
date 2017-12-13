@@ -77,14 +77,17 @@ export default class Bundle extends Component {
 	getPaymentStatus(nb) {
 		switch(nb) {
 			case 0:
-			return ("Non regle");
-			break;
+				return ("Non regle");
+				break;
 			case 1:
-			return("En attente de validation");
-			break;
+				return("En attente de validation");
+				break;
 			case 2:
-			return ("Paye");
-			break;
+				return ("Paye");
+				break;
+			case 3:
+				return ("Paye et en place");
+				break;
 			default:
 				return ("N / A");
 				break;
@@ -144,7 +147,7 @@ export default class Bundle extends Component {
 												}
 											})}
 										</select>
-										<button className="btn btn-info my-2">Associer cette ruche</button>
+										<button className="btn btn-secondary my-2">Associer cette ruche</button>
 									</form>
 								</div>
 							</div>
@@ -152,7 +155,7 @@ export default class Bundle extends Component {
 								<div className="card-block">
 									<h3 className="card-title">Autre action</h3>
 									<p className="card-text">
-										<button className="btn btn-info btn-sm m-2" onClick={this.validate.bind(this)}>Valider la préparation du parrainage</button>
+										<button className="btn btn-secondary my-2" onClick={this.validate.bind(this)}>Valider la préparation du parrainage</button>
 										<Confirm action={this.delete.bind(this)} text="Supprimer ce parrainage" />
 									</p>
 								</div>

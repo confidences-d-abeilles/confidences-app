@@ -16,7 +16,7 @@ export default class CompanyWish extends Component {
 
 	createBundle(e) {
 		e.preventDefault()
-		if (this.state.hives !== 0)
+		if (this.state.hives > 0 && this.state.hives < 100)
 		{
 			request({
 				url : '/bundle',
@@ -38,6 +38,13 @@ export default class CompanyWish extends Component {
 		}
 	}
 
+	componentDidUpdate() {
+		if (this.state.hives > 99)
+		{
+			this.setState({ hives : 0 })
+		}
+	}
+
     render () {
         return (
 			<div className="container py-4">
@@ -52,7 +59,7 @@ export default class CompanyWish extends Component {
 				</div>
 				<div className="row justify-content-center">
 					<form className="col-lg-6 col-md-10 col-sm-12" onSubmit={this.createBundle.bind(this)}>
-						<p className="text-center lead my-4">Nous parrainons <input type="text" placeholder={this.state.hives} name="hives" style={{ borderWidth : '0 0 1px 0', width: '1em', margin: '1em' }} onChange={handleChange.bind(this)} /> ruche(s)</p>
+						<p className="text-center lead my-4">Nous parrainons <input type="number" min="0" max="99" placeholder={this.state.hives} name="hives" style={{ borderWidth : '0 0 1px 0', width: '2em', margin: '1em', fontSize: '2em' }} onChange={handleChange.bind(this)} /> ruche(s)</p>
 						<ul>
 							<li>Cela représente plus de {this.state.hives * 50000} abeilles supplémentaires pour prendre soin de la biodiversité</li>
 							<li>C’est aussi l’équivalent de {this.state.hives * 80} pots de miel par an</li>
