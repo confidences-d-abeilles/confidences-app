@@ -259,7 +259,7 @@ export default class IndividualCheckout extends Component {
 												className="form-control"
 											    />
 										</div>
-										<button className="btn btn-primary">Enregister ceci</button>
+										<button className="btn btn-primary">Enregister</button>
 									</form>
 								}
 								{this.state.present_ok &&

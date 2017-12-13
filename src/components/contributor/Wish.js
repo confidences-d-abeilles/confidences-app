@@ -43,10 +43,10 @@ export default class ContributorWish extends Component {
 				</div>
 				<div className="row justify-content-center">
 					<div className="col-9">
-						<p className="text-center lead my-4">
+						<h2 className="text-center">
 							Je m’apprête à signer un contrat de type ponctuel.
-						</p>
-						<h2 className="text-center">De quel type de contrat s’agit-il ?</h2>
+						</h2>
+						<p className="text-center lead my-4">De quel type de contrat s’agit-il ?</p>
 						<ul>
 							<li>Le contrat proposé par Confidences d’Abeilles, le commanditaire, vous
 permet en tant qu’apporteur d’affaire de bénéficier d’une rétribution pour

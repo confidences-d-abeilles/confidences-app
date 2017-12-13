@@ -70,7 +70,7 @@ export default class Contact extends Component {
 				<NotificationSystem ref="notif" />
 				<div className="row justify-content-center">
 					<div className="col-lg-6 col-md-10 col-sm-12">
-						<h2 className="text-center my-4">La réponse à votre question se trouve peut-être dans notre FAQ</h2>
+						<h2 className="text-center my-4">La réponse à votre question se trouve peut-être dans notre FAQ 😉</h2>
 						<div className="input-group">
 							<span className="input-group-addon">Rechercher un terme : </span>
 							<input type="text" name="criteria" onChange={handleChange.bind(this)} className="form-control" />
