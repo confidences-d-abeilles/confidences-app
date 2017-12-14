@@ -13,7 +13,7 @@ export default class More extends Component {
 						<img src={Banner} alt="Banner" className="img-fluid"/>
 					</div>
 					<div className="col-9">
-						<h2 className="text-center">Notre proposition pour les particuliers</h2>
+						<h2 className="text-center my-5">Notre proposition pour les particuliers</h2>
 						<p>
 							Sensibilisés à la cause des abeilles vous voulez ajouter votre pierre à l’édifice et nous aider
 							à les protéger. Oui mais voilà, vous ne savez pas comment faire et n’aspirez pas forcément
