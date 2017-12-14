@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Banner from '../../assets/img/ent_more.jpg';
+
 
 export default class More extends Component {
 
@@ -7,6 +9,9 @@ export default class More extends Component {
 		return (
 			<div className="container">
 				<div className="row justify-content-center">
+					<div className="col-lg-12">
+						<img src={Banner} alt="Banner" className="img-fluid"/>
+					</div>
 					<div className="col-9">
 						<h2 className="text-center">Notre proposition pour les particuliers</h2>
 						<p>
