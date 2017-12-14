@@ -153,17 +153,29 @@ export default class CompanyManageInfos extends Component {
 						</h2>
 					</div>
 				</div>
-					<div className="row">
-
-						{(this.state.user)?
-						<div className="col-lg-6 col-sm-12">
-							<h3 className="text-center">Mes informations</h3>
-							<p>
-								<strong>Entreprise :</strong> {this.state.user.company_name}<br />
-								<strong>Siret :</strong> {this.state.user.siret}<br />
-								<strong>Nom :</strong> {this.state.user.name}<br />
-								<strong>Prénom :</strong> {this.state.user.firstname}<br />
-								<strong>Poste dans l'entreprise :</strong> {this.state.user.job}<br />
+				{(this.state.user)?
+					<div>
+						<div className="row">
+							<div className="col-lg-6 col-sm-12">
+								<h3 className="text-center"><small>Mes informations</small></h3>
+							</div>
+							<div className="col-lg-6 col-sm-12">
+								<h3 className="text-center"><small>Modifier mon mot de passe</small></h3>
+							</div>
+						</div>
+						<div className="row">
+							<div className="col-lg-6 col-sm-12">
+								<p>
+									<strong>Entreprise :</strong> {this.state.user.company_name}<br />
+									<strong>Siret :</strong> {this.state.user.siret}<br />
+									<strong>Nom :</strong> {this.state.user.name}<br />
+									<strong>Prénom :</strong> {this.state.user.firstname}<br />
+									<strong>Poste dans l'entreprise :</strong> {this.state.user.job}
+								</p>
+							</div>
+						</div>
+						<div className="row">
+							<div className="col-lg-6 col-sm-12">
 								<form onSubmit={this.changeInfos.bind(this)}>
 									<div className="form-group">
 										<input type="phone" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control" placeholder="Numéro de téléphone" />
@@ -173,28 +185,25 @@ export default class CompanyManageInfos extends Component {
 									</div>
 									<button className="btn btn-primary">Mettre à jour</button>
 								</form>
-							</p>
+							</div>
+							<div className="col-lg-6 col-sm-12">
+								<form onSubmit={this.changePassword.bind(this)}>
+									<div className="form-group">
+										<input type="password" name="password" onChange={handleChange.bind(this)} value={this.state.password} className="form-control" placeholder="Nouveau mot de passe" />
+									</div>
+									<div className="form-group">
+										<input type="password" name="conf" onChange={handleChange.bind(this)} value={this.state.conf} className="form-control" placeholder="Confirmation du nouveau mot de passe" />
+									</div>
+									<button className="btn btn-primary mb-4">Enregistrer</button>
+								</form>
+							</div>
 						</div>
-						:<Loading />}
-						{(this.state.user)?
-						<div className="col-lg-6 col-sm-12">
-							<h3 className="text-center">Modifier mon mot de passe</h3>
-							<form onSubmit={this.changePassword.bind(this)}>
-								<div className="form-group">
-									<input type="password" name="password" onChange={handleChange.bind(this)} value={this.state.password} className="form-control" placeholder="Nouveau mot de passe" />
-								</div>
-								<div className="form-group">
-									<input type="password" name="conf" onChange={handleChange.bind(this)} value={this.state.conf} className="form-control" placeholder="Confirmation du nouveau mot de passe" />
-								</div>
-								<button className="btn btn-primary mb-4">Enregistrer</button>
-							</form>
-						</div>
-						:null}
 					</div>
+					:null}
 					<div className="row">
 						{this.state.user &&
-						<form className="col-lg-6 col-sm-12 text-center">
-							<h3 className="text-center">Mon adresse de facturation</h3>
+						<form className="col-lg-6 col-sm-12">
+							<h3 className="text-center my-4"><small>Mon adresse de facturation</small></h3>
 							<div className="form-group">
 								<input type="text" name="baddress1" onChange={handleChange.bind(this)} value={this.state.baddress1} className="form-control" placeholder="Nom et prénom"/>
 							</div>
@@ -218,14 +227,11 @@ export default class CompanyManageInfos extends Component {
 							<div className="form-group">
 								<input type="text" name="bcountry" onChange={handleChange.bind(this)} value={this.state.bcountry} className="form-control" placeholder="Pays / Etat *"/>
 							</div>
-							<div className="form-group">
-								<button className="btn btn-primary" onClick={this.updateBaddress.bind(this)}>Enregistrer les modifications</button>
-							</div>
 						</form>
 						}
 						{this.state.user &&
-						<form className="col-lg-6 col-sm-12 text-center">
-							<h3 className="text-center">Mes informations de livraison</h3>
+						<form className="col-lg-6 col-sm-12">
+							<h3 className="text-center my-4"><small>Mes informations de livraison</small></h3>
 							<div className="form-group">
 								<input type="text" name="daddress1" onChange={handleChange.bind(this)} value={this.state.daddress1} className="form-control" placeholder="Nom et prénom"/>
 							</div>
@@ -253,15 +259,24 @@ export default class CompanyManageInfos extends Component {
 							<div className="form-group">
 								<input type="text" name="dphone" onChange={handleChange.bind(this)} value={this.state.dphone} className="form-control" placeholder="Numéro de téléphone"/>
 							</div>
-							<div className="form-group">
-								<button className="btn btn-primary" onClick={this.updateDaddress.bind(this)}>Enregistrer les modifications</button>
-							</div>
 						</form>
 						}
 					</div>
 					<div className="row">
+						<div className="col-lg-6">
+							<div className="form-group">
+								<button className="btn btn-primary" onClick={this.updateBaddress.bind(this)}>Enregistrer les modifications</button>
+							</div>
+						</div>
+						<div className="col-lg-6">
+							<div className="form-group">
+								<button className="btn btn-primary" onClick={this.updateDaddress.bind(this)}>Enregistrer les modifications</button>
+							</div>
+						</div>
+					</div>
+					<div className="row">
 						<div className="col-lg-6 col-md-10 col-sm-12">
-							<h3 className="text-center my-4">Supprimer mon compte</h3>
+							<h3 className="text-center my-4"><small>Supprimer mon compte</small></h3>
 							<Confirm action={this.deleteAccount.bind(this)} text="Supprimer mon compte" />
 						</div>
 					</div>

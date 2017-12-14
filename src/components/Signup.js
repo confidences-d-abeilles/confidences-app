@@ -19,7 +19,8 @@ export default class Signup extends Component {
 			confirmation: '',
 			user_type: this.getType(this.props.match.params.type),
 			message: '',
-			redirect: false
+			redirect: false,
+			error: null
 		}
 	}
 
@@ -62,7 +63,13 @@ export default class Signup extends Component {
 					password : this.state.password,
 					user_type : this.state.user_type
 				}
-			}, this.refs.notificationSystem)
+			}, this.refs.notificationSystem).catch((err) => {
+				if (err) {
+					this.setState({
+						error: 'coucou je suis une erreur'
+					});
+				}
+			})
 			.then((res) => {
 				request({
 					url: '/authenticate',
@@ -130,6 +137,9 @@ export default class Signup extends Component {
 							<div className="form-group">
 								<input type="password" name="confirmation" className="form-control" placeholder="Confirmation du mot de passe *" onChange={handleChange.bind(this)} />
 							</div>
+							{this.state.error && <p className="alert alert-danger">
+								{this.state.error}
+							</p>}
 							<p>Vous avez deja un compte ? <Link to="/login">Connectez vous</Link></p>
 							<input type="submit" value="Valider" className="btn btn-primary" onClick={this.register.bind(this)} />
 						</form>
