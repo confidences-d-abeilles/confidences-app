@@ -27,7 +27,7 @@ export default class More extends Component {
 						<p>
 							L’installation des ruches parrainées se fait sur nos ruchers situés en Haute-Savoie ou en
 							Savoie.<br/><br/>
-							<Link to="/tarifs">Consulter les tarifs</Link><br/><br/>
+						<Link to="/tarifs">Consulter les tarifs</Link><br/><br/>
 							Dès lors que vous choisissez de parrainer des abeilles ou une ruche complète votre nom
 							sera inscrit sur une ruche et vous aurez la possibilité de consulter ses informations sur une
 							page spécialement dédiée à votre ruche. Des photos de votre ruche seront aussi

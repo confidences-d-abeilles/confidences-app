@@ -92,7 +92,7 @@ export default class IndividualPresentation extends Component {
 						<ul>
 							<li>C’est l’assurance de maintenir notre
 							cheptel et de l’accroitre</li>
-							<li>Un nombre plus important de ruche
+							<li>Un nombre plus important de ruches
 							nous permet plus facilement
 							d’équilibrer les colonies entre elles</li>
 							<li>L’implantation de nouveaux ruchers

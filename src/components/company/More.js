@@ -8,6 +8,9 @@ export default class More extends Component {
 		return (
 			<div className="container">
 				<div className="row justify-content-center">
+					<div className="col">
+						<img />
+					</div>
 					<div className="col-9">
 						<h2 className="text-center">Notre proposition pour les entreprises</h2>
 						<p>
@@ -34,7 +37,7 @@ export default class More extends Component {
 							exemple ? N’hésitez pas à nous en faire la demande. Nous étudierons la faisabilité du
 							projet et nous reviendrons vers vous avec un devis si cela est envisageable (les tarifs
 							présents sur le site ne concernent pas cette prestation).<br/><br/>
-							<Link to="/tarifs">Consulter les tarifs</Link><br/><br/>
+							<Link to="/tarifs#company">Consulter les tarifs</Link><br/><br/>
 							Ces tarifs comprennent l’envoi d’un certificat de parrainage, la création d’une page sur
 							notre site internet spécialement dédiée à votre entreprise (voir ci-dessous) ; vous aurez la
 							possibilité d’y consulter les informations relatives à vos ruches, de suivre son actualité et
