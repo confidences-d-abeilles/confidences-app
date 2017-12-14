@@ -31,7 +31,8 @@ export default class IndividualCheckout extends Component {
 			present: false,
 			present_date: moment(),
 			present_email: '',
-			present_ok: false
+			present_ok: false,
+			dphone: ''
 		}
 	}
 
@@ -103,23 +104,30 @@ export default class IndividualCheckout extends Component {
 
 	saveDaddress(e) {
 		e.preventDefault();
-		request({
-			url: '/address/'+this.state.did,
-			method: 'put',
-			data: {
-				line1: this.state.daddress1,
-				line3: this.state.daddress3,
-				line4: this.state.daddress4,
-				zipcode: this.state.dzip,
-				city: this.state.dcity,
-				country: this.state.dcountry,
-				phone: this.state.dphone
-			}
-		}, this.refs.notif).then((res) => {
-			this.setState({
-				saved : true
+		if (this.state.dphone.length > 9) {
+			request({
+				url: '/address/'+this.state.did,
+				method: 'put',
+				data: {
+					line1: this.state.daddress1,
+					line3: this.state.daddress3,
+					line4: this.state.daddress4,
+					zipcode: this.state.dzip,
+					city: this.state.dcity,
+					country: this.state.dcountry,
+					phone: this.state.dphone
+				}
+			}, this.refs.notif).then((res) => {
+				this.setState({
+					saved : true
+				})
 			})
-		})
+		} else {
+			this.refs.notif.addNotification({
+				message: 'Merci de renseigner un numero de telephone valide pour la livraison',
+				level: 'warning'
+			})
+		}
 	}
 
 	proceed() {
@@ -235,8 +243,8 @@ export default class IndividualCheckout extends Component {
 										{(this.state.daddress3)?<span>{this.state.daddress3}<br /></span>:null}
 										{(this.state.daddress4)?<span>{this.state.daddress4}<br /></span>:null}
 										{this.state.dzip} {this.state.dcity}<br/>
-									{this.state.dcountry}<br />
-								{this.state.dphone}
+										{this.state.dcountry}<br />
+										{this.state.dphone}
 									</div>
 								}
 							</div>

@@ -36,7 +36,7 @@ export default class CompanyManageBills extends Component {
 						<h2 className="text-center my-4">Mes factures</h2>
 						<table className="table">
 							<tbody>
-								<tr><th>Numero de facture</th><th>Prix de la facture</th><th>Date de la facture</th><th>Actions</th></tr>
+								<tr><th>Numero</th><th>Montant</th><th>Date</th><th></th></tr>
 								{this.state.bills.map((bill) => {
 									return (
 										<tr><td>{bill.number}</td><td>{bill.price} €</td><td>{moment(bill.date).format('DD/MM/YYYY')}</td><td><a href={config.cdn_url+'/bills/'+bill.number+'.pdf'} download><FontAwesome name="cloud-download" /></a></td></tr>
