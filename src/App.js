@@ -36,7 +36,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<StripeProvider apiKey="pk_test_mLWoutIWlytgJmEvWuSL3xSB">
+			<StripeProvider apiKey="pk_live_gx64GVXrwS7Kr84xcn7l8S5Y">
 				<Router>
 					<ScrollToTop>
 						<Switch>
