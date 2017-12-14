@@ -12,6 +12,7 @@ export default class Hive extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			hive: null,
 		}
 	}
 
@@ -35,6 +36,13 @@ export default class Hive extends Component {
 						<h2 className="text-center">Informations sur la ruche<br /><small>{this.state.hive.name}</small></h2>
 					<div className="row">
 						<div className="col">
+							<h3>Les parrains</h3>
+							{this.state.hive &&
+							this.state.hive.parrains.map((user) => {
+								return (
+									<p>{user.name} {user.firstname}</p>
+								)
+							})}
 							<h3>Actualités</h3>
 							{(this.state.hive.news.length)?
 								this.state.hive.news.map((actu) => {
