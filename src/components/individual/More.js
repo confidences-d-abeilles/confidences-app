@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Banner from '../../assets/img/ent_more.jpg';
+import Banner from '../../assets/img/part_more.jpg';
 
 
 export default class More extends Component {
