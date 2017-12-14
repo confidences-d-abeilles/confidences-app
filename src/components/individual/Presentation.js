@@ -24,7 +24,7 @@ export default class IndividualPresentation extends Component {
 							simple : complétez le formulaire d’inscription,
 							choisissez le nombre d’abeilles et voilà !
 						</p>
-						<Link to="/signup/individual" className="btn btn-secondary my-2">Demarrer</Link>
+						<Link to="/signup/individual" className="btn btn-secondary my-2">Parrainer mes permières abeilles</Link>
 					</div>
 					<div className="col-lg-6 col-md-10 hidden-sm-down my-4">
 						<div id="carouselHome" className="carousel slide" data-interval="3000" data-ride="carousel">
@@ -61,12 +61,12 @@ export default class IndividualPresentation extends Component {
 				</div>
 				<div className="row align-items-center justify-content-center">
 					<div className="col-lg-9 col-md-10 col-sm-12">
-						<h2 className="text-center my-4">Parrainer une ruche c'est</h2>
+						<h2 className="text-center my-4">Parrainer une ruche c'est :</h2>
 					</div>
 				</div>
-				<div className="row justify-content-center">
-					<div className="col-lg-4 col-md-6 col-sm-12">
-						<h3>Pour vous</h3>
+				<div className="row justify-content-around align-items-start">
+					<div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>
+						<h3 className="text-center my-4">Pour vous</h3>
 						<ul>
 							<li>Adopter une démarche participative et
 							responsable vis-à- vis de
@@ -87,8 +87,8 @@ export default class IndividualPresentation extends Component {
 							ravira votre famille et vos amis.</li>
 						</ul>
 					</div>
-					<div className="col-lg-4 col-md-6 col-sm-12">
-						<h3>Pour nous les apiculteurs</h3>
+					<div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>
+						<h3 className="text-center my-4">Pour nous les apiculteurs</h3>
 						<ul>
 							<li>C’est l’assurance de maintenir notre
 							cheptel et de l’accroitre</li>
@@ -106,11 +106,11 @@ export default class IndividualPresentation extends Component {
 						</ul>
 					</div>
 				</div>
-				<div className="row align-items-center justify-content-center">
-					<div className="col-lg-4 col-md-6 col-sm-12 text-center m-2">
-						<Link to="/signup/individual" className="btn btn-primary">Parrainer une ruche</Link>
+				<div className="row align-items-center justify-content-around">
+					<div className="col-lg-4 col-md-6 col-sm-12 text-center m-4">
+						<Link to="/signup/individual" className="btn btn-primary">Parrainer des abeilles</Link>
 					</div>
-					<div className="col-lg-4 col-md-6 col-sm-12 text-center m-2">
+					<div className="col-lg-4 col-md-6 col-sm-12 text-center m-4">
 						<Link to="/individual/more" className="btn btn-primary">En savoir plus</Link>
 					</div>
 				</div>

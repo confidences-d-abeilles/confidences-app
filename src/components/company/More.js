@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+const config = require('../../config.js');
 
 export default class More extends Component {
 
@@ -66,7 +67,7 @@ export default class More extends Component {
 							</ul>
 						</p>
 						<p className="text-center">
-							<Link to="/signup/company" className="btn btn-secondary mr-4">Parrainer une ruche</Link><Link to="/signup/company" className="btn btn-secondary">Télécharger la plaquette de présentation</Link>
+							<Link to="/signup/company" className="btn btn-secondary mr-4">Parrainer une ruche</Link><a href={config.cdn_url+'/commercial.pdf'} className="btn btn-secondary mr-4" target="_blank">Télécharger la plaquette de présentation</a>
 						</p>
 					</div>
 				</div>

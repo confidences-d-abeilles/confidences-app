@@ -25,7 +25,7 @@ export default class CompanyPresentation extends Component {
 							de 3 minutes et voilà ! Vous avez accès à la
 							page dédiée à votre entreprise.
 						</p>
-						<Link to="/signup/company" className="btn btn-secondary my-2">Demarrer</Link>
+						<Link to="/signup/company" className="btn btn-secondary my-2">Parrainer des ruches</Link>
 					</div>
 					<div className="col-lg-6 col-md-10 hidden-sm-down my-4">
 						<div id="carouselHome" className="carousel slide" data-interval="3000" data-ride="carousel">
@@ -65,9 +65,9 @@ export default class CompanyPresentation extends Component {
 						<h2 className="text-center my-4">Le parrainage de ruches c’est :</h2>
 					</div>
 				</div>
-				<div className="row justify-content-center align-items-start">
-					<div className="col-lg-4 col-md-6 col-sm-10">
-						<h3>Pour l'entreprise</h3>
+				<div className="row justify-content-around align-items-start">
+					<div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>
+						<h3 className="text-center my-4">Pour l'entreprise</h3>
 						<ul>
 							<li>Adopter une démarche participative et
 							responsable vis-à- vis de
@@ -95,8 +95,8 @@ export default class CompanyPresentation extends Component {
 							vos clients</li>
 						</ul>
 					</div>
-					<div className="col-lg-4 col-md-6 col-sm-10">
-						<h3>Pour l'apiculteur</h3>
+					<div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>
+						<h3 className="text-center my-4">Pour l'apiculteur</h3>
 						<ul>
 							<li>C’est l’assurance de maintenir notre
 							cheptel et de l’accroitre</li>
@@ -115,11 +115,11 @@ export default class CompanyPresentation extends Component {
 						</ul>
 					</div>
 				</div>
-				<div className="row justify-content-center align-items-center">
-					<div className="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-2 text-center">
+				<div className="row justify-content-around align-items-center">
+					<div className="col-lg-5 col-md-6 col-sm-12 col-xs-12 my-4 text-center">
 						<Link to="/signup/company" className="btn btn-primary">Parrainer une ruche</Link>
 					</div>
-					<div className="col-lg-4 col-md-6 col-sm-12 col-xs-12 my-2 text-center">
+					<div className="col-lg-5 col-md-6 col-sm-12 col-xs-12 my-4 text-center">
 						<Link to="/company/more"className="btn btn-primary">En savoir plus</Link>
 					</div>
 				</div>
