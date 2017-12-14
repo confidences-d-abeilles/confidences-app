@@ -8,9 +8,7 @@ export default class More extends Component {
 		return (
 			<div className="container">
 				<div className="row justify-content-center">
-					<div className="col">
-						<img />
-					</div>
+					
 					<div className="col-9">
 						<h2 className="text-center">Notre proposition pour les entreprises</h2>
 						<p>
