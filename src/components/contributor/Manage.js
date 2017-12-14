@@ -14,7 +14,7 @@ import {
 	Redirect
 } from 'react-router-dom';
 
-import profile from '../../assets/img/profile.png';
+import profile from '../../assets/img/profile2.png';
 
 export default class ContributorManage extends Component {
 

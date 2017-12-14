@@ -61,9 +61,9 @@ export default class ContributorPresentation extends Component {
 						</p>
 					</div>
 				</div>
-				<div className="row justify-content-center my-4">
-					<div className="col-lg-4 col-md-6 col-sm-10">
-						<h3>Qu'est ce que j'y gagne ?</h3>
+				<div className="row justify-content-around align-items-start">
+					<div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>
+						<h3 className="text-center my-4">Qu'est ce que j'y gagne ?</h3>
 						<ul>
 							<li>Une commission intéressante par ruche parrainée</li>
 							<li>Un agrandissement et une consolidation de votre réseau</li>
@@ -71,8 +71,8 @@ export default class ContributorPresentation extends Component {
 							<li>Un super contrat qui ne vous engage à rien au final</li>
 						</ul>
 					</div>
-					<div className="col-lg-4 col-md-6 col-sm-10">
-						<h3>Que gagne Confidences d’Abeilles ?</h3>
+					<div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>
+						<h3 className="text-center my-4">Que gagne Confidences d’Abeilles ?</h3>
 						<ul>
 							<li>Une optimisation de notre prospection</li>
 							<li>Une mise en relation et une conclusion de parrainage accélérées</li>
@@ -81,12 +81,12 @@ export default class ContributorPresentation extends Component {
 						</ul>
 					</div>
 				</div>
-				<div className="row align-items-center justify-content-center">
+				<div className="row align-items-center justify-content-around">
 					<div className="col-lg-4 col-md-6 col-sm-12 text-center">
-						<Link to="/signup/contributor" className="btn btn-primary my-2">Je m'inscris</Link>
+						<Link to="/signup/contributor" className="btn btn-primary my-4">Je m'inscris</Link>
 					</div>
 					<div className="col-lg-4 col-md-6 col-sm-12 text-center">
-						<a href="https://confidencesdabeilles.fr/parrainer-ruche" className="btn btn-primary my-2" target="_blank" rel="noopener noreferrer">L'offre de parrainage</a>
+						<Link to="/company/more" className="btn btn-primary my-4">En savoir plus sur l'offre de parrainage</Link>
 					</div>
 				</div>
 			</div>
