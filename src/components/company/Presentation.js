@@ -62,37 +62,27 @@ export default class CompanyPresentation extends Component {
 				</div>
 				<div className="row align-items-center">
 					<div className="col">
-						<h2 className="text-center my-4">Le parrainage de ruches c’est :</h2>
+						<h2 className="text-center my-4">Le parrainage de ruche c’est :</h2>
 					</div>
 				</div>
 				<div className="row justify-content-around align-items-start">
 					<div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>
 						<h3 className="text-center my-4">Pour l'entreprise</h3>
 						<ul>
-							<li>Adopter une démarche participative et
-							responsable vis-à- vis de
+							<li>Adopter une démarche participative et responsable vis-à- vis de
 							l’environnement</li>
-							<li>S’engager concrètement dans la
-							protection de la biodiversité</li>
-							<li>Une stratégie pour se démarquer de
-							vos concurrents</li>
-							<li>Une histoire à partager avec vos
-							partenaires</li>
-							<li>Un contenu de qualité, original et
-							engageant à publier régulièrement sur
-							vos réseaux sociaux</li>
-							<li>Une ruche au nom de votre entreprise</li>
-							<li>Une page dédiée à votre entreprise
-							détaillant votre démarche
-							environnementale, sur laquelle des
-							photos de votre ruche ainsi que des
-							actualités seront régulièrement
-							postées</li>
+							<li>S’engager concrètement dans la protection de la biodiversité</li>
+							<li>Une stratégie pour se démarquer de la concurrence</li>
+							<li>Une histoire à partager avec ses partenaires</li>
+							<li>Un contenu de qualité, original et engageant à publier régulièrement sur les
+							réseaux sociaux</li>
+							<li>Une ruche au nom et aux couleurs de l’entreprise</li>
+							<li>Une page dédiée à l’entreprise qui détaille sa démarche environnementale,
+							sur laquelle des photos de sa ruche ainsi que des actualités sont
+							régulièrement postées</li>
 							<li>Une visibilité digitale supplémentaire</li>
-							<li>80 pots de miel de 125g personnalisés
-							à vos couleurs : un cadeau unique pour
-							vos collaborateurs, vos partenaires ou
-							vos clients</li>
+							<li>80 pots de miel de 125g personnalisés aux couleurs de l’entreprise : un
+							cadeau unique pour ses collaborateurs, ses partenaires ou encore ses clients</li>
 						</ul>
 					</div>
 					<div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>
@@ -100,7 +90,7 @@ export default class CompanyPresentation extends Component {
 						<ul>
 							<li>C’est l’assurance de maintenir notre
 							cheptel et de l’accroitre</li>
-							<li>Un nombre plus important de ruche
+							<li>Un nombre plus important de ruches
 							nous permet plus facilement
 							d’équilibrer les colonies entre elles</li>
 							<li>L’implantation de nouveaux ruchers
