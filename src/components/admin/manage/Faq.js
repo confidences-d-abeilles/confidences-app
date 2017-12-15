@@ -9,7 +9,10 @@ export default class AdminManageFaq extends Component {
 	constructor (props) {
 		super (props)
 		this.state = {
-			items : null
+			items : null,
+			newQuestion: '',
+			newAnswer: '',
+			type: ''
 		}
 	}
 
@@ -47,6 +50,11 @@ export default class AdminManageFaq extends Component {
 			}
 		}, this.refs.notif).then((res) => {
 			this.getQA()
+			this.setState({
+				newQuestion: '',
+				newAnswer: '',
+				type: ''
+			});
 		})
 	}
 
@@ -59,13 +67,13 @@ export default class AdminManageFaq extends Component {
 					<form>
 						<h3>Ajouter une question / réponse</h3>
 						<div className="form-group">
-							<input type="text" className="form-control" placeholder="Question" name="newQuestion" onChange={handleChange.bind(this)} />
+							<input type="text" className="form-control" placeholder="Question" name="newQuestion" value={this.state.newQuestion} onChange={handleChange.bind(this)} />
 						</div>
 						<div className="form-group">
-							<textarea className="form-control" placeholder="Réponse" name="newAnswer" onChange={handleChange.bind(this)} />
+							<textarea className="form-control" placeholder="Réponse" name="newAnswer" value={this.state.newAnswer} onChange={handleChange.bind(this)} />
 						</div>
 						<div className="form-group">
-							<select className="form-control" name="type" onChange={handleChange.bind(this)}>
+							<select className="form-control" name="type" value={this.state.type} onChange={handleChange.bind(this)}>
 								<option value="0">Cible</option>
 								<option value="1">Général</option>
 								<option value="2">Entreprise</option>
