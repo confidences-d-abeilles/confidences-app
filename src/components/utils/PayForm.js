@@ -56,8 +56,9 @@ class PayForm extends Component {
 
 	render () {
 		return (
-			<div>
+			<div className="row">
 				<NotificationSystem ref="notif" />
+				<div className="col-lg-6">
 					<form onSubmit={this.handleSubmit} className="text-center" style={{ padding: '10px', margin: '10px'}} >
 						<label>Numéro de carte bancaire</label>
 						<CardNumberElement style={{ base: { fontSize: '18px' }}} />
@@ -71,14 +72,17 @@ class PayForm extends Component {
 								<Loading />
 								Paiement en cours
 							</div>:
-							<button className="btn btn-primary">Payer {this.props.price} €</button>
+							<button className="btn btn-primary mt-3">Payer {this.props.price} €</button>
 							}
-						<p className="mt-4" style={{  border: 'solid 1px #00E676', backgroundColor: '#B9F6CA', padding: '10px', margin: '10px' }}>Les paiements sont réalisés via le système <strong>sécurisé</strong> Stripe qui utilise le <strong>protocole
+					</form>
+					</div>
+					<div className="col-lg-6">
+						<p className="mt-4" style={{  border: 'solid 1px #E49600', backgroundColor: 'rgba(228, 150, 0, 0.6)', padding: '10px', margin: '10px' }}>Les paiements sont réalisés via le système <strong>sécurisé</strong> Stripe qui utilise le <strong>protocole
 						SSL</strong>. Les informations transmises sont <strong>cryptées</strong> et le paiement est compatible 3D
 						Secure, MasterCard SecureCode, Verified by VISA.
 						Dans un soucis de sécurité, Confidences d'Abeilles ne conserve pas vos
 						informations bancaires.</p>
-					</form>
+				</div>
 			</div>
 		)
 	}
