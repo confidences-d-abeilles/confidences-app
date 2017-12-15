@@ -119,9 +119,9 @@ export default class Home extends Component {
 									if (user.user_type === 1 || user.user_type  === 2) {
 										let img;
 										if (user.logo) {
-											img = config.cdn_url+user.logo;
+											img = config.cdn_url+'/'+user.logo;
 										} else if (user.hive_img) {
-											img = config.cdn_url+user.hive_img;
+											img = config.cdn_url+'/'+user.hive_img;
 										} else {
 											img = defaultImg;
 										}
