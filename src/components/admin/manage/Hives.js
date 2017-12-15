@@ -41,6 +41,9 @@ export default class AdminManageHives extends Component {
 			}
 		}, this.refs.notif).then((res) => {
 			this.get();
+			this.setState({
+				new: ''
+			})
 		})
 	}
 
