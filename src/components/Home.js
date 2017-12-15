@@ -119,7 +119,7 @@ export default class Home extends Component {
 									if (user.user_type === 1 || user.user_type  === 2) {
 										return (
 											<div key={user.id}>
-												<Link to={'/'+user.namespace}>
+												<Link to={(user.namespace)?'/'+user.namespace:'/hive/'+user.hive_id}>
 													<img className="img-fluid" src={(user.logo)?config.cdn_url+'/'+user.logo:defaultImg} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name}/>
 													<p className="my-2" style={{ height: '2em', lineHeight: '2em', overflow: 'hidden'}}>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</p>
 												</Link>
