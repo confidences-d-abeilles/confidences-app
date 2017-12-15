@@ -46,7 +46,7 @@ export default class IndividualWish extends Component {
 				<div className="row justify-content-center">
 					<form className="col-6">
 						<p className="text-center lead my-4">
-							Je decide de parrainer
+							Je décide de parrainer
 						</p>
 						<div className="form-group">
 							<select name="bees" className="form-control" onChange={handleChange.bind(this)}>
@@ -59,7 +59,8 @@ export default class IndividualWish extends Component {
 						</div>
 						<ul>
 							<li>Ce sont {this.state.bees} abeilles de plus qui viendront renforcer la population du rucher et participer à la préservation de la biodiversité.</li><br/>
-							<li>Vous recevrez  {this.state.bees * 8 / 10000} pots de miel à votre nom et produits par les abeilles que vous parrainez.</li>
+							<li>Je choisie la future étiquette de mes pots de miel et je la personnalise.</li><br/>
+							<li>Je recois  {this.state.bees * 8 / 10000} pots de miel (250g) produits par mes abeilles.</li>
 						</ul>
 						<p className="text-center">
 						<button onClick={this.selectBundle.bind(this)} className="btn btn-primary">Continuer</button>

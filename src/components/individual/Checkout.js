@@ -30,6 +30,7 @@ export default class IndividualCheckout extends Component {
 			different: false,
 			present: false,
 			present_date: moment(),
+			present_message: '',
 			present_email: '',
 			present_ok: false,
 			dphone: ''
@@ -162,6 +163,7 @@ export default class IndividualCheckout extends Component {
 			data : {
 				present: this.state.present,
 				present_email: this.state.present_email,
+				present_message: this.state.present_message,
 				present_date: this.state.present_date
 			}
 		}, this.refs.notif).then((res) => {
@@ -184,21 +186,19 @@ export default class IndividualCheckout extends Component {
 					</div>
 				</div>
 				<div className="row justify-content-center">
-					<div className="col-lg-9 col-md-10 col-sm-12">
+					<div className="col-lg-11 col-md-10 col-sm-12">
 						<h2 className="text-center my-4">Confirmation et paiement</h2>
 						<p>
 							Je parraine {this.state.bees} abeilles d'une ruche sur laquelle sera marqué mon nom.
 							Je recevrais {this.state.bees / 10000 * 8} pots de miel de 250g produit par mes abeilles.
 							De plus, une page internet sera dédiée à ma ruche et je pourrais y retrouver des actualités sur mes abeilles.
 							<br /><br />
-							Le coût total est de {this.state.price} euros par an.
-						</p>
-						<p className="text-center">
+							<strong>Le coût total est de {this.state.price} euros par an.</strong><br /><br />
 							<button className="btn btn-primary" onClick={this.changeBundle.bind(this)}>Changer d'offre</button>
 						</p>
 						<div className="row justify-content-center">
 							<div className="col-lg-6 col-md-10 col-sm-12">
-								<h3 className="text-center">Adresse de facturation</h3>
+								<h3 className="my-4">Adresse de facturation</h3>
 								<p>
 									{(this.state.baddress1)?<span>{this.state.baddress1}<br/></span>:''}
 									{(this.state.baddress3)?<span>{this.state.baddress3}<br/></span>:''}
@@ -208,7 +208,7 @@ export default class IndividualCheckout extends Component {
 								</p>
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
-								<h3 className="text-center">Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
+								<h3 className="my-4">Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
 								{this.state.different && !this.state.saved &&
 									<form className="text-center">
 										<div className="form-group">
@@ -247,15 +247,15 @@ export default class IndividualCheckout extends Component {
 										{this.state.dphone}
 									</div>
 								}
-							</div>
-						</div>
-						<div className="row justify-content-center">
-							<div className="col-lg-6 col-md-10 col-sm-12">
-								<h3 className="text-center my-2">Ce parrainage est un cadeau {!this.state.present_ok && <input type="checkbox" name="present" checked={this.state.present} onChange={handleTick.bind(this) }/>}</h3>
+								<h3 className="mt-5">Ce parrainage est un cadeau {!this.state.present_ok && <input type="checkbox" name="present" checked={this.state.present} onChange={handleTick.bind(this) }/>}</h3>
 								{this.state.present && !this.state.present_ok &&
 										<form onSubmit={this.handlePresent.bind(this)}>
+										<p>L’adresse de votre bénéficiaire est différente ? Merci de sélectionner « Adresse de livraison différente » et de remplir tous les champs.</p>
 										<div className="form-group">
-											<input type="email" className="form-control" name="present_email" onChange={handleChange.bind(this)} placeholder="Email du bénéficiaire" />
+											<input type="email" className="form-control" name="present_email" onChange={handleChange.bind(this)} placeholder="Email du bénéficiaire *" />
+										</div>
+										<div className="form-group">
+											<textarea className="form-control" name="present_message" onChange={handleChange.bind(this)} placeholder="Message personnalisé à joindre (optionnel)" />
 										</div>
 										<div className="form-group">
 											<label>Notifier l'heureux bénéficiaire à partir du :</label>
@@ -271,14 +271,14 @@ export default class IndividualCheckout extends Component {
 								}
 								{this.state.present_ok &&
 								<p>
-									Ok ! Le bénéficiaire sera notifié à partir du {this.state.present_date.format("DD/MM/YYYY")} à l'adresse email {this.state.present_email}.
+									Votre demande a bien été prise en compte. L'heureux bénéficiaire sera notifié à partir du {this.state.present_date.format("DD/MM/YYYY")} à l'adresse email {this.state.present_email}.
 								</p>
 								}
 							</div>
 						</div>
-						<h3 className="text-center my-2">Paiement sécurisé</h3>
+						<h3 className="my-4">Paiement sécurisé</h3>
 						<div className="row justify-content-center">
-							<form className="col-lg-6 col-md-10 col-sm-12">
+							<form className="col-lg-3 col-md-10 col-sm-12 my-4">
 								<div className="form-group">
 									<div className="form-check">
 										<label className="form-check-label">
@@ -300,7 +300,7 @@ export default class IndividualCheckout extends Component {
 									</div>
 								</div>
 							</form>
-							<div className="col-lg-6 col-md-10 col-sm-12">
+							<div className="col-lg-9 col-md-10 col-sm-12">
 								{this.state.paytype === '0' &&
 									<Elements locale="fr">
 										<PayForm price={this.state.price} bundle={this.state.bundle_id} for={this.state.company_name} endpoint="/individual/end" />
