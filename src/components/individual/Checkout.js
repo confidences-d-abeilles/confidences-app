@@ -175,7 +175,7 @@ export default class IndividualCheckout extends Component {
         return (
 			<div className="container py-4">
 				<NotificationSystem ref="notif" />
-				{(this.state.redirect)?<Redirect to="/individual/manage" />:null}
+				{(this.state.redirect)?<Redirect to="/individual/end" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
