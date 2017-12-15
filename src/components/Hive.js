@@ -73,7 +73,12 @@ export default class Hive extends Component {
 							<h3 className="my-4">Actualités</h3>
 							{(this.state.hive.news.length)?
 								this.state.hive.news.map((actu) => {
-									const date = new Date(actu.createdAt);
+									let date;
+									if (actu.date) {
+										date = new Date(actu.date);
+									} else {
+										date = new Date(actu.createdAt);
+									}
 									return (
 										<div className="card my-2 flex-row">
 											<div className="card-block col-2">
