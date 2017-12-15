@@ -117,10 +117,18 @@ export default class Home extends Component {
 								}}>
 								{this.state.users.map((user) => {
 									if (user.user_type === 1 || user.user_type  === 2) {
+										let img;
+										if (user.logo) {
+											img = config.cdn_url+user.logo;
+										} else if (user.hive_img) {
+											img = config.cdn_url+user.hive_img;
+										} else {
+											img = defaultImg;
+										}
 										return (
 											<div key={user.id}>
 												<Link to={(user.namespace)?'/'+user.namespace:'/hive/'+user.hive_id}>
-													<img className="img-fluid" src={(user.logo)?config.cdn_url+'/'+user.logo:defaultImg} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name}/>
+													<img className="img-fluid" src={img} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name}/>
 													<p className="my-2" style={{ height: '2em', lineHeight: '2em', overflow: 'hidden'}}>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</p>
 												</Link>
 											</div>
