@@ -86,11 +86,11 @@ export default class Hive extends Component {
 											</div>
 											<div className="card-block col-10">
 												<h3 className="card-title">{actu.title}</h3>
+												<p className="card-text"><small className="text-muted">{date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()}</small></p>
 												<p className="card-text collapse" id={actu.id}>
 													{ReactHtmlParser(actu.content)}
 												</p>
 												<button className="btn btn-link" data-toggle="collapse" data-target={'#'+actu.id}>Développer / Réduire <FontAwesome name='sort' /></button>
-												<p className="card-text"><small className="text-muted">{date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()}</small></p>
 											</div>
 										</div>
 									)
