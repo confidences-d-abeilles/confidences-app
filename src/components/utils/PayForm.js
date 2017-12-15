@@ -42,6 +42,14 @@ class PayForm extends Component {
 			if (res) {
 				window.location.replace(res.redirect.url);
 			}
+		}).catch((err) => {
+			this.setState({
+				loading: false
+			})
+		})
+	}).catch((err) => {
+		this.setState({
+			loading: false
 		})
 	});
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import imgPlaceholder from '../../assets/img/img-placeholder.gif';
+import Main from '../../assets/img/end_part.jpg';
 
 export default class CompanyEnd extends Component {
 
@@ -11,7 +11,7 @@ export default class CompanyEnd extends Component {
 					<div className="col-8">
 						<h2 className="text-center my-4">Felicitations ! Vous faites desormais parti de la grande famille des parrains de ruches.</h2>
 						<p className="text-center">
-							<img src={imgPlaceholder} className="img-fluid mx-auto d-block" alt="Img temp" />
+							<img src={Main} className="img-fluid mx-auto d-block" alt="Img temp" />
 							<br />
 							Toutes l'equipe de Confidences  d'Abeilles vous remercie !<br /><br />
                         <Link to="/individual/manage" className="btn btn-primary">Mon compte</Link>
