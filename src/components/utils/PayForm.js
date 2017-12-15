@@ -18,40 +18,43 @@ class PayForm extends Component {
 		}
 	}
 
-	handleSubmit = (ev) => {
-	ev.preventDefault();
-	this.setState({
-		loading: true
-	})
-	this.props.stripe.createSource({
-		owner: {
-			name: this.props.for
-		},
-		metadata : {
-			bundle: this.props.bundle
+	async handleSubmit (ev) {
+		ev.preventDefault();
+		if (this.props.before) {
+			await this.props.before();
 		}
-	}).then(({source}) => {
-		request({
-			url: '/payment/prepare',
-			method: 'post',
-			data: {
-				source: source,
-				redirect: config.app_url+this.props.endpoint
+		this.setState({
+			loading: true
+		})
+		this.props.stripe.createSource({
+			owner: {
+				name: this.props.for
+			},
+			metadata : {
+				bundle: this.props.bundle
 			}
-		}, this.refs.notif).then((res) => {
-			if (res) {
-				window.location.replace(res.redirect.url);
-			}
+		}).then(({source}) => {
+			request({
+				url: '/payment/prepare',
+				method: 'post',
+				data: {
+					source: source,
+					redirect: config.app_url+this.props.endpoint
+				}
+			}, this.refs.notif).then((res) => {
+				if (res) {
+					window.location.replace(res.redirect.url);
+				}
+			}).catch((err) => {
+				this.setState({
+					loading: false
+				})
+			})
 		}).catch((err) => {
 			this.setState({
 				loading: false
 			})
-		})
-	}).catch((err) => {
-		this.setState({
-			loading: false
-		})
-	});
+		});
   }
 
 	render () {
@@ -59,7 +62,7 @@ class PayForm extends Component {
 			<div className="row">
 				<NotificationSystem ref="notif" />
 				<div className="col-lg-6">
-					<form onSubmit={this.handleSubmit} className="text-center" style={{ padding: '10px', margin: '10px'}} >
+					<form onSubmit={this.handleSubmit.bind(this)} className="text-center" style={{ padding: '10px', margin: '10px'}} >
 						<label>Numéro de carte bancaire</label>
 						<CardNumberElement style={{ base: { fontSize: '18px' }}} />
 						<label>Date d'expiration</label>

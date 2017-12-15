@@ -39,7 +39,7 @@ export default class Hive extends Component {
 						<div className="col-lg-7 col-md-7 col-sm-12">
 							<div className="row">
 								<div className="col-lg-7 px-5">
-									<img className="img-fluid" src={ImgPlaceholder} alt="Aucune photo" />
+									<img className="img-fluid" src={(this.state.hive.imgs[0])?this.state.hive.imgs[0]:ImgPlaceholder} alt="Photo principale de la ruche" />
 								</div>
 								<div className="col-lg-5 card" style={{ backgroundColor: '#ECEFF1' }}>
 									<h3 className="my-4">Les parrains</h3>
@@ -57,11 +57,15 @@ export default class Hive extends Component {
 							</p>
 							<div className="row">
 								{this.state.hive.imgs.map((img) => {
-									return (
-										<div className="col-6">
-											<img src={config.cdn_url+'/'+img} key={img} alt="Photo de la ruche" className="img-fluid"/>
-										</div>
-									)
+									if (img === this.state.hive.imgs[0]) {
+										return (null);
+									} else {
+										return (
+											<div className="col-6">
+												<img src={config.cdn_url+'/'+img} key={img} alt="Photo de la ruche" className="img-fluid"/>
+											</div>
+										)
+									}
 								})}
 							</div>
 						</div>

@@ -47,9 +47,9 @@ nous vous expédierons le miel de vos abeilles ainsi qu’un certificat de parra
 rien à payer en plus, les frais de port sont compris dans le montant du parrainage pour la
 France métropolitaine. Pour une livraison à l’étranger nous étudierons au cas par cas les
 envois.<br/><br/>
-<strong>Remarque : </strong>Il est possible <strong>d’offrir un parrainage d’abeilles</strong> ou une ruche complète en
+<strong>Remarque : </strong><em>Il est possible <strong>d’offrir un parrainage d’abeilles</strong> ou une ruche complète en
 cadeau et de choisir la date à partir de laquelle nous devons prévenir l’heureux
-bénéficiaire. L’option vous est proposée au moment du paiement.
+bénéficiaire. L’option vous est proposée au moment du paiement.</em>
 						</p>
 						<h3 className="text-center">Quand parrainer ?</h3>
 						<p>
