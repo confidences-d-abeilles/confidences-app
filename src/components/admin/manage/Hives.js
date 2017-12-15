@@ -4,6 +4,10 @@ import NotificationSystem from 'react-notification-system'
 import { handleChange } from '../../../services/FormService'
 import ReactQuill from 'react-quill'
 import Loading from '../../utils/Loading'
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default class AdminManageHives extends Component {
 
@@ -12,12 +16,19 @@ export default class AdminManageHives extends Component {
 		this.state = {
 			hives : null,
 			new: '',
-			selected: ''
+			selected: '',
+			actuDate: ''
 		}
 	}
 
 	componentDidMount() {
 		this.get();
+	}
+
+	handleDateChange(date) {
+		this.setState({
+			actuDate: date
+		});
 	}
 
 	get() {
@@ -61,6 +72,7 @@ export default class AdminManageHives extends Component {
 		const data = new FormData();
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
+		data.append('date', this.state.actuDate);
 		if (document.getElementById("actu-img").files[0]) {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		}
@@ -134,6 +146,15 @@ export default class AdminManageHives extends Component {
 							<form onSubmit={this.createActu.bind(this)}>
 								<div className="form-group">
 									<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} placeholder="Titre"/>
+								</div>
+								<div className="form-group">
+									<label>Date de l'actu</label>
+									<DatePicker
+										dateFormat="DD/MM/YYYY"
+										selected={this.state.actuDate}
+										onChange={this.handleDateChange.bind(this)}
+										className="form-control"
+										/>
 								</div>
 								<div className="form-group">
 									<ReactQuill
