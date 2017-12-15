@@ -33,7 +33,8 @@ export default class IndividualCheckout extends Component {
 			present_message: '',
 			present_email: '',
 			present_ok: false,
-			dphone: ''
+			dphone: '',
+			feedback: ''
 		}
 	}
 
@@ -91,7 +92,8 @@ export default class IndividualCheckout extends Component {
 		});
 	}
 
-	setWaitingPayment() {
+	async setWaitingPayment() {
+		await this.save();
 		request({
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
@@ -103,45 +105,64 @@ export default class IndividualCheckout extends Component {
 		})
 	}
 
-	saveDaddress(e) {
-		e.preventDefault();
-		if (this.state.dphone.length > 9) {
-			request({
-				url: '/address/'+this.state.did,
-				method: 'put',
-				data: {
-					line1: this.state.daddress1,
-					line3: this.state.daddress3,
-					line4: this.state.daddress4,
-					zipcode: this.state.dzip,
-					city: this.state.dcity,
-					country: this.state.dcountry,
-					phone: this.state.dphone
-				}
-			}, this.refs.notif).then((res) => {
-				this.setState({
-					saved : true
-				})
-			})
-		} else {
-			this.refs.notif.addNotification({
-				message: 'Merci de renseigner un numero de telephone valide pour la livraison',
-				level: 'warning'
-			})
-		}
+	async save() {
+		return new Promise(async resolve => {
+			await this.saveFeedback();
+			if (this.state.different) {
+				await this.saveDaddress();
+			}
+			if (this.state.present)
+ 			{
+				await this.handlePresent();
+			}
+			resolve();
+		})
 	}
 
-	proceed() {
-		request('/user/daddress/create', 'POST', JSON.stringify({
-			address1: this.state.billing_address1,
-			address2: this.state.billing_address2,
-			city: this.state.billing_city,
-			zipcode: this.state.billing_zipcode
-		}), 'json', (status, message, content) => {
-			if (status) {
-				this.setState({
-					redirect: true
-				});
+	async saveFeedback() {
+		return new Promise(resolve => {
+			request({
+				url: '/bundle/'+this.state.bundle_id,
+				method: 'put',
+				data: {
+					feedback: this.state.feedback
+				}
+			}, this.refs.notif).then((res) => {
+				resolve();
+			})
+		})
+	}
+
+	async noAction() {
+		await this.save();
+		this.setState({
+			redirect: true
+		})
+	}
+
+	async saveDaddress() {
+		return new Promise(resolve => {
+			if (this.state.dphone.length > 9) {
+				request({
+					url: '/address/'+this.state.did,
+					method: 'put',
+					data: {
+						line1: this.state.daddress1,
+						line3: this.state.daddress3,
+						line4: this.state.daddress4,
+						zipcode: this.state.dzip,
+						city: this.state.dcity,
+						country: this.state.dcountry,
+						phone: this.state.dphone
+					}
+				}, this.refs.notif).then((res) => {
+					resolve();
+				})
+			} else {
+				this.refs.notif.addNotification({
+					message: 'Merci de renseigner un numero de telephone valide pour la livraison',
+					level: 'warning'
+				})
 			}
 		});
 	}
@@ -155,22 +176,21 @@ export default class IndividualCheckout extends Component {
 		})
 	}
 
-	handlePresent(e) {
-		e.preventDefault();
-		request({
-			url: '/bundle/'+this.state.bundle_id,
-			method: 'put',
-			data : {
-				present: this.state.present,
-				present_email: this.state.present_email,
-				present_message: this.state.present_message,
-				present_date: this.state.present_date
-			}
-		}, this.refs.notif).then((res) => {
-			this.setState({
-				present_ok: true
+	async handlePresent() {
+		return new Promise(resolve => {
+			request({
+				url: '/bundle/'+this.state.bundle_id,
+				method: 'put',
+				data : {
+					present: this.state.present,
+					present_email: this.state.present_email,
+					present_message: this.state.present_message,
+					present_date: this.state.present_date
+				}
+			}, this.refs.notif).then((res) => {
+				resolve();
 			})
-		})
+		});
 	}
 
     render () {
@@ -206,6 +226,10 @@ export default class IndividualCheckout extends Component {
 									{this.state.bzip} {this.state.bcity}<br/>
 									{this.state.bcountry}
 								</p>
+								<h3 className="my-4">Message</h3>
+								<div className="form-group">
+									<textarea rows="5" className="form-control" name="feedback" onChange={handleChange.bind(this)} value={this.state.feedback} placeholder="Informations complémentaires concernant votre commande ou commentaires, laissez-nous un petit message, nous y prêterons grande attention :)" />
+								</div>
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="my-4">Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
@@ -234,7 +258,6 @@ export default class IndividualCheckout extends Component {
 										<div className="form-group">
 											<input type="text" className="form-control" value={this.state.dphone} name="dphone" onChange={handleChange.bind(this)} placeholder="Numéro de téléphone pour la livraison *" />
 										</div>
-										<button className="btn btn-primary my-2" onClick={this.saveDaddress.bind(this)}>Enregistrer</button>
 									</form>
 								}
 								{this.state.saved &&
@@ -248,8 +271,8 @@ export default class IndividualCheckout extends Component {
 									</div>
 								}
 								<h3 className="mt-5">Ce parrainage est un cadeau {!this.state.present_ok && <input type="checkbox" name="present" checked={this.state.present} onChange={handleTick.bind(this) }/>}</h3>
-								{this.state.present && !this.state.present_ok &&
-										<form onSubmit={this.handlePresent.bind(this)}>
+								{this.state.present &&
+										<form>
 										<p>L’adresse de votre bénéficiaire est différente ? Merci de sélectionner « Adresse de livraison différente » et de remplir tous les champs.</p>
 										<div className="form-group">
 											<input type="email" className="form-control" name="present_email" onChange={handleChange.bind(this)} placeholder="Email du bénéficiaire *" />
@@ -266,13 +289,7 @@ export default class IndividualCheckout extends Component {
 												className="form-control"
 											    />
 										</div>
-										<button className="btn btn-primary">Enregister</button>
 									</form>
-								}
-								{this.state.present_ok &&
-								<p>
-									Votre demande a bien été prise en compte. L'heureux bénéficiaire sera notifié à partir du {this.state.present_date.format("DD/MM/YYYY")} à l'adresse email {this.state.present_email}.
-								</p>
 								}
 							</div>
 						</div>
@@ -303,7 +320,7 @@ export default class IndividualCheckout extends Component {
 							<div className="col-lg-9 col-md-10 col-sm-12">
 								{this.state.paytype === '0' &&
 									<Elements locale="fr">
-										<PayForm price={this.state.price} bundle={this.state.bundle_id} for={this.state.company_name} endpoint="/individual/end" />
+										<PayForm price={this.state.price} before={this.save.bind(this)} bundle={this.state.bundle_id} for={this.state.company_name} endpoint="/individual/end" />
 									</Elements>
 								}
 
@@ -339,7 +356,7 @@ export default class IndividualCheckout extends Component {
 											d’octobre.</li></ul>
 											Bonne visite sur notre plateforme !
 										</p>
-										<Link to="/account" className="btn btn-primary">Payer plus tard</Link>
+										<button onClick={this.noAction.bind(this)} className="btn btn-primary">Payer plus tard</button>
 									</div>
 								}
 							</div>
