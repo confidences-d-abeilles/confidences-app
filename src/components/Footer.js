@@ -47,7 +47,6 @@ export default class Footer extends Component {
 									<li><Link to="#" className="noStyleLink">Presse</Link></li>
 									<li><Link to="/mentions_legales" className="noStyleLink">Mentions légales</Link></li>
 									<li><Link to="/cgv" className="noStyleLink">CGV</Link></li>
-									<li><a href="https://github.com/cchampou/confidences-app/issues/new" target="_blank" rel="noopener noreferrer" className="noStyleLink">Report a bug</a></li>
 								</ul>
 							</div>
 						</div>

@@ -141,8 +141,8 @@ export default class Contact extends Component {
 								<select className="form-control" value={this.state.demand} name="demand" onChange={handleChange.bind(this)}>
 									<option selected disabled>Ma demande concerne *</option>
 									<option value="1">Mon parrainage</option>
-									<option value="2">Ma ruche</option>
 									<option value="3">Mon compte</option>
+									<option value="2">Les Partenaires</option>
 									<option value="4">Une demande professionnelle</option>
 									<option value="5">Le webmaster</option>
 									<option value="6">Le responsable communication</option>
