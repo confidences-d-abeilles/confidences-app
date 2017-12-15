@@ -4,6 +4,7 @@ import NotificationSystem from 'react-notification-system'
 import Loading from './utils/Loading';
 import ReactHtmlParser from 'react-html-parser'
 import FontAwesome from 'react-fontawesome'
+import ImgPlaceholder from '../assets/img/profile.png';
 
 const config = require('../config.js')
 
@@ -33,17 +34,39 @@ export default class Hive extends Component {
 				<NotificationSystem ref="notif" />
 				{(this.state.hive)?
 					<div>
-						<h2 className="text-center">Informations sur la ruche<br /><small>{this.state.hive.name}</small></h2>
+						<h2 className="text-center my-5">Ruche {this.state.hive.name}</h2>
 					<div className="row">
-						<div className="col">
-							<h3>Les parrains</h3>
-							{this.state.hive &&
-							this.state.hive.parrains.map((user) => {
-								return (
-									<p>{user.name} {user.firstname}</p>
-								)
-							})}
-							<h3>Actualités</h3>
+						<div className="col-lg-7 col-md-7 col-sm-12">
+							<div className="row">
+								<div className="col-lg-7 px-5">
+									<img className="img-fluid" src={ImgPlaceholder} alt="Aucune photo" />
+								</div>
+								<div className="col-lg-5 card" style={{ backgroundColor: '#ECEFF1' }}>
+									<h3 className="my-4">Les parrains</h3>
+									{this.state.hive &&
+										this.state.hive.parrains.map((user) => {
+											return (
+												<p>{user.name} {user.firstname}</p>
+											)
+										})}
+								</div>
+							</div>
+							<h3 className="my-4">Informations sur la ruche</h3>
+							<p>
+								Aucune information sur cette ruche pour le moment
+							</p>
+							<div className="row">
+								{this.state.hive.imgs.map((img) => {
+									return (
+										<div className="col-6">
+											<img src={config.cdn_url+'/'+img} key={img} alt="Photo de la ruche" className="img-fluid"/>
+										</div>
+									)
+								})}
+							</div>
+						</div>
+						<div className="col-lg-4 col-md-4 col-sm-12">
+							<h3 className="my-4">Actualités</h3>
 							{(this.state.hive.news.length)?
 								this.state.hive.news.map((actu) => {
 									const date = new Date(actu.createdAt);
@@ -64,18 +87,6 @@ export default class Hive extends Component {
 									)
 								})
 							:"Aucune actualité à afficher pour cette ruche"}
-						</div>
-						<div className="col">
-							<h3>Photos</h3>
-							<div className="row">
-								{this.state.hive.imgs.map((img) => {
-									return (
-										<div className="col-6">
-											<img src={config.cdn_url+'/'+img} key={img} alt="Photo de la ruche" className="img-fluid"/>
-										</div>
-									)
-								})}
-							</div>
 						</div>
 					</div>
 				</div>
