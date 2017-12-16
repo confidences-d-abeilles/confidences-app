@@ -113,6 +113,18 @@ export default class AdminManageHives extends Component {
 		});
 	}
 
+	deleteActu() {
+		request({
+			url: '/news/'+this.state.newsModify,
+			method: 'delete'
+		}, this.refs.notif).then((res) => {
+			this.get();
+			this.setState({
+				selected: ''
+			})
+		})
+	}
+
 	addPhoto(e) {
 		e.preventDefault()
 		const data = new FormData();
@@ -234,6 +246,7 @@ export default class AdminManageHives extends Component {
 								})}
 							</select>
 							{this.state.newsModify &&
+								<div>
 								<form onSubmit={this.updateActu.bind(this)} className="mt-4">
 									<div className="form-group">
 										<input type="text" className="form-control" name="actuModifyTitle" value={this.state.actuModifyTitle} onChange={handleChange.bind(this)} placeholder="Titre"/>
@@ -263,8 +276,10 @@ export default class AdminManageHives extends Component {
 												]
 											}}/>
 									</div>
-									<button className="btn btn-primary">Soumettre</button>
-								</form>}
+									<button className="btn btn-primary m-2">Soumettre</button>
+								</form>
+								<Confirm action={this.deleteActu.bind(this)} text="Supprimer cette news" className="m-2"/>
+							</div>}
 						<h3 className="py-4">Ajouter des photos</h3>
 						<form onSubmit={this.addPhoto.bind(this)}>
 							<div className="form-group">
