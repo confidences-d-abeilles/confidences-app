@@ -49,7 +49,9 @@ export default class Bundle extends Component {
 			request({
 				url: '/bundle/'+this.props.id+'/associate/'+this.state.hive,
 				method: 'put'
-			}, this.refs.notif);
+			}, this.refs.notif).then((res) => {
+				this.props.refresh();
+			});
 		}
 	}
 
