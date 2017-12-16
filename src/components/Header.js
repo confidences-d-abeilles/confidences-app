@@ -8,16 +8,18 @@ export default class Header extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			redirect : false
+			redirect : false,
+			banner: true
 		}
 	}
 
 	render () {
 		return (
 			<div>
+				{this.state.banner &&
 				<div style={{ width: '100%', height: 'auto', backgroundColor: '#424242', color: 'white', lineHeight: '3em', textAlign: 'center' }}>
-					&nbsp;&nbsp;Ceci est la première version de la plateforme. Si vous rencontrez des difficultés au cours de son utilisation, <Link to="/contact">contactez nous</Link> !
-				</div>
+					&nbsp;&nbsp;Ceci est la première version de la plateforme. Si vous rencontrez des difficultés au cours de son utilisation, <Link to="/contact">contactez nous</Link> ! <button className="btn btn-link" onClick={() => { this.setState({ banner: false }); }}>Fermer</button>
+				</div>}
 				<nav className="navbar navbar-toggleable-md navbar-light">
 					<button className="navbar-toggler navbar-toggler-right align-self-center" type="button" data-toggle="collapse" data-target="#navbarNav">
 						<span className="navbar-toggler-icon"></span>
