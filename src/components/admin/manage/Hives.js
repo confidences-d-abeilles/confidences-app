@@ -227,37 +227,38 @@ export default class AdminManageHives extends Component {
 									)
 								})}
 							</select>
-							<form onSubmit={this.updateActu.bind(this)} className="mt-4">
-								<div className="form-group">
-									<input type="text" className="form-control" name="actuModifyTitle" value={this.state.actuModifyTitle} onChange={handleChange.bind(this)} placeholder="Titre"/>
-								</div>
-								<div className="form-group">
-									<label>Date de l'actu</label>
-									<DatePicker
-										dateFormat="DD/MM/YYYY"
-										selected={moment(this.state.actuModifyDate)}
-										onChange={(date) => { this.setState({ actuModifyDate : date })}}
-										className="form-control"
-										/>
-								</div>
-								<div className="form-group">
- 									<ReactQuill
-										name="actuModify"
-										className="form-control"
-										onChange={(value) => { this.setState({ actuModify: value })}}
-										defaultValue={this.state.actuModify}
-										placeholder="Texte de l'actualité"
-										modules={{
-											toolbar: [
-												['bold', 'italic', 'underline','strike', 'blockquote'],
-												[{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-												['link'],
-												['clean']
-											]
-										}}/>
-								</div>
-								<button className="btn btn-primary">Soumettre</button>
-							</form>
+							{this.state.newsModify &&
+								<form onSubmit={this.updateActu.bind(this)} className="mt-4">
+									<div className="form-group">
+										<input type="text" className="form-control" name="actuModifyTitle" value={this.state.actuModifyTitle} onChange={handleChange.bind(this)} placeholder="Titre"/>
+									</div>
+									<div className="form-group">
+										<label>Date de l'actu</label>
+										<DatePicker
+											dateFormat="DD/MM/YYYY"
+											selected={moment(this.state.actuModifyDate)}
+											onChange={(date) => { this.setState({ actuModifyDate : date })}}
+											className="form-control"
+											/>
+									</div>
+									<div className="form-group">
+	 									<ReactQuill
+											name="actuModify"
+											className="form-control"
+											onChange={(value) => { this.setState({ actuModify: value })}}
+											value={this.state.actuModify}
+											placeholder="Texte de l'actualité"
+											modules={{
+												toolbar: [
+													['bold', 'italic', 'underline','strike', 'blockquote'],
+													[{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+													['link'],
+													['clean']
+												]
+											}}/>
+									</div>
+									<button className="btn btn-primary">Soumettre</button>
+								</form>}
 						<h3 className="py-4">Ajouter des photos</h3>
 						<form onSubmit={this.addPhoto.bind(this)}>
 							<div className="form-group">
