@@ -31,13 +31,13 @@ export default class Hive extends Component {
 
 	render() {
 		return (
-			<div className="container">
+			<div className="container-fluid">
 				<NotificationSystem ref="notif" />
 				{(this.state.hive)?
 					<div>
 						<h2 className="text-center my-5">Ruche {this.state.hive.name}</h2>
 					<div className="row">
-						<div className="col-lg-6 col-md-7 col-sm-12">
+						<div className="col-lg-4 col-md-7 col-sm-12">
 							<div className="row">
 								<div className="col-lg-7 px-5">
 									<img className="img-fluid" src={(this.state.hive.imgs[0])?config.cdn_url+'/'+this.state.hive.imgs[0]:ImgPlaceholder} alt="Photo principale de la ruche" />
@@ -70,7 +70,7 @@ export default class Hive extends Component {
 								})}
 							</div>
 						</div>
-						<div className="col-lg-6 col-md-4 col-sm-12">
+						<div className="col-lg-8 col-md-4 col-sm-12">
 							<h3 className="my-4 text-center">Actualités</h3>
 							{(this.state.hive.news.length)?
 								this.state.hive.news.map((actu) => {
@@ -81,14 +81,14 @@ export default class Hive extends Component {
 										date = new Date(actu.createdAt);
 									}
 									return (
-										<div className="card my-2 flex-row">
-											<div className="card-block col-2">
+										<div className="my-2 row">
+											<div className="col-lg-2">
 												<img className="img-fluid" src={config.cdn_url+'/'+actu.img} alt="Card image cap" />
 											</div>
-											<div className="card-block col-10">
-												<h3 className="card-title">{actu.title}</h3>
-												<p className="card-text"><small className="text-muted">{moment(date).format("DD/MM/YYYY")}</small></p>
-												<p className="card-text collapse" id={actu.id}>
+											<div className="col-lg-10">
+												<h3>{actu.title}</h3>
+												<p><small className="text-muted">{moment(date).format("DD/MM/YYYY")}</small></p>
+												<p className="collapse" id={actu.id}>
 													{ReactHtmlParser(actu.content)}
 												</p>
 												<button className="btn btn-link" data-toggle="collapse" data-target={'#'+actu.id}>Développer / Réduire <FontAwesome name='sort' /></button>
