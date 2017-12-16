@@ -10,7 +10,7 @@ export default class IndividualWish extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			bees: 10000
+			bees: '10000'
 		}
 	}
 
@@ -26,6 +26,22 @@ export default class IndividualWish extends Component {
 		.then((res) => {
 			this.setState({ redirect : true})
 		})
+	}
+
+	getPrice(bees) {
+		if (bees === '10000') {
+			return (70);
+		} else if (bees === '20000') {
+			return (135);
+		} else if (bees === '30000') {
+			return (195);
+		} else if (bees === '40000') {
+			return (250);
+		} else if (bees === '50000') {
+			return (300);
+		} else {
+			return (0);
+		}
 	}
 
     render () {
@@ -57,6 +73,9 @@ export default class IndividualWish extends Component {
 								<option value="50000">50 000 abeilles, soit une ruche complète</option>
 							</select>
 						</div>
+						<p className="lead text-center">
+							soit {this.getPrice(this.state.bees)} € / an
+						</p>
 						<ul>
 							<li>Ce sont {this.state.bees} abeilles de plus qui viendront renforcer la population du rucher et participer à la préservation de la biodiversité.</li><br/>
 							<li>Je choisie la future étiquette de mes pots de miel et je la personnalise.</li><br/>
