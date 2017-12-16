@@ -1944,6 +1944,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   font-weight: normal;
   line-height: 1.25;
   text-align: center;
+  font-weight: bold;
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
