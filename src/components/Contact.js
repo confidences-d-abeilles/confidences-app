@@ -4,6 +4,7 @@ import NotificationSystem from 'react-notification-system'
 import { handleChange } from '../services/FormService'
 import FontAwesome from 'react-fontawesome'
 import { isLoggedIn } from '../services/AuthService'
+import { Link } from 'react-router-dom'
 
 export default class Contact extends Component {
 
@@ -114,6 +115,9 @@ export default class Contact extends Component {
 									return null
 								}
 							})}
+							<p className="text-center my-5">
+								<Link to="/faq">Consulter la FAQ intégrale</Link>
+							</p>
 					</div>
 					<div className="col-lg-6 col-md-10 col-sm-12">
 						<h2 className="my-4">Vous n'avez pas trouvé ce que vous cherchiez ?</h2>
