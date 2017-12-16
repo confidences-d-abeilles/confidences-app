@@ -18,6 +18,8 @@ export default class AdminManageHives extends Component {
 			hives : null,
 			new: '',
 			selected: '',
+			actu: '',
+			actuTitle: '',
 			actuDate: ''
 		}
 	}
@@ -85,7 +87,11 @@ export default class AdminManageHives extends Component {
 				'content-type' : 'multipart/form-data'
 			}
 		}, this.refs.notif).then((res) => {
-
+			this.setState({
+				actuTitle: '',
+				actu: '',
+				actuDate: ''
+			})
 		})
 	}
 
@@ -181,7 +187,7 @@ export default class AdminManageHives extends Component {
 						<h3 className="my-4">Créer une news</h3>
 							<form onSubmit={this.createActu.bind(this)}>
 								<div className="form-group">
-									<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} placeholder="Titre"/>
+									<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} value={this.state.actuTitle} placeholder="Titre"/>
 								</div>
 								<div className="form-group">
 									<label>Date de l'actu</label>
@@ -197,7 +203,7 @@ export default class AdminManageHives extends Component {
 										name="actu"
 										className="form-control"
 										onChange={(value) => { this.setState({ actu: value })}}
-										defaultValue={this.state.actu}
+										value={this.state.actu}
 										placeholder="Texte de l'actualité"
 										modules={{
 											toolbar: [
