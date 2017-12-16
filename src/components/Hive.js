@@ -5,6 +5,7 @@ import Loading from './utils/Loading';
 import ReactHtmlParser from 'react-html-parser'
 import FontAwesome from 'react-fontawesome'
 import ImgPlaceholder from '../assets/img/profile.png';
+import moment from 'moment';
 
 const config = require('../config.js')
 
@@ -36,7 +37,7 @@ export default class Hive extends Component {
 					<div>
 						<h2 className="text-center my-5">Ruche {this.state.hive.name}</h2>
 					<div className="row">
-						<div className="col-lg-7 col-md-7 col-sm-12">
+						<div className="col-lg-6 col-md-7 col-sm-12">
 							<div className="row">
 								<div className="col-lg-7 px-5">
 									<img className="img-fluid" src={(this.state.hive.imgs[0])?config.cdn_url+'/'+this.state.hive.imgs[0]:ImgPlaceholder} alt="Photo principale de la ruche" />
@@ -69,8 +70,8 @@ export default class Hive extends Component {
 								})}
 							</div>
 						</div>
-						<div className="col-lg-4 col-md-4 col-sm-12">
-							<h3 className="my-4">Actualités</h3>
+						<div className="col-lg-6 col-md-4 col-sm-12">
+							<h3 className="my-4 text-center">Actualités</h3>
 							{(this.state.hive.news.length)?
 								this.state.hive.news.map((actu) => {
 									let date;
@@ -86,7 +87,7 @@ export default class Hive extends Component {
 											</div>
 											<div className="card-block col-10">
 												<h3 className="card-title">{actu.title}</h3>
-												<p className="card-text"><small className="text-muted">{date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()}</small></p>
+												<p className="card-text"><small className="text-muted">{moment(date).format("DD/MM/YYYY")}</small></p>
 												<p className="card-text collapse" id={actu.id}>
 													{ReactHtmlParser(actu.content)}
 												</p>
