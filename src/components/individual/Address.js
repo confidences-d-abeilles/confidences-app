@@ -35,7 +35,7 @@ export default class IndividualAddress extends Component {
 	addAddress(e) {
 		e.preventDefault();
 		if (!this.state.address1 || !this.state.city || !this.state.zipcode) {
-			this.refs.notificationSystem.addNotification({
+			this.refs.notif.addNotification({
 				message: "Merci de renseigner tous les champs obligatoires",
 				level: 'warning'
 			});
@@ -102,9 +102,9 @@ export default class IndividualAddress extends Component {
 							{(this.state.message)?
 								<p className="alert alert-danger">{this.state.message}</p>
 								:null}
-							<div className="form-group">
-								<input type="text" name="address1" className="form-control" placeholder="Nom et prénom *" value={this.state.address1} onChange={handleChange.bind(this)} />
-							</div>
+								<div className="form-group text-left">
+									{this.state.address1}
+								</div>
 							<div className="form-group">
 								<input type="text" name="address3" className="form-control" placeholder="Adresse ligne 1 *" value={this.state.address3} onChange={handleChange.bind(this)} />
 							</div>
