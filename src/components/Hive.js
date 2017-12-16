@@ -63,7 +63,7 @@ export default class Hive extends Component {
 									} else {
 										return (
 											<div className="col-6">
-												<img src={config.cdn_url+'/'+img} key={img} alt="Photo de la ruche" className="img-fluid"/>
+												<img src={config.cdn_url+'/'+img} key={img} alt="Photo de la ruche" className="img-fluid mb-4"/>
 											</div>
 										)
 									}
