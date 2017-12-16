@@ -36,7 +36,9 @@ export default class IndividualCheckout extends Component {
 			dphone: '',
 			feedback: '',
 			back: false,
-			dash: false
+			dash: false,
+			present_name: '',
+			present_firstname: ''
 		}
 	}
 
@@ -187,7 +189,9 @@ export default class IndividualCheckout extends Component {
 					present: this.state.present,
 					present_email: this.state.present_email,
 					present_message: this.state.present_message,
-					present_date: this.state.present_date
+					present_date: this.state.present_date,
+					present_name: this.state.present_name,
+					present_firstname: this.state.present_firstname
 				}
 			}, this.refs.notif).then((res) => {
 				resolve();
@@ -278,6 +282,12 @@ export default class IndividualCheckout extends Component {
 								{this.state.present &&
 										<form>
 										<p>L’adresse de votre bénéficiaire est différente ? Merci de sélectionner « Adresse de livraison différente » et de remplir tous les champs.</p>
+										<div className="form-group">
+											<input type="text" className="form-control" name="present_name" onChange={handleChange.bind(this)} placeholder="Nom du bénéficiaire *" />
+										</div>
+										<div className="form-group">
+											<input type="text" className="form-control" name="present_firstname" onChange={handleChange.bind(this)} placeholder="Prénom du bénéficiaire *" />
+										</div>
 										<div className="form-group">
 											<input type="email" className="form-control" name="present_email" onChange={handleChange.bind(this)} placeholder="Email du bénéficiaire *" />
 										</div>
