@@ -48,6 +48,13 @@ export default class IndividualManage extends Component {
 		if (this.state.user && !this.state.user.bundles[0]) {
 			return (<Redirect to="/individual/wish" />);
 		}
+		if (this.state.user && this.state.user.hive_id) {
+			return (
+				<p className="text-center my-5">
+					<Link className="btn btn-secondary" to={'/hive/'+this.state.user.hive_id}>Voir la page de ma ruche</Link>
+				</p>
+			)
+		}
 	}
 
 	render () {
