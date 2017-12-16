@@ -34,7 +34,9 @@ export default class IndividualCheckout extends Component {
 			present_email: '',
 			present_ok: false,
 			dphone: '',
-			feedback: ''
+			feedback: '',
+			back: false,
+			dash: false
 		}
 	}
 
@@ -136,7 +138,7 @@ export default class IndividualCheckout extends Component {
 	async noAction() {
 		await this.save();
 		this.setState({
-			redirect: true
+			dash: true
 		})
 	}
 
@@ -172,7 +174,7 @@ export default class IndividualCheckout extends Component {
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'delete'
 		}, this.refs.notif). then((res) => {
-			this.setState({ redirect : true });
+			this.setState({ back : true });
 		})
 	}
 
@@ -198,6 +200,8 @@ export default class IndividualCheckout extends Component {
 			<div className="container py-4">
 				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/individual/end" />:null}
+				{(this.state.back)?<Redirect to="/individual/wish" />:null}
+				{(this.state.dash)?<Redirect to="/individual/manage" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
