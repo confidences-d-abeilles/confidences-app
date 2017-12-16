@@ -245,7 +245,7 @@ export default class AdminManageHives extends Component {
 										name="actuModify"
 										className="form-control"
 										onChange={(value) => { this.setState({ actuModify: value })}}
-										value={this.state.actuModify}
+										defaultValue={this.state.actuModify}
 										placeholder="Texte de l'actualité"
 										modules={{
 											toolbar: [
