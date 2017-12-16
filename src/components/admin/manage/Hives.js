@@ -6,6 +6,7 @@ import ReactQuill from 'react-quill'
 import Loading from '../../utils/Loading'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import Confirm from '../../utils/Confirm';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -109,7 +110,7 @@ export default class AdminManageHives extends Component {
 	addPhoto(e) {
 		e.preventDefault()
 		const data = new FormData();
-		data.append('id', this.state.selected);
+		data.append('id', this.state.selected.id);
 		if (document.getElementById("hive-img").files[0]) {
 			data.append("img", document.getElementById("hive-img").files[0]);
 			request({
@@ -166,8 +167,7 @@ export default class AdminManageHives extends Component {
 										<tr className={this.state.selected.id === hive.id && 'table-info'}>
 											<td>{hive.name}</td><td>{hive.occupation} %</td>
 											<td>
-												<button className="btn btn-primary btn-sm" onClick={() => { this.setState({ selected : hive })}} >Gérer</button>&nbsp;
-												<button className="btn btn-primary btn-sm" onClick={this.delete.bind(this, hive.id)} >Supprimer</button>
+												<button className="btn btn-primary btn-sm" onClick={() => { this.setState({ selected : hive })}} >Gérer</button>
 											</td>
 										</tr>
 									)
