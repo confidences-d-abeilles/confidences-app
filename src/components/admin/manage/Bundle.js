@@ -142,7 +142,7 @@ export default class Bundle extends Component {
 										<select name="hive" onChange={handleChange.bind(this)} className="form-control">
 											<option value="0">Choisir une ruche...</option>
 											{this.state.hives.map((hive) => {
-												if ((this.state.bundle.bees && hive.occupation < (50000 - this.state.bundle.bees) / 50000 * 100) || (this.state.bundle.hives > 0 && hive.occupation === 0)) {
+												if ((this.state.bundle.bees && hive.occupation <= (50000 - this.state.bundle.bees) / 50000 * 100) || (this.state.bundle.hives > 0 && hive.occupation === 0)) {
 													return (<option value={hive.id} key={hive.id}>{hive.name} (occupé à {hive.occupation}%)</option>)
 												} else {
 													return null;
