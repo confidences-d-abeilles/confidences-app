@@ -77,7 +77,7 @@ export default class AdminManageHives extends Component {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		}
 		request({
-			url: '/news/hive/'+this.state.selected,
+			url: '/news/hive/'+this.state.selected.id,
 			method: 'post',
 			data: data,
 			header: {
@@ -86,6 +86,24 @@ export default class AdminManageHives extends Component {
 		}, this.refs.notif).then((res) => {
 
 		})
+	}
+
+	updateActu(e) {
+		e.preventDefault();
+		request({
+			url: '/news/'+this.state.newsModify,
+			method: 'put',
+			data: {
+				title: this.state.actuModifyTitle,
+				content: this.state.actuModify,
+				date: this.state.actuModifyDate
+			}
+		}, this.refs.notif).then((res) => {
+			this.get();
+			this.setState({
+				selected: ''
+			})
+		});
 	}
 
 	addPhoto(e) {
@@ -105,6 +123,24 @@ export default class AdminManageHives extends Component {
 		}
 	}
 
+	launchModify(e) {
+		e.preventDefault();
+		this.setState({
+			newsModify: e.target.value
+		})
+
+		request({
+			url: '/news/'+e.target.value,
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				actuModifyTitle: res.title,
+				actuModify: res.content,
+				actuModifyDate : res.date
+			})
+		})
+	}
+
 	render () {
 		return (
 			<div>
@@ -115,22 +151,22 @@ export default class AdminManageHives extends Component {
 					</div>
 				</div>
 				<div className="row">
-					<div className="col">
+					<div className="col-lg-4">
 						<h3>Créer une ruche</h3>
-						<form className="form-inline my-2" onSubmit={this.addHive.bind(this)}>
+						<form className="form-inline my-3" onSubmit={this.addHive.bind(this)}>
 							<input type="text" className="form-control mx-2" name="new" value={this.state.new} placeholder="Nom commun de la nouvelle ruche" onChange={handleChange.bind(this)} />
 							<button type="submit" className="btn btn-primary">Créer la ruche</button>
 						</form>
 						{this.state.hives?
 						<table className="table">
 							<tbody>
-								<tr><th>Identifiant de la ruche</th><th>Nom commun de la ruche</th><th>Occupation</th><th>Actions</th></tr>
+								<tr><th>Nom</th><th>Occupation</th><th></th></tr>
 								{this.state.hives && this.state.hives.map((hive) => {
 									return (
-										<tr className={this.state.selected === hive.id && 'table-info'}>
-											<td>{hive.id}</td><td>{hive.name}</td><td>{hive.occupation} %</td>
+										<tr className={this.state.selected.id === hive.id && 'table-info'}>
+											<td>{hive.name}</td><td>{hive.occupation} %</td>
 											<td>
-												<button className="btn btn-primary btn-sm" onClick={() => { this.setState({ selected : hive.id })}} >Gérer</button>
+												<button className="btn btn-primary btn-sm" onClick={() => { this.setState({ selected : hive })}} >Gérer</button>&nbsp;
 												<button className="btn btn-primary btn-sm" onClick={this.delete.bind(this, hive.id)} >Supprimer</button>
 											</td>
 										</tr>
@@ -141,8 +177,8 @@ export default class AdminManageHives extends Component {
 						:<Loading />}
 					</div>
 					{(this.state.selected)?
-					<div className="col">
-						<h3>Créer une news</h3>
+					<div className="col-lg-8">
+						<h3 className="my-4">Créer une news</h3>
 							<form onSubmit={this.createActu.bind(this)}>
 								<div className="form-group">
 									<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} placeholder="Titre"/>
@@ -178,6 +214,47 @@ export default class AdminManageHives extends Component {
 										Glisser une image ou cliquez pour en séléctionner un parmi vos fichers<br/>
 										Taille recommandée : 400x300 - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}
 									</label>
+								</div>
+								<button className="btn btn-primary">Soumettre</button>
+							</form>
+							<h3 className="my-4">Modifier une news</h3>
+							<select className="form-control" onChange={this.launchModify.bind(this)} name="newsModify">
+								<option selected disabled>News a modifier</option>
+								{this.state.selected.news.map((actu) => {
+									const date = (actu.date)?moment(actu.date):moment(actu.createdAt);
+									return (
+										<option value={actu.id}>{actu.title} ( {date.format("DD/MM/YYYY")} )</option>
+									)
+								})}
+							</select>
+							<form onSubmit={this.updateActu.bind(this)} className="mt-4">
+								<div className="form-group">
+									<input type="text" className="form-control" name="actuModifyTitle" value={this.state.actuModifyTitle} onChange={handleChange.bind(this)} placeholder="Titre"/>
+								</div>
+								<div className="form-group">
+									<label>Date de l'actu</label>
+									<DatePicker
+										dateFormat="DD/MM/YYYY"
+										selected={moment(this.state.actuModifyDate)}
+										onChange={(date) => { this.setState({ actuModifyDate : date })}}
+										className="form-control"
+										/>
+								</div>
+								<div className="form-group">
+ 									<ReactQuill
+										name="actuModify"
+										className="form-control"
+										onChange={(value) => { this.setState({ actuModify: value })}}
+										value={this.state.actuModify}
+										placeholder="Texte de l'actualité"
+										modules={{
+											toolbar: [
+												['bold', 'italic', 'underline','strike', 'blockquote'],
+												[{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+												['link'],
+												['clean']
+											]
+										}}/>
 								</div>
 								<button className="btn btn-primary">Soumettre</button>
 							</form>
