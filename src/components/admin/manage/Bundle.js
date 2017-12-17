@@ -3,6 +3,7 @@ import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
 import { handleChange } from '../../../services/FormService'
 import Confirm from '../../utils/Confirm'
+import moment from 'moment'
 
 export default class Bundle extends Component {
 
@@ -82,16 +83,16 @@ export default class Bundle extends Component {
 	getPaymentStatus(nb) {
 		switch(nb) {
 			case 0:
-				return ("Non regle");
+				return ("Non reglé");
 				break;
 			case 1:
 				return("En attente de validation");
 				break;
 			case 2:
-				return ("Paye");
+				return ("Payé");
 				break;
 			case 3:
-				return ("Paye et en place");
+				return ("Payé et en place");
 				break;
 			default:
 				return ("N / A");
@@ -121,17 +122,17 @@ export default class Bundle extends Component {
 						<div className="card-deck mb-4">
 							<div className="card">
 								<div className="card-block">
-									<h3 className="card-title">Etat du paiement</h3>
+									<h3 className="card-title">Paiement</h3>
 									<h4 className="my-4">
 											{this.getPaymentStatus(this.state.bundle.state)}
 									</h4>
 									<form onSubmit={this.updatePayment.bind(this)}>
 										<div className="form-group">
 											<select className="form-control" onChange={handleChange.bind(this)} name="stateSelector" value={this.state.stateSelector}>
-												<option value="0">Non paye</option>
+												<option value="0">Non reglé</option>
 												<option value="1">Paiement en attente de validation</option>
-												<option value="2">Paye</option>
-												<option value="3">Paye et en place</option>
+												<option value="2">Payé</option>
+												<option value="3">Payé et en place</option>
 											</select>
 										</div>
 										<button className="btn btn-primary">Mettre a jour le status</button>
@@ -140,10 +141,18 @@ export default class Bundle extends Component {
 							</div>
 							<div className="card">
 								<div className="card-block">
-									<h3 className="card-title">Etat de l'offre</h3>
+									<h3 className="card-title">Demande</h3>
 									<p className="card-text">
-										Demande initiale : {this.state.bundle.hives} ruches et {this.state.bundle.bees} abeilles <br />
-										Nombre de ruches totalement ou partielement associées : {this.state.bundle.contain.length}<br />
+										Demande : {this.state.bundle.hives} ruches et {this.state.bundle.bees} abeilles <br />
+										Nombre de ruches totalement ou partielement associées : {this.state.bundle.contain.length}<br /><br />
+										{(this.state.bundle.present)?
+										<p>
+											<strong>Ce parrainage est un cadeau pour :</strong><br />
+											{this.state.bundle.firstname} {this.state.bundle.name}<br />
+											{this.state.bundle.email}<br />
+											Date d'effet : {moment(this.state.bundle.start_date).format("DD/MM/YYYY")}
+										</p>
+										:'Ce parrainage n\'est pas un cadeau'}
 									</p>
 								</div>
 							</div>
@@ -151,7 +160,7 @@ export default class Bundle extends Component {
 						<div className="card-deck my-4">
 							<div className="card">
 								<div className="card-block">
-									<h3 className="card-title">Ruches associees</h3>
+									<h3 className="card-title">Ruches</h3>
 									<p className="card-text">
 										Les ruches associees...
 									</p>
