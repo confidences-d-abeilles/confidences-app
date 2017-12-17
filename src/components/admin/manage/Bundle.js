@@ -11,7 +11,8 @@ export default class Bundle extends Component {
 		this.state = {
 			bundle: null,
 			hives: [],
-			hive: "0"
+			hive: "0",
+			stateSelector: ''
 		}
 	}
 
@@ -29,7 +30,8 @@ export default class Bundle extends Component {
 			method: 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				bundle: res
+				bundle: res,
+				stateSelector: res.state
 			})
 		})
 
@@ -97,24 +99,13 @@ export default class Bundle extends Component {
 		}
 	}
 
-	validatePayement() {
+	updatePayment(e) {
+		e.preventDefault();
 		request({
 			url: '/bundle/'+this.props.id,
 			method: 'put',
 			data : {
-				state: 2
-			}
-		}, this.refs.notif).then((res) => {
-			this.props.refresh();
-		});
-	}
-
-	unvalidatePayement () {
-		request({
-			url: '/bundle/'+this.props.id,
-			method: 'put',
-			data : {
-				state: 0
+				state: this.state.stateSelector
 			}
 		}, this.refs.notif).then((res) => {
 			this.props.refresh();
@@ -134,8 +125,17 @@ export default class Bundle extends Component {
 									<h4 className="my-4">
 											{this.getPaymentStatus(this.state.bundle.state)}
 									</h4>
-									{this.state.bundle.state === 1 && <button className="btn btn-info" onClick={this.validatePayement.bind(this)}>Valider le paiement</button>}
-									{this.state.bundle.state === 1 && <button className="btn btn-danger" onClick={this.unvalidatePayement.bind(this)}>Invalider le paiement</button>}
+									<form onSubmit={this.updatePayment.bind(this)}>
+										<div className="form-group">
+											<select className="form-control" onChange={handleChange.bind(this)} name="stateSelector" value={this.state.stateSelector}>
+												<option value="0">Non paye</option>
+												<option value="1">Paiement en attente de validation</option>
+												<option value="2">Paye</option>
+												<option value="3">Paye et en place</option>
+											</select>
+										</div>
+										<button className="btn btn-primary">Mettre a jour le status</button>
+									</form>
 								</div>
 							</div>
 							<div className="card">
