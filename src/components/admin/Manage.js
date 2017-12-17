@@ -42,12 +42,15 @@ export default class CompanyManage extends Component {
 					<div className="row justify-content-center">
 						<div className="col-lg-2 col-md-6">
 							<ul className="list-group">
-								<li className="list-group-item"><Link to="/admin/manage/users">Gerer les utilisateurs</Link></li>
-								<li className="list-group-item"><Link to="/admin/manage/faq">Gerer la FAQ</Link></li>
-								<li className="list-group-item"><Link to="/admin/manage/hives">Gerer les ruches</Link></li>
-								<li className="list-group-item"><Link to="/admin/manage/bundles">Gerer les parrainages</Link>&nbsp;{this.state.notifications && this.state.notifications.bundle > 0 && <span className="badge badge-pill badge-danger">{this.state.notifications.bundle}</span>}</li>
-								<li className="list-group-item"><Link to="/admin/manage/mails">Gerer les envois</Link></li>
-								<li className="list-group-item"><Link to="/admin/manage/server">Espace technique</Link></li>
+								<li className="list-group-item active">Gestion clients</li>
+								<Link to="/admin/manage/users" className="list-group-item">Gerer les utilisateurs</Link>
+								<Link to="/admin/manage/hives" className="list-group-item">Gerer les ruches</Link>
+								<Link to="/admin/manage/bundles" className="list-group-item">Gerer les parrainages</Link>
+								<Link to="/admin/manage/mails" className="list-group-item">Gerer les envois</Link>
+								<li className="list-group-item active">Gestion du contenu</li>
+								<Link to="/admin/manage/faq" className="list-group-item">Gerer la FAQ</Link>
+								<li className="list-group-item active">Administration plateforme</li>
+								<Link to="/admin/manage/server" className="list-group-item">Espace technique</Link>
 							</ul>
 						</div>
 						<div className="col-lg-10 col-md-12">
