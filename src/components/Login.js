@@ -3,6 +3,8 @@ import { Redirect, Link } from 'react-router-dom';
 import { handleChange } from '../services/FormService';
 import { login } from '../services/AuthService';
 import request from '../services/Net.js'
+import Loading from './utils/Loading'
+
 var NotificationSystem = require('react-notification-system');
 
 export default class Signup extends Component {
@@ -13,20 +15,25 @@ export default class Signup extends Component {
 			message: '',
 			email: '',
 			password: '',
-			redirect: false
+			redirect: false,
+			loading: false
 		}
 	}
 
 	login(e) {
 		e.preventDefault();
 		this.setState({
-			message: ''
+			message: '',
+			loading: true
 		});
 		if (!this.state.email || !this.state.password) {
 			this.refs.notificationSystem.addNotification({
 	      		message: "Merci de renseigner tous les champs",
 	      		level: 'warning'
       	  });
+		  this.setState({
+			  loading: false
+		  })
 		} else {
 			request({
 				url : '/authenticate',
@@ -41,6 +48,9 @@ export default class Signup extends Component {
 					redirect: true
 				})
 			}).catch((err) => {
+				this.setState({
+					 loading: false
+				 })
 			});
 		}
 	}
@@ -51,9 +61,11 @@ export default class Signup extends Component {
 				<NotificationSystem ref="notificationSystem" />
 				<div className="row justify-content-center">
 					<div className="col-lg-4 col-md-6 col-sm-12">
-						<form className="text-center">
-							<h2 className="text-center my-4">Connexion</h2>
-							{(this.state.message)?<p className="alert alert-danger">{this.state.message}</p>:null}
+						<h2 className="text-center my-4">Connexion</h2>
+						{(this.state.loading)?
+							<Loading />
+
+						:<form className="text-center">
 							<div className="form-group">
 								<input type="email" name="email" className="form-control" placeholder="Adresse email" onChange={handleChange.bind(this)} />
 							</div>
@@ -62,7 +74,7 @@ export default class Signup extends Component {
 							</div>
 							<Link to="/forgot">Mot de passe oublié ?</Link><br/>
 							<input type="submit" className="btn btn-primary my-2" value="Se connecter" onClick={this.login.bind(this)} />
-						</form>
+						</form>}
 					</div>
 				</div>
 				{(this.state.redirect)?

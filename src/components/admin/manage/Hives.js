@@ -97,14 +97,17 @@ export default class AdminManageHives extends Component {
 
 	updateActu(e) {
 		e.preventDefault();
+		const data = new FormData();
+		data.append('content', this.state.actuModify);
+		data.append('title', this.state.actuModifyTitle);
+		data.append('date', this.state.actuModifyDate);
+		if (document.getElementById("actu-modify-img").files[0]) {
+			data.append('img', document.getElementById('actu-modify-img').files[0]);
+		}
 		request({
 			url: '/news/'+this.state.newsModify,
 			method: 'put',
-			data: {
-				title: this.state.actuModifyTitle,
-				content: this.state.actuModify,
-				date: this.state.actuModifyDate
-			}
+			data: data
 		}, this.refs.notif).then((res) => {
 			this.get();
 			this.setState({
@@ -275,6 +278,13 @@ export default class AdminManageHives extends Component {
 													['clean']
 												]
 											}}/>
+									</div>
+									<div className="form-group">
+										<label htmlFor="actu-modify-img" className={(this.state.actuModifyImg)?'active-upload':'upload'} style={{ position: 'relative' }}>
+											<input type="file" className="form-control" id="actu-modify-img" onChange={() => { this.setState({ actuModifyImg : document.getElementById("actu-modify-img").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
+											Glisser une image ou cliquez pour en séléctionner un parmi vos fichers<br/>
+											Taille recommandée : 400x300 - {(this.state.actuModifyImg)?'Selectionné : '+this.state.actuModifyImg:"Aucun fichier séléctionné"}
+										</label>
 									</div>
 									<button className="btn btn-primary m-2">Soumettre</button>
 								</form>
