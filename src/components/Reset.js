@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import request from '../services/Net';
 import NotificationSystem from 'react-notification-system';
 import { handleChange } from '../services/FormService';
+import { Redirect } from 'react-router-dom';
 
 export default class Reset extends Component {
 
@@ -9,7 +10,9 @@ export default class Reset extends Component {
 		super(props)
 		this.state = {
 			password: '',
-			confirmation: ''
+			confirmation: '',
+			ok: false,
+			redirect: false
 		}
 	}
 
@@ -33,7 +36,16 @@ export default class Reset extends Component {
 					password : this.state.password,
 					token: this.props.match.params.token
 				}
-			}, this.refs.notif)
+			}, this.refs.notif).then((res) => {
+				this.setState({
+					ok: true
+				})
+				setTimeout(() => {
+					this.setState({
+						redirect: true
+					})
+				}, 5000)
+			})
 		}
 	}
 
@@ -41,10 +53,15 @@ export default class Reset extends Component {
 		return (
 			<div className="container">
 				<NotificationSystem ref="notif" />
+				{this.state.redirect && <Redirect to="/login" />}
 				<div className="row justify-content-center">
 					<div className="col-4">
 						<h2 className="text-center my-4">Définir un nouveau mot de passe</h2>
-						<form onSubmit={this.resetPassword.bind(this)} className="text-center">
+						{(this.state.ok)?
+							<p className="alert alert-success">
+								Le mot de passe a bien été enregistré. Vous allez etre redirigé dans 5 secondes vers la page de connexion.
+							</p>
+						:<form onSubmit={this.resetPassword.bind(this)} className="text-center">
 							<div className="form-group">
 								<input type="password" className="form-control" name="password" onChange={handleChange.bind(this)} placeholder="Nouveau mot de passe"/>
 							</div>
@@ -52,7 +69,7 @@ export default class Reset extends Component {
 								<input type="password" className="form-control" name="confirmation" onChange={handleChange.bind(this)} placeholder="Confirmation du nouveau mot de passe"/>
 							</div>
 							<button className="btn btn-primary">Définir</button>
-						</form>
+						</form>}
 					</div>
 				</div>
 			</div>
