@@ -67,6 +67,7 @@ export default class Bundle extends Component {
 		});
 	}
 
+
 	delete () {
 		request({
 			url: '/bundle/'+this.props.id,
@@ -98,11 +99,26 @@ export default class Bundle extends Component {
 
 	validatePayement() {
 		request({
-			url: '/payment/validate/'+this.state.bundle.id,
-			method: 'put'
+			url: '/bundle/'+this.props.id,
+			method: 'put',
+			data : {
+				state: 2
+			}
 		}, this.refs.notif).then((res) => {
 			this.props.refresh();
-		})
+		});
+	}
+
+	unvalidatePayement () {
+		request({
+			url: '/bundle/'+this.props.id,
+			method: 'put',
+			data : {
+				state: 0
+			}
+		}, this.refs.notif).then((res) => {
+			this.props.refresh();
+		});
 	}
 
 	render () {
@@ -119,6 +135,7 @@ export default class Bundle extends Component {
 											{this.getPaymentStatus(this.state.bundle.state)}
 									</h4>
 									{this.state.bundle.state === 1 && <button className="btn btn-info" onClick={this.validatePayement.bind(this)}>Valider le paiement</button>}
+									{this.state.bundle.state === 1 && <button className="btn btn-danger" onClick={this.unvalidatePayement.bind(this)}>Invalider le paiement</button>}
 								</div>
 							</div>
 							<div className="card">
