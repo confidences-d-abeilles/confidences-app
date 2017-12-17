@@ -179,23 +179,25 @@ export default class AdminManageHives extends Component {
 							<input type="text" className="form-control mx-2" name="new" value={this.state.new} placeholder="Nom commun de la nouvelle ruche" onChange={handleChange.bind(this)} />
 							<button type="submit" className="btn btn-primary">Créer la ruche</button>
 						</form>
-						{this.state.hives?
-						<table className="table">
-							<tbody>
-								<tr><th>Nom</th><th>Occupation</th><th></th></tr>
-								{this.state.hives && this.state.hives.map((hive) => {
-									return (
-										<tr className={this.state.selected.id === hive.id && 'table-info'}>
-											<td>{hive.name}</td><td>{hive.occupation} %</td>
-											<td>
-												<button className="btn btn-primary btn-sm" onClick={() => { this.setState({ selected : hive })}} >Gérer</button>
-											</td>
-										</tr>
-									)
-								})}
-							</tbody>
-						</table>
-						:<Loading />}
+						<div style={{ maxHeight: '50vh', overflowY : 'scroll' }}>
+							{this.state.hives?
+							<table className="table">
+								<tbody>
+									<tr><th>Nom</th><th>Occupation</th><th></th></tr>
+									{this.state.hives && this.state.hives.map((hive) => {
+										return (
+											<tr className={this.state.selected.id === hive.id && 'table-info'}>
+												<td>{hive.name}</td><td>{hive.occupation} %</td>
+												<td>
+													<button className="btn btn-link btn-sm" onClick={() => { this.setState({ selected : hive })}} >Gérer</button>
+												</td>
+											</tr>
+										)
+									})}
+								</tbody>
+							</table>
+							:<Loading />}
+						</div>
 					</div>
 					{(this.state.selected)?
 					<div className="col-lg-8">

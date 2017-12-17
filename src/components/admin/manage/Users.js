@@ -59,6 +59,18 @@ export default class AdminManageUsers extends Component {
 					<h2 className="text-center my-4">Gérer les utilisateurs</h2>
 				</div>
 				<div className="row">
+					<div className="col-3" style={{ maxHeight: '50vh', overflowY : 'scroll' }}>
+						{this.state.users?
+						<table className="table">
+							<tbody>
+								<tr><th>Denomination</th><th></th></tr>
+								{this.state.users.map((user) => {
+									return (<tr key={user.id}><td>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</td><td><button className="btn btn-sm btn-link" onClick={this.selectUser.bind(this, user)}>Manage</button></td></tr>)
+								})}
+							</tbody>
+						</table>
+						:<Loading />}
+					</div>
 						{(this.state.selectedUser)?
 							<div className="col-lg-9 col-md-12">
 								<div className="row">
@@ -113,18 +125,6 @@ export default class AdminManageUsers extends Component {
 						:<div className="col-lg-9 col-md-12 col-sm-12">
 							Cliquer sur un utilisateur dans la liste
 						</div>}
-						<div className="col-3">
-							{this.state.users?
-							<table className="table">
-								<tbody>
-									<tr><th>Denomination</th><th></th></tr>
-									{this.state.users.map((user) => {
-										return (<tr key={user.id}><td>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</td><td><button className="btn btn-sm btn-link" onClick={this.selectUser.bind(this, user)}>Manage</button></td></tr>)
-									})}
-								</tbody>
-							</table>
-							:<Loading />}
-						</div>
 				</div>
 			</div>
 		)
