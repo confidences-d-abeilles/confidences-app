@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-// import request from '../../services/Net';
 import AdminManageUsers from './manage/Users'
 import AdminManageFaq from './manage/Faq'
 import AdminManageMails from './manage/Mails'
 import AdminManageHives from './manage/Hives'
 import AdminManageBundles from './manage/Bundles'
+import AdminManageServer from './manage/Server'
 import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
 
@@ -47,6 +47,7 @@ export default class CompanyManage extends Component {
 								<li className="list-group-item"><Link to="/admin/manage/hives">Gerer les ruches</Link></li>
 								<li className="list-group-item"><Link to="/admin/manage/bundles">Gerer les parrainages</Link>&nbsp;{this.state.notifications && this.state.notifications.bundle > 0 && <span className="badge badge-pill badge-danger">{this.state.notifications.bundle}</span>}</li>
 								<li className="list-group-item"><Link to="/admin/manage/mails">Gerer les envois</Link></li>
+								<li className="list-group-item"><Link to="/admin/manage/server">Espace technique</Link></li>
 							</ul>
 						</div>
 						<div className="col-lg-10 col-md-12">
@@ -62,6 +63,7 @@ export default class CompanyManage extends Component {
 									<Route exact path="/admin/manage/hives" component={AdminManageHives} />
 									<Route exact path="/admin/manage/bundles" component={AdminManageBundles} />
 									<Route exact path="/admin/manage/faq" component={AdminManageFaq} />
+									<Route exact path="/admin/manage/server" component={AdminManageServer} />
 								</div>
 							</div>
 						</div>
