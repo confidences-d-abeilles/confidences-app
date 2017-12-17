@@ -37,19 +37,18 @@ export default class AdminManageBundles extends Component {
 				<div className="col">
 					<h2 className="text-center my-4">Gestion des parrainages</h2>
 					<div className="row">
-						<div className="col">
+						<div className="col" style={{ maxHeight: '50vh', overflowY : 'scroll' }}>
 							{this.state.bundles?
 							<table className="table table-sm">
 								<tbody>
-									<tr><th>Propriétaire</th><th>Pack</th><th>Nombre de ruches associées</th><th>Status</th><th>Actions</th></tr>
+									<tr><th>Propriétaire</th><th>Pack</th><th>Status</th><th>Actions</th></tr>
 									{this.state.bundles.map((bundle) => {
 										return (
 											<tr className={(this.state.manage_id === bundle.id)?'table-info':null} key={bundle.id}>
-												<td>{(bundle.owner)?bundle.owner.firstname+' '+bundle.owner.name+' ('+bundle.owner.company_name+')':'[corrupted]'}</td>
-												<td>{bundle.hives} ruches</td>
-												<td>{bundle.contain.length} ruches</td>
+												<td>{(bundle.owner)?bundle.owner.firstname+' '+bundle.owner.name+' '+bundle.owner.company_name:'[corrupted]'}</td>
+												<td>{(bundle.hives)?bundle.hives+' ruches':bundle.bees+' abeilles'}</td>
 												<td>{bundle.state}</td>
-												<td><button className="btn btn-primary btn-sm" onClick={() => { this.setState({manage_id : bundle.id })}}>Gérer</button></td>
+												<td><button className="btn btn-link btn-sm" onClick={() => { this.setState({manage_id : bundle.id })}}>Gérer</button></td>
 											</tr>
 										)
 									})}
