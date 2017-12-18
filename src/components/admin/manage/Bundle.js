@@ -3,6 +3,7 @@ import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
 import { handleChange } from '../../../services/FormService'
 import Confirm from '../../utils/Confirm'
+import DatePicker from 'react-datepicker';
 import moment from 'moment'
 
 export default class Bundle extends Component {
@@ -13,7 +14,8 @@ export default class Bundle extends Component {
 			bundle: null,
 			hives: [],
 			hive: "0",
-			stateSelector: ''
+			stateSelector: '',
+			bundleStart: ''
 		}
 	}
 
@@ -100,6 +102,24 @@ export default class Bundle extends Component {
 		}
 	}
 
+	handleDateChange(date) {
+		this.setState({
+			bundleStart: date
+		})
+	}
+
+	changeStartDate() {
+		request({
+			url: '/bundle/'+this.props.id,
+			method: 'put',
+			data: {
+				present_date: this.state.bundleStart
+			}
+		}, this.refs.notif).then((res) => {
+			this.props.refresh();
+		})
+	}
+
 	updatePayment(e) {
 		e.preventDefault();
 		request({
@@ -143,6 +163,14 @@ export default class Bundle extends Component {
 								<div className="card-block">
 									<h3 className="card-title">Demande</h3>
 									<p className="card-text">
+										Date : {moment(this.state.bundle.start_date).format("DD/MM/YYYY")}<br />
+										<DatePicker
+											dateFormat="DD/MM/YYYY"
+											selected={this.state.bundleStart}
+											onChange={this.handleDateChange.bind(this)}
+											className="form-control"
+											/>
+										<button className="btn btn-secondary" onClick={this.changeStartDate.bind(this)}>Mettre a jour</button>
 										Demande : {this.state.bundle.hives} ruches et {this.state.bundle.bees} abeilles <br />
 										Nombre de ruches totalement ou partielement associées : {this.state.bundle.contain.length}<br /><br />
 										{(this.state.bundle.present)?

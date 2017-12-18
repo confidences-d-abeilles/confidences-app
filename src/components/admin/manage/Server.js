@@ -86,11 +86,6 @@ export default class AdminManageServer extends Component {
                     <div className="form-group text-center">
                         <button className="btn btn-info form-control" onClick={this.testEmailPartVirementok.bind(this)}>Test email virement ok</button>
                     </div>
-                    <h3>Test paiement</h3>
-                    {(this.state.user)?
-                    <Elements locale="fr">
-                        <PayForm price="1" before={() => {}} bundle={this.state.user.bundles[0].id} for={this.state.user.name} endpoint="/individual/end" />
-                    </Elements>:<Loading />}
                 </div>
             </div>
         )
