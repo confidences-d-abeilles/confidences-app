@@ -34,7 +34,10 @@ export default class Bundle extends Component {
 		}, this.refs.notif).then((res) => {
 			this.setState({
 				bundle: res,
-				stateSelector: res.state
+				stateSelector: res.state,
+				present_name: res.name,
+				present_firstname: res.firstname,
+				present_email: res.email
 			})
 		})
 
@@ -120,6 +123,21 @@ export default class Bundle extends Component {
 		})
 	}
 
+	updatePresent(e) {
+		e.preventDefault();
+		request({
+			url: '/bundle/'+this.props.id,
+			method: 'put',
+			data : {
+				present_email: this.state.present_email,
+				present_name: this.state.present_name,
+				present_firstname: this.state.present_firstname
+			}
+		}, this.refs.notif).then((res) => {
+			this.props.refresh();
+		});
+	}
+
 	updatePayment(e) {
 		e.preventDefault();
 		request({
@@ -138,8 +156,8 @@ export default class Bundle extends Component {
 			<div>
 				<NotificationSystem ref="notif" />
 				{(this.state.bundle)?
-					<div>
-						<div className="card-deck mb-4">
+					<div className="row">
+						<div className="col-lg-6">
 							<div className="card">
 								<div className="card-block">
 									<h3 className="card-title">Paiement</h3>
@@ -159,33 +177,7 @@ export default class Bundle extends Component {
 									</form>
 								</div>
 							</div>
-							<div className="card">
-								<div className="card-block">
-									<h3 className="card-title">Demande</h3>
-									<p className="card-text">
-										Date : {moment(this.state.bundle.start_date).format("DD/MM/YYYY")}<br />
-										<DatePicker
-											dateFormat="DD/MM/YYYY"
-											selected={this.state.bundleStart}
-											onChange={this.handleDateChange.bind(this)}
-											className="form-control"
-											/>
-										<button className="btn btn-secondary btn-small my-2" onClick={this.changeStartDate.bind(this)}>Mettre a jour</button><br />
-										Demande : {this.state.bundle.hives} ruches et {this.state.bundle.bees} abeilles <br />
-										Nombre de ruches totalement ou partielement associées : {this.state.bundle.contain.length}<br /><br />
-										{(this.state.bundle.present)?
-										<p>
-											<strong>Ce parrainage est un cadeau pour :</strong><br />
-											{this.state.bundle.firstname} {this.state.bundle.name}<br />
-											{this.state.bundle.email}<br />
-											Date d'effet : {moment(this.state.bundle.start_date).format("DD/MM/YYYY")}
-										</p>
-										:'Ce parrainage n\'est pas un cadeau'}
-									</p>
-								</div>
-							</div>
-						</div>
-						<div className="card-deck my-4">
+
 							<div className="card">
 								<div className="card-block">
 									<h3 className="card-title">Ruches</h3>
@@ -205,6 +197,40 @@ export default class Bundle extends Component {
 										</select>
 										<button className="btn btn-secondary my-2">Associer cette ruche</button>
 									</form>
+								</div>
+							</div>
+						</div>
+						<div className="col-lg-6">
+							<div className="card">
+								<div className="card-block">
+									<h3 className="card-title">Demande</h3>
+									<p className="card-text">
+										Date : {moment(this.state.bundle.start_date).format("DD/MM/YYYY")}<br />
+										<DatePicker
+											dateFormat="DD/MM/YYYY"
+											selected={this.state.bundleStart}
+											onChange={this.handleDateChange.bind(this)}
+											className="form-control"
+											/>
+										<button className="btn btn-secondary btn-sm my-2" onClick={this.changeStartDate.bind(this)}>Mettre a jour</button><br />
+										Demande : {this.state.bundle.hives} ruches et {this.state.bundle.bees} abeilles <br />
+										Nombre de ruches totalement ou partielement associées : {this.state.bundle.contain.length}<br /><br />
+										{(this.state.bundle.present)?
+										<form onSubmit={this.updatePresent.bind(this)}>
+											<strong>Ce parrainage est un cadeau pour :</strong><br />
+											<div className="form-group">
+												<input type="text" name="present_firstname" onChange={handleChange.bind(this)} value={this.state.present_firstname} placeholder="Prenom" className="form-control" />
+											</div>
+											<div className="form-group">
+												<input type="text" name="present_name" onChange={handleChange.bind(this)} value={this.state.present_name} placeholder="Nom" className="form-control" />
+											</div>
+											<div className="form-group">
+												<input type="text" name="present_email" onChange={handleChange.bind(this)} value={this.state.present_email} placeholder="Email" className="form-control" />
+											</div>
+											<button className="btn btn-secondary btn-sm my-2" >Valider</button>
+										</form>
+										:'Ce parrainage n\'est pas un cadeau'}
+									</p>
 								</div>
 							</div>
 							<div className="card">
