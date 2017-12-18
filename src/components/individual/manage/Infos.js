@@ -79,20 +79,45 @@ export default class IndividualManageInfos extends Component {
 		});
 	}
 
-	deleteAccount() {
-		request({
+	async save() {
+		await request({
+			url: '/address/'+this.state.bid,
+			method: 'put',
+			data : {
+				line1: this.state.baddress1,
+				line2: this.state.baddress2,
+				line3: this.state.baddress3,
+				line4: this.state.baddress4,
+				zipcode: this.state.bzip,
+				city: this.state.bcity,
+				country: this.state.bcountry
+			}
+		}, this.refs.notif);
+		await request({
+			url: '/address/'+this.state.did,
+			method: 'put',
+			data : {
+				line1: this.state.daddress1,
+				line2: this.state.daddress2,
+				line3: this.state.daddress3,
+				line4: this.state.daddress4,
+				zipcode: this.state.dzip,
+				city: this.state.dcity,
+				country: this.state.dcountry,
+				phone: this.state.dphone
+			}
+		}, this.refs.notif);
+		await request({
 			url: '/user',
-			method: 'delete'
-		}, this.refs.notif).then((res) => {
-			logout();
-			this.setState({
-				logout: true
-			})
-		})
+			method: 'put',
+			data: {
+				phone: this.state.phone,
+				email: this.state.email
+			}
+		}, this.refs.notif)
 	}
 
-	updateBaddress(e) {
-		e.preventDefault();
+	updateBaddress() {
 		request({
 			url: '/address/'+this.state.bid,
 			method: 'put',
@@ -108,8 +133,7 @@ export default class IndividualManageInfos extends Component {
 		}, this.refs.notif);
 	}
 
-	updateDaddress(e) {
-		e.preventDefault();
+	updateDaddress() {
 		request({
 			url: '/address/'+this.state.did,
 			method: 'put',
@@ -126,8 +150,7 @@ export default class IndividualManageInfos extends Component {
 		}, this.refs.notif);
 	}
 
-	changeInfos(e) {
-		e.preventDefault()
+	changeInfos() {
 		request({
 			url: '/user',
 			method: 'put',
@@ -136,25 +159,6 @@ export default class IndividualManageInfos extends Component {
 				email: this.state.email
 			}
 		}, this.refs.notif)
-	}
-
-
-	changePassword(e) {
-		e.preventDefault()
-		if (this.state.password === this.state.conf) {
-			request({
-				url: '/user',
-				method: 'put',
-				data: {
-					password: this.state.password
-				}
-			}, this.refs.notif)
-		} else {
-			this.refs.notif.addNotification({
-				message: 'Le nouveau mot de passe et sa confirmation ne correspondent pas',
-				level: 'warning'
-			})
-		}
 	}
 
 	render () {
@@ -175,9 +179,6 @@ export default class IndividualManageInfos extends Component {
 							<div className="col-lg-6 col-sm-12">
 								<h3 className="text-center"><small>Mes informations</small></h3>
 							</div>
-							<div className="col-lg-6 col-sm-12">
-								<h3 className="text-center"><small>Modifier mon mot de passe</small></h3>
-							</div>
 						</div>
 						<div className="row">
 							<div className="col-lg-6 col-sm-12 my-4">
@@ -187,25 +188,13 @@ export default class IndividualManageInfos extends Component {
 						</div>
 						<div className="row">
 							<div className="col-lg-6 col-sm-12">
-								<form onSubmit={this.changeInfos.bind(this)}>
+								<form>
 									<div className="form-group">
 										<input type="phone" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control" placeholder="Numéro de téléphone" />
 									</div>
 									<div className="form-group">
 										<input type="email" name="email" onChange={handleChange.bind(this)} value={this.state.email} className="form-control" placeholder="Email" />
 									</div>
-									<button className="btn btn-primary">Mettre à jour</button>
-								</form>
-							</div>
-							<div className="col-lg-6 col-sm-12">
-								<form onSubmit={this.changePassword.bind(this)}>
-									<div className="form-group">
-										<input type="password" name="password" onChange={handleChange.bind(this)} value={this.state.password} className="form-control" placeholder="Nouveau mot de passe" />
-									</div>
-									<div className="form-group">
-										<input type="password" name="conf" onChange={handleChange.bind(this)} value={this.state.conf} className="form-control" placeholder="Confirmation du nouveau mot de passe" />
-									</div>
-									<button className="btn btn-primary mb-4">Enregistrer</button>
 								</form>
 							</div>
 						</div>
@@ -270,17 +259,8 @@ export default class IndividualManageInfos extends Component {
 							</form>
 						</div>
 						<div className="row">
-							<div className="col-lg-6 form-group">
-								<button className="btn btn-primary" onClick={this.updateBaddress.bind(this)}>Enregistrer les modifications</button>
-							</div>
-							<div className="col-lg-6 form-group">
-								<button className="btn btn-primary" onClick={this.updateDaddress.bind(this)}>Enregistrer les modifications</button>
-							</div>
-						</div>
-						<div className="row">
-							<div className="col-lg-6 col-md-10 col-sm-12">
-								<h3 className="text-center mb-4"><small>Supprimer mon compte</small></h3>
-								<Confirm action={this.deleteAccount.bind(this)} text="Supprimer mon compte" />
+							<div className="col-lg-12 text-center">
+								<button className="btn btn-primary" onClick={this.save.bind(this)}>Enregistrer les modifications</button>
 							</div>
 						</div>
 					</div>
