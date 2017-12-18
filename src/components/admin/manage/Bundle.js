@@ -170,7 +170,7 @@ export default class Bundle extends Component {
 											onChange={this.handleDateChange.bind(this)}
 											className="form-control"
 											/>
-										<button className="btn btn-secondary" onClick={this.changeStartDate.bind(this)}>Mettre a jour</button>
+										<button className="btn btn-secondary btn-small my-2" onClick={this.changeStartDate.bind(this)}>Mettre a jour</button><br />
 										Demande : {this.state.bundle.hives} ruches et {this.state.bundle.bees} abeilles <br />
 										Nombre de ruches totalement ou partielement associées : {this.state.bundle.contain.length}<br /><br />
 										{(this.state.bundle.present)?
