@@ -2,14 +2,28 @@ import React, { Component } from 'react'
 import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import { Link } from 'react-router-dom'
+import Loading from '../../utils/Loading'
+import PayForm from '../../utils/PayForm'
+import { Elements } from 'react-stripe-elements'
 
 export default class AdminManageServer extends Component {
 
     constructor (props) {
         super(props)
         this.state = {
-
+            user: null
         }
+    }
+
+    componentDidMount () {
+        request({
+            url: '/user/me',
+            method: 'get'
+        }, this.refs.notif).then((res) => {
+            this.setState({
+                user: res
+            })
+        })
     }
 
     testEmailInscription () {
@@ -72,6 +86,11 @@ export default class AdminManageServer extends Component {
                     <div className="form-group text-center">
                         <button className="btn btn-info form-control" onClick={this.testEmailPartVirementok.bind(this)}>Test email virement ok</button>
                     </div>
+                    <h3>Test paiement</h3>
+                    {(this.state.user)?
+                    <Elements locale="fr">
+                        <PayForm price="1" before={() => {}} bundle={this.state.user.bundles[0].id} for={this.state.user.name} endpoint="/individual/end" />
+                    </Elements>:<Loading />}
                 </div>
             </div>
         )
