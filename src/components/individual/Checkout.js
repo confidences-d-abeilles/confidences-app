@@ -139,6 +139,10 @@ export default class IndividualCheckout extends Component {
 
 	async noAction() {
 		await this.save();
+		await request({
+			url: '/user/later',
+			method: 'put'
+		}, this.refs.notif);
 		this.setState({
 			dash: true
 		})
