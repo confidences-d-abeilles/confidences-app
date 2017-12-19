@@ -25,6 +25,7 @@ import IndividualPresentation from './individual/Presentation';
 import IndividualAddress from './individual/Address';
 import IndividualWish from './individual/Wish';
 import IndividualCheckout from './individual/Checkout';
+import IndividualPayement from './individual/Payment';
 import IndividualEnd from './individual/End';
 import IndividualManage from './individual/Manage';
 import IndividualMore from './individual/More';
@@ -100,6 +101,7 @@ export default class Wrapper extends Component {
 							<Route exact path="/individual/address" component={IndividualAddress} />
 							<Route exact path="/individual/wish" component={IndividualWish} />
 							<Route exact path="/individual/checkout" component={IndividualCheckout} />
+							<Route exact path="/individual/payment" component={IndividualPayement} />
 							<Route exact path="/individual/end" component={IndividualEnd} />
 							<Route path="/individual/manage" component={IndividualManage} />
 
