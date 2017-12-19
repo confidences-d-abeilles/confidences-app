@@ -67,8 +67,7 @@ export default class IndividualPayement extends Component {
 		});
 	}
 
-	async setWaitingPayment() {
-		await this.save();
+	setWaitingPayment() {
 		request({
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
