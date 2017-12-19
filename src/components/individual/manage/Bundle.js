@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
 import request from '../../../services/Net'
 import { Redirect, Link } from 'react-router-dom'
+import Loading from '../../utils/Loading'
+import moment from 'moment'
+import FontAwesome from 'react-fontawesome'
+import { handleChange } from '../../../services/FormService'
+import NotificationSystem from 'react-notification-system'
 
 export default class Bundle extends Component {
 
     constructor(props) {
 		super(props);
 		this.state = {
-			user: null
+			user: null,
+            edit_present: false
 		}
 	}
 
@@ -17,7 +23,10 @@ export default class Bundle extends Component {
 			method: 'GET'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-					user: res
+					user: res,
+                    present_firstname: res.bundles[0].firstname,
+                    present_name: res.bundles[0].name,
+                    present_email: res.bundles[0].email,
 			});
 		});
 	}
@@ -43,20 +52,74 @@ export default class Bundle extends Component {
 		if (this.state.user && this.state.user.hive_id) {
 			return (
 				<p className="text-center my-5">
-					<Link className="btn btn-secondary" to={'/hive/'+this.state.user.hive_id}>Voir la page de ma ruche</Link>
+                    <Link className="btn btn-secondary m-2" to={'/hive/'+this.state.user.hive_id}>Voir la page de ma ruche</Link>
+					<button className="btn btn-secondary m-2" disabled>Télécharger mon certificat de parrainage</button>
 				</p>
 			)
 		}
     }
 
+    savePresent(e) {
+        e.preventDefault();
+        request({
+            url: '/bundle/'+this.state.user.bundles[0].id,
+            method: 'put',
+            data: {
+                present_firstname: this.state.present_firstname,
+                present_name: this.state.present_name,
+                present_email: this.state.present_email
+            }
+        }, this.refs.notif).then((res) => {
+            this.setState({ edit_present: false })
+        })
+    }
+
 
     render () {
         return (
-            <div className="row">
-                <div className="col-lg-12">
-                    <h2 className="my-5 text-center">Mon parrainage</h2>
-                    {(this.state.user)?this.checkInfos():''}
-                </div>
+            <div>
+                <NotificationSystem ref="notif" />
+                {(this.state.user)?
+                <div className="row">
+                    <div className="col-lg-12">
+                        <h2 className="my-5 text-center">Mon parrainage</h2>
+                        {(this.state.user)?this.checkInfos():''}
+                    </div>
+                    <div className="col-lg-6 my-4">
+                        {this.state.user.bundles[0].present && !this.state.edit_present &&
+                        <div>
+                            <h3 className="text-center"><small>J'ai choisi d'offrir mon parrainage à</small></h3>
+                            <strong>{this.state.present_firstname} {this.state.present_name}</strong><br />
+                            dont l'adresse email est <strong>{this.state.present_email}</strong><br />
+                            Il recevra les première informations sur son cadeau le <strong>{moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}</strong><br /><br />
+                            <button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ edit_present : true })}}><FontAwesome name="pencil" /> Modifier ces informations</button>
+                        </div>}
+                        {this.state.user.bundles[0].present && this.state.edit_present &&
+                        <form onSubmit={this.savePresent.bind(this)}>
+                            <h3 className="text-center"><small>J'ai choisi d'offrir mon parrainage à</small></h3>
+                            <div className="form-group">
+                                <label>Nom</label>
+                                <input type="text" name="present_name" value={this.state.present_name} onChange={handleChange.bind(this)} className="form-control form-control-sm" placeholder="Nom" />
+                            </div>
+                            <div className="form-group">
+                                <label>Prénom</label>
+                                <input type="text" name="present_firstname" value={this.state.present_firstname} onChange={handleChange.bind(this)} className="form-control form-control-sm" placeholder="Prénom" />
+                            </div>
+                            <div className="form-group">
+                                <label>Adresse email</label>
+                                <input type="email" name="present_email" value={this.state.present_email} onChange={handleChange.bind(this)} className="form-control form-control-sm" placeholder="Email" />
+                            </div>
+                            <div className="form-group text-center">
+                                <button className="btn btn-primary">Enregistrer</button>
+                            </div>
+                        </form>}
+                    </div>
+                    <div className="col-lg-6 my-4">
+                        <h3 className="text-center"><small>Détails</small></h3>
+                        Offre : Parrainage de {this.state.user.bundles[0].bees} abeilles<br />
+                        Date de début : {moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}
+                    </div>
+                </div>:<Loading />}
             </div>
         )
     }

@@ -6,6 +6,7 @@ import Loading from '../../utils/Loading'
 import { Redirect } from 'react-router-dom'
 import { logout } from '../../../services/AuthService'
 import Confirm from '../../utils/Confirm'
+import FontAwesome from 'react-fontawesome'
 
 export default class IndividualManageInfos extends Component {
 
@@ -31,7 +32,10 @@ export default class IndividualManageInfos extends Component {
 			dcountry: '',
 			dphone: '',
 			password: '',
-			conf: ''
+			conf: '',
+			editInfos: false,
+			editBaddress: false,
+			editDaddress: false
 		}
 	}
 
@@ -117,7 +121,8 @@ export default class IndividualManageInfos extends Component {
 		}, this.refs.notif)
 	}
 
-	updateBaddress() {
+	updateBaddress(e) {
+		e.preventDefault();
 		request({
 			url: '/address/'+this.state.bid,
 			method: 'put',
@@ -130,10 +135,13 @@ export default class IndividualManageInfos extends Component {
 				city: this.state.bcity,
 				country: this.state.bcountry
 			}
-		}, this.refs.notif);
+		}, this.refs.notif).then((res) => {
+			this.setState({ editBaddress : false })
+		});
 	}
 
-	updateDaddress() {
+	updateDaddress(e) {
+		e.preventDefault();
 		request({
 			url: '/address/'+this.state.did,
 			method: 'put',
@@ -147,10 +155,13 @@ export default class IndividualManageInfos extends Component {
 				country: this.state.dcountry,
 				phone: this.state.dphone
 			}
-		}, this.refs.notif);
+		}, this.refs.notif).then((res) => {
+			this.setState({ editDaddress : false })
+		});
 	}
 
-	changeInfos() {
+	changeInfos(e) {
+		e.preventDefault()
 		request({
 			url: '/user',
 			method: 'put',
@@ -158,7 +169,11 @@ export default class IndividualManageInfos extends Component {
 				phone: this.state.phone,
 				email: this.state.email
 			}
-		}, this.refs.notif)
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				editInfos: false
+			})
+		})
 	}
 
 	render () {
@@ -182,85 +197,127 @@ export default class IndividualManageInfos extends Component {
 						</div>
 						<div className="row">
 							<div className="col-lg-6 col-sm-12 my-4">
-								<strong>Nom :</strong> {this.state.user.name}<br />
-								<strong>Prénom :</strong> {this.state.user.firstname}<br />
+								{(!this.state.editInfos)?
+									<div>
+										<strong>Nom :</strong> {this.state.user.name}<br />
+										<strong>Prénom :</strong> {this.state.user.firstname}<br />
+										<strong>Numéro de téléphone :</strong> {this.state.phone}<br />
+										<strong>Email :</strong> {this.state.email}<br /><br />
+										<button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ editInfos: true })}}><FontAwesome name="pencil" />&nbsp;Editer ces informations</button>
+									</div>
+									:
+									<form onSubmit={this.changeInfos.bind(this)}>
+										<div className="form-group">
+											<label>Numéro de téléphone</label>
+											<input type="phone" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="Numéro de téléphone" />
+										</div>
+										<div className="form-group">
+											<label>Email</label>
+											<input type="email" name="email" onChange={handleChange.bind(this)} value={this.state.email} className="form-control form-control-sm" placeholder="Email" />
+										</div>
+										<div className="form-group text-center">
+											<button className="btn btn-primary">Enregistrer</button>
+										</div>
+									</form>}
 							</div>
 						</div>
 						<div className="row">
-							<div className="col-lg-6 col-sm-12">
-								<form>
-									<div className="form-group">
-										<input type="phone" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control" placeholder="Numéro de téléphone" />
-									</div>
-									<div className="form-group">
-										<input type="email" name="email" onChange={handleChange.bind(this)} value={this.state.email} className="form-control" placeholder="Email" />
-									</div>
-								</form>
-							</div>
-						</div>
-						<div className="row">
-							<div className="col-lg-6 col-sm-12 text-center my-4">
+							<div className="col-lg-6 col-sm-12 my-4">
 								<h3 className="text-center"><small>Mon adresse de facturation</small></h3>
+								{(!this.state.editBaddress)?
+									<div>
+										{this.state.baddress1}<br />
+										{this.state.baddress3}<br />
+										{(this.state.baddress4)?this.state.baddress4:null}
+										{this.state.baddress4 && <br />}
+										{this.state.bzip} {this.state.bcity}<br />
+										{this.state.bcountry}<br /><br />
+									<button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ editBaddress: true })}}><FontAwesome name="pencil" />&nbsp;Editer ces informations</button>
+									</div>
+									:<form onSubmit={this.updateBaddress.bind(this)}>
+										<div className="form-group">
+											<label>Nom et prénom</label>
+											<input type="text" name="baddress1" onChange={handleChange.bind(this)} value={this.state.baddress1} className="form-control form-control-sm" placeholder="Nom et prénom"/>
+										</div>
+										<div className="form-group">
+											<label>Adresse ligne 1</label>
+											<input type="text" name="baddress3" onChange={handleChange.bind(this)} value={this.state.baddress3} className="form-control form-control-sm" placeholder="Adresse ligne 1"/>
+										</div>
+										<div className="form-group">
+											<label>Adresse ligne 2</label>
+											<input type="text" name="baddress4" onChange={handleChange.bind(this)} value={this.state.baddress4} className="form-control form-control-sm" placeholder="Adresse ligne 2"/>
+										</div>
+										<div className="form-group row">
+											<div className="col-12">
+												<label>Code postal et ville</label>
+											</div>
+											<div className="col-4">
+												<input type="text" name="bzip" onChange={handleChange.bind(this)} value={this.state.bzip} className="form-control form-control-sm" placeholder="Code postal"/>
+											</div>
+											<div className="col-8">
+												<input type="text" name="bcity" onChange={handleChange.bind(this)} value={this.state.bcity} className="form-control form-control-sm" placeholder="Ville *"/>
+											</div>
+										</div>
+										<div className="form-group">
+											<label>Pays / État</label>
+											<input type="text" name="bcountry" onChange={handleChange.bind(this)} value={this.state.bcountry} className="form-control form-control-sm" placeholder="Pays / Etat *"/>
+										</div>
+										<div className="form-group text-center">
+											<button className="btn btn-primary">Enregistrer</button>
+										</div>
+									</form>}
 							</div>
-							<div className="col-lg-6 col-sm-12 text-center my-4">
+							<div className="col-lg-6 col-sm-12 my-4">
 								<h3 className="text-center"><small>Mes informations de livraison</small></h3>
-							</div>
-						</div>
-						<div className="row">
-							<form className="col-lg-6 col-sm-12 text-center">
-								<div className="form-group">
-									<input type="text" name="baddress1" onChange={handleChange.bind(this)} value={this.state.baddress1} className="form-control" placeholder="Nom et prénom"/>
-								</div>
-								<div className="form-group">
-									<input type="text" name="baddress3" onChange={handleChange.bind(this)} value={this.state.baddress3} className="form-control" placeholder="Adresse ligne 1"/>
-								</div>
-								<div className="form-group">
-									<input type="text" name="baddress4" onChange={handleChange.bind(this)} value={this.state.baddress4} className="form-control" placeholder="Adresse ligne 2"/>
-								</div>
-								<div className="form-group row">
-									<div className="col-4">
-										<input type="text" name="bzip" onChange={handleChange.bind(this)} value={this.state.bzip} className="form-control" placeholder="Code postal"/>
+								{(!this.state.editDaddress)?
+									<div>
+										{this.state.daddress1}<br />
+										{this.state.daddress3}<br />
+										{(this.state.daddress4)?this.state.daddress4:null}
+										{this.state.daddress4 && <br />}
+										{this.state.dzip} {this.state.bcity}<br />
+										{this.state.dcountry}<br />
+										<strong>Téléphone pour la livraison :</strong> {this.state.dphone}
+										<br /><br />
+									<button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ editDaddress: true })}}><FontAwesome name="pencil" />&nbsp;Editer ces informations</button>
 									</div>
-									<div className="col-8">
-										<input type="text" name="bcity" onChange={handleChange.bind(this)} value={this.state.bcity} className="form-control" placeholder="Ville *"/>
+									:<form onSubmit={this.updateDaddress.bind(this)}>
+									<div className="form-group">
+										<label>Nom et prénom</label>
+										<input type="text" name="daddress1" onChange={handleChange.bind(this)} value={this.state.daddress1} className="form-control form-control-sm" placeholder="Nom et prénom"/>
 									</div>
-								</div>
-								<div className="form-group">
-									<input type="text" name="bcountry" onChange={handleChange.bind(this)} value={this.state.bcountry} className="form-control" placeholder="Pays / Etat *"/>
-								</div>
-
-							</form>
-							<form className="col-lg-6 col-sm-12 text-center">
-								<div className="form-group">
-									<input type="text" name="daddress1" onChange={handleChange.bind(this)} value={this.state.daddress1} className="form-control" placeholder="Nom et prénom"/>
-								</div>
-								<div className="form-group">
-									<input type="text" name="daddress3" onChange={handleChange.bind(this)} value={this.state.daddress3} className="form-control" placeholder="Ligne 1"/>
-								</div>
-								<div className="form-group">
-									<input type="text" name="daddress4" onChange={handleChange.bind(this)} value={this.state.daddress4} className="form-control" placeholder="Ligne 2"/>
-								</div>
-								<div className="form-group row">
-									<div className="col-4">
-										<input type="text" name="dzip" onChange={handleChange.bind(this)} value={this.state.dzip} className="form-control" placeholder="Code postal *"/>
+									<div className="form-group">
+										<label>Adresse ligne 1</label>
+										<input type="text" name="daddress3" onChange={handleChange.bind(this)} value={this.state.daddress3} className="form-control form-control-sm" placeholder="Ligne 1"/>
 									</div>
-									<div className="col-8">
-										<input type="text" name="dcity" onChange={handleChange.bind(this)} value={this.state.dcity} className="form-control" placeholder="Ville *"/>
+									<div className="form-group">
+										<label>Adresse ligne 2</label>
+										<input type="text" name="daddress4" onChange={handleChange.bind(this)} value={this.state.daddress4} className="form-control form-control-sm" placeholder="Ligne 2"/>
 									</div>
-								</div>
-								<div className="form-group">
-									<input type="text" name="dcountry" onChange={handleChange.bind(this)} value={this.state.dcountry} className="form-control" placeholder="Pays / Etat *"/>
-								</div>
-								<hr />
-								<div className="form-group">
-									<input type="text" name="dphone" onChange={handleChange.bind(this)} value={this.state.dphone} className="form-control" placeholder="Numéro de téléphone"/>
-								</div>
-
-							</form>
-						</div>
-						<div className="row">
-							<div className="col-lg-12 text-center">
-								<button className="btn btn-primary" onClick={this.save.bind(this)}>Enregistrer les modifications</button>
+									<div className="form-group row">
+										<div className="col-12">
+											<label>Code postal et ville</label>
+										</div>
+										<div className="col-4">
+											<input type="text" name="dzip" onChange={handleChange.bind(this)} value={this.state.dzip} className="form-control form-control-sm" placeholder="Code postal *"/>
+										</div>
+										<div className="col-8">
+											<input type="text" name="dcity" onChange={handleChange.bind(this)} value={this.state.dcity} className="form-control form-control-sm" placeholder="Ville *"/>
+										</div>
+									</div>
+									<div className="form-group">
+										<label>Pays / État</label>
+										<input type="text" name="dcountry" onChange={handleChange.bind(this)} value={this.state.dcountry} className="form-control form-control-sm" placeholder="Pays / Etat *"/>
+									</div>
+									<hr />
+									<div className="form-group">
+										<label>Téléphone pour la livraison</label>
+										<input type="text" name="dphone" onChange={handleChange.bind(this)} value={this.state.dphone} className="form-control form-control-sm" placeholder="Numéro de téléphone"/>
+									</div>
+									<div className="form-group text-center">
+										<button className="btn btn-primary">Enregistrer</button>
+									</div>
+								</form>}
 							</div>
 						</div>
 					</div>
