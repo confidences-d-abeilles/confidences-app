@@ -51,8 +51,8 @@ export default class Account extends Component {
                 <div className="col-lg-12">
                     <h2 className="text-center my-5">Mon compte</h2>
                     <div className="row">
-                        <div className="col-lg-6">
-                            <h3 className="text-center"><small>Modifier mon mot de passe</small></h3>
+                        <div className="col-lg-6 text-center">
+                            <h3 className="text-center my-4"><small>Modifier mon mot de passe</small></h3>
                             <form onSubmit={this.changePassword.bind(this)}>
                                 <div className="form-group">
                                     <input type="password" name="password" onChange={handleChange.bind(this)} value={this.state.password} className="form-control" placeholder="Nouveau mot de passe" />
@@ -63,8 +63,8 @@ export default class Account extends Component {
                                 <button className="btn btn-primary mb-4">Enregistrer</button>
                             </form>
                         </div>
-                        <div className="col-lg-6">
-                            <h3 className="text-center mb-4"><small>Supprimer mon compte</small></h3>
+                        <div className="col-lg-6 text-center">
+                            <h3 className="text-center my-4"><small>Supprimer mon compte</small></h3>
                             <Confirm action={this.deleteAccount.bind(this)} text="Supprimer mon compte" />
                         </div>
                     </div>
