@@ -15,7 +15,7 @@ export default class IndividualPayement extends Component {
 		super(props);
 		this.state = {
 			bees: null,
-
+			redirect: false
 		}
 	}
 
@@ -84,6 +84,7 @@ export default class IndividualPayement extends Component {
         return (
 			<div className="container py-4">
 				<NotificationSystem ref="notif" />
+				{(this.state.redirect)?<Redirect to="/individual/end" />:null}
 				<div className="row">
 					<div className="col-lg-12">
 						<h2 className="text-center">Régler mon parrainage</h2>
