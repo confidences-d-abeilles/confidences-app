@@ -82,6 +82,7 @@ export default class AdminManageUsers extends Component {
 													<strong>Nom et prenom :</strong> {this.state.selectedUser.firstname} {this.state.selectedUser.name}<br />
 													{(this.state.selectedUser.company_name)?<span><strong>Nom de la societe :</strong> {this.state.selectedUser.company_name}<br /></span>:null}
 													<strong>Adresse email :</strong> {this.state.selectedUser.email}<br />
+													<strong>Téléphone :</strong> {this.state.selectedUser.phone}<br />
 												</p>
 											</div>
 										</div>

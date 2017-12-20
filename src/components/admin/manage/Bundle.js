@@ -151,6 +151,18 @@ export default class Bundle extends Component {
 		});
 	}
 
+	uploadCertif() {
+		const data = new FormData();
+		if (document.getElementById("certif").files[0]) {
+			data.append("certif", document.getElementById("certif").files[0])
+		}
+		request({
+			url: '/bundle/'+this.props.id+'/certif',
+			method: 'put',
+			data : data
+		}, this.refs.notif)
+	}
+
 	render () {
 		return (
 			<div>
@@ -177,8 +189,7 @@ export default class Bundle extends Component {
 									</form>
 								</div>
 							</div>
-
-							<div className="card">
+							<div className="card mt-4">
 								<div className="card-block">
 									<h3 className="card-title">Ruches</h3>
 									<p className="card-text">
@@ -197,6 +208,21 @@ export default class Bundle extends Component {
 										</select>
 										<button className="btn btn-secondary my-2">Associer cette ruche</button>
 									</form>
+								</div>
+							</div>
+							<div className="card mt-4">
+								<div className="card-block">
+									<h3 className="card-title">Certificat de parrainage</h3>
+									<div className="form-group">
+										<label htmlFor="certif" className={(this.state.certif)?'active-upload':'upload'} style={{ position: 'relative' }}>
+											<input type="file" className="form-control" id="certif" onChange={() => { this.setState({ certif : document.getElementById("certif").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
+											Glisser une image ou cliquez pour en séléctionner un parmi vos fichers<br/>
+											Taille recommandée : 400x300 - {(this.state.certif)?'Selectionné : '+this.state.certif:"Aucun fichier séléctionné"}
+										</label>
+									</div>
+									<div className="form-group">
+										<button className="btn btn-primary" onClick={this.uploadCertif.bind(this)} >Uploader le certificat</button>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -233,7 +259,7 @@ export default class Bundle extends Component {
 									</p>
 								</div>
 							</div>
-							<div className="card">
+							<div className="card mt-4">
 								<div className="card-block">
 									<h3 className="card-title">Autre action</h3>
 									<p className="card-text">
