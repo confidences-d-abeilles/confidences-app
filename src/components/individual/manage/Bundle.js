@@ -56,7 +56,7 @@ export default class Bundle extends Component {
 		if (this.state.user) {
 			return (
 				<p className="text-center my-5">
-                    {his.state.user.hive_id &&
+                    {this.state.user.hive_id &&
                     <Link className="btn btn-secondary m-2" to={'/hive/'+this.state.user.hive_id}>Voir la page de ma ruche</Link>}
                     {this.state.certif &&
 					<a href={config.cdn_url+'/'+this.state.certif} className="btn btn-secondary m-2" target="_blank">Télécharger mon certificat de parrainage</a>}
