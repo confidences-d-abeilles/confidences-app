@@ -12,8 +12,8 @@ export default class Home extends Component {
 				Siège social situé au 319 chemin des plantées, 74 210 Faverges<br />
 				RCS Annecy 814 152 518<br />
 				<strong>SIRET :</strong> 814 152 518 000 19<br />
-				<strong>Numéro de téléphone :</strong><br />
-				<strong>Email :</strong> contact@parrainagederuches.fr<br />
+				<strong>Numéro de téléphone : 07 67 37 41 44</strong><br />
+				<strong>Email :</strong> general@parrainagederuches.fr<br />
 				<strong>Directeur de la publication :</strong> Gaëtan EKSZTEROWICZ<br /><br />
 
 				<strong>Déclaration CNIL :</strong><br />
