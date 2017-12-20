@@ -7,13 +7,16 @@ import FontAwesome from 'react-fontawesome'
 import { handleChange } from '../../../services/FormService'
 import NotificationSystem from 'react-notification-system'
 
+const config = require('../../../config.js');
+
 export default class Bundle extends Component {
 
     constructor(props) {
 		super(props);
 		this.state = {
 			user: null,
-            edit_present: false
+            edit_present: false,
+            certif: ''
 		}
 	}
 
@@ -24,6 +27,7 @@ export default class Bundle extends Component {
 		}, this.refs.notif).then((res) => {
 			this.setState({
 					user: res,
+                    certif: res.bundles[0].certif,
                     present_firstname: res.bundles[0].firstname,
                     present_name: res.bundles[0].name,
                     present_email: res.bundles[0].email,
@@ -53,7 +57,8 @@ export default class Bundle extends Component {
 			return (
 				<p className="text-center my-5">
                     <Link className="btn btn-secondary m-2" to={'/hive/'+this.state.user.hive_id}>Voir la page de ma ruche</Link>
-					<button className="btn btn-secondary m-2" disabled>Télécharger mon certificat de parrainage</button>
+                    {this.state.certif &&
+					<a href={config.cdn_url+'/'+this.state.certif} className="btn btn-secondary m-2" target="_blank">Télécharger mon certificat de parrainage</a>}
 				</p>
 			)
 		}
