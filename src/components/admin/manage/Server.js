@@ -61,6 +61,13 @@ export default class AdminManageServer extends Component {
         }, this.refs.notif)
     }
 
+    testEmailPartRuche () {
+        request({
+            url: '/server/test-email-part-ruche',
+            method: 'get'
+        }, this.refs.notif)
+    }
+
     render () {
         return (
             <div className="row">
@@ -85,6 +92,9 @@ export default class AdminManageServer extends Component {
                     </div>
                     <div className="form-group text-center">
                         <button className="btn btn-info form-control" onClick={this.testEmailPartVirementok.bind(this)}>Test email virement ok</button>
+                    </div>
+                    <div className="form-group text-center">
+                        <button className="btn btn-info form-control" onClick={this.testEmailPartRuche.bind(this)}>Test email ruche</button>
                     </div>
                 </div>
             </div>
