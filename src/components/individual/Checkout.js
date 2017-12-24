@@ -115,10 +115,7 @@ export default class IndividualCheckout extends Component {
 			if (this.state.different) {
 				await this.saveDaddress();
 			}
-			if (this.state.present)
- 			{
-				await this.handlePresent();
-			}
+			await this.handlePresent();
 			resolve();
 		})
 	}
