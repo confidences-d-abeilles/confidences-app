@@ -9,11 +9,11 @@ export default class CompanyEnd extends Component {
 			<div className="container py-4">
 				<div className="row justify-content-center">
 					<div className="col-8">
-						<h2 className="text-center my-4">Félicitations ! Vous faites désormais partie de la grande famille des parrains de ruches.</h2>
+						<h2 className="text-center my-4">Félicitations ! Vous faites désormais partie de la grande famille des parrains d'abeilles.</h2>
 						<p className="text-center">
 							<img src={Main} className="img-fluid mx-auto d-block" alt="Img temp" />
                         </p>
-						<h4 className="text-center my-4">Toutes l'équipe de Confidences d'Abeilles vous remercie !</h4>
+						<h4 className="text-center my-4">Toute l'équipe de Confidences d'Abeilles vous remercie !</h4>
                         <p className="text-center">
                             <Link to="/individual/manage" className="btn btn-primary">Mon compte</Link>
 						</p>

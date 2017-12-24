@@ -97,7 +97,7 @@ export default class Bundle extends Component {
                             <h3 className="text-center"><small>J'ai choisi d'offrir mon parrainage à</small></h3>
                             <strong>{this.state.present_firstname} {this.state.present_name}</strong><br />
                             dont l'adresse email est <strong>{this.state.present_email}</strong><br />
-                            Il recevra les première informations sur son cadeau le <strong>{moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}</strong><br /><br />
+                            Il recevra les premières informations sur son cadeau le <strong>{moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}</strong><br /><br />
                             <button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ edit_present : true })}}><FontAwesome name="pencil" /> Modifier ces informations</button>
                         </div>}
                         {this.state.user.bundles[0].present && this.state.edit_present &&
