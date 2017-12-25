@@ -115,7 +115,8 @@ export default class AdminManageUsers extends Component {
 															{this.state.selectedUser.addresses[1].line3}<br />
 															{this.state.selectedUser.addresses[1].line4}<br />
 															{this.state.selectedUser.addresses[1].zipcode} {this.state.selectedUser.addresses[0].city}<br />
-															{this.state.selectedUser.addresses[1].country}
+															{this.state.selectedUser.addresses[1].country}<br />
+															{this.state.selectedUser.addresses[1].phone}
 														</p>
 													</div>
 												</div>
