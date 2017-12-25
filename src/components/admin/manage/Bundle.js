@@ -40,7 +40,8 @@ export default class Bundle extends Component {
 				stateSelector: res.state,
 				present_name: res.name,
 				present_firstname: res.firstname,
-				present_email: res.email
+				present_email: res.email,
+				present_phone: res.phone
 			})
 		})
 
@@ -259,6 +260,7 @@ export default class Bundle extends Component {
 												<input type="text" name="present_email" onChange={handleChange.bind(this)} value={this.state.present_email} placeholder="Email" className="form-control" />
 											</div>
 											<button className="btn btn-secondary btn-sm my-2" >Valider</button>
+											Téléphone de livraison : {this.state.present_phone}
 										</form>
 										:'Ce parrainage n\'est pas un cadeau'}
 									</p>
