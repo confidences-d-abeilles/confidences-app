@@ -6,6 +6,7 @@ import moment from 'moment'
 import FontAwesome from 'react-fontawesome'
 import { handleChange } from '../../../services/FormService'
 import NotificationSystem from 'react-notification-system'
+import ReactGA from 'react-ga';
 
 const config = require('../../../config.js');
 
@@ -18,6 +19,7 @@ export default class Bundle extends Component {
             edit_present: false,
             certif: ''
 		}
+        ReactGA.pageview(this.props.location.pathname);
 	}
 
 	componentDidMount() {

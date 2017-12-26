@@ -7,9 +7,15 @@ import third from '../../assets/img/E/3.jpg';
 import fourth from '../../assets/img/E/4.jpg';
 import fifth from '../../assets/img/E/5.jpg';
 import sixth from '../../assets/img/E/6.jpg';
+import ReactGA from 'react-ga';
 
 export default class CompanyPresentation extends Component {
 
+	constructor(props) {
+		super(props)
+		ReactGA.pageview(this.props.location.pathname);
+	}
+	
 	render () {
 		return (
 			<div className="container py-4">

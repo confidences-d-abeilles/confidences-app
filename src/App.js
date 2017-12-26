@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { isLoggedIn } from './services/AuthService';
+import { isLoggedIn, getUserType } from './services/AuthService';
 import CompanyPage from './components/company/Page';
 import Wrapper from './components/Wrapper';
 import {StripeProvider} from 'react-stripe-elements';
@@ -9,6 +9,7 @@ import {
 	Route
 } from 'react-router-dom';
 import io from 'socket.io-client'
+import ReactGA from 'react-ga';
 
 const config = require('./config.js');
 
@@ -31,7 +32,14 @@ class App extends Component {
 
 	constructor (props) {
 		super (props);
-		isLoggedIn(true);
+		if (process.env.NODE_ENV === "development") {
+			ReactGA.initialize('UA-73256412-3', { debug: true });
+			if (isLoggedIn(true) && getUserType() === '4') {
+				ReactGA.ga('set', 'dimension1', 1);
+			} else {
+				ReactGA.ga('set', 'dimension1', 0);
+			}
+		}
 	}
 
 	render() {

@@ -5,9 +5,14 @@ import first from '../../assets/img/AA/1.jpg';
 import second from '../../assets/img/AA/2.jpg';
 import third from '../../assets/img/AA/3.jpg';
 import fourth from '../../assets/img/AA/4.jpg';
-
+import ReactGA from 'react-ga';
 export default class ContributorPresentation extends Component {
 
+	constructor(props) {
+		super(props)
+		ReactGA.pageview(this.props.location.pathname);
+	}
+	
 	render () {
 		return (
 			<div className="container py-4">

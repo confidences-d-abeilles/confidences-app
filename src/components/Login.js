@@ -4,8 +4,8 @@ import { handleChange } from '../services/FormService';
 import { login } from '../services/AuthService';
 import request from '../services/Net.js'
 import Loading from './utils/Loading'
-
-var NotificationSystem = require('react-notification-system');
+import ReactGA from 'react-ga';
+import NotificationSystem from 'react-notification-system';
 
 export default class Signup extends Component {
 
@@ -18,6 +18,7 @@ export default class Signup extends Component {
 			redirect: false,
 			loading: false
 		}
+		ReactGA.pageview(this.props.location.pathname);
 	}
 
 	login(e) {

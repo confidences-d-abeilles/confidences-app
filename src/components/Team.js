@@ -5,8 +5,14 @@ import Clem from '../assets/img/clement.jpg'
 import Profile from '../assets/img/profile.png'
 import { Link } from 'react-router-dom'
 import FontAwesome from 'react-fontawesome'
+import ReactGA from 'react-ga';
 
 export default class Team extends Component {
+
+	constructor(props) {
+		super(props)
+		ReactGA.pageview(this.props.location.pathname);
+	}
 
 	render () {
 		return (
@@ -24,7 +30,7 @@ export default class Team extends Component {
 							<a href="https://www.linkedin.com/in/gaetaneksz" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
 						</p>
 						<p className="text-justify">
-							Gaëtan est étudiant à l’Ecole des Mines d’Alès, une école d’ingénieur généraliste dans laquelle il est rentré à la suite d’une classe préparatoire en Physique-Chimie. Il s’occupe du développement du rucher, de la communication, du marketing et du design. Il rédige de plus l’essentiel des articles du site internet ainsi que ceux du blog. Il a créé en parallèle une association d’apiculture, EM’API, sur son campus universitaire et incite, autant que possible, les gens à se lancer avec une première ruche.
+							Gaëtan est en dernière année d’étude à l’Ecole des Mines. Une école d’ingénieur généraliste dans laquelle il est rentré à la suite d’une classe préparatoire en Physique-Chimie. Apiculteur depuis l’âge de 14 ans, il a co-fondé Confidences d’Abeilles en 2015. En tant que président, il a développé la marque et son image en s’occupant entre autres de la communication, du branding et du design. Il est par ailleurs responsable de la production, de la qualité, de la commercialisation et des partenariats de plus en plus nombreux.<br />Passionné d’apiculture, il rédige les articles de vulgarisation du blog et continue de superviser l’association d’apiculture qu’il a fondé sur son campus étudiant.<br />Le projet de parrainage de ruches est pour lui un premier pas. Un premier pas vers la création d’une communauté sociale apicole de personnes averties ; amateurs, professionnels, parrains œuvrant ensemble pour changer la donne. Des synergies avec d’autres acteurs sont déjà en place.
 						</p>
 						<blockquote className="blockquote">
 							<p className="mb-0 text-justify">

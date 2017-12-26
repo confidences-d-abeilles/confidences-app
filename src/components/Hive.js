@@ -6,6 +6,7 @@ import ReactHtmlParser from 'react-html-parser'
 import FontAwesome from 'react-fontawesome'
 import ImgPlaceholder from '../assets/img/profile.png';
 import moment from 'moment';
+import ReactGA from 'react-ga';
 
 const config = require('../config.js')
 
@@ -16,6 +17,7 @@ export default class Hive extends Component {
 		this.state = {
 			hive: null,
 		}
+		ReactGA.pageview(this.props.location.pathname);
 	}
 
 	componentDidMount() {

@@ -4,10 +4,12 @@ import request from '../../services/Net';
 import { handleChange } from '../../services/FormService';
 import { isLoggedIn } from '../../services/AuthService';
 import NotificationSystem from 'react-notification-system';
+import ReactGA from 'react-ga';
 
 export default class CompanyAddress extends Component {
 	constructor(props) {
 		super(props);
+		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			redirect: false,
 			message: '',

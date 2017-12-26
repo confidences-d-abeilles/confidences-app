@@ -3,11 +3,12 @@ import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
 import Bundle from './Bundle'
 import Loading from '../../utils/Loading';
-
+import ReactGA from 'react-ga';
 export default class AdminManageBundles extends Component {
 
 	constructor(props) {
 		super(props)
+		ReactGA.pageview(this.props.location.pathname);
 
 		this.state = {
 			bundles: null,

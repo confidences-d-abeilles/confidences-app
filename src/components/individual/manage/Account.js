@@ -4,11 +4,13 @@ import NotificationSystem from 'react-notification-system'
 import Confirm from '../../utils/Confirm'
 import { logout } from '../../../services/AuthService'
 import { handleChange } from '../../../services/FormService'
+import ReactGA from 'react-ga';
 
 export default class Account extends Component {
 
     constructor(props) {
         super(props)
+        ReactGA.pageview(this.props.location.pathname);
         this.state = {
             sessions : null
         }

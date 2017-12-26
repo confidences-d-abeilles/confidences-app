@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Main from '../../assets/img/end_part.jpg';
+import ReactGA from 'react-ga';
 
-export default class CompanyEnd extends Component {
+export default class IndividualEnd extends Component {
+
+    constructor(props) {
+        super(props)
+        ReactGA.pageview(this.props.location.pathname);
+    }
 
     render () {
         return (

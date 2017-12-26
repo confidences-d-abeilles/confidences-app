@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Version1 from '../../../assets/img/P/etiqu1.jpg';
 import Version2 from '../../../assets/img/P/etiqu2.jpg';
-
+import ReactGA from 'react-ga';
 export default class Custom extends Component {
 
     constructor(props) {
         super (props);
+        ReactGA.pageview(this.props.location.pathname);
         this.state = {
 
         }

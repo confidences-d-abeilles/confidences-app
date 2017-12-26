@@ -3,13 +3,14 @@ import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import moment from 'moment';
 import FontAwesome from 'react-fontawesome';
-
+import ReactGA from 'react-ga';
 const config = require("../../../config.js");
 
 export default class CompanyManageBills extends Component {
 
 	constructor(props) {
 		super (props)
+		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			user : null,
 			bills: []

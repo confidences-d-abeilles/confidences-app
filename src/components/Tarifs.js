@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import { handleTick } from '../services/FormService'
+import ReactGA from 'react-ga';
 
 export default class Tarifs extends Component {
+
+	constructor(props) {
+		super(props)
+		ReactGA.pageview(this.props.location.pathname);
+	}
 
 	render() {
 		return (

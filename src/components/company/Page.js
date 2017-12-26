@@ -8,6 +8,7 @@ import ReactHtmlParser from 'react-html-parser'
 import FontAwesome from 'react-fontawesome'
 import imgPlaceholder from '../../assets/img/profile.png';
 import { Link } from 'react-router-dom'
+import ReactGA from 'react-ga';
 
 const defaultImg = require("../../assets/img/profile.png")
 const config = require('../../config.js');
@@ -16,6 +17,7 @@ export default class CompanyPage extends Component {
 
 	constructor(props) {
 		super (props)
+		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			user : null,
 			hives: [],

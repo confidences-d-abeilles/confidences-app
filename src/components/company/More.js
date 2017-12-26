@@ -2,12 +2,17 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Banner from '../../assets/img/ent_more.jpg';
 import leaflet from '../../assets/leaflet_e.pdf'
-
+import ReactGA from 'react-ga';
 const config = require('../../config.js');
 
 
 export default class More extends Component {
 
+	constructor(props) {
+		super(props)
+		ReactGA.pageview(this.props.location.pathname);
+	}
+	
 	render () {
 		return (
 			<div className="container">

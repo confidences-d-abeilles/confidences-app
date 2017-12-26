@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import ReactGA from 'react-ga';
 
 export default class Home extends Component {
+
+    constructor(props) {
+        super(props)
+        ReactGA.pageview('/mentions_legales');
+    }
 
     render () {
         return (

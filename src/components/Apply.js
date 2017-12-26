@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import { handleChange } from '../services/FormService'
 import request from '../services/Net'
 import NotificationSystem from 'react-notification-system'
+import ReactGA from 'react-ga';
 
 export default class Apply extends Component {
 
     constructor(props) {
         super(props);
+        ReactGA.pageview(this.props.location.pathname);
         this.state = {
             name: '',
             firstname: '',

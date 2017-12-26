@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import request from '../services/Net'
 import NotificationSystem from 'react-notification-system'
 import FontAwesome from 'react-fontawesome'
-
+import ReactGA from 'react-ga';
 
 export default class Faq extends Component {
 
@@ -11,6 +11,7 @@ export default class Faq extends Component {
 		this.state = {
 			list: []
 		}
+		ReactGA.pageview(this.props.location.pathname);
 	}
 
 	componentDidMount() {
