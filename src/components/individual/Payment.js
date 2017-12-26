@@ -8,6 +8,7 @@ import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import ReactGA from 'react-ga';
 
 export default class IndividualPayement extends Component {
 
@@ -17,6 +18,7 @@ export default class IndividualPayement extends Component {
 			bees: null,
 			redirect: false
 		}
+		ReactGA.pageview(this.props.location.pathname);
 	}
 
 	componentDidMount() {

@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import NotificationSystem from 'react-notification-system'
 import request from '../../services/Net'
 import { handleChange } from '../../services/FormService'
-
+import ReactGA from 'react-ga';
 export default class ContributorParrains extends Component {
 
 	constructor(props) {
 		super(props);
+		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			leads : []
 		}

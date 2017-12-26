@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
-
+import ReactGA from 'react-ga';
 const config = require('../../../config.js');
 
 export default class CompanyManageCustomize extends Component {
 
 	constructor(props) {
 		super(props);
+		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			label : '',
 			current: null

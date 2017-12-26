@@ -6,13 +6,14 @@ import Confirm from '../../utils/Confirm'
 import DatePicker from 'react-datepicker';
 import moment from 'moment'
 import FontAwesome from 'react-fontawesome'
-
+import ReactGA from 'react-ga';
 const config = require("../../../config.js");
 
 export default class Bundle extends Component {
 
 	constructor(props) {
 		super(props);
+		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			bundle: null,
 			hives: [],

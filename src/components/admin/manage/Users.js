@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import Loading from '../../utils/Loading'
+import ReactGA from 'react-ga'
+import moment from 'moment'
 
 export default class AdminManageUsers extends Component {
 
 	constructor(props) {
 		super(props)
+		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			users : null,
 			selectedUser: null
@@ -92,6 +95,7 @@ export default class AdminManageUsers extends Component {
 											<div className="card-block">
 												<h3 className="card-title">Informations generales</h3>
 												<p className="card-text">
+													<strong>Date d'inscription :</strong> {moment(this.state.selectedUser.createdAt).format("DD/MM/YYYY")}<br />
 													<strong>Nom et prenom :</strong> {this.state.selectedUser.firstname} {this.state.selectedUser.name}<br />
 													{(this.state.selectedUser.company_name)?<span><strong>Nom de la societe :</strong> {this.state.selectedUser.company_name}<br /></span>:null}
 													<strong>Adresse email :</strong> {this.state.selectedUser.email}<br />

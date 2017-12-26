@@ -3,6 +3,7 @@ import request from '../services/Net';
 import NotificationSystem from 'react-notification-system';
 import { handleChange } from '../services/FormService';
 import { Redirect } from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 export default class Reset extends Component {
 
@@ -14,6 +15,7 @@ export default class Reset extends Component {
 			ok: false,
 			redirect: false
 		}
+		ReactGA.pageview(this.props.location.pathname);
 	}
 
 	resetPassword(e) {

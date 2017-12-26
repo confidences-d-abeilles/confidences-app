@@ -3,7 +3,8 @@ import { Link, Redirect } from 'react-router-dom'
 import { handleChange } from '../services/FormService'
 import { login, isLoggedIn } from '../services/AuthService'
 import request from '../services/Net.js'
-var NotificationSystem = require('react-notification-system');
+import NotificationSystem from 'react-notification-system';
+import ReactGA from 'react-ga';
 
 export default class Signup extends Component {
 
@@ -22,6 +23,7 @@ export default class Signup extends Component {
 			redirect: false,
 			error: null
 		}
+		ReactGA.pageview(this.props.location.pathname);
 	}
 
 	componentDidMount() {

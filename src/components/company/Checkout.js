@@ -5,11 +5,13 @@ import NotificationSystem from 'react-notification-system';
 import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
 import { handleChange, handleTick } from '../../services/FormService';
+import ReactGA from 'react-ga';
 
 export default class CompanyCheckout extends Component {
 
 	constructor(props) {
 		super(props);
+		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			billing_name: '',
 			billing_firstname: '',

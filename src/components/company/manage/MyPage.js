@@ -5,13 +5,14 @@ import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
 import ReactQuill from 'react-quill';
 import Loading from '../../utils/Loading'
-
+import ReactGA from 'react-ga';
 const config = require('../../../config.js');
 
 export default class CompanyManageMyPage extends Component {
 
 	constructor (props) {
 		super (props);
+		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			name : '',
 			namespace : '',

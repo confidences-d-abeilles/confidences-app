@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import imgPlaceholder from '../../assets/img/img-placeholder.gif';
+import ReactGA from 'react-ga';
 
 export default class CompanyEnd extends Component {
 
+    constructor(props) {
+        super(props)
+        ReactGA.pageview(this.props.location.pathname);
+    }
+    
     render () {
         return (
 			<div className="container py-4">

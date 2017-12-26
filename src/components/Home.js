@@ -14,6 +14,8 @@ import seventh from '../assets/img/homepage/7.jpg';
 import Slider from 'react-slick';
 import Loading from './utils/Loading';
 import FontAwesome from 'react-fontawesome'
+import ReactGA from 'react-ga';
+import { isLoggedIn, getUserType } from '../services/AuthService';
 
 const defaultImg = require("../assets/img/profile.png")
 const config = require('../config.js');
@@ -26,6 +28,7 @@ export default class Home extends Component {
 	}
 
 	componentDidMount() {
+		ReactGA.pageview(this.props.location.pathname);
 		request({
 			url : '/user/public',
 			method: 'get'

@@ -7,13 +7,14 @@ import Loading from '../../utils/Loading'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import Confirm from '../../utils/Confirm';
-
+import ReactGA from 'react-ga';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export default class AdminManageHives extends Component {
 
 	constructor(props) {
 		super(props)
+		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			hives : null,
 			new: '',

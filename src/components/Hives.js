@@ -5,6 +5,7 @@ import imgPlaceholder from '../assets/img/profile.png';
 import { Link } from 'react-router-dom'
 import Loading from './utils/Loading'
 import { handleChange } from '../services/FormService';
+import ReactGA from 'react-ga';
 
 const config = require('../config.js')
 
@@ -16,6 +17,7 @@ export default class Hives extends Component {
 			bundles : null,
 			criteria: ''
 		}
+		ReactGA.pageview(this.props.location.pathname);
 	}
 
 	componentDidMount() {

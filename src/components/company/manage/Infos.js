@@ -7,11 +7,13 @@ import Loading from '../../utils/Loading'
 import { Redirect } from 'react-router-dom'
 import { logout } from '../../../services/AuthService'
 import Confirm from '../../utils/Confirm'
+import ReactGA from 'react-ga';
 
 export default class CompanyManageInfos extends Component {
 
 	constructor(props) {
 		super(props)
+		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			logout: false,
 			password: '',
