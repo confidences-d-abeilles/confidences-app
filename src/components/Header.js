@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logoSquare from '../assets/img/logo-square.png';
 import { Link, Redirect } from 'react-router-dom';
 import { isLoggedIn } from '../services/AuthService';
+import FontAwesome from 'react-fontawesome'
 
 export default class Header extends Component {
 
@@ -69,7 +70,10 @@ export default class Header extends Component {
 									<Link className="nav-link" to="/jobs">Jobs</Link>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog</a>
+									<a className="nav-link" href="https://confidencesdabeilles.fr/" target="_blank" rel="noopener noreferrer">Boutique <FontAwesome name="external-link" /></a>
+								</li>
+								<li className="nav-item">
+									<a className="nav-link" href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog <FontAwesome name="external-link" /></a>
 								</li>
 								<div className="dropdown-divider"></div>
 								<li className="nav-item">
@@ -94,7 +98,10 @@ export default class Header extends Component {
 									<Link className="nav-link" to="/jobs">Jobs</Link>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog</a>
+									<a className="nav-link" href="https://confidencesdabeilles.fr/" target="_blank" rel="noopener noreferrer">Boutique <FontAwesome name="external-link" /></a>
+								</li>
+								<li className="nav-item">
+									<a className="nav-link" href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog <FontAwesome name="external-link" /></a>
 								</li>
 								<div className="dropdown-divider"></div>
 								<li className="nav-item">
@@ -139,7 +146,8 @@ export default class Header extends Component {
 								<Link className="dropdown-item" to="/team">L'équipe</Link>
 								<Link className="dropdown-item" to="/contact">Contact</Link>
 								<Link className="dropdown-item" to="/jobs">Jobs</Link>
-								<a className="dropdown-item" href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog</a>
+								<a className="dropdown-item" href="https://confidencesdabeilles.fr/" target="_blank" rel="noopener noreferrer">Boutique <FontAwesome name="external-link" /></a>
+								<a className="dropdown-item" href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog <FontAwesome name="external-link" /></a>
 							</div>
 						</li>
 						<li className="nav-item">
@@ -160,7 +168,8 @@ export default class Header extends Component {
 						<Link className="dropdown-item" to="/team">L'équipe</Link>
 						<Link className="dropdown-item" to="/contact">Contact</Link>
 						<Link className="dropdown-item" to="/jobs">Jobs</Link>
-						<a className="dropdown-item" href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog</a>
+						<a className="dropdown-item" href="https://confidencesdabeilles.fr/" target="_blank" rel="noopener noreferrer">Boutique <FontAwesome name="external-link" /></a>
+						<a className="dropdown-item" href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog <FontAwesome name="external-link" /></a>
 					</div>
 				</li>
 
