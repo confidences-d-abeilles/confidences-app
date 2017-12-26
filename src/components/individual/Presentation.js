@@ -7,6 +7,7 @@ import third from '../../assets/img/P/3.jpg';
 import fourth from '../../assets/img/P/4.jpg';
 import fifth from '../../assets/img/P/5.jpg';
 import sixth from '../../assets/img/P/6.jpg';
+import leaflet from '../../assets/leaflet_p.pdf'
 
 export default class IndividualPresentation extends Component {
 
@@ -110,10 +111,13 @@ export default class IndividualPresentation extends Component {
 				</div>
 				<div className="row align-items-center justify-content-around">
 					<div className="col-lg-4 col-md-6 col-sm-12 text-center m-4">
-						<Link to="/signup/individual" className="btn btn-primary">Parrainer des abeilles</Link>
+						<Link to="/signup/individual" className="btn btn-secondary">Parrainer des abeilles</Link>
 					</div>
 					<div className="col-lg-4 col-md-6 col-sm-12 text-center m-4">
-						<Link to="/individual/more" className="btn btn-primary">En savoir plus</Link>
+						<Link to="/individual/more" className="btn btn-secondary">En savoir plus</Link>
+					</div>
+					<div className="col-12 text-center">
+						<a href={leaflet} className="btn btn-secondary m-4" target="_blank">Télécharger la plaquette de présentation</a>
 					</div>
 				</div>
 			</div>

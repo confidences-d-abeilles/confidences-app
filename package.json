@@ -11,6 +11,7 @@
     "react-datepicker": "^0.61.0",
     "react-dom": "^15.6.1",
     "react-fontawesome": "^1.6.1",
+    "react-ga": "^2.3.5",
     "react-html-parser": "^2.0.1",
     "react-notification-system": "^0.2.16",
     "react-pdf": "^2.1.1",
