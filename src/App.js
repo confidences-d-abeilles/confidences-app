@@ -32,8 +32,8 @@ class App extends Component {
 
 	constructor (props) {
 		super (props);
-		if (process.env.NODE_ENV === "development") {
-			ReactGA.initialize('UA-73256412-3', { debug: true });
+		if (process.env.NODE_ENV === "production") {
+			ReactGA.initialize('UA-73256412-3');
 			if (isLoggedIn(true) && getUserType() === '4') {
 				ReactGA.ga('set', 'dimension1', 1);
 			} else {
