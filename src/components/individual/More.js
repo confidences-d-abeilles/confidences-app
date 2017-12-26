@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Banner from '../../assets/img/part_more.jpg';
-
+import Banner from '../../assets/img/part_more.jpg'
+import leaflet from '../../assets/leaflet_p.pdf'
 
 export default class More extends Component {
 
@@ -82,7 +82,7 @@ réserver une ou plusieurs places disponibles pour nous accompagner lors de cett
 Plus d’informations prochainement.
 						</p>
 						<p className="text-center">
-							<Link to="/signup/individual" className="btn btn-secondary mr-4">Parrainer une ruche</Link><Link to="/faq" className="btn btn-secondary">Consulter la FAQ</Link>
+							<Link to="/signup/individual" className="btn btn-secondary mr-4">Parrainer une ruche</Link><a href={leaflet} className="btn btn-secondary mr-4" target="_blank">Télécharger la plaquette de présentation</a>
 						</p>
 					</div>
 				</div>

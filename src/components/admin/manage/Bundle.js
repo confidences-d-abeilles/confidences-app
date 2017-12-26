@@ -66,19 +66,6 @@ export default class Bundle extends Component {
 		}
 	}
 
-	validate () {
-		request({
-			url: '/bundle/'+this.props.id,
-			method: 'put',
-			data : {
-				state: 3
-			}
-		}, this.refs.notif).then((res) => {
-			this.props.refresh();
-		});
-	}
-
-
 	delete () {
 		request({
 			url: '/bundle/'+this.props.id,
@@ -268,7 +255,6 @@ export default class Bundle extends Component {
 								<div className="card-block">
 									<h3 className="card-title">Autre action</h3>
 									<p className="card-text">
-										<button className="btn btn-secondary my-2" onClick={this.validate.bind(this)}>Valider la préparation du parrainage</button>
 										<Confirm action={this.delete.bind(this)} text="Supprimer ce parrainage" />
 									</p>
 								</div>
