@@ -68,23 +68,25 @@ export default class IndividualPresentation extends Component {
 					<div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>
 						<h3 className="text-center my-4">Pour vous</h3>
 						<ul>
-							<li>Adopter une démarche participative et
-							responsable vis-à- vis de
-							l’environnement</li>
-							<li>S’engager concrètement dans la
-							protection de la biodiversité</li>
-							<li>Une histoire à partager avec vos amis</li>
-							<li>Une ruche portant votre nom</li>
-							<li>Une page dédiée à la ruche dans
-							laquelle vos abeilles évoluent, des
-							photos de la ruche et des abeilles ainsi
-							que des actualités seront
-							régulièrement postées</li>
-							<li>Un certain nombre de pots de miel
-							personnalisés avec votre nom ou celui
-							de la personne à qui est offert le
-							parrainage : un cadeau unique qui
-							ravira votre famille et vos amis.</li>
+							<li>
+								Adopter une démarche participative et responsable vis-à-vis de l’environnement</li>
+							<li>
+								S’engager concrètement dans la <strong>protection de la biodiversité</strong>
+							</li>
+							<li>
+								Une histoire à partager avec vos amis
+							</li>
+							<li>
+								Une ruche portant votre nom
+							</li>
+							<li>
+								Une page dédiée à la ruche dans laquelle vos abeilles évoluent, des photos de la ruche et des abeilles ainsi que des actualités seront régulièrement postées</li>
+							<li>
+								Un certain nombre de <strong>pots de miel personnalisés avec votre nom</strong> ou celui de la personne à qui est offert le parrainage : un cadeau unique qui ravira votre famille et vos amis.
+							</li>
+							<li>
+								La possibilité de <strong>prendre part à la visite de votre rucher</strong> équipé(e) de la fameuse tenue de protection de l'apiculteur
+							</li>
 						</ul>
 					</div>
 					<div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>

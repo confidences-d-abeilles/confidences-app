@@ -13,14 +13,14 @@ Nous nous dégageons de toute responsabilité concernant :
 <li>tous dommages causés suite à une intrusion frauduleuse d'un tiers sur notre site ayant provoqué une modification des informations présentes.</li>
 <li>tous dommages, directs ou indirects, sans aucune distinction des causes, origines, natures ou conséquences, provoqués suite à l'accès d’une personne non autorisée sur notre site, ainsi que l'utilisation des informations qu'il contient.</li>
 </ul>
-Les présentes Conditions Générales de Vente s'appliquent, sans restriction ni réserve, à l'ensemble des ventes conclues par la société Confidences d’Abeilles (« le Vendeur ») auprès d’acheteurs professionnels ou non (« les Clients, le Client ou les Parrains, le Parrain »), désirant acquérir les Produits ou les services proposés à la vente par le Vendeur (« les Produits ou les Services ») uniquement sur les sites internet nomdedomaine.fr, secondnomdedomaine.com ci-après désigné « le Site Internet ». Le Client à la possibilité de les imprimer et les conserver.<br />
+Les présentes Conditions Générales de Vente s'appliquent, sans restriction ni réserve, à l'ensemble des ventes conclues par la société Confidences d’Abeilles (« le Vendeur ») auprès d’acheteurs professionnels ou non (« les Clients, le Client ou les Parrains, le Parrain »), désirant acquérir les Produits ou les services proposés à la vente par le Vendeur (« les Produits ou les Services ») uniquement sur les sites internet <a href="http://parrainagederuches.fr/" target="_blank">parrainagederuches.fr</a>, <a href="http://parrainerdesabeilles.fr/" target="_blank">parrainerdesabeilles.fr</a> ci-après désigné « le Site Internet ». Le Client à la possibilité de les imprimer et les conserver.<br />
 Ceci implique que toute commande d'un Produit proposé à la vente sur le Site Internet emporte pour le Client acceptation pleine et entière des présentes Conditions Générales de Vente ; de plus le Client reconnaît en avoir pris connaissance préalablement à sa commande.
 <br /><br />
 Le Site Internet est la propriété de Confidences d'Abeilles dans son intégralité, ainsi que l'ensemble des droits y afférant. Toute reproduction, intégrale ou partielle, doit systématiquement être soumise à autorisation du ou des propriétaires. Sont approuvées sans demandes spécifiques, les références de type lien hypertexte vers le site.
 </p>
 <h3>Article 2 – Produits</h3>
 <p>
-Les Produits proposés à la vente sur le Site Internet à l'adresse nomdedomaine.fr constituent l’offre de la société Confidences d'Abeilles. Confidences d'Abeilles se réserve le droit de modifier à tout moment sa gamme de Produits.<br />
+Les Produits proposés à la vente sur le Site Internet à l'adresse <a href="http://parrainagederuches.fr/" target="_blank">parrainagederuches.fr</a> constituent l’offre de la société Confidences d'Abeilles. Confidences d'Abeilles se réserve le droit de modifier à tout moment sa gamme de Produits.<br />
 Les photos et autres visuels des Produits présentés sur notre site ne sont pas contractuels. Néanmoins, Confidences d'Abeilles veille à ce que les photos et visuels reproduisent le plus fidèlement le Produit proposé et ne contiennent pas d'ambiguïtés.
 <br /><br />
 Par Produit il faut comprendre souscription à une offre de parrainage. Comme il existe plusieurs offres de parrainage il existe plusieurs Produits. Souscrire une offre de parrainage revient donc à acheter l’un des Produits proposés par la société Confidences d’Abeilles.
@@ -35,7 +35,7 @@ Numéro de téléphone :<br />
 </p>
 <h3>Article 4 – Client</h3>
 <p>
-Confidences d'Abeilles propose la vente de ses Produits sur le Site Internet nomdedomaine.fr aux Clients disposant de la capacité juridique nécessaire pour réaliser une commande. Confidences d'Abeilles ne peut être tenue de vérifier la capacité juridique de chaque Client.
+Confidences d'Abeilles propose la vente de ses Produits sur le Site Internet <a href="http://parrainagederuches.fr/" target="_blank">parrainagederuches.fr</a> aux Clients disposant de la capacité juridique nécessaire pour réaliser une commande. Confidences d'Abeilles ne peut être tenue de vérifier la capacité juridique de chaque Client.
 </p>
 <h3>Article 5 – Tarifs</h3>
 <p>
@@ -81,7 +81,7 @@ Les marchandises voyagent toujours aux risques et périls du destinataire. La v�
 </p>
 <h3>Article 8 – Paiement</h3>
 <p>
-Pour les achats de Produits sur le Site Internet www.nomdedomaine.fr le paiement se fait par carte bancaire, via Paypal ou encore par virement bancaire.
+Pour les achats de Produits sur le Site Internet <a href="http://parrainagederuches.fr/" target="_blank">parrainagederuches.fr</a> le paiement se fait par carte bancaire, via Paypal ou encore par virement bancaire.
 <br /><br />
 Nous acceptons les cartes suivantes :
 <ul>
@@ -118,7 +118,7 @@ Le Client particulier peut consulter les informations liées à son offre et don
 Confidences d’Abeilles s’engage à publier des photos de l'installation des ruches, des interventions qui pourraient être faites dessus et toutes autres photos qui seraient jugées pertinentes pour les Parrains. Enfin, Confidences d’Abeilles s’engage à publier au moins quatre actualités par an sur l’ensemble des ruches des Parrains. Attention : il s’agit d’une année calendaire débutant le 1er janvier et finissant le 31 décembre et non de la période de parrainage d’un an glissant.
 <br /><br />
 Les photos présentes sur le Site Internet sont la propriété de Confidences d’Abeilles. La reproduction est autorisée à des fins de communication et d’information – en aucun cas à des fins commerciales. Reproduire les photos présentes sur le Site Internet ne signifie pas que Confidences d’Abeilles en cède les droits d’auteur. Ainsi, pour reproduire une photo sur un site internet ou une plaquette de présentation il faut impérativement citer l’auteur, en l’occurrence « Confidences d’Abeilles » et en donner la source à l’aide d’un lien hypertexte. Ci-dessous un exemple de citation autorisé.
-Crédit : Confidences d’Abeilles – Source : nomdedomaine.fr
+Crédit : Confidences d’Abeilles – Source : <a href="http://parrainagederuches.fr/" target="_blank">parrainagederuches.fr</a>
 <br /><br />
 A noter : les Clients particuliers peuvent être groupés jusqu’à 5 par ruche ; ce qui s’entend si chacun des Clients à choisi une offre de parrainage de type 20%.
 <h4>Retours et Echanges</h4>
@@ -130,7 +130,7 @@ Pour exercer le droit de rétractation, le Client doit notifier à Confidences d
 Pour que le délai de rétractation soit respecté, il suffit que le Client transmette son désir d’user de son droit de rétractation avant l’expiration du délai prévu.<br />
 En cas de rétractation, Confidences d'Abeilles remboursera tous paiements réalisés par le Client au plus tard quatorze jours à compter du jour où Confidences d'Abeilles a été informé de la décision de rétractation du présent contrat. Confidences d'Abeilles procédera au remboursement suivant le mode de paiement utilisé par le Client. En tout état de cause, ce remboursement n’occasionnera pas de frais pour le Client.
 <br /><br />
-En cas de problème, Confidences d'Abeilles invite le Client à contacter le Service Client par mail : contact@nomdedomaine.fr.
+En cas de problème, Confidences d'Abeilles invite le Client à contacter le Service Client par mail : <a href="mailto:gestion@parrainagederuches.fr">gestion@parrainagederuches.fr</a>.
 <h4>Compétence</h4>
 Le présent contrat est régi par le droit français. Confidences d'Abeille ne peut être tenu pour responsable des dommages de toute nature, tant matériels qu'immatériels ou corporels, qui pourraient résulter d'un mauvais fonctionnement ou de la mauvaise utilisation des Produits commercialisés. La responsabilité de Confidences d'Abeilles sera, en tout état de cause, limitée au montant de la commande et ne saurait être mise en cause pour de simples erreurs ou omissions qui auraient pu subsister malgré toutes les précautions prises dans la présentation des Produits.
 En cas de difficultés dans l'application du présent contrat, l'acheteur a la possibilité, avant toute action en justice, de rechercher une solution amiable avec l'aide : d'une association professionnelle de la branche, d'une association de consommateurs ou de tout autre conseil de son choix. Il est rappelé que la recherche de la solution amiable n'interrompt pas le " bref délai " de la garantie légale, ni la durée de la garantie contractuelle.

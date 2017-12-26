@@ -69,20 +69,35 @@ export default class CompanyPresentation extends Component {
 					<div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>
 						<h3 className="text-center my-4">Pour l'entreprise</h3>
 						<ul>
-							<li>Adopter une démarche participative et responsable vis-à- vis de
-							l’environnement</li>
-							<li>S’engager concrètement dans la protection de la biodiversité</li>
-							<li>Une stratégie pour se démarquer de la concurrence</li>
-							<li>Une histoire à partager avec ses partenaires</li>
-							<li>Un contenu de qualité, original et engageant à publier régulièrement sur les
-							réseaux sociaux</li>
-							<li>Une ruche au nom et aux couleurs de l’entreprise</li>
-							<li>Une page dédiée à l’entreprise qui détaille sa démarche environnementale,
-							sur laquelle des photos de sa ruche ainsi que des actualités sont
-							régulièrement postées</li>
-							<li>Une visibilité digitale supplémentaire</li>
-							<li>80 pots de miel de 125g personnalisés aux couleurs de l’entreprise : un
-							cadeau unique pour ses collaborateurs, ses partenaires ou encore ses clients</li>
+							<li>
+								Adopter une démarche participative et responsable vis-à- vis de l’environnement
+							</li>
+							<li>
+								S’engager concrètement dans la <strong>protection de la biodiversité</strong>
+							</li>
+							<li>
+								Une stratégie pour <strong>se démarquer de la concurrence</strong>
+							</li>
+							<li>
+								Une histoire à partager avec ses partenaires
+							</li>
+							<li>
+								Un <strong>contenu de qualité</strong>, original et engageant à publier régulièrement sur les <strong>réseaux sociaux</strong>
+							</li>
+							<li>
+								Une ruche au nom et aux couleurs de l’entreprise
+							</li>
+							<li>
+								Une <strong>page dédiée à votre entreprise</strong> détaillant votre démarche environnementale, sur laquelle des photos de sa ruche ainsi que des actualités sont régulièrement postées
+							</li>
+							<li>
+								Une visibilité digitale supplémentaire
+							</li>
+							<li>
+								<strong>80 pots de miel de 125g personnalisés</strong> aux couleurs de l’entreprise : un cadeau unique pour ses collaborateurs, ses partenaires ou encore ses clients</li>
+							<li>
+								La possibilité d'organiser avec son équipe une <strong>visite de la ruche</strong> sous la fameuse tenue d'apiculteur
+							</li>
 						</ul>
 					</div>
 					<div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>
