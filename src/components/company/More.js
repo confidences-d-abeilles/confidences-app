@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Banner from '../../assets/img/ent_more.jpg';
+import leaflet from '../../assets/leaflet_e.pdf'
 
 const config = require('../../config.js');
 
@@ -75,7 +76,7 @@ LinkedIn.</li>
 							</ul>
 						</p>
 						<p className="text-center">
-							<Link to="/signup/company" className="btn btn-secondary mr-4">Parrainer une ruche</Link><a href={config.cdn_url+'/commercial.pdf'} className="btn btn-secondary mr-4" target="_blank">Télécharger la plaquette de présentation</a>
+							<Link to="/signup/company" className="btn btn-secondary mr-4">Parrainer une ruche</Link><a href={leaflet} className="btn btn-secondary mr-4" target="_blank">Télécharger la plaquette de présentation</a>
 						</p>
 					</div>
 				</div>
