@@ -51,6 +51,19 @@ export default class AdminManageUsers extends Component {
 		})
 	}
 
+	renderType(type) {
+		switch (type) {
+			case 1:
+				return ("P");
+			case 2:
+				return ("E");
+			case 3:
+				return ("AA");
+			case 4:
+				return ("A");
+		}
+	}
+
 	render () {
 		return (
 			<div className="container-fluid">
@@ -65,7 +78,7 @@ export default class AdminManageUsers extends Component {
 							<tbody>
 								<tr><th>Denomination</th><th></th></tr>
 								{this.state.users.map((user) => {
-									return (<tr key={user.id}><td>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</td><td><button className="btn btn-sm btn-link" onClick={this.selectUser.bind(this, user)}>Manage</button></td></tr>)
+									return (<tr key={user.id}><td>({this.renderType(user.user_type)}) {(user.company_name)?user.company_name:user.firstname+' '+user.name}</td><td><button className="btn btn-sm btn-link" onClick={this.selectUser.bind(this, user)}>Manage</button></td></tr>)
 								})}
 							</tbody>
 						</table>

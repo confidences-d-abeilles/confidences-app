@@ -37,7 +37,7 @@ export default class Hive extends Component {
 					<div>
 						<h2 className="text-center my-5">Ruche {this.state.hive.name}</h2>
 					<div className="row">
-						<div className="col-lg-4 col-md-7 col-sm-12">
+						<div className="col-lg-4 col-md-7 col-sm-12 pr-4">
 							<div className="row">
 								<div className="col-lg-7 px-5">
 									<img className="img-fluid" src={(this.state.hive.imgs[0])?config.cdn_url+'/'+this.state.hive.imgs[0]:ImgPlaceholder} alt="Photo principale de la ruche" />
@@ -70,7 +70,7 @@ export default class Hive extends Component {
 								})}
 							</div>
 						</div>
-						<div className="col-lg-8 col-md-4 col-sm-12">
+						<div className="col-lg-8 col-md-4 col-sm-12" style={{ borderStyle: 'solid', borderColor: '#E49C00', borderWidth: '0 0 0 4px'}}>
 							<h3 className="my-4 text-center">Actualités</h3>
 							{(this.state.hive.news.length)?
 								this.state.hive.news.map((actu) => {
