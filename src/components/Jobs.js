@@ -37,7 +37,7 @@ export default class Jobs extends Component {
 							intéressés.
 						</p>
 						<p className="text-center">
-							<Link className="btn btn-secondary" to="/apply">Postulez</Link>
+							<Link className="btn btn-secondary" to="/apply">Postuler</Link>
 						</p>
 						<p>
 							Aucune offre ne vous correspond ? Confidences d’Abeilles et ses partenaires sont toujours
