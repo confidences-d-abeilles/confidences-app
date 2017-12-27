@@ -70,7 +70,7 @@ export default class Account extends Component {
                         </div>
                         <div className="col-lg-6 text-center">
                             <h3 className="text-center my-4"><small>Supprimer mon compte</small></h3>
-                            <p className="alert alert-danger"><FontAwesome name="warning"/> Attention ! En vertu des restrictions en vigueur et par respect de vos données personnelles, l'intégralité des données de votre compte et de votre parrainage seront EFFACÉES. En supprimant votre compte, vous renoncez alors à tous droits sur ces derniers.</p>
+                            <p className="alert alert-danger"><FontAwesome name="warning"/> ATTENTION ! Vous allez supprimer votre compte ainsi toutes les informations vous concernant. Il ne sera pas possible de revenir en arrière. En confirmant la suppression de votre compte vous renoncez en même temps à vos droits liés à votre compte ainsi qu’à ceux liés à la souscription d’un parrainage ; vous résiliez votre parrainage quand bien même celui-ci ne serait pas arrivé à son terme. Cette action est permanente et nous ne serons pas capables de retrouver vos données.</p>
                             <Confirm action={this.deleteAccount.bind(this)} text="Supprimer mon compte" class="btn btn-sm btn-danger"/>
                         </div>
                     </div>
