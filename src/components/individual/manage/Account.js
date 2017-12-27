@@ -5,14 +5,16 @@ import Confirm from '../../utils/Confirm'
 import { logout } from '../../../services/AuthService'
 import { handleChange } from '../../../services/FormService'
 import ReactGA from 'react-ga';
-
+import FontAwesome from 'react-fontawesome'
+import { Redirect } from 'react-router-dom'
 export default class Account extends Component {
 
     constructor(props) {
         super(props)
         ReactGA.pageview(this.props.location.pathname);
         this.state = {
-            sessions : null
+            sessions : null,
+            logout: false
         }
     }
 
@@ -49,6 +51,7 @@ export default class Account extends Component {
     render () {
         return (
             <div className="row">
+                {this.state.logout && <Redirect to="/" />}
                 <NotificationSystem ref="notif" />
                 <div className="col-lg-12">
                     <h2 className="text-center my-5">Mon compte</h2>
@@ -67,7 +70,8 @@ export default class Account extends Component {
                         </div>
                         <div className="col-lg-6 text-center">
                             <h3 className="text-center my-4"><small>Supprimer mon compte</small></h3>
-                            <Confirm action={this.deleteAccount.bind(this)} text="Supprimer mon compte" />
+                            <p className="alert alert-danger"><FontAwesome name="warning"/> Attention ! En vertu des restrictions en vigueur et par respect de vos données personnelles, l'intégralité des données de votre compte et de votre parrainage seront EFFACÉES. En supprimant votre compte, vous renoncez alors à tous droits sur ces derniers.</p>
+                            <Confirm action={this.deleteAccount.bind(this)} text="Supprimer mon compte" class="btn btn-sm btn-danger"/>
                         </div>
                     </div>
                 </div>
