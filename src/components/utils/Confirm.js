@@ -12,7 +12,7 @@ export default class Confirm extends Component {
     render() {
         return (
             <div>
-                <button className="btn btn-primary" data-toggle="modal" data-target="#confModal">{this.props.text}</button>
+                <button className={(this.props.class)?this.props.class:'btn btn-primary'} data-toggle="modal" data-target="#confModal">{this.props.text}</button>
                 <div className="modal fade" id="confModal">
                   <div className="modal-dialog" role="document">
                     <div className="modal-content">
