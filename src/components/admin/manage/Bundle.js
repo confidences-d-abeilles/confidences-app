@@ -108,6 +108,7 @@ export default class Bundle extends Component {
 				present_date: this.state.bundleStart
 			}
 		}, this.refs.notif).then((res) => {
+			this.setState({ bundleStart : '' })
 			this.props.refresh();
 		})
 	}
