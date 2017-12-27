@@ -19,13 +19,13 @@ export default class Jobs extends Component {
 				</div>
 				<div className="row mt-4 justify-content-center align-items-center">
 					<div className="col-lg-9 col-md-10 col-sm-12">
-						<h1 className="text-center my-4">Travailler avec nous ?</h1>
+						<h1 className="text-center my-4">Travailler avec nous ? ☻</h1>
 						<p>
 							Confidences d’Abeilles c’est précisément <strong>5.504.152 collaborateurs</strong> ; collaboratrices même
 							à 98% ! Oui, vous avez bien lu ! Et au niveau du management cela se passe comment ? En
 							fait, il faut savoir qu’une ruche c’est <strong>50 000 ouvrières</strong> qui observent à la lettre la discipline
 							dictée par leur reine.<br />
-							Ceci explique donc cela<br /><br />
+							Ceci explique donc cela ☻<br /><br />
 							Trève de plaisanterie. Vous êtes en freelance, vous cherchez un stage, vous avez des
 							talents à revendre ? Rejoindre une jeune équipe, dynamique et passionnée par son travail
 							vous tente ? Alors n’hésitez plus, nous avons des challenges et des missions à la hauteur
