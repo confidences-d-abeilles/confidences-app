@@ -94,7 +94,7 @@ export default class CompanyPresentation extends Component {
 								Une ruche au nom et aux couleurs de l’entreprise
 							</li>
 							<li>
-								Une <strong>page dédiée à votre entreprise</strong> détaillant votre démarche environnementale, sur laquelle des photos de sa ruche ainsi que des actualités sont régulièrement postées
+								Une <strong>page, dédiée à l'entreprise</strong>, détaille sa démarche environnementale ; des photos de sa ruche ainsi que des actualités y sont régulièrement postées
 							</li>
 							<li>
 								Une visibilité digitale supplémentaire
