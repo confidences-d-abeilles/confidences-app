@@ -95,7 +95,7 @@ export default class AdminManageUsers extends Component {
 											<div className="card-block">
 												<h3 className="card-title">Informations generales</h3>
 												<p className="card-text">
-													<strong>Date d'inscription :</strong> {moment(this.state.selectedUser.createdAt).format("DD/MM/YYYY")}<br />
+													<strong>Date d'inscription :</strong> {moment(this.state.selectedUser.createdAt).format("DD/MM/YYYY HH:mm:ss")}<br />
 													<strong>Nom et prenom :</strong> {this.state.selectedUser.firstname} {this.state.selectedUser.name}<br />
 													{(this.state.selectedUser.company_name)?<span><strong>Nom de la societe :</strong> {this.state.selectedUser.company_name}<br /></span>:null}
 													<strong>Adresse email :</strong> {this.state.selectedUser.email}<br />

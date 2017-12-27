@@ -22,7 +22,7 @@ export default class Team extends Component {
 					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
 						<img src={Gaetan} alt="Gaetan" className="w-50 rounded-circle"/>
 						<h3 className="text-center mt-4">GAËTAN EKSZTEROWICZ</h3>
-						<h4 className="text-center mb-4"><small>CEO & CO-FOUNDER</small></h4>
+						<h4 className="text-center mb-4"><small>CO-FOUNDER</small></h4>
 						<p className="text-center">
 							<a href="https://www.facebook.com/popowych" target="_blank" rel="noopener noreferrer"><FontAwesome name='facebook-official' size="2x" /></a>&nbsp;&nbsp;&nbsp;
 							<a href="https://twitter.com/GaetanEksz" target="_blank" rel="noopener noreferrer"><FontAwesome name='twitter' size="2x" /></a>&nbsp;&nbsp;&nbsp;
@@ -32,24 +32,20 @@ export default class Team extends Component {
 						<p className="text-justify">
 							Gaëtan est en dernière année d’étude à l’Ecole des Mines. Une école d’ingénieur généraliste dans laquelle il est rentré à la suite d’une classe préparatoire en Physique-Chimie. Apiculteur depuis l’âge de 14 ans, il a co-fondé Confidences d’Abeilles en 2015. En tant que président, il a développé la marque et son image en s’occupant entre autres de la communication, du branding et du design. Il est par ailleurs responsable de la production, de la qualité, de la commercialisation et des partenariats de plus en plus nombreux.<br />Passionné d’apiculture, il rédige les articles de vulgarisation du blog et continue de superviser l’association d’apiculture qu’il a fondé sur son campus étudiant.<br />Le projet de parrainage de ruches est pour lui un premier pas. Un premier pas vers la création d’une communauté sociale apicole de personnes averties ; amateurs, professionnels, parrains œuvrant ensemble pour changer la donne. Des synergies avec d’autres acteurs sont déjà en place.
 						</p>
-						<blockquote className="blockquote">
-							<p className="mb-0 text-justify">
-								« Savoir gérer une ou plusieurs ruches n’est pas aussi compliqué qu’il y paraît et j’aimerais susciter l’envie chez les membres [de l’association] d’acquérir leurs propres ruches ; que ce soit pour le plaisir et le luxe de déguster le meilleur miel qui soit mais aussi pour préserver les populations d’abeilles. »
-							</p>
-						</blockquote>
 					</div>
 					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
 						<img src={Nico} alt="Nicolas" className="w-50 rounded-circle"/>
 						<h3 className="text-center mt-4">NICOLAS EKSZTEROWICZ</h3>
-						<h4 className="text-center mb-4"><small>DIRECTOR & CO-FOUNDER</small></h4>
+						<h4 className="text-center mb-4"><small>CO-FOUNDER</small></h4>
 						<p className="text-center">
 							<a href="https://www.facebook.com/nicolas.ekszterowicz" target="_blank" rel="noopener noreferrer"><FontAwesome name='facebook-official' size="2x" /></a>&nbsp;&nbsp;&nbsp;
 							<a href="mailto:nicolas@confidencesdabeilles.fr"><FontAwesome name='envelope-o' size="2x" /></a>&nbsp;&nbsp;&nbsp;
 							<a href="https://www.linkedin.com/in/nicolas-ekszterowicz-113271a8/" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
 						</p>
 						<p className="text-justify">
-							Nicolas est étudiant à l’ESISAR, une école d’ingénieur des systèmes intelligents et communicants faisant partie du groupe INP de Grenoble ; « grand admissible » à la suite de son cursus à l’IUT d’Annecy en GE2I, c’est lui qui est aujourd’hui en charge du développement des interfaces sur le web, du codage, de la programmation et du design. Il travaille actuellement à la modernisation et l’automatisation de la chaine de production.
-							Ce statut ne l’empêche en rien de participer à la bonne conduite du rucher, aux récoltes et à la commercialisation.
+							Nicolas Ekszterowicz est en dernière année d’étude à l’ESISAR et sera diplômé ingénieur des systèmes intelligents et communicants en juin prochain.<br />
+							ll est entré dans cette école du groupe INP de Grenoble à la suite d'un cursus à l’IUT d'Annecy en GE2I. C’est notamment lui qui est en charge du développement du site internet de Confidences d’Abeilles et de l'amélioration de l'expérience client. Il travaille aussi sur un projet de modernisation et d’automatisation de la chaîne de production.<br />
+							Enfin, il participe aussi à la bonne conduite du rucher, aux récoltes et à la commercialisation des produits Confidences d’Abeilles.
 						</p>
 					</div>
 				</div>
@@ -64,7 +60,7 @@ export default class Team extends Component {
 							<a href="https://fr.linkedin.com/in/cl%C3%A9ment-champouillon-335668143" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
 						</p>
 						<p className="text-justify">
-							Clément est étudiant à l'école 42, école de developpement informatique parisienne.
+							Clément est étudiant à l'école 42 (école de développement informatique parisienne) mais également développeur freelance et apiculteur amateur. Il travaille très régulièrement pour des professionnels indépendants ou des jeunes entreprises à la réalisation de leurs sites internet et applications mobiles. Il réalise entre autre la plateforme de parrainage sur laquelle vous naviguez à l'initiatice de Confidences d’Abeilles.
 						</p>
 					</div>
 					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
@@ -73,7 +69,7 @@ export default class Team extends Component {
 						<h4 className="text-center mb-4"><small>STAGIAIRE</small></h4>
 						<p className="text-justify">
 							Vous cherchez un stage ? Vous voulez rejoindre une équipe jeune, dynamique, passionnée par son travail et qui adore le challenge ? Alors vous êtes au bon endroit 😊<br /><br />
-						Pour accompagner notre développement nous avons constamment besoin de nouveaux talents, de personnes passionnées. Nous cherchons donc des stagiaires en <strong>Communication</strong>, <strong>Commercialisation</strong>, <strong>Community Management</strong> et <strong>Business Development</strong>.
+						Pour accompagner notre développement nous avons constamment besoin de nouveaux talents, de personnes passionnées. Nous cherchons donc des stagiaires pour ces différents postes : <strong>Web Designer</strong>, <strong>ReactJS / NodeJS Developer</strong>, <strong>UI/UX Designer</strong>, <strong>Community Manager</strong>, <strong>Communication</strong>, <strong>Marketing et Business Developer</strong>.
 							<br /><br />
 							Vous pensez avoir le profil type ? C’est parfait, notre aventure prometteuse ne fait que débuter. Envolez vous donc avec nous !
 						</p>
