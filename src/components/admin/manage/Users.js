@@ -67,6 +67,13 @@ export default class AdminManageUsers extends Component {
 		}
 	}
 
+	sendCadeauMail() {
+		request({
+			url: '/mail/cadeau/user/'+this.state.selectedUser.id,
+			method: 'get'
+		}, this.refs.notif)
+	}
+
 	render () {
 		return (
 			<div className="container-fluid">
@@ -139,6 +146,16 @@ export default class AdminManageUsers extends Component {
 												</div>
 											</div>
 										}
+										<div className="col-lg-6 col-md-12 my-2">
+											<div className="card">
+												<div className="card-block">
+													<h3 className="card-title">Envoi de mails</h3>
+													<p className="card-text">
+														<button className="btn btn-sm btn-info" onClick={this.sendCadeauMail.bind(this)}>Envoyer le mail de cadeau</button>
+													</p>
+												</div>
+											</div>
+										</div>
 							</div>
 						</div>
 						:<div className="col-lg-9 col-md-12 col-sm-12">
