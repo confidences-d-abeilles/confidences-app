@@ -60,7 +60,7 @@ export default class Team extends Component {
 							<a href="https://fr.linkedin.com/in/cl%C3%A9ment-champouillon-335668143" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
 						</p>
 						<p className="text-justify">
-							Clément est étudiant à l'école 42 (école de développement informatique parisienne) mais également développeur freelance et apiculteur amateur. Il travaille très régulièrement pour des professionnels indépendants ou des jeunes entreprises à la réalisation de leurs sites internet et applications mobiles. Il réalise entre autre la plateforme de parrainage sur laquelle vous naviguez à l'initiatice de Confidences d’Abeilles.
+							Clément est étudiant à l'école 42 (école de développement informatique parisienne) mais également développeur freelance et apiculteur amateur. Il travaille très régulièrement pour des professionnels indépendants ou des jeunes entreprises à la réalisation de leurs sites internet et applications mobiles. Il réalise entre autres la plateforme de parrainage sur laquelle vous naviguez à l'initiative de Confidences d’Abeilles.
 						</p>
 					</div>
 					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
@@ -69,12 +69,12 @@ export default class Team extends Component {
 						<h4 className="text-center mb-4"><small>STAGIAIRE</small></h4>
 						<p className="text-justify">
 							Vous cherchez un stage ? Vous voulez rejoindre une équipe jeune, dynamique, passionnée par son travail et qui adore le challenge ? Alors vous êtes au bon endroit 😊<br /><br />
-						Pour accompagner notre développement nous avons constamment besoin de nouveaux talents, de personnes passionnées. Nous cherchons donc des stagiaires pour ces différents postes : <strong>Web Designer</strong>, <strong>ReactJS / NodeJS Developer</strong>, <strong>UI/UX Designer</strong>, <strong>Community Manager</strong>, <strong>Communication</strong>, <strong>Marketing et Business Developer</strong>.
+							Pour accompagner notre développement nous avons constamment besoin de nouveaux talents, de personnes passionnées. Nous cherchons donc des stagiaires pour ces différents postes : <strong>Web Designer</strong>, <strong>ReactJS / NodeJS Developer</strong>, <strong>UI/UX Designer</strong>, <strong>Community Manager</strong>, <strong>Communication</strong>, <strong>Marketing et Business Developer</strong>.
 							<br /><br />
-							Vous pensez avoir le profil type ? C’est parfait, notre aventure prometteuse ne fait que débuter. Envolez vous donc avec nous !
+							Vous pensez avoir le profil type ? C’est parfait, notre aventure prometteuse ne fait que débuter. Envolez-vous donc avec nous !
 						</p>
 						<p className="text-center">
-								<Link className="btn btn-secondary" to="/apply">Postulez</Link>
+								<Link className="btn btn-secondary" to="/apply">Postuler</Link>
 						</p>
 						<p className="text-justify">
 							Aucune offre ne vous correspond ? Confidences d’Abeilles est toujours à la recherche de personnes talentueuses, n’hésitez pas à postuler !

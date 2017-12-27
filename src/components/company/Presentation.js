@@ -15,7 +15,7 @@ export default class CompanyPresentation extends Component {
 		super(props)
 		ReactGA.pageview(this.props.location.pathname);
 	}
-	
+
 	render () {
 		return (
 			<div className="container py-4">
@@ -128,10 +128,10 @@ export default class CompanyPresentation extends Component {
 				</div>
 				<div className="row justify-content-around align-items-center">
 					<div className="col-lg-5 col-md-6 col-sm-12 col-xs-12 my-4 text-center">
-						<Link to="/signup/company" className="btn btn-primary">Parrainer une ruche</Link>
+						<Link to="/signup/company" className="btn btn-secondary">Parrainer une ruche</Link>
 					</div>
 					<div className="col-lg-5 col-md-6 col-sm-12 col-xs-12 my-4 text-center">
-						<Link to="/company/more"className="btn btn-primary">En savoir plus</Link>
+						<Link to="/company/more"className="btn btn-secondary">En savoir plus</Link>
 					</div>
 				</div>
 			</div>

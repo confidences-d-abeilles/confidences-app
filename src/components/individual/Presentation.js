@@ -89,10 +89,10 @@ export default class IndividualPresentation extends Component {
 							<li>
 								Une page dédiée à la ruche dans laquelle vos abeilles évoluent, des photos de la ruche et des abeilles ainsi que des actualités seront régulièrement postées</li>
 							<li>
-								Un certain nombre de <strong>pots de miel personnalisés avec votre nom</strong> ou celui de la personne à qui est offert le parrainage : un cadeau unique qui ravira votre famille et vos amis.
+								Entre 8 et 40 <strong>pots de miel personnalisés avec votre nom</strong> ou celui de la personne à qui est offert le parrainage : un cadeau unique qui ravira votre famille et vos amis.
 							</li>
 							<li>
-								La possibilité de <strong>prendre part à la visite de votre rucher</strong> équipé(e) de la fameuse tenue de protection de l'apiculteur
+								La possibilité de <strong>rendre visite à vos abeilles</strong> équipé(e) de la fameuse tenue de protection de l'apiculteur
 							</li>
 						</ul>
 					</div>

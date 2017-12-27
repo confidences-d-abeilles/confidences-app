@@ -81,31 +81,51 @@ export default class Apply extends Component {
                                 <input type="text" value={this.state.linkedin} onChange={handleChange.bind(this)} placeholder="Lien vers votre compte LinkedIn" name="linkedin" className="form-control"/>
                             </div>
                             <div className="form-group">
-        						<label>Joindre votre CV</label>
+        						<label>Joignez votre CV</label>
         						<label htmlFor="cv" className={(this.state.cv)?'active-upload':'upload'} style={{ position: 'relative' }}>
         							<input type="file" className="form-control" id="cv" onChange={() => { this.setState({ cv : document.getElementById("cv").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-        							Glisser votre CV ici ou cliquez pour en séléctionner un parmi vos fichers<br/>
+        							Glissez votre CV ici ou cliquez pour en séléctionner un parmi vos fichers<br/>
                                 {(this.state.cv)?'Selectionné : '+this.state.cv:"Aucun fichier séléctionné"}
         						</label>
         					</div>
                             <fieldset className="form-group">
-                                <legend>Type d'embauche</legend>
+                                <legend>Jobs</legend>
                                 <div className="form-check">
                                     <label className="form-check-label">
-                                        <input type="radio" name="type" className="form-check-input" onChange={handleChange.bind(this)} checked={(this.state.type === '1')?true:false} value="1" /> Stage en communication / commercialisation
+                                        <input type="radio" name="type" className="form-check-input" onChange={handleChange.bind(this)} checked={(this.state.type === '1')?true:false} value="1" /> ReactJS / NodeJS Developer [Stage 6 mois]
                                         </label>
                                     </div>
                                     <div className="form-check">
                                         <label className="form-check-label">
-                                            <input type="radio" name="type" className="form-check-input" onChange={handleChange.bind(this)} checked={(this.state.type === '2')?true:false} value="2" /> Stage en community management / business development
-                                            </label>
-                                        </div>
-                                        <div className="form-check">
-                                            <label className="form-check-label">
-                                                <input type="radio" name="type" className="form-check-input" onChange={handleChange.bind(this)} checked={(this.state.type === '3')?true:false} value="3" /> Candidature spontanée
-                                                </label>
-                                            </div>
-                                        </fieldset>
+                                            <input type="radio" name="type" className="form-check-input" onChange={handleChange.bind(this)} checked={(this.state.type === '2')?true:false} value="2" /> UI/UX Designer [Stage - 6 mois]
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <label className="form-check-label">
+                                            <input type="radio" name="type" className="form-check-input" onChange={handleChange.bind(this)} checked={(this.state.type === '3')?true:false} value="3" /> Community / Event Manager [Stage - 4 à 6 mois]
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <label className="form-check-label">
+                                            <input type="radio" name="type" className="form-check-input" onChange={handleChange.bind(this)} checked={(this.state.type === '4')?true:false} value="4" /> Communication / Marketing [Stage - 4 à 6 mois]
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <label className="form-check-label">
+                                            <input type="radio" name="type" className="form-check-input" onChange={handleChange.bind(this)} checked={(this.state.type === '5')?true:false} value="5" /> Business Developer [Stage - 4 à 6 mois]
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <label className="form-check-label">
+                                            <input type="radio" name="type" className="form-check-input" onChange={handleChange.bind(this)} checked={(this.state.type === '6')?true:false} value="6" /> Apicultrice / Apiculteur
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <label className="form-check-label">
+                                            <input type="radio" name="type" className="form-check-input" onChange={handleChange.bind(this)} checked={(this.state.type === '7')?true:false} value="7" /> Candidature spontanée
+                                        </label>
+                                    </div>
+                                </fieldset>
                             <div className="form-group">
                                 <textarea value={this.state.presentation} rows="10" onChange={handleChange.bind(this)} placeholder="C'est à vous. Présentez-vous rapidement et donnez nous envie de vous rappeler ! *" name="presentation" className="form-control"/>
                             </div>
