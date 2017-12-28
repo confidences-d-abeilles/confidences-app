@@ -24,7 +24,10 @@ export default class Home extends Component {
 
 	constructor (props) {
 		super (props)
-		this.state = {}
+		this.state = {
+			users : null,
+			autoPlay : false
+		}
 	}
 
 	componentDidMount() {
@@ -33,7 +36,11 @@ export default class Home extends Component {
 			url : '/user/public',
 			method: 'get'
 		}, this.refs.notif).then((res) => {
-			this.setState({ users : res });
+			this.setState({
+				users : res.reverse(),
+				autoPlay: true
+			});
+			setInterval(() => { this.refs.slider.slickNext() }, 2500);
 		})
 	}
 
@@ -57,7 +64,7 @@ export default class Home extends Component {
 						</p>
 					</div>
 					<div className="col-lg-6 col-md-10 hidden-sm-down my-4">
-						<div id="carouselHome" className="carousel slide" data-interval="3000" data-ride="carousel">
+						<div id="carouselHome" className="carousel slide" data-interval="2500" data-ride="carousel">
 							<ol className="carousel-indicators">
 								<li data-target="#carouselHome" data-slide-to="0" className="active"></li>
 								<li data-target="#carouselHome" data-slide-to="1"></li>
@@ -107,16 +114,13 @@ export default class Home extends Component {
 					<div className="col">
 						<h2 className="text-center my-4">Ils parrainent déjà des ruches</h2>
 						{(this.state.users)?
-							<Slider {...{
-									dots: true,
-									infinite: false,
-									speed: 500,
+							<Slider ref="slider" {...{
+									dots: false,
+									infinite: true,
+									speed: 1000,
 									slidesToShow: 4,
-									slidesToScroll: 3,
-									autoPlay: true,
+									slidesToScroll: 4,
 									arrows: true,
-									prevArrow: <FontAwesome name='arrow-circle-left'/>,
-									nextArrow: <FontAwesome name='arrow-circle-right'/>
 								}}>
 								{this.state.users.map((user) => {
 									if (user.user_type === 1 || user.user_type  === 2) {
@@ -141,7 +145,7 @@ export default class Home extends Component {
 									}
 								})}
 							</Slider>
-						:<Loading />}
+							:<Loading />}
 					</div>
 				</div>
 				<div className="row justify-content-center">
