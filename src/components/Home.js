@@ -26,7 +26,6 @@ export default class Home extends Component {
 		super (props)
 		this.state = {
 			users : null,
-			autoPlay : false
 		}
 	}
 
@@ -37,11 +36,14 @@ export default class Home extends Component {
 			method: 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				users : res.reverse(),
-				autoPlay: true
+				users : res.reverse()
 			});
-			setInterval(() => { this.refs.slider.slickNext() }, 2500);
+			this.autoplay = setInterval(() => { this.refs.slider.slickNext() }, 5000);
 		})
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.autoplay);
 	}
 
     render () {
