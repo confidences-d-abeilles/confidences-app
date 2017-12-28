@@ -5,19 +5,23 @@ import { Redirect } from 'react-router-dom';
 import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
-
+import Loading from '../utils/Loading'
 export default class IndividualWish extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			bees: '10000'
+			bees: '10000',
+			loading: false
 		}
 		ReactGA.pageview(this.props.location.pathname);
 	}
 
 	selectBundle(e) {
 		e.preventDefault();
+		this.setState({
+			loading: true
+		})
 		request({
 			url : '/bundle',
 			method : 'post',
@@ -62,7 +66,9 @@ export default class IndividualWish extends Component {
 					</div>
 				</div>
 				<div className="row justify-content-center">
-					<form className="col-6">
+					{(this.state.loading)?
+						<Loading />
+						:<form className="col-6">
 						<p className="text-center lead my-4">
 							Je décide de parrainer
 						</p>
@@ -86,7 +92,7 @@ export default class IndividualWish extends Component {
 						<p className="text-center">
 						<button onClick={this.selectBundle.bind(this)} className="btn btn-primary">Continuer</button>
 						</p>
-					</form>
+					</form>}
 				</div>
 			</div>
         );
