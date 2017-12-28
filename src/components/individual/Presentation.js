@@ -31,7 +31,8 @@ export default class IndividualPresentation extends Component {
 							simple : complétez le formulaire d’inscription,
 							choisissez le nombre d’abeilles et voilà !
 						</p>
-						<Link to="/signup/individual" className="btn btn-secondary my-2">Parrainer mes permières abeilles</Link>
+						<Link to="/signup/individual" className="btn btn-secondary m-2">Parrainer mes permières abeilles</Link>
+						<Link to="/present" className="btn btn-secondary m-2">Offrir un parrainage</Link>
 					</div>
 					<div className="col-lg-6 col-md-10 hidden-sm-down my-4">
 						<div id="carouselHome" className="carousel slide" data-interval="3000" data-ride="carousel">

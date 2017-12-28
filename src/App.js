@@ -57,6 +57,7 @@ class App extends Component {
 							<Route path="/contributor" component={Wrapper} />
 							<Route path="/individual" component={Wrapper} />
 							<Route path="/mentions_legales" component={Wrapper} />
+							<Route path="/present" component={Wrapper} />
 							<Route path="/faq" component={Wrapper} />
 							<Route path="/cgv" component={Wrapper} />
 							<Route path="/contact" component={Wrapper} />
