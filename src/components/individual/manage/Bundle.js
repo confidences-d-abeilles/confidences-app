@@ -94,15 +94,20 @@ export default class Bundle extends Component {
                         {(this.state.user)?this.checkInfos():''}
                     </div>
                     <div className="col-lg-6 my-4">
+                        <h3 className="text-center"><small>Détails</small></h3>
+                        Offre : Parrainage de {this.state.user.bundles[0].bees} abeilles<br />
+                        Date de début : {moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}
+                    </div>
+                    <div className="col-lg-6 my-4">
                         {this.state.user.bundles[0].present && !this.state.edit_present &&
-                        <div>
-                            <h3 className="text-center"><small>J'ai choisi d'offrir mon parrainage à</small></h3>
-                            <strong>{this.state.present_firstname} {this.state.present_name}</strong><br />
-                            dont l'adresse mail est <strong>{this.state.present_email}</strong><br />
+                            <div>
+                                <h3 className="text-center"><small>J'ai choisi d'offrir mon parrainage à</small></h3>
+                                <strong>{this.state.present_firstname} {this.state.present_name}</strong><br />
+                                dont l'adresse mail est <strong>{this.state.present_email}</strong><br />
                             Il recevra les premières informations sur son cadeau le <strong>{moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}</strong><br /><br />
-                            <button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ edit_present : true })}}><FontAwesome name="pencil" /> Modifier ces informations</button>
-                        </div>}
-                        {this.state.user.bundles[0].present && this.state.edit_present &&
+                        <button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ edit_present : true })}}><FontAwesome name="pencil" /> Modifier ces informations</button>
+                    </div>}
+                    {this.state.user.bundles[0].present && this.state.edit_present &&
                         <form onSubmit={this.savePresent.bind(this)}>
                             <h3 className="text-center"><small>J'ai choisi d'offrir mon parrainage à</small></h3>
                             <div className="form-group">
@@ -121,11 +126,6 @@ export default class Bundle extends Component {
                                 <button className="btn btn-primary">Enregistrer</button>
                             </div>
                         </form>}
-                    </div>
-                    <div className="col-lg-6 my-4">
-                        <h3 className="text-center"><small>Détails</small></h3>
-                        Offre : Parrainage de {this.state.user.bundles[0].bees} abeilles<br />
-                        Date de début : {moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}
                     </div>
                 </div>:<Loading />}
             </div>

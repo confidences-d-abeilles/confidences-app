@@ -116,3 +116,8 @@ footer li
 {
 	color: black;
 }
+
+.model-etiq {
+	outline: solid 3px green;
+	outline-offset: 3px;
+}
