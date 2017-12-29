@@ -69,16 +69,16 @@ export default class Custom extends Component {
             <div className="row">
                 <NotificationSystem ref="notif" />
                 <div className="col-lg-12 text-center">
-                    <h2 className="text-center my-5">Choix des étiquettes</h2>
+                    <h2 className="text-center my-5">Mon étiquette personnalisée</h2>
                     {this.state.step === 0 &&
-                        ((!this.state.label)?
+                        ((this.state.label !== '')?
                         <div>
                             <p>Nous n'avons pas encore enregistré d'étiquette personnalisée pour votre compte. Et si nous le faisions ensemble dès maintenant ?</p>
                                 <button className="btn btn-secondary" onClick={() => { this.setState({ step : 1 }); }}>Commencer la personnalisation <FontAwesome name="magic" /></button>
                             </div>
                             :
                             <div>
-                                <p>Voici le visuel d'étiquette que vous aviez personnalisé la dernière fois. Si celui-ci ne vous convient plus, vous pouvez tout à fait décider d'en changer en cliquant sur "Recommencer la personnalisation" en dessous de celle-ci.</p>
+                                <p>VVisuel actuel de votre étiquette. Pour le modifier veuillez cliquer sur "Recommencer la personnalisation" en dessous de celui-ci.</p>
                                 <object data={config.cdn_url+'/label/'+this.state.userId+'.pdf#zoom=200'} type="application/pdf" style={{ width: '100%' }} height="400"></object>
                                 <button className="btn btn-secondary" onClick={() => { this.setState({ step : 1 }); }}>Recommencer la personnalisation <FontAwesome name="magic" /></button>
                             </div>)
@@ -86,7 +86,7 @@ export default class Custom extends Component {
                     {this.state.step  === 1 &&
                         <div className="row">
                             <div className="col-lg-12">
-                                <p>Choisissez maintenant le visuel d'étiquette qui vous plaît le plus en cliquant dessus. Les données inscrites dessus ne sont que des exemples, nous les personnaliserons plus tard.</p>
+                                <p>Choisissez un modèle en cliquant sur l'un des 2 exemples. Vous serez amené à saisir vos informations à l’étape suivante.</p>
                             </div>
                             <div className="col-lg-6">
                                 <img className={(this.state.model === 1)?'img-fluid model-etiq':"img-fluid"} src={Version1} onClick={() => { this.setState({ model : 1 }); }} alt="Modèle 1"/>
@@ -102,7 +102,7 @@ export default class Custom extends Component {
                     {this.state.step === 2 &&
                         <div className="row justify-content-center">
                             <div className="col-lg-12">
-                                <p>Il est temps de nous indiquer la mention que vous voulez indiquer au centre de vos étiquettes, par défaut, il s'agit de votre nom et prénom. La limite est de x caractères.</p>
+                                <p>Veuillez saisir le nom ou la mention qui doit figurer sur votre étiquette. Par défaut il s'agit de votre prénom nom. Vous êtes limité à 38 caractères.</p>
                             </div>
                             <div className="col-lg-6">
                                 <input type="text" className="form-control" name="mention" placeholder="Mention au centre de l'étiquette..." value={this.state.mention} onChange={handleChange.bind(this)} />
@@ -122,8 +122,8 @@ export default class Custom extends Component {
                                     </div>
                                 :
                                 <div>
-                                    <h3>Voici un rendu de vos étiquettes personalisée !</h3>
-                                    <p>Les données entre parentèses sont provisoires et seront remplacées lorsque nous en sauront plus ;)</p>
+                                    <h3>Voici le rendu de votre étiquette personnalisée !</h3>
+                                    <p>Les mentions entre parenthèses sont provisoires et seront remplacées lorsque les informations seront disponibles.</p>
                                     <object data={config.cdn_url+'/label/'+this.state.userId+'.pdf#zoom=200'} type="application/pdf" style={{ width: '100%' }} height="400"></object>
                                     <button className="btn btn-secondary" onClick={() => { this.setState({ step : 1 }); }}>Recommencer la personnalisation <FontAwesome name="magic" /></button>
                                 </div>}
