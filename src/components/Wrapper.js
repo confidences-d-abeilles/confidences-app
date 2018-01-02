@@ -68,6 +68,7 @@ import Forgot from './Forgot';
 import Reset from './Reset';
 import Apply from './Apply';
 import Present from './Present';
+import Confirm from './Confirm';
 
 export default class Wrapper extends Component {
 
@@ -132,6 +133,7 @@ export default class Wrapper extends Component {
 							<Route exact path="/tarifs" component={Tarifs} />
 							<Route exact path="/hives" component={Hives} />
 							<Route exact path="/hive/:id" component={Hive} />
+							<Route exact path="/confirm/:token" component={Confirm} />
 						</Switch>
 					</div>
 				</div>
