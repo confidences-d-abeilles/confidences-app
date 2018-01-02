@@ -60,6 +60,8 @@ import About from './About';
 import Team from './Team';
 import Contact from './Contact';
 import Jobs from './Jobs';
+import JobsReact from './JobsReact';
+import JobsDesigner from './JobsDesigner';
 import Faq from './Faq';
 import Tarifs from './Tarifs';
 import Hives from './Hives';
@@ -127,6 +129,8 @@ export default class Wrapper extends Component {
 							<Route exact path="/contact" component={Contact} />
 							<Route exact path="/apply" component={Apply} />
 							<Route exact path="/jobs" component={Jobs} />
+							<Route exact path="/jobs/reactjs" component={JobsReact} />
+							<Route exact path="/jobs/designer" component={JobsDesigner} />
 							<Route exact path="/cgv" component={Cgv} />
 							<Route exact path="/mentions_legales" component={Mentions} />
 							<Route exact path="/tarifs" component={Tarifs} />
