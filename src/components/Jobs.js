@@ -25,20 +25,21 @@ export default class Jobs extends Component {
 								style={{ height: '1em' }} />
 						</h1>
 						<p>
-							Chez Confidences d’Abeilles il y a précisément 5.504.152 collaborateurs ;
-							<strong>des collaboratrices à 98%</strong> même ! Oui, vous avez bien lu ! Et au niveau du
-							management cela se passe comment ? En fait, il faut savoir qu’une ruche
-							c’est <strong>50 000 ouvrières</strong> qui travaillent de concert pour servir leur reine mère.<br/>
-							<span className="align-middle">Ceci explique donc cela&nbsp;</span>
+							Chez Confidences d’Abeilles il y a précisément 5.504.152
+							collaborateurs ; <strong>des collaboratrices à 98%</strong> même !
+							Oui, vous avez bien lu ! Et au niveau du management cela se passe
+							comment ? En fait, il faut savoir qu’une ruche c’est <strong>50 000 ouvrières</strong> qui
+							travaillent de concert pour servir leur reine mère.<br/>
+							<span className="align-middle">Ceci explique donc cela&nbsp; </span>
 							<img src={require('../assets/img/smiley/nerd.svg')} alt="smiley nerd"
 								style={{ height: '1em' }} />
 						</p>
 						<p>
 							Trêve de plaisanterie. Vous êtes en freelance, vous cherchez un stage, vous avez
-							des talents à revendre ? Rejoindre <strong>une jeune équipe, dynamique et passionnée</strong>
-							par son travail vous tente ? Alors n’hésitez plus, nous avons des challenges et des
-							missions à la hauteur de <strong>vos ambitions</strong> ! Nous sommes comme vous, jeunes et
-							entreprenants, nous croyons au travail passionné et à la réussite !
+							des talents à revendre ? Rejoindre <strong>une jeune équipe, dynamique et
+							passionnée</strong> par son travail vous tente ? Alors n’hésitez plus, nous avons
+							des challenges et des missions à la hauteur de <strong>vos ambitions</strong> !
+							Nous sommes comme vous, jeunes et entreprenants, nous croyons au travail passionné et à la réussite !
 						</p>
 						<p>
 							Pour accompagner notre développement ou celui de nos partenaires nous avons
@@ -46,11 +47,10 @@ export default class Jobs extends Component {
 							pas que des apiculteurs, bien au contraire !
 						</p>
 						<p>
-							Que ce soit en <strong>Web Development</strong> (FRONT/BACK), <strong>Web Design</strong> (UI/UX),
-							<strong>Business Development</strong>, <strong>Communication | Marketing</strong>,
-							<strong>Community | Event Management</strong> ou encore en
-							<strong>Systèmes embarqués | communicants</strong> nous sommes
-							intéressés. Retrouvez nos offres de stage de 4 à 6 mois.
+							Que ce soit en <strong>Web Development</strong> (FRONT/BACK), <strong>Web
+							Design</strong> (UI/UX), <strong>Business Development</strong>, <strong>Communication |
+							Marketing</strong>, <strong>Community | Event Management</strong> ou encore en <strong>Systèmes
+							embarqués | communicants</strong> nous sommes intéressés. Retrouvez nos offres de stage de 4 à 6 mois.
 						</p>
 						<p className="text-center">
 							<Link className="btn btn-secondary" to="/jobs/reactjs">Stage ReactJS / NodeJS developer</Link>
