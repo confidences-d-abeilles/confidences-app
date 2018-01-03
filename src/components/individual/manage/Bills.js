@@ -5,6 +5,8 @@ import FontAwesome from 'react-fontawesome'
 import Loading from '../../utils/Loading'
 import moment from 'moment';
 import ReactGA from 'react-ga';
+import Meta from '../../utils/Meta'
+
 const config = require('../../../config.js');
 
 export default class Bills extends Component {
@@ -31,6 +33,7 @@ export default class Bills extends Component {
     render() {
         return (
             <div className="row">
+                <Meta title="Mes factures"/>
                 <div className="col-lg-12">
                     <h2 className="text-center my-5">Mes factures</h2>
                     {(this.state.bills)?

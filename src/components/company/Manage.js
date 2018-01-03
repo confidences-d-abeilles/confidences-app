@@ -5,15 +5,14 @@ import CompanyManageInfos from './manage/Infos';
 import CompanyManageMyPage from './manage/MyPage';
 import CompanyManageBills from './manage/Bills'
 import CompanyManageCustomize from './manage/Customize'
-
 import {
 	Route,
 	Link,
 	Redirect
 } from 'react-router-dom';
 import NotificationSystem from 'react-notification-system';
-
 import imgPlaceholder from '../../assets/img/img-placeholder.gif';
+import Meta from '../utils/Meta'
 
 const config = require('../../config.js');
 
@@ -67,6 +66,7 @@ export default class CompanyManage extends Component {
 	render () {
 		return (
 				<div className="container py-4">
+					<Meta title="Mon espace personnel"/>
 					<NotificationSystem ref="notif" />
 					<div className="row">
 						<div className="col-lg-3 col-md-4 col-sm-12">

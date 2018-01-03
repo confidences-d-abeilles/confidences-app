@@ -16,6 +16,7 @@ import Loading from './utils/Loading';
 import FontAwesome from 'react-fontawesome'
 import ReactGA from 'react-ga';
 import { isLoggedIn, getUserType } from '../services/AuthService';
+import Meta from './utils/Meta'
 
 const defaultImg = require("../assets/img/profile.png")
 const config = require('../config.js');
@@ -49,6 +50,7 @@ export default class Home extends Component {
     render () {
         return (
 			<div className="container py-4">
+				<Meta title="Accueil"/>
 				<NotificationSystem ref="notif" />
 				<div className="row align-items-center justify-content-center">
 					<div className="col-lg-6 col-md-10 col-sm-12">

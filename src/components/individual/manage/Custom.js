@@ -7,6 +7,7 @@ import { handleChange } from '../../../services/FormService'
 import request from '../../../services/Net'
 import Loading from '../../utils/Loading'
 import NotificationSystem from 'react-notification-system'
+import Meta from '../../utils/Meta'
 
 const config = require('../../../config.js');
 
@@ -67,6 +68,7 @@ export default class Custom extends Component {
     render () {
         return (
             <div className="row">
+                <Meta title="Mes étiquettes personnalisées"/>
                 <NotificationSystem ref="notif" />
                 <div className="col-lg-12 text-center">
                     <h2 className="text-center my-5">Mon étiquette personnalisée</h2>

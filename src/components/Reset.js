@@ -4,6 +4,7 @@ import NotificationSystem from 'react-notification-system';
 import { handleChange } from '../services/FormService';
 import { Redirect } from 'react-router-dom';
 import ReactGA from 'react-ga';
+import Meta from './utils/Meta'
 
 export default class Reset extends Component {
 
@@ -54,6 +55,7 @@ export default class Reset extends Component {
 	render () {
 		return (
 			<div className="container">
+				<Meta title="Définir un nouveau mot de passe"/>
 				<NotificationSystem ref="notif" />
 				{this.state.redirect && <Redirect to="/login" />}
 				<div className="row justify-content-center">

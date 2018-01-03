@@ -3,6 +3,7 @@ import request from '../services/Net';
 import NotificationSystem from 'react-notification-system'
 import Loading from './utils/Loading'
 import { Redirect } from 'react-router-dom'
+import Meta from './utils/Meta'
 
 export default class Confirm extends Component {
 
@@ -33,6 +34,7 @@ export default class Confirm extends Component {
     render() {
         return (
             <div className="container py-5">
+                <Meta title="Confirmation d'adresse email"/>
                 {this.state.redirect && <Redirect to="/account" />}
                 <NotificationSystem  ref="notif" />
                 {(this.state.loading)?
