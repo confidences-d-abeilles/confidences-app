@@ -53,7 +53,8 @@ export default class IndividualCheckout extends Component {
 				bees: res.bundles[0].bees,
 				price: res.bundles[0].price,
 				bundle_id: res.bundles[0].id,
-				duplicate: true
+				duplicate: true,
+				feedback: res.bundles[0].feedback
 			});
 			request({
 				url: '/bill/bundle/'+res.bundles[0].id,

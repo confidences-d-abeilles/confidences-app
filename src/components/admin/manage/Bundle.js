@@ -259,6 +259,14 @@ export default class Bundle extends Component {
 									</p>
 								</div>
 							</div>
+							<div className="card mt-4">
+								<div className="card-block">
+									<h3 className="card-title">Message</h3>
+									<p className="card-text">
+										{this.state.bundle.feedback}
+									</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				:'Chargement en cours...'}
