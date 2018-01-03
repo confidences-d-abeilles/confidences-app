@@ -76,6 +76,20 @@ export default class AdminManageServer extends Component {
         }, this.refs.notif)
     }
 
+    testScheduleEmail () {
+        request({
+            url: '/server/schedule-test',
+            method: 'get'
+        }, this.refs.notif);
+    }
+
+    cancelEmail() {
+        request({
+            url: '/server/schedule-cancel',
+            method: 'get'
+        }, this.refs.notif);
+    }
+
     render () {
         return (
             <div className="row">
@@ -106,6 +120,12 @@ export default class AdminManageServer extends Component {
                     </div>
                     <div className="form-group text-center">
                         <button className="btn btn-info form-control" onClick={this.testEmailPartCadeau.bind(this)}>Test email cadeau</button>
+                    </div>
+                    <div className="form-group text-center">
+                        <button className="btn btn-info form-control" onClick={this.testScheduleEmail.bind(this)}>Test email programmé</button>
+                    </div>
+                    <div className="form-group text-center">
+                        <button className="btn btn-info form-control" onClick={this.cancelEmail.bind(this)}>Cancel email programmé</button>
                     </div>
                 </div>
             </div>
