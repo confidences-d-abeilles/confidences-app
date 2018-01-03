@@ -6,6 +6,7 @@ import Profile from '../assets/img/profile.png'
 import { Link } from 'react-router-dom'
 import FontAwesome from 'react-fontawesome'
 import ReactGA from 'react-ga';
+import Meta from './utils/Meta'
 
 export default class Team extends Component {
 
@@ -17,6 +18,7 @@ export default class Team extends Component {
 	render () {
 		return (
 			<div className="container">
+				<Meta title="L'équipe"/>
 				<h2 className="text-center my-4">Notre équipe</h2>
 				<div className="row justify-content-around">
 					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">

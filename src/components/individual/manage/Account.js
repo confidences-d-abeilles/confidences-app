@@ -7,6 +7,8 @@ import { handleChange } from '../../../services/FormService'
 import ReactGA from 'react-ga';
 import FontAwesome from 'react-fontawesome'
 import { Redirect } from 'react-router-dom'
+import Meta from '../../utils/Meta'
+
 export default class Account extends Component {
 
     constructor(props) {
@@ -51,6 +53,7 @@ export default class Account extends Component {
     render () {
         return (
             <div className="row">
+                <Meta title="Mon compte"/>
                 {this.state.logout && <Redirect to="/" />}
                 <NotificationSystem ref="notif" />
                 <div className="col-lg-12">
