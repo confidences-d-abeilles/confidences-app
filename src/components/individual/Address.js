@@ -5,6 +5,7 @@ import { handleChange } from '../../services/FormService';
 import { isLoggedIn } from '../../services/AuthService';
 import NotificationSystem from 'react-notification-system';
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
 
 export default class IndividualAddress extends Component {
 	constructor(props) {
@@ -85,6 +86,7 @@ export default class IndividualAddress extends Component {
     render () {
         return (
 			<div className="container py-4">
+				<Meta title="Adresse"/>
 				<NotificationSystem ref="notif" />
 				{(isLoggedIn())?null:<Redirect to="/" />}
 				{(this.state.redirect)?

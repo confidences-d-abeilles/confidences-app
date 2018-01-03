@@ -6,16 +6,19 @@ import second from '../../assets/img/AA/2.jpg';
 import third from '../../assets/img/AA/3.jpg';
 import fourth from '../../assets/img/AA/4.jpg';
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
+
 export default class ContributorPresentation extends Component {
 
 	constructor(props) {
 		super(props)
 		ReactGA.pageview(this.props.location.pathname);
 	}
-	
+
 	render () {
 		return (
 			<div className="container py-4">
+				<Meta title="Partenaire"/>
 				<div className="row align-items-center">
 					<div className="col-lg-6 col-md-10 col-sm-12 text-center">
 						<h2 className="text-left">Chez Confidences

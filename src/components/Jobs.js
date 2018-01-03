@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ReactGA from 'react-ga';
+import hire from '../assets/img/hiring.jpg'
+import Meta from './utils/Meta'
 
 export default class Jobs extends Component {
 
@@ -12,6 +14,12 @@ export default class Jobs extends Component {
 	render () {
 		return (
 			<div className="container">
+				<Meta
+					title="Jobs"
+					ogTitle="Vous cherchez un stage ? C’est parfait, on embauche !"
+					ogDescription="Rejoindre une jeune équipe, dynamique, passionnée et participer au succès de son aventure vous tente ? Formidable, nous cherchons un(e) developer ReactJS, un(e) UX designer, un(e) communication | marketing manager"
+					ogImage={hire}
+					url="https://parrainagederuches.fr/jobs" />
 				<div className="row">
 					<div className="col">
 						<img src={require('../assets/img/jobs.jpg')} alt="Gaetan et Nicolas" className="img-fluid" />

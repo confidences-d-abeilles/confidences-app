@@ -7,6 +7,7 @@ import FontAwesome from 'react-fontawesome'
 import { handleChange } from '../../../services/FormService'
 import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
+import Meta from '../../utils/Meta'
 
 const config = require('../../../config.js');
 
@@ -87,6 +88,7 @@ export default class Bundle extends Component {
         return (
             <div>
                 <NotificationSystem ref="notif" />
+                <Meta title="Mon parrainage"/>
                 {(this.state.user)?
                 <div className="row">
                     <div className="col-lg-12">

@@ -7,14 +7,13 @@ import ContributorManageConditions from './manage/Conditions';
 import ContributorManageContract from './manage/Contract';
 import ContributorManageHelp from './manage/Help';
 import NotificationSystem from 'react-notification-system'
-
 import {
 	Route,
 	Link,
 	Redirect
 } from 'react-router-dom';
-
 import profile from '../../assets/img/profile2.png';
+import Meta from '../utils/Meta'
 
 export default class ContributorManage extends Component {
 
@@ -70,6 +69,7 @@ export default class ContributorManage extends Component {
 	render () {
 		return (
 			<div className="container py-4">
+				<Meta title="Mon espace personnel"/>
 				<NotificationSystem ref="notif" />
 				{(!this.state.loading && this.state.user.contracts.length === 0)?<Redirect to="/contributor/wish" />:''}
 				{(!this.state.loading && !this.state.user.addresses.length)?<Redirect to="/contributor/address" />:''}

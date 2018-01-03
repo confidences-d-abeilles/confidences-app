@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
+import Meta from './utils/Meta'
 
 export default class Home extends Component {
 
@@ -11,6 +12,7 @@ export default class Home extends Component {
     render () {
         return (
 			<div className="container py-4">
+                <Meta title="Conditions Générales de Vente"/>
                 <h1 className="text-center">Conditions Générales de Vente</h1>
                 <h2>Article 1 – Préambule</h2>
                 Nous nous dégageons de toute responsabilité concernant :

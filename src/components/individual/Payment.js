@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import request from '../../services/Net';
@@ -9,6 +8,7 @@ import PayForm from '../utils/PayForm'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
 
 export default class IndividualPayement extends Component {
 
@@ -84,6 +84,7 @@ export default class IndividualPayement extends Component {
     render () {
         return (
 			<div className="container py-4">
+				<Meta title="Paiement"/>
 				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/individual/end" />:null}
 				<div className="row">
