@@ -65,6 +65,8 @@ class App extends Component {
 							<Route path="/jobs" component={Wrapper} />
 							<Route path="/jobs/reactjs" component={Wrapper} />
 							<Route path="/jobs/designer" component={Wrapper} />
+							<Route path="/jobs/marketing" component={Wrapper} />
+							<Route path="/jobs/event" component={Wrapper} />
 							<Route path="/team" component={Wrapper} />
 							<Route path="/about" component={Wrapper} />
 							<Route path="/tarifs" component={Wrapper} />
