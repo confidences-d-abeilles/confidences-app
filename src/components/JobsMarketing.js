@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Meta from './utils/Meta'
 import ReactGA from 'react-ga';
 
 export default class JobsMarketing extends Component {
@@ -12,6 +13,7 @@ export default class JobsMarketing extends Component {
 	render () {
 		return (
 			<div className="container">
+				<Meta title="Offre de stage"/>
 				<div className="row mt-4 justify-content-center align-items-center">
 					<div className="col-lg-9 col-md-10 col-sm-12">
 						<h1 className="text-center my-4">Offre de stage Communication | Marketing - Janvier 2018</h1>

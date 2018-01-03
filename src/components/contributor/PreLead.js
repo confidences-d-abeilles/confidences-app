@@ -1,9 +1,10 @@
-
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { handleChange } from '../../services/FormService';
 import NotificationSystem from 'react-notification-system';
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
+
 export default class ContributorPreLead extends Component {
 
 	constructor(props) {
@@ -25,6 +26,7 @@ export default class ContributorPreLead extends Component {
 	render () {
 		return (
 			<div className="container py-4">
+				<Meta title="Ajouter une démarche"/>
 				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?
 				<Redirect to="/contributor/lead" />

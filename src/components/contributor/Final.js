@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import Meta from '../utils/Meta'
 import ReactGA from 'react-ga';
 
 export default class ContributorFinal extends Component {
@@ -8,10 +9,11 @@ export default class ContributorFinal extends Component {
         super(props)
         ReactGA.pageview(this.props.location.pathname)
     }
-    
+
     render () {
         return (
 			<div className="container py-4">
+                <Meta title="Félicitations"/>
 				<div className="row justify-content-center">
 					<div className="col-9">
 						<h2 className="text-center my-4">Félicitation ! Vous faîtes désormais

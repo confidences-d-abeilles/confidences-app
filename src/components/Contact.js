@@ -6,6 +6,7 @@ import FontAwesome from 'react-fontawesome'
 import { isLoggedIn } from '../services/AuthService'
 import { Link } from 'react-router-dom'
 import ReactGA from 'react-ga';
+import Meta from './utils/Meta'
 
 export default class Contact extends Component {
 
@@ -70,6 +71,7 @@ export default class Contact extends Component {
 	render () {
 		return (
 			<div className="container">
+				<Meta title="Contact"/>
 				<NotificationSystem ref="notif" />
 				<div className="row justify-content-center">
 					<div className="col-lg-6 col-md-10 col-sm-12">

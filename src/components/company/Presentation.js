@@ -8,6 +8,7 @@ import fourth from '../../assets/img/E/4.jpg';
 import fifth from '../../assets/img/E/5.jpg';
 import sixth from '../../assets/img/E/6.jpg';
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
 
 export default class CompanyPresentation extends Component {
 
@@ -19,6 +20,7 @@ export default class CompanyPresentation extends Component {
 	render () {
 		return (
 			<div className="container py-4">
+				<Meta title="Parrainer des ruches"/>
 				<div className="row align-items-center justify-content-center">
 					<div className="col-lg-6 col-md-10 col-sm-12 text-center">
 						<h2 className="text-left">Vos abeilles n’ont

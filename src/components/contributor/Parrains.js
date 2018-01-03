@@ -3,6 +3,8 @@ import NotificationSystem from 'react-notification-system'
 import request from '../../services/Net'
 import { handleChange } from '../../services/FormService'
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
+
 export default class ContributorParrains extends Component {
 
 	constructor(props) {
@@ -25,6 +27,7 @@ export default class ContributorParrains extends Component {
 	render () {
 		return (
 			<div className="container">
+				<Meta title="Les parrains"/>
 				<NotificationSystem ref="notif" />
 				<h2 className="text-center my-2">Liste des entreprises déjà démarchées</h2>
 				<div className="row my-4 justify-content-center">
