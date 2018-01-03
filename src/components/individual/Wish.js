@@ -6,6 +6,8 @@ import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
 import Loading from '../utils/Loading'
+import Meta from '../utils/Meta'
+
 export default class IndividualWish extends Component {
 
 	constructor(props) {
@@ -53,6 +55,7 @@ export default class IndividualWish extends Component {
     render () {
         return (
 			<div className="container py-4">
+				<Meta title="Choix du parrainage"/>
 				<NotificationSystem ref="notif" />
 				{(isLoggedIn())?null:<Redirect to="/" />}
 				{(this.state.redirect)?

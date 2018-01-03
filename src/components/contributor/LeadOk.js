@@ -1,8 +1,9 @@
-
 import React, { Component } from 'react';
 import NotificationSystem from 'react-notification-system';
 import { Link } from 'react-router-dom'
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
+
 export default class ContributorLeadOk extends Component {
 
 	constructor(props) {
@@ -16,6 +17,7 @@ export default class ContributorLeadOk extends Component {
 	render () {
 		return (
 			<div className="container py-4">
+				<Meta title="Ajout validé"/>
 				<NotificationSystem ref="notif" />
 				<div className="row justify-content-center">
 					<div className="col">

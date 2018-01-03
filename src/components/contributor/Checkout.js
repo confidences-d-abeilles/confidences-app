@@ -4,6 +4,8 @@ import request from '../../services/Net';
 import NotificationSystem from 'react-notification-system';
 import { handleTick } from '../../services/FormService';
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
+
 const config = require('../../config.js');
 
 export default class ContributorCheckout extends Component {
@@ -48,6 +50,7 @@ export default class ContributorCheckout extends Component {
     render () {
         return (
 			<div className="container py-4">
+				<Meta title="Signature du contrat"/>
 				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/contributor/final" />:null}
 				<div className="row justify-content-center">

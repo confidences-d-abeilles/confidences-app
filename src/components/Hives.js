@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import Loading from './utils/Loading'
 import { handleChange } from '../services/FormService';
 import ReactGA from 'react-ga';
+import Meta from './utils/Meta'
 
 const config = require('../config.js')
 
@@ -34,6 +35,7 @@ export default class Hives extends Component {
 	render() {
 		return (
 			<div className="container">
+				<Meta title="Les ruches"/>
 				<NotificationSystem ref="notif" />
 				<div className="row justify-content-center">
 					<div className="col-lg-6 col-md-10 col-sm-12">

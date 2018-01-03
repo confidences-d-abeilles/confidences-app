@@ -9,6 +9,7 @@ import fifth from '../../assets/img/P/5.jpg';
 import sixth from '../../assets/img/P/6.jpg';
 import leaflet from '../../assets/leaflet_p.pdf'
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
 
 export default class IndividualPresentation extends Component {
 
@@ -20,6 +21,7 @@ export default class IndividualPresentation extends Component {
 	render () {
 		return (
 			<div className="container py-4">
+				<Meta title="Parrainer des abeilles"/>
 				<div className="row align-items-center justify-content-center">
 					<div className="col-lg-6 col-md-10 col-sm-12 text-center">
 						<h2 className="text-left">Vos abeilles n’ont
