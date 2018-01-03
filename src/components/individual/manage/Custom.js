@@ -78,7 +78,7 @@ export default class Custom extends Component {
                             </div>
                             :
                             <div>
-                                <p>VVisuel actuel de votre étiquette. Pour le modifier veuillez cliquer sur "Recommencer la personnalisation" en dessous de celui-ci.</p>
+                                <p>Visuel actuel de votre étiquette. Pour le modifier veuillez cliquer sur "Recommencer la personnalisation" en dessous de celui-ci.</p>
                                 <object data={config.cdn_url+'/label/'+this.state.userId+'.pdf#zoom=200'} type="application/pdf" style={{ width: '100%' }} height="400"></object>
                                 <button className="btn btn-secondary" onClick={() => { this.setState({ step : 1 }); }}>Recommencer la personnalisation <FontAwesome name="magic" /></button>
                             </div>)
