@@ -33,25 +33,21 @@ export default class JobsReact extends Component {
 							challenger les modèles en place ? Bienvenue chez Confidences d’Abeilles, où vous évoluerez
 							avec une grande autonomie et collaborerez régulièrement avec les fondateurs.
 						</p>
-						<p>
-							Vos missions :
-							<ul>
-								<li>Travailler sur la conception et l’architecture d’une application web</li>
-								<li>Participer à l'intégration des nouvelles fonctionnalités ainsi que du design</li>
-								<li>
-									En fonction de votre profil et votre sensibilité, vous serez amené(e) à
-									travailler plus particulièrement sur le front-end ou sur le back-end de notre application web.
-								</li>
-							</ul>
-						</p>
-						<p>
-							Notre Stack :
-							<ul>
-								<li>ReactJS / Webpack / Babel</li>
-								<li>NodeJS / MongoDB</li>
-								<li>Bootstrap / SCSS</li>
-							</ul>
-						</p>
+						<p>Vos missions :</p>
+						<ul>
+							<li>Travailler sur la conception et l’architecture d’une application web</li>
+							<li>Participer à l'intégration des nouvelles fonctionnalités ainsi que du design</li>
+							<li>
+								En fonction de votre profil et votre sensibilité, vous serez amené(e) à
+								travailler plus particulièrement sur le front-end ou sur le back-end de notre application web.
+							</li>
+						</ul>
+						<p>Notre Stack :</p>
+						<ul>
+							<li>ReactJS / Webpack / Babel</li>
+							<li>NodeJS / MongoDB</li>
+							<li>Bootstrap / SCSS</li>
+						</ul>
 						<h2>Profil recherché</h2>
 						<ul>
 							<li>
@@ -87,7 +83,7 @@ export default class JobsReact extends Component {
 						<p>
 							4-6 mois à partir de Janvier 2018 – stage conventionné<br/>
 							Stage rémunéré selon profil<br/>
-							Télétravail possible<br/>
+							Télétravail possible
 						</p>
 					</div>
 				</div>

@@ -33,17 +33,17 @@ export default class JobsDesigner extends Component {
 							votre savoir et challenger les modèles en place ? Bienvenue chez Confidences
 							d’Abeilles, où sous la responsabilité des fondateurs et du responsable produit
 							vos principales responsabilités seront :
-							<ul>
-								<li>
-									A partir d'un brief concis (ou user story), puis d'un brainstorming
-									avec les utilisateurs finaux, le responsable produit et les fondateurs,
-									vous imaginerez l'expérience utilisateur sous forme de mock-ups. Vous
-									designerez l'interface finale web puis, vous accompagnerez l'équipe de
-									développeurs lors de l'intégration.
-								</li>
-								<li>La maintenance et les modifications graphiques de l’application web.</li>
-							</ul>
 						</p>
+						<ul>
+							<li>
+								A partir d'un brief concis (ou user story), puis d'un brainstorming
+								avec les utilisateurs finaux, le responsable produit et les fondateurs,
+								vous imaginerez l'expérience utilisateur sous forme de mock-ups. Vous
+								designerez l'interface finale web puis, vous accompagnerez l'équipe de
+								développeurs lors de l'intégration.
+							</li>
+							<li>La maintenance et les modifications graphiques de l’application web.</li>
+						</ul>
 						<h2>Profil recherché</h2>
 						<ul>
 							<li>
@@ -82,7 +82,7 @@ export default class JobsDesigner extends Component {
 						<p>
 							4-6 mois à partir de Janvier 2018 – stage conventionné<br/>
 							Stage rémunéré selon profil<br/>
-							Télétravail possible<br/>
+							Télétravail possible
 						</p>
 					</div>
 				</div>
