@@ -4,6 +4,7 @@ import request from '../../services/Net';
 import { Redirect } from 'react-router-dom';
 import NotificationSystem from 'react-notification-system';
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
 
 export default class CompanyWish extends Component {
 
@@ -50,6 +51,7 @@ export default class CompanyWish extends Component {
     render () {
         return (
 			<div className="container py-4">
+				<Meta title="Choix de l'offre"/>
 				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/company/checkout" />:null}
 				<div className="row justify-content-center">

@@ -3,6 +3,7 @@ import request from '../services/Net'
 import NotificationSystem from 'react-notification-system'
 import FontAwesome from 'react-fontawesome'
 import ReactGA from 'react-ga';
+import Meta from './utils/Meta'
 
 export default class Faq extends Component {
 
@@ -28,6 +29,7 @@ export default class Faq extends Component {
 	render () {
 		return (
 			<div className="container">
+				<Meta title="FAQ"/>
 				<div className="row">
 					<NotificationSystem ref="notif" />
 					<div className="col">

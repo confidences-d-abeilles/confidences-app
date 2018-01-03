@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import Banner from '../../assets/img/ent_more.jpg';
 import leaflet from '../../assets/leaflet_e.pdf'
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
 const config = require('../../config.js');
-
 
 export default class More extends Component {
 
@@ -12,10 +12,11 @@ export default class More extends Component {
 		super(props)
 		ReactGA.pageview(this.props.location.pathname);
 	}
-	
+
 	render () {
 		return (
 			<div className="container">
+				<Meta title="En savoir plus"/>
 				<div className="row justify-content-center">
 					<div className="col-lg-12">
 						<img src={Banner} alt="Banner" className="img-fluid"/>

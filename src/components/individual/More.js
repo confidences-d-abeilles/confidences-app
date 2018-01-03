@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Banner from '../../assets/img/part_more.jpg'
 import leaflet from '../../assets/leaflet_p.pdf'
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
 
 export default class More extends Component {
 
@@ -14,6 +15,7 @@ export default class More extends Component {
 	render () {
 		return (
 			<div className="container">
+				<Meta title="En savoir plus"/>
 				<div className="row justify-content-center">
 					<div className="col-lg-12">
 						<img src={Banner} alt="Banner" className="img-fluid"/>

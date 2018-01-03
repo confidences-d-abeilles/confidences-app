@@ -8,6 +8,7 @@ import { logout } from '../../../services/AuthService'
 import Confirm from '../../utils/Confirm'
 import FontAwesome from 'react-fontawesome'
 import ReactGA from 'react-ga';
+import Meta from '../../utils/Meta'
 
 export default class IndividualManageInfos extends Component {
 
@@ -181,6 +182,7 @@ export default class IndividualManageInfos extends Component {
 	render () {
 		return (
 			<div>
+				<Meta title="Mes informations"/>
 				{this.state.logout && <Redirect to="/" />}
 				<NotificationSystem ref="notif" />
 				<div className="row my-5">

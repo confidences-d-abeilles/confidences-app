@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ReactGA from 'react-ga';
 import cadeau from '../assets/img/cadeau.jpg'
 import { Link } from 'react-router-dom'
+import Meta from './utils/Meta'
 
 export default class Present extends Component {
 
@@ -13,6 +14,7 @@ export default class Present extends Component {
     render () {
         return (
             <div className="container">
+                <Meta title="Offrir un parrainage"/>
                 <div className="row">
                     <div className="col">
                         <img className="img-fluid" src={cadeau} alt="Bannière cadeau" />
