@@ -67,7 +67,7 @@ export default class CompanyManageCustomize extends Component {
 					<a href="#" target="_blank" className="btn btn-primary">Télécharger l'étiquette type</a>
 					<form onSubmit={this.upload.bind(this)} className="my-2">
 						<div className="form-group">
-							<label htmlFor="label" className={(this.state.label)?'active-upload':'upload'}>Glisser votre fichier ici ou cliquez pour en séléctionner un parmi vos fichers<br/>Taille recommandée : 280x210 - {(this.state.label)?'Selectionné : '+this.state.label:"Aucun fichier séléctionné"}</label>
+							<label htmlFor="label" className={(this.state.label)?'active-upload':'upload'}>Glisser votre fichier ici ou cliquez pour en séléctionner un parmi vos fichiers<br/>Taille recommandée : 280x210 - {(this.state.label)?'Selectionné : '+this.state.label:"Aucun fichier séléctionné"}</label>
 							<input type="file" className="form-control" id="label" onChange={() => { this.setState({ label : document.getElementById("label").files[0].name }) }} style={{display:'none'}}/>
 						</div>
 						<button className="btn btn-primary">Envoyer cette étiquette</button>
