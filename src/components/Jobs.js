@@ -40,6 +40,18 @@ export default class Jobs extends Component {
 							de stage de 4 à 6 mois.
 						</p>
 						<p className="text-center">
+							<Link className="btn btn-secondary" to="/jobs/reactjs">Stage ReactJS / NodeJS developer</Link>
+						</p>
+						<p className="text-center">
+							<Link className="btn btn-secondary" to="/jobs/designer">Stage UX Designer</Link>
+						</p>
+						<p className="text-center">
+							<Link className="btn btn-secondary" to="/jobs/marketing">Stage Communication / Marketing</Link>
+						</p>
+						<p className="text-center">
+							<Link className="btn btn-secondary" to="/jobs/event">Stage Community / Event Manager</Link>
+						</p>
+						<p className="text-center my-5">
 							<Link className="btn btn-secondary" to="/apply">Postuler</Link>
 						</p>
 						<p>
