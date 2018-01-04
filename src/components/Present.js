@@ -15,19 +15,19 @@ export default class Present extends Component {
         return (
           <div className="container">
             <Meta title="Offrir un parrainage"/>
-            <div className="row">
+            <div className="row mb-4">
                 <div className="col">
                     <img className="img-fluid" src={cadeau} alt="Bannière cadeau" />
                 </div>
             </div>
             <div className="row">
                 <div className="col">
-                    <h2 className="text-center my-5">Parrainer des abeilles : un cadeau aussi utile qu’original !</h2>
+                    <h2 className="text-center my-4">Parrainer des abeilles : un cadeau aussi utile qu’original !</h2>
                 </div>
             </div>
-            <div className="row">
-                <div className="col">
-                    <p>
+            <div className="row justify-content-center">
+                <div className="col-lg-9 col-md-10 col-sm-12">
+                    <p className="mb-5">
                         <strong>Vous cherchiez un cadeau original qu’on puisse à la fois toucher du regard, expérimenter, déguster et qui soit
                         concrètement bénéfique pour notre
                         environnement ?</strong> Alors vous êtes au bon
@@ -37,14 +37,14 @@ export default class Present extends Component {
                     </p>
                 </div>
             </div>
-    				<div className="row">
-    					<div className="col">
-    						<ul className="nav nav-tabs" role="tablist">
+    				<div className="row justify-content-center">
+    					<div className="col-lg-9 col-md-10 col-sm-12">
+    						<ul className="nav nav-tabs justify-content-center" role="tablist">
     							<li className="nav-item">
-    								<a className="nav-link active" data-toggle="tab" href="#how-offer">Comment offrir un parrainage d'Abeilles</a>
+    								<a className="nav-link active lead" data-toggle="tab" href="#how-offer">Comment offrir un parrainage d'Abeilles</a>
     							</li>
     							<li className="nav-item">
-    								<a className="nav-link" data-toggle="tab" href="#presentation">Présentation rapide</a>
+    								<a className="nav-link lead" data-toggle="tab" href="#presentation">Présentation rapide</a>
     							</li>
     						</ul>
     						<div className="tab-content" style={{ overflowX : 'auto' }}>
@@ -66,47 +66,49 @@ class HowOfferPresent extends Component {
 
 	render () {
     return (
-      <div className="container mt-2">
-        <div className="row d-flex align-items-center">
-            <div className="col-lg-8 col-md-8 col-sm-12">
-              <p>
+      <div className="container mt-4">
+        <div className="row">
+            <div className="col">
+              <p className="">
                   Dans le but de garantir une bonne saisie des
                   informations <strong>nous vous invitons à lire ces
                   toutes étapes avant de commencer.</strong>
               </p>
-              <ul>
-                  <li>
+              <ol className="lead">
+                  <li className="my-4">
                       Inscrivez vous avec vos propres
                       informations (elles sont nécessaires à la
                       gestion de votre compte / à la
                       facturation)
                   </li>
-                  <li>
+                  <li className="my-4">
                       Choisissez un nombre d’abeilles à offrir
                   </li>
-                  <li>
+                  <li className="my-4">
                       Désignez votre bénéficiaire en cochant
                       « Ce parrainage est un cadeau » et en
                       renseignant ses coordonnées.
                       ATTENTION à la date à partir de
                       laquelle doit être notifié le bénéficiaire.<br /><strong>Un délai de 3 jours est recommandé.</strong>
                   </li>
-                  <li>
+                  <li className="my-4">
                       Terminez en réglant votre cadeau (la
                       confirmation de règlement est
                       nécessaire pour la génération du
                       parrainage)
                   </li>
-                  <li>
+                  <li className="my-4">
                       <span>C’est terminé </span>
                       <img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy"
         								style={{ height: '1em' }} />
                   </li>
-              </ul>
+              </ol>
             </div>
+          </div>
+          <div className="row">
             <div className="col">
               <p className="text-center">
-                  <Link to="/signup/individual" className="btn btn-secondary">J'offre un parrainage d’abeilles</Link>
+                  <Link to="/signup/individual" className="btn btn-secondary">J'offre un parrainage<br/>d’abeilles</Link>
               </p>
             </div>
         </div>
@@ -119,9 +121,9 @@ class PresentationPresent extends Component {
 
 	render () {
 		return (
-      <div className="container mt-2">
-        <div className="row d-flex align-items-center">
-            <div className="col-lg-8 col-md-8 col-sm-12">
+      <div className="container mt-4">
+        <div className="row">
+            <div className="col">
               <p>
                   En deux mots, votre heureux bénéficiaire
                   devient le parrain de 10 000 abeilles par
@@ -153,6 +155,8 @@ class PresentationPresent extends Component {
                   cercle vertueux qu’il faut réussir à amorcer !
               </p>
             </div>
+        </div>
+        <div className="row">
             <div className="col">
               <p className="text-center" >
                   <Link to="/individual/more" className="btn btn-secondary">En savoir plus</Link>
