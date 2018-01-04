@@ -4,6 +4,8 @@ import NotificationSystem from 'react-notification-system'
 import Loading from '../../utils/Loading'
 import ReactGA from 'react-ga'
 import moment from 'moment'
+import Meta from '../../utils/Meta'
+import Confirm from '../../utils/Confirm'
 
 export default class AdminManageUsers extends Component {
 
@@ -74,6 +76,13 @@ export default class AdminManageUsers extends Component {
 		}, this.refs.notif)
 	}
 
+	sendHoustonMail() {
+		request({
+			url: '/mail/houston/user/'+this.state.selectedUser.id,
+			method: 'get'
+		}, this.refs.notif)
+	}
+
 	getTag(state) {
 		if (state === 0) {
 			return (<span className="badge badge-info">Programmé</span>)
@@ -140,6 +149,7 @@ export default class AdminManageUsers extends Component {
 	render () {
 		return (
 			<div className="container-fluid">
+				<Meta title="Gestion des utilisateurs"/>
 				<div className="row">
 					<NotificationSystem ref="notif" />
 					<h2 className="text-center my-4">Gérer les utilisateurs</h2>
@@ -214,7 +224,8 @@ export default class AdminManageUsers extends Component {
 												<div className="card-block">
 													<h3 className="card-title">Envoi de mails</h3>
 													<p className="card-text">
-														<button className="btn btn-sm btn-info" onClick={this.sendCadeauMail.bind(this)}>Envoyer le mail de cadeau</button>
+														<button className="btn btn-sm btn-info my-2" onClick={this.sendHoustonMail.bind(this)} >2 : Houston we had a problem</button><br />
+														<button className="btn btn-sm btn-info my-2" onClick={this.sendCadeauMail.bind(this)} >10 : Cadeau</button>
 													</p>
 												</div>
 											</div>
