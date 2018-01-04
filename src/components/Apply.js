@@ -132,7 +132,7 @@ export default class Apply extends Component {
                                 <textarea value={this.state.presentation} rows="10" onChange={handleChange.bind(this)} placeholder="C'est à vous. Présentez-vous rapidement et donnez nous envie de vous rappeler ! *" name="presentation" className="form-control"/>
                             </div>
                             {this.state.success &&
-                            <p className="alert alert-success">Votre candidature a ete envoyee avec succes</p>}
+                            <p className="alert alert-success">Votre candidature a été envoyée avec succès</p>}
                             <button className="btn btn-primary mb-4">Envoyer</button>
                         </form>
                     </div>
