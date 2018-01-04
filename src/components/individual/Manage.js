@@ -11,12 +11,14 @@ import Custom from './manage/Custom';
 import profile from '../../assets/img/profile2.png';
 import Bundle from './manage/Bundle'
 import FontAwesome from 'react-fontawesome'
+import Meta from '../utils/Meta'
 
 export default class IndividualManage extends Component {
 
 	render () {
 		return (
 			<div className="container py-4">
+				<Meta title="Mon espace personnel"/>
 				<NotificationSystem ref="notif" />
 				{(!isLoggedIn)?<Redirect to="/" />:null}
 				<div className="row">

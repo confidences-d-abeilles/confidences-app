@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ReactGA from 'react-ga';
+import Meta from './utils/Meta'
 
 export default class Jobs extends Component {
 
@@ -12,6 +13,7 @@ export default class Jobs extends Component {
 	render () {
 		return (
 			<div className="container">
+				<Meta title="Jobs" />
 				<div className="row">
 					<div className="col">
 						<img src={require('../assets/img/jobs.jpg')} alt="Gaetan et Nicolas" className="img-fluid" />

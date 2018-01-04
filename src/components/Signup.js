@@ -5,6 +5,7 @@ import { login, isLoggedIn } from '../services/AuthService'
 import request from '../services/Net.js'
 import NotificationSystem from 'react-notification-system';
 import ReactGA from 'react-ga';
+import Meta from './utils/Meta'
 
 export default class Signup extends Component {
 
@@ -100,6 +101,7 @@ export default class Signup extends Component {
 	render () {
 		return (
 			<div className="container py-4">
+				<Meta title="Inscription"/>
 				{(this.state.redirect)?<Redirect to={'/'+this.state.redirect} />:''}
 				<NotificationSystem ref="notificationSystem" />
 				<div className="row justify-content-center">

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { handleTick } from '../services/FormService'
 import ReactGA from 'react-ga';
+import Meta from './utils/Meta'
 
 export default class Tarifs extends Component {
 
@@ -12,9 +13,10 @@ export default class Tarifs extends Component {
 	render() {
 		return (
 			<div className="container">
+				<Meta title="Tarifs"/>
 				<div className="row">
 					<div className="col">
-						<h2 className="text-center my-2">Tarifs</h2>
+						<h2 className="text-center my-4">Tarifs</h2>
 						<ul className="nav nav-tabs" role="tablist">
 							<li className="nav-item">
 								<a className="nav-link active" data-toggle="tab" href="#individual">Particulier</a>

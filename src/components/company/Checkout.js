@@ -6,6 +6,7 @@ import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
 import { handleChange, handleTick } from '../../services/FormService';
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
 
 export default class CompanyCheckout extends Component {
 
@@ -121,6 +122,7 @@ export default class CompanyCheckout extends Component {
     render () {
         return (
 			<div className="container py-4">
+				<Meta title="Validation et paiement"/>
 				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/account" />:null}
 				<div className="row justify-content-center">

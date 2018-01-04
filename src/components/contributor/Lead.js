@@ -1,10 +1,10 @@
-
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { handleChange } from '../../services/FormService';
 import request from '../../services/Net';
 import NotificationSystem from 'react-notification-system';
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
 
 export default class ContributorLead extends Component {
 
@@ -60,6 +60,7 @@ export default class ContributorLead extends Component {
 	render () {
 		return (
 			<div className="container py-4">
+				<Meta title="Ajouter une démarche"/>
 				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?
 				<Redirect to="/contributor/leadok" />

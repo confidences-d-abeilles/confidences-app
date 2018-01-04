@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome'
@@ -8,6 +7,8 @@ import { handleChange } from '../../services/FormService';
 import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
+
 const config = require('../../config.js');
 
 export default class ContributorApproach extends Component {
@@ -51,6 +52,7 @@ export default class ContributorApproach extends Component {
 	render () {
 		return (
 			<div className="container">
+				<Meta title="Démarchage d'entreprise"/>
 				<NotificationSystem ref="notif" />
 				<div className="row">
 					<div className="col-6">

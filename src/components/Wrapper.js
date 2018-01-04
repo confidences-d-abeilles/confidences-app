@@ -54,6 +54,7 @@ import Footer from './Footer';
 // other
 
 import Signup from './Signup';
+import Presignup from './Presignup';
 import Cgv from './Cgv';
 import Mentions from './Mentions';
 import About from './About';
@@ -72,6 +73,7 @@ import Forgot from './Forgot';
 import Reset from './Reset';
 import Apply from './Apply';
 import Present from './Present';
+import Confirm from './Confirm';
 
 export default class Wrapper extends Component {
 
@@ -119,6 +121,7 @@ export default class Wrapper extends Component {
 							<Route exact path="/company/end" component={CompanyEnd} />
 							<Route path="/company/manage" component={CompanyManage} />
 
+							<Route exact path="/presignup" component={Presignup} />
 							<Route exact path="/signup/:type" component={Signup} />
 
 							<Route path="/admin/manage" component={AdminManage} />
@@ -140,6 +143,7 @@ export default class Wrapper extends Component {
 							<Route exact path="/tarifs" component={Tarifs} />
 							<Route exact path="/hives" component={Hives} />
 							<Route exact path="/hive/:id" component={Hive} />
+							<Route exact path="/confirm/:token" component={Confirm} />
 						</Switch>
 					</div>
 				</div>

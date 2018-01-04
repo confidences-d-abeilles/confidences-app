@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
+import Meta from './utils/Meta'
 
 export default class About extends Component {
 
@@ -11,6 +12,7 @@ export default class About extends Component {
 	render () {
 		return (
 			<div className="container">
+				<Meta title="Histoire"/>
 				<div className="row">
 					<div className="col">
 						<img src={require('../assets/img/about.jpg')} alt="Gaetan et Nicolas" className="img-fluid" />

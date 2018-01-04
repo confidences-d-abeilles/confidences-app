@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import request from '../../services/Net';
@@ -10,6 +9,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import ReactGA from 'react-ga';
 import 'react-datepicker/dist/react-datepicker.css';
+import Meta from '../utils/Meta'
 
 export default class IndividualCheckout extends Component {
 
@@ -205,6 +205,7 @@ export default class IndividualCheckout extends Component {
     render () {
         return (
 			<div className="container py-4">
+				<Meta title="Confirmation et paiement"/>
 				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/individual/end" />:null}
 				{(this.state.back)?<Redirect to="/individual/wish" />:null}
