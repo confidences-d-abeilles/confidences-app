@@ -69,7 +69,6 @@ html, body, #root
 {
 	display: flex;
 	flex-direction: column;
-	overflow-x: hidden;
 }
 
 #noFooter
