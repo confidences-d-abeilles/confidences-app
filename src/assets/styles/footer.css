@@ -3,11 +3,6 @@ html, body, #root
 	height: 100%;
 }
 
-#wrapper {
-	min-height: 100%;
-	-webkit-overflow-scrolling: touch;
-}
-
 .upload {
 	padding: 20px 10px;
 	background-color: #E1F5FE;
@@ -69,7 +64,9 @@ html, body, #root
 {
 	display: flex;
 	flex-direction: column;
-	overflow-x: hidden;
+	height: 100%;
+	-webkit-overflow-scrolling: touch;
+	overflow-y: scroll;
 }
 
 #noFooter

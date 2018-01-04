@@ -74,6 +74,69 @@ export default class AdminManageUsers extends Component {
 		}, this.refs.notif)
 	}
 
+	getTag(state) {
+		if (state === 0) {
+			return (<span className="badge badge-info">Programmé</span>)
+		}
+		if (state === 1) {
+			return (<span className="badge badge-danger">Annulé</span>)
+		}
+		if (state === 2) {
+			return (<span className="badge badge-success">Envoyé</span>)
+		}
+	}
+
+	getEmailType(type) {
+		if (type === 1) {
+			return ("Premiers pas (inscription)");
+		}
+		if (type === 2) {
+			return ("Houston, we had a problem");
+		}
+		if (type === 3) {
+			return ("Paiement en attente de validation (clic sur virement effectué)");
+		}
+		if (type === 4) {
+			return ("Fin onboard avec payer plus tard");
+		}
+		if (type === 5) {
+			return ("Confirmation parrainage (CB ok)");
+		}
+		if (type === 6) {
+			return ("Virement OK");
+		}
+		if (type === 7) {
+			return ("Échec paiement");
+		}
+		if (type === 8) {
+			return ("Attribution ruche en cours");
+		}
+		if (type === 9) {
+			return ("Bonne nouvelle (ruche attribuée)");
+		}
+		if (type === 10) {
+			return ("Cadeau");
+		}
+		if (type === 11) {
+			return ("Attribution longue");
+		}
+		if (type === 12) {
+			return ("Relance 4 jours");
+		}
+		if (type === 13) {
+			return ("Relance 2 semaines");
+		}
+		if (type === 14) {
+			return ("Relance 4 semaines");
+		}
+		if (type === 15) {
+			return ("Relance 8 semaines");
+		}
+		if (type === 16) {
+			return ("Expedition miel");
+		}
+	}
+
 	render () {
 		return (
 			<div className="container-fluid">
@@ -152,6 +215,41 @@ export default class AdminManageUsers extends Component {
 													<h3 className="card-title">Envoi de mails</h3>
 													<p className="card-text">
 														<button className="btn btn-sm btn-info" onClick={this.sendCadeauMail.bind(this)}>Envoyer le mail de cadeau</button>
+													</p>
+												</div>
+											</div>
+											<div className="card my-2">
+												<div className="card-block">
+													<h3 className="card-title">Historique de mails</h3>
+													<p className="card-text">
+														1 : Premiers pas (inscription)<br />
+														2 : Houston we had a problem<br />
+														3 : Paiement en attente de validation (clic sur virement effectué)<br />
+														4 : Fin onboard avec payer plus tard<br />
+														5 : Confirmation parrainage (CB ok)<br />
+														6 : Virement OK<br />
+														7 : Échec paiement<br />
+														8 : Attribution ruche en cours<br />
+														9 : Bonne nouvelle (ruche attribuée)<br />
+														10 : Cadeau<br />
+														11 : Attribution longue<br />
+														12 : Relance 4 jours<br />
+														13 : Relance 2 semaines <br />
+														14 : Relance 4 semaines <br />
+														15 : Relance 8 semaines <br />
+														16 : Expedition miel <br />
+													</p>
+													<p className="card-table">
+														<table className="table table-sm">
+															<tbody>
+																<tr><th>Type de mail</th><th>Date</th><th>État</th></tr>
+																{this.state.selectedUser.emails.map((elem) => {
+																	return (
+																		<tr><td>{this.getEmailType(elem.type_email)}</td><td>{moment(elem.time).format("DD/MM/YY HH:mm")}</td><td>{this.getTag(elem.state)}</td></tr>
+																		);
+																})}
+															</tbody>
+														</table>
 													</p>
 												</div>
 											</div>

@@ -3,6 +3,7 @@ import { handleChange } from '../services/FormService'
 import request from '../services/Net'
 import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
+import Meta from './utils/Meta'
 
 export default class Apply extends Component {
 
@@ -57,6 +58,7 @@ export default class Apply extends Component {
     render () {
         return (
             <div className="container">
+                <Meta title="Postuler"/>
                 <NotificationSystem ref="notif" />
                 <div className="row justify-content-center">
                     <div className="col-lg-6 col-md-10 col-sm-12">
@@ -84,7 +86,7 @@ export default class Apply extends Component {
         						<label>Joignez votre CV</label>
         						<label htmlFor="cv" className={(this.state.cv)?'active-upload':'upload'} style={{ position: 'relative' }}>
         							<input type="file" className="form-control" id="cv" onChange={() => { this.setState({ cv : document.getElementById("cv").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-        							Glissez votre CV ici ou cliquez pour en séléctionner un parmi vos fichers<br/>
+        							Glissez votre CV ici ou cliquez pour en séléctionner un parmi vos fichiers<br/>
                                 {(this.state.cv)?'Selectionné : '+this.state.cv:"Aucun fichier séléctionné"}
         						</label>
         					</div>

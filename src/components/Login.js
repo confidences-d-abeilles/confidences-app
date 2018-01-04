@@ -6,6 +6,7 @@ import request from '../services/Net.js'
 import Loading from './utils/Loading'
 import ReactGA from 'react-ga';
 import NotificationSystem from 'react-notification-system';
+import Meta from './utils/Meta'
 
 export default class Signup extends Component {
 
@@ -59,6 +60,7 @@ export default class Signup extends Component {
 	render () {
 		return (
 			<div className="container py-4">
+				<Meta title="Connexion"/>
 				<NotificationSystem ref="notificationSystem" />
 				<div className="row justify-content-center">
 					<div className="col-lg-4 col-md-6 col-sm-12">

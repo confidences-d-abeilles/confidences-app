@@ -4,6 +4,7 @@ import { isLoggedIn } from '../../services/AuthService';
 import { Redirect } from 'react-router-dom';
 import NotificationSystem from 'react-notification-system';
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
 
 export default class ContributorWish extends Component {
 
@@ -31,6 +32,7 @@ export default class ContributorWish extends Component {
 	render () {
 		return (
 			<div className="container py-4">
+				<Meta title="Contrat"/>
 				<NotificationSystem ref="notif" />
 				{(isLoggedIn())?null:<Redirect to="/" />}
 				{(this.state.redirect)?

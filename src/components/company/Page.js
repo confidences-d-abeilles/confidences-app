@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import { Redirect } from 'react-router-dom'
@@ -9,6 +8,7 @@ import FontAwesome from 'react-fontawesome'
 import imgPlaceholder from '../../assets/img/profile.png';
 import { Link } from 'react-router-dom'
 import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
 
 const defaultImg = require("../../assets/img/profile.png")
 const config = require('../../config.js');
@@ -58,6 +58,7 @@ export default class CompanyPage extends Component {
     render () {
         return (
             <div className="container-fluid">
+				<Meta title="Page entreprise"/>
 				{(this.state.redirect)?<Redirect to="/" />:null}
 				<NotificationSystem ref="notif" />
 				<div className="row justify-content-center">

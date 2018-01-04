@@ -3,6 +3,7 @@ import request from '../services/Net';
 import NotificationSystem from 'react-notification-system';
 import { handleChange } from '../services/FormService';
 import ReactGA from 'react-ga';
+import Meta from './utils/Meta'
 
 export default class Forgot extends Component {
 
@@ -33,6 +34,7 @@ export default class Forgot extends Component {
 	render () {
 		return (
 			<div className="container">
+				<Meta title="Mot de passe oublié"/>
 				<NotificationSystem ref="notif" />
 				<div className="row justify-content-center">
 					<div className="col-4">

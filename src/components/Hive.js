@@ -7,6 +7,7 @@ import FontAwesome from 'react-fontawesome'
 import ImgPlaceholder from '../assets/img/profile.png';
 import moment from 'moment';
 import ReactGA from 'react-ga';
+import Meta from './utils/Meta'
 
 const config = require('../config.js')
 
@@ -34,6 +35,7 @@ export default class Hive extends Component {
 	render() {
 		return (
 			<div className="container-fluid">
+				<Meta title="La ruche"/>
 				<NotificationSystem ref="notif" />
 				{(this.state.hive)?
 					<div>

@@ -72,8 +72,10 @@ class App extends Component {
 							<Route path="/tarifs" component={Wrapper} />
 							<Route path="/ruches" component={Wrapper} />
 							<Route path="/admin" component={Wrapper} />
+							<Route path="/presignup" component={Wrapper} />
 							<Route path="/signup" component={Wrapper} />
 							<Route path="/hive/:id" component={Wrapper} />
+							<Route path="/confirm/:token" component={Wrapper} />
 							<Route path="/hives" component={Wrapper} />
 							<Route path="/:namespace" component={CompanyPage} />
 							<Route path="/" component={Wrapper} />
