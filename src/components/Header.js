@@ -184,7 +184,7 @@ export default class Header extends Component {
 	</ul>
 	}
 	<div className="modal fade" id="createAccount" role="dialog">
-		<div className="modal-dialog" role="document">
+		<div className="modal-dialog" role="document" style={{ zIndex: '2000' }}>
 			<div className="modal-content">
 				<div className="modal-header">
 					<h5 className="modal-title" id="exampleModalLabel">Je suis ...</h5>
