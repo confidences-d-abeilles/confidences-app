@@ -65,7 +65,7 @@ class HowOfferPresent extends Component {
 	render () {
     return (
       <div className="container mt-2">
-        <div className="row">
+        <div className="row d-flex align-items-center">
             <div className="col-lg-8 col-md-8 col-sm-12">
               <p>
                   Dans le but de garantir une bonne saisie des
@@ -96,14 +96,14 @@ class HowOfferPresent extends Component {
                       parrainage)
                   </li>
                   <li>
-                      <span className="align-middle">C’est terminé </span>
+                      <span>C’est terminé </span>
                       <img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy"
         								style={{ height: '1em' }} />
                   </li>
               </ul>
             </div>
             <div className="col">
-              <p className="text-center" style={{position: 'relative', top: '50%', transform: 'translateY(-50%)'}}>
+              <p className="text-center">
                   <Link to="/signup/individual" className="btn btn-secondary">J'offre un parrainage d’abeilles</Link>
               </p>
             </div>
@@ -118,7 +118,7 @@ class PresentationPresent extends Component {
 	render () {
 		return (
       <div className="container mt-2">
-        <div className="row">
+        <div className="row d-flex align-items-center">
             <div className="col-lg-8 col-md-8 col-sm-12">
               <p>
                   En deux mots, votre heureux bénéficiaire
@@ -152,7 +152,7 @@ class PresentationPresent extends Component {
               </p>
             </div>
             <div className="col">
-              <p className="text-center" style={{position: 'relative', top: '50%', transform: 'translateY(-50%)'}}>
+              <p className="text-center" >
                   <Link to="/individual/more" className="btn btn-secondary">En savoir plus</Link>
               </p>
             </div>
