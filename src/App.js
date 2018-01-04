@@ -13,8 +13,6 @@ import ReactGA from 'react-ga';
 
 const config = require('./config.js');
 
-var socket = io(config.socket_url);
-
 
 class ScrollToTop extends Component {
 	componentDidUpdate(prevProps) {
