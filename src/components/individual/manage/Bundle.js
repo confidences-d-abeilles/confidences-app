@@ -29,11 +29,7 @@ export default class Bundle extends Component {
 			method: 'GET'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-					user: res,
-                    certif: res.bundles[0].certif,
-                    present_firstname: res.bundles[0].firstname,
-                    present_name: res.bundles[0].name,
-                    present_email: res.bundles[0].email,
+					user: res
 			});
 		});
 	}
@@ -53,16 +49,18 @@ export default class Bundle extends Component {
 				<p className="alert alert-warning mt-4">La validation du règlement de votre parrainage est en cours</p>
 			);
 		}
+        console.log(this.state.user);
+        console.log(this.state.user.bundles[0]);
 		if (this.state.user && !this.state.user.bundles[0]) {
 			return (<Redirect to="/individual/wish" />);
 		}
-		if (this.state.user) {
+		if (this.state.user && this.state.user.bundles[0]) {
 			return (
 				<p className="text-center my-5">
                     {this.state.user.hive_id &&
                     <Link className="btn btn-secondary m-2" to={'/hive/'+this.state.user.hive_id}>Voir la page de ma ruche</Link>}
                     {this.state.certif &&
-					<a href={config.cdn_url+'/'+this.state.certif} className="btn btn-secondary m-2" target="_blank">Télécharger mon certificat de parrainage</a>}
+					<a href={config.cdn_url+'/'+this.state.user.bundles[0].certif} className="btn btn-secondary m-2" target="_blank">Télécharger mon certificat de parrainage</a>}
 				</p>
 			)
 		}
@@ -74,9 +72,9 @@ export default class Bundle extends Component {
             url: '/bundle/'+this.state.user.bundles[0].id,
             method: 'put',
             data: {
-                present_firstname: this.state.present_firstname,
-                present_name: this.state.present_name,
-                present_email: this.state.present_email
+                present_firstname: this.state.user.bundles[0].firstname,
+                present_name: this.state.user.bundles[0].present_name,
+                present_email: this.state.user.bundles[0].present_email
             }
         }, this.refs.notif).then((res) => {
             this.setState({ edit_present: false })
@@ -87,21 +85,22 @@ export default class Bundle extends Component {
     render () {
         return (
             <div>
+                <Meta title="Mon parrainage" />
                 <NotificationSystem ref="notif" />
-                <Meta title="Mon parrainage"/>
-                {(this.state.user)?
                 <div className="row">
                     <div className="col-lg-12">
                         <h2 className="my-5 text-center">Mon parrainage</h2>
                         {(this.state.user)?this.checkInfos():''}
                     </div>
+                    {(this.state.user && this.state.user.bundles[0])?
                     <div className="col-lg-6 my-4">
                         <h3 className="text-center"><small>Détails</small></h3>
                         Offre : Parrainage de {this.state.user.bundles[0].bees} abeilles<br />
                         Date de début : {moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}
                     </div>
+                    :<Loading />}
                     <div className="col-lg-6 my-4">
-                        {this.state.user.bundles[0].present && !this.state.edit_present &&
+                        {this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].present && !this.state.edit_present &&
                             <div>
                                 <h3 className="text-center"><small>J'ai choisi d'offrir mon parrainage à</small></h3>
                                 <strong>{this.state.present_firstname} {this.state.present_name}</strong><br />
@@ -109,7 +108,7 @@ export default class Bundle extends Component {
                             Il recevra les premières informations sur son cadeau le <strong>{moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}</strong><br /><br />
                         <button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ edit_present : true })}}><FontAwesome name="pencil" /> Modifier ces informations</button>
                     </div>}
-                    {this.state.user.bundles[0].present && this.state.edit_present &&
+                    {this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].present && this.state.edit_present &&
                         <form onSubmit={this.savePresent.bind(this)}>
                             <h3 className="text-center"><small>J'ai choisi d'offrir mon parrainage à</small></h3>
                             <div className="form-group">
@@ -129,7 +128,7 @@ export default class Bundle extends Component {
                             </div>
                         </form>}
                     </div>
-                </div>:<Loading />}
+                </div>
             </div>
         )
     }
