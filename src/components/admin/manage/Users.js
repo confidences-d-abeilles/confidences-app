@@ -83,6 +83,13 @@ export default class AdminManageUsers extends Component {
 		}, this.refs.notif)
 	}
 
+	sendEncoursMail() {
+		request({
+			url: '/mail/encours/user/'+this.state.selectedUser.id,
+			method: 'get'
+		}, this.refs.notif)
+	}
+
 	getTag(state) {
 		if (state === 0) {
 			return (<span className="badge badge-info">Programmé</span>)
@@ -225,6 +232,7 @@ export default class AdminManageUsers extends Component {
 													<h3 className="card-title">Envoi de mails</h3>
 													<p className="card-text">
 														<button className="btn btn-sm btn-info my-2" onClick={this.sendHoustonMail.bind(this)} >2 : Houston we had a problem</button><br />
+														<button className="btn btn-sm btn-info my-2" onClick={this.sendEncoursMail.bind(this)} >8 : Attribution ruche en cours</button><br />
 														<button className="btn btn-sm btn-info my-2" onClick={this.sendCadeauMail.bind(this)} >10 : Cadeau</button>
 													</p>
 												</div>
