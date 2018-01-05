@@ -12,7 +12,8 @@ export default class AdminManageUsers extends Component {
 		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			users : null,
-			selectedUser: null
+			selectedUser: null,
+			sexe_m: "1"
 		}
 	}
 
@@ -50,7 +51,8 @@ export default class AdminManageUsers extends Component {
 
 	selectUser(user) {
 		this.setState({
-			selectedUser: user
+			selectedUser: user,
+			sexe_m: user.sexe_m?"1":"0"
 		})
 	}
 
@@ -84,6 +86,23 @@ export default class AdminManageUsers extends Component {
 		if (state === 2) {
 			return (<span className="badge badge-success">Envoyé</span>)
 		}
+	}
+
+	updateSexe(event) {
+		event.preventDefault();
+		const sexe = event.target.value;
+		this.setState({
+			sexe_m: sexe
+		})
+		request({
+			url: '/user/' + this.state.selectedUser.id,
+			method: 'put',
+			data: {
+				sexe_m: (sexe === "1")?true:false
+			}
+		}, this.refs.notif).then(() => {
+				this.getUsers();
+		});
 	}
 
 	getEmailType(type) {
@@ -166,6 +185,16 @@ export default class AdminManageUsers extends Component {
 												<h3 className="card-title">Informations generales</h3>
 												<p className="card-text">
 													<strong>Date d'inscription :</strong> {moment(this.state.selectedUser.createdAt).format("DD/MM/YYYY HH:mm:ss")}<br />
+													<div className="form-group d-flex">
+											      <label className="radio-inline form-check-label">
+											        <input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={this.updateSexe.bind(this)} checked={this.state.sexe_m === "1"}/>
+											        &nbsp;M
+											      </label>
+												    <label className="radio-inline form-check-label ml-4">
+											        <input type="radio" className="form-check-input" name="sexe_m" value="0" onChange={this.updateSexe.bind(this)} checked={this.state.sexe_m === "0"}/>
+											        &nbsp;Mme
+											      </label>
+													</div>
 													<strong>Nom et prenom :</strong> {this.state.selectedUser.firstname} {this.state.selectedUser.name}<br />
 													{(this.state.selectedUser.company_name)?<span><strong>Nom de la societe :</strong> {this.state.selectedUser.company_name}<br /></span>:null}
 													<strong>Adresse email :</strong> {this.state.selectedUser.email}<br />
