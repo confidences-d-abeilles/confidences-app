@@ -13,7 +13,7 @@ export default class AdminManageUsers extends Component {
 		this.state = {
 			users : null,
 			selectedUser: null,
-			sexe_m: "0"
+			sexe_m: ''
 		}
 	}
 
@@ -52,7 +52,7 @@ export default class AdminManageUsers extends Component {
 	selectUser(user) {
 		this.setState({
 			selectedUser: user,
-			sexe_m: user.sexe_m?"1":"0"
+			sexe_m: user.sexe_m?'1':'0'
 		})
 	}
 
@@ -98,7 +98,7 @@ export default class AdminManageUsers extends Component {
 			url: '/user/' + this.state.selectedUser.id,
 			method: 'put',
 			data: {
-				sexe_m: (sexe === "1")?true:false
+				sexe_m: (sexe === '0')?false:true
 			}
 		}, this.refs.notif).then(() => {
 				this.getUsers();
@@ -187,11 +187,11 @@ export default class AdminManageUsers extends Component {
 													<strong>Date d'inscription :</strong> {moment(this.state.selectedUser.createdAt).format("DD/MM/YYYY HH:mm:ss")}<br />
 													<div className="form-group d-flex">
 											      <label className="radio-inline form-check-label">
-											        <input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={this.updateSexe.bind(this)} checked={this.state.sexe_m === "1"}/>
+											        <input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={this.updateSexe.bind(this)} checked={this.state.sexe_m === '1'}/>
 											        &nbsp;M
 											      </label>
 												    <label className="radio-inline form-check-label ml-4">
-											        <input type="radio" className="form-check-input" name="sexe_m" value="0" onChange={this.updateSexe.bind(this)} checked={this.state.sexe_m === "0"}/>
+											        <input type="radio" className="form-check-input" name="sexe_m" value="0" onChange={this.updateSexe.bind(this)} checked={this.state.sexe_m === '0'}/>
 											        &nbsp;Mme
 											      </label>
 													</div>

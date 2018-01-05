@@ -122,12 +122,12 @@ export default class Signup extends Component {
 							:null}
 							<div className="form-group d-flex">
 					      <label className="radio-inline form-check-label">
-					        <input type="radio" className="form-check-input" name="sexe_m" id="opt_sexe_m_1" value="true" onChange={handleChange.bind(this)}/>
-					        &nbsp;M
+					        <input type="radio" className="form-check-input" name="sexe_m" value="true" onChange={handleChange.bind(this)}/>
+					        &nbsp;M *
 					      </label>
 						    <label className="radio-inline form-check-label ml-4">
-					        <input type="radio" className="form-check-input" name="sexe_m" id="opt_sexe_m_2" value="false" onChange={handleChange.bind(this)}/>
-					        &nbsp;Mme
+					        <input type="radio" className="form-check-input" name="sexe_m" value="false" onChange={handleChange.bind(this)}/>
+					        &nbsp;Mme *
 					      </label>
 							</div>
 							<div className="form-group">

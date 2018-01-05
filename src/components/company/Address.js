@@ -14,6 +14,7 @@ export default class CompanyAddress extends Component {
 		this.state = {
 			redirect: false,
 			message: '',
+			sexe_m: '',
 			address1: '',
 			address2: '',
 			address3: '',
@@ -30,7 +31,8 @@ export default class CompanyAddress extends Component {
 			method: 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				address1 : res.name+' '+res.firstname,
+				sexe_m: res.sexe_m?'1':'0',
+				address1: res.name+' '+res.firstname,
 				address2: res.company_name
 			})
 		});
@@ -38,9 +40,9 @@ export default class CompanyAddress extends Component {
 
 	addAddress(e) {
 		e.preventDefault();
-		if (!this.state.address1 || !this.state.city || !this.state.zipcode) {
+		if (!this.state.sexe_m || !this.state.address1 || !this.state.city || !this.state.zipcode) {
 			this.refs.notif.addNotification({
-				message : "Merci de rendeigner tous les champs",
+				message : "Merci de renseigner tous les champs",
 				level : 'warning'
 			})
 		} else {
@@ -48,6 +50,7 @@ export default class CompanyAddress extends Component {
 				url : '/address',
 				method: 'post',
 				data : {
+					sexe_m : (this.state.sexe_m === '0')?false:true,
 					line1 : this.state.address1,
 					line2 : this.state.address2,
 					line3 : this.state.address3,
@@ -63,6 +66,7 @@ export default class CompanyAddress extends Component {
 					url : '/address',
 					method: 'post',
 					data : {
+						sexe_m : (this.state.sexe_m === '0')?false:true,
 						line1 : this.state.address1,
 						line2 : this.state.address2,
 						line3 : this.state.address3,
@@ -99,6 +103,16 @@ export default class CompanyAddress extends Component {
 					<div className="col-lg-6 col-md-10 col-sm-12">
 						<form className="text-center">
 							<h2 className="text-center my-4">Adresse de facturation</h2>
+							<div className="form-group d-flex">
+					      <label className="radio-inline form-check-label">
+					        <input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.sexe_m === '1'}/>
+					        &nbsp;M *
+					      </label>
+						    <label className="radio-inline form-check-label ml-4">
+					        <input type="radio" className="form-check-input" name="sexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.sexe_m === '0'}/>
+					        &nbsp;Mme *
+					      </label>
+							</div>
 							<div className="form-group">
 								<input type="text" name="address1" className="form-control" placeholder="Nom et prénom *" value={this.state.address1} onChange={handleChange.bind(this)} />
 							</div>
