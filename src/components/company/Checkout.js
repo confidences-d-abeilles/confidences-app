@@ -14,6 +14,8 @@ export default class CompanyCheckout extends Component {
 		super(props);
 		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
+			bsexe_m: '',
+			dsexe_m: '',
 			billing_name: '',
 			billing_firstname: '',
 			baddress1: '',
@@ -53,6 +55,7 @@ export default class CompanyCheckout extends Component {
 			res.addresses.map((address) => {
 				if (address.type == 1) {
 					this.setState({
+						bsexe_m : address.sexe_m?'1':'0',
 						baddress1 : address.line1,
 						baddress2 : address.line2,
 						baddress3 : address.line3,
@@ -65,6 +68,7 @@ export default class CompanyCheckout extends Component {
 				if (address.type == 2) {
 					this.setState({
 						did: address.id,
+						dsexe_m : address.sexe_m?'1':'0',
 						daddress1 : address.line1,
 						daddress2 : address.line2,
 						daddress3 : address.line3,
@@ -93,21 +97,29 @@ export default class CompanyCheckout extends Component {
 
 	saveDaddress(e) {
 		e.preventDefault();
-		request({
-			url: '/address/'+this.state.did,
-			method: 'put',
-			data: {
-				line1: this.state.daddress1,
-				line2: this.state.daddress2,
-				line3: this.state.daddress3,
-				line4: this.state.daddress4,
-				zipcode: this.state.dzip,
-				city: this.state.dcity,
-				country: this.state.dcountry
-			}
-		}, this.refs.notif).then((res) => {
-			this.setState({ saved : true })
-		})
+		if (!this.state.dsexe_m || !this.state.daddress3 || !this.state.dcity || !this.state.dzip) {
+			this.refs.notif.addNotification({
+				message : "Merci de renseigner tous les champs",
+				level : 'warning'
+			})
+		} else {
+			request({
+				url: '/address/'+this.state.did,
+				method: 'put',
+				data: {
+					sexe_m : (this.state.dsexe_m === '0')?false:true,
+					line1: this.state.daddress1,
+					line2: this.state.daddress2,
+					line3: this.state.daddress3,
+					line4: this.state.daddress4,
+					zipcode: this.state.dzip,
+					city: this.state.dcity,
+					country: this.state.dcountry
+				}
+			}, this.refs.notif).then((res) => {
+				this.setState({ saved : true })
+			});
+		}
 	}
 
 	changeBundle() {
@@ -152,6 +164,7 @@ export default class CompanyCheckout extends Component {
 							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="text-center">Adresse de facturation</h3>
 								<p>
+									{this.state.baddress1 && <span>{this.state.bsexe_m === '0'?'Mme. ':'M. '}</span>}
 									{(this.state.baddress1)?<span>{this.state.baddress1}<br/></span>:''}
 									{(this.state.baddress2)?<span>{this.state.baddress2}<br/></span>:''}
 									{(this.state.baddress3)?<span>{this.state.baddress3}<br/></span>:''}
@@ -164,6 +177,16 @@ export default class CompanyCheckout extends Component {
 								<h3 className="text-center">Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
 								{this.state.different && !this.state.saved &&
 									<form className="text-center">
+										<div className="form-group d-flex">
+								      <label className="radio-inline form-check-label">
+								        <input type="radio" className="form-check-input" name="dsexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.dsexe_m === '1'}/>
+								        &nbsp;M *
+								      </label>
+									    <label className="radio-inline form-check-label ml-4">
+								        <input type="radio" className="form-check-input" name="dsexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.dsexe_m === '0'}/>
+								        &nbsp;Mme *
+								      </label>
+										</div>
 										<div className="form-group">
 											<input type="text" className="form-control" value={this.state.daddress1} name="daddress1" placeholder="Nom et prénom" onChange={handleChange.bind(this)} />
 										</div>
@@ -171,27 +194,28 @@ export default class CompanyCheckout extends Component {
 											<input type="text" className="form-control" value={this.state.daddress2} name="daddress2" placeholder="Entreprise" onChange={handleChange.bind(this)} />
 										</div>
 										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress3} name="daddress3" placeholder="Ligne 1" onChange={handleChange.bind(this)} />
+											<input type="text" className="form-control" value={this.state.daddress3} name="daddress3" placeholder="Ligne 1 *" onChange={handleChange.bind(this)} />
 										</div>
 										<div className="form-group">
 											<input type="text" className="form-control" value={this.state.daddress4} name="daddress4" placeholder="Ligne 2" onChange={handleChange.bind(this)} />
 										</div>
 										<div className="form-group row">
 											<div className="col-4">
-												<input type="text" className="form-control" value={this.state.dzip} name="dzip" onChange={handleChange.bind(this)} />
+												<input type="text" className="form-control" value={this.state.dzip} name="dzip" placeholder="Code postal *" onChange={handleChange.bind(this)} />
 											</div>
 											<div className="col-8">
-												<input type="text" className="form-control" value={this.state.dcity} name="dcity" onChange={handleChange.bind(this)} />
+												<input type="text" className="form-control" value={this.state.dcity} name="dcity" placeholder="Ville *" onChange={handleChange.bind(this)} />
 											</div>
 										</div>
 										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.dcountry} name="dcountry" onChange={handleChange.bind(this)} />
+											<input type="text" className="form-control" value={this.state.dcountry} name="dcountry" placeholder="Pays *" onChange={handleChange.bind(this)} />
 										</div>
 										<button className="btn btn-primary my-2" onClick={this.saveDaddress.bind(this)}>Enregistrer</button>
 									</form>
 								}
 								{this.state.saved &&
 									<div>
+										{this.state.daddress1 && <span>{this.state.dsexe_m === '0'?'Mme. ':'M. '}</span>}
 										{(this.state.daddress1)?<span>{this.state.daddress1}<br /></span>:null}
 										{(this.state.daddress2)?<span>{this.state.daddress2}<br /></span>:null}
 										{(this.state.daddress3)?<span>{this.state.daddress3}<br /></span>:null}

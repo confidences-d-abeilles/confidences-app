@@ -10,7 +10,9 @@ export default class ContributorManageInfosSocial extends Component {
 		super(props);
 		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
-			loading: true
+			loading: true,
+			usexe_m: '',
+			bsexe_m: ''
 		}
 	}
 
@@ -22,6 +24,7 @@ export default class ContributorManageInfosSocial extends Component {
 			if (res) {
 				this.setState({
 					loading: false,
+					usexe_m: res.sexe_m?'1':'0',
 					firstname: res.firstname,
 					name: res.name,
 					email: res.email,
@@ -32,6 +35,7 @@ export default class ContributorManageInfosSocial extends Component {
 					if (address.type === 1) {
 						this.setState({
 							bid: address.id,
+							bsexe_m: address.sexe_m?'1':'0',
 							bline1: address.line1,
 							bline2: address.line2,
 							bline3: address.line3,
@@ -53,6 +57,7 @@ export default class ContributorManageInfosSocial extends Component {
 			url: '/user',
 			method: 'put',
 			data: {
+				sexe_m: this.state.usexe_m === '0' ? 'false':'true',
 				firstname: this.state.firstname,
 				name: this.state.name,
 				email: this.state.email,
@@ -67,6 +72,7 @@ export default class ContributorManageInfosSocial extends Component {
 			url: '/address/'+this.state.bid,
 			method: 'put',
 			data: {
+				sexe_m: this.state.bsexe_m === '0' ? 'false':'true',
 				line1: this.state.bline1,
 				line2: this.state.bline2,
 				line3: this.state.bline3,
@@ -85,6 +91,16 @@ export default class ContributorManageInfosSocial extends Component {
 					<div>
 						<form className="row py-4">
 							<div className="col-6 text-center">
+								<div className="form-group d-flex">
+									<label className="radio-inline form-check-label">
+										<input type="radio" className="form-check-input" name="usexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.usexe_m === '1'}/>
+										&nbsp;M
+									</label>
+									<label className="radio-inline form-check-label ml-4">
+										<input type="radio" className="form-check-input" name="usexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.usexe_m === '0'}/>
+										&nbsp;Mme
+									</label>
+								</div>
 								<div className="form-group">
 									<input type="text" value={this.state.firstname} name="firstname" className="form-control" placeholder="Prénom" onChange={handleChange.bind(this)} />
 								</div>
@@ -110,6 +126,16 @@ export default class ContributorManageInfosSocial extends Component {
 							<div className="col-6">
 								<span className="lead">Adresse :<br /></span>
 								<form key={this.state.user.id}>
+									<div className="form-group d-flex">
+										<label className="radio-inline form-check-label">
+											<input type="radio" className="form-check-input" name="bsexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.bsexe_m === '1'}/>
+											&nbsp;M
+										</label>
+										<label className="radio-inline form-check-label ml-4">
+											<input type="radio" className="form-check-input" name="bsexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.bsexe_m === '0'}/>
+											&nbsp;Mme
+										</label>
+									</div>
 									<div className="form-group">
 										<input type="texte" name="bline1" onChange={handleChange.bind(this)} value={this.state.bline1} className="form-control" placeholder="Nom et prénom" />
 									</div>

@@ -14,6 +14,7 @@ export default class IndividualAddress extends Component {
 		this.state = {
 			redirect: false,
 			message: '',
+			sexe_m: '',
 			address1: '',
 			address2: '',
 			address3: '',
@@ -30,6 +31,7 @@ export default class IndividualAddress extends Component {
 			method: 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
+				sexe_m: res.sexe_m?'1':'0',
 				address1 : res.name+' '+res.firstname
 			})
 		});
@@ -37,7 +39,7 @@ export default class IndividualAddress extends Component {
 
 	addAddress(e) {
 		e.preventDefault();
-		if (!this.state.address1 || !this.state.city || !this.state.zipcode) {
+		if (!this.state.sexe_m || !this.state.address3 || !this.state.city || !this.state.zipcode) {
 			this.refs.notif.addNotification({
 				message: "Merci de renseigner tous les champs obligatoires",
 				level: 'warning'
@@ -47,6 +49,7 @@ export default class IndividualAddress extends Component {
 				url : '/address',
 				method : 'post',
 				data : {
+					sexe_m : (this.state.sexe_m === '0')?false:true,
 					line1 : this.state.address1,
 					line2 : this.state.address2,
 					line3 : this.state.address3,
@@ -62,6 +65,7 @@ export default class IndividualAddress extends Component {
 					url : '/address',
 					method: 'post',
 					data : {
+						sexe_m : (this.state.sexe_m === '0')?false:true,
 						line1 : this.state.address1,
 						line2 : this.state.address2,
 						line3 : this.state.address3,
@@ -103,11 +107,8 @@ export default class IndividualAddress extends Component {
 					<div className="col-6">
 						<form className="text-center">
 							<h2 className="text-center my-4">Votre adresse</h2>
-							{(this.state.message)?
-								<p className="alert alert-danger">{this.state.message}</p>
-								:null}
 								<div className="form-group text-left">
-									{this.state.address1}
+									{this.state.sexe_m === '0'?'Mme. ':'M. '}{this.state.address1}
 								</div>
 							<div className="form-group">
 								<input type="text" name="address3" className="form-control" placeholder="Adresse ligne 1 *" value={this.state.address3} onChange={handleChange.bind(this)} />
