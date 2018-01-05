@@ -13,7 +13,7 @@ export default class AdminManageUsers extends Component {
 		this.state = {
 			users : null,
 			selectedUser: null,
-			sexe_m: "1"
+			sexe_m: "0"
 		}
 	}
 
