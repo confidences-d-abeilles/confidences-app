@@ -14,6 +14,7 @@ export default class ContributorAddress extends Component {
 		this.state = {
 			redirect: false,
 			message: '',
+			sexe_m: '',
 			address1: '',
 			address2: '',
 			address3: '',
@@ -26,7 +27,7 @@ export default class ContributorAddress extends Component {
 
 	addAddress(e) {
 		e.preventDefault();
-		if (!this.state.address1 || !this.state.city || !this.state.zipcode) {
+		if (!this.state.sexe_m || !this.state.address3 || !this.state.city || !this.state.zipcode) {
 			this.refs.notif.addNotification({
 				message : 'Merci de remplir tous les champs obligatoires',
 				level : 'warning'
@@ -36,6 +37,7 @@ export default class ContributorAddress extends Component {
 				url: '/address',
 				method : 'post',
 				data : {
+					sexe_m : (this.state.sexe_m === '0')?false:true,
 					line1 : this.state.address1,
 					line2 : this.state.address2,
 					line3 : this.state.address3,
@@ -57,6 +59,7 @@ export default class ContributorAddress extends Component {
 			method : 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
+				sexe_m: res.sexe_m?'1':'0',
 				address1: res.firstname+' '+res.name
 			});
 		})
@@ -82,6 +85,16 @@ export default class ContributorAddress extends Component {
 					<div className="col-6">
 						<form className="text-center">
 							<h2 className="text-center my-4">Votre adresse</h2>
+							<div className="form-group d-flex">
+					      <label className="radio-inline form-check-label">
+					        <input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.sexe_m === '1'}/>
+					        &nbsp;M *
+					      </label>
+						    <label className="radio-inline form-check-label ml-4">
+					        <input type="radio" className="form-check-input" name="sexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.sexe_m === '0'}/>
+					        &nbsp;Mme *
+					      </label>
+							</div>
 							<div className="form-group">
 								<input type="text" name="address1" className="form-control" placeholder="Nom et prénom *" value={this.state.address1} onChange={handleChange.bind(this)} />
 							</div>
@@ -92,13 +105,13 @@ export default class ContributorAddress extends Component {
 								<input type="text" name="address4" className="form-control" placeholder="Adresse ligne 2" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" name="city" className="form-control" placeholder="Ville" onChange={handleChange.bind(this)} />
+								<input type="text" name="city" className="form-control" placeholder="Ville *" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="number" name="zipcode" className="form-control" placeholder="Code postal" onChange={handleChange.bind(this)} />
+								<input type="number" name="zipcode" className="form-control" placeholder="Code postal *" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" name="country" className="form-control" placeholder="Pays" value={this.state.country} onChange={handleChange.bind(this)} />
+								<input type="text" name="country" className="form-control" placeholder="Pays *" value={this.state.country} onChange={handleChange.bind(this)} />
 							</div>
 							<p>
 								Remarque : votre adresse n’est utile que pour la
