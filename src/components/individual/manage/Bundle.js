@@ -31,6 +31,13 @@ export default class Bundle extends Component {
 			this.setState({
 					user: res
 			});
+            if (res.bundles[0] && res.bundles[0].present) {
+                this.setState({
+                    present_firstname: res.bundles[0].firstname,
+                    present_name: res.bundles[0].name,
+                    present_email: res.bundles[0].email
+                })
+            }
 		});
 	}
 
