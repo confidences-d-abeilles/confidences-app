@@ -75,7 +75,7 @@ export default class Contact extends Component {
 				<NotificationSystem ref="notif" />
 				<div className="row justify-content-center">
 					<div className="col-lg-6 col-md-10 col-sm-12">
-						<h2 className="text-center my-4"><span>La réponse à votre question se trouve peut-être dans notre FAQ </span>
+						<h2 className="text-center my-4"><span className="align-middle">La réponse à votre question se trouve peut-être dans notre FAQ </span>
 							<img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy"
 								style={{ height: '1em' }} />
 						</h2>

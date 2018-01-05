@@ -39,6 +39,7 @@ export default class CompanyManageInfos extends Component {
 				if (address.type === 1) {
 					this.setState({
 						bid: address.id,
+						bsexe_m: address.sexe_m?'1':'0',
 						baddress1: address.line1,
 						baddress2: address.line2,
 						baddress3: address.line3,
@@ -51,6 +52,7 @@ export default class CompanyManageInfos extends Component {
 				if (address.type === 2) {
 					this.setState({
 						did: address.id,
+						dsexe_m: address.sexe_m?'1':'0',
 						daddress1: address.line1,
 						daddress2: address.line2,
 						daddress3: address.line3,
@@ -83,6 +85,7 @@ export default class CompanyManageInfos extends Component {
 			url: '/address/'+this.state.bid,
 			method: 'put',
 			data : {
+				sexe_m: this.state.bsexe_m === '0' ? 'false':'true',
 				line1: this.state.baddress1,
 				line2: this.state.baddress2,
 				line3: this.state.baddress3,
@@ -100,6 +103,7 @@ export default class CompanyManageInfos extends Component {
 			url: '/address/'+this.state.did,
 			method: 'put',
 			data : {
+				sexe_m: this.state.dsexe_m === '0' ? 'false':'true',
 				line1: this.state.daddress1,
 				line2: this.state.daddress2,
 				line3: this.state.daddress3,
@@ -206,6 +210,16 @@ export default class CompanyManageInfos extends Component {
 						{this.state.user &&
 						<form className="col-lg-6 col-sm-12">
 							<h3 className="text-center my-4"><small>Mon adresse de facturation</small></h3>
+							<div className="form-group d-flex">
+								<label className="radio-inline form-check-label">
+									<input type="radio" className="form-check-input" name="bsexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.bsexe_m === '1'}/>
+									&nbsp;M
+								</label>
+								<label className="radio-inline form-check-label ml-4">
+									<input type="radio" className="form-check-input" name="bsexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.bsexe_m === '0'}/>
+									&nbsp;Mme
+								</label>
+							</div>
 							<div className="form-group">
 								<input type="text" name="baddress1" onChange={handleChange.bind(this)} value={this.state.baddress1} className="form-control" placeholder="Nom et prénom"/>
 							</div>
@@ -234,6 +248,16 @@ export default class CompanyManageInfos extends Component {
 						{this.state.user &&
 						<form className="col-lg-6 col-sm-12">
 							<h3 className="text-center my-4"><small>Mes informations de livraison</small></h3>
+							<div className="form-group d-flex">
+								<label className="radio-inline form-check-label">
+									<input type="radio" className="form-check-input" name="dsexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.dsexe_m === '1'}/>
+									&nbsp;M
+								</label>
+								<label className="radio-inline form-check-label ml-4">
+									<input type="radio" className="form-check-input" name="dsexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.dsexe_m === '0'}/>
+									&nbsp;Mme
+								</label>
+							</div>
 							<div className="form-group">
 								<input type="text" name="daddress1" onChange={handleChange.bind(this)} value={this.state.daddress1} className="form-control" placeholder="Nom et prénom"/>
 							</div>

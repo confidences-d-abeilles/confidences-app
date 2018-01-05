@@ -13,7 +13,9 @@ export default class AdminManageUsers extends Component {
 		this.state = {
 			users : null,
 			selectedUser: null,
-			sexe_m: ''
+			usexe_m: '', /* sexe user */
+			bsexe_m: '', /* sexe bill */
+			dsexe_m: ''  /* sexe delivery */
 		}
 	}
 
@@ -52,7 +54,9 @@ export default class AdminManageUsers extends Component {
 	selectUser(user) {
 		this.setState({
 			selectedUser: user,
-			sexe_m: user.sexe_m?'1':'0'
+			usexe_m: user.sexe_m?'1':'0',
+			bsexe_m: user.addresses[0]?user.addresses[0].sexe_m?'1':'0':'',
+			dsexe_m: user.addresses[1]?user.addresses[1].sexe_m?'1':'0':''
 		})
 	}
 
@@ -90,19 +94,42 @@ export default class AdminManageUsers extends Component {
 
 	updateSexe(event) {
 		event.preventDefault();
-		const sexe = event.target.value;
-		this.setState({
-			sexe_m: sexe
-		})
-		request({
-			url: '/user/' + this.state.selectedUser.id,
-			method: 'put',
-			data: {
-				sexe_m: (sexe === '0')?false:true
-			}
-		}, this.refs.notif).then(() => {
-				this.getUsers();
-		});
+		let objState = {};
+		objState[event.target.name] = event.target.value;
+		this.setState(objState);
+		if (event.target.name === 'usexe_m') {
+			request({
+				url: '/user/' + this.state.selectedUser.id,
+				method: 'put',
+				data: {
+					sexe_m: (event.target.value === '0')?false:true
+				}
+			}, this.refs.notif).then(() => {
+					this.getUsers();
+			});
+		/* Update bill address */
+		} else if (event.target.name === 'bsexe_m') {
+			let copy = Object.assign({}, this.state.selectedUser.addresses[0]);
+			copy.sexe_m = (event.target.value === '0')?false:true;
+			request({
+				url: '/address/' + this.state.selectedUser.addresses[0].id,
+				method: 'put',
+				data: copy
+			}, this.refs.notif).then(() => {
+					this.getUsers();
+			});
+		/* Update delivery address */
+		} else if (event.target.name === 'dsexe_m') {
+			let copy = Object.assign({}, this.state.selectedUser.addresses[1]);
+			copy.sexe_m = (event.target.value === '0')?false:true;
+			request({
+				url: '/address/' + this.state.selectedUser.addresses[1].id,
+				method: 'put',
+				data: copy
+			}, this.refs.notif).then(() => {
+					this.getUsers();
+			});
+		}
 	}
 
 	getEmailType(type) {
@@ -187,11 +214,11 @@ export default class AdminManageUsers extends Component {
 													<strong>Date d'inscription :</strong> {moment(this.state.selectedUser.createdAt).format("DD/MM/YYYY HH:mm:ss")}<br />
 													<div className="form-group d-flex">
 											      <label className="radio-inline form-check-label">
-											        <input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={this.updateSexe.bind(this)} checked={this.state.sexe_m === '1'}/>
+											        <input type="radio" className="form-check-input" name="usexe_m" value="1" onChange={this.updateSexe.bind(this)} checked={this.state.usexe_m === '1'}/>
 											        &nbsp;M
 											      </label>
 												    <label className="radio-inline form-check-label ml-4">
-											        <input type="radio" className="form-check-input" name="sexe_m" value="0" onChange={this.updateSexe.bind(this)} checked={this.state.sexe_m === '0'}/>
+											        <input type="radio" className="form-check-input" name="usexe_m" value="0" onChange={this.updateSexe.bind(this)} checked={this.state.usexe_m === '0'}/>
 											        &nbsp;Mme
 											      </label>
 													</div>
@@ -209,6 +236,16 @@ export default class AdminManageUsers extends Component {
 													<div className="card-block">
 														<h3 className="card-title">Adresse de facturation</h3>
 														<p className="card-text">
+															<div className="form-group d-flex">
+													      <label className="radio-inline form-check-label">
+													        <input type="radio" className="form-check-input" name="bsexe_m" value="1" onChange={this.updateSexe.bind(this)} checked={this.state.bsexe_m === '1'}/>
+													        &nbsp;M
+													      </label>
+														    <label className="radio-inline form-check-label ml-4">
+													        <input type="radio" className="form-check-input" name="bsexe_m" value="0" onChange={this.updateSexe.bind(this)} checked={this.state.bsexe_m === '0'}/>
+													        &nbsp;Mme
+													      </label>
+															</div>
 															{this.state.selectedUser.addresses[0].line1}<br />
 															{this.state.selectedUser.addresses[0].line2}<br />
 															{this.state.selectedUser.addresses[0].line3}<br />
@@ -226,6 +263,16 @@ export default class AdminManageUsers extends Component {
 													<div className="card-block">
 														<h3 className="card-title">Adresse de livraison :</h3>
 														<p className="card-text">
+															<div className="form-group d-flex">
+													      <label className="radio-inline form-check-label">
+													        <input type="radio" className="form-check-input" name="dsexe_m" value="1" onChange={this.updateSexe.bind(this)} checked={this.state.dsexe_m === '1'}/>
+													        &nbsp;M
+													      </label>
+														    <label className="radio-inline form-check-label ml-4">
+													        <input type="radio" className="form-check-input" name="dsexe_m" value="0" onChange={this.updateSexe.bind(this)} checked={this.state.dsexe_m === '0'}/>
+													        &nbsp;Mme
+													      </label>
+															</div>
 															{this.state.selectedUser.addresses[1].line1}<br />
 															{this.state.selectedUser.addresses[1].line2}<br />
 															{this.state.selectedUser.addresses[1].line3}<br />
