@@ -36,18 +36,7 @@ export default class Bills extends Component {
                 <Meta title="Mes factures"/>
                 <div className="col-lg-12">
                     <h2 className="text-center my-5">Mes factures</h2>
-                    {(this.state.bills)?
-                    <table className="table">
-                        <tbody>
-                            <tr><th>Numero</th><th>Montant</th><th>Date</th><th></th></tr>
-                            {this.state.bills.map((bill) => {
-                                return (
-                                    <tr><td>{bill.number}</td><td>{bill.price} €</td><td>{moment(bill.date).format('DD/MM/YYYY')}</td><td><a href={config.cdn_url+'/bills/'+bill.number+'.pdf'} download><FontAwesome name="cloud-download" /></a></td></tr>
-                                )
-                            })}
-                        </tbody>
-                    </table>:
-                    <Loading />}
+                    <p className="alert alert-info">Factures en ligne bientôt disponibles</p>
                 </div>
             </div>
         )
