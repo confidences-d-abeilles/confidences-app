@@ -40,7 +40,7 @@ export default class CompanyAddress extends Component {
 
 	addAddress(e) {
 		e.preventDefault();
-		if (!this.state.sexe_m || !this.state.address1 || !this.state.city || !this.state.zipcode) {
+		if (!this.state.sexe_m || !this.state.address3 || !this.state.city || !this.state.zipcode) {
 			this.refs.notif.addNotification({
 				message : "Merci de renseigner tous les champs",
 				level : 'warning'

@@ -98,7 +98,7 @@ class HowOfferPresent extends Component {
                       parrainage)
                   </li>
                   <li className="my-4">
-                      <span>C’est terminé </span>
+                      <span className="align-middle">C’est terminé </span>
                       <img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy"
         								style={{ height: '1em' }} />
                   </li>
