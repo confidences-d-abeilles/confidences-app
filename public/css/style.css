@@ -12,7 +12,7 @@
     position: relative;
 }
 
-.btn-company:hover {
+.btn-company:hover, .btn-company:focus {
     text-decoration: none;
     color: #E49C00;
 }
@@ -34,7 +34,7 @@
     transform: scale(0, 1);
 }
 
-.btn-company:hover::before {
+.btn-company:hover::before, .btn-company:focus::before {
     width: 100%;
     -ms-transform: scale(1); /* IE 9 */
     -webkit-transform: scale(1); /* Safari */
