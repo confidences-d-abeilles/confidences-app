@@ -101,8 +101,8 @@ export default class CompanyPage extends Component {
 					{(this.state.redirect)?<Redirect to="/" />:null}
 					<NotificationSystem ref="notif" />
 					<div className="row justify-content-center">
-						<h1 style={{ backgroundColor : "#E49C00",fontFamily: "HighTo" , color: 'white', padding: "0.4em 2.5em"}}><small>{(this.state.user)?this.state.user.company_name.toUpperCase():null}</small></h1>
-						<div className="col-lg-12">
+						<h1 style={{ backgroundColor : "#E49C00",fontFamily: "HighTo" , color: 'white', padding: "0.4em 2.5em", zIndex: '5' }}><small>{(this.state.user)?this.state.user.company_name.toUpperCase():null}</small></h1>
+						<div className="col-lg-12" style={{ marginTop: '-5.3em' }}>
 							{(this.state.user && this.state.user.cover)?<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.cover:null} alt="Cover" className="img-fluid" />:null}
 						</div>
 					</div>
