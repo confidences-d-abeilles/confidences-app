@@ -21,6 +21,7 @@ export default class CompanyPage extends Component {
 		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			user : null,
+			cover : null,
 			hives: [],
 			news: [],
 			redirect : false
@@ -33,7 +34,8 @@ export default class CompanyPage extends Component {
 			method : 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				user : res
+				user : res,
+				cover: res.cover
 			})
 			request({
 				url : '/hive/bundle/'+res.bundles[0].id,
@@ -96,8 +98,7 @@ export default class CompanyPage extends Component {
 					<NotificationSystem ref="notif" />
 					<div className="row justify-content-center">
 						<h1 style={{ backgroundColor : "#E49C00",fontFamily: "HighTo" , color: 'white', padding: "0.4em 2.5em", zIndex: '5' }}><small>{(this.state.user)?this.state.user.company_name.toUpperCase():null}</small></h1>
-						<div className="col-lg-12" style={{ marginTop: '-5.3em' }}>
-							{(this.state.user && this.state.user.cover)?<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.cover:null} alt="Cover" className="img-fluid" />:null}
+						<div className="col-lg-12" style={{ marginTop: '-5.3em', backgroundPosition: 'center', height: '20em', backgroundImage: 'url('+((this.state.cover)?config.cdn_url+'/'+this.state.cover:'')+')', backgroundSize: 'cover' }}>
 						</div>
 					</div>
 				</div>
@@ -118,7 +119,7 @@ export default class CompanyPage extends Component {
 										{(this.state.user && this.state.user.description)?this.state.user.description:"Cette entreprise n'a pas encore rédigé sa description"}
 									</p>
 									<p className="text-center my-5">
-										<img src={(this.state.user && this.state.user.logo)?config.cdn_url+'/'+this.state.user.logo:defaultImg} alt="Logo entreprise" />
+										<img src={(this.state.user && this.state.user.logo)?config.cdn_url+'/'+this.state.user.logo:defaultImg} alt="Logo entreprise" className="img-fluid" />
 									</p>
 									{(this.state.user && this.state.user.link1_url && this.state.user.link1_name)?
 									<div className="col text-center">
@@ -148,7 +149,7 @@ export default class CompanyPage extends Component {
 									<div className="ruche" data-hive={hive.id} onMouseEnter={this.displayImg.bind(this)} onMouseLeave={this.hideImg.bind(this)}>
 										<img src={require("../../assets/img/rayon.png")} className="img-fluid rayon" alt="Rayon" />
 										<h3 style={{ padding: '0px', margin: '0'}} className="" >{hive.name.toUpperCase()}</h3>
-										<Link to={'/hive/'+hive.id} style={{ color: '#666666', fontSize: '0.8em' }} >Voir en détails</Link>
+										<Link to={'/hive/'+hive.id} style={{ color: '#666666', fontSize: '0.8em', lineHeight: '1em' }} >Voir en détails</Link>
 									</div>
 								)
 							})}
