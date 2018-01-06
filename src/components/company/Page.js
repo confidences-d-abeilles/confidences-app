@@ -118,7 +118,7 @@ export default class CompanyPage extends Component {
 									<p>
 										{(this.state.user && this.state.user.description)?this.state.user.description:"Cette entreprise n'a pas encore rédigé sa description"}
 									</p>
-									<p className="text-center my-5">
+									<p className="text-center my-3">
 										<img src={(this.state.user && this.state.user.logo)?config.cdn_url+'/'+this.state.user.logo:defaultImg} alt="Logo entreprise" className="img-fluid" />
 									</p>
 									{(this.state.user && this.state.user.link1_url && this.state.user.link1_name)?
