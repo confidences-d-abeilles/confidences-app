@@ -1,0 +1,156 @@
+@font-face {
+	font-family: "HighTo";
+	src: url('../fonts/HighTower.ttf');
+}
+
+.btn-company {
+    padding: 0.75em 0 0.75em 0;
+    margin-top: 1em;
+    display: block;
+    color: inherit;
+    transition: 0.5s;
+    position: relative;
+}
+
+.btn-company:hover {
+    text-decoration: none;
+    color: #E49C00;
+}
+
+.btn-company::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    border-color: #E49C00;
+    border-style: solid;
+    border-width: 1px 0 1px 0;
+    transition: 0.25s;
+    -ms-transform: scale(0, 1); /* IE 9 */
+    -webkit-transform: scale(0, 1); /* Safari */
+    transform: scale(0, 1);
+}
+
+.btn-company:hover::before {
+    width: 100%;
+    -ms-transform: scale(1); /* IE 9 */
+    -webkit-transform: scale(1); /* Safari */
+    transform: scale(1);
+}
+
+
+.actu-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+.actu-first-block {
+    padding: 0 1em;
+    text-align: center;
+}
+
+.actu-title {
+    position: relative;
+}
+
+.actu-date {
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    font-size: 0.75em;
+}
+
+.actu-img {
+    height: 10em;
+    margin-bottom: 1em;
+    background-size: cover;
+    background-position: center;
+}
+
+.actu-second-block {
+    flex: 1;
+}
+
+.actu-title {
+    color: #E49C00;
+}
+
+.actu-btn {
+    height: 1.5em;
+    overflow: hidden;
+    color: #E49C00;
+    cursor: pointer;
+}
+
+.actu-content {
+    transition: 0.5s;
+    height: 6em;
+    overflow: hidden;
+}
+
+.actu-deploy {
+    height: 100%;
+}
+
+.ruche {
+    cursor: default;
+    height: 3em;
+}
+
+.ruche .rayon {
+    float: left;
+    width: 3em;
+    height: 2.5em;
+    margin-right: 1em;
+    transition: 0.5s;
+    transform: scale(0);
+}
+
+.ruche a {
+    display: block;
+    height: 0px;
+    overflow: hidden;
+    transition: 0.5s;
+    margin: 0;
+    margin-bottom: 10px;
+    transform: translate(-3em, 0);
+}
+
+.ruche:hover {
+    height: 3em;
+}
+
+.ruche h3 {
+    transition: 0.5s;
+    color: #666666;
+    transform: translate(-3em, 0.5em);
+}
+
+.ruche:hover h3 {
+    transition: 0.5s;
+    color: #E49C00;
+    transform: translate(0);
+}
+
+.ruche:hover a {
+    height: 1em;
+    transform: translate(0);
+}
+
+.ruche:hover .rayon {
+    transform: scale(1);
+}
+
+.ruche-img {
+    position: absolute;
+    top: 1em;
+    left: 0;
+    transition: 0.5s;
+    opacity: 0;
+    background-size: cover;
+}
