@@ -9,12 +9,14 @@ export default class FooterPage extends Component {
 	render () {
 		return (
 			<div className="row">
-				<div className="col my-4">
+				<div className="col-lg-12 my-4">
 					<hr />
+					<p className="text-center lead">
+						Un service assuré par Confidences d'Abeilles
+					</p>
 					<Link to="/">
 						<p className="text-center lead">
-							Un service assuré par Confidences d'Abeilles<br />
-						<img src={logo} alt="Confidences d'Abeilles Logo"  className="img-fluid my-4" style={{ maxHeight: '150px' }}	 />
+							<img src={logo} alt="Confidences d'Abeilles Logo"  className="img-fluid my-4" style={{ maxHeight: '150px' }}	 />
 						</p>
 					</Link>
 					<div className="text-center">
