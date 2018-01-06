@@ -51,7 +51,7 @@ export default class Hive extends Component {
 									{this.state.hive &&
 										this.state.hive.parrains.map((user) => {
 											return (
-												<p>{user.name} {user.firstname}</p>
+												<p>{(user.company)?user.company:user.firstname+' '+user.name}</p>
 											)
 										})}
 								</div>
