@@ -24,7 +24,8 @@ export default class CompanyPage extends Component {
 			cover : null,
 			hives: [],
 			news: [],
-			redirect : false
+			redirect : false,
+			english: false
 		}
 	}
 
@@ -35,6 +36,7 @@ export default class CompanyPage extends Component {
 		}, this.refs.notif).then((res) => {
 			this.setState({
 				user : res,
+				english : res.english,
 				cover: res.cover
 			})
 			request({
@@ -131,7 +133,7 @@ export default class CompanyPage extends Component {
 									</div>:null}
 								</div>
 								<div className="col-lg-6 px-5 py-2" style={{ backgroundColor : '#E49C00', color: 'white'}}>
-									<h2 className="mt-4">NOTRE ENGAGEMENT POUR LA BIODIVERSITÉ</h2>
+									<h2 className="mt-4">{(this.state.english)?'OUR COMMITMENT TO BIODIVERSITY ':'NOTRE ENGAGEMENT POUR LA BIODIVERSITÉ'}</h2>
 									<div style={{ width : '100%', height: '1px', backgroundColor: 'white'}} className="mb-4" ></div>
 									<p>
 									{(this.state.user && this.state.user.involvement)?
@@ -142,7 +144,7 @@ export default class CompanyPage extends Component {
 							</div>
 						</div>
 						<div className="col-lg-4 px-4" style={{ position : "relative" }}>
-							<h2 style={{ color: '#E49C00' }}>NOS RUCHES</h2>
+							<h2 style={{ color: '#E49C00' }}>{(this.state.english)?'OUR BEEHIVES':'NOS RUCHES'}</h2>
 							<div style={{ width : '100%', height: '2px', backgroundColor: '#E49C00'}} className="mb-4" ></div>
 							{this.state.hives.map((hive) => {
 								return (
@@ -164,7 +166,7 @@ export default class CompanyPage extends Component {
 					</div>
 					<div className="row justify-content-end align-items-center mb-4">
 						<div className="col-lg-12">
-							<h2 style={{ color: '#E49C00' }}>LES DERNIÈRES ACTUALITÉS</h2>
+							<h2 style={{ color: '#E49C00' }}>{(this.state.english)?'LATEST NEWS':'LES DERNIÈRES ACTUALITÉS'}</h2>
 							<div style={{ width : '100%', height: '1px', backgroundColor: '#E49C00'}} className="mb-4" ></div>
 					        {this.state.user && this.state.user.news.map((actu) => {
 					            const date = new Date(actu.createdAt);
@@ -189,7 +191,7 @@ export default class CompanyPage extends Component {
 					        })}
 							</div>
 						</div>
-					<FooterPage />
+					<FooterPage english={this.state.english} />
 	            </div>
 			</div>
         );
