@@ -163,7 +163,7 @@ export default class Home extends Component {
 				</div>
 				<div className="row align-items-center justify-content-center">
 					<div className="col-lg-4 col-md-6 col-sm-12 text-center my-2">
-						<Link to="/account"><button className="btn btn-secondary" data-toggle="modal" data-target="#createAccount">Parrainer une ruche</button></Link>
+						<Link className="btn btn-secondary" to="/presignup">Parrainer une ruche</Link>
 					</div>
 					<div className="col-lg-4 col-md-6 col-sm-12 text-center my-2">
 						<Link to="/hives" className="btn btn-secondary">Découvrir les ruches</Link>

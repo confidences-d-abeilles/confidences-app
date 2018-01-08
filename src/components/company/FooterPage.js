@@ -12,7 +12,7 @@ export default class FooterPage extends Component {
 				<div className="col-lg-12 my-4">
 					<hr />
 					<p className="text-center lead">
-						Un service assuré par Confidences d'Abeilles
+						{(this.props.english)?'A service provided by Confidences d\'Abeilles':'Un service assuré par Confidences d\'Abeilles'}
 					</p>
 					<Link to="/">
 						<p className="text-center lead">

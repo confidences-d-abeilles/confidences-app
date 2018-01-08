@@ -108,7 +108,7 @@ export default class Header extends Component {
 									<Link className="nav-link" to="/login">Se connecter</Link>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="/" data-toggle="modal" data-target="#createAccount">Créer un compte</a>
+									<Link className="btn btn-primary" to="/presignup">Créer un compte</Link>
 								</li>
 							</ul>
 						}
