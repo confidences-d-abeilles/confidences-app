@@ -24,7 +24,8 @@ export default class CompanyManageMyPage extends Component {
 			link1_url: '',
 			link2_name: '',
 			link2_url: '',
-			visible: false
+			visible: false,
+			english: false
 		}
 	}
 
@@ -49,6 +50,7 @@ export default class CompanyManageMyPage extends Component {
 				link1_url: res.link1_url,
 				link2_name: res.link2_name,
 				link2_url: res.link2_url,
+				english: res.english,
 				visible: res.visible
 			});
 		}).catch((err) => {})
@@ -76,6 +78,7 @@ export default class CompanyManageMyPage extends Component {
 			formData.append('link1_url', this.state.link1_url);
 			formData.append('link2_name', this.state.link2_name);
 			formData.append('link2_url', this.state.link2_url);
+			formData.append('english', this.state.english);
 			formData.append('visible', this.state.visible);
 			if (document.getElementById("cover").files[0]) {
 				formData.append('cover', document.getElementById("cover").files[0]);
@@ -178,6 +181,9 @@ export default class CompanyManageMyPage extends Component {
 					</div>
 					<div className="form-group">
 						<input type="texte" name="link2_url" className="form-control" value={this.state.link2_url} placeholder="URL du bouton d'action 2" onChange={handleChange.bind(this)} />
+					</div>
+					<div className="form-group">
+						<label htmlFor="english"><input type="checkbox" name="english" id="english" onChange={handleTick.bind(this)} checked={this.state.english} /> Version anglaise</label>
 					</div>
 					<div className="form-group">
 						<label htmlFor="visible"><input type="checkbox" name="visible" id="visible" onChange={handleTick.bind(this)} checked={this.state.visible} /> Rendre ma page publique</label>
