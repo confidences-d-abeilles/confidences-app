@@ -150,7 +150,7 @@ export default class CompanyCheckout extends Component {
 						<h3 className="text-center">Résumé</h3>
 						<p>
 							Nous parrainons {this.state.hives} ruches qui seront marquées au couleur de notre entreprise. En
-							contrepartie nous recevrons {this.state.hives * 80} pots de miel de 125g produit par nos abeilles.
+							contrepartie nous recevrons {this.state.hives * 80} pots de miel de 125g produits par nos abeilles.
 							Nous bénéficions en plus d’une page internet dédiée à notre entreprise et aux
 							actions qu’elle mène en faveur de l’environnement. Des actualités de nos ruches y
 							seront régulièrement postées, accessibles au grand public et à nos partenaires.
