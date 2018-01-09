@@ -234,7 +234,7 @@ export default class IndividualCheckout extends Component {
 						<h2 className="text-center my-4">Confirmation et paiement</h2>
 						<p>
 							Je parraine {this.state.bees} abeilles d'une ruche sur laquelle sera marqué mon nom.
-							Je recevrais {this.state.bees / 10000 * 8} pots de miel de 250g produit par mes abeilles.
+							Je recevrais {this.state.bees / 10000 * 8} pots de miel de 250g produits par mes abeilles.
 							De plus, une page internet sera dédiée à ma ruche et je pourrais y retrouver des actualités sur mes abeilles.
 							<br /><br />
 							<strong>Le coût total est de {this.state.price} euros par an.</strong><br /><br />

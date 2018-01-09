@@ -32,7 +32,7 @@ export default class Present extends Component {
                         concrètement bénéfique pour notre
                         environnement ?</strong> Alors vous êtes au bon
                         endroit ! En effet, le parrainage d’Abeilles ou
-                        de ruches à la particularité de réunir tous ces
+                        de ruches a la particularité de réunir tous ces
                         atouts !
                     </p>
                 </div>
@@ -71,8 +71,8 @@ class HowOfferPresent extends Component {
             <div className="col">
               <p className="">
                   Dans le but de garantir une bonne saisie des
-                  informations <strong>nous vous invitons à lire ces
-                  toutes étapes avant de commencer.</strong>
+                  informations <strong>nous vous invitons à lire toutes
+                  ces étapes avant de commencer.</strong>
               </p>
               <ol className="lead">
                   <li className="my-4">
@@ -145,10 +145,10 @@ class PresentationPresent extends Component {
                   moment gastronomique inoubliable.<br /><br />
                   <strong>Non seulement les parrains prennent plaisir
                   à suivre l’évolution de leur ruche via une
-                  page dédiée mais en plus ils participent la
+                  page dédiée mais en plus ils participent à la
                   sauvegarde d’une espèce menacée</strong> ; les
                   abeilles, par leur activité de pollinisation,
-                  protège la biodiversité et préservent donc
+                  protègent la biodiversité et préservent donc
                   notre environnement. Celui-ci étant plus
                   fécond il nécessite moins de traitements
                   nuisibles aux abeilles par exemple. C’est un
