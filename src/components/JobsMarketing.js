@@ -33,7 +33,7 @@ export default class JobsMarketing extends Component {
 						<ul>
 							<li>
 								<strong>Relation Client</strong> : vous interagissez régulièrement avec les gourmands
-								de miel ou les protecteurs d’abeille et êtes le garant d’une expérience
+								de miel ou les protecteurs d’abeilles et êtes le garant d’une expérience
 								exceptionnelle. Vous incarnez l’excellence du service client
 							</li>
 							<li>
