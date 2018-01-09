@@ -63,7 +63,7 @@ EMAPI, association d’apiculture des Mines d’Alès, dans la gestion de son ru
 							Que serait Confidences d’Abeilles sans vous ? Que serait-elle sans ses milliers de followers
 							sur les réseaux sociaux, sans ses nombreux parrains, sans les personnes qui ont cru en
 							elle ?<br /><br />
-							Ce qui est certain c’est qu’elle n’en serait pas là aujourd’hui ! Alors merci et continuez la
+							Ce qui est certain c’est qu’elle n’en serait pas là aujourd’hui ! Alors merci et continuez à la
 							porter loin, très loin !
 						</p>
 						<p className="text-right my-4">Nicolas &amp; Gaëtan</p>
