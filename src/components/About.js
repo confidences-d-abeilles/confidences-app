@@ -30,10 +30,9 @@ précise, pas de révélations, pas de
 plans sur la comète non, simplement le
 moyen pour deux apiculteurs de vivre à
 fond leur passion. D’aucuns
-raccrocherons le début de l’aventure
+raccrocheront le début de l’aventure
 en 2015, nous préférons parler d’un
 héritage ; un héritage légué par notre
-
 grand-oncle qui fut apiculteur en son temps. Nous lui devons notre passion pour les
 abeilles, nous lui devons notre savoir-faire, nous lui devons beaucoup. Confidences
 d’Abeilles s’est donc imposée à nous comme une suite logique ; un moyen de continuer
@@ -50,7 +49,7 @@ fascination et l’admiration qu’éprouvent les curieux à l’ouverture de le
 sont suffisamment puissantes pour pousser l’équipe à poursuivre son travail dans cette
 direction. L’implication du plus grand nombre dans le maintien des populations d’abeilles
 peut notamment passer par le parrainage de ruche. C’est tout l’objet de ce service mis en
-place Confidences d’Abeilles et accessible depuis la plateforme sur laquelle vous vous
+place par Confidences d’Abeilles et accessible depuis la plateforme sur laquelle vous vous
 trouvez en ce moment !<br /><br />
 Confidences d’Abeilles soutient notamment ConnectHive dont elle est partenaire, dans le
 développement de l’apiculture connectée de demain. Elle apporte son aide à l’association
