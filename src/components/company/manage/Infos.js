@@ -184,7 +184,7 @@ export default class CompanyManageInfos extends Component {
 							<div className="col-lg-6 col-sm-12">
 								<form onSubmit={this.changeInfos.bind(this)}>
 									<div className="form-group">
-										<input type="phone" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control" placeholder="Numéro de téléphone" />
+										<input type="tel" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control" placeholder="Numéro de téléphone" />
 									</div>
 									<div className="form-group">
 										<input type="email" name="email" onChange={handleChange.bind(this)} value={this.state.email} className="form-control" placeholder="Email" />
