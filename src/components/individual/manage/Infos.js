@@ -221,7 +221,7 @@ export default class IndividualManageInfos extends Component {
 									<form onSubmit={this.changeInfos.bind(this)}>
 										<div className="form-group">
 											<label>Numéro de téléphone</label>
-											<input type="phone" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="Numéro de téléphone" />
+											<input type="tel" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="Numéro de téléphone" />
 										</div>
 										<div className="form-group">
 											<label>Email</label>
@@ -297,7 +297,7 @@ export default class IndividualManageInfos extends Component {
 										{this.state.daddress3}<br />
 										{(this.state.daddress4)?this.state.daddress4:null}
 										{this.state.daddress4 && <br />}
-										{this.state.dzip} {this.state.bcity}<br />
+										{this.state.dzip} {this.state.dcity}<br />
 										{this.state.dcountry}<br />
 										<strong>Téléphone pour la livraison :</strong> {this.state.dphone}
 										<br /><br />

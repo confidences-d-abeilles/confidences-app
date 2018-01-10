@@ -89,7 +89,8 @@ export default class IndividualCheckout extends Component {
 						daddress4 : address.line4,
 						dcity: address.city,
 						dzip: address.zipcode,
-						dcountry: address.country
+						dcountry: address.country,
+						dphone: address.phone
 					})
 				}
 			})
@@ -291,7 +292,7 @@ export default class IndividualCheckout extends Component {
 											<input type="text" className="form-control" value={this.state.dcountry} name="dcountry" onChange={handleChange.bind(this)} />
 										</div>
 										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.dphone} name="dphone" onChange={handleChange.bind(this)} placeholder="Numéro de téléphone pour la livraison *" />
+											<input type="tel" className="form-control" value={this.state.dphone} name="dphone" onChange={handleChange.bind(this)} placeholder="Numéro de téléphone pour la livraison *" />
 										</div>
 									</form>
 								}
