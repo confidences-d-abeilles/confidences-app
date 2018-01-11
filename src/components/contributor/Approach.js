@@ -60,7 +60,7 @@ export default class ContributorApproach extends Component {
 						<p>
 							Une fois trouvée, nous vous aidons à la
 							contacter en remplissant un formulaire très
-							court. Il ne vous reste alors plus qu’attendre
+							court. Il ne vous reste alors plus qu’à attendre
 							qu’elle parraine ses premières ruches.
 						</p>
 						<div className="row">
@@ -95,7 +95,7 @@ export default class ContributorApproach extends Component {
 						<p>
 							Pour commencer il faut déterminer les entreprises que vous souhaitez contacter. Vous
 							devez attacher une importance particulière à cette sélection puisque vous ne pourrez en
-							ajouter que 10 au départ. Faites le tour de cercle privé, de votre réseau, de vos
+							ajouter que 10 au départ. Faites le tour de votre cercle privé, de votre réseau, de vos
 							connaissances et ne retenez que celles avec lesquelles vous avez le plus de chance de
 							réussir. L’idée est de travailler avec des leads qualifiés. Vous convertirez d’autant plus et
 							resterez motivés pour poursuivre votre prospection.<br /><br />
@@ -133,7 +133,7 @@ export default class ContributorApproach extends Component {
 							suffit pour cela de cliquer sur &quot;AJOUTER UNE ENTREPRISE&quot; puis de compléter le petit
 							formulaire ; bien remplir le champ numéro siret et celle-ci sera ajoutée à votre liste. Il ne
 							vous reste alors plus qu&#39;à attendre une inscription et un parrainage de la part de
-							l&#39;entreprise que vous avez contacté. Son statut sera mis à jour dans la liste des entreprises
+							l&#39;entreprise que vous avez contactée. Son statut sera mis à jour dans la liste des entreprises
 							démarchées.<br /><br />
 							Bien entendu, une relance téléphonique augmente très fortement votre taux de
 							conversion. Retrouvez nos conseils ci-dessous.
