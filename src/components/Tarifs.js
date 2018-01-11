@@ -124,8 +124,8 @@ class CompanyTarifs extends Component {
 						<td>80 pots de miel de 125g par ruche</td>
 					</tr>
 					<tr>
-						<td>425€/ruche</td>
-						<td>375€/ruche</td>
+						<td>545€/ruche</td>
+						<td>495€/ruche</td>
 					</tr>
 				</tbody>
 			</table>
