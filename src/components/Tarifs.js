@@ -27,10 +27,10 @@ export default class Tarifs extends Component {
 						</ul>
 						<div className="tab-content" style={{ overflowX : 'auto' }}>
 							<div id="individual" className="tab-pane active" role="tabpanel">
-								<IndividualTarifs />
+								<IndividualPrices />
 							</div>
 							<div id="company" className="tab-pane" role="tabpanel">
-								<CompanyTarifs />
+								<CompanyPrices />
 							</div>
 						</div>
 					</div>
@@ -40,7 +40,7 @@ export default class Tarifs extends Component {
 	}
 }
 
-class IndividualTarifs extends Component {
+class IndividualPrices extends Component {
 
 	constructor(props) {
 		super(props)
@@ -102,7 +102,7 @@ class IndividualTarifs extends Component {
 	}
 }
 
-class CompanyTarifs extends Component {
+class CompanyPrices extends Component {
 
 	render () {
 		return (
@@ -124,8 +124,8 @@ class CompanyTarifs extends Component {
 						<td>80 pots de miel de 125g par ruche</td>
 					</tr>
 					<tr>
-						<td>425€/ruche</td>
-						<td>375€/ruche</td>
+						<td>545€ HT /ruche</td>
+						<td>495€ HT /ruche</td>
 					</tr>
 				</tbody>
 			</table>

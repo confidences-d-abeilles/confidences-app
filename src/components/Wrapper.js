@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import MyAccount from './MyAccount';
 import Logout from './Logout';
@@ -140,7 +140,8 @@ export default class Wrapper extends Component {
 							<Route exact path="/jobs/event" component={JobsEvent} />
 							<Route exact path="/cgv" component={Cgv} />
 							<Route exact path="/mentions_legales" component={Mentions} />
-							<Route exact path="/tarifs" component={Tarifs} />
+							<Redirect from="/tarifs" to="/prices" />
+							<Route exact path="/prices" component={Tarifs} />
 							<Route exact path="/hives" component={Hives} />
 							<Route exact path="/hive/:id" component={Hive} />
 							<Route exact path="/confirm/:token" component={Confirm} />
