@@ -42,7 +42,7 @@ abeilles. Frissons et miel frais garantis !
 						<p>
 							L’installation des ruches parrainées se fait sur nos ruchers situés en Haute-Savoie ou en
 Savoie.<br/><br/>
-						<Link to="/tarifs">Consulter les tarifs</Link><br/><br/>
+						<Link to="/prices">Consulter les tarifs</Link><br/><br/>
 							Dès lors que vous choisissez de parrainer des abeilles ou une ruche complète votre
 prénom sera inscrit sur une ruche ; vous aurez la possibilité de suivre ses actualités,
 consulter ses photos et découvrir d’autres informations sur une page spécialement dédiée

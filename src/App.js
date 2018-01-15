@@ -68,6 +68,7 @@ class App extends Component {
 							<Route path="/team" component={Wrapper} />
 							<Route path="/about" component={Wrapper} />
 							<Route path="/tarifs" component={Wrapper} />
+							<Route path="/prices" component={Wrapper} />
 							<Route path="/ruches" component={Wrapper} />
 							<Route path="/admin" component={Wrapper} />
 							<Route path="/presignup" component={Wrapper} />
