@@ -3,7 +3,7 @@ import { handleTick } from '../services/FormService'
 import ReactGA from 'react-ga';
 import Meta from './utils/Meta'
 
-export default class Tarifs extends Component {
+export default class Prices extends Component {
 
 	constructor(props) {
 		super(props)

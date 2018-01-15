@@ -66,7 +66,7 @@ import JobsDesigner from './JobsDesigner';
 import JobsMarketing from './JobsMarketing';
 import JobsEvent from './JobsEvent';
 import Faq from './Faq';
-import Tarifs from './Tarifs';
+import Prices from './Prices';
 import Hives from './Hives';
 import Hive from './Hive';
 import Forgot from './Forgot';
@@ -141,7 +141,7 @@ export default class Wrapper extends Component {
 							<Route exact path="/cgv" component={Cgv} />
 							<Route exact path="/mentions_legales" component={Mentions} />
 							<Redirect from="/tarifs" to="/prices" />
-							<Route exact path="/prices" component={Tarifs} />
+							<Route exact path="/prices" component={Prices} />
 							<Route exact path="/hives" component={Hives} />
 							<Route exact path="/hive/:id" component={Hive} />
 							<Route exact path="/confirm/:token" component={Confirm} />
