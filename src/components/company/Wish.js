@@ -65,7 +65,7 @@ export default class CompanyWish extends Component {
 					<form className="col-lg-6 col-md-10 col-sm-12" onSubmit={this.createBundle.bind(this)}>
 						<div className="container">
 							<div className="row">
-								<p className="col-9 text-right lead my-4 pr-0">Nous parrainons <input type="number" min="1" max="99" placeholder={this.state.hives}
+								<p className="col-9 text-right lead my-4 px-0">Nous parrainons <input type="number" min="1" max="99" placeholder={this.state.hives}
 									name="hives" style={{ borderWidth : '0 0 1px 0', width: '1.7em', margin: '1em', fontSize: '2em' }}
 									value={this.state.hives} onChange={handleChange.bind(this)} />
 								</p>
