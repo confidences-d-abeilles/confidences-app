@@ -53,7 +53,7 @@ export default class ContributorWish extends Component {
 						<p className="text-center lead my-4">De quel type de contrat s’agit-il ?</p>
 						<ul>
 							<li>Le contrat proposé par Confidences d’Abeilles, le commanditaire, vous
-permet en tant qu’apporteur d’affaire de bénéficier d’une rétribution pour
+permet en tant qu’apporteur d’affaires de bénéficier d’une rétribution pour
 votre travail de réseau.</li>
 <li>
 	Il définit notamment l’objet de la collaboration, les engagements respectifs

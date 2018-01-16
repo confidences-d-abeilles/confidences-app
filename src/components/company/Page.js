@@ -133,7 +133,7 @@ export default class CompanyPage extends Component {
 									</div>:null}
 								</div>
 								<div className="col-lg-6 px-5 py-2" style={{ backgroundColor : '#E49C00', color: 'white'}}>
-									<h2 className="mt-4">{(this.state.english)?'OUR COMMITMENT TO BIODIVERSITY ':'NOTRE ENGAGEMENT POUR LA BIODIVERSITÉ'}</h2>
+									<h2 className="mt-4">{(this.state.english)?'OUR COMMITMENT TO SUSTAINABILITY ':'NOTRE ENGAGEMENT POUR LA BIODIVERSITÉ'}</h2>
 									<div style={{ width : '100%', height: '1px', backgroundColor: 'white'}} className="mb-4" ></div>
 									<p>
 									{(this.state.user && this.state.user.involvement)?
