@@ -12,7 +12,7 @@ export default class CompanyWish extends Component {
 		super(props);
 		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
-			hives: 0,
+			hives: 1,
 			redirect: false
 		}
 	}
@@ -63,13 +63,23 @@ export default class CompanyWish extends Component {
 				</div>
 				<div className="row justify-content-center">
 					<form className="col-lg-6 col-md-10 col-sm-12" onSubmit={this.createBundle.bind(this)}>
-						<p className="text-center lead my-4">Nous parrainons <input type="number" min="0" max="99" placeholder={this.state.hives} name="hives" style={{ borderWidth : '0 0 1px 0', width: '2em', margin: '1em', fontSize: '2em' }} onChange={handleChange.bind(this)} /> ruche(s)</p>
+						<div className="container">
+							<div className="row">
+								<p className="col-9 text-right lead my-4 pr-0">Nous parrainons <input type="number" min="1" max="99" placeholder={this.state.hives}
+									name="hives" style={{ borderWidth : '0 0 1px 0', width: '1.7em', margin: '1em', fontSize: '2em' }}
+									value={this.state.hives} onChange={handleChange.bind(this)} />
+								</p>
+								<p className="col lead my-4 pl-0 my-auto">
+									{this.state.hives>1 ? 'ruches':'ruche'}
+								</p>
+							</div>
+						</div>
 						<ul>
 							<li>Cela représente plus de {this.state.hives * 50000} abeilles supplémentaires pour prendre soin de la biodiversité</li>
 							<li>C’est aussi l’équivalent de {this.state.hives * 80} pots de miel par an</li>
 						</ul>
 						<p className="text-center">
-						<button  className="btn btn-primary">Continuer</button>
+							<button  className="btn btn-primary">Continuer</button>
 						</p>
 					</form>
 				</div>
