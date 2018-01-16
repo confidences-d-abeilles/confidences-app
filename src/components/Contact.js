@@ -27,6 +27,7 @@ export default class Contact extends Component {
 				method: 'get'
 			}, this.refs.notif).then((res) => {
 				this.setState({
+					sexe_m: (res.sexe_m?'1':'0'),
 					firstname: res.firstname,
 					name: res.name,
 					email: res.email,
@@ -51,7 +52,7 @@ export default class Contact extends Component {
 			url : '/contact',
 			method : 'post',
 			data : {
-				title: this.state.title,
+				title: (this.state.sexe_m==='0'? 'Mme.':'M.'),
 				firstname: this.state.firstname,
 				name: this.state.name,
 				job: this.state.job,
@@ -129,13 +130,21 @@ export default class Contact extends Component {
 					<div className="col-lg-6 col-md-10 col-sm-12">
 						<h2 className="my-4">Vous n'avez pas trouvé ce que vous cherchiez ?</h2>
 						<form>
-							<div className="form-group">
-								<select className="form-control" name="title" value={this.state.title} onChange={handleChange.bind(this)}>
-									<option selected disabled>Civilité *</option>
-									<option value="Mr.">M.</option>
-									<option value="Mme.">Mme.</option>
-								</select>
-							</div>
+							<fieldset className="container form-group d-flex">
+								<div className="row">
+									<legend className="col-form-legend">Civilité *</legend>
+								</div>
+								<div className="row">
+									<label className="radio-inline form-check-label">
+										<input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.sexe_m === '1'}/>
+										&nbsp;M
+									</label>
+									<label className="radio-inline form-check-label ml-4">
+										<input type="radio" className="form-check-input" name="sexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.sexe_m === '0'}/>
+										&nbsp;Mme
+									</label>
+								</div>
+							</fieldset>
 							<div className="form-group">
 								<input type="text" className="form-control" name="firstname" value={this.state.firstname} placeholder="Prénom *" onChange={handleChange.bind(this)} />
 							</div>
