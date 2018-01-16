@@ -34,7 +34,7 @@ export default class Header extends Component {
 						{(isLoggedIn())?
 							<ul className="navbar-nav">
 								<li className="nav-item" data-toggle="collapse" data-target="#navbarNav">
-									<Link className="nav-link" to="/tarifs">Tarifs</Link>
+									<Link className="nav-link" to="/prices">Tarifs</Link>
 								</li>
 								<div className="dropdown-divider"></div>
 							</ul>
@@ -50,7 +50,7 @@ export default class Header extends Component {
 									<Link className="nav-link" to="/contributor/presentation">Partenaire</Link>
 								</li>
 								<li className="nav-item">
-									<Link className="nav-link" to="/tarifs">Tarifs</Link>
+									<Link className="nav-link" to="/prices">Tarifs</Link>
 								</li>
 								<div className="dropdown-divider"></div>
 							</ul>
@@ -116,7 +116,7 @@ export default class Header extends Component {
 				{(isLoggedIn())?
 					<ul className="navbar-nav hidden-md-down">
 						<li className="nav-item">
-							<Link className="nav-link" to="/tarifs">Tarifs</Link>
+							<Link className="nav-link" to="/prices">Tarifs</Link>
 						</li>
 					</ul>
 					:
@@ -131,7 +131,7 @@ export default class Header extends Component {
 							<Link className="nav-link" to="/contributor/presentation">Partenaire</Link>
 						</li>
 						<li className="nav-item">
-							<Link className="nav-link" to="/tarifs">Tarifs</Link>
+							<Link className="nav-link" to="/prices">Tarifs</Link>
 						</li>
 					</ul>
 				}

@@ -156,7 +156,7 @@ export default class IndividualCheckout extends Component {
 		return new Promise(resolve => {
 			if (!this.state.dsexe_m || !this.state.daddress3 || !this.state.dcity || !this.state.dzip) {
 				this.refs.notif.addNotification({
-					message : "Merci de renseigner tous les champs",
+					message : "Merci de renseigner tous les champs de votre adresse de livraison",
 					level : 'warning'
 				})
 			} else {
