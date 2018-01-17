@@ -17,8 +17,7 @@ export default class Bundle extends Component {
 		super(props);
 		this.state = {
 			user: null,
-            edit_present: false,
-            certif: ''
+            edit_present: false
 		}
         ReactGA.pageview(this.props.location.pathname);
 	}
@@ -47,26 +46,32 @@ export default class Bundle extends Component {
 		}
 		if (this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].state === 0 ) {
 			return (
-				<p className="alert alert-danger mt-4">Vous n'avez pas encore reglé votre parrainage. <Link to="/individual/checkout">Cliquez ici</Link> pour le faire maintenant</p>
+                <div className="text-center">
+                    <p className="alert alert-danger mt-4">Vous n'avez pas encore réglé votre parrainage. <Link to="/individual/checkout">Cliquez ici</Link> pour le faire maintenant</p>
+    				<a href="#" className="btn btn-secondary m-2 disabled" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
+                </div>
 			);
 		}
 
 		if (this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].state === 1 ) {
 			return (
-				<p className="alert alert-warning mt-4">La validation du règlement de votre parrainage est en cours</p>
+                <div className="text-center">
+    				<p className="alert alert-warning mt-4">La validation du règlement de votre parrainage est en cours</p>
+                    <a href="#" className="btn btn-secondary m-2 disabled" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
+                </div>
 			);
 		}
-        console.log(this.state.user);
-        console.log(this.state.user.bundles[0]);
+
 		if (this.state.user && !this.state.user.bundles[0]) {
 			return (<Redirect to="/individual/wish" />);
 		}
+
 		if (this.state.user && this.state.user.bundles[0]) {
 			return (
 				<p className="text-center my-5">
                     {this.state.user.hive_id &&
                     <Link className="btn btn-secondary m-2" to={'/hive/'+this.state.user.hive_id}>Voir la page de ma ruche</Link>}
-                    {this.state.certif &&
+                    {this.state.user.bundles[0].certif &&
 					<a href={config.cdn_url+'/'+this.state.user.bundles[0].certif} className="btn btn-secondary m-2" target="_blank">Télécharger mon certificat de parrainage</a>}
 				</p>
 			)
