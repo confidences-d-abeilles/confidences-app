@@ -41,6 +41,14 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
+    <div id="bootstrapCssTest" class="d-none">toto</div>
+    <script>
+        $(function() {
+            if ($('#bootstrapCssTest').is(':visible')) {
+                $("head").append('<link rel="stylesheet" href="%PUBLIC_URL%/css/bootstrap.css">');
+            }
+        });
+    </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.
