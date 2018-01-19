@@ -75,6 +75,27 @@ export default class AdminManageUsers extends Component {
 		}
 	}
 
+	sendMail202() {
+		request({
+			url: '/mail/202/user/'+this.state.selectedUser.id,
+			method: 'get'
+		}, this.refs.notif)
+	}
+
+	sendMail203() {
+		request({
+			url: '/mail/203/user/'+this.state.selectedUser.id,
+			method: 'get'
+		}, this.refs.notif)
+	}
+
+	sendMail205() {
+		request({
+			url: '/mail/205/user/'+this.state.selectedUser.id,
+			method: 'get'
+		}, this.refs.notif)
+	}
+
 	sendCadeauMail() {
 		request({
 			url: '/mail/cadeau/user/'+this.state.selectedUser.id,
@@ -204,6 +225,15 @@ export default class AdminManageUsers extends Component {
 		if (type === 16) {
 			return ("Expedition miel");
 		}
+		if (type === 202) {
+			return ("Paiement attente");
+		}
+		if (type === 203) {
+			return ("Attribution ruche en cours");
+		}
+		if (type === 205) {
+			return ("Virement ok");
+		}
 	}
 
 	render () {
@@ -317,7 +347,10 @@ export default class AdminManageUsers extends Component {
 														<button className="btn btn-sm btn-info my-2" onClick={this.sendHoustonMail.bind(this)} >2 : Houston we had a problem</button><br />
 														<button className="btn btn-sm btn-info my-2" onClick={this.sendLaterMail.bind(this)} >4 : Fin onboard avec payer plus tard</button><br />
 														<button className="btn btn-sm btn-info my-2" onClick={this.sendEncoursMail.bind(this)} >8 : Attribution ruche en cours</button><br />
-														<button className="btn btn-sm btn-info my-2" onClick={this.sendCadeauMail.bind(this)} >10 : Cadeau</button>
+														<button className="btn btn-sm btn-info my-2" onClick={this.sendCadeauMail.bind(this)} >10 : Cadeau</button><br />
+														<button className="btn btn-sm btn-warning my-2" onClick={this.sendMail202.bind(this)} >202 : Paiement attente</button><br />
+														<button className="btn btn-sm btn-warning my-2" onClick={this.sendMail203.bind(this)} >203 : Attribution ruche en cours</button><br />
+														<button className="btn btn-sm btn-warning my-2" onClick={this.sendMail205.bind(this)} >205 : Virement ok</button><br />
 													</p>
 												</div>
 											</div>
@@ -341,6 +374,9 @@ export default class AdminManageUsers extends Component {
 														14 : Relance 4 semaines <br />
 														15 : Relance 8 semaines <br />
 														16 : Expedition miel <br />
+														202 : Paiement attente<br />
+														203 : Attribution ruche en cours<br />
+														205 : Virement ok
 													</p>
 													<p className="card-table">
 														<table className="table table-sm">
@@ -348,7 +384,7 @@ export default class AdminManageUsers extends Component {
 																<tr><th>Type de mail</th><th>Date</th><th>État</th></tr>
 																{this.state.selectedUser.emails.map((elem) => {
 																	return (
-																		<tr><td>{this.getEmailType(elem.type_email)}</td><td>{moment(elem.time).format("DD/MM/YY HH:mm")}</td><td>{this.getTag(elem.state)}</td></tr>
+																		<tr><td>{elem.type_email} : {this.getEmailType(elem.type_email)}</td><td>{moment(elem.time).format("DD/MM/YY HH:mm")}</td><td>{this.getTag(elem.state)}</td></tr>
 																		);
 																})}
 															</tbody>
