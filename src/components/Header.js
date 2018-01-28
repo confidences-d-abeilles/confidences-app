@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logoSquare from '../assets/img/logo-square.png';
-import { Link, Redirect } from 'react-router-dom';
+import { NavLink, Link, Redirect } from 'react-router-dom';
 import { isLoggedIn } from '../services/AuthService';
 import FontAwesome from 'react-fontawesome'
 
@@ -122,16 +122,20 @@ export default class Header extends Component {
 					:
 					<ul className="navbar-nav hidden-md-down">
 						<li className="nav-item">
-							<Link className="nav-link" to="/company/presentation">Entreprise</Link>
+							<NavLink className="nav-link" to="/company/presentation" activeStyle={{backgroundColor: 'rgb(230,230,230)',
+							boxShadow: '0px 0px 5px 2px rgb(230,230,230)'}}>Entreprise</NavLink>
 						</li>
 						<li className="nav-item">
-							<Link className="nav-link" to="/individual/presentation">Particulier</Link>
+							<NavLink className="nav-link" to="/individual/presentation" activeStyle={{backgroundColor: 'rgb(230,230,230)',
+							boxShadow: '0px 0px 5px 2px rgb(230,230,230)'}}>Particulier</NavLink>
 						</li>
 						<li className="nav-item">
-							<Link className="nav-link" to="/contributor/presentation">Partenaire</Link>
+							<NavLink className="nav-link" to="/contributor/presentation" activeStyle={{backgroundColor: 'rgb(230,230,230)',
+							boxShadow: '0px 0px 5px 2px rgb(230,230,230)'}}>Partenaire</NavLink>
 						</li>
 						<li className="nav-item">
-							<Link className="nav-link" to="/prices">Tarifs</Link>
+							<NavLink className="nav-link" to="/prices" activeStyle={{backgroundColor: 'rgb(230,230,230)',
+							boxShadow: '0px 0px 5px 2px rgb(230,230,230)'}}>Tarifs</NavLink>
 						</li>
 					</ul>
 				}
