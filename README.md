@@ -21,7 +21,8 @@ Rendez vous ensuite dans le répertoire `src`, ou vous allez créer un fichier v
 ```javascript
 module.exports = {
   server_url : 'http://localhost:1337',
-  app_url : 'http://localhost:3000'
+  app_url : 'http://localhost:3000',
+  cdn_url: 'http://localhost'
 }
 ```
 Ces url, qui correspondent respectivement à l'url de votre serveur API et de cette application React, peuvent varier selon votre configuration. En cas de doute, ces urls vous sont rappelées lors du lancement de ces 2 serveurs.
