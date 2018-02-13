@@ -71,7 +71,7 @@ export default class JobsEvent extends Component {
 								Vous connaissez bien les réseaux sociaux (reporting, insights) et avez déjà utilisé
 								des outils comme Buffer, HootSuite, HubSpot ? C’est formidable.
 							</li>
-							<li>Vous êtes à l’aise en français et en l’anglais à l’écrit comme à l’oral ? Excellent.</li>
+							<li>Vous êtes à l’aise en français et en anglais à l’écrit comme à l’oral ? Excellent.</li>
 							<li>Vous avez déjà travaillé dans l’événementiel ? C'est super.</li>
 							<li>Vous êtes créatif(ve) et force de proposition ? Épatant !</li>
 							<li>Vous êtes dynamique et avez un très bon relationnel ? Nous devrions nous entendre.</li>
