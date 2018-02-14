@@ -30,9 +30,17 @@ export default class CompanyManageDashboard extends Component {
 			method : 'get',
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				user : res,
-				hivesNames : new Array(res.bundles[0].hives).fill('')
+				user : res
 			});
+			if (res.bundles[0].contain[0]) {
+				this.setState({
+					hives : res.bundles[0].contain
+				});
+			} else {
+				this.setState({
+					hivesNames : new Array(res.bundles[0].hives).fill('')
+				});
+			}
 		})
 	}
 
@@ -87,7 +95,9 @@ export default class CompanyManageDashboard extends Component {
 				</div>
 				<h2>Vos ruches</h2>
 				<hr />
-				{(this.state.hivesNames && !this.state.loading)?
+				{(this.state.loading)?<Loading />:
+					[
+						(this.state.hivesNames)?
 					<div className="row py-4 align-items-center">
 						<div className="col-lg-4">
 							<p>Vous pouvez d'ores et déjà choisir les noms que vous souhaitez pour vos ruches</p>
@@ -143,13 +153,26 @@ export default class CompanyManageDashboard extends Component {
 											<option value="Phacélie">Phacélie</option>
 											<option value="Génépi">Génépi</option>
 										</select>
-									</div>)
-								})}
+									</div>)}
+								)}
 								<div className="form-group text-center">
 									<button className="btn btn-primary">Confirmer mes choix</button>
 								</div>
 							</form>
-						</div>:<Loading />}
+						</div>:null,
+						this.state.hives &&
+							<div className="row">
+								{this.state.hives.map((ruche) => {
+									return (
+										<div className="col-lg-4">
+											<div className="card my-2 p-1">
+												Ruche {ruche.name}
+											</div>
+										</div>
+									)
+								})}
+							</div>]
+						}
 					</div>
 				);
 			}
