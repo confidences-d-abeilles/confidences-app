@@ -25,6 +25,9 @@ export default class CompanyManageDashboard extends Component {
 	}
 
 	prepareData() {
+		this.setState({
+			loading : true
+		});
 		request({
 			url : '/user/me',
 			method : 'get',
@@ -32,7 +35,7 @@ export default class CompanyManageDashboard extends Component {
 			this.setState({
 				user : res
 			});
-			if (res.bundles[0].contain[0]) {
+			if (res.bundles[0] && res.bundles[0].contain && res.bundles[0].contain[0]) {
 				this.setState({
 					hives : res.bundles[0].contain
 				});
@@ -41,6 +44,9 @@ export default class CompanyManageDashboard extends Component {
 					hivesNames : new Array(res.bundles[0].hives).fill('')
 				});
 			}
+			this.setState({
+				loading : false
+			});
 		})
 	}
 
@@ -71,8 +77,9 @@ export default class CompanyManageDashboard extends Component {
 				}
 			}, this.refs.notif).then((res) => {
 				this.setState({
-					loading: false
-				});
+					hivesNames: null
+				})
+				this.prepareData();
 			})
 		}
 	}
@@ -166,7 +173,8 @@ export default class CompanyManageDashboard extends Component {
 									return (
 										<div className="col-lg-4">
 											<div className="card my-2 p-1">
-												Ruche {ruche.name}
+												Ruche {ruche.name}<br />
+											<a href={config.app_url+'/hive/'+ruche.id}>Voir la page</a>
 											</div>
 										</div>
 									)
