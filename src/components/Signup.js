@@ -122,28 +122,30 @@ export default class Signup extends Component {
 							:null}
 							<div className="form-group d-flex">
 								<label className="radio-inline form-check-label">
-									<input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.sexe_m === '1'}/>
+									<input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.sexe_m === '1'} autoComplete="sex" />
 									&nbsp;M *
 								</label>
 								<label className="radio-inline form-check-label ml-4">
-									<input type="radio" className="form-check-input" name="sexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.sexe_m === '0'}/>
+									<input type="radio" className="form-check-input" name="sexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.sexe_m === '0'} autoComplete="sex" />
 									&nbsp;Mme *
 								</label>
 							</div>
 							<div className="form-group">
-								<input type="text" name="firstname" className="form-control" placeholder="Prénom *" onChange={handleChange.bind(this)}/>
+								<input type="text" name="firstname" className="form-control" placeholder="Prénom *" onChange={handleChange.bind(this)} autoComplete="given-name" />
 							</div>
 							<div className="form-group">
-								<input type="text" name="name" className="form-control" placeholder="Nom *" onChange={handleChange.bind(this)} />
+								<input type="text" name="name" className="form-control" placeholder="Nom *" onChange={handleChange.bind(this)} autoComplete="family-name" />
 							</div>
 							<div className="form-group">
-								<input type="email" name="email" className="form-control" placeholder="Adresse email *" onChange={handleChange.bind(this)} />
+								<input type="email" name="email" className="form-control" placeholder="Adresse email *" onChange={handleChange.bind(this)} autoComplete="email" />
 							</div>
 							<div className="form-group">
-								<input type={(this.state.user_type === 3)?'text':'phone'} name={(this.state.user_type === 3)?'school':'phone'} className="form-control" placeholder={(this.state.user_type === 3)?'Ecole ou établissement':'Numéro de telephone *'} onChange={handleChange.bind(this)} />
+								<input type={(this.state.user_type === 3)?'text':'phone'} name={(this.state.user_type === 3)?'school':'phone'} className="form-control"
+									placeholder={(this.state.user_type === 3)?'Ecole ou établissement':'Numéro de telephone *'} onChange={handleChange.bind(this)}
+									autoComplete={(this.state.user_type === 3)?'organization':'tel'} />
 							</div>
 							<div className="form-group">
-								<input type="password" name="password" className="form-control" placeholder="Mot de passe *" onChange={handleChange.bind(this)} />
+								<input type="password" name="password" className="form-control" placeholder="Mot de passe *" onChange={handleChange.bind(this)} autoComplete="new-password" />
 							</div>
 							<div className="form-group">
 								<input type="password" name="confirmation" className="form-control" placeholder="Confirmation du mot de passe *" onChange={handleChange.bind(this)} />

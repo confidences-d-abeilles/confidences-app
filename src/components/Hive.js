@@ -47,12 +47,12 @@ export default class Hive extends Component {
 									<img className="img-fluid" src={(this.state.hive.imgs[0])?config.cdn_url+'/'+this.state.hive.imgs[0]:ImgHive} alt="Photo principale de la ruche" />
 								</div>
 								<div className="col-lg-5" style={{ backgroundColor: '#E49C00' , color: 'white', fontFamily: "HighTo", fontSize: '1.25em' }}>
-									<h2 className="mt-4">LES PARRAINS</h2>
+									<h2 className="mt-4">PARRAINS</h2>
 									<div style={{ width : '100%', height: '1px', backgroundColor: 'white'}} className="mb-4" ></div>
 									{this.state.hive &&
 										this.state.hive.parrains.map((user) => {
 											return (
-												<h3>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</h3>
+												<h3><small>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</small><br /><br /></h3>
 											)
 										})}
 								</div>
