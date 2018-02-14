@@ -46,6 +46,7 @@ class App extends Component {
 			<StripeProvider apiKey="pk_live_gx64GVXrwS7Kr84xcn7l8S5Y">
 				<Router>
 					<Switch>
+						<Redirect path="/perus" to="/parrains/perus" />
 						<Route path="/parrains/:namespace" component={CompanyPage} />
 						<Route component={MyRouter} />
 					</Switch>
