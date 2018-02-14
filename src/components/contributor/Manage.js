@@ -10,10 +10,12 @@ import NotificationSystem from 'react-notification-system'
 import {
 	Route,
 	Link,
-	Redirect
+	Redirect,
+	Switch
 } from 'react-router-dom';
 import profile from '../../assets/img/profile2.png';
 import Meta from '../utils/Meta'
+import NotFound from '../utils/NotFound'
 
 export default class ContributorManage extends Component {
 
@@ -103,12 +105,15 @@ export default class ContributorManage extends Component {
 								</p>
 							</div>
 						</div>
-						<Route exact path="/contributor/manage" component={ContributorManageDashboard} />
-						<Route exact path="/contributor/manage/conditions" component={ContributorManageConditions} />
-						<Route exact path="/contributor/manage/contract" component={ContributorManageContract} />
-						<Route exact path="/contributor/manage/help" component={ContributorManageHelp} />
-						<Route path="/contributor/manage/infos" component={ContributorManageInfos} />
-						<Route exact path="/contributor/manage/approaches" component={ContributorManageApproaches} />
+						<Switch>
+							<Route exact path="/contributor/manage" component={ContributorManageDashboard} />
+							<Route exact path="/contributor/manage/conditions" component={ContributorManageConditions} />
+							<Route exact path="/contributor/manage/contract" component={ContributorManageContract} />
+							<Route exact path="/contributor/manage/help" component={ContributorManageHelp} />
+							<Route path="/contributor/manage/infos" component={ContributorManageInfos} />
+							<Route exact path="/contributor/manage/approaches" component={ContributorManageApproaches} />
+							<Route component={NotFound} />
+						</Switch>
 					</div>
 				</div>
 			</div>

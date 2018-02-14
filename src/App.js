@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { isLoggedIn, getUserType } from './services/AuthService';
 import CompanyPage from './components/company/Page';
-import Wrapper from './components/Wrapper';
 import {StripeProvider} from 'react-stripe-elements';
 import {
 	BrowserRouter as Router,
 	Switch,
-	Route
+	Route,
+	Redirect
 } from 'react-router-dom';
 import io from 'socket.io-client'
 import ReactGA from 'react-ga';
+import MyRouter from './components/Router'
 
 const config = require('./config.js');
 
@@ -44,42 +45,10 @@ class App extends Component {
 		return (
 			<StripeProvider apiKey="pk_live_gx64GVXrwS7Kr84xcn7l8S5Y">
 				<Router>
-					<ScrollToTop>
-						<Switch>
-							<Route path="/login" component={Wrapper} />
-							<Route path="/forgot" component={Wrapper} />
-							<Route path="/reset/:token" component={Wrapper} />
-							<Route path="/logout" component={Wrapper} />
-							<Route path="/account" component={Wrapper} />
-							<Route path="/company" component={Wrapper} />
-							<Route path="/contributor" component={Wrapper} />
-							<Route path="/individual" component={Wrapper} />
-							<Route path="/mentions_legales" component={Wrapper} />
-							<Route path="/present" component={Wrapper} />
-							<Route path="/faq" component={Wrapper} />
-							<Route path="/cgv" component={Wrapper} />
-							<Route path="/contact" component={Wrapper} />
-							<Route path="/apply" component={Wrapper} />
-							<Route path="/jobs" component={Wrapper} />
-							<Route path="/jobs/reactjs" component={Wrapper} />
-							<Route path="/jobs/designer" component={Wrapper} />
-							<Route path="/jobs/marketing" component={Wrapper} />
-							<Route path="/jobs/event" component={Wrapper} />
-							<Route path="/team" component={Wrapper} />
-							<Route path="/about" component={Wrapper} />
-							<Route path="/tarifs" component={Wrapper} />
-							<Route path="/prices" component={Wrapper} />
-							<Route path="/ruches" component={Wrapper} />
-							<Route path="/admin" component={Wrapper} />
-							<Route path="/presignup" component={Wrapper} />
-							<Route path="/signup" component={Wrapper} />
-							<Route path="/hive/:id" component={Wrapper} />
-							<Route path="/confirm/:token" component={Wrapper} />
-							<Route path="/hives" component={Wrapper} />
-							<Route path="/:namespace" component={CompanyPage} />
-							<Route path="/" component={Wrapper} />
-						</Switch>
-					</ScrollToTop>
+					<Switch>
+						<Route path="/parrains/:namespace" component={CompanyPage} />
+						<Route component={MyRouter} />
+					</Switch>
 				</Router>
 			</StripeProvider>
 		);
