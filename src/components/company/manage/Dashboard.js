@@ -35,14 +35,16 @@ export default class CompanyManageDashboard extends Component {
 			this.setState({
 				user : res
 			});
-			if (res.bundles[0] && res.bundles[0].contain && res.bundles[0].contain[0]) {
-				this.setState({
-					hives : res.bundles[0].contain
-				});
-			} else {
-				this.setState({
-					hivesNames : new Array(res.bundles[0].hives).fill('')
-				});
+			if (res.bundles[0]) {
+				if (res.bundles[0].contain && res.bundles[0].contain[0]) {
+					this.setState({
+						hives : res.bundles[0].contain
+					});
+				} else {
+					this.setState({
+						hivesNames : new Array(res.bundles[0].hives).fill('')
+					});
+				}
 			}
 			this.setState({
 				loading : false
