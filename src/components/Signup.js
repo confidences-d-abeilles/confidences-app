@@ -140,7 +140,7 @@ export default class Signup extends Component {
 								<input type="email" name="email" className="form-control" placeholder="Adresse email *" onChange={handleChange.bind(this)} autoComplete="email" />
 							</div>
 							<div className="form-group">
-								<input type={(this.state.user_type === 3)?'text':'phone'} name={(this.state.user_type === 3)?'school':'phone'} className="form-control"
+								<input type={(this.state.user_type === 3)?'text':'tel'} name={(this.state.user_type === 3)?'school':'phone'} className="form-control"
 									placeholder={(this.state.user_type === 3)?'Ecole ou établissement':'Numéro de telephone *'} onChange={handleChange.bind(this)}
 									autoComplete={(this.state.user_type === 3)?'organization':'tel'} />
 							</div>
