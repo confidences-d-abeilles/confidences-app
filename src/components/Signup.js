@@ -30,7 +30,7 @@ export default class Signup extends Component {
 
 	componentDidMount() {
 		if (isLoggedIn(true)) {
-			this.setState({ redirect : true })
+			this.setState({ redirect : 'account' })
 		}
 	}
 
