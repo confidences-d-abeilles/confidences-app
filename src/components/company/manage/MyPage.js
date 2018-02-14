@@ -131,7 +131,7 @@ export default class CompanyManageMyPage extends Component {
 						<a href={require('../../../assets/page_ent.pdf')} target="_blank" className="btn btn-secondary my-2">Comment personaliser ma page ?</a>
 					</div>
 					<div className="col text-center">
-						<a href={(this.state.user)?"/"+this.state.user.namespace:'/'} target="_blank" className="btn btn-secondary my-2">Voir ma page</a>
+						<a href={(this.state.user)?"/parrains/"+this.state.user.namespace:'/'} target="_blank" className="btn btn-secondary my-2">Voir ma page</a>
 					</div>
 				</div>
 				{(this.state.user)?
@@ -140,7 +140,7 @@ export default class CompanyManageMyPage extends Component {
 						<input type="text" placeholder="Nom de l'entreprise" name="name" value={this.state.name} onChange={handleChange.bind(this)} className="form-control" />
 					</div>
 					<div className="form-group">
-						<label>{"https://parrainage.confidencesdabeilles.fr/"+this.state.namespace}</label>
+						<label>{"https://parrainagederuches.fr/parrains/"+this.state.namespace}</label>
 						<input type="text" placeholder="URL de votre page" name="namespace" value={this.state.namespace} onChange={handleChange.bind(this)} className="form-control" />
 					</div>
 					<div className="form-group">
