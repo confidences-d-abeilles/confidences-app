@@ -41,18 +41,18 @@ export default class Hive extends Component {
 					<div>
 						<h1 className="text-center my-4" style={{ fontFamily: "HighTo" , padding: "0.4em 2.5em", zIndex: '5', color: '#E49C00' }}>RUCHE {this.state.hive.name.toUpperCase()}</h1>
 					<div className="row">
-						<div className="col-lg-4 col-md-7 col-sm-12 pr-4">
+						<div className="col-lg-5 col-md-7 col-sm-12 pr-4">
 							<div className="row">
 								<div className="col-lg-7 px-5">
 									<img className="img-fluid" src={(this.state.hive.imgs[0])?config.cdn_url+'/'+this.state.hive.imgs[0]:ImgHive} alt="Photo principale de la ruche" />
 								</div>
 								<div className="col-lg-5" style={{ backgroundColor: '#E49C00' , color: 'white', fontFamily: "HighTo", fontSize: '1.25em' }}>
-									<h2 className="mt-4">LES PARRAINS</h2>
+									<h2 className="mt-4">PARRAINS</h2>
 									<div style={{ width : '100%', height: '1px', backgroundColor: 'white'}} className="mb-4" ></div>
 									{this.state.hive &&
-										this.state.hive.parrains.map((user) => {
+										this.state.hive.parrains.map((user, key) => {
 											return (
-												<h3>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</h3>
+												<h3 key={key} className="my-0"><small>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</small><br />{(key+1 < this.state.hive.parrains.length)?' ~':''}</h3>
 											)
 										})}
 								</div>
@@ -76,7 +76,7 @@ export default class Hive extends Component {
 								})}
 							</div>
 						</div>
-						<div className="col-lg-8 col-md-4 col-sm-12" style={{ fontFamily: "HighTo", fontSize: '1.25em' }}>
+						<div className="col-lg-7 col-md-4 col-sm-12" style={{ fontFamily: "HighTo", fontSize: '1.25em' }}>
 							<h2 className="text-center">ACTUALITÉS</h2>
 							{(this.state.hive.news.length)?
 								this.state.hive.news.map((actu) => {

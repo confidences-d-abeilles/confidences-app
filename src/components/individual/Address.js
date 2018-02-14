@@ -111,21 +111,21 @@ export default class IndividualAddress extends Component {
 									{this.state.sexe_m === '0'?'Mme. ':'M. '}{this.state.address1}
 								</div>
 							<div className="form-group">
-								<input type="text" name="address3" className="form-control" placeholder="Adresse ligne 1 *" value={this.state.address3} onChange={handleChange.bind(this)} />
+								<input type="text" name="address3" className="form-control" placeholder="Adresse ligne 1 *" value={this.state.address3} onChange={handleChange.bind(this)} autoComplete="address-line1" />
 							</div>
 							<div className="form-group">
-								<input type="text" name="address4" className="form-control" placeholder="Adresse ligne 2" value={this.state.address4} onChange={handleChange.bind(this)} />
+								<input type="text" name="address4" className="form-control" placeholder="Adresse ligne 2" value={this.state.address4} onChange={handleChange.bind(this)} autoComplete="address-line2" />
 							</div>
 							<div className="form-group row">
 								<div className="col-4">
-								<input type="number" name="zipcode" className="form-control" placeholder="Code postal *" onChange={handleChange.bind(this)} />
+								<input type="number" name="zipcode" className="form-control" placeholder="Code postal *" onChange={handleChange.bind(this)} autoComplete="postal-code" />
 								</div>
 								<div className="col-8">
-									<input type="text" name="city" className="form-control" placeholder="Ville *" onChange={handleChange.bind(this)} />
+									<input type="text" name="city" className="form-control" placeholder="Ville *" onChange={handleChange.bind(this)} autoComplete="address-level2" />
 								</div>
 							</div>
 							<div className="form-group">
-								<input type="text" name="country" className="form-control" placeholder="Pays *" value={this.state.country} onChange={handleChange.bind(this)} />
+								<input type="text" name="country" className="form-control" placeholder="Pays *" value={this.state.country} onChange={handleChange.bind(this)} autoComplete="country-name" />
 							</div>
 							<input type="submit" className="btn btn-primary" value="Continuer" onClick={this.addAddress.bind(this)} />
 						</form>
