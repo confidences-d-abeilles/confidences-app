@@ -125,13 +125,13 @@
     height: 3em;
 }
 
-.ruche h3 {
+.ruche p {
     transition: 0.5s;
     color: #666666;
     transform: translate(-3em, 0.5em);
 }
 
-.ruche:hover h3 {
+.ruche:hover p {
     transition: 0.5s;
     color: #E49C00;
     transform: translate(0);

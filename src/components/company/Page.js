@@ -150,7 +150,7 @@ export default class CompanyPage extends Component {
 								return (
 									<div className="ruche" data-hive={hive.id} onMouseEnter={this.displayImg.bind(this)} onMouseLeave={this.hideImg.bind(this)}>
 										<img src={require("../../assets/img/rayon.png")} className="img-fluid rayon" alt="Rayon" />
-										<h3 style={{ padding: '0px', margin: '0'}} className="" >{hive.name.toUpperCase()}</h3>
+										<p style={{ padding: '0px', margin: '0', overflowX: 'visible'}} className="" >{hive.name.toUpperCase()}</p>
 										<Link to={'/hive/'+hive.id} style={{ color: '#666666', fontSize: '0.9em', lineHeight: '1em' }} >Voir en détails</Link>
 									</div>
 								)
