@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NotificationSystem from 'react-notification-system'
 import request from '../services/Net'
-import imgPlaceholder from '../assets/img/profile.png';
+import imgPlaceholder from '../assets/img/logo_ruche_entreprise.png';
 import { Link } from 'react-router-dom'
 import Loading from './utils/Loading'
 import { handleChange } from '../services/FormService';
