@@ -18,7 +18,7 @@ const request = function(options, notificationSystem) {
 	}
 
   const onError = function(error) {
-    if (error.response) {
+    if (error.response && notificationSystem) {
       if (error.response.status === '400') {
 		  notificationSystem.addNotification({
     		message: error.response.data,
