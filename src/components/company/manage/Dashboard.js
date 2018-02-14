@@ -92,7 +92,7 @@ export default class CompanyManageDashboard extends Component {
 				<div className="row py-4">
 					<NotificationSystem ref="notif" />
 					<div className="col text-center">
-						<a href={(this.state.user)?'/'+this.state.user.namespace:''} target="_blank" className="btn btn-secondary disabled">Consulter ma page entreprise</a>
+						<a href={(this.state.user)?'/parrains/'+this.state.user.namespace:''} target="_blank" className="btn btn-secondary disabled">Consulter ma page entreprise</a>
 
 						{(this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].certif && this.state.user.bundles[0].state > 1) ?
 							<a href={config.cdn_url + '/' + this.state.user.bundles[0].certif}

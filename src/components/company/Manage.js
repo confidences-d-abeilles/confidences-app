@@ -8,11 +8,13 @@ import CompanyManageCustomize from './manage/Customize'
 import {
 	Route,
 	Link,
-	Redirect
+	Redirect,
+	Switch
 } from 'react-router-dom';
 import NotificationSystem from 'react-notification-system';
 import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 import Meta from '../utils/Meta'
+import NotFound from '../utils/NotFound'
 
 const config = require('../../config.js');
 
@@ -90,11 +92,14 @@ export default class CompanyManage extends Component {
 							</div>
 							<div className="row">
 								<div className="col-12">
-									<Route exact path="/company/manage" component={CompanyManageDashboard} />
-									<Route exact path="/company/manage/infos" component={CompanyManageInfos} />
-									<Route exact path="/company/manage/mypage" component={CompanyManageMyPage} />
-									<Route exact path="/company/manage/customize" component={CompanyManageCustomize} />
-									<Route exact path="/company/manage/bills" component={CompanyManageBills} />
+									<Switch>
+										<Route exact path="/company/manage" component={CompanyManageDashboard} />
+										<Route exact path="/company/manage/infos" component={CompanyManageInfos} />
+										<Route exact path="/company/manage/mypage" component={CompanyManageMyPage} />
+										<Route exact path="/company/manage/customize" component={CompanyManageCustomize} />
+										<Route exact path="/company/manage/bills" component={CompanyManageBills} />
+										<Route component={NotFound} />
+									</Switch>
 								</div>
 							</div>
 						</div>
