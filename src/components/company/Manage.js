@@ -74,7 +74,7 @@ export default class CompanyManage extends Component {
 								<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:imgPlaceholder} alt="Logo entreprise" style={{ maxWidth: '100%', maxHeight: '100%'}} />
 							</div>
 							<ul className="list-group">
-								<li className="list-group-item"><Link to="/company/manage">Tableau de bord</Link></li>
+								<li className="list-group-item"><Link to="/company/manage">Mon parrainage</Link></li>
 								<li className="list-group-item"><Link to="/company/manage/infos">Mes informations</Link></li>
 								<li className="list-group-item"><Link to="/company/manage/mypage">Ma page dediee</Link></li>
 								<li className="list-group-item"><Link to="/company/manage/customize">Personnalisation</Link></li>
