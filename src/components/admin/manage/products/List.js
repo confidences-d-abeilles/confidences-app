@@ -42,7 +42,7 @@ export default class List extends Component {
 									<td>{product.designation}</td>
 									<td>{product.price} €</td>
 									<td>{product.duty} %</td>
-									<td>{(product.price / 100 * product.duty).toFixed(2)} €</td>
+									<td>{(product.price + (product.price / 100 * product.duty)).toFixed(2)} €</td>
 								</tr>
 							);
 						})}
