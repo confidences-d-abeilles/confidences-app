@@ -8,8 +8,8 @@ export default class Create extends Component {
 		super(props);
 		this.state = {
 			designation: '',
-			price: 0,
-			duty: 0
+			price: '',
+			duty: ''
 		}
 	}
 

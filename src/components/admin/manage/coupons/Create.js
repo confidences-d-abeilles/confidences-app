@@ -13,8 +13,8 @@ export default class Create extends Component {
 			products : [],
 			code: '',
 			amount: '',
-			min: '',
-			max: '',
+			min: '0',
+			max: '0',
 			designation: '',
 			expire: moment(new Date())
 		}
@@ -96,7 +96,7 @@ export default class Create extends Component {
 						/>
 				</div>
 				<div className="form-group">
-					Quantités éligibles
+					Quantités éligibles (0 pour un limite infinie)
 					<div className="row">
 						<div className="col">
 							<input type="number" name="min" className="form-control" onChange={handleChange.bind(this)}
