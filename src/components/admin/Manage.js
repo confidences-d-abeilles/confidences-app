@@ -5,6 +5,7 @@ import AdminManageMails from './manage/Mails'
 import AdminManageHives from './manage/Hives'
 import AdminManageBundles from './manage/Bundles'
 import AdminManageServer from './manage/Server'
+import Products from './manage/Products'
 import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import Meta from '../utils/Meta'
@@ -50,6 +51,7 @@ export default class CompanyManage extends Component {
 								<Link to="/admin/manage/bundles" className="list-group-item">Gerer les parrainages</Link>
 								<Link to="/admin/manage/mails" className="list-group-item">Gerer les envois</Link>
 								<li className="list-group-item active">Gestion du contenu</li>
+								<Link to="/admin/manage/products" className="list-group-item">Gerer les produits</Link>
 								<Link to="/admin/manage/faq" className="list-group-item">Gerer la FAQ</Link>
 								<li className="list-group-item active">Administration plateforme</li>
 								<Link to="/admin/manage/server" className="list-group-item">Espace technique</Link>
@@ -68,6 +70,7 @@ export default class CompanyManage extends Component {
 									<Route exact path="/admin/manage/hives" component={AdminManageHives} />
 									<Route exact path="/admin/manage/bundles" component={AdminManageBundles} />
 									<Route exact path="/admin/manage/faq" component={AdminManageFaq} />
+									<Route exact path="/admin/manage/products" component={Products} />
 									<Route exact path="/admin/manage/server" component={AdminManageServer} />
 								</div>
 							</div>
