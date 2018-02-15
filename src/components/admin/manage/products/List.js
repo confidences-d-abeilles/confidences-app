@@ -19,7 +19,8 @@ export default class List extends Component {
 			method: 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				products: res
+				products: res,
+				loading: false
 			});
 		}).catch((e) => {
 			this.setState({
@@ -39,9 +40,9 @@ export default class List extends Component {
 							return (
 								<tr>
 									<td>{product.designation}</td>
-									<td>{product.price}</td>
-									<td>{product.duty}</td>
-									<td>{product.price / 100 * product.duty}</td>
+									<td>{product.price} €</td>
+									<td>{product.duty} %</td>
+									<td>{(product.price / 100 * product.duty).toFixed(2)} €</td>
 								</tr>
 							);
 						})}
