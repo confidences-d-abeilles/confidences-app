@@ -14,11 +14,9 @@ export default class Products extends Component {
 				<h1>Gérer les produits</h1><hr />
 				<div className="row">
 					<div className="col">
-						<h2 className="my-4">Créer un produit</h2>
 						<Create />
 					</div>
 					<div className="col">
-						<h2 className="my-4">Les produits</h2>
 						<List />
 					</div>
 				</div>
