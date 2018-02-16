@@ -38,7 +38,7 @@ export default class Hives extends Component {
 			<div className="container">
 				<Meta title="Les ruches"/>
 				<NotificationSystem ref="notif" />
-				<h1 style={{ fontFamily: "HighTo", color: '#E49C00' }} className="text-center my-5">LES RUCHES</h1>
+				<h1 style={{ fontFamily: "HighTo", color: '#E49C00' }} className="text-center my-4">LES RUCHES</h1>
 				<div className="row justify-content-center">
 					<div className="col">
 						{this.state.hives?
