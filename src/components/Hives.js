@@ -37,17 +37,9 @@ export default class Hives extends Component {
 			<div className="container">
 				<Meta title="Les ruches"/>
 				<NotificationSystem ref="notif" />
+				<h1 style={{ fontFamily: "HighTo", color: '#E49C00' }} className="text-center my-5">LES RUCHES</h1>
 				<div className="row justify-content-center">
-					<div className="col-lg-6 col-md-10 col-sm-12">
-						<h2 className="text-center">Les ruches</h2>
-					</div>
-				</div>
-				<div className="row justify-content-center">
-					<div className="col-lg-2">
-						<h3>Filtrer</h3>
-						<input type="text" className="form-control" placeholder="Rechercher un nom de parrain ou de ruche..." onChange={handleChange.bind(this)} name="criteria" value={this.state.criteria} disabled />
-					</div>
-					<div className="col-lg-10">
+					<div className="col">
 						{this.state.bundles?
 						<div className="row justify-content-center">
 							{this.state.bundles.map((bundle) => {
