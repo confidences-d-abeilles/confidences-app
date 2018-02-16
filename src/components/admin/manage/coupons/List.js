@@ -15,6 +15,14 @@ export default class List extends Component {
 	}
 
 	componentDidMount() {
+		this.refresh();
+	}
+
+	componentWillReceiveProps() {
+		this.refresh();
+	}
+
+	refresh() {
 		request({
 			url: '/coupon',
 			method: 'get'
@@ -27,17 +35,34 @@ export default class List extends Component {
 		});
 	}
 
+	decode(type) {
+		switch (type) {
+			case 0:
+				return "Systématique";
+				break;
+			case 1:
+				return "Option";
+				break;
+			case 2:
+				return "Offre temporaire";
+				break;
+			default:
+				return null;
+				break;
+		}
+	}
+
 	render () {
 		return (
 			<div>
 				<NotificationSystem ref="notif" />
 				<table className="table table-sm">
 					<tbody>
-						<tr><th>Produit</th><th>Code</th><th>Montant</th><th>Expiration</th><th>Qt min.</th><th>Qt max.</th></tr>
+						<tr><th>Produit</th><th>Type</th><th>Code</th><th>Montant</th><th>Expiration</th><th>Qt min.</th><th>Qt max.</th></tr>
 						{this.state.coupons.map((e, key) => {
 							return (
 								<tr key={key}>
-									<td>{e.product.designation}</td><td>{e.code}</td><td>{e.amount} €</td><td>{moment(e.expire).format("DD/MM/YYYY")}</td><td>{e.min}</td><td>{e.max}</td>
+									<td>{e.product.designation}</td><td>{this.decode(e.type)}</td><td>{e.code}</td><td>{e.amount} €</td><td>{moment(e.expire).format("DD/MM/YYYY")}</td><td>{e.min}</td><td>{e.max}</td>
 								</tr>
 							)
 						})}
