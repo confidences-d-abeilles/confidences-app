@@ -8,6 +8,7 @@ export default class Create extends Component {
 		super(props);
 		this.state = {
 			designation: '',
+			type: '',
 			price: '',
 			duty: ''
 		}
@@ -20,15 +21,18 @@ export default class Create extends Component {
 			method: 'post',
 			data: {
 				designation: this.state.designation,
+				type: this.state.type,
 				price: this.state.price,
 				duty: this.state.duty
 			}
 		}, this.refs.notif).then((res) => {
 			this.setState({
 				designation: '',
+				type: '',
 				price: 0,
 				duty: 0
-			})
+			});
+			this.props.refresh();
 		})
 	}
 
@@ -43,6 +47,16 @@ export default class Create extends Component {
 								type="text" name="designation" className="form-control"
 								placeholder="Designation du produit" value={this.state.designation}
 								onChange={handleChange.bind(this)} />
+						</div>
+						<div className="form-group">
+							<select name="type" onChange={handleChange.bind(this)} value={this.state.type}
+								className="form-control">
+								<option value="">Choisissez un type de produit</option>
+								<option value="10">Parrainage entreprise</option>
+								<option value="11">Produit suplémentaire entreprise</option>
+								<option value="20">Parrainage particulier</option>
+								<option value="21">Produit supplementaire particulier</option>
+							</select>
 						</div>
 					</div>
 					<div className="col-lg-6">

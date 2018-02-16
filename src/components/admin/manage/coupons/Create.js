@@ -11,6 +11,8 @@ export default class Create extends Component {
 		super(props);
 		this.state = {
 			products : [],
+			product: '',
+			type: '',
 			code: '',
 			amount: '',
 			min: '0',
@@ -37,12 +39,12 @@ export default class Create extends Component {
 
 	create(e) {
 		e.preventDefault();
-		this.props.refresh();
 		request({
 			url: '/coupon',
 			method: 'post',
 			data: {
 				product: this.state.product,
+				type: this.state.type,
 				designation: this.state.designation,
 				code: this.state.code,
 				expire: this.state.expire,
@@ -50,8 +52,19 @@ export default class Create extends Component {
 				min: this.state.min,
 				max: this.state.max
 			}
-		}, this.refs.notif)
-
+		}, this.refs.notif).then((res) => {
+			this.props.refresh();
+			this.setState({
+				product: '',
+				type: '',
+				code: '',
+				amount: '',
+				min: '0',
+				max: '0',
+				designation: '',
+				expire: moment(new Date())
+			})
+		})
 	}
 
 	handleExpire(date) {
@@ -65,13 +78,21 @@ export default class Create extends Component {
 			<form onSubmit={this.create.bind(this)}>
 				<NotificationSystem ref="notif" />
 				<div className="form-group">
-					<select name="product" onChange={handleChange.bind(this)} className="form-control">
+					<select name="product" onChange={handleChange.bind(this)} value={this.state.product} className="form-control">
 						<option value="">Produit éligible...</option>
 						{this.state.products.map((product, key) => {
 							return (
 								<option key={key} value={product.id}>{product.designation}</option>
 							)
 						})}
+					</select>
+				</div>
+				<div className="form-group">
+					<select name="type" onChange={handleChange.bind(this)} value={this.state.type} className="form-control">
+						<option value="">Type d'offre</option>
+						<option value="0">Systématique</option>
+						<option value="1">Option</option>
+						<option value="2">Offre temporaire</option>
 					</select>
 				</div>
 				<div className="form-group">
