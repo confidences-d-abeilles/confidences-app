@@ -28,7 +28,7 @@ export default class Hives extends Component {
 			method: 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				hives : res
+				hives : res.reverse()
 			})
 		})
 	}
