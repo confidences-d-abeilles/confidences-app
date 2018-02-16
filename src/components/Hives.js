@@ -7,6 +7,7 @@ import Loading from './utils/Loading'
 import { handleChange } from '../services/FormService';
 import ReactGA from 'react-ga';
 import Meta from './utils/Meta'
+import SquareImg from './utils/SquareImg'
 
 const config = require('../config.js')
 
@@ -45,7 +46,7 @@ export default class Hives extends Component {
 							{this.state.hives.map((hive) => {
 								if (hive.imgs && hive.imgs[0]) {
 									return (<div className="card w-25 m-3 justify-content-between">
-									<img className="card-img-top img-fluid" src={(hive.imgs && hive.imgs[0])?config.cdn_url+'/'+hive.imgs[0]:imgPlaceholder} alt="Card image cap" />
+									<SquareImg className="card-img-top img-fluid" src={(hive.imgs && hive.imgs[0])?config.cdn_url+'/'+hive.imgs[0]:imgPlaceholder} alt="Card image cap" />
 									<div className="card-block" style={{ height: 'auto', flex: '0' }}>
 										<h3 className="card-title text-center" style={{ fontFamily: "HighTo"}} >{hive.name}</h3>
 										<Link to={'/hive/'+hive.id} className="btn btn-link float-right">Voir en détail</Link>
