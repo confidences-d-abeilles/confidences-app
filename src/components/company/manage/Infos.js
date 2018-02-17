@@ -178,7 +178,8 @@ export default class CompanyManageInfos extends Component {
 									<strong>Siret :</strong> {this.state.user.siret}<br />
 									<strong>Nom :</strong> {this.state.user.name}<br />
 									<strong>Prénom :</strong> {this.state.user.firstname}<br />
-									<strong>Poste dans l'entreprise :</strong> {this.state.user.job}
+									<strong>Numéro de téléphone :</strong> {this.state.phone}<br />
+									<strong>Email :</strong> {this.state.email}<br /><br />
 									<button className="btn btn-secondary btn-sm pull-right" onClick={() => {
 										this.setState({ editInfos: true
 											})
@@ -203,7 +204,7 @@ export default class CompanyManageInfos extends Component {
 							}
 							</div>
 						</div>
-					
+
 					</div>
 					:null}
 
