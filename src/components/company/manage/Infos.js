@@ -203,20 +203,7 @@ export default class CompanyManageInfos extends Component {
 							}
 							</div>
 						</div>
-						<div className="row">
-
-							<div className="col-lg-6 col-sm-12">
-								<form onSubmit={this.changePassword.bind(this)}>
-									<div className="form-group">
-										<input type="password" name="password" onChange={handleChange.bind(this)} value={this.state.password} className="form-control" placeholder="Nouveau mot de passe" />
-									</div>
-									<div className="form-group">
-										<input type="password" name="conf" onChange={handleChange.bind(this)} value={this.state.conf} className="form-control" placeholder="Confirmation du nouveau mot de passe" />
-									</div>
-									<button className="btn btn-primary mb-4">Enregistrer</button>
-								</form>
-							</div>
-						</div>
+					
 					</div>
 					:null}
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import request from '../../services/Net';
 import CompanyManageDashboard from './manage/Dashboard';
+import Account from './manage/Account';
 import CompanyManageInfos from './manage/Infos';
 import CompanyManageMyPage from './manage/MyPage';
 import CompanyManageBills from './manage/Bills'
@@ -100,6 +101,7 @@ export default class CompanyManage extends Component {
 										<Route exact path="/company/manage/mypage" component={CompanyManageMyPage} />
 										<Route exact path="/company/manage/customize" component={CompanyManageCustomize} />
 										<Route exact path="/company/manage/bills" component={CompanyManageBills} />
+										<Route exact path="/company/manage/account" component={Account} />
 										<Route component={NotFound} />
 									</Switch>
 								</div>
