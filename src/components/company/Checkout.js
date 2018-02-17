@@ -179,7 +179,7 @@ export default class CompanyCheckout extends Component {
 								</div>
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
-								<h3 className="text-center"><label>Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</label></h3>
+								<h3 className="my-4">Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
 								{this.state.different && !this.state.saved &&
 									<form className="text-center">
 										<div className="form-group d-flex">
@@ -218,7 +218,6 @@ export default class CompanyCheckout extends Component {
 										<div className="form-group">
 											<input type="tel" className="form-control" value={this.state.dphone} name="dphone" placeholder="Téléphone *" onChange={handleChange.bind(this)} />
 										</div>
-										<button className="btn btn-primary my-2" onClick={this.saveDaddress.bind(this)}>Enregistrer</button>
 									</form>
 								}
 								{this.state.saved &&
