@@ -96,7 +96,11 @@ export default class CompanyManageInfos extends Component {
 				city: this.state.bcity,
 				country: this.state.bcountry
 			}
-		}, this.refs.notif);
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				editBaddress : false
+			})
+		});
 	}
 
 	updateDaddress(e) {
@@ -115,7 +119,11 @@ export default class CompanyManageInfos extends Component {
 				country: this.state.dcountry,
 				phone: this.state.dphone
 			}
-		}, this.refs.notif);
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				editDaddress : false
+			})
+		});
 	}
 
 	changeInfos(e) {
@@ -127,26 +135,11 @@ export default class CompanyManageInfos extends Component {
 				phone: this.state.phone,
 				email: this.state.email
 			}
-		}, this.refs.notif)
-	}
-
-
-	changePassword(e) {
-		e.preventDefault()
-		if (this.state.password === this.state.conf) {
-			request({
-				url: '/user',
-				method: 'put',
-				data: {
-					password: this.state.password
-				}
-			}, this.refs.notif)
-		} else {
-			this.refs.notif.addNotification({
-				message: 'Le nouveau mot de passe et sa confirmation ne correspondent pas',
-				level: 'warning'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				editInfos: false
 			})
-		}
+		})
 	}
 
 	render () {
