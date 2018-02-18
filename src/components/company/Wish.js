@@ -74,9 +74,14 @@ export default class CompanyWish extends Component {
 								</p>
 							</div>
 						</div>
+						<div className="row justify-content-center">
+						<p>
+							Montant: {this.state.hives * 545} € HT
+						</p>
+						</div>
 						<ul>
 							<li>Cela représente plus de {this.state.hives * 50000} abeilles supplémentaires pour prendre soin de la biodiversité</li>
-							<li>C’est aussi l’équivalent de {this.state.hives * 80} pots de miel par an</li>
+							<li>En échange nous recevons le fruit de nos abeilles: {this.state.hives}*80 pots de miel au design entiérement personalisable</li>
 						</ul>
 						<p className="text-center">
 							<button  className="btn btn-primary">Continuer</button>

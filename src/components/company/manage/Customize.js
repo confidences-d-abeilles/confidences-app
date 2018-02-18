@@ -47,13 +47,13 @@ export default class CompanyManageCustomize extends Component {
 			<div className="row">
 				<NotificationSystem ref="notif" />
 				<div className="col">
-					<h2 className="text-center my-4">Personaliser mes étiquettes</h2>
+					<h2 className="text-center my-4">Personaliser nos pots de miel</h2>
 					{this.state.current &&
 						<p className="text-center">
 							<img className="img-fluid my-2 center-block" src={config.cdn_url+'/'+this.state.current} alt="Etiquette actuelle"/>
 						</p>
 					}
-					<p>
+					{/* <p>
 						Vous avez la possibilité d’apporter les modifications que vous souhaitez sur
 						l’étiquette qui sera apposée sur vos pots de miel. Pour cela, il vous suffit de
 						la télécharger ci-dessous (format AI, Indd), de l’éditer avec Adobe Illustrator,
@@ -63,8 +63,13 @@ export default class CompanyManageCustomize extends Component {
 						pas modifiables. Ce sont des mentions obligatoires qui doivent figurer sur les
 						pots. Nous nous réservons le droit d’augmenter le contraste si celui-ci venait
 						à être diminué en raison d’un fond sombre.
+					</p> */}
+					<p>
+						Les fonctionnalités d'édition de vos étiquettes sont en cours de développement
+						et vont rapidement voir le jour ! <br />
+						Nous vous préviendrons lorsque ce sera le cas.
 					</p>
-					<a href="#" target="_blank" className="btn btn-primary">Télécharger l'étiquette type</a>
+					{/*<a href="#" target="_blank" className="btn btn-primary">Télécharger l'étiquette type</a>
 					<form onSubmit={this.upload.bind(this)} className="my-2">
 						<div className="form-group">
 							<label htmlFor="label" className={(this.state.label)?'active-upload':'upload'}>Glisser votre fichier ici ou cliquez pour en séléctionner un parmi vos fichiers<br/>Taille recommandée : 280x210 - {(this.state.label)?'Selectionné : '+this.state.label:"Aucun fichier séléctionné"}</label>
@@ -72,6 +77,7 @@ export default class CompanyManageCustomize extends Component {
 						</div>
 						<button className="btn btn-primary">Envoyer cette étiquette</button>
 					</form>
+				*/}
 				</div>
 			</div>
 		)
