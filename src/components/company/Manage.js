@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import request from '../../services/Net';
 import CompanyManageDashboard from './manage/Dashboard';
+import Account from './manage/Account';
 import CompanyManageInfos from './manage/Infos';
 import CompanyManageMyPage from './manage/MyPage';
 import CompanyManageBills from './manage/Bills'
@@ -15,6 +16,7 @@ import NotificationSystem from 'react-notification-system';
 import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 import Meta from '../utils/Meta'
 import NotFound from '../utils/NotFound'
+import FontAwesome from 'react-fontawesome'
 
 const config = require('../../config.js');
 
@@ -76,12 +78,13 @@ export default class CompanyManage extends Component {
 								<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:imgPlaceholder} alt="Logo entreprise" style={{ maxWidth: '100%', maxHeight: '100%'}} />
 							</div>
 							<ul className="list-group">
-								<li className="list-group-item"><Link to="/company/manage"> &nbsp;&nbsp;Mon parrainage</Link></li>
-								<li className="list-group-item"><Link to="/company/manage/customize"> &nbsp;&nbsp;Mes pots de miel</Link></li>
-								<li className="list-group-item"><Link to="/company/manage/infos"> &nbsp;&nbsp;Mes informations</Link></li>
-								<li className="list-group-item"><Link to="/company/manage/bills"> &nbsp;&nbsp;Mes factures</Link></li>
+								<li className="list-group-item"><Link to="/company/manage"><FontAwesome name="archive" fixedWidth={true} />&nbsp;&nbsp;Notre parrainage</Link></li>
+								<li className="list-group-item"><Link to="/company/manage/customize"><FontAwesome name="flask" fixedWidth={true} />&nbsp;&nbsp;Nos pots de miel</Link></li>
+								<li className="list-group-item"><Link to="/company/manage/infos"><FontAwesome name="address-card" fixedWidth={true} />&nbsp;&nbsp;Mes informations</Link></li>
+								<li className="list-group-item"><Link to="/company/manage/bills"><FontAwesome name="file" fixedWidth={true} />&nbsp;&nbsp;Factures</Link></li>
 								<li className="list-group-item"><Link to="/company/manage/mypage">&nbsp;&nbsp;Ma page dediee</Link></li>
-								<li className="list-group-item"><Link to="/logout">&nbsp;&nbsp;Deconnexion</Link></li>
+								<li className="list-group-item"><Link to="/company/manage/account"><FontAwesome name="gears" fixedWidth={true} />&nbsp;&nbsp;Mon compte</Link></li>
+								<li className="list-group-item"><Link to="/logout"><FontAwesome name="sign-out" fixedWidth={true} />&nbsp;&nbsp;Deconnexion</Link></li>
 							</ul>
 						</div>
 						<div className="col-lg-9 col-md-8 col-sm-12">
@@ -98,6 +101,7 @@ export default class CompanyManage extends Component {
 										<Route exact path="/company/manage/mypage" component={CompanyManageMyPage} />
 										<Route exact path="/company/manage/customize" component={CompanyManageCustomize} />
 										<Route exact path="/company/manage/bills" component={CompanyManageBills} />
+										<Route exact path="/company/manage/account" component={Account} />
 										<Route component={NotFound} />
 									</Switch>
 								</div>
