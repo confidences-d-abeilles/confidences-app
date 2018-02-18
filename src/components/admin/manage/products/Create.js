@@ -29,8 +29,8 @@ export default class Create extends Component {
 			this.setState({
 				designation: '',
 				type: '',
-				price: 0,
-				duty: 0
+				price: '',
+				duty: ''
 			});
 			this.props.refresh();
 		})
@@ -53,7 +53,7 @@ export default class Create extends Component {
 								className="form-control">
 								<option value="">Choisissez un type de produit</option>
 								<option value="10">Parrainage entreprise</option>
-								<option value="11">Produit suplémentaire entreprise</option>
+								<option value="11">Produit supplémentaire entreprise</option>
 								<option value="20">Parrainage particulier</option>
 								<option value="21">Produit supplementaire particulier</option>
 							</select>
@@ -62,18 +62,52 @@ export default class Create extends Component {
 					<div className="col-lg-6">
 						<div className="form-group">
 							<div className="input-group">
-								<div className="input-group-addon">€</div>
-								<input type="number" name="price" min="0" step="0.1"
-									className="form-control" placeholder="Prix du produit"
-									value={this.state.price} onChange={handleChange.bind(this)} />
+								<div className="input-group-addon">€ (HT)</div>
+								<input type="number" name="price" min="0" step="0.01"
+									className="form-control" placeholder="Prix HT du produit"
+									value={this.state.price} onChange={
+										(e) => {
+											this.setState({
+												price: e.target.value,
+												ttc : (parseFloat(e.target.value, 10)+(parseFloat(this.state.duty, 10)/100)*parseFloat(e.target.value, 10)).toFixed(2)
+											})
+										}} />
 							</div>
 						</div>
 						<div className="form-group">
 							<div className="input-group">
 								<div className="input-group-addon">%</div>
-								<input type="number" step="0.1" name="duty" min="0"
+								<input type="number" step="0.01" name="duty" min="0"
 									className="form-control" placeholder="TVA" value={this.state.duty}
-									onChange={handleChange.bind(this)} />
+									onChange={
+										(e) => {
+											this.setState({
+												duty: e.target.value,
+											});
+											if (this.state.price) {
+												this.setState({
+													ttc : (this.state.price)?(parseFloat(this.state.price, 10)+(parseFloat(e.target.value, 10)/100)*parseFloat(this.state.price, 10)).toFixed(2):''
+												});
+											} else {
+												this.setState({
+													price: (this.state.ttc)?(parseFloat(this.state.ttc, 10)/ (parseFloat(e.target.value, 10)+100)*100).toFixed(2):'',
+												});
+											}
+										}} />
+							</div>
+						</div>
+						<div className="form-group">
+							<div className="input-group">
+								<div className="input-group-addon">€ (TTC)</div>
+								<input type="number" name="ttc" min="0" step="0.01"
+									className="form-control" placeholder="Prix TTC du produit"
+									value={this.state.ttc} onChange={
+										(e) => {
+											this.setState({
+												ttc: e.target.value,
+												price : (e.target.value / (parseFloat(this.state.duty)+100) * 100).toFixed(2)
+											})
+										}} />
 							</div>
 						</div>
 						<div className="form-group">
