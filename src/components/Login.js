@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { handleChange } from '../services/FormService';
-import { login } from '../services/AuthService';
+import { login, isLoggedIn } from '../services/AuthService';
 import request from '../services/Net.js'
 import Loading from './utils/Loading'
 import ReactGA from 'react-ga';
@@ -22,6 +22,12 @@ export default class Signup extends Component {
 		ReactGA.pageview(this.props.location.pathname);
 	}
 
+	componentDidMount() {
+		if (isLoggedIn(true)) {
+			this.setState({ redirect : true })
+		}
+	}
+
 	login(e) {
 		e.preventDefault();
 		this.setState({
@@ -30,12 +36,12 @@ export default class Signup extends Component {
 		});
 		if (!this.state.email || !this.state.password) {
 			this.refs.notificationSystem.addNotification({
-	      		message: "Merci de renseigner tous les champs",
-	      		level: 'warning'
-      	  });
-		  this.setState({
-			  loading: false
-		  })
+				message: "Merci de renseigner tous les champs",
+				level: 'warning'
+			});
+			this.setState({
+				loading: false
+			})
 		} else {
 			request({
 				url : '/authenticate',
@@ -51,8 +57,8 @@ export default class Signup extends Component {
 				})
 			}).catch((err) => {
 				this.setState({
-					 loading: false
-				 })
+					loading: false
+				})
 			});
 		}
 	}
@@ -67,10 +73,9 @@ export default class Signup extends Component {
 						<h2 className="text-center my-4">Connexion</h2>
 						{(this.state.loading)?
 							<Loading />
-
-						:<form className="text-center">
+							:<form className="text-center">
 							<div className="form-group">
-								<input type="email" name="email" className="form-control" placeholder="Adresse email" onChange={handleChange.bind(this)} />
+								<input type="email" name="email" className="form-control" placeholder="Adresse email" onChange={handleChange.bind(this)} autoComplete="email" />
 							</div>
 							<div className="form-group">
 								<input type="password" name="password" className="form-control" placeholder="Mot de passe" onChange={handleChange.bind(this)} />
@@ -83,7 +88,7 @@ export default class Signup extends Component {
 				{(this.state.redirect)?
 					<Redirect to="/account" />
 					:null}
-			</div>
-		);
+				</div>
+			);
+		}
 	}
-}

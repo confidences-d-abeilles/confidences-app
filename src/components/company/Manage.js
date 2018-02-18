@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import request from '../../services/Net';
 import CompanyManageDashboard from './manage/Dashboard';
+import Account from './manage/Account';
 import CompanyManageInfos from './manage/Infos';
 import CompanyManageMyPage from './manage/MyPage';
 import CompanyManageBills from './manage/Bills'
@@ -8,11 +9,14 @@ import CompanyManageCustomize from './manage/Customize'
 import {
 	Route,
 	Link,
-	Redirect
+	Redirect,
+	Switch
 } from 'react-router-dom';
 import NotificationSystem from 'react-notification-system';
 import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 import Meta from '../utils/Meta'
+import NotFound from '../utils/NotFound'
+import FontAwesome from 'react-fontawesome'
 
 const config = require('../../config.js');
 
@@ -74,12 +78,13 @@ export default class CompanyManage extends Component {
 								<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:imgPlaceholder} alt="Logo entreprise" style={{ maxWidth: '100%', maxHeight: '100%'}} />
 							</div>
 							<ul className="list-group">
-								<li className="list-group-item"><Link to="/company/manage">Tableau de bord</Link></li>
-								<li className="list-group-item"><Link to="/company/manage/infos">Mes informations</Link></li>
-								<li className="list-group-item"><Link to="/company/manage/mypage">Ma page dediee</Link></li>
-								<li className="list-group-item"><Link to="/company/manage/customize">Personnalisation</Link></li>
-								<li className="list-group-item"><Link to="/company/manage/bills">Mes factures</Link></li>
-								<li className="list-group-item"><Link to="/logout">Deconnexion</Link></li>
+								<li className="list-group-item"><Link to="/company/manage"><FontAwesome name="archive" fixedWidth={true} />&nbsp;&nbsp;Notre parrainage</Link></li>
+								<li className="list-group-item"><Link to="/company/manage/customize"><FontAwesome name="flask" fixedWidth={true} />&nbsp;&nbsp;Nos pots de miel</Link></li>
+								<li className="list-group-item"><Link to="/company/manage/infos"><FontAwesome name="address-card" fixedWidth={true} />&nbsp;&nbsp;Mes informations</Link></li>
+								<li className="list-group-item"><Link to="/company/manage/bills"><FontAwesome name="file" fixedWidth={true} />&nbsp;&nbsp;Factures</Link></li>
+								<li className="list-group-item"><Link to="/company/manage/mypage">&nbsp;&nbsp;Ma page dediee</Link></li>
+								<li className="list-group-item"><Link to="/company/manage/account"><FontAwesome name="gears" fixedWidth={true} />&nbsp;&nbsp;Mon compte</Link></li>
+								<li className="list-group-item"><Link to="/logout"><FontAwesome name="sign-out" fixedWidth={true} />&nbsp;&nbsp;Deconnexion</Link></li>
 							</ul>
 						</div>
 						<div className="col-lg-9 col-md-8 col-sm-12">
@@ -90,11 +95,15 @@ export default class CompanyManage extends Component {
 							</div>
 							<div className="row">
 								<div className="col-12">
-									<Route exact path="/company/manage" component={CompanyManageDashboard} />
-									<Route exact path="/company/manage/infos" component={CompanyManageInfos} />
-									<Route exact path="/company/manage/mypage" component={CompanyManageMyPage} />
-									<Route exact path="/company/manage/customize" component={CompanyManageCustomize} />
-									<Route exact path="/company/manage/bills" component={CompanyManageBills} />
+									<Switch>
+										<Route exact path="/company/manage" component={CompanyManageDashboard} />
+										<Route exact path="/company/manage/infos" component={CompanyManageInfos} />
+										<Route exact path="/company/manage/mypage" component={CompanyManageMyPage} />
+										<Route exact path="/company/manage/customize" component={CompanyManageCustomize} />
+										<Route exact path="/company/manage/bills" component={CompanyManageBills} />
+										<Route exact path="/company/manage/account" component={Account} />
+										<Route component={NotFound} />
+									</Switch>
 								</div>
 							</div>
 						</div>

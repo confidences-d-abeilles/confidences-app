@@ -39,7 +39,7 @@ export default class Home extends Component {
 			this.setState({
 				users : res.reverse()
 			});
-			this.autoplay = setInterval(() => { this.refs.slider.slickNext() }, 5000);
+			// this.autoplay = setInterval(() => { this.refs.slider.slickNext() }, 5000);
 		})
 	}
 
@@ -138,7 +138,7 @@ export default class Home extends Component {
 										}
 										return (
 											<div key={user.id}>
-												<Link to={(user.namespace)?'/'+user.namespace:'/hive/'+user.hive_id}>
+												<Link to={(user.namespace)?'/parrains/'+user.namespace:'/hive/'+user.hive_id}>
 													<img className="img-fluid" src={img} alt={(user.company_name)?user.company_name:user.firstname+' '+user.name}/>
 													<p className="my-2" style={{ height: '2em', lineHeight: '2em', overflow: 'hidden'}}>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</p>
 												</Link>

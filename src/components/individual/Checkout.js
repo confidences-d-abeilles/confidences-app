@@ -272,27 +272,27 @@ export default class IndividualCheckout extends Component {
 								      </label>
 										</div>
 										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress1} name="daddress1" placeholder="Nom et prénom *" onChange={handleChange.bind(this)} />
+											<input type="text" className="form-control" value={this.state.daddress1} name="daddress1" placeholder="Nom et prénom *" onChange={handleChange.bind(this)} autoComplete="name" />
 										</div>
 										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress3} name="daddress3" placeholder="Ligne d'adresse 1 *" onChange={handleChange.bind(this)} />
+											<input type="text" className="form-control" value={this.state.daddress3} name="daddress3" placeholder="Ligne d'adresse 1 *" onChange={handleChange.bind(this)} autoComplete="address-line1" />
 										</div>
 										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress4} name="daddress4" placeholder="Ligne d'adresse 2" onChange={handleChange.bind(this)} />
+											<input type="text" className="form-control" value={this.state.daddress4} name="daddress4" placeholder="Ligne d'adresse 2" onChange={handleChange.bind(this)} autoComplete="address-line2" />
 										</div>
 										<div className="form-group row">
 											<div className="col-4">
-												<input type="text" className="form-control" value={this.state.dzip} name="dzip" onChange={handleChange.bind(this)} />
+												<input type="text" className="form-control" value={this.state.dzip} name="dzip" onChange={handleChange.bind(this)} autoComplete="postal-code" />
 											</div>
 											<div className="col-8">
-												<input type="text" className="form-control" value={this.state.dcity} name="dcity" onChange={handleChange.bind(this)} />
+												<input type="text" className="form-control" value={this.state.dcity} name="dcity" onChange={handleChange.bind(this)} autoComplete="address-level2" />
 											</div>
 										</div>
 										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.dcountry} name="dcountry" onChange={handleChange.bind(this)} />
+											<input type="text" className="form-control" value={this.state.dcountry} name="dcountry" onChange={handleChange.bind(this)} autoComplete="country-name" />
 										</div>
 										<div className="form-group">
-											<input type="tel" className="form-control" value={this.state.dphone} name="dphone" onChange={handleChange.bind(this)} placeholder="Numéro de téléphone pour la livraison *" />
+											<input type="tel" className="form-control" value={this.state.dphone} name="dphone" onChange={handleChange.bind(this)} placeholder="Numéro de téléphone pour la livraison *" autoComplete="tel" />
 										</div>
 									</form>
 								}
