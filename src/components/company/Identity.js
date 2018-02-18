@@ -78,9 +78,9 @@ export default class CompanyIdentity extends Component {
 								<input type="text" className="form-control" name="company_name" placeholder="Raison sociale" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<label htmlFor="namespace">Choisissez une adresse pour votre future page dédiée</label>
+								<label htmlFor="namespace">Merci de choisir l'adresse de la pages dédiée a votre entreprise</label>
 								<div className="input-group">
-									<span className="input-group-addon" id="basic-addon3">https://parrainagederuches.fr/ </span>
+									<span className="input-group-addon" id="basic-addon3">https://parrainagederuches.fr/parrain/ </span>
 									<input type="text" className="form-control" onChange={handleChange.bind(this)} name="namespace" id="namespace" />
 								</div>
 							</div>
