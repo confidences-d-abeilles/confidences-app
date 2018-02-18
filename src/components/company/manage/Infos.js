@@ -96,7 +96,11 @@ export default class CompanyManageInfos extends Component {
 				city: this.state.bcity,
 				country: this.state.bcountry
 			}
-		}, this.refs.notif);
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				editBaddress : false
+			})
+		});
 	}
 
 	updateDaddress(e) {
@@ -115,7 +119,11 @@ export default class CompanyManageInfos extends Component {
 				country: this.state.dcountry,
 				phone: this.state.dphone
 			}
-		}, this.refs.notif);
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				editDaddress : false
+			})
+		});
 	}
 
 	changeInfos(e) {
@@ -127,26 +135,11 @@ export default class CompanyManageInfos extends Component {
 				phone: this.state.phone,
 				email: this.state.email
 			}
-		}, this.refs.notif)
-	}
-
-
-	changePassword(e) {
-		e.preventDefault()
-		if (this.state.password === this.state.conf) {
-			request({
-				url: '/user',
-				method: 'put',
-				data: {
-					password: this.state.password
-				}
-			}, this.refs.notif)
-		} else {
-			this.refs.notif.addNotification({
-				message: 'Le nouveau mot de passe et sa confirmation ne correspondent pas',
-				level: 'warning'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				editInfos: false
 			})
-		}
+		})
 	}
 
 	render () {
@@ -178,7 +171,8 @@ export default class CompanyManageInfos extends Component {
 									<strong>Siret :</strong> {this.state.user.siret}<br />
 									<strong>Nom :</strong> {this.state.user.name}<br />
 									<strong>Prénom :</strong> {this.state.user.firstname}<br />
-									<strong>Poste dans l'entreprise :</strong> {this.state.user.job}
+									<strong>Numéro de téléphone :</strong> {this.state.phone}<br />
+									<strong>Email :</strong> {this.state.email}<br /><br />
 									<button className="btn btn-secondary btn-sm pull-right" onClick={() => {
 										this.setState({ editInfos: true
 											})
@@ -203,20 +197,7 @@ export default class CompanyManageInfos extends Component {
 							}
 							</div>
 						</div>
-						<div className="row">
 
-							<div className="col-lg-6 col-sm-12">
-								<form onSubmit={this.changePassword.bind(this)}>
-									<div className="form-group">
-										<input type="password" name="password" onChange={handleChange.bind(this)} value={this.state.password} className="form-control" placeholder="Nouveau mot de passe" />
-									</div>
-									<div className="form-group">
-										<input type="password" name="conf" onChange={handleChange.bind(this)} value={this.state.conf} className="form-control" placeholder="Confirmation du nouveau mot de passe" />
-									</div>
-									<button className="btn btn-primary mb-4">Enregistrer</button>
-								</form>
-							</div>
-						</div>
 					</div>
 					:null}
 
