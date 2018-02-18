@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 import request from '../../services/Net';
 import { isLoggedIn } from '../../services/AuthService';
-import { Redirect, Route, Link } from 'react-router-dom';
+import { Redirect, Route, Link, Switch } from 'react-router-dom';
 import IndividualManageInfos from './manage/Infos'
 import Bills from './manage/Bills'
 import NotificationSystem from 'react-notification-system'
@@ -12,6 +12,7 @@ import profile from '../../assets/img/profile2.png';
 import Bundle from './manage/Bundle'
 import FontAwesome from 'react-fontawesome'
 import Meta from '../utils/Meta'
+import NotFound from '../utils/NotFound'
 
 export default class IndividualManage extends Component {
 
@@ -34,11 +35,14 @@ export default class IndividualManage extends Component {
 						</ul>
 					</div>
 					<div className="col-lg-9 col-sm-12">
-						<Route exact path="/individual/manage" component={Bundle} />
-						<Route exact path="/individual/manage/bills" component={Bills} />
-						<Route exact path="/individual/manage/customize" component={Custom} />
-						<Route exact path="/individual/manage/infos" component={IndividualManageInfos} />
-						<Route exact path="/individual/manage/account" component={Account} />
+						<Switch>
+							<Route exact path="/individual/manage" component={Bundle} />
+							<Route exact path="/individual/manage/bills" component={Bills} />
+							<Route exact path="/individual/manage/customize" component={Custom} />
+							<Route exact path="/individual/manage/infos" component={IndividualManageInfos} />
+							<Route exact path="/individual/manage/account" component={Account} />
+							<Route component={NotFound} />
+						</Switch>
 					</div>
 				</div>
 			</div>

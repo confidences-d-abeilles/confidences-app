@@ -4,7 +4,7 @@ import NotificationSystem from 'react-notification-system'
 import Loading from './utils/Loading';
 import ReactHtmlParser from 'react-html-parser'
 import FontAwesome from 'react-fontawesome'
-import ImgPlaceholder from '../assets/img/profile.png';
+import ImgHive from '../assets/img/logo_ruche_entreprise.png';
 import moment from 'moment';
 import ReactGA from 'react-ga';
 import Meta from './utils/Meta'
@@ -39,25 +39,27 @@ export default class Hive extends Component {
 				<NotificationSystem ref="notif" />
 				{(this.state.hive)?
 					<div>
-						<h2 className="text-center my-5">Ruche {this.state.hive.name}</h2>
+						<h1 className="text-center my-4" style={{ fontFamily: "HighTo" , padding: "0.4em 2.5em", zIndex: '5', color: '#E49C00' }}>RUCHE {this.state.hive.name.toUpperCase()}</h1>
 					<div className="row">
-						<div className="col-lg-4 col-md-7 col-sm-12 pr-4">
+						<div className="col-lg-5 col-md-7 col-sm-12 pr-4">
 							<div className="row">
 								<div className="col-lg-7 px-5">
-									<img className="img-fluid" src={(this.state.hive.imgs[0])?config.cdn_url+'/'+this.state.hive.imgs[0]:ImgPlaceholder} alt="Photo principale de la ruche" />
+									<img className="img-fluid" src={(this.state.hive.imgs[0])?config.cdn_url+'/'+this.state.hive.imgs[0]:ImgHive} alt="Photo principale de la ruche" />
 								</div>
-								<div className="col-lg-5 card" style={{ backgroundColor: '#ECEFF1' }}>
-									<h3 className="my-4">Les parrains</h3>
+								<div className="col-lg-5" style={{ backgroundColor: '#E49C00' , color: 'white', fontFamily: "HighTo", fontSize: '1.25em' }}>
+									<h2 className="mt-4">PARRAINS</h2>
+									<div style={{ width : '100%', height: '1px', backgroundColor: 'white'}} className="mb-4" ></div>
 									{this.state.hive &&
-										this.state.hive.parrains.map((user) => {
+										this.state.hive.parrains.map((user, key) => {
 											return (
-												<p>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</p>
+												<h3 key={key} className="my-0"><small>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</small><br />{(key+1 < this.state.hive.parrains.length)?' ~':''}</h3>
 											)
 										})}
 								</div>
 							</div>
-							<h3 className="my-4">Informations sur la ruche</h3>
-							<p>
+							<h2 className="mt-5" style={{ fontFamily: "HighTo" }}>INFORMATIONS SUR LA RUCHE</h2>
+							<div style={{ width : '100%', height: '1px', backgroundColor: 'black'}} className="mb-4" ></div>
+							<p style={{ fontFamily: "HighTo", fontSize: '1.25em' }}>
 								Aucune information sur cette ruche pour le moment
 							</p>
 							<div className="row">
@@ -74,8 +76,8 @@ export default class Hive extends Component {
 								})}
 							</div>
 						</div>
-						<div className="col-lg-8 col-md-4 col-sm-12" style={{ borderStyle: 'solid', borderColor: '#E49C00', borderWidth: '0 0 0 4px'}}>
-							<h3 className="my-4 text-center">Actualités</h3>
+						<div className="col-lg-7 col-md-4 col-sm-12" style={{ fontFamily: "HighTo", fontSize: '1.25em' }}>
+							<h2 className="text-center">ACTUALITÉS</h2>
 							{(this.state.hive.news.length)?
 								this.state.hive.news.map((actu) => {
 									let date;

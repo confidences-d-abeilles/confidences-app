@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import NotificationSystem from 'react-notification-system'
 import request from '../services/Net'
-import imgPlaceholder from '../assets/img/profile.png';
+import imgPlaceholder from '../assets/img/logo_ruche_entreprise.png';
 import { Link } from 'react-router-dom'
 import Loading from './utils/Loading'
 import { handleChange } from '../services/FormService';
 import ReactGA from 'react-ga';
 import Meta from './utils/Meta'
+import SquareImg from './utils/SquareImg'
 
 const config = require('../config.js')
 
@@ -15,7 +16,7 @@ export default class Hives extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			bundles : null,
+			hives : null,
 			criteria: ''
 		}
 		ReactGA.pageview(this.props.location.pathname);
@@ -23,11 +24,11 @@ export default class Hives extends Component {
 
 	componentDidMount() {
 		request({
-			url: '/bundle',
+			url: '/hive',
 			method: 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				bundles : res
+				hives : res.reverse()
 			})
 		})
 	}
@@ -37,36 +38,23 @@ export default class Hives extends Component {
 			<div className="container">
 				<Meta title="Les ruches"/>
 				<NotificationSystem ref="notif" />
+				<h1 style={{ fontFamily: "HighTo", color: '#E49C00' }} className="text-center my-4">LES RUCHES</h1>
 				<div className="row justify-content-center">
-					<div className="col-lg-6 col-md-10 col-sm-12">
-						<h2 className="text-center">Les ruches</h2>
-					</div>
-				</div>
-				<div className="row justify-content-center">
-					<div className="col-lg-2">
-						<h3>Filtrer</h3>
-						<input type="text" className="form-control" placeholder="Rechercher un nom de parrain ou de ruche..." onChange={handleChange.bind(this)} name="criteria" value={this.state.criteria} disabled />
-					</div>
-					<div className="col-lg-10">
-						{this.state.bundles?
+					<div className="col">
+						{this.state.hives?
 						<div className="row justify-content-center">
-							{this.state.bundles.map((bundle) => {
-								const owner = (bundle.owner.company_name)?bundle.owner.company_name:bundle.owner.firstname+' '+bundle.owner.name;
-								const datetime = new Date(bundle.createdAt);
-								return (
-									bundle.contain.map((hive) => {
-										return (
-											<div className="card w-25 m-3 justify-content-between">
-												<img className="card-img-top img-fluid" src={(hive.imgs && hive.imgs[0])?config.cdn_url+'/'+hive.imgs[0]:imgPlaceholder} alt="Card image cap" />
-												<div className="card-block" style={{ height: 'auto', flex: '0' }}>
-													<h3 className="card-title">{hive.name}</h3>
-													<h6 className="card-subtitle text-muted">Parrainée par {owner} depuis le {datetime.getDate()+'/'+parseInt(datetime.getMonth()+1)+'/'+datetime.getFullYear()}</h6>
-													<Link to={'/hive/'+hive.id} className="btn">Voir en détails</Link>
-												</div>
-											</div>
-										)
-									})
-								)
+							{this.state.hives.map((hive) => {
+								if (hive.imgs && hive.imgs[0]) {
+									return (<div className="card w-25 m-3 justify-content-between">
+									<SquareImg className="card-img-top img-fluid" src={(hive.imgs && hive.imgs[0])?config.cdn_url+'/'+hive.imgs[0]:imgPlaceholder} alt="Card image cap" />
+									<div className="card-block" style={{ height: 'auto', flex: '0' }}>
+										<h2 className="card-title text-center" style={{ fontFamily: "HighTo"}} >{hive.name}</h2>
+										<Link to={'/hive/'+hive.id} className="btn btn-link float-right">Voir en détail</Link>
+									</div>
+								</div>)
+							} else {
+								return null;
+							}
 							})}
 						</div>:<Loading />}
 					</div>
