@@ -115,7 +115,7 @@ export default class CompanyCheckout extends Component {
 			if (this.state.different) {
 				await this.saveDaddress();
 			}
-			// await this.handlePresent();
+			await this.handlePresent();
 			resolve();
 		})
 	}
@@ -183,6 +183,24 @@ export default class CompanyCheckout extends Component {
 		})
 	}
 
+	async handlePresent() {
+		return new Promise(resolve => {
+			request({
+				url: '/bundle/'+this.state.bundle_id,
+				method: 'put',
+				data : {
+					present: this.state.present,
+					present_email: this.state.present_email,
+					present_message: this.state.present_message,
+					present_date: (this.state.present_date)?this.state.present_date:new Date(),
+					present_name: this.state.present_name,
+					present_firstname: this.state.present_firstname
+				}
+			}, this.refs.notif).then((res) => {
+				resolve();
+			})
+		});
+	}
 
     render () {
         return (
