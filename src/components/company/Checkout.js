@@ -30,6 +30,7 @@ export default class CompanyCheckout extends Component {
 			price: 0,
 			different: false,
 			saved: false,
+			dash: false,
 			feedback: '',
 			present_date: moment()
 		}
@@ -188,7 +189,8 @@ export default class CompanyCheckout extends Component {
 			<div className="container py-4">
 				<Meta title="Validation et paiement"/>
 				<NotificationSystem ref="notif" />
-				{(this.state.redirect)?<Redirect to="/account" />:null}
+				{(this.state.redirect)?<Redirect to="/company/end" />:null}
+				{(this.state.dash)?<Redirect to="/company/manage" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
