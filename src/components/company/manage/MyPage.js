@@ -168,7 +168,7 @@ export default class CompanyManageMyPage extends Component {
 				<h2 className="text-center my-4">Modifier ma page</h2>
 				<div className="row mb-4">
 					<div className="col text-center">
-						<a href={require('../../../assets/page_ent.pdf')} target="_blank" className="btn btn-secondary my-2">Comment personaliser ma page ?</a>
+						<a href={require('../../../assets/page_ent.pdf')} target="_blank" className="btn btn-secondary my-2">Comment personnaliser ma page ?</a>
 					</div>
 					<div className="col text-center">
 						<a href={(this.state.user)?"/parrains/"+this.state.user.namespace:'/'} target="_blank" className="btn btn-secondary my-2">Voir ma page</a>
@@ -201,12 +201,12 @@ export default class CompanyManageMyPage extends Component {
 
 					</div>
 					<div className="form-group">
-						<label>Présentation générale de l’entreprise ({1000 - this.state.description.length} caractères restants)</label>
-						<textarea name="description" maxLength="1000" className="form-control" value={this.state.description} onChange={handleChange.bind(this)} placeholder="Présentation générale de l’entreprise (1000 caractères max. espaces compris)" />
+						<label>Présentation générale de l’entreprise ({600 - this.state.description.length} caractères restants)</label>
+						<textarea name="description" maxLength="600" className="form-control" value={this.state.description} onChange={handleChange.bind(this)} placeholder="Présentation générale de l’entreprise (600 caractères max. espaces compris)" />
 					</div>
 					<div className="form-group">
-						<label>Notre engagement en faveur de la biodiversité ({3700 - this.state.involvement.length} caractères restants)</label>
-						<textarea name="involvement" maxLength="3700" className="form-control" value={this.state.involvement} onChange={handleChange.bind(this)} placeholder="Notre engagement en faveur de la biodiversité (3700 caractères max. espaces compris)" />
+						<label>Notre engagement en faveur de la biodiversité ({800 - this.state.involvement.length} caractères restants)</label>
+						<textarea name="involvement" maxLength="800" className="form-control" value={this.state.involvement} onChange={handleChange.bind(this)} placeholder="Notre engagement en faveur de la biodiversité (800 caractères max. espaces compris)" />
 					</div>
 					<div className="form-group">
 						<label>Bouton d'action 1</label>
