@@ -6,7 +6,7 @@ export default class NotFound extends Component {
 	render() {
 		return(
 			<div className="text-center">
-			<img src={NotBees} className="img-fluid" alt="Responsive image"/>
+				<img src={NotBees} className="img-fluid" alt="Responsive image"/>
 			</div>
 		)
 	}
