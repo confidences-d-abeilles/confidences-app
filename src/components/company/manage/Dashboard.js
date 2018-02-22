@@ -5,6 +5,7 @@ import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
 import Loading from '../../utils/Loading'
 import { handleChange } from '../../../services/FormService'
+import moment from 'moment'
 
 const config = require('../../../config.js');
 
@@ -168,7 +169,18 @@ export default class CompanyManageDashboard extends Component {
 									<button className="btn btn-primary">Confirmer mes choix</button>
 								</div>
 							</form>
-						</div>:null,
+						</div>:
+						<div>
+
+						{this.state.user?
+							<p>
+								Notre offre: {this.state.user.bundles[0].hives}<br />
+								date de début: {moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}<br />
+							</p>
+							:
+							null
+						}
+						</div>,
 						this.state.hives &&
 							<div className="row">
 								{this.state.hives.map((ruche) => {
