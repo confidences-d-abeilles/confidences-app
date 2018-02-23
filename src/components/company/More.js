@@ -47,6 +47,10 @@ export default class More extends Component {
 							<br/>
 							« Le parrainage de ruches c’est une façon de penser l’environnement dans lequel évolue votre entreprise, une démarche porteuse de sens et de cohésion. »
 							<br/>
+							<p className="text-center">
+								<Link to="/signup/company" className="btn btn-secondary mr-4">C’est parti, nous parrainons une ruche</Link>
+							</p>
+							<br/>
 						</p>
 						<h3 className="text-center">Qu’est ce que le parrainage de ruches vous apporte ?</h3>
 						<p>
@@ -100,6 +104,9 @@ export default class More extends Component {
 								1 visite de la ruche à organiser avec votre équipe pour découvrir le monde des abeilles sous la tenue d’apiculteur. Organisation de séminaire possible.
 								</li>
 							</ul>
+							<p className="text-center">
+								<Link to="/signup/company" className="btn btn-secondary mr-4">Devenir parrain</Link>
+							</p>
 						</p>
 						<h3 className="text-center">Tarifs et Conditions</h3>
 						<p>
@@ -121,7 +128,10 @@ export default class More extends Component {
 							<br/>
 							Le 1er janvier et le 30 juin, vous recevrez le miel de vos abeilles à l’automne, à partir du mois d’octobre.
 						</p>
-
+						<p className="text-center">
+							<Link to="/signup/company" className="btn btn-secondary mr-4">Parrainer une ruche</Link>
+							<a href={broch} className="btn btn-secondary m-4" target="_blank">Brochure de présentation</a>
+						</p>
 						<h3 className="text-center">Événement et visibilité</h3>
 						<p>
 							Événement
@@ -177,10 +187,10 @@ export default class More extends Component {
 							</ul>
 						</p>
 						<p className="text-center">
-							<Link to="/signup/company" className="btn btn-secondary mr-4">Parrainer une ruche</Link><a href={leaflet} className="btn btn-secondary mr-4" target="_blank">Télécharger la plaquette de présentation</a>
+							<Link to="/signup/company" className="btn btn-secondary mr-4">Parrainer une ruche</Link>
 						</p>
 						<div className="col-12 text-center">
-							<a href={broch} className="btn btn-secondary m-4" target="_blank">Brochure détaillée</a>
+							<a href={broch} className="btn btn-secondary m-4" target="_blank">Brochure de présentation</a>
 						</div>
 					</div>
 				</div>
