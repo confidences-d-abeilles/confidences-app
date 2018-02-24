@@ -33,12 +33,10 @@ export default class More extends Component {
 						<p>
 							Votre entreprise souhaite prendre ses responsabilités vis-à-vis de la société.
 							Vous voulez dépasser vos préoccupations économiques, légales et adopter un comportement plus éthique.
-							Vous avez donc compris qu’en responsabilisant vos activités commerciales, qu’en investissant dans le développement durable vous pérennisiez votre entreprise à long terme.
-							Le mouvement est en marche et de plus en plus d’acteurs sont conscients que ce n’est pas en achetant des crédits carbones, issus de la plantation d’arbres ailleurs dans le monde, que l’on aborde l’impact local d’une entreprise.
-						
+							Vous avez donc compris qu’en responsabilisant vos activités commerciales, qu’en investissant dans le
 
 							{this.state.deployFirst?
-								' Cela passe par l’intégration de pratiques responsables bénéficiant à toutes les parties prenantes. Parmi ces dernières on retrouve aussi la société. En effet, les entreprises ne peuvent pas réussir si la société échoue ; elle peut échouer si son environnement se dégrade par exemple. Les entreprises ont donc tout intérêt à ne pas le détériorer, voir même à le protéger.'
+								' développement durable vous pérennisiez votre entreprise à long terme. Le mouvement est en marche et de plus en plus d’acteurs sont conscients que ce n’est pas en achetant des crédits carbones, issus de la plantation d’arbres ailleurs dans le monde, que l’on aborde l’impact local d’une entreprise. Cela passe par l’intégration de pratiques responsables bénéficiant à toutes les parties prenantes. Parmi ces dernières on retrouve aussi la société. En effet, les entreprises ne peuvent pas réussir si la société échoue ; elle peut échouer si son environnement se dégrade par exemple. Les entreprises ont donc tout intérêt à ne pas le détériorer, voir même à le protéger.'
 								:
 								''
 							}
@@ -54,7 +52,7 @@ export default class More extends Component {
 											})
 										}
 									}>
-									{!this.state.deployFirst? 'develloper' : 'reduire'}
+									{!this.state.deployFirst? 'develloper' : 'réduire'}
 								</button>
 
 							<br/><br/>
@@ -64,21 +62,26 @@ export default class More extends Component {
 
 							C’est décidé, vous voulez inscrire votre entreprise dans une démarche participative et durable pour l’environnement.
 							Faites donc le choix de parrainer des ruches !
-							D’une part vous aidez les apiculteurs à protéger les abeilles, d’autre part ces abeilles vont prendre soin de la biodiversité et donc de votre environnement qui est aussi celui des parties prenantes de votre entreprises ;
+							D’une part vous aidez les apiculteurs à protéger les abeilles, d’autre part ces abeilles vont
 							{this.state.deployTwo?
-								<strong>enfin, vous soutenez la filière française du miel et permettez aux consommateurs de manger local plutôt qu’importé.
-								Votre action va encore plus loin : en protégeant les abeilles vous favorisez la pollinisation, les rendemments agricoles augmentent, les pesticides ne sont plus nécessaires, l’environnement s’en porte mieux et les abeilles aussi.
-								Le cercle vertueux est bouclé !
-								</strong>
+								' prendre soin de la biodiversité et donc de votre environnement qui est aussi celui des parties prenantes de votre entreprises ; enfin, vous soutenez la filière française du miel et permettez aux consommateurs de manger local plutôt qu’importé. Votre action va encore plus loin : en protégeant les abeilles vous favorisez la pollinisation, les rendemments agricoles augmentent, les pesticides ne sont plus nécessaires, l’environnement s’en porte mieux et les abeilles aussi. Le cercle vertueux est bouclé !'
 								:
-								<button className="btn btn-secondary btn-sm pull-right" onClick={() =>
-										this.setState({
-											deployTwo: true
-										})
-									}>
-									develloper
-								</button>
+								null
 							}
+							<br/>
+								<button className="btn btn-primary btn-sm " onClick={() =>
+									{this.state.deployTwo?
+										this.setState({
+											deployTwo: false
+											})
+											:
+											this.setState({
+												deployTwo: true
+											})
+										}
+									}>
+									{!this.state.deployTwo? 'develloper' : 'réduire'}
+								</button>
 							<br/>
 							<br/>
 							<div className="col-lg-4 col-md-6 col-sm-12 my-4">
@@ -96,31 +99,30 @@ export default class More extends Component {
 							A défaut, vous montrez que vous êtes préocupés par l’évolution de l’environnement dans lequel s’inscrit votre entreprise ; ce même environnement que l’ensemble de vos parties prenantes partagent.
 							Que votre activité soit de type B2B ou B2C, vos clients sont de plus en plus exigeants.
 							{this.state.deploy3?
-								<strong>
-							Ils accordent une importance croissante à l’éthique et à la responsabilité dans le comportement des entreprises.
-							Parrainer des ruches n’est pas LA solution à vos problématiques de développement durable et de comportement responsable mais un élément de réponse.
-							« Les petits ruisseaux font les grandes rivières. »
+							' Ils accordent une importance croissante à l’éthique et à la responsabilité dans le comportement des entreprises. Parrainer des ruches n’est pas LA solution à vos problématiques de développement durable et de comportement responsable mais un élément de réponse. « Les petits ruisseaux font les grandes rivières. »'
+							:null}
+							{this.state.deploy3?<p></p>:null}
+							{this.state.deploy3?
+							'Plus concrètement. Utilisez votre parrainage dans votre communication interne et fédérer votre équipe autour d’une ou plusieurs ruches. Engagez vos collaborateurs en leur proposant de créer le futur design de vos pots de miel ! Partagez avec eux les dernières actualités des ruches, ils se languiront alors de recevoir un pot de miel de « leurs » abeilles.'
+							:null}
+							{this.state.deploy3?<p></p>:null}
+							{this.state.deploy3?
+							'Le parrainage représente aussi une stratégie de différenciation vis-a-vis de vos concurrents. Vos prospects n’y seront pas insensibles et vous les convertirez plus facilement en clients.'
+							:null}
 							<br/>
-							<br/>
-							Plus concrètement.
-							Utilisez votre parrainage dans votre communication interne et fédérer votre équipe autour d’une ou plusieurs ruches.
-							Engagez vos collaborateurs en leur proposant de créer le futur design de vos pots de miel !
-							Partagez avec eux les dernières actualités des ruches, ils se languiront alors de recevoir un pot de miel de « leurs » abeilles.
-							<br/>
-							<br/>
-							Le parrainage représente aussi une stratégie de différenciation vis-a-vis de vos concurrents.
-							Vos prospects n’y seront pas insensibles et vous les convertirez plus facilement en clients.
-							<br/>
-								</strong>
-							:
-							<button className="btn btn-secondary btn-sm pull-right" onClick={() =>
-									this.setState({
-										deploy3: true
-									})
-								}>
-								develloper
-							</button>
-						}
+								<button className="btn btn-primary btn-sm " onClick={() =>
+									{this.state.deploy3?
+										this.setState({
+											deploy3: false
+											})
+											:
+											this.setState({
+												deploy3: true
+											})
+										}
+									}>
+									{!this.state.deploy3? 'develloper' : 'réduire'}
+								</button>
 						</p>
 						<p>
 							Très concrètement. Un service sur mesure incluant :
