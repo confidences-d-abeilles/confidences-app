@@ -81,7 +81,7 @@ export default class CompanyWish extends Component {
 						</div>
 						<ul>
 							<li>Cela représente plus de {this.state.hives * 50000} abeilles supplémentaires pour prendre soin de la biodiversité</li>
-							<li>En échange nous recevons le fruit de nos abeilles: {this.state.hives}*80 pots de miel au design entiérement personalisable</li>
+							<li>En échange nous recevons le fruit de nos abeilles: {this.state.hives*80} pots de miel au design entièrement personnalisable</li>
 						</ul>
 						<p className="text-center">
 							<button  className="btn btn-primary">Continuer</button>

@@ -7,7 +7,7 @@ import third from '../../assets/img/P/3.jpg';
 import fourth from '../../assets/img/P/4.jpg';
 import fifth from '../../assets/img/P/5.jpg';
 import sixth from '../../assets/img/P/6.jpg';
-import leaflet from '../../assets/leaflet_p.pdf'
+import leaflet from '../../assets/leaflet_p.pdf';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
 
