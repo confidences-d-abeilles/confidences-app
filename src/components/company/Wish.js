@@ -76,7 +76,7 @@ export default class CompanyWish extends Component {
 						</div>
 						<div className="row justify-content-center">
 						<p>
-							Montant: {this.state.hives * 545} € HT
+							Montant: {this.state.hives < 5 ? this.state.hives * 545 : this.state.hives * 495} € HT
 						</p>
 						</div>
 						<ul>
