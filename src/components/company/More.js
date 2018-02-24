@@ -61,13 +61,18 @@ export default class More extends Component {
 						<p>
 
 							C’est décidé, vous voulez inscrire votre entreprise dans une démarche participative et durable pour l’environnement.
-							Faites donc le choix de parrainer des ruches !
+							<strong> Faites donc le choix de parrainer des ruches ! </strong>
 							D’une part vous aidez les apiculteurs à protéger les abeilles, d’autre part ces abeilles vont
 							{this.state.deployTwo?
-								' prendre soin de la biodiversité et donc de votre environnement qui est aussi celui des parties prenantes de votre entreprises ; enfin, vous soutenez la filière française du miel et permettez aux consommateurs de manger local plutôt qu’importé. Votre action va encore plus loin : en protégeant les abeilles vous favorisez la pollinisation, les rendemments agricoles augmentent, les pesticides ne sont plus nécessaires, l’environnement s’en porte mieux et les abeilles aussi. Le cercle vertueux est bouclé !'
-								:
+								' prendre soin de la biodiversité et donc de votre environnement qui est aussi celui des parties prenantes de votre entreprises ; enfin, vous soutenez la filière française du miel et permettez aux consommateurs de manger local plutôt qu’importé.'
+								 	:
 								null
 							}
+							{this.state.deployTwo?<p></p>: null}
+							{this.state.deployTwo?
+								'Votre action va encore plus loin : en protégeant les abeilles vous favorisez la pollinisation, les rendemments agricoles augmentent, les pesticides ne sont plus nécessaires, l’environnement s’en porte mieux et les abeilles aussi. Le cercle vertueux est bouclé !'
+								:
+								null}
 							<br/>
 								<button className="btn btn-primary btn-sm " onClick={() =>
 									{this.state.deployTwo?
@@ -84,8 +89,11 @@ export default class More extends Component {
 								</button>
 							<br/>
 							<br/>
-							<div className="col-lg-4 col-md-6 col-sm-12 my-4">
-							« Le parrainage de ruches c’est une façon de penser l’environnement dans lequel évolue votre entreprise, une démarche porteuse de sens et de cohésion. »
+							<div className="row  justify-content-center ">
+							<div className="col-lg-6 col-md-8  my-4">
+							<strong>« Le parrainage de ruches c’est une façon de penser l’environnement dans lequel évolue votre entreprise, une démarche porteuse de sens et de cohésion. »
+							</strong>
+							</div>
 							</div>
 							<br/>
 							<p className="text-center">
@@ -102,8 +110,9 @@ export default class More extends Component {
 							' Ils accordent une importance croissante à l’éthique et à la responsabilité dans le comportement des entreprises. Parrainer des ruches n’est pas LA solution à vos problématiques de développement durable et de comportement responsable mais un élément de réponse. « Les petits ruisseaux font les grandes rivières. »'
 							:null}
 							{this.state.deploy3?<p></p>:null}
+							{this.state.deploy3?<strong>Plus concrètement.</strong>:null}
 							{this.state.deploy3?
-							'Plus concrètement. Utilisez votre parrainage dans votre communication interne et fédérer votre équipe autour d’une ou plusieurs ruches. Engagez vos collaborateurs en leur proposant de créer le futur design de vos pots de miel ! Partagez avec eux les dernières actualités des ruches, ils se languiront alors de recevoir un pot de miel de « leurs » abeilles.'
+							' Utilisez votre parrainage dans votre communication interne et fédérer votre équipe autour d’une ou plusieurs ruches. Engagez vos collaborateurs en leur proposant de créer le futur design de vos pots de miel ! Partagez avec eux les dernières actualités des ruches, ils se languiront alors de recevoir un pot de miel de « leurs » abeilles.'
 							:null}
 							{this.state.deploy3?<p></p>:null}
 							{this.state.deploy3?
@@ -125,7 +134,7 @@ export default class More extends Component {
 								</button>
 						</p>
 						<p>
-							Très concrètement. Un service sur mesure incluant :
+							<strong>Très concrètement. Un service sur mesure incluant</strong> :
 						</p>
 						<p>
 							<ul>
@@ -162,24 +171,25 @@ export default class More extends Component {
 							</p>
 						</p>
 						<h3 className="text-center">Tarifs et Conditions</h3>
+						<br/>
+						<a href="https://parrainagederuches.fr/prices" className="btn" target="_blank">Consulter les tarifs</a>
 						<p>
-						Consulter les tarifs
 						Ces tarifs comprennent l’ensemble des éléments cités ci-dessus ainsi que les frais de port pour l’envoi des pots de miel en France métropolitaine.
-						Pour l’étranger, les situations seront étudiées au cas par cas, nous contacter en amont.<br/>
+						<i>Pour l’étranger, les situations seront étudiées au cas par cas, nous contacter en amont.</i><br/><br/><br/>
 						L’installation des ruches parrainées se fait sur nos ruchers situés en Haute-Savoie ou en Savoie.
 						Vous souhaitiez voir vos ruches installées sur le site de votre entreprise, sur son toit pas exemple ?
 						N’hésitez pas à nous en faire la demande.
-						Nous étudierons la faisabilité du projet et nous reviendrons vers vous avec un devis si cela est envisageable (les tarifs présents sur le site ne concernent pas cette prestation).
+						Nous étudierons la faisabilité du projet et nous reviendrons vers vous avec un devis si cela est envisageable (<i>les tarifs présents sur le site ne concernent pas cette prestation</i>).
 						<br/><br/>
 						</p>
-						<h4 className="text-center">Quand parrainer ?</h4>
+						<h4 className="my-4">Quand parrainer ?</h4>
 						<p>
 							Vous pouvez parrainer des abeilles tout au long de l’année.
 							Il faut savoir que pour un parrainage effectué entre :
 							<br/>
-							Le 1er juillet et le 31 décembre, vous recevrez le miel de vos abeilles après la récolte de printemps ; à partir du mois de mai de l’année suivante.
+							<strong className="text-warning">Le 1er juillet et le 31 décembre</strong>, vous recevrez le miel de vos abeilles après la récolte de printemps ; à partir du mois de mai de l’année suivante.
 							<br/>
-							Le 1er janvier et le 30 juin, vous recevrez le miel de vos abeilles à l’automne, à partir du mois d’octobre.
+							<strong className="text-warning">Le 1er janvier et le 30 juin</strong>, vous recevrez le miel de vos abeilles à l’automne, à partir du mois d’octobre.
 						</p>
 						<p className="text-center">
 							<Link to="/signup/company" className="btn btn-secondary mr-4">Parrainer une ruche</Link>
@@ -241,10 +251,11 @@ export default class More extends Component {
 						</p>
 						<p className="text-center">
 							<Link to="/signup/company" className="btn btn-secondary mr-4">Parrainer une ruche</Link>
-						</p>
-						<div className="text-center">
+
+
 							<a href={broch} className="btn btn-secondary m-4" target="_blank">Brochure de présentation</a>
-						</div>
+
+						</p>
 					</div>
 				</div>
 			</div>
