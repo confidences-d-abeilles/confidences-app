@@ -38,13 +38,13 @@ export default class More extends Component {
 							{this.state.deployFirst?
 								' développement durable vous pérennisiez votre entreprise à long terme. Le mouvement est en marche et de plus en plus d’acteurs sont conscients que ce n’est pas en achetant des crédits carbones, issus de la plantation d’arbres ailleurs dans le monde, que l’on aborde l’impact local d’une entreprise. Cela passe par l’intégration de pratiques responsables bénéficiant à toutes les parties prenantes. Parmi ces dernières on retrouve aussi la société. En effet, les entreprises ne peuvent pas réussir si la société échoue ; elle peut échouer si son environnement se dégrade par exemple. Les entreprises ont donc tout intérêt à ne pas le détériorer, voir même à le protéger.'
 								:
-								''
+								' ...'
 							}
 							<br/>
-								<button className="btn btn-primary btn-sm " onClick={() =>
+								<button className=" actu-btn " onClick={() =>
 									{this.state.deployFirst?
 										this.setState({
-											deployFirst: false
+												deployFirst: false
 											})
 											:
 											this.setState({
@@ -52,7 +52,8 @@ export default class More extends Component {
 											})
 										}
 									}>
-									{!this.state.deployFirst? 'develloper' : 'réduire'}
+									{!this.state.deployFirst? '------- développer --------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
+									: '------- réduire -------------------------------------------------------------------------------------------------------------------------'}
 								</button>
 
 							<br/><br/>
@@ -74,7 +75,7 @@ export default class More extends Component {
 								:
 								null}
 							<br/>
-								<button className="btn btn-primary btn-sm " onClick={() =>
+								<button className=" actu-btn" onClick={() =>
 									{this.state.deployTwo?
 										this.setState({
 											deployTwo: false
@@ -85,7 +86,8 @@ export default class More extends Component {
 											})
 										}
 									}>
-									{!this.state.deployTwo? 'develloper' : 'réduire'}
+									{!this.state.deployTwo? '------- développer --------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
+									: '------- réduire -------------------------------------------------------------------------------------------------------------------------'}
 								</button>
 							<br/>
 							<br/>
@@ -97,7 +99,7 @@ export default class More extends Component {
 							</div>
 							<br/>
 							<p className="text-center">
-								<Link to="/signup/company" className="btn btn-secondary mr-4">C’est parti, nous parrainons une ruche</Link>
+								<Link to="/signup/company" className="btn btn-secondary btn-warning mr-4">C’est parti, nous parrainons une ruche</Link>
 							</p>
 							<br/>
 						</p>
@@ -119,7 +121,7 @@ export default class More extends Component {
 							'Le parrainage représente aussi une stratégie de différenciation vis-a-vis de vos concurrents. Vos prospects n’y seront pas insensibles et vous les convertirez plus facilement en clients.'
 							:null}
 							<br/>
-								<button className="btn btn-primary btn-sm " onClick={() =>
+								<button className=" actu-btn" onClick={() =>
 									{this.state.deploy3?
 										this.setState({
 											deploy3: false
@@ -130,7 +132,8 @@ export default class More extends Component {
 											})
 										}
 									}>
-									{!this.state.deploy3? 'develloper' : 'réduire'}
+									{!this.state.deploy3? '------- développer --------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
+									: '------- réduire -------------------------------------------------------------------------------------------------------------------------'}
 								</button>
 						</p>
 						<p>
@@ -167,7 +170,7 @@ export default class More extends Component {
 								</li>
 							</ul>
 							<p className="text-center">
-								<Link to="/signup/company" className="btn btn-secondary mr-4">Devenir parrain</Link>
+								<Link to="/signup/company" className="btn btn-secondary btn-warning mr-4">Devenir parrain</Link>
 							</p>
 						</p>
 						<h3 className="text-warning my-4">Tarifs et Conditions</h3>
@@ -192,8 +195,8 @@ export default class More extends Component {
 							<strong className="text-warning">Le 1er janvier et le 30 juin</strong>, vous recevrez le miel de vos abeilles à l’automne, à partir du mois d’octobre.
 						</p>
 						<p className="text-center">
-							<Link to="/signup/company" className="btn btn-secondary mr-4">Parrainer une ruche</Link>
-							<a href={broch} className="btn btn-secondary m-4" target="_blank">Brochure de présentation</a>
+							<Link to="/signup/company" className="btn btn-secondary btn-warning mr-4">Parrainer une ruche</Link>
+							<a href={broch} className="btn btn-secondary btn-warning m-4" target="_blank">Brochure de présentation</a>
 						</p>
 						<h3 className="text-warning my-4">Événement et visibilité</h3>
 						<p>
@@ -251,10 +254,10 @@ export default class More extends Component {
 							</ul>
 						</p>
 						<p className="text-center">
-							<Link to="/signup/company" className="btn btn-secondary mr-4">Parrainer une ruche</Link>
+							<Link to="/signup/company" className="btn btn-warning btn-secondary mr-4">Parrainer une ruche</Link>
 
 
-							<a href={broch} className="btn btn-secondary m-4" target="_blank">Brochure de présentation</a>
+							<a href={broch} className="btn btn-warning btn-secondary m-4" target="_blank">Brochure de présentation</a>
 
 						</p>
 					</div>
