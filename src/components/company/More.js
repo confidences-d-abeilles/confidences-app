@@ -29,30 +29,37 @@ export default class More extends Component {
 					</div>
 					<div className="col-9">
 						<h1 className="text-center my-5">Ce que nous voulons dire aux entreprises</h1>
-						<h2 className="text-center my-5">Pourquoi responsabiliser votre activité ?</h2>
+						<h2 className=" my-5">Pourquoi responsabiliser votre activité ?</h2>
 						<p>
 							Votre entreprise souhaite prendre ses responsabilités vis-à-vis de la société.
 							Vous voulez dépasser vos préoccupations économiques, légales et adopter un comportement plus éthique.
 							Vous avez donc compris qu’en responsabilisant vos activités commerciales, qu’en investissant dans le développement durable vous pérennisiez votre entreprise à long terme.
 							Le mouvement est en marche et de plus en plus d’acteurs sont conscients que ce n’est pas en achetant des crédits carbones, issus de la plantation d’arbres ailleurs dans le monde, que l’on aborde l’impact local d’une entreprise.
+						
+
 							{this.state.deployFirst?
-								<strong>Cela passe par l’intégration de pratiques responsables bénéficiant à toutes les parties prenantes.
-								Parmi ces dernières on retrouve aussi la société.
-								En effet, les entreprises ne peuvent pas réussir si la société échoue ; elle peut échouer si son environnement se dégrade par exemple.
-								Les entreprises ont donc tout intérêt à ne pas le détériorer, voir même à le protéger.
-								</strong>
-							:
-								<button className="btn btn-secondary btn-sm pull-right" onClick={() =>
-										this.setState({
-											deployFirst: true
-										})
-									}>
-									develloper
-								</button>
+								' Cela passe par l’intégration de pratiques responsables bénéficiant à toutes les parties prenantes. Parmi ces dernières on retrouve aussi la société. En effet, les entreprises ne peuvent pas réussir si la société échoue ; elle peut échouer si son environnement se dégrade par exemple. Les entreprises ont donc tout intérêt à ne pas le détériorer, voir même à le protéger.'
+								:
+								''
 							}
+							<br/>
+								<button className="btn btn-primary btn-sm " onClick={() =>
+									{this.state.deployFirst?
+										this.setState({
+											deployFirst: false
+											})
+											:
+											this.setState({
+												deployFirst: true
+											})
+										}
+									}>
+									{!this.state.deployFirst? 'develloper' : 'reduire'}
+								</button>
+
 							<br/><br/>
 						</p>
-						<h3 className="text-center">Comment le faire ?</h3>
+						<h3 className="my-4">Comment le faire ?</h3>
 						<p>
 
 							C’est décidé, vous voulez inscrire votre entreprise dans une démarche participative et durable pour l’environnement.
@@ -74,14 +81,16 @@ export default class More extends Component {
 							}
 							<br/>
 							<br/>
+							<div className="col-lg-4 col-md-6 col-sm-12 my-4">
 							« Le parrainage de ruches c’est une façon de penser l’environnement dans lequel évolue votre entreprise, une démarche porteuse de sens et de cohésion. »
+							</div>
 							<br/>
 							<p className="text-center">
 								<Link to="/signup/company" className="btn btn-secondary mr-4">C’est parti, nous parrainons une ruche</Link>
 							</p>
 							<br/>
 						</p>
-						<h3 className="text-center">Qu’est ce que le parrainage de ruches vous apporte ?</h3>
+						<h3>Qu’est ce que le parrainage de ruches vous apporte ?</h3>
 						<p>
 							Ne nous voilons pas la face, ce n’est pas en parrainant des ruches que vous allez fondamentalement responsabiliser vos activités commerciales.
 							A défaut, vous montrez que vous êtes préocupés par l’évolution de l’environnement dans lequel s’inscrit votre entreprise ; ce même environnement que l’ensemble de vos parties prenantes partagent.
@@ -161,7 +170,7 @@ export default class More extends Component {
 						Nous étudierons la faisabilité du projet et nous reviendrons vers vous avec un devis si cela est envisageable (les tarifs présents sur le site ne concernent pas cette prestation).
 						<br/><br/>
 						</p>
-						<h3 className="text-center">Quand parrainer ?</h3>
+						<h4 className="text-center">Quand parrainer ?</h4>
 						<p>
 							Vous pouvez parrainer des abeilles tout au long de l’année.
 							Il faut savoir que pour un parrainage effectué entre :
