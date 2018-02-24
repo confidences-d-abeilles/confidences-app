@@ -80,9 +80,9 @@ export default class CompanyManage extends Component {
 							<ul className="list-group">
 								<li className="list-group-item"><Link to="/company/manage"><FontAwesome name="archive" fixedWidth={true} />&nbsp;&nbsp;Notre parrainage</Link></li>
 								<li className="list-group-item"><Link to="/company/manage/customize"><FontAwesome name="flask" fixedWidth={true} />&nbsp;&nbsp;Nos pots de miel</Link></li>
+								<li className="list-group-item"><Link to="/company/manage/mypage">&nbsp;&nbsp;Notre page dediee</Link></li>
 								<li className="list-group-item"><Link to="/company/manage/infos"><FontAwesome name="address-card" fixedWidth={true} />&nbsp;&nbsp;Mes informations</Link></li>
 								<li className="list-group-item"><Link to="/company/manage/bills"><FontAwesome name="file" fixedWidth={true} />&nbsp;&nbsp;Factures</Link></li>
-								<li className="list-group-item"><Link to="/company/manage/mypage">&nbsp;&nbsp;Ma page dediee</Link></li>
 								<li className="list-group-item"><Link to="/company/manage/account"><FontAwesome name="gears" fixedWidth={true} />&nbsp;&nbsp;Mon compte</Link></li>
 								<li className="list-group-item"><Link to="/logout"><FontAwesome name="sign-out" fixedWidth={true} />&nbsp;&nbsp;Deconnexion</Link></li>
 							</ul>

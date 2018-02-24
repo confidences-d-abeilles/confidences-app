@@ -6,7 +6,8 @@ import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
 import { handleChange, handleTick } from '../../services/FormService';
 import ReactGA from 'react-ga';
-import Meta from '../utils/Meta'
+import Meta from '../utils/Meta';
+import moment from 'moment';
 
 export default class CompanyCheckout extends Component {
 
@@ -28,7 +29,10 @@ export default class CompanyCheckout extends Component {
 			paytype: '',
 			price: 0,
 			different: false,
-			saved: false
+			saved: false,
+			dash: false,
+			feedback: '',
+			present_date: moment()
 		}
 	}
 
@@ -42,7 +46,8 @@ export default class CompanyCheckout extends Component {
 				hives: res.bundles[0].hives,
 				price: res.bundles[0].price,
 				bundle_id: res.bundles[0].id,
-				duplicate: true
+				duplicate: true,
+				feedback: res.bundles[0].feedback
 			});
 			request({
 				url: '/bill/bundle/'+res.bundles[0].id,
@@ -84,7 +89,15 @@ export default class CompanyCheckout extends Component {
 
 	}
 
-	setWaitingPayment() {
+	handleDateChange(date) {
+		this.setState({
+			present_date: date
+		});
+	}
+
+
+	async setWaitingPayment() {
+		await this.save();
 		request({
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
@@ -96,7 +109,43 @@ export default class CompanyCheckout extends Component {
 		})
 	}
 
-	saveDaddress(e) {
+	async save() {
+		return new Promise(async resolve => {
+			await this.saveFeedback();
+			if (this.state.different) {
+				await this.saveDaddress();
+			}
+			await this.handlePresent();
+			resolve();
+		})
+	}
+
+	async saveFeedback() {
+		return new Promise(resolve => {
+			request({
+				url: '/bundle/'+this.state.bundle_id,
+				method: 'put',
+				data: {
+					feedback: this.state.feedback
+				}
+			}, this.refs.notif).then((res) => {
+				resolve();
+			})
+		})
+	}
+
+	async noAction() {
+		await this.save();
+		await request({
+			url: '/user/later',
+			method: 'put'
+		}, this.refs.notif);
+		this.setState({
+			dash: true
+		})
+	}
+
+	async saveDaddress(e) {
 		e.preventDefault();
 		if (!this.state.dsexe_m || !this.state.daddress3 || !this.state.dcity || !this.state.dzip ||
 			!this.state.dphone) {
@@ -134,12 +183,32 @@ export default class CompanyCheckout extends Component {
 		})
 	}
 
+	async handlePresent() {
+		return new Promise(resolve => {
+			request({
+				url: '/bundle/'+this.state.bundle_id,
+				method: 'put',
+				data : {
+					present: this.state.present,
+					present_email: this.state.present_email,
+					present_message: this.state.present_message,
+					present_date: (this.state.present_date)?this.state.present_date:new Date(),
+					present_name: this.state.present_name,
+					present_firstname: this.state.present_firstname
+				}
+			}, this.refs.notif).then((res) => {
+				resolve();
+			})
+		});
+	}
+
     render () {
         return (
 			<div className="container py-4">
 				<Meta title="Validation et paiement"/>
 				<NotificationSystem ref="notif" />
-				{(this.state.redirect)?<Redirect to="/account" />:null}
+				{(this.state.redirect)?<Redirect to="/company/end" />:null}
+				{(this.state.dash)?<Redirect to="/company/manage" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
@@ -299,7 +368,7 @@ export default class CompanyCheckout extends Component {
 											d’octobre.</li></ul>
 											Bonne visite sur notre plateforme !
 										</p>
-										<Link to="/account" className="btn btn-primary">Payer plus tard</Link>
+										<button onClick={this.noAction.bind(this)} className="btn btn-primary">Payer plus tard</button>
 									</div>
 								}
 							</div>

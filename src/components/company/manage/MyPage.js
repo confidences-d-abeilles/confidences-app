@@ -6,6 +6,7 @@ import request from '../../../services/Net'
 import ReactQuill from 'react-quill';
 import Loading from '../../utils/Loading'
 import ReactGA from 'react-ga';
+import moment from 'moment';
 const config = require('../../../config.js');
 
 export default class CompanyManageMyPage extends Component {
@@ -14,6 +15,7 @@ export default class CompanyManageMyPage extends Component {
 		super (props);
 		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
+			id_user : '',
 			name : '',
 			namespace : '',
 			description : '',
@@ -24,13 +26,19 @@ export default class CompanyManageMyPage extends Component {
 			link1_url: '',
 			link2_name: '',
 			link2_url: '',
+			bundleState: '',
+			bundle: null,
 			visible: false,
-			english: false
+			english: false,
+			bundle_date: moment(),
+			bundle_state: 0,
+			bundle: []
 		}
 	}
 
 	componentDidMount() {
 		this.get();
+		// this.getBundle();
 	}
 
 	get() {
@@ -40,6 +48,7 @@ export default class CompanyManageMyPage extends Component {
 		}, this.refs.notif).then((res) => {
 			this.setState({
 				user : res,
+				id_user : res.id,
 				name : res.company_name,
 				namespace : res.namespace,
 				logo: res.logo,
@@ -53,8 +62,39 @@ export default class CompanyManageMyPage extends Component {
 				english: res.english,
 				visible: res.visible
 			});
+			if (res.bundles[0]) {
+				this.setState({
+					bundle: res.bundles[0],
+					bundle_date: moment(res.bundles[0].start_date),
+					bundle_state: res.bundles[0].state
+				})
+				console.log(this.state.bundle);
+				console.log(this.state.bundle_date);
+				console.log(this.state.bundle_state);
+			}
 		}).catch((err) => {})
+
+		request({
+			url: '/bundle/'+this.state.id_user,
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				bundle: res,
+				bundleState: res.state
+			})
+		})
 	}
+
+	// getBundle () {
+	// 	request({
+	// 		url: '/bundle',
+	// 		method: 'getOne'
+	// 	}, this.refs.notif).then((res) => {
+	// 		this.setState({
+	// 			bundleState : res
+	// 		})
+	// 	})
+	// }
 
 	submit(e) {
 		e.preventDefault();
@@ -128,7 +168,7 @@ export default class CompanyManageMyPage extends Component {
 				<h2 className="text-center my-4">Modifier ma page</h2>
 				<div className="row mb-4">
 					<div className="col text-center">
-						<a href={require('../../../assets/page_ent.pdf')} target="_blank" className="btn btn-secondary my-2">Comment personaliser ma page ?</a>
+						<a href={require('../../../assets/page_ent.pdf')} target="_blank" className="btn btn-secondary my-2">Comment personnaliser ma page ?</a>
 					</div>
 					<div className="col text-center">
 						<a href={(this.state.user)?"/parrains/"+this.state.user.namespace:'/'} target="_blank" className="btn btn-secondary my-2">Voir ma page</a>
@@ -161,12 +201,12 @@ export default class CompanyManageMyPage extends Component {
 
 					</div>
 					<div className="form-group">
-						<label>Présentation générale de l’entreprise ({1000 - this.state.description.length} caractères restants)</label>
-						<textarea name="description" maxLength="1000" className="form-control" value={this.state.description} onChange={handleChange.bind(this)} placeholder="Présentation générale de l’entreprise (1000 caractères max. espaces compris)" />
+						<label>Présentation générale de l’entreprise ({600 - this.state.description.length} caractères restants)</label>
+						<textarea name="description" maxLength="600" className="form-control" value={this.state.description} onChange={handleChange.bind(this)} placeholder="Présentation générale de l’entreprise (600 caractères max. espaces compris)" />
 					</div>
 					<div className="form-group">
-						<label>Notre engagement en faveur de la biodiversité ({3700 - this.state.involvement.length} caractères restants)</label>
-						<textarea name="involvement" maxLength="3700" className="form-control" value={this.state.involvement} onChange={handleChange.bind(this)} placeholder="Notre engagement en faveur de la biodiversité (3700 caractères max. espaces compris)" />
+						<label>Notre engagement en faveur de la biodiversité ({800 - this.state.involvement.length} caractères restants)</label>
+						<textarea name="involvement" maxLength="800" className="form-control" value={this.state.involvement} onChange={handleChange.bind(this)} placeholder="Notre engagement en faveur de la biodiversité (800 caractères max. espaces compris)" />
 					</div>
 					<div className="form-group">
 						<label>Bouton d'action 1</label>
@@ -182,12 +222,15 @@ export default class CompanyManageMyPage extends Component {
 					<div className="form-group">
 						<input type="texte" name="link2_url" className="form-control" value={this.state.link2_url} placeholder="URL du bouton d'action 2" onChange={handleChange.bind(this)} />
 					</div>
-					<div className="form-group">
-						<label htmlFor="english"><input type="checkbox" name="english" id="english" onChange={handleTick.bind(this)} checked={this.state.english} /> Version anglaise</label>
-					</div>
-					<div className="form-group">
-						<label htmlFor="visible"><input type="checkbox" name="visible" id="visible" onChange={handleTick.bind(this)} checked={this.state.visible} /> Rendre ma page publique</label>
-					</div>
+
+						<div className="form-group">
+							<label htmlFor="english"><input disabled={this.state.bundle_state == 2 ? false: true} type="checkbox" name="english" id="english" onChange={handleTick.bind(this)} checked={this.state.english} /> Version anglaise</label>
+						</div>
+						<div className="form-group">
+							<label htmlFor="visible"><input disabled={this.state.bundle_state == 2 ? false: true} type="checkbox" name="visible" id="visible" onChange={handleTick.bind(this)} checked={this.state.visible} /> Rendre ma page publique</label>
+						</div>
+
+
 					<div className="form-group">
 						<input type="submit" value="Enregistrer les modifications" className="btn btn-primary" onClick={this.submit.bind(this)} />
 					</div>
