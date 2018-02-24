@@ -27,9 +27,9 @@ export default class More extends Component {
 					<div className="col-lg-12">
 						<img src={Banner} alt="Banner" className="img-fluid"/>
 					</div>
+					<h1 className="text-center">Ce que nous voulons dire aux entreprises</h1>
 					<div className="col-9">
-						<h1 className="text-center my-5">Ce que nous voulons dire aux entreprises</h1>
-						<h2 className=" my-5">Pourquoi responsabiliser votre activité ?</h2>
+						<h2 className="text-warning my-4">Pourquoi responsabiliser votre activité ?</h2>
 						<p>
 							Votre entreprise souhaite prendre ses responsabilités vis-à-vis de la société.
 							Vous voulez dépasser vos préoccupations économiques, légales et adopter un comportement plus éthique.
@@ -101,7 +101,7 @@ export default class More extends Component {
 							</p>
 							<br/>
 						</p>
-						<h3>Qu’est ce que le parrainage de ruches vous apporte ?</h3>
+						<h3 className="text-warning my-4">Qu’est ce que le parrainage de ruches vous apporte ?</h3>
 						<p>
 							Ne nous voilons pas la face, ce n’est pas en parrainant des ruches que vous allez fondamentalement responsabiliser vos activités commerciales.
 							A défaut, vous montrez que vous êtes préocupés par l’évolution de l’environnement dans lequel s’inscrit votre entreprise ; ce même environnement que l’ensemble de vos parties prenantes partagent.
@@ -170,9 +170,9 @@ export default class More extends Component {
 								<Link to="/signup/company" className="btn btn-secondary mr-4">Devenir parrain</Link>
 							</p>
 						</p>
-						<h3 className="text-center">Tarifs et Conditions</h3>
+						<h3 className="text-warning my-4">Tarifs et Conditions</h3>
 						<br/>
-						<a href="https://parrainagederuches.fr/prices" className="btn" target="_blank">Consulter les tarifs</a>
+						<a href="https://parrainagederuches.fr/prices"  target="_blank">Consulter les tarifs</a>
 						<p>
 						Ces tarifs comprennent l’ensemble des éléments cités ci-dessus ainsi que les frais de port pour l’envoi des pots de miel en France métropolitaine.
 						<i>Pour l’étranger, les situations seront étudiées au cas par cas, nous contacter en amont.</i><br/><br/><br/>
@@ -186,21 +186,21 @@ export default class More extends Component {
 						<p>
 							Vous pouvez parrainer des abeilles tout au long de l’année.
 							Il faut savoir que pour un parrainage effectué entre :
-							<br/>
+							<br/><br/>
 							<strong className="text-warning">Le 1er juillet et le 31 décembre</strong>, vous recevrez le miel de vos abeilles après la récolte de printemps ; à partir du mois de mai de l’année suivante.
-							<br/>
+							<br/><br/>
 							<strong className="text-warning">Le 1er janvier et le 30 juin</strong>, vous recevrez le miel de vos abeilles à l’automne, à partir du mois d’octobre.
 						</p>
 						<p className="text-center">
 							<Link to="/signup/company" className="btn btn-secondary mr-4">Parrainer une ruche</Link>
 							<a href={broch} className="btn btn-secondary m-4" target="_blank">Brochure de présentation</a>
 						</p>
-						<h3 className="text-center">Événement et visibilité</h3>
+						<h3 className="text-warning my-4">Événement et visibilité</h3>
 						<p>
-							Événement
-							<br/>
+							<strong>Événement</strong>
+							<br/><br/>
 							Pourquoi ne pas profiter de votre parrainage pour en faire un élément de cohésion entre les membres de votre équipe ?
-							<br/>
+							<br/><br/>
 								<ul>
 									<li>
 										Activité Team Building (1/2 journée)
@@ -217,31 +217,32 @@ export default class More extends Component {
 							</ul>
 						</p>
 						<p>
-							Visibilité
-							<br/>
+							<strong>Visibilité</strong>
+							<br/><br/>
 							Les engagements responsables que vous prenez et les efforts que vous faîtes méritent d’être soulignés.
 							Les clients ou les partenaires de votre société attendent parfois que vous preniez de tels engagements pour justifier à leur tour travailler avec des partenaires responsablement engagés.
 							De simples communiqués en interne ne suffisent pas, la communication doit être transparente et accessible à tous.
 							C’est pourquoi nous attachons une grande importance à la mise en valeur de vos actions et vous proposons trois canaux de communication :
+							<br/><br/>
 							<ul>
 								<li>
-									La plateforme web de parrainage
+									<strong>La plateforme web de parrainage</strong>
 									<br/>
 									C’est le canal privilégié, celui que nous vous dédions totalement avec la configuration de votre propre page.
 									Décrivez votre activité, présentez vos engagements, ajoutez des liens vers votre site internet, publiez vos actualités et présentez vos ruches aux visiteurs.
 									La configuration est très simple et nous vous guidons.
 									La page est optimisée pour être partagée sur les réseaux sociaux.
-									Voir un exemple
+									<a href="https://parrainagederuches.fr/parrains/perus"  target="_blank"> Voir un exemple </a>
 									De même, les sliders et autres photos utilisées sur notre plateforme mettent à l’honneur les parrains
 								</li>
 								<li>
-									Les supports de communication
+									<strong>Les supports de communication</strong>
 									<br/>
 									Nos propres supports de communication sont des vecteurs puissants de diffusion de l’information.
 									Nous nous servons régulièrement de nos parrains pour illustrer nos supports ou accompagner nos explications d’exemples.
 								</li>
 								<li>
-									Les réseaux sociaux
+									<strong>Les réseaux sociaux</strong>
 									<br/>
 									Ce sont les canaux que nous utilisons le plus pour notre propre communication.
 									Nos « followers » (15 000+) forment une communauté engagée qui interagit bien avec nos publications.
