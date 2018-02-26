@@ -26,7 +26,6 @@ export default class CompanyManageMyPage extends Component {
 			link1_url: '',
 			link2_name: '',
 			link2_url: '',
-			bundleState: '',
 			bundle: null,
 			visible: false,
 			english: false,
@@ -80,21 +79,9 @@ export default class CompanyManageMyPage extends Component {
 		}, this.refs.notif).then((res) => {
 			this.setState({
 				bundle: res,
-				bundleState: res.state
 			})
 		})
 	}
-
-	// getBundle () {
-	// 	request({
-	// 		url: '/bundle',
-	// 		method: 'getOne'
-	// 	}, this.refs.notif).then((res) => {
-	// 		this.setState({
-	// 			bundleState : res
-	// 		})
-	// 	})
-	// }
 
 	submit(e) {
 		e.preventDefault();
