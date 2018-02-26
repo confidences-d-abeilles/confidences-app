@@ -211,10 +211,10 @@ export default class CompanyManageMyPage extends Component {
 					</div>
 
 						<div className="form-group">
-							<label htmlFor="english"><input disabled={this.state.bundle_state == 2 ? false: true} type="checkbox" name="english" id="english" onChange={handleTick.bind(this)} checked={this.state.english} /> Version anglaise</label>
+							<label htmlFor="english"><input disabled={this.state.bundle_state >= 2  ? false: true} type="checkbox" name="english" id="english" onChange={handleTick.bind(this)} checked={this.state.english} /> Version anglaise</label>
 						</div>
 						<div className="form-group">
-							<label htmlFor="visible"><input disabled={this.state.bundle_state == 2 ? false: true} type="checkbox" name="visible" id="visible" onChange={handleTick.bind(this)} checked={this.state.visible} /> Rendre ma page publique</label>
+							<label htmlFor="visible"><input disabled={this.state.bundle_state >= 2 ? false: true} type="checkbox" name="visible" id="visible" onChange={handleTick.bind(this)} checked={this.state.visible} /> Rendre ma page publique</label>
 						</div>
 
 
