@@ -175,7 +175,7 @@ export default class CompanyManageMyPage extends Component {
 						<label htmlFor="cover" className={(this.state.newCover)?'active-upload':'upload'} style={{ position: 'relative' }}>
 							<input type="file" className="form-control" id="cover" onChange={() => { this.setState({ newCover : document.getElementById("cover").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
 							Glisser une {(this.state.cover)?'nouvelle':null} image ici ou cliquez pour en séléctionner une parmi vos fichiers<br/>
-							Taille recommandée : 1200x240 - {(this.state.newCover)?'Selectionné : '+this.state.newCover:"Aucun fichier séléctionné"}
+							Taille recommandée : 800x240 - {(this.state.newCover)?'Selectionné : '+this.state.newCover:"Aucun fichier séléctionné"}
 						</label>
 					</div>
 					<div className="form-group">

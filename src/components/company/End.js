@@ -22,14 +22,14 @@ export default class CompanyEnd extends Component {
 						<p className="text-center">
 							<img src={Main} className="img-fluid mx-auto d-block" alt="Img temp" />
 							<br />
-							Toutes l'équipe de Confidences  d'Abeilles vous remercie !
+							Toute l'équipe de Confidences  d'Abeilles vous remercie !
 						</p>
 						<div className="row justify-content-center">
 							<div className="col text-center">
 								<Link to="/company/manage" className="btn btn-primary btn-lg">Mon compte</Link>
 							</div>
 							<div className="col text-center">
-								<button className="btn btn-primary btn-lg">Decouvrir notre page</button>
+								<button className="btn btn-primary btn-lg">Découvrir notre page</button>
 							</div>
 						</div>
 					</div>
