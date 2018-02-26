@@ -418,12 +418,12 @@ de le recontacter ultérieurement pour ne pas le déranger. Donnez-lui trois pos
 								</div>
 							</div>
 							<div className="row justify-content-center align-items-center">
-								<div className="col-2"><a href={config.cdn_url+'/infographie.pdf'} target="_blank"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
-								<div className="col-6">Le parrainage de ruches avec Confidences d’Abeilles – Infographie</div>
+								<div className="col-2"><a href={config.cdn_url+'/leaflet_e.pdf'} target="_blank"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
+								<div className="col-6">Infographie - Le Parrainage de ruches par Confidences d'Abeilles</div>
 							</div>
 							<div className="row justify-content-center align-items-center my-4">
-								<div className="col-2"><a href={config.cdn_url+'/commercial.pdf'} target="_blank"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
-								<div className="col-6">Parrainer des ruches en France – proposition commerciale pour les entreprises</div>
+								<div className="col-2"><a href={config.cdn_url+'/brochure.pdf'} target="_blank"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
+								<div className="col-6">Brochure détaillée du service proposé par Confidences d'Abeilles</div>
 							</div>
 						</div>
 						<a href="/contributor/approach"><p className="text-center lead my-4" data-toggle="collapse" data-target="#faq" >FAQ <FontAwesome name='chevron-down' /></p></a>

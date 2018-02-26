@@ -8,7 +8,8 @@ import fourth from '../../assets/img/E/4.jpg';
 import fifth from '../../assets/img/E/5.jpg';
 import sixth from '../../assets/img/E/6.jpg';
 import ReactGA from 'react-ga';
-import Meta from '../utils/Meta'
+import Meta from '../utils/Meta';
+import leaflet from '../../assets/leaflet_e.pdf';
 
 export default class CompanyPresentation extends Component {
 
@@ -134,6 +135,9 @@ export default class CompanyPresentation extends Component {
 					</div>
 					<div className="col-lg-5 col-md-6 col-sm-12 col-xs-12 my-4 text-center">
 						<Link to="/company/more"className="btn btn-secondary">En savoir plus</Link>
+					</div>
+					<div className="col-12 text-center">
+						<a href={leaflet} className="btn btn-secondary m-4" target="_blank">Télécharger la plaquette de présentation</a>
 					</div>
 				</div>
 			</div>
