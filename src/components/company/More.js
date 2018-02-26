@@ -151,7 +151,7 @@ export default class More extends Component {
 							1 graphiste à votre écoute pour réaliser des étiquettes exclusives (frais de création non compris)
 							</li>
 							<li>
-							1 page dédiée à votre société (détails des actions responsables menées, photos et actualités de la ruches parrainée) Voir un exemple
+							1 page dédiée à votre société (détails des actions responsables menées, photos et actualités de la ruches parrainée) <a href="https://parrainagederuches.fr/parrains/perus"  target="_blank">Voir un exemple</a>
 							</li>
 							<li>
 							1 éditeur d’actualité (pour alimenter vous-même la page dédiée)
@@ -206,14 +206,14 @@ export default class More extends Component {
 							<br/><br/>
 								<ul>
 									<li>
-										Activité Team Building (1/2 journée)
+										Activité Team Building (1/2 journée)<br />
 										Enfilez la fameuse vareuse de l’apiculteur et plongez dans le monde passionnant des abeilles en ouvrant votre première ruche.
 										Frissons garantis !
 										Au cours de la visite, les apiculteurs vous révèlent le fonctionnement d’une ruche, son organisation et partagent avec vous les confidences de vos abeilles.
 										Pour le plus grand plaisir de vos papilles une dégustation des produits de la ruche couronne le tout.
 									</li>
 									<li>
-									Séminaire Team Building (journée)
+									Séminaire Team Building (journée)<br />
 									Sur une journée complète, vous découvrez aussi le monde des abeilles, vous profitez le temps d’un repas de notre sélection de tables de chefs qui travaillent le miel Confidences d’Abeilles ; enfin, vous choisissez l’une des nombreuses activités sportives qu’offre notre région pour vous défouler.
 									Entre le lac, les airs et la montagne il y a de quoi faire.
 									</li>
