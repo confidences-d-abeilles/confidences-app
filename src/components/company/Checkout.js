@@ -145,33 +145,39 @@ export default class CompanyCheckout extends Component {
 		})
 	}
 
-	async saveDaddress(e) {
-		e.preventDefault();
-		if (!this.state.dsexe_m || !this.state.daddress3 || !this.state.dcity || !this.state.dzip ||
-			!this.state.dphone) {
-			this.refs.notif.addNotification({
-				message : "Merci de renseigner tous les champs",
-				level : 'warning'
-			})
-		} else {
-			request({
-				url: '/address/'+this.state.did,
-				method: 'put',
-				data: {
-					sexe_m : (this.state.dsexe_m === '0')?false:true,
-					line1: this.state.daddress1,
-					line2: this.state.daddress2,
-					line3: this.state.daddress3,
-					line4: this.state.daddress4,
-					zipcode: this.state.dzip,
-					city: this.state.dcity,
-					country: this.state.dcountry,
-					phone: this.state.dphone
+	async saveDaddress() {
+		return new Promise(resolve => {
+			if (!this.state.dsexe_m || !this.state.daddress3 || !this.state.dcity || !this.state.dzip) {
+				this.refs.notif.addNotification({
+					message : "Merci de renseigner tous les champs de votre adresse de livraison",
+					level : 'warning'
+				})
+			} else {
+				if (this.state.dphone.length > 9) {
+					request({
+						url: '/address/'+this.state.did,
+						method: 'put',
+						data: {
+							sexe_m : (this.state.dsexe_m === '0')?false:true,
+							line1: this.state.daddress1,
+							line3: this.state.daddress3,
+							line4: this.state.daddress4,
+							zipcode: this.state.dzip,
+							city: this.state.dcity,
+							country: this.state.dcountry,
+							phone: this.state.dphone
+						}
+					}, this.refs.notif).then((res) => {
+						resolve();
+					})
+				} else {
+					this.refs.notif.addNotification({
+						message: 'Merci de renseigner un numero de telephone valide pour la livraison',
+						level: 'warning'
+					})
 				}
-			}, this.refs.notif).then((res) => {
-				this.setState({ saved : true })
-			});
-		}
+			}
+		});
 	}
 
 	changeBundle() {
