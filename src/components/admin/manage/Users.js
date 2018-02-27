@@ -6,6 +6,7 @@ import ReactGA from 'react-ga'
 import moment from 'moment'
 import Meta from '../../utils/Meta'
 import Confirm from '../../utils/Confirm'
+import { handleChange, handleTick } from '../../../services/FormService'
 
 export default class AdminManageUsers extends Component {
 
@@ -17,7 +18,9 @@ export default class AdminManageUsers extends Component {
 			selectedUser: null,
 			usexe_m: '', /* sexe user */
 			bsexe_m: '', /* sexe bill */
-			dsexe_m: ''  /* sexe delivery */
+			dsexe_m: '',  /* sexe delivery */
+			feedback: '',
+			stateFeedback: 0
 		}
 	}
 
@@ -134,6 +137,25 @@ export default class AdminManageUsers extends Component {
 		if (state === 2) {
 			return (<span className="badge badge-success">Envoyé</span>)
 		}
+	}
+
+	updateFeedback(event) {
+		event.preventDefault();
+		let objState = {};
+		objState[event.target.name] = event.target.value;
+		this.setState(objState);
+		console.log(this.state.feedback);
+		this.setState({
+			stateFeedback: 1
+		})
+	}
+
+	saveFeedback(event) {
+		console.log(event.target.value);
+		console.log(this.state.feedback)
+		this.setState({
+			stateFeedback: 0
+		})
 	}
 
 	updateSexe(event) {
@@ -311,6 +333,21 @@ export default class AdminManageUsers extends Component {
 													</div>
 											</div>
 										</div>
+										}
+										{this.state.selectedUser &&
+											<div className="col-lg-6 col-md-12 my-2">
+												<div className="card">
+													<div className="card-block">
+														<h3 className="card-title">informations supplementaire</h3>
+														<div className="form-group">
+															<textarea rows="5" className="form-control" name="feedback" onChange={this.updateFeedback.bind(this)} value={this.state.feedback} placeholder="Informations complémentaires concernant l'utilisateur" />
+															{this.state.stateFeedback ? <button onClick={this.saveFeedback.bind(this)} className="btn btn-primary">Sauvegarder</button>
+															:null}
+														</div>
+													</div>
+												</div>
+											</div>
+
 										}
 										{this.state.selectedUser.addresses && this.state.selectedUser.addresses[1] &&
 											<div className="col-lg-6 col-md-12 my-2">
