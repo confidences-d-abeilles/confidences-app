@@ -167,7 +167,7 @@ export default class CompanyManageMyPage extends Component {
 						<input type="text" placeholder="Nom de l'entreprise" name="name" value={this.state.name} onChange={handleChange.bind(this)} className="form-control" />
 					</div>
 					<div className="form-group">
-						<label>{"https://parrainagederuches.fr/parrains/"+(this.state.name.replace(/\s+/g, '')).replace(/\d+/g, '')}</label>
+						<label>{"https://parrainagederuches.fr/parrains/"+(this.state.name.replace(/\W+/g, '')).replace(/\d+/g, '')}</label>
 					</div>
 					<div className="form-group">
 						<label>Photo de couverture de votre page {(this.state.cover)?<a href={config.cdn_url+'/'+this.state.cover} target="_blank">Visualiser l'image actuelle</a>:null}</label>
