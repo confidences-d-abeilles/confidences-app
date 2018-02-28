@@ -38,7 +38,7 @@ export default class AdminManageUsers extends Component {
 
 	deleteUser(id) {
 		request({
-			url : '/users/'+id,
+			url : '/user/'+id,
 			method : 'delete'
 		}, this.refs.notif).then((res) => {
 			this.getUsers();
@@ -280,6 +280,7 @@ export default class AdminManageUsers extends Component {
 													{(this.state.selectedUser.company_name)?<span><strong>Nom de la societe :</strong> {this.state.selectedUser.company_name}<br /></span>:null}
 													<strong>Adresse email :</strong> {this.state.selectedUser.email}<br />
 													<strong>Téléphone :</strong> {this.state.selectedUser.phone}<br />
+													<Confirm class="btn btn-secondary btn-sm" action={this.deleteUser.bind(this, this.state.selectedUser.id)} text="Supprimer l'utilisateur" />
 												</p>
 											</div>
 										</div>
