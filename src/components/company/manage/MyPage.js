@@ -216,7 +216,6 @@ export default class CompanyManageMyPage extends Component {
 					<div className="form-group">
 						<input type="texte" name="link2_url" className="form-control" value={this.state.link2_url} placeholder="URL du bouton d'action 2" onChange={handleChange.bind(this)} />
 					</div>
-
 						<div className="form-group">
 							<label htmlFor="english"><input disabled={this.state.bundle_state >= 2  ? false: true} type="checkbox" name="english" id="english" onChange={handleTick.bind(this)} checked={this.state.english} /> Version anglaise</label>
 						</div>
