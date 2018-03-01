@@ -27,7 +27,8 @@ export default class CompanyPage extends Component {
 			news: [],
 			redirect : false,
 			loading: true,
-			english: false
+			english: false,
+			currentHives: null
 		}
 	}
 
@@ -49,6 +50,7 @@ export default class CompanyPage extends Component {
 				this.setState({
 					hives: res
 				})
+				console.log(this.state.hives)
 			});
 		}).catch((err) => {
 			this.setState({
@@ -69,6 +71,14 @@ export default class CompanyPage extends Component {
 		}
 	}
 
+	saveCurrentHives(e) {
+		console.log("--------------------saveCurrentHives-----------------------------")
+		//console.log(e);
+			// this.setState ({
+			// 	currentHives:
+			// })
+	}
+
 	// retractActu(e) {
 	// 	if (e.target.parentElement.parentElement.nextElementSibling.dataset.deployed === 'true') {
 	// 		console.log('ok')
@@ -79,19 +89,29 @@ export default class CompanyPage extends Component {
 	// }
 
 	displayImg(e) {
-		if (e.target.dataset.hive) {
-			document.getElementById("img-"+e.target.dataset.hive).style.opacity = "1";
-		} else {
-			document.getElementById("img-"+e.target.parentElement.dataset.hive).style.opacity = "1";
-		}
+		// console.log(e.target.dataset.hive)
+		// console.log(e.target.parentElement.dataset.hive)
+		console.log("--------------------displayImg-----------------------------")
+		this.setState({
+			currentHives: e.target.dataset.hive
+		})
+		// if (e.target.dataset.hive) {
+		// 	document.getElementById("img-"+e.target.dataset.hive).style.opacity = "1";
+		// }
+		//  else {
+		// 	document.getElementById("img-"+e.target.parentElement.dataset.hive).style.opacity = "1";
+		// }
 	}
 
 	hideImg(e) {
-		if (e.target.dataset.hive) {
-			document.getElementById("img-"+e.target.dataset.hive).style.opacity = "0";
-		} else {
-			document.getElementById("img-"+e.target.parentElement.dataset.hive).style.opacity = "0";
-		}
+		// console.log(e.target.dataset.hive)
+		// console.log(this.state.currentHives)
+		// console.log(e.target.dataset.hive.localeCompare(this.state.currentHives))
+		// if (!e.target.dataset.hive.localeCompare(this.state.currentHives)) {
+		// 	document.getElementById("img-"+e.target.dataset.hive).style.opacity = "0";
+		// } else {
+		// 	document.getElementById("img-"+e.target.parentElement.dataset.hive).style.opacity = "0";
+		// }
 	}
 
 	render () {
@@ -152,20 +172,23 @@ export default class CompanyPage extends Component {
 											<div style={{ width : '100%', height: '2px', backgroundColor: '#E49C00'}} className="mb-4" ></div>
 											{this.state.hives.map((hive) => {
 												return (
-													<div className="ruche" data-hive={hive.id} onMouseEnter={this.displayImg.bind(this)} onMouseLeave={this.hideImg.bind(this)}>
+													<div className="ruche" data-hive={hive.id} onMouseEnter={this.displayImg.bind(this)} onMouseLeave={this.saveCurrentHives.bind(this)}>
+
 														<img src={require("../../assets/img/rayon.png")} className="img-fluid rayon" alt="Rayon" />
 														<p style={{ padding: '0px', margin: '0', overflowX: 'visible'}} className="" >{hive.name.toUpperCase()}</p>
 														<Link to={'/hive/'+hive.id} style={{ color: '#666666', fontSize: '0.9em', lineHeight: '1em' }} >Voir en détails</Link>
 													</div>
 												)
 											})}
-											<div style={{ position : 'relative' }}>
+{			/* COMMENTAIRE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			<div style={{ position : 'relative' }}>
 												{this.state.hives.map((hive) => {
 													return (
+
 														<div style={{ backgroundImage: 'url('+config.cdn_url+'/'+hive.imgs[0]+')', height: '10em', width: '100%' }} alt={hive.name} className="ruche-img" id={"img-"+hive.id} />
 													)
 												})}
-											</div>
+											</div>*/}
 										</div>
 									</div>
 									<div className="row justify-content-end align-items-center mb-4">
