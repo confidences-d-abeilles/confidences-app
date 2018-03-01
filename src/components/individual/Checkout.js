@@ -41,7 +41,9 @@ export default class IndividualCheckout extends Component {
 			back: false,
 			dash: false,
 			present_name: '',
-			present_firstname: ''
+			present_firstname: '',
+			name: '',
+			firstname: ''
 		}
 	}
 
@@ -52,6 +54,8 @@ export default class IndividualCheckout extends Component {
 		}, this.refs.notif)
 		.then((res) => {
 			this.setState({
+				name: res.name,
+				firstname: res.firstname,
 				bees: res.bundles[0].bees,
 				price: res.bundles[0].price,
 				bundle_id: res.bundles[0].id,
@@ -363,7 +367,7 @@ export default class IndividualCheckout extends Component {
 							<div className="col-lg-9 col-md-10 col-sm-12">
 								{this.state.paytype === '0' &&
 									<Elements locale="fr">
-										<PayForm price={this.state.price} before={this.save.bind(this)} bundle={this.state.bundle_id} for={this.state.company_name} endpoint="/individual/end" />
+										<PayForm price={this.state.price} before={this.save.bind(this)} bundle={this.state.bundle_id} for={this.state.firstname+' '+this.state.name} endpoint="/individual/end" />
 									</Elements>
 								}
 
