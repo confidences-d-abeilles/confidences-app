@@ -31,13 +31,24 @@ export default class CompanyManageMyPage extends Component {
 			english: false,
 			bundle_date: moment(),
 			bundle_state: 0,
-			bundle: []
+			bundle: [],
+			allFeedback: null
 		}
 	}
 
 	componentDidMount() {
 		this.get();
+		this.getActu();
 		// this.getBundle();
+	}
+
+	getActu(){
+		request({
+			url:'/news',
+			method:'get'
+		}, this.refs.notif).then((res) => {
+			console.log(res);
+		})
 	}
 
 	get() {
@@ -67,20 +78,11 @@ export default class CompanyManageMyPage extends Component {
 					bundle_date: moment(res.bundles[0].start_date),
 					bundle_state: res.bundles[0].state
 				})
-				console.log(this.state.bundle);
-				console.log(this.state.bundle_date);
-				console.log(this.state.bundle_state);
+
 			}
 		}).catch((err) => {})
 
-		request({
-			url: '/bundle/'+this.state.id_user,
-			method: 'get'
-		}, this.refs.notif).then((res) => {
-			this.setState({
-				bundle: res,
-			})
-		})
+
 	}
 
 	submit(e) {
@@ -128,6 +130,12 @@ export default class CompanyManageMyPage extends Component {
 		}
 	}
 
+	launchModify(e) {
+		e.preventDefault();
+		this.setState({
+			newsModify: e.target.value
+		})
+}
 	createActu(e) {
 		e.preventDefault()
 		const data = new FormData();
@@ -208,7 +216,6 @@ export default class CompanyManageMyPage extends Component {
 					<div className="form-group">
 						<input type="texte" name="link2_url" className="form-control" value={this.state.link2_url} placeholder="URL du bouton d'action 2" onChange={handleChange.bind(this)} />
 					</div>
-
 						<div className="form-group">
 							<label htmlFor="english"><input disabled={this.state.bundle_state >= 2  ? false: true} type="checkbox" name="english" id="english" onChange={handleTick.bind(this)} checked={this.state.english} /> Version anglaise</label>
 						</div>
@@ -251,6 +258,11 @@ export default class CompanyManageMyPage extends Component {
 					</div>
 					<button className="btn btn-primary">Soumettre</button>
 				</form>
+
+				<select className="form-control" onChange={this.launchModify.bind(this)} name="newsModify">
+					<option selected disabled>News a modifier</option>
+
+				</select>
 			</div>
 		)
 	}
