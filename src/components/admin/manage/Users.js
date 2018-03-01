@@ -6,6 +6,7 @@ import ReactGA from 'react-ga'
 import moment from 'moment'
 import Meta from '../../utils/Meta'
 import Confirm from '../../utils/Confirm'
+import { handleChange, handleTick } from '../../../services/FormService'
 
 export default class AdminManageUsers extends Component {
 
@@ -17,7 +18,10 @@ export default class AdminManageUsers extends Component {
 			selectedUser: null,
 			usexe_m: '', /* sexe user */
 			bsexe_m: '', /* sexe bill */
-			dsexe_m: ''  /* sexe delivery */
+			dsexe_m: '',  /* sexe delivery */
+			feedback: '',
+			stateFeedback: 0,
+			supportLevel: ''
 		}
 	}
 
@@ -58,7 +62,8 @@ export default class AdminManageUsers extends Component {
 			selectedUser: user,
 			usexe_m: user.sexe_m?'1':'0',
 			bsexe_m: user.addresses[0]?user.addresses[0].sexe_m?'1':'0':'',
-			dsexe_m: user.addresses[1]?user.addresses[1].sexe_m?'1':'0':''
+			dsexe_m: user.addresses[1]?user.addresses[1].sexe_m?'1':'0':'',
+			supportLevel: '4'// a changer avec le champs bdd
 		})
 	}
 
@@ -134,6 +139,32 @@ export default class AdminManageUsers extends Component {
 		if (state === 2) {
 			return (<span className="badge badge-success">Envoyé</span>)
 		}
+	}
+
+	updateSupportLevel(event) {
+		event.preventDefault();
+		let objState = {};
+		objState[event.target.name] = event.target.value;
+		this.setState(objState);
+	}
+
+	updateFeedback(event) {
+		event.preventDefault();
+		let objState = {};
+		objState[event.target.name] = event.target.value;
+		this.setState(objState);
+		console.log(this.state.feedback);
+		this.setState({
+			stateFeedback: 1
+		})
+	}
+
+	saveFeedback(event) {
+		console.log(event.target.value);
+		console.log(this.state.feedback)
+		this.setState({
+			stateFeedback: 0
+		})
 	}
 
 	updateSexe(event) {
@@ -311,6 +342,55 @@ export default class AdminManageUsers extends Component {
 													</div>
 											</div>
 										</div>
+										}
+										{this.state.selectedUser &&
+											<div className="col-lg-6 col-md-12 my-2">
+												<div className="card">
+													<div className="card-block">
+														<h3 className="card-title">informations supplementaire</h3>
+														<div className="form-group">
+															<textarea rows="5" className="form-control" name="feedback" onChange={this.updateFeedback.bind(this)} value={this.state.feedback} placeholder="Informations complémentaires concernant l'utilisateur" />
+															{this.state.stateFeedback ? <button onClick={this.saveFeedback.bind(this)} className="btn btn-primary">Sauvegarder</button>
+															:null}
+														</div>
+													</div>
+												</div>
+											</div>
+
+										}
+										{this.state.selectedUser &&
+											<div className="col-lg-6 col-md-12 my-2">
+												<div className="card">
+													<div className="card-block">
+														<h3 className="card-title">Support Level{this.state.supportLevel}</h3>
+
+														<div className="card-text">
+														<div className="form-group d-flex">
+															<label className="radio-inline form-check-label">
+																<input type="radio" className="form-check-input" name="supportLevel" value="1" onChange={this.updateSupportLevel.bind(this)} checked={this.state.supportLevel === '1'}/>
+																&nbsp;1
+															</label>
+															<label className="radio-inline form-check-label ml-4">
+																<input type="radio" className="form-check-input" name="supportLevel" value="2" onChange={this.updateSupportLevel.bind(this)} checked={this.state.supportLevel === '2'}/>
+																&nbsp;2
+															</label>
+															<label className="radio-inline form-check-label ml-4">
+																<input type="radio" className="form-check-input" name="supportLevel" value="3" onChange={this.updateSupportLevel.bind(this)} checked={this.state.supportLevel === '3'}/>
+																&nbsp;3
+															</label>
+															<label className="radio-inline form-check-label ml-4">
+																<input type="radio" className="form-check-input" name="supportLevel" value="4" onChange={this.updateSupportLevel.bind(this)} checked={this.state.supportLevel === '4'}/>
+																&nbsp;4
+															</label>
+															<label className="radio-inline form-check-label ml-4">
+																<input type="radio" className="form-check-input" name="supportLevel" value="5" onChange={this.updateSupportLevel.bind(this)} checked={this.state.supportLevel === '5'}/>
+																&nbsp;5
+															</label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
 										}
 										{this.state.selectedUser.addresses && this.state.selectedUser.addresses[1] &&
 											<div className="col-lg-6 col-md-12 my-2">
