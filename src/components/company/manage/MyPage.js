@@ -48,6 +48,9 @@ export default class CompanyManageMyPage extends Component {
 			url:'/news/owner/',
 			method:'get'
 		}, this.refs.notif).then((res) => {
+			this.setState({
+				actus: res
+			})
 			console.log(res);
 		})
 	}
@@ -131,12 +134,14 @@ export default class CompanyManageMyPage extends Component {
 		}
 	}
 
-// 	launchModify(e) {
-// 		e.preventDefault();
-// 		this.setState({
-// 			newsModify: e.target.value
-// 		})
-// }
+
+	launchModify(e) {
+		e.preventDefault();
+		console.log(e.target.value);
+		this.setState({
+			newsModify: e.target.value
+		})
+}
 	// createActu(e) {
 	// 	e.preventDefault()
 	// 	const data = new FormData();
@@ -229,7 +234,21 @@ export default class CompanyManageMyPage extends Component {
 						<input type="submit" value="Enregistrer les modifications" className="btn btn-primary" onClick={this.submit.bind(this)} />
 					</div>
 				</form>:<Loading />}
-				<Feedback/>
+				<Feedback name={this.state.newsModify} />
+				{this.state.actus ?
+				<div>
+					<h3 className="my-4">Modifier une news</h3>
+					<select className="form-control" onChange={this.launchModify.bind(this)} name="newsModify">
+						<option selected disabled>News a modifier</option>
+						{this.state.actus.map((actu) => {
+							const date = (actu.date)?moment(actu.date):moment(actu.createdAt);
+							return (
+								<option value={actu.id}>{actu.title} ( {date.format("DD/MM/YYYY")} )</option>
+							)
+						})}
+					</select>
+				</div>
+				:null}
 			</div>
 		)
 	}

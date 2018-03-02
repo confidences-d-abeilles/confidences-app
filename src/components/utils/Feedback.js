@@ -12,7 +12,7 @@ export default class Feedback extends Component {
 
 	constructor (props) {
 		super (props);
-
+		console.log(props.name);
 		this.state = {
 			id_user : '',
 			name : '',
@@ -58,6 +58,7 @@ export default class Feedback extends Component {
 		const data = new FormData();
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
+		data.append('data', new Date());
 		if (document.getElementById("actu-img").files[0]) {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		}
@@ -75,21 +76,23 @@ export default class Feedback extends Component {
 	}
 
 	render() {
+
 		return (
 			<div>
 			<NotificationSystem ref="notif" />
 			<h3 className="text-center">Ajouter une actualité</h3>
 			<form onSubmit={this.createActu.bind(this)}>
 				<div className="form-group">
-					<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} placeholder="Titre"/>
+					<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} placeholder={this.props.name?'nouvelle trouver':'Titre'}/>
 				</div>
 				<div className="form-group">
 					<ReactQuill
 						name="actu"
 						className="form-control"
 						onChange={(value) => { this.setState({ actu: value })}}
-						defaultValue={this.state.actu}
-						placeholder="Texte de l'actualité"
+						defaultValue='Texte de l actualité'
+						value={this.props.name ? this.props.name : null}
+						placeholder='Texte de l actualité'
 						modules={{
 							toolbar: [
 								['bold', 'italic', 'underline','strike', 'blockquote'],
@@ -108,9 +111,6 @@ export default class Feedback extends Component {
 				</div>
 				<button className="btn btn-primary">Soumettre</button>
 			</form>
-			<select className="form-control" onChange={this.launchModify.bind(this)} name="newsModify">
-				<option selected disabled>News a modifier</option>
-			</select>
 			</div>
 		)
 	}
