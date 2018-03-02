@@ -38,6 +38,8 @@ export default class AdminManageUsers extends Component {
 				users : res
 			});
 		})
+
+
 	}
 
 	deleteUser(id) {
@@ -64,6 +66,16 @@ export default class AdminManageUsers extends Component {
 			bsexe_m: user.addresses[0]?user.addresses[0].sexe_m?'1':'0':'',
 			dsexe_m: user.addresses[1]?user.addresses[1].sexe_m?'1':'0':'',
 			supportLevel: '4'// a changer avec le champs bdd
+		}, () => {
+			console.log(this.state.selectedUser.id);
+			request({
+				url: '/user/comment/'+this.state.selectedUser.id,
+				method: 'get'
+			}, this.refs.notif).then((res) => {
+				this.setState({
+					feedback: res.comment
+				})
+			})
 		})
 	}
 
@@ -146,6 +158,16 @@ export default class AdminManageUsers extends Component {
 		let objState = {};
 		objState[event.target.name] = event.target.value;
 		this.setState(objState);
+		const data = new FormData();
+		data.append('content', this.state.supportLevel);
+		data.append('userId', this.state.selectedUser.id);
+		request({
+			url: '/user/supportLvl',
+			method: 'PUT',
+			data: data
+		}, this.refs.notif).then((res) => {
+
+		})
 	}
 
 	updateFeedback(event) {
@@ -153,17 +175,24 @@ export default class AdminManageUsers extends Component {
 		let objState = {};
 		objState[event.target.name] = event.target.value;
 		this.setState(objState);
-		console.log(this.state.feedback);
 		this.setState({
 			stateFeedback: 1
 		})
 	}
 
 	saveFeedback(event) {
-		console.log(event.target.value);
-		console.log(this.state.feedback)
-		this.setState({
-			stateFeedback: 0
+		console.log(this.state.selectedUser.id);
+		const data = new FormData();
+		data.append('content', this.state.feedback);
+		data.append('userId', this.state.selectedUser.id);
+		request({
+			url:'/user/comment/',
+			method: 'PUT',
+			data: data
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				stateFeedback: 0
+			})
 		})
 	}
 
