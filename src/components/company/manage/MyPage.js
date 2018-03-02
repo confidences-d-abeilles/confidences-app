@@ -7,6 +7,7 @@ import ReactQuill from 'react-quill';
 import Loading from '../../utils/Loading'
 import ReactGA from 'react-ga';
 import moment from 'moment';
+import Feedback from '../../utils/Feedback';
 const config = require('../../../config.js');
 
 export default class CompanyManageMyPage extends Component {
@@ -44,7 +45,7 @@ export default class CompanyManageMyPage extends Component {
 
 	getActu(){
 		request({
-			url:'/news',
+			url:'/news/owner/',
 			method:'get'
 		}, this.refs.notif).then((res) => {
 			console.log(res);
@@ -130,31 +131,31 @@ export default class CompanyManageMyPage extends Component {
 		}
 	}
 
-	launchModify(e) {
-		e.preventDefault();
-		this.setState({
-			newsModify: e.target.value
-		})
-}
-	createActu(e) {
-		e.preventDefault()
-		const data = new FormData();
-		data.append('content', this.state.actu);
-		data.append('title', this.state.actuTitle);
-		if (document.getElementById("actu-img").files[0]) {
-			data.append('img', document.getElementById('actu-img').files[0]);
-		}
-		request({
-			url: '/news',
-			method: 'post',
-			data: data,
-			header: {
-				'content-type' : 'multipart/form-data'
-			}
-		}, this.refs.notif).then((res) => {
-
-		})
-	}
+// 	launchModify(e) {
+// 		e.preventDefault();
+// 		this.setState({
+// 			newsModify: e.target.value
+// 		})
+// }
+	// createActu(e) {
+	// 	e.preventDefault()
+	// 	const data = new FormData();
+	// 	data.append('content', this.state.actu);
+	// 	data.append('title', this.state.actuTitle);
+	// 	if (document.getElementById("actu-img").files[0]) {
+	// 		data.append('img', document.getElementById('actu-img').files[0]);
+	// 	}
+	// 	request({
+	// 		url: '/news',
+	// 		method: 'post',
+	// 		data: data,
+	// 		header: {
+	// 			'content-type' : 'multipart/form-data'
+	// 		}
+	// 	}, this.refs.notif).then((res) => {
+  //
+	// 	})
+	// }
 
 	render () {
 		return (
@@ -228,41 +229,7 @@ export default class CompanyManageMyPage extends Component {
 						<input type="submit" value="Enregistrer les modifications" className="btn btn-primary" onClick={this.submit.bind(this)} />
 					</div>
 				</form>:<Loading />}
-				<h3 className="text-center">Ajouter une actualité</h3>
-				<form onSubmit={this.createActu.bind(this)}>
-					<div className="form-group">
-						<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} placeholder="Titre"/>
-					</div>
-					<div className="form-group">
-						<ReactQuill
-							name="actu"
-							className="form-control"
-							onChange={(value) => { this.setState({ actu: value })}}
-							defaultValue={this.state.actu}
-							placeholder="Texte de l'actualité"
-							modules={{
-								toolbar: [
-									['bold', 'italic', 'underline','strike', 'blockquote'],
-									[{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-									['link'],
-									['clean']
-								]
-							}}/>
-					</div>
-					<div className="form-group">
-						<label htmlFor="actu-img" className={(this.state.actuImg)?'active-upload':'upload'} style={{ position: 'relative' }}>
-							<input type="file" className="form-control" id="actu-img" onChange={() => { this.setState({ actuImg : document.getElementById("actu-img").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-							Glisser une image ou cliquez pour en séléctionner un parmi vos fichiers<br/>
-							Taille recommandée : 400x300 - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}
-						</label>
-					</div>
-					<button className="btn btn-primary">Soumettre</button>
-				</form>
-
-				<select className="form-control" onChange={this.launchModify.bind(this)} name="newsModify">
-					<option selected disabled>News a modifier</option>
-
-				</select>
+				<Feedback/>
 			</div>
 		)
 	}
