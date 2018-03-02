@@ -21,7 +21,7 @@ export default class AdminManageUsers extends Component {
 			dsexe_m: '',  /* sexe delivery */
 			feedback: '',
 			stateFeedback: 0,
-			supportLevel: ''
+			supportLevel: null
 		}
 	}
 
@@ -38,8 +38,6 @@ export default class AdminManageUsers extends Component {
 				users : res
 			});
 		})
-
-
 	}
 
 	deleteUser(id) {
@@ -65,7 +63,7 @@ export default class AdminManageUsers extends Component {
 			usexe_m: user.sexe_m?'1':'0',
 			bsexe_m: user.addresses[0]?user.addresses[0].sexe_m?'1':'0':'',
 			dsexe_m: user.addresses[1]?user.addresses[1].sexe_m?'1':'0':'',
-			supportLevel: '4'// a changer avec le champs bdd
+			supportLevel: user.support_lvl// a changer avec le champs bdd
 		}, () => {
 			console.log(this.state.selectedUser.id);
 			request({
@@ -156,17 +154,24 @@ export default class AdminManageUsers extends Component {
 	updateSupportLevel(event) {
 		event.preventDefault();
 		let objState = {};
+		console.log(event.target.value);
+		console.log(event.target.name);
 		objState[event.target.name] = event.target.value;
 		this.setState(objState);
-		const data = new FormData();
-		data.append('content', this.state.supportLevel);
-		data.append('userId', this.state.selectedUser.id);
-		request({
-			url: '/user/supportLvl',
-			method: 'PUT',
-			data: data
-		}, this.refs.notif).then((res) => {
-
+		this.setState({
+			supportLevel: event.target.value
+		}, () => {
+			console.log(this.state.supportLevel);
+			const data = new FormData();
+			data.append('content', this.state.supportLevel);
+			data.append('userId', this.state.selectedUser.id);
+			request({
+				url: '/user/supportLvl/',
+				method: 'PUT',
+				data: data
+			}, this.refs.notif).then((res) => {
+				console.log("good");
+			})
 		})
 	}
 
@@ -396,23 +401,23 @@ export default class AdminManageUsers extends Component {
 														<div className="card-text">
 														<div className="form-group d-flex">
 															<label className="radio-inline form-check-label">
-																<input type="radio" className="form-check-input" name="supportLevel" value="1" onChange={this.updateSupportLevel.bind(this)} checked={this.state.supportLevel === '1'}/>
+																<input type="radio" className="form-check-input" name="supportLevel" value="1" onChange={this.updateSupportLevel.bind(this)} checked={this.state.supportLevel === 1}/>
 																&nbsp;1
 															</label>
 															<label className="radio-inline form-check-label ml-4">
-																<input type="radio" className="form-check-input" name="supportLevel" value="2" onChange={this.updateSupportLevel.bind(this)} checked={this.state.supportLevel === '2'}/>
+																<input type="radio" className="form-check-input" name="supportLevel" value="2" onChange={this.updateSupportLevel.bind(this)} checked={this.state.supportLevel === 2}/>
 																&nbsp;2
 															</label>
 															<label className="radio-inline form-check-label ml-4">
-																<input type="radio" className="form-check-input" name="supportLevel" value="3" onChange={this.updateSupportLevel.bind(this)} checked={this.state.supportLevel === '3'}/>
+																<input type="radio" className="form-check-input" name="supportLevel" value="3" onChange={this.updateSupportLevel.bind(this)} checked={this.state.supportLevel === 3}/>
 																&nbsp;3
 															</label>
 															<label className="radio-inline form-check-label ml-4">
-																<input type="radio" className="form-check-input" name="supportLevel" value="4" onChange={this.updateSupportLevel.bind(this)} checked={this.state.supportLevel === '4'}/>
+																<input type="radio" className="form-check-input" name="supportLevel" value="4" onChange={this.updateSupportLevel.bind(this)} checked={this.state.supportLevel === 4}/>
 																&nbsp;4
 															</label>
 															<label className="radio-inline form-check-label ml-4">
-																<input type="radio" className="form-check-input" name="supportLevel" value="5" onChange={this.updateSupportLevel.bind(this)} checked={this.state.supportLevel === '5'}/>
+																<input type="radio" className="form-check-input" name="supportLevel" value="5" onChange={this.updateSupportLevel.bind(this)} checked={this.state.supportLevel === 5}/>
 																&nbsp;5
 															</label>
 															</div>
