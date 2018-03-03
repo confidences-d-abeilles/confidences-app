@@ -104,7 +104,7 @@ export default class CompanyManageMyPage extends Component {
 		} else {
 			const formData = new FormData();
 			formData.append('company_name', this.state.name);
-			formData.append('namespace', this.state.namespace);
+			formData.append('namespace', (this.state.name.replace(/\W+/g, '')).replace(/\d+/g, ''));
 			formData.append('description', this.state.description);
 			formData.append('involvement', this.state.involvement);
 			formData.append('link1_name', this.state.link1_name);
@@ -234,7 +234,7 @@ export default class CompanyManageMyPage extends Component {
 						<input type="submit" value="Enregistrer les modifications" className="btn btn-primary" onClick={this.submit.bind(this)} />
 					</div>
 				</form>:<Loading />}
-				<Feedback name={this.state.newsModify} />
+				<Feedback name={this.state.newsModify?this.state.newsModify:null} />
 				{this.state.actus ?
 				<div>
 					<h3 className="my-4">Modifier une news</h3>
