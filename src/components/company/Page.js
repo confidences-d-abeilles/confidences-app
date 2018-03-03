@@ -11,6 +11,7 @@ import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
 import Loading from '../utils/Loading'
 import moment from 'moment';
+import { getId } from '../../services/AuthService';
 
 const defaultImg = require("../../assets/img/profile.png")
 const config = require('../../config.js');
@@ -36,6 +37,9 @@ export default class CompanyPage extends Component {
 			url : 'users/namespace/'+this.props.match.params.namespace,
 			method : 'get'
 		}, this.refs.notif).then((res) => {
+			if (!res.visible && res.id != getId() ) {
+				this.setState({ redirect : true });
+			}
 			this.setState({
 				user : res,
 				english : res.english,
