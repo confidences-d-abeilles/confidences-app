@@ -176,6 +176,7 @@ export default class CompanyManageDashboard extends Component {
 							<p>
 								Notre offre: {this.state.user.bundles[0].hives} ruche{this.state.user.bundles[0].hives > 1?'s':''}<br />
 								Date de début: {moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}<br />
+								Date de fin: {moment(this.state.user.bundle[0].end_date).format("DD/MM/YYYY")}<br />
 							</p>
 							:
 							null

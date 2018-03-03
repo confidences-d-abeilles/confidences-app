@@ -137,7 +137,6 @@ export default class CompanyManageMyPage extends Component {
 
 	launchModify(e) {
 		e.preventDefault();
-		console.log(e.target.value);
 		this.setState({
 			newsModify: e.target.value
 		})

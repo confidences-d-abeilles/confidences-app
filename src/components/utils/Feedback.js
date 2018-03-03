@@ -12,7 +12,6 @@ export default class Feedback extends Component {
 
 	constructor (props) {
 		super (props);
-		console.log(props.name);
 		this.state = {
 			id_user : '',
 			name : '',
@@ -31,9 +30,51 @@ export default class Feedback extends Component {
 			bundle_date: moment(),
 			bundle_state: 0,
 			bundle: [],
-			allFeedback: null
+			newsTake: 0,
+			newsActu: '',
+			newsTitle: ''
 		}
 	}
+
+	componentDidMount() {
+
+	}
+
+	// shouldComponentUpdate(nextProps, nextState) {
+	// 	console.log(nextState);
+	// 	this.setState({
+	// 		newsTake: 1})
+	// 	console.log(nextState);
+	// }
+
+	componentWillReceiveProps(nextProps) {
+
+		if (nextProps.name) {
+			const data = new FormData();
+			console.log("propsname")
+			console.log(nextProps.name);
+			data.append('id_news', nextProps.name);
+			request({
+				url:'/news/getOneNews/',
+				method: 'POST',
+				data: data
+			},this.refs.notif).then((res) => {
+				console.log(res);
+				console.log(res[0].content);
+				this.setState({
+					newsTake: 1,
+					actu: res[0].content,
+					actuTitle: res[0].title,
+					newsImg: res[0].img,
+					newsModify: nextProps.name
+				}, () => {
+					console.log("ẗest new actu");
+					console.log(this.state.newsActu);
+				})
+			})
+		}
+	}
+
 	// appeler getOwner de nezscontroller
 	// avant le chargement de la page verifier le serveur
 	// relancer le serveur
@@ -45,11 +86,36 @@ export default class Feedback extends Component {
 	// si on la modifie 1 reecrire dessus
 	 // et supprime ?
 
-	launchModify(e) {
-		e.preventDefault();
-		this.setState({
-			newsModify: e.target.value
-		})
+	// launchModify(e) {
+	// 	e.preventDefault();
+	// 	this.setState({
+	// 		newsModify: e.target.value
+	// 	})
+	// }
+
+	updateActu(e) {
+		e.preventDefault()
+		console.log(e);
+		const data = new FormData();
+		data.append('content', this.state.actu);
+		data.append('title', this.state.actuTitle);
+		data.append('date', new Date());
+		if (document.getElementById("actu-img").files[0]) {
+			data.append('img', document.getElementById('actu-img').files[0]);
+		}
+		console.log(this.state.actu);
+		console.log(this.state.actuTitle);
+		console.log(this.state.newsModify);
+		console.log(new Date())
+		request({
+			url: '/news/'+this.state.newsModify,
+			method: 'put',
+			data: data
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				selected: ''
+			})
+		});
 	}
 
 	createActu(e) {
@@ -63,17 +129,18 @@ export default class Feedback extends Component {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		}
 		console.log('data ok');
-		request({
-			url: '/news',
-			method: 'post',
-			data: data,
-			header: {
-				'content-type' : 'multipart/form-data'
-			}
-		}, this.refs.notif).then((res) => {
-
-		})
+		// request({
+		// 	url: '/news',
+		// 	method: 'post',
+		// 	data: data,
+		// 	header: {
+		// 		'content-type' : 'multipart/form-data'
+		// 	}
+		// }, this.refs.notif).then((res) => {
+    //
+		// })
 	}
+
 
 	render() {
 
@@ -81,18 +148,18 @@ export default class Feedback extends Component {
 			<div>
 			<NotificationSystem ref="notif" />
 			<h3 className="text-center">Ajouter une actualité</h3>
-			<form onSubmit={this.createActu.bind(this)}>
+			<form onSubmit={this.state.newsTake?this.updateActu.bind(this):this.createActu.bind(this)}>
 				<div className="form-group">
-					<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} placeholder={this.props.name?'nouvelle trouver':'Titre'}/>
+					<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} placeholder={this.state.newsTake?this.state.actuTitle:'Titre'}/>
 				</div>
 				<div className="form-group">
 					<ReactQuill
 						name="actu"
 						className="form-control"
 						onChange={(value) => { this.setState({ actu: value })}}
-						defaultValue='Texte de l actualité'
-						value={this.props.name ? this.props.name : null}
-						placeholder='Texte de l actualité'
+						value={this.state.newsTake?this.state.actu:'Titre'}
+
+
 						modules={{
 							toolbar: [
 								['bold', 'italic', 'underline','strike', 'blockquote'],
