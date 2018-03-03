@@ -61,14 +61,16 @@ export default class Feedback extends Component {
 			},this.refs.notif).then((res) => {
 				console.log(res);
 				console.log(res[0].content);
+				console.log(res[0].img);
 				this.setState({
 					newsTake: 1,
 					actu: res[0].content,
 					actuTitle: res[0].title,
-					newsImg: res[0].img,
+					actuImgUp: res[0].img,
 					newsModify: nextProps.name
 				}, () => {
 					console.log("ẗest new actu");
+					console.log(this.state.actuImg);
 					console.log(this.state.newsActu);
 				})
 			})
@@ -95,13 +97,20 @@ export default class Feedback extends Component {
 
 	updateActu(e) {
 		e.preventDefault()
-		console.log(e);
+		console.log("img data");
+		console.log(document.getElementById('actu-img').files[0]);
+		console.log("img dataUp");
+		console.log(this.state.actuImgUp);
 		const data = new FormData();
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
 		data.append('date', new Date());
 		if (document.getElementById("actu-img").files[0]) {
+			console.log("file img ok");
 			data.append('img', document.getElementById('actu-img').files[0]);
+		} else {
+			console.log("deja up");
+			data.append('img', this.state.actuImgUp);
 		}
 		console.log(this.state.actu);
 		console.log(this.state.actuTitle);
@@ -129,16 +138,16 @@ export default class Feedback extends Component {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		}
 		console.log('data ok');
-		// request({
-		// 	url: '/news',
-		// 	method: 'post',
-		// 	data: data,
-		// 	header: {
-		// 		'content-type' : 'multipart/form-data'
-		// 	}
-		// }, this.refs.notif).then((res) => {
-    //
-		// })
+		request({
+			url: '/news',
+			method: 'post',
+			data: data,
+			header: {
+				'content-type' : 'multipart/form-data'
+			}
+		}, this.refs.notif).then((res) => {
+
+		})
 	}
 
 
