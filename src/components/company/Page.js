@@ -37,6 +37,9 @@ export default class CompanyPage extends Component {
 			url : 'users/namespace/'+this.props.match.params.namespace,
 			method : 'get'
 		}, this.refs.notif).then((res) => {
+			if (!res.visible) {
+				this.setState({ redirect : true });
+			}
 			this.setState({
 				user : res,
 				english : res.english,
