@@ -7,7 +7,9 @@ import { handleChange } from '../../services/FormService';
 import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
-import Meta from '../utils/Meta'
+import Meta from '../utils/Meta';
+import leaflet_e from '../../assets/leaflet_e.pdf'
+import brochure from '../../assets/brochure.pdf'
 
 const config = require('../../config.js');
 
@@ -418,11 +420,11 @@ de le recontacter ultérieurement pour ne pas le déranger. Donnez-lui trois pos
 								</div>
 							</div>
 							<div className="row justify-content-center align-items-center">
-								<div className="col-2"><a href={config.cdn_url+'/leaflet_e.pdf'} target="_blank"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
+								<div className="col-2"><a href={leaflet_e} target="_blank"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
 								<div className="col-6">Infographie - Le Parrainage de ruches par Confidences d'Abeilles</div>
 							</div>
 							<div className="row justify-content-center align-items-center my-4">
-								<div className="col-2"><a href={config.cdn_url+'/brochure.pdf'} target="_blank"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
+								<div className="col-2"><a href={brochure} target="_blank"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
 								<div className="col-6">Brochure détaillée du service proposé par Confidences d'Abeilles</div>
 							</div>
 						</div>
