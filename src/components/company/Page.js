@@ -44,6 +44,8 @@ export default class CompanyPage extends Component {
 				user : res,
 				english : res.english,
 				cover: res.cover,
+				bundleState: res.bundles[0].state,
+				visible: res.visible,
 				loading: false
 			})
 			request({
@@ -52,7 +54,7 @@ export default class CompanyPage extends Component {
 			}, this.refs.notif).then((res) => {
 				this.setState({
 					hives: res,
-					selectedHive: res[0].id
+					selectedHive: res[0].id,
 				})
 			});
 		}).catch((err) => {
@@ -99,6 +101,22 @@ export default class CompanyPage extends Component {
 				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/" />:null}
 				{(!this.state.loading)?<div>
+					{(this.state.bundleState < 2) &&
+					<div className="container-fluid">
+						<div className="row">
+							<div style={{ width : '100%', backgroundColor: 'red', color: 'white', fontFamily: "HighTo", fontWeight: 'bold', padding: "1em", textAlign: 'center'}}>
+								Attention, ceci est un aperçu de votre page dédiée, vous pourrez la rendre publique une fois votre paiement validé.
+							</div>
+						</div>
+					</div>}
+					{(this.state.bundleState >= 2 && !this.state.visible) &&
+					<div className="container-fluid">
+						<div className="row">
+							<div style={{ width : '100%', backgroundColor: '#E49C00', color: 'white', fontFamily: "HighTo", fontWeight: 'bold', padding: "1em", textAlign: 'center'}}>
+								Attention, ceci est un aperçu de votre page dédiée, vous devez la rendre publique via votre tableau de bord pour que les visiteurs puissent la consulter.
+							</div>
+						</div>
+					</div>}
 					<div className="container">
 						<Meta title="Page entreprise"/>
 						<div className="row justify-content-center">
