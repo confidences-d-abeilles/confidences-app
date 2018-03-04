@@ -65,6 +65,7 @@ export default class CompanyManageMyPage extends Component {
 				id_user : res.id,
 				name : res.company_name,
 				namespace : res.namespace,
+				fakeNamespace : res.namespace,
 				logo: res.logo,
 				cover: res.cover,
 				description : res.description,
@@ -104,7 +105,7 @@ export default class CompanyManageMyPage extends Component {
 		} else {
 			const formData = new FormData();
 			formData.append('company_name', this.state.name);
-			formData.append('namespace', (this.state.name.replace(/\W+/g, '')).replace(/\d+/g, ''));
+			formData.append('namespace', this.state.namespace);
 			formData.append('description', this.state.description);
 			formData.append('involvement', this.state.involvement);
 			formData.append('link1_name', this.state.link1_name);
@@ -161,6 +162,21 @@ export default class CompanyManageMyPage extends Component {
 	// 	})
 	// }
 
+
+// (this.state.name.replace(/\W+/g, '')).replace(/\d+/g, '')
+	replaceNamespace(e) {
+		e.preventDefault();
+		const val = e.target.value;
+		console.log((val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, ''));
+		let TabSpec = {"à":"a","á":"a","â":"a","ã":"a","ä":"a","å":"a","ò":"o","ó":"o","ô":"o","õ":"o","ö":"o","ø":"o","è":"e","é":"e","ê":"e","ë":"e","ç":"c","ì":"i","í":"i","î":"i","ï":"i","ù":"u","ú":"u","û":"u","ü":"u","ÿ":"y","ñ":"n","-":" ","_":" "};
+		let reg=/[àáäâèéêëçìíîïòóôõöøùúûüÿñ_-]/gi;
+		this.setState({
+			fakeNamespace: e.target.value,
+			namespace: (val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, '')
+		})
+		console.log(this.state.namespace);
+	}
+
 	render () {
 		return (
 			<div>
@@ -180,7 +196,8 @@ export default class CompanyManageMyPage extends Component {
 						<input type="text" placeholder="Nom de l'entreprise" name="name" value={this.state.name} onChange={handleChange.bind(this)} className="form-control" />
 					</div>
 					<div className="form-group">
-						<label>{"https://parrainagederuches.fr/parrains/"+(this.state.name.replace(/\W+/g, '')).replace(/\d+/g, '')}</label>
+						<label>{"https://parrainagederuches.fr/parrains/"+this.state.namespace}</label>
+						<input type="text" placeholder="Nom de l url" name="fakeNamespace" value={this.state.fakeNamespace} onChange={this.replaceNamespace.bind(this)} className="form-control" />
 					</div>
 					<div className="form-group">
 						<label>Photo de couverture de votre page {(this.state.cover)?<a href={config.cdn_url+'/'+this.state.cover} target="_blank">Visualiser l'image actuelle</a>:null}</label>

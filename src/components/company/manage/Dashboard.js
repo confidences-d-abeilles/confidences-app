@@ -36,6 +36,7 @@ export default class CompanyManageDashboard extends Component {
 			this.setState({
 				user : res
 			});
+			console.log(res.bundles[0].end_date);
 			if (res.bundles[0]) {
 				if (res.bundles[0].contain && res.bundles[0].contain[0]) {
 					this.setState({
@@ -176,7 +177,7 @@ export default class CompanyManageDashboard extends Component {
 							<p>
 								Notre offre: {this.state.user.bundles[0].hives} ruche{this.state.user.bundles[0].hives > 1?'s':''}<br />
 								Date de début: {moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}<br />
-								Date de fin: {moment(this.state.user.bundle[0].end_date).format("DD/MM/YYYY")}<br />
+								Date de fin: {moment(this.state.user.bundles[0].end_date).format("DD/MM/YYYY")}<br />
 							</p>
 							:
 							null
