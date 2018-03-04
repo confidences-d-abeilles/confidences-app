@@ -32,7 +32,8 @@ export default class Feedback extends Component {
 			bundle: [],
 			newsTake: 0,
 			newsActu: '',
-			newsTitle: ''
+			newsTitle: '',
+			actu:''
 		}
 	}
 
@@ -166,9 +167,8 @@ export default class Feedback extends Component {
 						name="actu"
 						className="form-control"
 						onChange={(value) => { this.setState({ actu: value })}}
-						value={this.state.newsTake?this.state.actu:'Titre'}
-
-
+						value={this.state.actu}
+						placeholder='actualité'
 						modules={{
 							toolbar: [
 								['bold', 'italic', 'underline','strike', 'blockquote'],
