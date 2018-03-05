@@ -36,7 +36,6 @@ export default class CompanyManageDashboard extends Component {
 			this.setState({
 				user : res
 			});
-			console.log(res.bundles[0].end_date);
 			if (res.bundles[0]) {
 				if (res.bundles[0].contain && res.bundles[0].contain[0]) {
 					this.setState({
