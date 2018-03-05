@@ -6,6 +6,7 @@ import request from '../../services/Net'
 import ReactQuill from 'react-quill';
 import ReactGA from 'react-ga';
 import moment from 'moment';
+import DatePicker from 'react-datepicker';
 const config = require('../../config.js');
 
 export default class Feedback extends Component {
@@ -33,90 +34,45 @@ export default class Feedback extends Component {
 			newsTake: 0,
 			newsActu: '',
 			newsTitle: '',
-			actu:''
+			actuDate: '',
+			actu: ''
 		}
 	}
 
-	componentDidMount() {
-
-	}
-
-	// shouldComponentUpdate(nextProps, nextState) {
-	// 	console.log(nextState);
-	// 	this.setState({
-	// 		newsTake: 1})
-	// 	console.log(nextState);
-	// }
-
 	componentWillReceiveProps(nextProps) {
-
 		if (nextProps.name) {
 			const data = new FormData();
-			console.log("propsname")
-			console.log(nextProps.name);
 			data.append('id_news', nextProps.name);
 			request({
 				url:'/news/getOneNews/',
 				method: 'POST',
 				data: data
 			},this.refs.notif).then((res) => {
-				console.log(res);
-				console.log(res[0].content);
-				console.log(res[0].img);
 				this.setState({
 					newsTake: 1,
 					actu: res[0].content,
 					actuTitle: res[0].title,
 					actuImgUp: res[0].img,
+					actuDate: moment(res[0].date),
 					newsModify: nextProps.name
 				}, () => {
 					console.log("ẗest new actu");
-					console.log(this.state.actuImg);
-					console.log(this.state.newsActu);
 				})
 			})
 		}
 	}
 
-	// appeler getOwner de nezscontroller
-	// avant le chargement de la page verifier le serveur
-	// relancer le serveur
-	// verifier quon recupere bien les bonne Data
-	// trouver un moyen de check juste le owner
-	// les affichers
-	// et les renvoyer dans le formulaire
-	// et props 0 on save une nouvelle actue
-	// si on la modifie 1 reecrire dessus
-	 // et supprime ?
-
-	// launchModify(e) {
-	// 	e.preventDefault();
-	// 	this.setState({
-	// 		newsModify: e.target.value
-	// 	})
-	// }
-
 	updateActu(e) {
 		e.preventDefault()
-		console.log("img data");
-		console.log(document.getElementById('actu-img').files[0]);
-		console.log("img dataUp");
-		console.log(this.state.actuImgUp);
 		const data = new FormData();
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
-		data.append('date', new Date());
+		data.append('date', this.state.actuDate);
 		if (document.getElementById("actu-img").files[0]) {
-			console.log("file img ok");
 			data.append('img', document.getElementById('actu-img').files[0]);
 		} else {
-			console.log("deja up");
 			data.append('img', this.state.actuImgUp);
 		}
-		console.log(this.state.actu);
-		console.log(this.state.actuTitle);
-		console.log(this.state.newsModify);
-		console.log(new Date())
 		request({
 			url: '/news/'+this.state.newsModify,
 			method: 'put',
@@ -134,11 +90,10 @@ export default class Feedback extends Component {
 		const data = new FormData();
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
-		data.append('data', new Date());
+		data.append('date', this.state.actuDate);
 		if (document.getElementById("actu-img").files[0]) {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		}
-		console.log('data ok');
 		request({
 			url: '/news',
 			method: 'post',
@@ -151,6 +106,11 @@ export default class Feedback extends Component {
 		})
 	}
 
+	handleDateChange(date) {
+		this.setState({
+			actuDate: date
+		});
+	}
 
 	render() {
 
@@ -161,6 +121,15 @@ export default class Feedback extends Component {
 			<form onSubmit={this.state.newsTake?this.updateActu.bind(this):this.createActu.bind(this)}>
 				<div className="form-group">
 					<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} placeholder={this.state.newsTake?this.state.actuTitle:'Titre'}/>
+				</div>
+				<div className="form-group">
+					<label>Date de l'actualité</label>
+					<DatePicker
+						dateFormat="DD/MM/YYYY"
+						selected={this.state.actuDate}
+						onChange={this.handleDateChange.bind(this)}
+						className="form-control"
+						/>
 				</div>
 				<div className="form-group">
 					<ReactQuill
