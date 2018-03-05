@@ -134,7 +134,9 @@ export default class Bundle extends Component {
 			url: '/bundle/'+this.props.id,
 			method: 'put',
 			data : {
-				state: this.state.stateSelector
+				state: this.state.stateSelector,
+				present_date: new Date(),
+				present_end: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
 			}
 		}, this.refs.notif).then((res) => {
 			this.props.refresh();

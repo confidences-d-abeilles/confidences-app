@@ -108,7 +108,8 @@ export default class Bundle extends Component {
                     <div className="col-lg-6 my-4">
                         <h3 className="text-center"><small>Détails</small></h3>
                         Offre : Parrainage de {this.state.user.bundles[0].bees} abeilles<br />
-                        Date de début : {moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}
+                        Date de début : {moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}<br />
+                        Date de fin: {moment(this.state.user.bundles[0].end_date).format("DD/MM/YYYY")}
                     </div>
                     :<Loading />}
                     <div className="col-lg-6 my-4">
