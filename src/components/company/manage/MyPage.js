@@ -193,11 +193,13 @@ export default class CompanyManageMyPage extends Component {
 				{(this.state.user)?
 				<form>
 					<div className="form-group">
+						<label>Nom de l'entreprise</label>
 						<input type="text" placeholder="Nom de l'entreprise" name="name" value={this.state.name} onChange={handleChange.bind(this)} className="form-control" />
 					</div>
 					<div className="form-group">
+						<label>URL personnalisée de votre entreprise</label>
+						<input type="text" placeholder="Nom de l url" name="fakeNamespace" value={this.state.fakeNamespace} onChange={this.replaceNamespace.bind(this)} className="form-control" /><br />
 						<label>{"https://parrainagederuches.fr/parrains/"+this.state.namespace}</label>
-						<input type="text" placeholder="Nom de l url" name="fakeNamespace" value={this.state.fakeNamespace} onChange={this.replaceNamespace.bind(this)} className="form-control" />
 					</div>
 					<div className="form-group">
 						<label>Photo de couverture de votre page {(this.state.cover)?<a href={config.cdn_url+'/'+this.state.cover} target="_blank">Visualiser l'image actuelle</a>:null}</label>
