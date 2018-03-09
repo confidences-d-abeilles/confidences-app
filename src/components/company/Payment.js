@@ -10,7 +10,7 @@ import moment from 'moment';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
 
-export default class IndividualPayement extends Component {
+export default class CompanyPayment extends Component {
 
 	constructor(props) {
 		super(props);
@@ -90,7 +90,7 @@ export default class IndividualPayement extends Component {
 			<div className="container py-4">
 				<Meta title="Paiement"/>
 				<NotificationSystem ref="notif" />
-				{(this.state.redirect)?<Redirect to="/individual/end" />:null}
+				{(this.state.redirect)?<Redirect to="/company/end" />:null}
 				<div className="row">
 					<div className="col-lg-12">
 						<h2 className="text-center">Régler mon parrainage</h2>
@@ -98,7 +98,7 @@ export default class IndividualPayement extends Component {
 					<div className="col-lg-6">
 						<h3 className="text-center my-4"><small>Paiement sécurisé par carte bancaire</small></h3>
 						<Elements locale="fr">
-							<PayForm price={this.state.price} before={() => {}} bundle={this.state.bundle_id} for={this.state.company_name} endpoint="/individual/end" />
+							<PayForm price={this.state.price} before={() => {}} bundle={this.state.bundle_id} for={this.state.company_name} endpoint="/company/end" />
 						</Elements>
 					</div>
 					<div className="col-lg-6" style={{ borderStyle: 'solid', borderColor: '#E49C00', borderWidth: '0 0 0 4px'}}>
