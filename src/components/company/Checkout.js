@@ -47,6 +47,7 @@ export default class CompanyCheckout extends Component {
 				price: res.bundles[0].price,
 				bundle_id: res.bundles[0].id,
 				duplicate: true,
+				different: res.bundles[0].addr_diff,
 				feedback: res.bundles[0].feedback
 			});
 			request({
@@ -81,7 +82,8 @@ export default class CompanyCheckout extends Component {
 						dcity: address.city,
 						dzip: address.zipcode,
 						dcountry: address.country,
-						dphone: address.phone
+						dphone: address.phone,
+						different: address.addr_diff
 					})
 				}
 			})
@@ -165,7 +167,8 @@ export default class CompanyCheckout extends Component {
 							zipcode: this.state.dzip,
 							city: this.state.dcity,
 							country: this.state.dcountry,
-							phone: this.state.dphone
+							phone: this.state.dphone,
+							addr_diff: true
 						}
 					}, this.refs.notif).then((res) => {
 						resolve();
