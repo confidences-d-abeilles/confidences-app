@@ -41,6 +41,7 @@ import CompanyIdentity from './company/Identity';
 import CompanyAddress from './company/Address';
 import CompanyWish from './company/Wish';
 import CompanyCheckout from './company/Checkout';
+import CompanyPayement from './company/Payment';
 import CompanyEnd from './company/End';
 import CompanyManage from './company/Manage';
 import CompanyMore from './company/More';
@@ -118,6 +119,7 @@ export default class MyRouter extends Component {
 								<Route exact path="/company/address" component={CompanyAddress} />
 								<Route exact path="/company/wish" component={CompanyWish} />
 								<Route exact path="/company/checkout" component={CompanyCheckout} />
+								<Route exact path="/company/payment" component={CompanyPayement} />
 								<Route exact path="/company/end" component={CompanyEnd} />
 								<Route path="/company/manage" component={CompanyManage} />
 								<Route exact path="/presignup" component={Presignup} />

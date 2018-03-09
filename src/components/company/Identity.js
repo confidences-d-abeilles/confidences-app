@@ -75,7 +75,7 @@ export default class CompanyIdentity extends Component {
 						<form className="text-center">
 							<h2 className="text-center my-4">Information sur l'entreprise</h2>
 							<div className="form-group">
-								<input type="text" className="form-control" name="company_name" placeholder="Raison sociale" onChange={handleChange.bind(this)} />
+								<input type="text" className="form-control" name="company_name" placeholder="Raison sociale*" onChange={handleChange.bind(this)} />
 							</div>
 							<div >
 								<label htmlFor="namespace">Merci de choisir l'adresse de la pages dédiée a votre entreprise</label>
@@ -85,13 +85,16 @@ export default class CompanyIdentity extends Component {
 								</div>
 							</div>
 							<div className="form-group">
-								<input type="text" className="form-control" name="siret" placeholder="Numero de siret" onChange={this.handlesiret.bind(this)} />
+								<input type="text" className="form-control" name="siret" placeholder="Numero de siret*" onChange={this.handlesiret.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" className="form-control" name="job" placeholder="Fonction dans la societe" onChange={handleChange.bind(this)} />
+								<input type="text" className="form-control" name="job" placeholder="Fonction dans la societe*" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
 								<input type="text" className="form-control" name="website" placeholder="Site internet" onChange={handleChange.bind(this)} />
+							</div>
+							<div className="form-group">
+								<label>* champs obligatoire</label>
 							</div>
 							<button onClick={this.identify.bind(this)} className="btn btn-primary">Continuer</button>
 						</form>
