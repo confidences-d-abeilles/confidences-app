@@ -75,6 +75,7 @@ export default class IndividualPayement extends Component {
 		data.append('state', 1);
 		if (this.state.present == false) {
 			data.append('present_date', new Date());
+			data.append('present_end', new Date(new Date().setFullYear(new Date().getFullYear() + 1)));
 		}
 		request({
 			url: '/bundle/'+this.state.bundle_id,
