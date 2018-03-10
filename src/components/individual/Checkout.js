@@ -110,7 +110,8 @@ export default class IndividualCheckout extends Component {
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
 			data : {
-				state: 1
+				state: 1,
+				present_end: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
 			}
 		}, this.refs.notif).then((res) => {
 			this.setState({ redirect : true })
