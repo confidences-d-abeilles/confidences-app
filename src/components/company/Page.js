@@ -54,7 +54,7 @@ export default class CompanyPage extends Component {
 			}, this.refs.notif).then((res) => {
 				this.setState({
 					hives: res,
-					selectedHive: res[0].id,
+					selectedHive: (res[0])?res[0].id:null,
 				})
 			});
 		}).catch((err) => {
