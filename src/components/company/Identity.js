@@ -32,7 +32,7 @@ export default class CompanyIdentity extends Component {
 
 	identify(e) {
 		e.preventDefault();
-		if (!this.state.company_name || !this.state.siret || !this.state.job || !this.state.namespace) {
+		if (!this.state.company_name || !this.state.siret || !this.state.job) {
 			this.refs.notif.addNotification({
 				message: "Merci de renseigner tous les champs",
 				level: 'warning'
@@ -44,7 +44,7 @@ export default class CompanyIdentity extends Component {
 				data : {
 					company_name : this.state.company_name,
 					siret : this.state.siret,
-					namespace: this.state.namespace,
+					namespace: (this.state.company_name.replace(/\W+/g, '')).replace(/\d+/g, ''),
 					job : this.state.job,
 					website : this.state.website
 				}}, this.refs.notif)
@@ -75,23 +75,26 @@ export default class CompanyIdentity extends Component {
 						<form className="text-center">
 							<h2 className="text-center my-4">Information sur l'entreprise</h2>
 							<div className="form-group">
-								<input type="text" className="form-control" name="company_name" placeholder="Raison sociale" onChange={handleChange.bind(this)} />
+								<input type="text" className="form-control" name="company_name" placeholder="Raison sociale*" onChange={handleChange.bind(this)} />
 							</div>
-							<div className="form-group">
+							<div >
 								<label htmlFor="namespace">Merci de choisir l'adresse de la pages dédiée a votre entreprise</label>
 								<div className="input-group">
-									<span className="input-group-addon" id="basic-addon3">https://parrainagederuches.fr/parrains/</span>
-									<input type="text" className="form-control" onChange={handleChange.bind(this)} name="namespace" id="namespace" />
+									<span className="input-group-addon" id="basic-addon3">https://parrainagederuches.fr/parrains/{(this.state.company_name.replace(/\W+/g, '')).replace(/\d+/g, '')}</span>
+
 								</div>
 							</div>
 							<div className="form-group">
-								<input type="text" className="form-control" name="siret" placeholder="Numero de siret" onChange={this.handlesiret.bind(this)} />
+								<input type="text" className="form-control" name="siret" placeholder="Numero de siret*" onChange={this.handlesiret.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" className="form-control" name="job" placeholder="Fonction dans la societe" onChange={handleChange.bind(this)} />
+								<input type="text" className="form-control" name="job" placeholder="Fonction dans la societe*" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
 								<input type="text" className="form-control" name="website" placeholder="Site internet" onChange={handleChange.bind(this)} />
+							</div>
+							<div className="form-group">
+								<label>* champs obligatoire</label>
 							</div>
 							<button onClick={this.identify.bind(this)} className="btn btn-primary">Continuer</button>
 						</form>
