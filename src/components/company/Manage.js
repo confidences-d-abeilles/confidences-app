@@ -17,6 +17,7 @@ import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 import Meta from '../utils/Meta'
 import NotFound from '../utils/NotFound'
 import FontAwesome from 'react-fontawesome'
+import { getUserType } from '../../services/AuthService';
 
 const config = require('../../config.js');
 
