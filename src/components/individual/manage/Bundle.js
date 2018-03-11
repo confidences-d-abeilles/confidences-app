@@ -84,9 +84,9 @@ export default class Bundle extends Component {
             url: '/bundle/'+this.state.user.bundles[0].id,
             method: 'put',
             data: {
-                present_firstname: this.state.user.bundles[0].firstname,
-                present_name: this.state.user.bundles[0].present_name,
-                present_email: this.state.user.bundles[0].present_email
+                present_firstname: this.state.present_firstname,
+                present_name: this.state.present_name,
+                present_email: this.state.present_email
             }
         }, this.refs.notif).then((res) => {
             this.setState({ edit_present: false })
