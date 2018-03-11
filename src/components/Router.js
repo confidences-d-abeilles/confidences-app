@@ -6,6 +6,11 @@ import {
 	Redirect
 } from 'react-router-dom';
 
+import { contributorOnly } from '../services/AuthService'
+import { individualOnly } from '../services/AuthService'
+import { adminOnly } from '../services/AuthService'
+import { companyOnly } from '../services/AuthService'
+
 import MyAccount from './MyAccount';
 import Logout from './Logout';
 
@@ -89,6 +94,12 @@ export default class MyRouter extends Component {
 				<div id="noFooter">
 					<Header />
 						<div className="container-fluid">
+							<Route path="/contributor/wish" component={contributorOnly} />
+							<Route path="/admin" component={adminOnly} />
+							<Route path="/individual/wish" component={individualOnly} />
+							<Route path="/individual/manage" component={individualOnly} />
+							<Route path="/company/wish" component={companyOnly} />
+							<Route path="/company/manage" component={companyOnly} />
 							<Switch>
 								<Route exact path="/" component={Home} />
 								<Route exact path="/forgot" component={Forgot} />
