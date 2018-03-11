@@ -94,7 +94,8 @@ export default class IndividualCheckout extends Component {
 						dcity: address.city,
 						dzip: address.zipcode,
 						dcountry: address.country,
-						dphone: address.phone
+						dphone: address.phone,
+						different: address.addr_diff
 					})
 				}
 			})
@@ -176,7 +177,8 @@ export default class IndividualCheckout extends Component {
 							zipcode: this.state.dzip,
 							city: this.state.dcity,
 							country: this.state.dcountry,
-							phone: this.state.dphone
+							phone: this.state.dphone,
+							addr_diff: true
 						}
 					}, this.refs.notif).then((res) => {
 						resolve();

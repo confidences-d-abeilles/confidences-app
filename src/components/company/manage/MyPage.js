@@ -7,6 +7,7 @@ import ReactQuill from 'react-quill';
 import Loading from '../../utils/Loading'
 import ReactGA from 'react-ga';
 import moment from 'moment';
+import Feedback from '../../utils/Feedback';
 const config = require('../../../config.js');
 
 export default class CompanyManageMyPage extends Component {
@@ -31,13 +32,27 @@ export default class CompanyManageMyPage extends Component {
 			english: false,
 			bundle_date: moment(),
 			bundle_state: 0,
-			bundle: []
+			bundle: [],
+			allFeedback: null
 		}
 	}
 
 	componentDidMount() {
 		this.get();
+		this.getActu();
 		// this.getBundle();
+	}
+
+	getActu(){
+		request({
+			url:'/news/owner/',
+			method:'get'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				actus: res
+			})
+			console.log(res);
+		})
 	}
 
 	get() {
@@ -50,6 +65,7 @@ export default class CompanyManageMyPage extends Component {
 				id_user : res.id,
 				name : res.company_name,
 				namespace : res.namespace,
+				fakeNamespace : res.namespace,
 				logo: res.logo,
 				cover: res.cover,
 				description : res.description,
@@ -67,20 +83,11 @@ export default class CompanyManageMyPage extends Component {
 					bundle_date: moment(res.bundles[0].start_date),
 					bundle_state: res.bundles[0].state
 				})
-				console.log(this.state.bundle);
-				console.log(this.state.bundle_date);
-				console.log(this.state.bundle_state);
+
 			}
 		}).catch((err) => {})
 
-		request({
-			url: '/bundle/'+this.state.id_user,
-			method: 'get'
-		}, this.refs.notif).then((res) => {
-			this.setState({
-				bundle: res,
-			})
-		})
+
 	}
 
 	submit(e) {
@@ -128,24 +135,46 @@ export default class CompanyManageMyPage extends Component {
 		}
 	}
 
-	createActu(e) {
-		e.preventDefault()
-		const data = new FormData();
-		data.append('content', this.state.actu);
-		data.append('title', this.state.actuTitle);
-		if (document.getElementById("actu-img").files[0]) {
-			data.append('img', document.getElementById('actu-img').files[0]);
-		}
-		request({
-			url: '/news',
-			method: 'post',
-			data: data,
-			header: {
-				'content-type' : 'multipart/form-data'
-			}
-		}, this.refs.notif).then((res) => {
 
+	launchModify(e) {
+		e.preventDefault();
+		this.setState({
+			newsModify: e.target.value
 		})
+}
+	// createActu(e) {
+	// 	e.preventDefault()
+	// 	const data = new FormData();
+	// 	data.append('content', this.state.actu);
+	// 	data.append('title', this.state.actuTitle);
+	// 	if (document.getElementById("actu-img").files[0]) {
+	// 		data.append('img', document.getElementById('actu-img').files[0]);
+	// 	}
+	// 	request({
+	// 		url: '/news',
+	// 		method: 'post',
+	// 		data: data,
+	// 		header: {
+	// 			'content-type' : 'multipart/form-data'
+	// 		}
+	// 	}, this.refs.notif).then((res) => {
+  //
+	// 	})
+	// }
+
+
+// (this.state.name.replace(/\W+/g, '')).replace(/\d+/g, '')
+	replaceNamespace(e) {
+		e.preventDefault();
+		const val = e.target.value;
+		console.log((val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, ''));
+		let TabSpec = {"à":"a","á":"a","â":"a","ã":"a","ä":"a","å":"a","ò":"o","ó":"o","ô":"o","õ":"o","ö":"o","ø":"o","è":"e","é":"e","ê":"e","ë":"e","ç":"c","ì":"i","í":"i","î":"i","ï":"i","ù":"u","ú":"u","û":"u","ü":"u","ÿ":"y","ñ":"n","-":" ","_":" "};
+		let reg=/[àáäâèéêëçìíîïòóôõöøùúûüÿñ_-]/gi;
+		this.setState({
+			fakeNamespace: e.target.value,
+			namespace: (val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, '')
+		})
+		console.log(this.state.namespace);
 	}
 
 	render () {
@@ -164,10 +193,13 @@ export default class CompanyManageMyPage extends Component {
 				{(this.state.user)?
 				<form>
 					<div className="form-group">
+						<label>Nom de l'entreprise</label>
 						<input type="text" placeholder="Nom de l'entreprise" name="name" value={this.state.name} onChange={handleChange.bind(this)} className="form-control" />
 					</div>
 					<div className="form-group">
-						<label>{"https://parrainagederuches.fr/parrains/"+(this.state.name.replace(/\W+/g, '')).replace(/\d+/g, '')}</label>
+						<label>URL personnalisée de votre entreprise</label>
+						<input type="text" placeholder="Nom de l url" name="fakeNamespace" value={this.state.fakeNamespace} onChange={this.replaceNamespace.bind(this)} className="form-control" /><br />
+						<label>{"https://parrainagederuches.fr/parrains/"+this.state.namespace}</label>
 					</div>
 					<div className="form-group">
 						<label>Photo de couverture de votre page {(this.state.cover)?<a href={config.cdn_url+'/'+this.state.cover} target="_blank">Visualiser l'image actuelle</a>:null}</label>
@@ -208,12 +240,11 @@ export default class CompanyManageMyPage extends Component {
 					<div className="form-group">
 						<input type="texte" name="link2_url" className="form-control" value={this.state.link2_url} placeholder="URL du bouton d'action 2" onChange={handleChange.bind(this)} />
 					</div>
-
 						<div className="form-group">
 							<label htmlFor="english"><input disabled={this.state.bundle_state >= 2  ? false: true} type="checkbox" name="english" id="english" onChange={handleTick.bind(this)} checked={this.state.english} /> Version anglaise</label>
 						</div>
 						<div className="form-group">
-							<label htmlFor="visible"><input disabled={this.state.bundle_state >= 2 ? false: true} type="checkbox" name="visible" id="visible" onChange={handleTick.bind(this)} checked={this.state.visible} /> Rendre ma page publique</label>
+							<label htmlFor="visible"><input disabled={this.state.bundle_state >= 2 ? false: true} type="checkbox" name="visible" id="visible" onChange={handleTick.bind(this)} checked={this.state.visible} /> Rendre ma page publique</label> {(this.state.bundle_state < 2) ? <span>(Fonctionnalité indisponible tant que le paiement du parrainage n’est pas validé)</span> : null}
 						</div>
 
 
@@ -221,36 +252,21 @@ export default class CompanyManageMyPage extends Component {
 						<input type="submit" value="Enregistrer les modifications" className="btn btn-primary" onClick={this.submit.bind(this)} />
 					</div>
 				</form>:<Loading />}
-				<h3 className="text-center">Ajouter une actualité</h3>
-				<form onSubmit={this.createActu.bind(this)}>
-					<div className="form-group">
-						<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} placeholder="Titre"/>
-					</div>
-					<div className="form-group">
-						<ReactQuill
-							name="actu"
-							className="form-control"
-							onChange={(value) => { this.setState({ actu: value })}}
-							defaultValue={this.state.actu}
-							placeholder="Texte de l'actualité"
-							modules={{
-								toolbar: [
-									['bold', 'italic', 'underline','strike', 'blockquote'],
-									[{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-									['link'],
-									['clean']
-								]
-							}}/>
-					</div>
-					<div className="form-group">
-						<label htmlFor="actu-img" className={(this.state.actuImg)?'active-upload':'upload'} style={{ position: 'relative' }}>
-							<input type="file" className="form-control" id="actu-img" onChange={() => { this.setState({ actuImg : document.getElementById("actu-img").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-							Glisser une image ou cliquez pour en séléctionner un parmi vos fichiers<br/>
-							Taille recommandée : 400x300 - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}
-						</label>
-					</div>
-					<button className="btn btn-primary">Soumettre</button>
-				</form>
+				<Feedback name={this.state.newsModify?this.state.newsModify:null} />
+				{this.state.actus ?
+				<div>
+					<h3 className="my-4">Modifier une news</h3>
+					<select className="form-control" onChange={this.launchModify.bind(this)} name="newsModify">
+						<option selected disabled>News a modifier</option>
+						{this.state.actus.map((actu) => {
+							const date = (actu.date)?moment(actu.date):moment(actu.createdAt);
+							return (
+								<option value={actu.id}>{actu.title} ( {date.format("DD/MM/YYYY")} )</option>
+							)
+						})}
+					</select>
+				</div>
+				:null}
 			</div>
 		)
 	}

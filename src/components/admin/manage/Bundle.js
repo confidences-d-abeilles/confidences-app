@@ -39,7 +39,8 @@ export default class Bundle extends Component {
 				stateSelector: res.state,
 				present_name: res.name,
 				present_firstname: res.firstname,
-				present_email: res.email
+				present_email: res.email,
+				present: res.present
 			})
 		})
 
@@ -130,12 +131,16 @@ export default class Bundle extends Component {
 
 	updatePayment(e) {
 		e.preventDefault();
+		const data = new FormData();
+		data.append('state', this.state.stateSelector);
+		if (this.state.present == false) {
+			data.append('present_date', new Date());
+			data.append('present_end', new Date(new Date().setFullYear(new Date().getFullYear() + 1)));
+		}
 		request({
 			url: '/bundle/'+this.props.id,
 			method: 'put',
-			data : {
-				state: this.state.stateSelector
-			}
+			data : data
 		}, this.refs.notif).then((res) => {
 			this.props.refresh();
 		});
