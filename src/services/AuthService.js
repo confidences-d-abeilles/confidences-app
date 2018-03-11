@@ -1,7 +1,8 @@
 
 import { client } from './Net';
 import ReactGA from 'react-ga';
-
+import React, { Component } from 'react';
+import { Redirect } from 'react-router';
 
 export function login(id, token, user_type) {
 	localStorage.setItem('id', id);
@@ -41,4 +42,80 @@ export function getId() {
 
 export function getUserType() {
 	return localStorage.getItem('user_type');
+}
+
+export class contributorOnly extends Component {
+
+	constructor(props) {
+		super(props);
+		console.log('contributorOnly');
+		this.state = { denied : false }
+	}
+
+	componentDidMount() {
+		if (localStorage.getItem('user_type') != 3) {
+			this.setState({ denied : true })
+		}
+	}
+
+	render () {
+		return (<div>{this.state.denied  && <Redirect to="/" />}</div>)
+	}
+}
+
+export class companyOnly extends Component {
+
+	constructor(props) {
+		super(props);
+		console.log('contributorOnly');
+		this.state = { denied : false }
+	}
+
+	componentDidMount() {
+		if (localStorage.getItem('user_type') != 2) {
+			this.setState({ denied : true })
+		}
+	}
+
+	render () {
+		return (<div>{this.state.denied  && <Redirect to="/" />}</div>)
+	}
+}
+
+export class individualOnly extends Component {
+
+	constructor(props) {
+		super(props);
+		console.log('contributorOnly');
+		this.state = { denied : false }
+	}
+
+	componentDidMount() {
+		if (localStorage.getItem('user_type') != 1) {
+			this.setState({ denied : true })
+		}
+	}
+
+	render () {
+		return (<div>{this.state.denied  && <Redirect to="/" />}</div>)
+	}
+}
+
+export class adminOnly extends Component {
+
+	constructor(props) {
+		super(props);
+		console.log('contributorOnly');
+		this.state = { denied : false }
+	}
+
+	componentDidMount() {
+		if (localStorage.getItem('user_type') != 4) {
+			this.setState({ denied : true })
+		}
+	}
+
+	render () {
+		return (<div>{this.state.denied  && <Redirect to="/" />}</div>)
+	}
 }
