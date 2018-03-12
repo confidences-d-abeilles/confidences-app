@@ -63,6 +63,7 @@ export default class AdminManageUsers extends Component {
 			usexe_m: user.sexe_m?'1':'0',
 			bsexe_m: user.addresses[0]?user.addresses[0].sexe_m?'1':'0':'',
 			dsexe_m: user.addresses[1]?user.addresses[1].sexe_m?'1':'0':'',
+			feedback: user.feedback,
 			supportLevel: user.support_lvl// a changer avec le champs bdd
 		}, () => {
 			console.log(this.state.selectedUser.id);
