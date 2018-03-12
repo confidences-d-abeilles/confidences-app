@@ -77,12 +77,9 @@ export default class CompanyIdentity extends Component {
 							<div className="form-group">
 								<input type="text" className="form-control" name="company_name" placeholder="Raison sociale*" onChange={handleChange.bind(this)} />
 							</div>
-							<div >
-								<label htmlFor="namespace">Merci de choisir l'adresse de la pages dédiée a votre entreprise</label>
-								<div className="input-group">
-									<span className="input-group-addon" id="basic-addon3">https://parrainagederuches.fr/parrains/{(this.state.company_name.replace(/\W+/g, '')).replace(/\d+/g, '')}</span>
-
-								</div>
+							<div className="form-group">
+								<label htmlFor="namespace">URL par défaut de votre future page. Vous pourrez la modifier par la suite.</label>
+								<input type="text" className="form-control" id="namespace" value={'http://parrainagederuches.fr/parrains/'+(this.state.company_name.replace(/\W+/g, '')).replace(/\d+/g, '')} disabled />
 							</div>
 							<div className="form-group">
 								<input type="text" className="form-control" name="siret" placeholder="Numero de siret*" onChange={this.handlesiret.bind(this)} />
