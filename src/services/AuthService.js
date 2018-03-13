@@ -67,7 +67,6 @@ export class companyOnly extends Component {
 
 	constructor(props) {
 		super(props);
-		console.log('contributorOnly');
 		this.state = { denied : false }
 	}
 
@@ -86,7 +85,6 @@ export class individualOnly extends Component {
 
 	constructor(props) {
 		super(props);
-		console.log('contributorOnly');
 		this.state = { denied : false }
 	}
 
@@ -105,7 +103,6 @@ export class adminOnly extends Component {
 
 	constructor(props) {
 		super(props);
-		console.log('contributorOnly');
 		this.state = { denied : false }
 	}
 
