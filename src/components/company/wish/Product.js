@@ -5,7 +5,7 @@ export default class Product extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			qty: "1"
+			qty: "0"
 		}
 	}
 

@@ -33,7 +33,7 @@ export default class CompanyWish extends Component {
 			return (e.id != product.id)
 		});
 		tmp.push(product);
-		this.products = tmp;
+		tmp.sort(this.sortProducts);
 		this.setState({
 			products: tmp
 		}, () => {
@@ -41,8 +41,11 @@ export default class CompanyWish extends Component {
 		});
 	}
 
+	sortProducts(a, b) {
+		return (a.createdAt > b.createdAt)
+	}
+
 	calcPrice() {
-		console.log("Calcul du prix");
 		this.setState({ price : '0' }, () => {
 			this.state.products.map((e) => {
 				this.setState((prev) => {
