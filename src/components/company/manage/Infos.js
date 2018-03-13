@@ -10,12 +10,12 @@ import Confirm from '../../utils/Confirm'
 import ReactGA from 'react-ga';
 import Meta from '../../utils/Meta'
 import FontAwesome from 'react-fontawesome'
+import FileUpload from '../../utils/FileUpload'
 
 export default class CompanyManageInfos extends Component {
 
 	constructor(props) {
 		super(props)
-		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			logout: false,
 			password: '',
@@ -142,17 +142,38 @@ export default class CompanyManageInfos extends Component {
 		})
 	}
 
+	uploadLogo(e) {
+		e.preventDefault();
+		if (document.getElementById("HQlogo").files[0]) {
+			const data = new FormData();
+			data.append('HQlogo', document.getElementById('HQlogo').files[0]);
+			request({
+				url: '/user',
+				method: 'put',
+				data: data
+			}, this.refs.notif).then((res) => {
+				this.props.update();
+			});
+		}
+	}
+
 	render () {
 		return (
 			<div>
 			<Meta title="Mes informations"/>
 			{this.state.logout && <Redirect to="/" />}
 				<NotificationSystem ref="notif" />
-				<div className="row my-5">
+				<div className="row mt-5">
 					<div className="col">
 						<h2 className="text-center">
 							Mes informations
 						</h2>
+						<form onSubmit={this.uploadLogo.bind(this)}>
+							<FileUpload identifier="HQlogo" label="Votre logo en haute qualité :" accept="image/*"/>
+							<div className="form-group text-center">
+								<button className="btn btn-secondary">Envoyer le logo</button>
+							</div>
+						</form>
 					</div>
 				</div>
 				{(this.state.user)?
