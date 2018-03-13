@@ -47,7 +47,15 @@ export default class CompanyPage extends Component {
 				bundleState: res.bundles[0].state,
 				visible: res.visible,
 				loading: false
-			})
+			});
+			request({
+				url : '/news/owner/'+res.id,
+				method: 'get'
+			}, this.refs.notif).then((res) => {
+				this.setState({
+					news: res
+				})
+			});
 			request({
 				url : '/hive/bundle/'+res.bundles[0].id,
 				method: 'get'
@@ -189,7 +197,7 @@ export default class CompanyPage extends Component {
 										<div className="col-lg-12">
 											<h2 style={{ color: '#E49C00' }}>{(this.state.english)?'LATEST NEWS':'LES DERNIÈRES ACTUALITÉS'}</h2>
 											<div style={{ width : '100%', height: '1px', backgroundColor: '#E49C00'}} className="mb-4" ></div>
-											{this.state.user && this.state.user.news.map((actu) => {
+											{this.state.user && this.state.news.map((actu) => {
 												const date = new Date(actu.createdAt);
 												return (
 													<div className="my-2 row">
