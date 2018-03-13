@@ -32,7 +32,8 @@ export default class CompanyCheckout extends Component {
 			saved: false,
 			dash: false,
 			feedback: '',
-			present_date: moment()
+			present_date: moment(),
+			wish: false
 		}
 	}
 
@@ -188,7 +189,7 @@ export default class CompanyCheckout extends Component {
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'delete'
 		}, this.refs.notif). then((res) => {
-			this.setState({ redirect : true });
+			this.setState({ wish : true });
 		})
 	}
 
@@ -219,6 +220,7 @@ export default class CompanyCheckout extends Component {
 				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/company/end" />:null}
 				{(this.state.dash)?<Redirect to="/company/manage" />:null}
+				{(this.state.wish)?<Redirect to="/company/wish" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">

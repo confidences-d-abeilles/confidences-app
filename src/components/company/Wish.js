@@ -7,6 +7,7 @@ import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
 import MainProduct from './wish/MainProduct'
 import Product from './wish/Product'
+
 export default class CompanyWish extends Component {
 
 	constructor(props) {
@@ -15,17 +16,40 @@ export default class CompanyWish extends Component {
 		this.state = {
 			products: [],
 			coupons: [],
+			couponsOk: [],
 			options: [],
 			optionsOk: [],
-			couponsOk: [],
+			codes: [],
+			codesOk: [],
 			optionSelect: "",
-			price: "0"
+			price: "0",
+			code: '',
+			codeResult: '',
+			redirect: false
 		}
 	}
 
 	componentDidMount() {
 		this.getProducts();
 		this.getCoupons();
+	}
+
+	handleSubmit() {
+		request({
+			url : '/bundle/company',
+			method : 'post',
+			data : {
+				products: this.state.products,
+				coupons: this.state.couponsOk,
+				options: this.state.optionsOk,
+				codes: this.state.codesOk
+			}
+		}, this.refs.notif)
+		.then((res) => {
+			this.setState({ redirect : true})
+		})
+		.catch((err) => {
+		});
 	}
 
 	updateProducts(product) {
@@ -46,6 +70,9 @@ export default class CompanyWish extends Component {
 	}
 
 	calcPrice() {
+		console.log(this.state.couponsOk);
+		console.log(this.state.optionsOk);
+		console.log(this.state.codesOk);
 		this.setState({ price : '0' }, () => {
 			this.state.products.map((e) => {
 				this.setState((prev) => {
@@ -62,12 +89,19 @@ export default class CompanyWish extends Component {
 					return { price: parseInt(prev.price) - parseInt(e.amount) * parseInt(e.qty) }
 				})
 			})
+			this.state.codesOk.map((e) => {
+				this.setState((prev) => {
+					return { price: parseInt(prev.price) - parseInt(e.amount) * parseInt(e.qty) }
+				})
+			})
 		});
 	}
 
 	calcCoupons() {
 		let tmp = [];
 		let tmp2 = [];
+		let tmp3 = [];
+		let tmp4 = [];
 		this.state.coupons.map((coupon) => {
 			this.state.products.forEach((product) => {
 				if (coupon.type == 0 && coupon.product.id == product.id && product.qty >= coupon.min) {
@@ -80,17 +114,63 @@ export default class CompanyWish extends Component {
 					tmp2.push(coupon);
 					this.setState((prev) => { price: prev.price - coupon.amount * coupon.qty })
 				}
+				if (coupon.type == 2 && coupon.product.id == product.id && product.qty <= coupon.max) {
+					coupon.qty = product.qty;
+					tmp3.push(coupon);
+					this.setState((prev) => { price: prev.price - coupon.amount * coupon.qty })
+				}
 			});
 		});
+		tmp3.map((code) => {
+			tmp4 = this.state.codesOk.filter((codeOk) => {
+				if (code.id == codeOk.id) {
+					return true;
+				}
+				return false;
+			})
+		})
 		this.setState({
 			couponsOk: tmp,
+			codes: tmp3,
+			codesOk: tmp4,
 			options: tmp2
 		}, () => {
 			this.calcPrice();
 		});
 	}
 
+	handleCode(e) {
+		e.preventDefault();
+		let tmp = [];
+		let notValid = true;
+		this.state.codes.map((coupon) => {
+			this.state.products.forEach((product) => {
+				if (coupon.type == 2 && coupon.code == this.state.code && coupon.product.id == product.id) {
+					this.setState({
+						code: '',
+						codeResult: 'Le code a bien été appliqué'
+					})
+					notValid = false;
+					coupon.qty = product.qty;
+					tmp.push(coupon);
+				}
+			});
+		});
+		if (notValid) {
+			this.setState({
+				codeResult: "Ce code n'est pas applicable",
+				code: ''
+			})
+		}
+		this.setState({
+			codesOk: tmp
+		}, () => {
+			this.calcCoupons();
+		});
+	}
+
 	selectOption(e) {
+		console.log("Selecting option");
 		this.setState({
 			optionSelect: e.target.value
 		});
@@ -123,7 +203,12 @@ export default class CompanyWish extends Component {
 			})
 			res = res.map((e) => {
 				let tmp = e;
-				tmp.qty = '1';
+				if (e.type == 10) {
+					tmp.qty = '1';
+				}
+				if (e.type == 11) {
+					tmp.qty = '0';
+				}
 				return tmp;
 			})
 			this.setState({
@@ -145,9 +230,12 @@ export default class CompanyWish extends Component {
 		});
 	}
 
+
+
 	render() {
 		return (
 			<div className="container py-4">
+				{this.state.redirect && <Redirect to="/company/checkout" />}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress"><div className="progress-bar" role="progressbar" style={{ width: '80%'}} ></div></div>
@@ -188,6 +276,12 @@ export default class CompanyWish extends Component {
 							})}
 						</div>
 						</form>
+						<h3>Code promo</h3>
+						{this.state.codeResult}
+						<form className="form-inline my-2" onSubmit={this.handleCode.bind(this)}>
+							<input type="text" className="form-control" name="code" onChange={handleChange.bind(this)} value={this.state.code} placeholder="Entrez un code promo..." />
+							<button className="btn btn-primary ml-2">Vérifier le code</button>
+						</form>
 						<h3>Réductions</h3>
 							{this.state.couponsOk.length < 1 &&
 								<p>Aucune réduction immédiate n'est applicable pour votre commande</p>}
@@ -196,8 +290,16 @@ export default class CompanyWish extends Component {
 											<span key={e.id} >{e.designation} ( { - e.amount} € / ruche )</span>
 										)
 									})}
+							{this.state.codesOk.length < 1 &&
+								<p>Aucun code promotionnel n'a été appliqué pour votre commande</p>}
+									{this.state.codesOk.map((e) => {
+										return (
+											<span key={e.id} >{e.designation} ( { - e.amount} € / ruche )</span>
+										)
+									})}
 							<p className="lead text-center">
-								Total : {this.state.price} €
+								Total : {this.state.price} €<br />
+								<button className="btn btn-primary my-2" onClick={this.handleSubmit.bind(this)}>Valider et passer au paiement</button>
 							</p>
 					</div>
 				</div>
