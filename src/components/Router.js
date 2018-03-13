@@ -97,6 +97,8 @@ export default class MyRouter extends Component {
 					<Header />
 						<div className="container-fluid">
 							<Route path="/contributor/wish" component={contributorOnly} />
+							<Route path="/contributor/lead" component={contributorOnly} />
+							<Route path="/contributor/manage" component={contributorOnly} />
 							<Route path="/admin" component={adminOnly} />
 							<Route path="/individual/wish" component={individualOnly} />
 							<Route path="/individual/manage" component={individualOnly} />
