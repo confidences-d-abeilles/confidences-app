@@ -1,0 +1,105 @@
+Oimport React, { Component } from 'react';
+iOONOmport { handleChange } from '../../services/FormService';
+import request from '../../services/Net';
+import { Redirect } from 'react-router-dom';
+import NotificationSystem from 'react-notification-system';
+import ReactGA from 'react-ga';
+import Meta from '../utils/Meta'
+import MainProduct from './wish/MainProduct'
+import Product from './wish/Product'
+import Coupon from './wish/Coupon'
+export default class CompanyWish extends Component {
+
+	constructor(props) {
+		super(props);
+		ReactGA.pageview(this.props.location.pathname);
+		this.state = {
+			products: [],
+			coupons: []
+		}
+	}
+
+	componentDidMount() {
+		this.getProducts();
+		this.getCoupons();
+	}
+
+	updateProducts(product) {
+		let tmp = this.state.products.filter((e, key) => {
+			return (e.id != product.id)
+		});
+		tmp.push(product);
+		this.setState({
+			products: tmp
+		}, () => {
+			console.log(this.state.products);
+		})
+	}
+
+	updateCoupons(coupon) {
+		let tmp = this.state.coupons.filter((e, key) => {
+			return (e.id != coupon.id)
+		});
+		tmp.push(coupon);
+		this.setState({
+			coupons: tmp
+		}, () => {
+			console.log(this.state.coupons);
+		})
+	}
+
+	getProducts() {
+		request({
+			url: '/product',
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				products: res
+			});
+		});
+	}
+
+	getCoupons() {
+		request({
+			url: '/coupon',
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				coupons: res
+			});
+		});
+	}
+
+	render() {
+		return (
+			<div>
+				<h2 className="text-center my-4">Je choisi mon offre</h2>
+				<div className="row">
+					<div className="col-lg-6">
+						<h3 className="my-2">Mon parrainage</h3>
+						{this.state.products.map((e) => {
+							if (e.type === 10) {
+								return (
+									<MainProduct product={e} update={this.updateProducts.bind(this)} />
+								)
+							}
+						})}
+						<h3 className="my-2">Produits supplémentaires</h3>
+						{this.state.products.map((e) => {
+							if (e.type === 11) {
+								return (
+									<Product product={e} update={this.updateProducts.bind(this)} />
+								)
+							}
+						})}
+						{this.state.coupons.map((e) => {
+							return (
+								<Coupon products={this.state.products} coupon={e} update={this.updateCoupons.bind(this)} />
+							)
+						})}
+					</div>
+				</div>
+			</div>
+		)
+	}
+}
