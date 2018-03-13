@@ -13,13 +13,15 @@ import {
 	Switch
 } from 'react-router-dom';
 import NotificationSystem from 'react-notification-system';
-import imgPlaceholder from '../../assets/img/img-placeholder.gif';
+import waitLogo from '../../assets/img/waitlogo.png';
 import Meta from '../utils/Meta'
 import NotFound from '../utils/NotFound'
 import FontAwesome from 'react-fontawesome'
 import { getUserType } from '../../services/AuthService';
+import ReactGA from 'react-ga';
 
 const config = require('../../config.js');
+
 
 export default class CompanyManage extends Component {
 
@@ -32,6 +34,10 @@ export default class CompanyManage extends Component {
 	}
 
 	componentDidMount() {
+		this.updateMe();
+	}
+
+	updateMe() {
 		request({
 			url : '/user/me',
 			method : 'get'
@@ -42,6 +48,13 @@ export default class CompanyManage extends Component {
 			});
 		})
 		.catch((err) => {});
+	}
+
+	companyManageInfosRoute = (props) => {
+		ReactGA.pageview(this.props.location.pathname);
+		return(
+			<CompanyManageInfos update={this.updateMe.bind(this)} />
+		)
 	}
 
 	checkInfos() {
@@ -75,13 +88,15 @@ export default class CompanyManage extends Component {
 					<NotificationSystem ref="notif" />
 					<div className="row">
 						<div className="col-lg-3 col-md-4 col-sm-12">
-							<div style={{ height: '210px', maxWidth: '100%', flexDirection: 'column'}} className="d-flex justify-content-center align-items-center">
-								<img src={(this.state.user)?config.cdn_url+'/'+this.state.user.logo:imgPlaceholder} alt="Logo entreprise" style={{ maxWidth: '100%', maxHeight: '100%'}} />
+							<div style={{ height: '210px', maxWidth: '100%' }}>
+								{(this.state.user && this.state.user.HQlogo)?
+								<img src={config.cdn_url+'/'+this.state.user.HQlogo} alt="Logo entreprise" style={{ maxWidth: '100%', maxHeight: '100%' }} />:
+									<Link to="/company/manage/infos" style={{ display: 'block', height: '100%'}}><img src={waitLogo} alt="Logo à uploader" style={{ maxHeight: '100%', width: '100%' }} /></Link>}
 							</div>
 							<ul className="list-group">
 								<li className="list-group-item"><Link to="/company/manage"><FontAwesome name="archive" fixedWidth={true} />&nbsp;&nbsp;Notre parrainage</Link></li>
 								<li className="list-group-item"><Link to="/company/manage/customize"><FontAwesome name="flask" fixedWidth={true} />&nbsp;&nbsp;Nos pots de miel</Link></li>
-								<li className="list-group-item"><Link to="/company/manage/mypage">&nbsp;&nbsp;Notre page dediee</Link></li>
+								<li className="list-group-item"><Link to="/company/manage/mypage"><FontAwesome name="bookmark" fixedWidth={true} />&nbsp;&nbsp;Notre page dediee</Link></li>
 								<li className="list-group-item"><Link to="/company/manage/infos"><FontAwesome name="address-card" fixedWidth={true} />&nbsp;&nbsp;Mes informations</Link></li>
 								<li className="list-group-item"><Link to="/company/manage/bills"><FontAwesome name="file" fixedWidth={true} />&nbsp;&nbsp;Factures</Link></li>
 								<li className="list-group-item"><Link to="/company/manage/account"><FontAwesome name="gears" fixedWidth={true} />&nbsp;&nbsp;Mon compte</Link></li>
@@ -98,7 +113,7 @@ export default class CompanyManage extends Component {
 								<div className="col-12">
 									<Switch>
 										<Route exact path="/company/manage" component={CompanyManageDashboard} />
-										<Route exact path="/company/manage/infos" component={CompanyManageInfos} />
+										<Route exact path="/company/manage/infos" component={this.companyManageInfosRoute.bind(this)} />
 										<Route exact path="/company/manage/mypage" component={CompanyManageMyPage} />
 										<Route exact path="/company/manage/customize" component={CompanyManageCustomize} />
 										<Route exact path="/company/manage/bills" component={CompanyManageBills} />
