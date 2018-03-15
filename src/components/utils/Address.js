@@ -27,43 +27,90 @@ export default class Address extends Component {
   }
 
   componentDidMount() {
-    const data = new FormData();
-    data.append('type', this.props.type);
-    request({
-			url : '/address/type',
-			method : 'POST',
-      data: data
-		}, this.refs.notif).then((res) => {
-					this.state = {
-						id: res[0].id,
-						sexe_m: res[0].sexe_m?'1':'0',
-						address1: res[0].line1,
-						address2: res[0].line2,
-						address3: res[0].line3,
-						address4: res[0].line4,
-						zip: res[0].zipcode,
-						city: res[0].city,
-						country: res[0].country
-					}
-          console.log('start');
-          console.log(res[0].line1);
-          console.log(this.props.fnct);
-			});
+    if (this.props.fnct){
+      const data = new FormData();
+      data.append('type', this.props.type);
+      request({
+  			url : '/address/type',
+  			method : 'POST',
+        data: data
+  		}, this.refs.notif).then((res) => {
+  					this.state = {
+  						id: res[0].id,
+  						sexe_m: res[0].sexe_m?'1':'0',
+  						address1: res[0].line1,
+  						address2: res[0].line2,
+  						address3: res[0].line3,
+  						address4: res[0].line4,
+  						zip: res[0].zipcode,
+  						city: res[0].city,
+  						country: res[0].country
+  					}
+            console.log('start');
+            console.log(res[0].line1);
+            console.log(this.props.fnct);
+  			});
+    }
   }
 
-  updateAddress() {
+  updateAddress(e) {
     console.log("fnct update");
+    e.preventDefault();
+    const data = new FormData();
+    data.append('sexe_m', this.state.sexe_m);
+    data.append('line1', this.state.address1);
+    data.append('line2', this.state.address2);
+    data.append('line3', this.state.address3);
+    data.append('line4', this.state.address4);
+    data.append('zipcode', this.state.zip);
+    data.append('country', this.state.country);
+    data.append('city', this.state.city);
+    data.append('phone', this.state.phone);
+    request({
+      url: '/address/'+this.state.id,
+      method: 'PUT',
+      data: data
+    }, this.refs.notif).then((res) => {
+
+		})
 
   }
 
-  createAddress() {
-    console.log("fnct create");
-
+  createAddress(e) {
+      e.preventDefault();
+      console.log(this.state.sexe_m);
+      console.log(this.state.address3);
+      console.log(this.state.city);
+      console.log(this.state.zip);
+      if (!this.state.sexe_m || !this.state.address3 || !this.state.city || !this.state.zip) {
+        this.refs.notif.addNotification({
+          message : "Merci de renseigner tous les champs",
+          level : 'warning'
+        })
+      } else {
+        request({
+          url : '/address',
+          method: 'post',
+          data : {
+            sexe_m : (this.state.sexe_m === '0')?false:true,
+            line1 : this.state.address1,
+            line2 : this.state.address2,
+            line3 : this.state.address3,
+            line4 : this.state.address4,
+            city : this.state.city,
+            zipcode : this.state.zip,
+            country: this.state.country,
+            type : this.props.type
+          }
+        }, this.refs.notif).then((res) => {
+        });
+      }
   }
 
  render () {
    return (
      <div>
+      <NotificationSystem ref="notif" />
          <form onSubmit={this.props.fnct?this.updateAddress.bind(this):this.createAddress.bind(this)}>
            <div className="form-group">
              <label>Nom de l'entreprise</label>
