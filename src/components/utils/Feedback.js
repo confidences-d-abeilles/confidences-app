@@ -57,6 +57,7 @@ export default class Feedback extends Component {
 					actuDate: moment(res[0].date),
 					newsModify: nextProps.name
 				}, () => {
+					console.log(this.state.actuDate);
 					console.log("ẗest new actu");
 				})
 			})
@@ -116,7 +117,7 @@ export default class Feedback extends Component {
 	deleteActu() {
 		request({
 			url: '/news/'+this.state.newsModify,
-			method: 'PUT'
+			method: 'DELETE'
 		}, this.refs.notif).then((res) => {
 			this.setState({
 				newsModify: null
@@ -125,7 +126,6 @@ export default class Feedback extends Component {
 	}
 
 	render() {
-
 		return (
 			<div>
 			<NotificationSystem ref="notif" />
