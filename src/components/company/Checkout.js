@@ -105,7 +105,8 @@ export default class CompanyCheckout extends Component {
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
 			data : {
-				state: 1
+				state: 1,
+				present_end: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
 			}
 		}, this.refs.notif).then((res) => {
 			this.setState({ redirect : true })
@@ -150,6 +151,7 @@ export default class CompanyCheckout extends Component {
 
 	async saveDaddress() {
 		return new Promise(resolve => {
+			console.log("saveDaddress");
 			if (!this.state.dsexe_m || !this.state.daddress3 || !this.state.dcity || !this.state.dzip) {
 				this.refs.notif.addNotification({
 					message : "Merci de renseigner tous les champs de votre adresse de livraison",
