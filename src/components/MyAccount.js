@@ -7,7 +7,7 @@ export default class MyAccount extends Component {
 	render () {
 		return (
 			<div>
-				{(isLoggedIn(true))?null:<Redirect to="/" />}
+				{(isLoggedIn(true))?null:<Redirect to="/login" />}
 				{(getUserType() === '1')?<Redirect to="/individual/manage" />:''}
 				{(getUserType() === '2')?<Redirect to="/company/manage" />:''}
 				{(getUserType() === '3')?<Redirect to="/contributor/manage" />:''}

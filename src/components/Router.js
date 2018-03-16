@@ -82,6 +82,8 @@ import Present from './Present';
 import Confirm from './Confirm';
 import NotFound from './utils/NotFound';
 
+import Pay from './Pay';
+
 //admin
 
 import AdminManage from './admin/Manage';
@@ -159,6 +161,7 @@ export default class MyRouter extends Component {
 								<Route exact path="/confirm/:token" component={Confirm} />
 								<Route exact path="/logout" component={Logout} />
 								<Route exact path="/account" component={MyAccount} />
+								<Route exact path="/pay" component={Pay} />
 								<Route component={NotFound} />
 							</Switch>
 						</div>
