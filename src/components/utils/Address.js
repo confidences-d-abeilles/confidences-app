@@ -14,16 +14,17 @@ export default class Address extends Component {
       this.state = {
         fnct: props.fnct,
         id: '',
-        sexe_m: '',
-        address1: '',
-        address2: '',
+        sexe_m: this.props.user ? this.props.user.sexe_m?'1':'0':'',
+        address1: this.props.user ? this.props.user.name+' '+this.props.user.firstname:'',
+        address2: this.props.user ? this.props.user.company_name:'',
         address3: '',
         address4: '',
         zip: '',
         city: '',
-        country: ''
+        country: 'France'
       }
       console.log(props.fnct);
+      console.log(props.user);
   }
 
   componentDidMount() {
@@ -112,10 +113,7 @@ export default class Address extends Component {
      <div>
       <NotificationSystem ref="notif" />
          <form onSubmit={this.props.fnct?this.updateAddress.bind(this):this.createAddress.bind(this)}>
-           <div className="form-group">
-             <label>Nom de l'entreprise</label>
-             <input type="text" name="address2" onChange={handleChange.bind(this)} value={this.state.address2} className="form-control form-control-sm" placeholder="Nom de l'entreprise"/>
-           </div>
+          <h2 className="text-center my-4">{this.props.title}</h2>
            <div className="form-group d-flex">
              <label className="radio-inline form-check-label">
                <input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.sexe_m === '1'}/>
@@ -129,6 +127,10 @@ export default class Address extends Component {
            <div className="form-group">
              <label>Nom et prénom</label>
              <input type="text" name="address1" onChange={handleChange.bind(this)} value={this.state.address1} className="form-control form-control-sm" placeholder="Nom et prénom"/>
+           </div>
+           <div className="form-group">
+             <label>Nom de l'entreprise</label>
+             <input type="text" name="address2" onChange={handleChange.bind(this)} value={this.state.address2} className="form-control form-control-sm" placeholder="Nom de l'entreprise"/>
            </div>
            <div className="form-group">
              <label>Adresse ligne 1</label>
@@ -153,8 +155,10 @@ export default class Address extends Component {
              <label>Pays / État</label>
              <input type="text" name="country" onChange={handleChange.bind(this)} value={this.state.country} className="form-control form-control-sm" placeholder="Pays / Etat *"/>
            </div>
-
-             <button className="btn btn-primary">Enregistrer</button>
+           <p>
+            {this.props.textDefault}
+           </p>
+             <button className="btn btn-primary">{this.props.textButton}</button>
 
          </form>
      </div>
