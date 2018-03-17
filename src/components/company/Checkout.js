@@ -55,9 +55,28 @@ export default class CompanyCheckout extends Component {
 				url: '/bill/bundle/'+res.bundles[0].id,
 				method: 'get'
 			}, this.refs.notif).then((res) => {
-				this.setState({
-					bill_number: res.number
-				});
+				// this.setState({
+				// 	bill_number: res.number
+				// });
+				request({
+					url: '/address/type',
+					method: 'POST',
+					data: {
+						type: 1
+					}
+				}, this.refs.notif).then((res) => {
+					this.setState({
+						bsexe_m : res[0].sexe_m?'1':'0',
+						baddress1 : res[0].line1,
+						baddress2 : res[0].line2,
+						baddress3 : res[0].line3,
+						baddress4 : res[0].line4,
+						bcity: res[0].city,
+						bzip: res[0].zipcode,
+						bcountry: res[0].country
+					})
+					console.log(res);
+				})
 			});
 			res.addresses.map((address) => {
 				if (address.type == 1) {
