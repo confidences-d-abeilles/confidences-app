@@ -25,7 +25,16 @@ export default class CompanyAddress extends Component {
 			country: 'France',
 			is_request: false
 		}
+		this.addAddress = this.addAddress.bind(this);
 		console.log("coucou constructor");
+	}
+
+	is_addAddress(e) {
+		// renvoyer un obj pour setstate
+		// this.state = {
+		// 	is_addAddress: true
+		// }
+		console.log("ca functionne ahahaha");
 	}
 
 	componentDidMount() {
@@ -46,30 +55,14 @@ export default class CompanyAddress extends Component {
 		});
 	}
 
-	addAddress(e) {
-		e.preventDefault();
-		if (!this.state.sexe_m || !this.state.address3 || !this.state.city || !this.state.zipcode) {
-			this.refs.notif.addNotification({
-				message : "Merci de renseigner tous les champs",
-				level : 'warning'
-			})
-		} else {
-			request({
-				url : '/address',
-				method: 'post',
-				data : {
-					sexe_m : (this.state.sexe_m === '0')?false:true,
-					line1 : this.state.address1,
-					line2 : this.state.address2,
-					line3 : this.state.address3,
-					line4 : this.state.address4,
-					city : this.state.city,
-					zipcode : this.state.zipcode,
-					country: this.state.country,
-					type : 1
-				}
-			}, this.refs.notif)
-			.then((res) => {
+	addAddress(_objState) {
+		console.log("address");
+		console.log(_objState);
+		console.log(this.state.sexe_m);
+		console.log(this.state.address3);
+		console.log(this.state.city);
+		console.log(this.state.zip);
+		this.setState(_objState);
 				request({
 					url : '/address',
 					method: 'post',
@@ -80,7 +73,7 @@ export default class CompanyAddress extends Component {
 						line3 : this.state.address3,
 						line4 : this.state.address4,
 						city : this.state.city,
-						zipcode : this.state.zipcode,
+						zipcode : this.state.zip,
 						country: this.state.country,
 						type : 2
 					}
@@ -90,8 +83,6 @@ export default class CompanyAddress extends Component {
 						redirect: true
 					});
 				})
-			});
-		}
 	}
 
     render () {
@@ -109,7 +100,7 @@ export default class CompanyAddress extends Component {
 				</div>
 				<div className="row justify-content-center">
 					<div className="col-lg-6 col-md-10 col-sm-12">
-							{this.state.is_request ? <Address fnct={false} type={1} user={this.state.user} textDefault={"'Remarque : merci de renseigner l’adresse de facturation de votre <br/>société. Si l’adresse de livraison n’est pas la même vous <br/>aurez toujours la possibilité de la modifier par la suite <br/>.'"} title={'Adresse de facturation'} textButton={'Continuer'}/> : null}
+							{this.state.is_request ? <Address fnct={false} type={1} user={this.state.user} textDefault={'Remarque : merci de renseigner l’adresse de facturation de votre société. Si l’adresse de livraison n’est pas la même vous aurez toujours la possibilité de la modifier par la suite.'} title={'Adresse de facturation'} textButton={'Continuer'} redirect={'/company/wish'} functionDefault={this.addAddress}/> : null}
 					</div>
 				</div>
 				{(this.state.redirect)?
