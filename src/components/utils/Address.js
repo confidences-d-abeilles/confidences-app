@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom';
 import { handleChange, handleTick } from '../../services/FormService'
 import { Link } from 'react-router-dom'
 import NotificationSystem from 'react-notification-system'
@@ -21,7 +22,8 @@ export default class Address extends Component {
         address4: '',
         zip: '',
         city: '',
-        country: 'France'
+        country: 'France',
+        redirect: false
       }
       console.log(props.fnct);
       console.log(props.user);
@@ -104,6 +106,19 @@ export default class Address extends Component {
             type : this.props.type
           }
         }, this.refs.notif).then((res) => {
+          let objState = {};
+          objState['address1'] = this.state.address1;
+          objState['address2'] = this.state.address2;
+          objState['address3'] = this.state.address3;
+          objState['address4'] = this.state.address4;
+          objState['city'] = this.state.city;
+          objState['zip'] = this.state.zip;
+          objState['country'] = this.state.country;
+          objState['type'] = this.state.type;
+          this.props.functionDefault(objState);
+          this.state = {
+            redirect: true
+          }
         });
       }
   }
@@ -161,6 +176,9 @@ export default class Address extends Component {
              <button className="btn btn-primary">{this.props.textButton}</button>
 
          </form>
+         {(this.state.redirect)?
+ 					<Redirect to={this.props.redirect} />
+ 				:null}
      </div>
    )
  }
