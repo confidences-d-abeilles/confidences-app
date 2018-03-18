@@ -29,13 +29,13 @@ export default class Feedback extends Component {
 			bundle: null,
 			visible: false,
 			english: false,
-			bundle_date: moment(),
+			bundle_date: new Date(),
 			bundle_state: 0,
 			bundle: [],
 			newsTake: 0,
 			newsActu: '',
 			newsTitle: '',
-			actuDate: '',
+			actuDate: moment(new Date()),
 			actu: ''
 		}
 	}
@@ -90,6 +90,7 @@ export default class Feedback extends Component {
 		e.preventDefault()
 		console.log('createActu');
 		const data = new FormData();
+		console.log(this.state.actuDate);
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
 		data.append('date', this.state.actuDate);
@@ -112,6 +113,7 @@ export default class Feedback extends Component {
 		this.setState({
 			actuDate: date
 		});
+		console.log(date);
 	}
 
 	deleteActu() {
