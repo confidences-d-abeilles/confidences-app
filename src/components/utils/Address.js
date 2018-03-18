@@ -16,18 +16,26 @@ export default class Address extends Component {
         fnct: props.fnct,
         id: '',
         sexe_m: this.props.user ? this.props.user.sexe_m?'1':'0':'',
-        address1: this.props.user ? this.props.user.name+' '+this.props.user.firstname:'',
-        address2: this.props.user ? this.props.user.company_name:'',
+        // address1: this.props.user ? this.props.user.name+' '+this.props.user.firstname:'',
+        // address2: this.props.user ? this.props.user.company_name:'',
+        address1: '',
+        address2: '',
         address3: '',
         address4: '',
         zip: '',
         city: '',
         country: 'France',
-        redirect: false
+        redirect: false,
+        is_infos: false
       }
       console.log(props.fnct);
       console.log(props.user);
   }
+
+  // componentWillReceiveProps(nextProps){
+  //   super(nextProps);
+  //
+  // }
 
   componentDidMount() {
     if (this.props.fnct){
@@ -47,11 +55,14 @@ export default class Address extends Component {
   						address4: res[0].line4,
   						zip: res[0].zipcode,
   						city: res[0].city,
-  						country: res[0].country
+  						country: res[0].country,
+              is_infos: true
   					}
             console.log('start');
             console.log(res[0].line1);
-            console.log(this.props.fnct);
+            console.log(this.state.is_infos);
+            console.log(this.state.address2);
+            console.log(this.state.zip);
   			});
     }
   }
@@ -174,10 +185,10 @@ export default class Address extends Component {
             {this.props.textDefault}
            </p>
              <button className="btn btn-primary">{this.props.textButton}</button>
-
          </form>
-         {(this.state.redirect)?
- 					<Redirect to={this.props.redirect} />
+
+       {(this.state.redirect)?
+ 					   <Redirect to={this.props.redirect} />
  				:null}
      </div>
    )
