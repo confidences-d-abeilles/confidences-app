@@ -13,9 +13,9 @@ export default class Product extends Component {
 
 	updateQty(e) {
 		this.setState({
-			qty: e.target.value
+			qty: (e.target.value)?Math.abs(e.target.value):''
 		});
-		this.product.qty = e.target.value;
+		this.product.qty = (e.target.value)?Math.abs(e.target.value):'';
 		this.props.update(this.product);
 	}
 
@@ -23,7 +23,7 @@ export default class Product extends Component {
 		return (
 			<div className="form-group">
 				<label>{this.product.designation} ({this.product.price} €) : </label>
-				<input type="number" onChange={this.updateQty.bind(this)} name="qty" value={this.state.qty} className="form-control" />
+				<input type="number" min="0" onChange={this.updateQty.bind(this)} name="qty" value={this.state.qty} className="form-control" />
 			</div>
 		)
 	}

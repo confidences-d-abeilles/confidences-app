@@ -15,6 +15,7 @@ export default class Create extends Component {
 			type: '',
 			code: '',
 			amount: '',
+			pots: '0',
 			min: '0',
 			max: '0',
 			designation: '',
@@ -49,6 +50,7 @@ export default class Create extends Component {
 				code: this.state.code,
 				expire: this.state.expire,
 				amount: this.state.amount,
+				pots: this.state.pots,
 				min: this.state.min,
 				max: this.state.max
 			}
@@ -59,6 +61,7 @@ export default class Create extends Component {
 				type: '',
 				code: '',
 				amount: '',
+				pots: '',
 				min: '0',
 				max: '0',
 				designation: '',
@@ -106,6 +109,11 @@ export default class Create extends Component {
 				<div className="form-group">
 					<input type="number" name="amount" value={this.state.amount} onChange={handleChange.bind(this)}
 						placeholder="Montant de la promo en €" className="form-control" />
+				</div>
+				<div className="form-group">
+					<label>Pots de miel à retirer</label> 
+					<input type="number" name="pots" value={this.state.pots} onChange={handleChange.bind(this)}
+						placeholder="Pots de miels a retirer" className="form-control" />
 				</div>
 				<div className="form-group">
 					Date d'expiration

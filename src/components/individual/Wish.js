@@ -52,8 +52,8 @@ export default class IndividualWish extends Component {
 		}
 	}
 
-    render () {
-        return (
+	render () {
+			return (
 			<div className="container py-4">
 				<Meta title="Choix du parrainage"/>
 				<NotificationSystem ref="notif" />
@@ -89,7 +89,7 @@ export default class IndividualWish extends Component {
 						</p>
 						<ul>
 							<li>Ce sont {this.state.bees} abeilles de plus qui viendront renforcer la population du rucher et participer à la préservation de la biodiversité.</li><br/>
-							<li>Je choisie la future étiquette de mes pots de miel et je la personnalise.</li><br/>
+							<li>Je choisis la future étiquette de mes pots de miel et je la personnalise.</li><br/>
 							<li>Je recois  {this.state.bees * 8 / 10000} pots de miel (250g) produits par mes abeilles.</li>
 						</ul>
 						<p className="text-center">
