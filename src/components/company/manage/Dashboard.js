@@ -174,7 +174,7 @@ export default class CompanyManageDashboard extends Component {
 							</div>:
 							<div>
 
-							{this.state.user?
+							{(this.state.user && this.state.user.bundles[0])?
 								<p>
 									Notre offre: {this.state.user.bundles[0].hives} ruche{this.state.user.bundles[0].hives > 1?'s':''}<br />
 									Date de début: {moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}<br />
