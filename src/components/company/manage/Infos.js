@@ -169,7 +169,7 @@ export default class CompanyManageInfos extends Component {
 							Mes informations
 						</h2>
 						<form onSubmit={this.uploadLogo.bind(this)}>
-							<FileUpload identifier="HQlogo" label="Votre logo en haute qualité :" accept="image/*"/>
+							<FileUpload identifier="HQlogo" label="Votre logo en haute qualité : Merci d'uploader une image (JPG ou PNG) de bonne qualité, carré ou presque. Utilisez le format PNG si votre logo contient des zones ou un fond transparent." accept="image/*"/>
 							<div className="form-group text-center">
 								<button className="btn btn-secondary">Envoyer le logo</button>
 							</div>

@@ -7,6 +7,7 @@ import ReactQuill from 'react-quill';
 import ReactGA from 'react-ga';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
+import Confirm from './Confirm';
 const config = require('../../config.js');
 
 export default class Feedback extends Component {
@@ -28,13 +29,13 @@ export default class Feedback extends Component {
 			bundle: null,
 			visible: false,
 			english: false,
-			bundle_date: moment(),
+			bundle_date: new Date(),
 			bundle_state: 0,
 			bundle: [],
 			newsTake: 0,
 			newsActu: '',
 			newsTitle: '',
-			actuDate: '',
+			actuDate: moment(new Date()),
 			actu: ''
 		}
 	}
@@ -56,6 +57,7 @@ export default class Feedback extends Component {
 					actuDate: moment(res[0].date),
 					newsModify: nextProps.name
 				}, () => {
+					console.log(this.state.actuDate);
 					console.log("ẗest new actu");
 				})
 			})
@@ -88,6 +90,7 @@ export default class Feedback extends Component {
 		e.preventDefault()
 		console.log('createActu');
 		const data = new FormData();
+		console.log(this.state.actuDate);
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
 		data.append('date', this.state.actuDate);
@@ -110,10 +113,21 @@ export default class Feedback extends Component {
 		this.setState({
 			actuDate: date
 		});
+		console.log(date);
+	}
+
+	deleteActu() {
+		request({
+			url: '/news/'+this.state.newsModify,
+			method: 'DELETE'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				newsModify: null
+			})
+		})
 	}
 
 	render() {
-
 		return (
 			<div>
 			<NotificationSystem ref="notif" />
@@ -155,6 +169,7 @@ export default class Feedback extends Component {
 					</label>
 				</div>
 				<button className="btn btn-primary">Soumettre</button>
+				{this.state.newsModify ? <Confirm action={this.deleteActu.bind(this)} text="Supprimer cette news" className="m-2"/>: null}
 			</form>
 			</div>
 		)

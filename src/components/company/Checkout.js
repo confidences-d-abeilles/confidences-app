@@ -32,7 +32,8 @@ export default class CompanyCheckout extends Component {
 			saved: false,
 			dash: false,
 			feedback: '',
-			present_date: moment()
+			present_date: moment(),
+			wish: false
 		}
 	}
 
@@ -104,7 +105,8 @@ export default class CompanyCheckout extends Component {
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
 			data : {
-				state: 1
+				state: 1,
+				present_end: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
 			}
 		}, this.refs.notif).then((res) => {
 			this.setState({ redirect : true })
@@ -149,6 +151,7 @@ export default class CompanyCheckout extends Component {
 
 	async saveDaddress() {
 		return new Promise(resolve => {
+			console.log("saveDaddress");
 			if (!this.state.dsexe_m || !this.state.daddress3 || !this.state.dcity || !this.state.dzip) {
 				this.refs.notif.addNotification({
 					message : "Merci de renseigner tous les champs de votre adresse de livraison",
@@ -188,7 +191,7 @@ export default class CompanyCheckout extends Component {
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'delete'
 		}, this.refs.notif). then((res) => {
-			this.setState({ redirect : true });
+			this.setState({ wish : true });
 		})
 	}
 
@@ -219,6 +222,7 @@ export default class CompanyCheckout extends Component {
 				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/company/end" />:null}
 				{(this.state.dash)?<Redirect to="/company/manage" />:null}
+				{(this.state.wish)?<Redirect to="/company/wish" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">

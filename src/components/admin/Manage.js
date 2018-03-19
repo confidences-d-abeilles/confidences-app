@@ -4,6 +4,7 @@ import AdminManageFaq from './manage/Faq'
 import AdminManageMails from './manage/Mails'
 import AdminManageHives from './manage/Hives'
 import AdminManageBundles from './manage/Bundles'
+import AdminManageBundle from './manage/bundle/List'
 import AdminManageServer from './manage/Server'
 import Products from './manage/Products'
 import Coupons from './manage/Coupons'
@@ -49,6 +50,7 @@ export default class CompanyManage extends Component {
 								<Link to="/admin/manage/users" className="list-group-item">Gerer les utilisateurs</Link>
 								<Link to="/admin/manage/hives" className="list-group-item">Gerer les ruches</Link>
 								<Link to="/admin/manage/bundles" className="list-group-item">Gerer les parrainages</Link>
+								<Link to="/admin/manage/bundle" className="list-group-item">Gerer les parrainages</Link>
 								<Link to="/admin/manage/mails" className="list-group-item">Gerer les envois</Link>
 								<li className="list-group-item active">Gestion du contenu</li>
 								<Link to="/admin/manage/products" className="list-group-item">Gerer les produits</Link>
@@ -70,6 +72,7 @@ export default class CompanyManage extends Component {
 									<Route exact path="/admin/manage/mails" component={AdminManageMails} />
 									<Route exact path="/admin/manage/hives" component={AdminManageHives} />
 									<Route exact path="/admin/manage/bundles" component={AdminManageBundles} />
+									<Route exact path="/admin/manage/bundle" component={AdminManageBundle} />
 									<Route exact path="/admin/manage/faq" component={AdminManageFaq} />
 									<Route exact path="/admin/manage/products" component={Products} />
 									<Route exact path="/admin/manage/coupons" component={Coupons} />
