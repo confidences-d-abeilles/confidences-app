@@ -11,6 +11,7 @@ import ReactGA from 'react-ga';
 import Meta from '../../utils/Meta'
 import FontAwesome from 'react-fontawesome'
 import FileUpload from '../../utils/FileUpload'
+import Address from '../../utils/Address'
 
 export default class CompanyManageInfos extends Component {
 
@@ -236,52 +237,8 @@ export default class CompanyManageInfos extends Component {
 									{this.state.bcountry}<br /><br />
 								<button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ editBaddress: true })}}><FontAwesome name="pencil" />&nbsp;Editer ces informations</button>
 								</div>
-							:<form onSubmit={this.updateBaddress.bind(this)}>
-								<div className="form-group">
-									<label>Nom de l'entreprise</label>
-									<input type="text" name="baddress2" onChange={handleChange.bind(this)} value={this.state.baddress2} className="form-control form-control-sm" placeholder="Nom de l'entreprise"/>
-								</div>
-								<div className="form-group d-flex">
-									<label className="radio-inline form-check-label">
-										<input type="radio" className="form-check-input" name="bsexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.bsexe_m === '1'}/>
-										&nbsp;M
-									</label>
-									<label className="radio-inline form-check-label ml-4">
-										<input type="radio" className="form-check-input" name="bsexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.bsexe_m === '0'}/>
-										&nbsp;Mme
-									</label>
-								</div>
-								<div className="form-group">
-									<label>Nom et prénom</label>
-									<input type="text" name="baddress1" onChange={handleChange.bind(this)} value={this.state.baddress1} className="form-control form-control-sm" placeholder="Nom et prénom"/>
-								</div>
-								<div className="form-group">
-									<label>Adresse ligne 1</label>
-									<input type="text" name="baddress3" onChange={handleChange.bind(this)} value={this.state.baddress3} className="form-control form-control-sm" placeholder="Adresse ligne 1"/>
-								</div>
-								<div className="form-group">
-									<label>Adresse ligne 2</label>
-									<input type="text" name="baddress4" onChange={handleChange.bind(this)} value={this.state.baddress4} className="form-control form-control-sm" placeholder="Adresse ligne 2"/>
-								</div>
-								<div className="form-group row">
-									<div className="col-12">
-										<label>Code postal et ville</label>
-									</div>
-									<div className="col-4">
-										<input type="text" name="bzip" onChange={handleChange.bind(this)} value={this.state.bzip} className="form-control form-control-sm" placeholder="Code postal"/>
-									</div>
-									<div className="col-8">
-										<input type="text" name="bcity" onChange={handleChange.bind(this)} value={this.state.bcity} className="form-control form-control-sm" placeholder="Ville *"/>
-									</div>
-								</div>
-								<div className="form-group">
-									<label>Pays / État</label>
-									<input type="text" name="bcountry" onChange={handleChange.bind(this)} value={this.state.bcountry} className="form-control form-control-sm" placeholder="Pays / Etat *"/>
-								</div>
-								<div className="form-group text-center">
-									<button className="btn btn-primary">Enregistrer</button>
-								</div>
-							</form>
+							:
+							<Address fnct={true} type={1}/>
 						}
 						</div>
 
