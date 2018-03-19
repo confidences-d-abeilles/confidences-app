@@ -26,16 +26,16 @@ export default class Address extends Component {
         city: '',
         country: 'France',
         redirect: false,
+        phone: this.props.user ? this.props.user.phone: '',
         is_infos: false
       }
       console.log(props.fnct);
       console.log(props.user);
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   super(nextProps);
-  //
-  // }
+  componentWillReceiveProps(nextProps){
+    console.log('nextProps');
+  }
 
   componentDidMount() {
     if (this.props.fnct){
@@ -126,7 +126,9 @@ export default class Address extends Component {
           objState['zip'] = this.state.zip;
           objState['country'] = this.state.country;
           objState['type'] = this.state.type;
-          this.props.functionDefault(objState);
+          objState['phone'] = this.state.phone;
+          this.props.functionDefault(objState);// rajouter une variable par default pour
+          // dechecker une fois save
           this.state = {
             redirect: true
           }
