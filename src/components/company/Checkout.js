@@ -284,9 +284,9 @@ export default class CompanyCheckout extends Component {
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="my-4">Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
-								{this.state.different && !this.state.saved &&
-									<Address fnct={true} type={2} user={this.state.user}/>
-
+								{this.state.different && !this.state.saved ?
+									<Address fnct={true} type={2} user={this.state.user} textButton={'Sauvegarder'}/>
+									:null
 								}
 								{this.state.saved &&
 									<div>
