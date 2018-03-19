@@ -23,6 +23,7 @@ export default class CompanyWish extends Component {
 			codesOk: [],
 			optionSelect: "",
 			price: "0",
+			pots: "80",
 			code: '',
 			codeResult: '',
 			redirect: false
@@ -75,8 +76,12 @@ export default class CompanyWish extends Component {
 		console.log(this.state.codesOk);
 		this.setState({ price : '0' }, () => {
 			this.state.products.map((e) => {
+				const qty = (e.qty)?parseInt(e.qty):0;
 				this.setState((prev) => {
-					return { price: parseInt(prev.price) + parseInt(e.price) * parseInt(e.qty) }
+					if (e.type === 10) {
+						return { price: parseInt(prev.price) + parseInt(e.price) * qty, pots : 80 * qty }
+					}
+					return { price: parseInt(prev.price) + parseInt(e.price) * qty}
 				})
 			});
 			this.state.couponsOk.map((e) => {
@@ -86,7 +91,7 @@ export default class CompanyWish extends Component {
 			})
 			this.state.optionsOk.map((e) => {
 				this.setState((prev) => {
-					return { price: parseInt(prev.price) - parseInt(e.amount) * parseInt(e.qty) }
+					return { price: parseInt(prev.price) - parseInt(e.amount) * parseInt(e.qty), pots: parseInt(prev.pots) - parseInt(e.pots) * parseInt(e.qty) }
 				})
 			})
 			this.state.codesOk.map((e) => {
@@ -246,12 +251,12 @@ export default class CompanyWish extends Component {
 						{this.state.products.map((e) => {
 							if (e.type === 10) {
 								return (
-									<MainProduct product={e} key={e.id} update={this.updateProducts.bind(this)} />
+									<MainProduct product={e} key={e.id} update={this.updateProducts.bind(this)} pots={this.state.pots} />
 								)
 							}
 						})}
-						<h3 className="my-2">Produits supplémentaires</h3>
-						<p>Séléctionnez la quantité pour chacun des produits suivants que vous souhaiteriez recevoir en plus de la contrepartie de votre parrainage</p>
+						<h3 className="my-2"><small>Produits supplémentaires</small></h3>
+						<p>Merci de sélectionner le nombre de produits à ajouter à votre offre.</p>
 						{this.state.products.map((e) => {
 							if (e.type === 11) {
 								return (
@@ -261,7 +266,7 @@ export default class CompanyWish extends Component {
 						})}
 					</div>
 					<div className="col-lg-6 pt-5">
-						<h3>Options</h3>
+						<h3><small>Options</small></h3>
 						<form>
 							<div className="form-group">
 								<input type="radio" id="noOption" name="optionSelect" onChange={this.selectOption.bind(this)} value="" checked={this.state.optionSelect === ""} />&nbsp;
@@ -276,22 +281,22 @@ export default class CompanyWish extends Component {
 							})}
 						</div>
 						</form>
-						<h3>Code promo</h3>
+						<h3><small>Code promo</small></h3>
 						{this.state.codeResult}
 						<form className="form-inline my-2" onSubmit={this.handleCode.bind(this)}>
 							<input type="text" className="form-control" name="code" onChange={handleChange.bind(this)} value={this.state.code} placeholder="Entrez un code promo..." />
 							<button className="btn btn-primary ml-2">Vérifier le code</button>
 						</form>
-						<h3>Réductions</h3>
+						<h3><small>Réductions</small></h3>
 							{this.state.couponsOk.length < 1 &&
-								<p>Aucune réduction immédiate n'est applicable pour votre commande</p>}
+								<p>Aucune réduction immédiate n'est applicable</p>}
 									{this.state.couponsOk.map((e) => {
 										return (
 											<span key={e.id} >{e.designation} ( { - e.amount} € / ruche )</span>
 										)
 									})}
 							{this.state.codesOk.length < 1 &&
-								<p>Aucun code promotionnel n'a été appliqué pour votre commande</p>}
+								<p>Aucun code promotionnel n'a été appliqué</p>}
 									{this.state.codesOk.map((e) => {
 										return (
 											<span key={e.id} >{e.designation} ( { - e.amount} € / ruche )</span>
