@@ -22,6 +22,22 @@ export default class RequestLabel extends Component {
       }
   }
 
+  componentDidMount() {
+		request({
+			url: '/user/me',
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				name: res.name,
+        firstname: res.firstname,
+				society: res.company_name,
+				email: res.email
+			}, () => {
+				console.log(res);
+			})
+		});
+	}
+
   sendMail(e) {
     e.preventDefault();
     const data = new FormData();
