@@ -22,25 +22,29 @@ export default class Address extends Component {
         address2: '',
         address3: '',
         address4: '',
+        phone: '062514', // recupere le telephone chew le user la premiere fois
         zip: '',
         city: '',
-        country: 'France',
+        country: '',
         redirect: false,
         phone: this.props.user ? this.props.user.phone: '',
         is_infos: false
       }
       console.log(props.fnct);
       console.log(props.user);
+      console.log(props);
   }
 
   componentWillReceiveProps(nextProps){
     console.log('nextProps');
+    console.log(this.props.functionDefault);
   }
 
   componentDidMount() {
     if (this.props.fnct){
       const data = new FormData();
       data.append('type', this.props.type);
+      console.log('ceci est un update');
       request({
   			url : '/address/type',
   			method : 'POST',
@@ -53,6 +57,7 @@ export default class Address extends Component {
   						address2: res[0].line2,
   						address3: res[0].line3,
   						address4: res[0].line4,
+              phone: res[0].phone,
   						zip: res[0].zipcode,
   						city: res[0].city,
   						country: res[0].country,
@@ -63,6 +68,7 @@ export default class Address extends Component {
             console.log(this.state.is_infos);
             console.log(this.state.address2);
             console.log(this.state.zip);
+            console.log(res[0]);
   			});
     }
   }
@@ -85,7 +91,9 @@ export default class Address extends Component {
       method: 'PUT',
       data: data
     }, this.refs.notif).then((res) => {
-
+       let objState = {};
+       objState[this.props.var] = false;
+       this.props.functionDefault(objState);
 		})
 
   }
@@ -111,6 +119,7 @@ export default class Address extends Component {
             line2 : this.state.address2,
             line3 : this.state.address3,
             line4 : this.state.address4,
+            phone : this.state.phone,
             city : this.state.city,
             zipcode : this.state.zip,
             country: this.state.country,
@@ -167,6 +176,10 @@ export default class Address extends Component {
            <div className="form-group">
              <label>Adresse ligne 2</label>
              <input type="text" name="address4" onChange={handleChange.bind(this)} value={this.state.address4} className="form-control form-control-sm" placeholder="Adresse ligne 2"/>
+           </div>
+           <div className="form-group">
+             <label>numero de telephone</label>
+             <input type="text" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="numero de telephone"/>
            </div>
            <div className="form-group row">
              <div className="col-12">
