@@ -8,6 +8,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import Confirm from '../../utils/Confirm';
 import ReactGA from 'react-ga';
+import ReactStars from 'react-stars';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export default class AdminManageHives extends Component {
@@ -21,7 +22,8 @@ export default class AdminManageHives extends Component {
 			selected: '',
 			actu: '',
 			actuTitle: '',
-			actuDate: ''
+			actuDate: '',
+			ratio: 0
 		}
 	}
 
@@ -164,6 +166,20 @@ export default class AdminManageHives extends Component {
 		})
 	}
 
+	ratingChanged(e){
+	  console.log(e);
+		request({
+			url: '/hive/ratio',
+			method: 'POST',
+			data : {
+				id: this.state.selected.id,
+				ratio: e
+			}
+		}, this.refs.notif).then((res) => {
+			console.log('ratio update');
+		})
+	}
+
 	render () {
 		return (
 			<div>
@@ -190,7 +206,10 @@ export default class AdminManageHives extends Component {
 											<tr className={this.state.selected.id === hive.id && 'table-info'}>
 												<td>{hive.name}</td><td>{hive.occupation} %</td>
 												<td>
-													<button className="btn btn-link btn-sm" onClick={() => { this.setState({ selected : hive })}} >Gérer</button>
+													<button className="btn btn-link btn-sm" onClick={() => {
+														console.log(hive);
+														console.log(hive.ratio);
+														this.setState({ selected : hive, ratio : hive.ratio })}} >Gérer</button>
 												</td>
 											</tr>
 										)
@@ -201,7 +220,15 @@ export default class AdminManageHives extends Component {
 						</div>
 					</div>
 					{(this.state.selected)?
+
 					<div className="col-lg-8">
+						<h3 className="my-4">Notez cette ruche</h3>
+							<ReactStars
+								count={5}
+								value={this.state.ratio}
+								onChange={this.ratingChanged.bind(this)}
+  							size={24}
+							  color2={'#ffd700'} />
 						<h3 className="my-4">Créer une news</h3>
 							<form onSubmit={this.createActu.bind(this)}>
 								<div className="form-group">
