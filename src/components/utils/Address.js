@@ -22,7 +22,7 @@ export default class Address extends Component {
         address2: '',
         address3: '',
         address4: '',
-        phone: '062514', // recupere le telephone chew le user la premiere fois
+
         zip: '',
         city: '',
         country: '',
@@ -30,6 +30,7 @@ export default class Address extends Component {
         phone: this.props.user ? this.props.user.phone: '',
         is_infos: false
       }
+      console.log("constructor finis");
       console.log(props.fnct);
       console.log(props.user);
       console.log(props);
@@ -41,10 +42,11 @@ export default class Address extends Component {
   }
 
   componentDidMount() {
+    console.log("debut du componentDidMount");
     if (this.props.fnct){
       const data = new FormData();
       data.append('type', this.props.type);
-      console.log('ceci est un update');
+      console.log('componentDidMount est un update');
       request({
   			url : '/address/type',
   			method : 'POST',
@@ -63,13 +65,9 @@ export default class Address extends Component {
   						country: res[0].country,
               is_infos: true
   					}
-            console.log('start');
-            console.log(res[0].line1);
-            console.log(this.state.is_infos);
-            console.log(this.state.address2);
-            console.log(this.state.zip);
-            console.log(res[0]);
-  			});
+  			}, () => {
+          console.log('componentDidMount finis');
+        });
     }
   }
 
