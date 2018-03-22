@@ -23,7 +23,9 @@ export default class AdminManageHives extends Component {
 			actu: '',
 			actuTitle: '',
 			actuDate: '',
-			ratio: 0
+			ratio: 0,
+			stateFeedback: 0,
+			feedback: ''
 		}
 	}
 
@@ -180,6 +182,30 @@ export default class AdminManageHives extends Component {
 		})
 	}
 
+	saveFeedback(e) {
+		console.log(e);
+		e.preventDefault();
+		request({
+			url: 'hive/feedback',
+			method: 'POST',
+			data : {
+				id: this.state.selected.id,
+				feedback: this.state.feedback
+			}
+		}, this.refs.notif).then((res) => {
+			console.log('feedback update');
+		})
+	}
+
+	updateFeedback(event) {
+		let objState = {};
+		objState[event.target.name] = event.target.value;
+		this.setState(objState);
+		this.setState({
+			stateFeedback: 1
+		})
+	}
+
 	render () {
 		return (
 			<div>
@@ -209,7 +235,7 @@ export default class AdminManageHives extends Component {
 													<button className="btn btn-link btn-sm" onClick={() => {
 														console.log(hive);
 														console.log(hive.ratio);
-														this.setState({ selected : hive, ratio : hive.ratio })}} >Gérer</button>
+														this.setState({ selected : hive, ratio : hive.ratio, feedback: hive.feedback })}} >Gérer</button>
 												</td>
 											</tr>
 										)
@@ -229,6 +255,11 @@ export default class AdminManageHives extends Component {
 								onChange={this.ratingChanged.bind(this)}
   							size={24}
 							  color2={'#ffd700'} />
+						<div className="form-group">
+									<textarea rows="5" className="form-control" name="feedback" onChange={this.updateFeedback.bind(this)} value={this.state.feedback} placeholder="Informations complémentaires concernant la ruche" />
+									{this.state.stateFeedback ? <button onClick={this.saveFeedback.bind(this)} className="btn btn-primary">Sauvegarder</button>
+									:null}
+						</div>
 						<h3 className="my-4">Créer une news</h3>
 							<form onSubmit={this.createActu.bind(this)}>
 								<div className="form-group">
