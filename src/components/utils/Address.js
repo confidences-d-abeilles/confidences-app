@@ -12,13 +12,15 @@ const config = require('../../config.js');
 export default class Address extends Component {
   constructor (props) {
       super(props);
+      console.log("const du compo address");
+      console.log(props.user ? props.user.name+' '+props.user.firstname:'');
       this.state = {
         fnct: props.fnct,
         id: '',
-        sexe_m: this.props.user ? this.props.user.sexe_m?'1':'0':'',
-        // address1: this.props.user ? this.props.user.name+' '+this.props.user.firstname:'',
+        sexe_m: props.user ? props.user.sexe_m?'1':'0':'',
+        address1: props.user ? props.user.name+' '+props.user.firstname:'',
         // address2: this.props.user ? this.props.user.company_name:'',
-        address1: '',
+        // address1: '',
         address2: '',
         address3: '',
         address4: '',
@@ -30,15 +32,37 @@ export default class Address extends Component {
         phone: this.props.user ? this.props.user.phone: '',
         is_infos: false
       }
-      console.log("constructor finis");
-      console.log(props.fnct);
-      console.log(props.user);
-      console.log(props);
+      console.log(this.state.address1);
   }
 
   componentWillReceiveProps(nextProps){
     console.log('nextProps');
     console.log(this.props.functionDefault);
+    request({
+      url : '/address/type',
+      method : 'POST',
+      data: {
+        type: this.props.type
+      }
+    }, this.refs.notif).then((res) => {
+      console.log(res);
+          // this.state = {
+          //   id: res[0].id,
+          //   sexe_m: res[0].sexe_m?'1':'0',
+          //   address1: res[0].line1,
+          //   address2: res[0].line2,
+          //   address3: res[0].line3,
+          //   address4: res[0].line4,
+          //   phone: res[0].phone,
+          //   zip: res[0].zipcode,
+          //   city: res[0].city,
+          //   country: res[0].country,
+          //   is_infos: true
+          // }
+      }, () => {
+        this.setState({is_infos:true});
+        console.log('componentDidMount next props finis');
+      });
   }
 
   componentDidMount() {
@@ -66,6 +90,7 @@ export default class Address extends Component {
               is_infos: true
   					}
   			}, () => {
+
           console.log('componentDidMount finis');
         });
     }
@@ -147,6 +172,7 @@ export default class Address extends Component {
    return (
      <div>
       <NotificationSystem ref="notif" />
+
          <form onSubmit={this.props.fnct?this.updateAddress.bind(this):this.createAddress.bind(this)}>
           <h2 className="text-center my-4">{this.props.title}</h2>
            <div className="form-group d-flex">
@@ -163,10 +189,12 @@ export default class Address extends Component {
              <label>Nom et prénom</label>
              <input type="text" name="address1" onChange={handleChange.bind(this)} value={this.state.address1} className="form-control form-control-sm" placeholder="Nom et prénom"/>
            </div>
-           <div className="form-group">
-             <label>Nom de l'entreprise</label>
-             <input type="text" name="address2" onChange={handleChange.bind(this)} value={this.state.address2} className="form-control form-control-sm" placeholder="Nom de l'entreprise"/>
-           </div>
+           {this.state.address2 ?
+             <div className="form-group">
+               <label>Nom de l'entreprise</label>
+               <input type="text" name="address2" onChange={handleChange.bind(this)} value={this.state.address2} className="form-control form-control-sm" placeholder="Nom de l'entreprise"/>
+             </div>
+           :null}
            <div className="form-group">
              <label>Adresse ligne 1</label>
              <input type="text" name="address3" onChange={handleChange.bind(this)} value={this.state.address3} className="form-control form-control-sm" placeholder="Adresse ligne 1"/>
@@ -199,7 +227,6 @@ export default class Address extends Component {
            </p>
              <button className="btn btn-primary">{this.props.textButton}</button>
          </form>
-
        {(this.state.redirect)?
  					   <Redirect to={this.props.redirect} />
  				:null}

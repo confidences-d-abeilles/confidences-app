@@ -56,12 +56,6 @@ export default class CompanyAddress extends Component {
 	}
 
 	addAddress(_objState) {
-		console.log("address");
-		console.log(_objState);
-		console.log(this.state.sexe_m);
-		console.log(this.state.address3);
-		console.log(this.state.city);
-		console.log(this.state.zip);
 		this.setState(_objState);
 				request({
 					url : '/address',
