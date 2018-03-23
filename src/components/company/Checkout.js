@@ -7,6 +7,7 @@ import PayForm from '../utils/PayForm'
 import { handleChange, handleTick } from '../../services/FormService';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta';
+import Address from '../utils/Address';
 import moment from 'moment';
 
 export default class CompanyCheckout extends Component {
@@ -49,7 +50,8 @@ export default class CompanyCheckout extends Component {
 				bundle_id: res.bundles[0].id,
 				duplicate: true,
 				different: res.bundles[0].addr_diff,
-				feedback: res.bundles[0].feedback
+				feedback: res.bundles[0].feedback,
+				user: res
 			});
 			request({
 				url: '/bill/bundle/'+res.bundles[0].id,
@@ -58,6 +60,25 @@ export default class CompanyCheckout extends Component {
 				this.setState({
 					bill_number: res.number
 				});
+				// request({
+				// 	url: '/address/type',
+				// 	method: 'POST',
+				// 	data: {
+				// 		type: 1
+				// 	}
+				// }, this.refs.notif).then((res) => {
+				// 	this.setState({
+				// 		bsexe_m : res[0].sexe_m?'1':'0',
+				// 		baddress1 : res[0].line1,
+				// 		baddress2 : res[0].line2,
+				// 		baddress3 : res[0].line3,
+				// 		baddress4 : res[0].line4,
+				// 		bcity: res[0].city,
+				// 		bzip: res[0].zipcode,
+				// 		bcountry: res[0].country
+				// 	})
+				// 	console.log(res);
+				// })
 			});
 			res.addresses.map((address) => {
 				if (address.type == 1) {
@@ -263,45 +284,9 @@ export default class CompanyCheckout extends Component {
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="my-4">Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
-								{this.state.different && !this.state.saved &&
-									<form className="text-center">
-										<div className="form-group d-flex">
-								      <label className="radio-inline form-check-label">
-								        <input type="radio" className="form-check-input" name="dsexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.dsexe_m === '1'}/>
-								        &nbsp;M *
-								      </label>
-									    <label className="radio-inline form-check-label ml-4">
-								        <input type="radio" className="form-check-input" name="dsexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.dsexe_m === '0'}/>
-								        &nbsp;Mme *
-								      </label>
-										</div>
-										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress1} name="daddress1" placeholder="Nom et prénom" onChange={handleChange.bind(this)} />
-										</div>
-										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress2} name="daddress2" placeholder="Entreprise" onChange={handleChange.bind(this)} />
-										</div>
-										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress3} name="daddress3" placeholder="Ligne 1 *" onChange={handleChange.bind(this)} />
-										</div>
-										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress4} name="daddress4" placeholder="Ligne 2" onChange={handleChange.bind(this)} />
-										</div>
-										<div className="form-group row">
-											<div className="col-4">
-												<input type="text" className="form-control" value={this.state.dzip} name="dzip" placeholder="Code postal *" onChange={handleChange.bind(this)} />
-											</div>
-											<div className="col-8">
-												<input type="text" className="form-control" value={this.state.dcity} name="dcity" placeholder="Ville *" onChange={handleChange.bind(this)} />
-											</div>
-										</div>
-										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.dcountry} name="dcountry" placeholder="Pays *" onChange={handleChange.bind(this)} />
-										</div>
-										<div className="form-group">
-											<input type="tel" className="form-control" value={this.state.dphone} name="dphone" placeholder="Téléphone *" onChange={handleChange.bind(this)} />
-										</div>
-									</form>
+								{this.state.different && !this.state.saved ?
+									<Address fnct={true} type={2} user={this.state.user} textButton={'Sauvegarder'}/>
+									:null
 								}
 								{this.state.saved &&
 									<div>

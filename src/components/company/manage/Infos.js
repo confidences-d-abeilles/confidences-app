@@ -11,6 +11,7 @@ import ReactGA from 'react-ga';
 import Meta from '../../utils/Meta'
 import FontAwesome from 'react-fontawesome'
 import FileUpload from '../../utils/FileUpload'
+import Address from '../../utils/Address'
 
 export default class CompanyManageInfos extends Component {
 
@@ -21,6 +22,7 @@ export default class CompanyManageInfos extends Component {
 			password: '',
 			conf: ''
 		}
+		this.getState = this.getState.bind(this);
 	}
 
 	componentDidMount() {
@@ -81,50 +83,50 @@ export default class CompanyManageInfos extends Component {
 		})
 	}
 
-	updateBaddress(e) {
-		e.preventDefault();
-		request({
-			url: '/address/'+this.state.bid,
-			method: 'put',
-			data : {
-				sexe_m: this.state.bsexe_m === '0' ? 'false':'true',
-				line1: this.state.baddress1,
-				line2: this.state.baddress2,
-				line3: this.state.baddress3,
-				line4: this.state.baddress4,
-				zipcode: this.state.bzip,
-				city: this.state.bcity,
-				country: this.state.bcountry
-			}
-		}, this.refs.notif).then((res) => {
-			this.setState({
-				editBaddress : false
-			})
-		});
-	}
+	// updateBaddress(e) {
+	// 	e.preventDefault();
+	// 	request({
+	// 		url: '/address/'+this.state.bid,
+	// 		method: 'put',
+	// 		data : {
+	// 			sexe_m: this.state.bsexe_m === '0' ? 'false':'true',
+	// 			line1: this.state.baddress1,
+	// 			line2: this.state.baddress2,
+	// 			line3: this.state.baddress3,
+	// 			line4: this.state.baddress4,
+	// 			zipcode: this.state.bzip,
+	// 			city: this.state.bcity,
+	// 			country: this.state.bcountry
+	// 		}
+	// 	}, this.refs.notif).then((res) => {
+	// 		this.setState({
+	// 			editBaddress : false
+	// 		})
+	// 	});
+	// }
 
-	updateDaddress(e) {
-		e.preventDefault();
-		request({
-			url: '/address/'+this.state.did,
-			method: 'put',
-			data : {
-				sexe_m: this.state.dsexe_m === '0' ? 'false':'true',
-				line1: this.state.daddress1,
-				line2: this.state.daddress2,
-				line3: this.state.daddress3,
-				line4: this.state.daddress4,
-				zipcode: this.state.dzip,
-				city: this.state.dcity,
-				country: this.state.dcountry,
-				phone: this.state.dphone
-			}
-		}, this.refs.notif).then((res) => {
-			this.setState({
-				editDaddress : false
-			})
-		});
-	}
+	// updateDaddress(e) {
+	// 	e.preventDefault();
+	// 	request({
+	// 		url: '/address/'+this.state.did,
+	// 		method: 'put',
+	// 		data : {
+	// 			sexe_m: this.state.dsexe_m === '0' ? 'false':'true',
+	// 			line1: this.state.daddress1,
+	// 			line2: this.state.daddress2,
+	// 			line3: this.state.daddress3,
+	// 			line4: this.state.daddress4,
+	// 			zipcode: this.state.dzip,
+	// 			city: this.state.dcity,
+	// 			country: this.state.dcountry,
+	// 			phone: this.state.dphone
+	// 		}
+	// 	}, this.refs.notif).then((res) => {
+	// 		this.setState({
+	// 			editDaddress : false
+	// 		})
+	// 	});
+	// }
 
 	changeInfos(e) {
 		e.preventDefault()
@@ -155,6 +157,11 @@ export default class CompanyManageInfos extends Component {
 				this.props.update();
 			});
 		}
+	}
+
+	getState(_objState) {
+		console.log(_objState.name);
+		this.setState(_objState);
 	}
 
 	render () {
@@ -236,52 +243,8 @@ export default class CompanyManageInfos extends Component {
 									{this.state.bcountry}<br /><br />
 								<button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ editBaddress: true })}}><FontAwesome name="pencil" />&nbsp;Editer ces informations</button>
 								</div>
-							:<form onSubmit={this.updateBaddress.bind(this)}>
-								<div className="form-group">
-									<label>Nom de l'entreprise</label>
-									<input type="text" name="baddress2" onChange={handleChange.bind(this)} value={this.state.baddress2} className="form-control form-control-sm" placeholder="Nom de l'entreprise"/>
-								</div>
-								<div className="form-group d-flex">
-									<label className="radio-inline form-check-label">
-										<input type="radio" className="form-check-input" name="bsexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.bsexe_m === '1'}/>
-										&nbsp;M
-									</label>
-									<label className="radio-inline form-check-label ml-4">
-										<input type="radio" className="form-check-input" name="bsexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.bsexe_m === '0'}/>
-										&nbsp;Mme
-									</label>
-								</div>
-								<div className="form-group">
-									<label>Nom et prénom</label>
-									<input type="text" name="baddress1" onChange={handleChange.bind(this)} value={this.state.baddress1} className="form-control form-control-sm" placeholder="Nom et prénom"/>
-								</div>
-								<div className="form-group">
-									<label>Adresse ligne 1</label>
-									<input type="text" name="baddress3" onChange={handleChange.bind(this)} value={this.state.baddress3} className="form-control form-control-sm" placeholder="Adresse ligne 1"/>
-								</div>
-								<div className="form-group">
-									<label>Adresse ligne 2</label>
-									<input type="text" name="baddress4" onChange={handleChange.bind(this)} value={this.state.baddress4} className="form-control form-control-sm" placeholder="Adresse ligne 2"/>
-								</div>
-								<div className="form-group row">
-									<div className="col-12">
-										<label>Code postal et ville</label>
-									</div>
-									<div className="col-4">
-										<input type="text" name="bzip" onChange={handleChange.bind(this)} value={this.state.bzip} className="form-control form-control-sm" placeholder="Code postal"/>
-									</div>
-									<div className="col-8">
-										<input type="text" name="bcity" onChange={handleChange.bind(this)} value={this.state.bcity} className="form-control form-control-sm" placeholder="Ville *"/>
-									</div>
-								</div>
-								<div className="form-group">
-									<label>Pays / État</label>
-									<input type="text" name="bcountry" onChange={handleChange.bind(this)} value={this.state.bcountry} className="form-control form-control-sm" placeholder="Pays / Etat *"/>
-								</div>
-								<div className="form-group text-center">
-									<button className="btn btn-primary">Enregistrer</button>
-								</div>
-							</form>
+							:
+							<Address fnct={true} type={1} var={'editBaddress'} functionDefault={this.getState} textButton={'Sauvegarder'}/>
 						}
 						</div>
 
@@ -305,53 +268,7 @@ export default class CompanyManageInfos extends Component {
 									</button>
 								</div>
 								:
-								<form onSubmit={this.updateDaddress.bind(this)}>
-								<div className="form-group d-flex">
-									<label className="radio-inline form-check-label">
-										<input type="radio" className="form-check-input" name="dsexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.dsexe_m === '1'}/>
-										&nbsp;M
-									</label>
-									<label className="radio-inline form-check-label ml-4">
-										<input type="radio" className="form-check-input" name="dsexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.dsexe_m === '0'}/>
-										&nbsp;Mme
-									</label>
-								</div>
-								<div className="form-group">
-									<label>Nom et prénom</label>
-									<input type="text" name="daddress1" onChange={handleChange.bind(this)} value={this.state.daddress1} className="form-control form-control-sm" placeholder="Nom et prénom"/>
-								</div>
-								<div className="form-group">
-									<label>Adresse ligne 1</label>
-									<input type="text" name="daddress3" onChange={handleChange.bind(this)} value={this.state.daddress3} className="form-control form-control-sm" placeholder="Ligne 1"/>
-								</div>
-								<div className="form-group">
-									<label>Adresse ligne 2</label>
-									<input type="text" name="daddress4" onChange={handleChange.bind(this)} value={this.state.daddress4} className="form-control form-control-sm" placeholder="Ligne 2"/>
-								</div>
-								<div className="form-group row">
-									<div className="col-12">
-										<label>Code postal et ville</label>
-									</div>
-									<div className="col-4">
-										<input type="text" name="dzip" onChange={handleChange.bind(this)} value={this.state.dzip} className="form-control form-control-sm" placeholder="Code postal *"/>
-									</div>
-									<div className="col-8">
-										<input type="text" name="dcity" onChange={handleChange.bind(this)} value={this.state.dcity} className="form-control form-control-sm" placeholder="Ville *"/>
-									</div>
-								</div>
-								<div className="form-group">
-									<label>Pays / État</label>
-									<input type="text" name="dcountry" onChange={handleChange.bind(this)} value={this.state.dcountry} className="form-control form-control-sm" placeholder="Pays / Etat *"/>
-								</div>
-								<hr />
-								<div className="form-group">
-									<label>Téléphone pour la livraison</label>
-									<input type="text" name="dphone" onChange={handleChange.bind(this)} value={this.state.dphone} className="form-control form-control-sm" placeholder="Numéro de téléphone"/>
-								</div>
-								<div className="form-group text-center">
-									<button className="btn btn-primary">Enregistrer</button>
-								</div>
-							</form>
+								<Address fnct={true} type={2} var={'editDaddress'} functionDefault={this.getState} textButton={'Sauvegarder'}/>
 							}
 						</div>
 					</div>

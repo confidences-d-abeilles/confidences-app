@@ -30,7 +30,7 @@ export default class CompanyManageMyPage extends Component {
 			bundle: null,
 			visible: false,
 			english: false,
-			bundle_date: moment(),
+			bundle_date: new Date(),
 			bundle_state: 0,
 			bundle: [],
 			allFeedback: null
@@ -138,6 +138,7 @@ export default class CompanyManageMyPage extends Component {
 
 	launchModify(e) {
 		e.preventDefault();
+		console.log(e.target);
 		this.setState({
 			newsModify: e.target.value
 		})
