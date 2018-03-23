@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom';
 import { handleChange, handleTick } from '../../services/FormService'
 import { Link } from 'react-router-dom'
 import NotificationSystem from 'react-notification-system'
@@ -11,25 +12,65 @@ const config = require('../../config.js');
 export default class Address extends Component {
   constructor (props) {
       super(props);
+      console.log("const du compo address");
+      console.log(props.user ? props.user.name+' '+props.user.firstname:'');
       this.state = {
         fnct: props.fnct,
         id: '',
-        sexe_m: '',
-        address1: '',
+        sexe_m: props.user ? props.user.sexe_m?'1':'0':'',
+        address1: props.user ? props.user.name+' '+props.user.firstname:'',
+        // address2: this.props.user ? this.props.user.company_name:'',
+        // address1: '',
         address2: '',
         address3: '',
         address4: '',
+
         zip: '',
         city: '',
-        country: ''
+        country: '',
+        redirect: false,
+        phone: this.props.user ? this.props.user.phone: '',
+        is_infos: false
       }
-      console.log(props.fnct);
+      console.log(this.state.address1);
+  }
+
+  componentWillReceiveProps(nextProps){
+    console.log('nextProps');
+    console.log(this.props.functionDefault);
+    request({
+      url : '/address/type',
+      method : 'POST',
+      data: {
+        type: this.props.type
+      }
+    }, this.refs.notif).then((res) => {
+      console.log(res);
+          // this.state = {
+          //   id: res[0].id,
+          //   sexe_m: res[0].sexe_m?'1':'0',
+          //   address1: res[0].line1,
+          //   address2: res[0].line2,
+          //   address3: res[0].line3,
+          //   address4: res[0].line4,
+          //   phone: res[0].phone,
+          //   zip: res[0].zipcode,
+          //   city: res[0].city,
+          //   country: res[0].country,
+          //   is_infos: true
+          // }
+      }, () => {
+        this.setState({is_infos:true});
+        console.log('componentDidMount next props finis');
+      });
   }
 
   componentDidMount() {
+    console.log("debut du componentDidMount");
     if (this.props.fnct){
       const data = new FormData();
       data.append('type', this.props.type);
+      console.log('componentDidMount est un update');
       request({
   			url : '/address/type',
   			method : 'POST',
@@ -42,14 +83,16 @@ export default class Address extends Component {
   						address2: res[0].line2,
   						address3: res[0].line3,
   						address4: res[0].line4,
+              phone: res[0].phone,
   						zip: res[0].zipcode,
   						city: res[0].city,
-  						country: res[0].country
+  						country: res[0].country,
+              is_infos: true
   					}
-            console.log('start');
-            console.log(res[0].line1);
-            console.log(this.props.fnct);
-  			});
+  			}, () => {
+
+          console.log('componentDidMount finis');
+        });
     }
   }
 
@@ -71,7 +114,9 @@ export default class Address extends Component {
       method: 'PUT',
       data: data
     }, this.refs.notif).then((res) => {
-
+       let objState = {};
+       objState[this.props.var] = false;
+       this.props.functionDefault(objState);
 		})
 
   }
@@ -97,12 +142,28 @@ export default class Address extends Component {
             line2 : this.state.address2,
             line3 : this.state.address3,
             line4 : this.state.address4,
+            phone : this.state.phone,
             city : this.state.city,
             zipcode : this.state.zip,
             country: this.state.country,
             type : this.props.type
           }
         }, this.refs.notif).then((res) => {
+          let objState = {};
+          objState['address1'] = this.state.address1;
+          objState['address2'] = this.state.address2;
+          objState['address3'] = this.state.address3;
+          objState['address4'] = this.state.address4;
+          objState['city'] = this.state.city;
+          objState['zip'] = this.state.zip;
+          objState['country'] = this.state.country;
+          objState['type'] = this.state.type;
+          objState['phone'] = this.state.phone;
+          this.props.functionDefault(objState);// rajouter une variable par default pour
+          // dechecker une fois save
+          this.state = {
+            redirect: true
+          }
         });
       }
   }
@@ -111,11 +172,9 @@ export default class Address extends Component {
    return (
      <div>
       <NotificationSystem ref="notif" />
+
          <form onSubmit={this.props.fnct?this.updateAddress.bind(this):this.createAddress.bind(this)}>
-           <div className="form-group">
-             <label>Nom de l'entreprise</label>
-             <input type="text" name="address2" onChange={handleChange.bind(this)} value={this.state.address2} className="form-control form-control-sm" placeholder="Nom de l'entreprise"/>
-           </div>
+          <h2 className="text-center my-4">{this.props.title}</h2>
            <div className="form-group d-flex">
              <label className="radio-inline form-check-label">
                <input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.sexe_m === '1'}/>
@@ -130,6 +189,12 @@ export default class Address extends Component {
              <label>Nom et prénom</label>
              <input type="text" name="address1" onChange={handleChange.bind(this)} value={this.state.address1} className="form-control form-control-sm" placeholder="Nom et prénom"/>
            </div>
+           {this.state.address2 ?
+             <div className="form-group">
+               <label>Nom de l'entreprise</label>
+               <input type="text" name="address2" onChange={handleChange.bind(this)} value={this.state.address2} className="form-control form-control-sm" placeholder="Nom de l'entreprise"/>
+             </div>
+           :null}
            <div className="form-group">
              <label>Adresse ligne 1</label>
              <input type="text" name="address3" onChange={handleChange.bind(this)} value={this.state.address3} className="form-control form-control-sm" placeholder="Adresse ligne 1"/>
@@ -137,6 +202,10 @@ export default class Address extends Component {
            <div className="form-group">
              <label>Adresse ligne 2</label>
              <input type="text" name="address4" onChange={handleChange.bind(this)} value={this.state.address4} className="form-control form-control-sm" placeholder="Adresse ligne 2"/>
+           </div>
+           <div className="form-group">
+             <label>numero de telephone</label>
+             <input type="text" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="numero de telephone"/>
            </div>
            <div className="form-group row">
              <div className="col-12">
@@ -153,10 +222,14 @@ export default class Address extends Component {
              <label>Pays / État</label>
              <input type="text" name="country" onChange={handleChange.bind(this)} value={this.state.country} className="form-control form-control-sm" placeholder="Pays / Etat *"/>
            </div>
-
-             <button className="btn btn-primary">Enregistrer</button>
-
+           <p>
+            {this.props.textDefault}
+           </p>
+             <button className="btn btn-primary">{this.props.textButton}</button>
          </form>
+       {(this.state.redirect)?
+ 					   <Redirect to={this.props.redirect} />
+ 				:null}
      </div>
    )
  }

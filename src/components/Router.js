@@ -78,6 +78,7 @@ import Hive from './Hive';
 import Forgot from './Forgot';
 import Reset from './Reset';
 import Apply from './Apply';
+import RequestLabel from './RequestLabel';
 import Present from './Present';
 import Confirm from './Confirm';
 import NotFound from './utils/NotFound';
@@ -147,6 +148,7 @@ export default class MyRouter extends Component {
 								<Route exact path="/team" component={Team} />
 								<Route exact path="/contact" component={Contact} />
 								<Route exact path="/apply" component={Apply} />
+								<Route exact path="/requestlabel" component={RequestLabel} />
 								<Route exact path="/jobs" component={Jobs} />
 								<Route exact path="/jobs/reactjs" component={JobsReact} />
 								<Route exact path="/jobs/designer" component={JobsDesigner} />
