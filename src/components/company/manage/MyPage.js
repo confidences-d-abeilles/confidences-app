@@ -168,12 +168,12 @@ export default class CompanyManageMyPage extends Component {
 	replaceNamespace(e) {
 		e.preventDefault();
 		const val = e.target.value;
-		console.log((val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, ''));
-		let TabSpec = {"à":"a","á":"a","â":"a","ã":"a","ä":"a","å":"a","ò":"o","ó":"o","ô":"o","õ":"o","ö":"o","ø":"o","è":"e","é":"e","ê":"e","ë":"e","ç":"c","ì":"i","í":"i","î":"i","ï":"i","ù":"u","ú":"u","û":"u","ü":"u","ÿ":"y","ñ":"n","-":" ","_":" "};
-		let reg=/[àáäâèéêëçìíîïòóôõöøùúûüÿñ_-]/gi;
+		console.log((val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, '-'));
+		let TabSpec = {"à":"a","á":"a","â":"a","ã":"a","ä":"a","å":"a","ò":"o","ó":"o","ô":"o","õ":"o","ö":"o","ø":"o","è":"e","é":"e","ê":"e","ë":"e","ç":"c","ì":"i","í":"i","î":"i","ï":"i","ù":"u","ú":"u","û":"u","ü":"u","ÿ":"y","ñ":"n","_":" "};
+		let reg=/[àáäâèéêëçìíîïòóôõöøùúûüÿñ_]/gi;
 		this.setState({
 			fakeNamespace: e.target.value,
-			namespace: (val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, '')
+			namespace: (val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, '-')
 		})
 		console.log(this.state.namespace);
 	}
