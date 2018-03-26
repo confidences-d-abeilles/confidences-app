@@ -68,6 +68,7 @@ export default class CompanyAddress extends Component {
 						line4 : this.state.address4,
 						city : this.state.city,
 						zipcode : this.state.zip,
+						phone: this.state.phone,
 						country: this.state.country,
 						type : 2
 					}
