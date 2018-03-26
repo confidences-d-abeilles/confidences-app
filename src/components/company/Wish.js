@@ -76,27 +76,27 @@ export default class CompanyWish extends Component {
 		console.log(this.state.codesOk);
 		this.setState({ price : '0' }, () => {
 			this.state.products.map((e) => {
-				const qty = (e.qty)?parseInt(e.qty):0;
+				const qty = (e.qty)?parseFloat(e.qty):0;
 				this.setState((prev) => {
 					if (e.type === 10) {
-						return { price: parseInt(prev.price) + parseInt(e.price) * qty, pots : 80 * qty }
+						return { price: parseFloat(prev.price) + parseFloat(e.price) * qty, pots : 80 * qty }
 					}
-					return { price: parseInt(prev.price) + parseInt(e.price) * qty}
+					return { price: parseFloat(prev.price) + parseFloat(e.price) * qty}
 				})
 			});
 			this.state.couponsOk.map((e) => {
 				this.setState((prev) => {
-					return { price: parseInt(prev.price) - parseInt(e.amount) * parseInt(e.qty) }
+					return { price: parseFloat(prev.price) - parseFloat(e.amount) * parseFloat(e.qty) }
 				})
 			})
 			this.state.optionsOk.map((e) => {
 				this.setState((prev) => {
-					return { price: parseInt(prev.price) - parseInt(e.amount) * parseInt(e.qty), pots: parseInt(prev.pots) - parseInt(e.pots) * parseInt(e.qty) }
+					return { price: parseFloat(prev.price) - parseFloat(e.amount) * parseFloat(e.qty), pots: parseFloat(prev.pots) - parseFloat(e.pots) * parseFloat(e.qty) }
 				})
 			})
 			this.state.codesOk.map((e) => {
 				this.setState((prev) => {
-					return { price: parseInt(prev.price) - parseInt(e.amount) * parseInt(e.qty) }
+					return { price: parseFloat(prev.price) - parseFloat(e.amount) * parseFloat(e.qty) }
 				})
 			})
 		});
