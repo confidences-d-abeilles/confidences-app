@@ -75,23 +75,24 @@ export default class CompanyIdentity extends Component {
 						<form className="text-center">
 							<h2 className="text-center my-4">Information sur l'entreprise</h2>
 							<div className="form-group">
-								<input type="text" className="form-control" name="company_name" placeholder="Raison sociale*" onChange={handleChange.bind(this)} />
+								<input type="text" className="form-control" name="company_name" placeholder="Raison sociale *" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
 								<label htmlFor="namespace">URL par défaut de votre future page. Vous pourrez la modifier par la suite.</label>
 								<input type="text" className="form-control" id="namespace" value={'http://parrainagederuches.fr/parrains/'+(this.state.company_name.replace(/\W+/g, '')).replace(/\d+/g, '')} disabled />
 							</div>
 							<div className="form-group">
-								<input type="text" className="form-control" name="siret" placeholder="Numero de siret*" onChange={this.handlesiret.bind(this)} />
+								<input type="text" className="form-control" name="siret" placeholder="Numéro SIRET *" onChange={this.handlesiret.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" className="form-control" name="job" placeholder="Fonction dans la societe*" onChange={handleChange.bind(this)} />
+								<input type="text" className="form-control" name="job" placeholder="Votre position *" onChange={handleChange.bind(this)} />
+								<small id="emailHelp" className="form-text text-muted">Cela nous permet d'être plus pertinents dans notre communication</small>
 							</div>
 							<div className="form-group">
 								<input type="text" className="form-control" name="website" placeholder="Site internet" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<label>* champs obligatoire</label>
+								<label>* champs obligatoires</label>
 							</div>
 							<button onClick={this.identify.bind(this)} className="btn btn-primary">Continuer</button>
 						</form>

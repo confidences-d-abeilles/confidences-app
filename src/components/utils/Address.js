@@ -27,7 +27,7 @@ export default class Address extends Component {
 
         zip: '',
         city: '',
-        country: '',
+        country: 'France',
         redirect: false,
         phone: this.props.user ? this.props.user.phone: '',
         is_infos: false
@@ -186,41 +186,41 @@ export default class Address extends Component {
              </label>
            </div>
            <div className="form-group">
-             <label>Nom et prénom</label>
-             <input type="text" name="address1" onChange={handleChange.bind(this)} value={this.state.address1} className="form-control form-control-sm" placeholder="Nom et prénom"/>
+             <label>Nom et prénom *</label>
+             <input type="text" name="address1" onChange={handleChange.bind(this)} value={this.state.address1} className="form-control form-control-sm"/>
            </div>
+					 <div className="form-group">
+						 <label>Numéro de telephone *</label>
+						 <input type="text" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm"/>
+					 </div>
            {this.state.address2 ?
              <div className="form-group">
                <label>Nom de l'entreprise</label>
-               <input type="text" name="address2" onChange={handleChange.bind(this)} value={this.state.address2} className="form-control form-control-sm" placeholder="Nom de l'entreprise"/>
+               <input type="text" name="address2" onChange={handleChange.bind(this)} value={this.state.address2} className="form-control form-control-sm"/>
              </div>
            :null}
            <div className="form-group">
-             <label>Adresse ligne 1</label>
-             <input type="text" name="address3" onChange={handleChange.bind(this)} value={this.state.address3} className="form-control form-control-sm" placeholder="Adresse ligne 1"/>
+             <label>Adresse ligne 1 *</label>
+             <input type="text" name="address3" onChange={handleChange.bind(this)} value={this.state.address3} className="form-control form-control-sm"/>
            </div>
            <div className="form-group">
              <label>Adresse ligne 2</label>
-             <input type="text" name="address4" onChange={handleChange.bind(this)} value={this.state.address4} className="form-control form-control-sm" placeholder="Adresse ligne 2"/>
-           </div>
-           <div className="form-group">
-             <label>numero de telephone</label>
-             <input type="text" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="numero de telephone"/>
+             <input type="text" name="address4" onChange={handleChange.bind(this)} value={this.state.address4} className="form-control form-control-sm"/>
            </div>
            <div className="form-group row">
              <div className="col-12">
-               <label>Code postal et ville</label>
+               <label>Code postal et ville *</label>
              </div>
              <div className="col-4">
-               <input type="text" name="zip" onChange={handleChange.bind(this)} value={this.state.zip} className="form-control form-control-sm" placeholder="Code postal"/>
+               <input type="text" name="zip" onChange={handleChange.bind(this)} value={this.state.zip} className="form-control form-control-sm"/>
              </div>
              <div className="col-8">
-               <input type="text" name="city" onChange={handleChange.bind(this)} value={this.state.city} className="form-control form-control-sm" placeholder="Ville *"/>
+               <input type="text" name="city" onChange={handleChange.bind(this)} value={this.state.city} className="form-control form-control-sm"/>
              </div>
            </div>
            <div className="form-group">
-             <label>Pays / État</label>
-             <input type="text" name="country" onChange={handleChange.bind(this)} value={this.state.country} className="form-control form-control-sm" placeholder="Pays / Etat *"/>
+             <label>Pays *</label>
+             <input type="text" name="country" onChange={handleChange.bind(this)} value={this.state.country} className="form-control form-control-sm"/>
            </div>
            <p>
             {this.props.textDefault}
