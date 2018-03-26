@@ -76,7 +76,7 @@ export default class Address extends Component {
   			method : 'POST',
         data: data
   		}, this.refs.notif).then((res) => {
-  					this.state = {
+  					this.setState({
   						id: res[0].id,
   						sexe_m: res[0].sexe_m?'1':'0',
   						address1: res[0].line1,
@@ -88,11 +88,11 @@ export default class Address extends Component {
   						city: res[0].city,
   						country: res[0].country,
               is_infos: true
-  					}
-  			}, () => {
+  					}, () => {
 
           console.log('componentDidMount finis');
         });
+      });
     }
   }
 
