@@ -111,7 +111,9 @@ export default class CompanyManageInfos extends Component {
 				method: 'put',
 				data: data
 			}, this.refs.notif).then((res) => {
-				this.props.update();
+				setTimeout(() => {
+					this.props.update();
+				}, 500);
 				this.setState({ loadLogo: false });
 			});
 		}
