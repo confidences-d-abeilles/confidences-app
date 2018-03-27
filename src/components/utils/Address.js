@@ -24,7 +24,6 @@ export default class Address extends Component {
         address2: '',
         address3: '',
         address4: '',
-
         zip: '',
         city: '',
         country: '',
@@ -33,36 +32,6 @@ export default class Address extends Component {
         is_infos: false
       }
       console.log(this.state.address1);
-  }
-
-  componentWillReceiveProps(nextProps){
-    console.log('nextProps');
-    console.log(this.props.functionDefault);
-    request({
-      url : '/address/type',
-      method : 'POST',
-      data: {
-        type: this.props.type
-      }
-    }, this.refs.notif).then((res) => {
-      console.log(res);
-          // this.state = {
-          //   id: res[0].id,
-          //   sexe_m: res[0].sexe_m?'1':'0',
-          //   address1: res[0].line1,
-          //   address2: res[0].line2,
-          //   address3: res[0].line3,
-          //   address4: res[0].line4,
-          //   phone: res[0].phone,
-          //   zip: res[0].zipcode,
-          //   city: res[0].city,
-          //   country: res[0].country,
-          //   is_infos: true
-          // }
-      }, () => {
-        this.setState({is_infos:true});
-        console.log('componentDidMount next props finis');
-      });
   }
 
   componentDidMount() {
@@ -77,7 +46,7 @@ export default class Address extends Component {
         data: data
   		}, this.refs.notif).then((res) => {
         console.log(res);
-  					this.state = {
+  					this.setState({
   						id: res[0].id,
   						sexe_m: res[0].sexe_m?'1':'0',
   						address1: res[0].line1,
@@ -89,7 +58,7 @@ export default class Address extends Component {
   						city: res[0].city,
   						country: res[0].country,
               is_infos: true
-  					}
+  					})
             console.log(this.state.address1);
   			});
         console.log(this.state.address1);
@@ -196,10 +165,6 @@ export default class Address extends Component {
              <label>Adresse ligne 2</label>
              <input type="text" name="address4" onChange={handleChange.bind(this)} value={this.state.address4} className="form-control form-control-sm" placeholder="Adresse ligne 2"/>
            </div>
-           <div className="form-group">
-             <label>numero de telephone</label>
-             <input type="text" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="numero de telephone"/>
-           </div>
            <div className="form-group row">
              <div className="col-12">
                <label>Code postal et ville</label>
@@ -214,6 +179,10 @@ export default class Address extends Component {
            <div className="form-group">
              <label>Pays / État</label>
              <input type="text" name="country" onChange={handleChange.bind(this)} value={this.state.country} className="form-control form-control-sm" placeholder="Pays / Etat *"/>
+           </div>
+           <div className="form-group">
+             <label>numero de telephone</label>
+             <input type="text" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="numero de telephone"/>
            </div>
            <p>
             {this.props.textDefault}
