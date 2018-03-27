@@ -133,7 +133,7 @@ export default class Bundle extends Component {
 		e.preventDefault();
 		const data = new FormData();
 		data.append('state', this.state.stateSelector);
-		if (this.state.present == false) {
+		if (this.state.present == false && this.state.stateSelector === '2') {
 			data.append('present_date', new Date());
 			data.append('present_end', new Date(new Date().setFullYear(new Date().getFullYear() + 1)));
 		}
