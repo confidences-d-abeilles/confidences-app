@@ -181,10 +181,14 @@ export default class Address extends Component {
              <label>Pays *</label>
              <input type="text" name="country" onChange={handleChange.bind(this)} value={this.state.country} className="form-control form-control-sm"/>
            </div>
-           <div className="form-group">
-             <label>numero de telephone</label>
-             <input type="text" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="numero de telephone"/>
-           </div>
+           {this.props.type == 2 ?
+             <div className="form-group">
+               <label>numero de telephone</label>
+               <input type="text" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="numero de telephone"/>
+             </div>
+             :
+             null
+            }
            <p>
             {this.props.textDefault}
            </p>
