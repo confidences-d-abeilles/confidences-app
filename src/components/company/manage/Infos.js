@@ -20,7 +20,8 @@ export default class CompanyManageInfos extends Component {
 		this.state = {
 			logout: false,
 			password: '',
-			conf: ''
+			conf: '',
+			loadLogo: false
 		}
 		this.getState = this.getState.bind(this);
 	}
@@ -82,7 +83,7 @@ export default class CompanyManageInfos extends Component {
 			})
 		})
 	}
-
+  
 	// updateBaddress(e) {
 	// 	e.preventDefault();
 	// 	request({
@@ -147,6 +148,7 @@ export default class CompanyManageInfos extends Component {
 	uploadLogo(e) {
 		e.preventDefault();
 		if (document.getElementById("HQlogo").files[0]) {
+			this.setState({ loadLogo: true });
 			const data = new FormData();
 			data.append('HQlogo', document.getElementById('HQlogo').files[0]);
 			request({
@@ -154,7 +156,10 @@ export default class CompanyManageInfos extends Component {
 				method: 'put',
 				data: data
 			}, this.refs.notif).then((res) => {
-				this.props.update();
+				setTimeout(() => {
+					this.props.update();
+				}, 500);
+				this.setState({ loadLogo: false });
 			});
 		}
 	}
@@ -175,8 +180,9 @@ export default class CompanyManageInfos extends Component {
 						<h2 className="text-center">
 							Mes informations
 						</h2>
+						<h3>Mon logo</h3>
 						<form onSubmit={this.uploadLogo.bind(this)}>
-							<FileUpload identifier="HQlogo" label="Votre logo en haute qualité :" accept="image/*"/>
+							<FileUpload identifier="HQlogo" loading={this.state.loadLogo} label="Merci d'uploader un fichier de bonne qualité (nous en avons besoin pour la plaque que nous posons sur la ruche). Recommandations : 1200 x 1200px, 2mo maximum. Utilisez le format PNG si votre logo contient des zones ou un fond transparent." accept="image/*"/>
 							<div className="form-group text-center">
 								<button className="btn btn-secondary">Envoyer le logo</button>
 							</div>

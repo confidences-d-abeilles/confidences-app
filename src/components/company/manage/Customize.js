@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
 import ReactGA from 'react-ga';
+import { Link } from 'react-router-dom'
+
 const config = require('../../../config.js');
 
 export default class CompanyManageCustomize extends Component {
@@ -88,6 +90,10 @@ export default class CompanyManageCustomize extends Component {
 						</div>
 						<button className="btn btn-primary">Envoyer cette étiquette</button>
 					</form>
+
+					<Link to="/requestlabel" className="btn btn-primary">
+						Faire appel aux services de notre graphiste
+					</Link>
 					<p>
 						Les fonctionnalités d'édition de vos étiquettes sont en cours de développement
 						et vont rapidement voir le jour ! <br />
