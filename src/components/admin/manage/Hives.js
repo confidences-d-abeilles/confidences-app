@@ -193,6 +193,9 @@ export default class AdminManageHives extends Component {
 				feedback: this.state.feedback
 			}
 		}, this.refs.notif).then((res) => {
+			this.setState({
+				stateFeedback: 0
+			})
 			console.log('feedback update');
 		})
 	}
@@ -236,8 +239,10 @@ export default class AdminManageHives extends Component {
 														this.setState({
 															selected : hive,
 															ratio : hive.ratio,
-															feedback: hive.feedback
-														}, () => this.get() )}} >Gérer</button>
+															feedback: hive.feedback,
+															stateFeedback: 0
+														}, this.get());
+														}} >Gérer</button>
 												</td>
 											</tr>
 										)

@@ -90,6 +90,7 @@ export default class CompanyManageCustomize extends Component {
 						</div>
 						<button className="btn btn-primary">Envoyer cette étiquette</button>
 					</form>
+
 					<Link to="/requestlabel" className="btn btn-primary">
 						Faire appel aux services de notre graphiste
 					</Link>
