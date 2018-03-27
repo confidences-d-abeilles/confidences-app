@@ -15,7 +15,7 @@ export default class Create extends Component {
 			type: '',
 			code: '',
 			amount: '',
-			pots: '',
+			pots: '0',
 			min: '0',
 			max: '0',
 			designation: '',
@@ -111,6 +111,7 @@ export default class Create extends Component {
 						placeholder="Montant de la promo en €" className="form-control" />
 				</div>
 				<div className="form-group">
+					<label>Pots de miel à retirer</label> 
 					<input type="number" name="pots" value={this.state.pots} onChange={handleChange.bind(this)}
 						placeholder="Pots de miels a retirer" className="form-control" />
 				</div>
