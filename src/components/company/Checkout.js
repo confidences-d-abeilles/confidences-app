@@ -121,6 +121,11 @@ export default class CompanyCheckout extends Component {
 		});
 	}
 
+	getState = (_objState) => {
+		console.log(_objState.name);
+		this.setState(_objState);
+	}
+
 
 	async setWaitingPayment() {
 		await this.save();
@@ -281,7 +286,7 @@ export default class CompanyCheckout extends Component {
 							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="my-4">Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
 								{this.state.different && !this.state.saved ?
-									<Address fnct={true} type={2} user={this.state.user} textButton={'Sauvegarder'}/>
+									<Address fnct={true} functionDefault={this.getState} type={2} user={this.state.user} textButton={'Sauvegarder'}/>
 									:null
 								}
 								{this.state.saved &&
