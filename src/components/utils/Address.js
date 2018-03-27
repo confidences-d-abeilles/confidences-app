@@ -27,42 +27,12 @@ export default class Address extends Component {
 
         zip: '',
         city: '',
-        country: 'France',
+        country: '',
         redirect: false,
         phone: this.props.user ? this.props.user.phone: '',
         is_infos: false
       }
       console.log(this.state.address1);
-  }
-
-  componentWillReceiveProps(nextProps){
-    console.log('nextProps');
-    console.log(this.props.functionDefault);
-    request({
-      url : '/address/type',
-      method : 'POST',
-      data: {
-        type: this.props.type
-      }
-    }, this.refs.notif).then((res) => {
-      console.log(res);
-          // this.state = {
-          //   id: res[0].id,
-          //   sexe_m: res[0].sexe_m?'1':'0',
-          //   address1: res[0].line1,
-          //   address2: res[0].line2,
-          //   address3: res[0].line3,
-          //   address4: res[0].line4,
-          //   phone: res[0].phone,
-          //   zip: res[0].zipcode,
-          //   city: res[0].city,
-          //   country: res[0].country,
-          //   is_infos: true
-          // }
-      }, () => {
-        this.setState({is_infos:true});
-        console.log('componentDidMount next props finis');
-      });
   }
 
   componentDidMount() {
@@ -89,10 +59,10 @@ export default class Address extends Component {
   						country: res[0].country,
               is_infos: true
   					}, () => {
-
           console.log('componentDidMount finis');
         });
       });
+
     }
   }
 
@@ -182,14 +152,10 @@ export default class Address extends Component {
              <label>Nom et prénom *</label>
              <input type="text" name="address1" onChange={handleChange.bind(this)} value={this.state.address1} className="form-control form-control-sm"/>
            </div>
-					 <div className="form-group">
-						 <label>Numéro de telephone *</label>
-						 <input type="text" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm"/>
-					 </div>
            {this.state.address2 ?
              <div className="form-group">
                <label>Nom de l'entreprise</label>
-               <input type="text" name="address2" onChange={handleChange.bind(this)} value={this.state.address2} className="form-control form-control-sm"/>
+               <input type="text" name="address2" onChange={handleChange.bind(this)} value={this.state.address2} className="form-control form-control-sm" placeholder="Nom de l'entreprise"/>
              </div>
            :null}
            <div className="form-group">
@@ -214,6 +180,10 @@ export default class Address extends Component {
            <div className="form-group">
              <label>Pays *</label>
              <input type="text" name="country" onChange={handleChange.bind(this)} value={this.state.country} className="form-control form-control-sm"/>
+           </div>
+           <div className="form-group">
+             <label>numero de telephone</label>
+             <input type="text" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="numero de telephone"/>
            </div>
            <p>
             {this.props.textDefault}
