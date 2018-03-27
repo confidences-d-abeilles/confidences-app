@@ -9,6 +9,7 @@ import ReactGA from 'react-ga';
 import Meta from '../utils/Meta';
 import Address from '../utils/Address';
 import moment from 'moment';
+import Resume from './Checkout/Resume'
 
 export default class CompanyCheckout extends Component {
 
@@ -46,6 +47,7 @@ export default class CompanyCheckout extends Component {
 		.then((res) => {
 			this.setState({
 				hives: res.bundles[0].hives,
+				pots: res.bundles[0].pots,
 				price: res.bundles[0].price,
 				bundle_id: res.bundles[0].id,
 				duplicate: true,
@@ -207,7 +209,7 @@ export default class CompanyCheckout extends Component {
 		});
 	}
 
-	changeBundle() {
+	changeBundle = () => {
 		request({
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'delete'
@@ -254,17 +256,11 @@ export default class CompanyCheckout extends Component {
 				<div className="row justify-content-center">
 					<div className="col-lg-11 col-md-10 col-sm-12">
 						<h2 className="text-center my-4">Confirmation et paiement</h2>
-						<p>
-							Nous parrainons {this.state.hives} ruches qui seront marquées au couleur de notre entreprise. En
-							contrepartie nous recevrons {this.state.hives * 80} pots de miel de 125g produits par nos abeilles.
-							Nous bénéficions en plus d’une page internet dédiée à notre entreprise et aux
-							actions qu’elle mène en faveur de l’environnement. Des actualités de nos ruches y
-							seront régulièrement postées, accessibles au grand public et à nos partenaires.
-							<br /><br />
-							<strong>Le coût total est de {this.state.price} euros par an.</strong>
-							<br /><br />
-							<button className="btn btn-primary" onClick={this.changeBundle.bind(this)}>Changer d'offre</button>
-						</p>
+						<Resume
+						changeBundle={this.changeBundle}
+						hives={this.state.hives}
+						pots={this.state.pots}
+						price={this.state.price} />
 						<div className="row justify-content-center">
 							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="my-4">Adresse de facturation</h3>
