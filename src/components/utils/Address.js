@@ -70,12 +70,13 @@ export default class Address extends Component {
     if (this.props.fnct){
       const data = new FormData();
       data.append('type', this.props.type);
-      console.log('componentDidMount est un update');
+      console.log('componentMount est un update');
       request({
   			url : '/address/type',
   			method : 'POST',
         data: data
   		}, this.refs.notif).then((res) => {
+        console.log(res);
   					this.state = {
   						id: res[0].id,
   						sexe_m: res[0].sexe_m?'1':'0',
@@ -89,10 +90,9 @@ export default class Address extends Component {
   						country: res[0].country,
               is_infos: true
   					}
-  			}, () => {
-
-          console.log('componentDidMount finis');
-        });
+            console.log(this.state.address1);
+  			});
+        console.log(this.state.address1);
     }
   }
 
@@ -118,15 +118,10 @@ export default class Address extends Component {
        objState[this.props.var] = false;
        this.props.functionDefault(objState);
 		})
-
   }
 
   createAddress(e) {
       e.preventDefault();
-      console.log(this.state.sexe_m);
-      console.log(this.state.address3);
-      console.log(this.state.city);
-      console.log(this.state.zip);
       if (!this.state.sexe_m || !this.state.address3 || !this.state.city || !this.state.zip) {
         this.refs.notif.addNotification({
           message : "Merci de renseigner tous les champs",
@@ -159,8 +154,7 @@ export default class Address extends Component {
           objState['country'] = this.state.country;
           objState['type'] = this.state.type;
           objState['phone'] = this.state.phone;
-          this.props.functionDefault(objState);// rajouter une variable par default pour
-          // dechecker une fois save
+          this.props.functionDefault(objState);
           this.state = {
             redirect: true
           }
@@ -172,7 +166,6 @@ export default class Address extends Component {
    return (
      <div>
       <NotificationSystem ref="notif" />
-
          <form onSubmit={this.props.fnct?this.updateAddress.bind(this):this.createAddress.bind(this)}>
           <h2 className="text-center my-4">{this.props.title}</h2>
            <div className="form-group d-flex">
