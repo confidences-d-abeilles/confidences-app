@@ -193,6 +193,9 @@ export default class AdminManageHives extends Component {
 				feedback: this.state.feedback
 			}
 		}, this.refs.notif).then((res) => {
+			this.setState({
+				stateFeedback: 0
+			})
 			console.log('feedback update');
 		})
 	}
@@ -233,9 +236,7 @@ export default class AdminManageHives extends Component {
 												<td>{hive.name}</td><td>{hive.occupation} %</td>
 												<td>
 													<button className="btn btn-link btn-sm" onClick={() => {
-														console.log(hive);
-														console.log(hive.ratio);
-														this.setState({ selected : hive, ratio : hive.ratio, feedback: hive.feedback })}} >Gérer</button>
+														this.setState({ selected : hive, ratio : hive.ratio, feedback: hive.feedback, stateFeedback: 0 })}} >Gérer</button>
 												</td>
 											</tr>
 										)
