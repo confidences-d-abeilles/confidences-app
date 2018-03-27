@@ -29,7 +29,6 @@ export default class Feedback extends Component {
 			bundle: null,
 			visible: false,
 			english: false,
-			bundle_date: new Date(),
 			bundle_state: 0,
 			bundle: [],
 			newsTake: 0,
@@ -88,9 +87,7 @@ export default class Feedback extends Component {
 
 	createActu(e) {
 		e.preventDefault()
-		console.log('createActu');
 		const data = new FormData();
-		console.log(this.state.actuDate);
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
 		data.append('date', this.state.actuDate);
@@ -105,7 +102,12 @@ export default class Feedback extends Component {
 				'content-type' : 'multipart/form-data'
 			}
 		}, this.refs.notif).then((res) => {
-
+			this.setState({
+				content: '',
+				title: '',
+				actuDate: moment(new Date()),
+				img: ''
+			}) // trouver une facon de reaload juste le component
 		})
 	}
 
@@ -169,8 +171,8 @@ export default class Feedback extends Component {
 					</label>
 				</div>
 				<button className="btn btn-primary">Soumettre</button>
-				{this.state.newsModify ? <Confirm action={this.deleteActu.bind(this)} text="Supprimer cette news" className="m-2"/>: null}
 			</form>
+			{this.state.newsModify ? <Confirm action={this.deleteActu.bind(this)} text="Supprimer cette news" className="m-2"/>: null}
 			</div>
 		)
 	}
