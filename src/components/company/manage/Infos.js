@@ -83,52 +83,7 @@ export default class CompanyManageInfos extends Component {
 			})
 		})
 	}
-  
-	// updateBaddress(e) {
-	// 	e.preventDefault();
-	// 	request({
-	// 		url: '/address/'+this.state.bid,
-	// 		method: 'put',
-	// 		data : {
-	// 			sexe_m: this.state.bsexe_m === '0' ? 'false':'true',
-	// 			line1: this.state.baddress1,
-	// 			line2: this.state.baddress2,
-	// 			line3: this.state.baddress3,
-	// 			line4: this.state.baddress4,
-	// 			zipcode: this.state.bzip,
-	// 			city: this.state.bcity,
-	// 			country: this.state.bcountry
-	// 		}
-	// 	}, this.refs.notif).then((res) => {
-	// 		this.setState({
-	// 			editBaddress : false
-	// 		})
-	// 	});
-	// }
-
-	// updateDaddress(e) {
-	// 	e.preventDefault();
-	// 	request({
-	// 		url: '/address/'+this.state.did,
-	// 		method: 'put',
-	// 		data : {
-	// 			sexe_m: this.state.dsexe_m === '0' ? 'false':'true',
-	// 			line1: this.state.daddress1,
-	// 			line2: this.state.daddress2,
-	// 			line3: this.state.daddress3,
-	// 			line4: this.state.daddress4,
-	// 			zipcode: this.state.dzip,
-	// 			city: this.state.dcity,
-	// 			country: this.state.dcountry,
-	// 			phone: this.state.dphone
-	// 		}
-	// 	}, this.refs.notif).then((res) => {
-	// 		this.setState({
-	// 			editDaddress : false
-	// 		})
-	// 	});
-	// }
-
+	
 	changeInfos(e) {
 		e.preventDefault()
 		request({
