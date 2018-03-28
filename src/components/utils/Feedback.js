@@ -29,7 +29,6 @@ export default class Feedback extends Component {
 			bundle: null,
 			visible: false,
 			english: false,
-			bundle_date: new Date(),
 			bundle_state: 0,
 			bundle: [],
 			newsTake: 0,
@@ -88,9 +87,7 @@ export default class Feedback extends Component {
 
 	createActu(e) {
 		e.preventDefault()
-		console.log('createActu');
 		const data = new FormData();
-		console.log(this.state.actuDate);
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
 		data.append('date', this.state.actuDate);
@@ -105,7 +102,12 @@ export default class Feedback extends Component {
 				'content-type' : 'multipart/form-data'
 			}
 		}, this.refs.notif).then((res) => {
-
+			this.setState({
+				content: '',
+				title: '',
+				actuDate: moment(new Date()),
+				img: ''
+			}) // trouver une facon de reaload juste le component
 		})
 	}
 
@@ -164,13 +166,13 @@ export default class Feedback extends Component {
 				<div className="form-group">
 					<label htmlFor="actu-img" className={(this.state.actuImg)?'active-upload':'upload'} style={{ position: 'relative' }}>
 						<input type="file" className="form-control" id="actu-img" onChange={() => { this.setState({ actuImg : document.getElementById("actu-img").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-						Glisser une image ou cliquez pour en séléctionner un parmi vos fichiers<br/>
-						Taille recommandée : 400x300 - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}
+						Glissez une image ou cliquez pour en séléctionner un parmi vos fichiers<br/>
+						Recommandations : 400x300px, 100ko maximum - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}
 					</label>
 				</div>
 				<button className="btn btn-primary">Soumettre</button>
-				{this.state.newsModify ? <Confirm action={this.deleteActu.bind(this)} text="Supprimer cette news" className="m-2"/>: null}
 			</form>
+			{this.state.newsModify ? <Confirm action={this.deleteActu.bind(this)} text="Supprimer cette news" className="m-2"/>: null}
 			</div>
 		)
 	}

@@ -30,7 +30,7 @@ export default class CompanyManageMyPage extends Component {
 			bundle: null,
 			visible: false,
 			english: false,
-			bundle_date: moment(),
+			bundle_date: new Date(),
 			bundle_state: 0,
 			bundle: [],
 			allFeedback: null
@@ -138,41 +138,21 @@ export default class CompanyManageMyPage extends Component {
 
 	launchModify(e) {
 		e.preventDefault();
+		console.log(e.target);
 		this.setState({
 			newsModify: e.target.value
 		})
 }
-	// createActu(e) {
-	// 	e.preventDefault()
-	// 	const data = new FormData();
-	// 	data.append('content', this.state.actu);
-	// 	data.append('title', this.state.actuTitle);
-	// 	if (document.getElementById("actu-img").files[0]) {
-	// 		data.append('img', document.getElementById('actu-img').files[0]);
-	// 	}
-	// 	request({
-	// 		url: '/news',
-	// 		method: 'post',
-	// 		data: data,
-	// 		header: {
-	// 			'content-type' : 'multipart/form-data'
-	// 		}
-	// 	}, this.refs.notif).then((res) => {
-  //
-	// 	})
-	// }
 
-
-// (this.state.name.replace(/\W+/g, '')).replace(/\d+/g, '')
 	replaceNamespace(e) {
 		e.preventDefault();
 		const val = e.target.value;
-		console.log((val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, ''));
-		let TabSpec = {"à":"a","á":"a","â":"a","ã":"a","ä":"a","å":"a","ò":"o","ó":"o","ô":"o","õ":"o","ö":"o","ø":"o","è":"e","é":"e","ê":"e","ë":"e","ç":"c","ì":"i","í":"i","î":"i","ï":"i","ù":"u","ú":"u","û":"u","ü":"u","ÿ":"y","ñ":"n","-":" ","_":" "};
-		let reg=/[àáäâèéêëçìíîïòóôõöøùúûüÿñ_-]/gi;
+		console.log((val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, '-'));
+		let TabSpec = {"à":"a","á":"a","â":"a","ã":"a","ä":"a","å":"a","ò":"o","ó":"o","ô":"o","õ":"o","ö":"o","ø":"o","è":"e","é":"e","ê":"e","ë":"e","ç":"c","ì":"i","í":"i","î":"i","ï":"i","ù":"u","ú":"u","û":"u","ü":"u","ÿ":"y","ñ":"n","_":" "};
+		let reg=/[àáäâèéêëçìíîïòóôõöøùúûüÿñ_]/gi;
 		this.setState({
 			fakeNamespace: e.target.value,
-			namespace: (val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, '')
+			namespace: (val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, '-')
 		})
 		console.log(this.state.namespace);
 	}
@@ -205,16 +185,16 @@ export default class CompanyManageMyPage extends Component {
 						<label>Photo de couverture de votre page {(this.state.cover)?<a href={config.cdn_url+'/'+this.state.cover} target="_blank">Visualiser l'image actuelle</a>:null}</label>
 						<label htmlFor="cover" className={(this.state.newCover)?'active-upload':'upload'} style={{ position: 'relative' }}>
 							<input type="file" className="form-control" id="cover" onChange={() => { this.setState({ newCover : document.getElementById("cover").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-							Glisser une {(this.state.cover)?'nouvelle':null} image ici ou cliquez pour en séléctionner une parmi vos fichiers<br/>
-							Taille recommandée : 800x240 - {(this.state.newCover)?'Selectionné : '+this.state.newCover:"Aucun fichier séléctionné"}
+							Glissez une {(this.state.cover)?'nouvelle':null} image ici ou cliquez pour en séléctionner une parmi vos fichiers<br/>
+							Recommandations : 1140x320px, 160ko maximum - {(this.state.newCover)?'Selectionné : '+this.state.newCover:"Aucun fichier séléctionné"}
 						</label>
 					</div>
 					<div className="form-group">
 						<label>Logo de votre entreprise {(this.state.logo)?<a href={config.cdn_url+'/'+this.state.logo} target="_blank">Visualiser le logo actuel</a>:null}</label>
 						<label htmlFor="logo" className={(this.state.newLogo)?'active-upload':'upload'} style={{ position: 'relative' }}>
 							<input type="file" className="form-control" id="logo" onChange={() => { this.setState({ newLogo : document.getElementById("logo").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-							Glisser votre {(this.state.logo)?'nouveau':null} logo ici ou cliquez pour en séléctionner un parmi vos fichiers<br/>
-							Taille recommandée : 280x210 - {(this.state.newLogo)?'Selectionné : '+this.state.newLogo:"Aucun fichier séléctionné"}
+							Glissez votre {(this.state.logo)?'nouveau':null} logo ici ou cliquez pour en séléctionner un parmi vos fichiers<br/>
+							Recommandations : 200x200px, 30ko maximum - {(this.state.newLogo)?'Selectionné : '+this.state.newLogo:"Aucun fichier séléctionné"}
 						</label>
 
 					</div>

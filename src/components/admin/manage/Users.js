@@ -160,7 +160,6 @@ export default class AdminManageUsers extends Component {
 	}
 
 	updateFeedback(event) {
-		event.preventDefault();
 		let objState = {};
 		objState[event.target.name] = event.target.value;
 		this.setState(objState);

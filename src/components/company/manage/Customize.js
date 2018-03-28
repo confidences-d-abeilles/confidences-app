@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
 import ReactGA from 'react-ga';
+import { Link } from 'react-router-dom'
+
 const config = require('../../../config.js');
 
 export default class CompanyManageCustomize extends Component {
@@ -20,8 +22,17 @@ export default class CompanyManageCustomize extends Component {
 			url: '/user/me',
 			method: 'get'
 		}, this.refs.notif).then((res) => {
-			this.setState({
-				current: res.label
+			console.log(res);
+			request({
+				url: '/bundle/owner/'+res.id,
+				method: 'get'
+			}, this.refs.notif).then((bund) => {
+				this.setState({
+					bundleId: bund.id,
+					labelCurrent: bund.label
+				})
+				console.log(bund.label);
+				console.log(bund);
 			})
 		});
 	}
@@ -31,15 +42,21 @@ export default class CompanyManageCustomize extends Component {
 		const formData = new FormData();
 		if (document.getElementById("label").files[0]) {
 			formData.append('label', document.getElementById("label").files[0]);
-		}
+
 		request({
-			url : '/user',
+			url : '/bundle/label/'+this.state.bundleId,
 			method : 'put',
 			data : formData,
 			headers : {
 				'content-type': 'multipart/form-data'
 			}
-		}, this.refs.notif)
+		}, this.refs.notif).then(() => {
+			this.setState({
+				labelCurrent: this.state.label,
+				label: ''
+			})
+		})
+	}
 	}
 
 	render () {
@@ -48,11 +65,13 @@ export default class CompanyManageCustomize extends Component {
 				<NotificationSystem ref="notif" />
 				<div className="col">
 					<h2 className="text-center my-4">Personaliser nos pots de miel</h2>
-					{this.state.current &&
-						<p className="text-center">
-							<img className="img-fluid my-2 center-block" src={config.cdn_url+'/'+this.state.current} alt="Etiquette actuelle"/>
-						</p>
+					{this.state.labelCurrent ?
+						<div style={{ height: '210px', maxWidth: '100%' }}>
+							<img src={config.cdn_url+'/'+this.state.labelCurrent} alt="labelCurrent" style={{ maxWidth: '100%', maxHeight: '100%' }} />
+						</div>
+					:null
 					}
+
 					{/* <p>
 						Vous avez la possibilité d’apporter les modifications que vous souhaitez sur
 						l’étiquette qui sera apposée sur vos pots de miel. Pour cela, il vous suffit de
@@ -64,6 +83,17 @@ export default class CompanyManageCustomize extends Component {
 						pots. Nous nous réservons le droit d’augmenter le contraste si celui-ci venait
 						à être diminué en raison d’un fond sombre.
 					</p> */}
+					<form onSubmit={this.upload.bind(this)} className="my-2">
+						<div className="form-group">
+							<label htmlFor="label" className={(this.state.label)?'active-upload':'upload'}>Glisser votre fichier ici ou cliquez pour en séléctionner un parmi vos fichiers<br/>Taille recommandée : 280x210 - {(this.state.label)?'Selectionné : '+this.state.label:"Aucun fichier séléctionné"}</label>
+							<input type="file" className="form-control" id="label" onChange={() => { this.setState({ label : document.getElementById("label").files[0].name }) }} style={{display:'none'}}/>
+						</div>
+						<button className="btn btn-primary">Envoyer cette étiquette</button>
+					</form>
+
+					<Link to="/requestlabel" className="btn btn-primary">
+						Faire appel aux services de notre graphiste
+					</Link>
 					<p>
 						Les fonctionnalités d'édition de vos étiquettes sont en cours de développement
 						et vont rapidement voir le jour ! <br />

@@ -8,6 +8,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import Confirm from '../../utils/Confirm';
 import ReactGA from 'react-ga';
+import ReactStars from 'react-stars';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export default class AdminManageHives extends Component {
@@ -21,7 +22,10 @@ export default class AdminManageHives extends Component {
 			selected: '',
 			actu: '',
 			actuTitle: '',
-			actuDate: ''
+			actuDate: '',
+			ratio: 0,
+			stateFeedback: 0,
+			feedback: ''
 		}
 	}
 
@@ -164,6 +168,47 @@ export default class AdminManageHives extends Component {
 		})
 	}
 
+	ratingChanged(e){
+	  console.log(e);
+		request({
+			url: '/hive/ratio',
+			method: 'POST',
+			data : {
+				id: this.state.selected.id,
+				ratio: e
+			}
+		}, this.refs.notif).then((res) => {
+			console.log('ratio update');
+		})
+	}
+
+	saveFeedback(e) {
+		console.log(e);
+		e.preventDefault();
+		request({
+			url: 'hive/feedback',
+			method: 'POST',
+			data : {
+				id: this.state.selected.id,
+				feedback: this.state.feedback
+			}
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				stateFeedback: 0
+			})
+			console.log('feedback update');
+		})
+	}
+
+	updateFeedback(event) {
+		let objState = {};
+		objState[event.target.name] = event.target.value;
+		this.setState(objState);
+		this.setState({
+			stateFeedback: 1
+		})
+	}
+
 	render () {
 		return (
 			<div>
@@ -187,10 +232,17 @@ export default class AdminManageHives extends Component {
 									<tr><th>Nom</th><th>Occupation</th><th></th></tr>
 									{this.state.hives && this.state.hives.map((hive) => {
 										return (
-											<tr className={this.state.selected.id === hive.id && 'table-info'}>
+											<tr className={(this.state.selected.id === hive.id)?'table-info':''}>
 												<td>{hive.name}</td><td>{hive.occupation} %</td>
 												<td>
-													<button className="btn btn-link btn-sm" onClick={() => { this.setState({ selected : hive })}} >Gérer</button>
+													<button className="btn btn-link btn-sm" onClick={() => {
+														this.setState({
+															selected : hive,
+															ratio : hive.ratio,
+															feedback: hive.feedback,
+															stateFeedback: 0
+														}, this.get());
+														}} >Gérer</button>
 												</td>
 											</tr>
 										)
@@ -201,7 +253,20 @@ export default class AdminManageHives extends Component {
 						</div>
 					</div>
 					{(this.state.selected)?
+
 					<div className="col-lg-8">
+						<h3 className="my-4">Notez cette ruche</h3>
+							<ReactStars
+								count={5}
+								value={this.state.ratio}
+								onChange={this.ratingChanged.bind(this)}
+  							size={24}
+							  color2={'#ffd700'} />
+						<div className="form-group">
+									<textarea rows="5" className="form-control" name="feedback" onChange={this.updateFeedback.bind(this)} value={this.state.feedback} placeholder="Informations complémentaires concernant la ruche" />
+									{this.state.stateFeedback ? <button onClick={this.saveFeedback.bind(this)} className="btn btn-primary btn-sm mt-2">Sauvegarder</button>
+									:null}
+						</div>
 						<h3 className="my-4">Créer une news</h3>
 							<form onSubmit={this.createActu.bind(this)}>
 								<div className="form-group">
