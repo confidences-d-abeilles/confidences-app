@@ -11,6 +11,7 @@ import ReactGA from 'react-ga';
 import Meta from '../../utils/Meta'
 import FontAwesome from 'react-fontawesome'
 import FileUpload from '../../utils/FileUpload'
+import Address from '../../utils/Address/Address'
 
 export default class CompanyManageInfos extends Component {
 
@@ -19,7 +20,8 @@ export default class CompanyManageInfos extends Component {
 		this.state = {
 			logout: false,
 			password: '',
-			conf: ''
+			conf: '',
+			loadLogo: false,
 		}
 	}
 
@@ -40,88 +42,14 @@ export default class CompanyManageInfos extends Component {
 			res.addresses.map((address) => {
 				if (address.type === 1) {
 					this.setState({
-						bid: address.id,
-						bsexe_m: address.sexe_m?'1':'0',
-						baddress1: address.line1,
-						baddress2: address.line2,
-						baddress3: address.line3,
-						baddress4: address.line4,
-						bzip: address.zipcode,
-						bcity: address.city,
-						bcountry: address.country
+						billing_address: address
 					})
 				}
 				if (address.type === 2) {
 					this.setState({
-						did: address.id,
-						dsexe_m: address.sexe_m?'1':'0',
-						daddress1: address.line1,
-						daddress2: address.line2,
-						daddress3: address.line3,
-						daddress4: address.line4,
-						dzip: address.zipcode,
-						dcity: address.city,
-						dcountry: address.country,
-						dphone: address.phone
+						delivery_address: address
 					})
 				}
-			})
-		});
-	}
-
-	deleteAccount() {
-		request({
-			url: '/user',
-			method: 'delete'
-		}, this.refs.notif).then((res) => {
-			logout();
-			this.setState({
-				logout: true
-			})
-		})
-	}
-
-	updateBaddress(e) {
-		e.preventDefault();
-		request({
-			url: '/address/'+this.state.bid,
-			method: 'put',
-			data : {
-				sexe_m: this.state.bsexe_m === '0' ? 'false':'true',
-				line1: this.state.baddress1,
-				line2: this.state.baddress2,
-				line3: this.state.baddress3,
-				line4: this.state.baddress4,
-				zipcode: this.state.bzip,
-				city: this.state.bcity,
-				country: this.state.bcountry
-			}
-		}, this.refs.notif).then((res) => {
-			this.setState({
-				editBaddress : false
-			})
-		});
-	}
-
-	updateDaddress(e) {
-		e.preventDefault();
-		request({
-			url: '/address/'+this.state.did,
-			method: 'put',
-			data : {
-				sexe_m: this.state.dsexe_m === '0' ? 'false':'true',
-				line1: this.state.daddress1,
-				line2: this.state.daddress2,
-				line3: this.state.daddress3,
-				line4: this.state.daddress4,
-				zipcode: this.state.dzip,
-				city: this.state.dcity,
-				country: this.state.dcountry,
-				phone: this.state.dphone
-			}
-		}, this.refs.notif).then((res) => {
-			this.setState({
-				editDaddress : false
 			})
 		});
 	}
@@ -145,6 +73,7 @@ export default class CompanyManageInfos extends Component {
 	uploadLogo(e) {
 		e.preventDefault();
 		if (document.getElementById("HQlogo").files[0]) {
+			this.setState({ loadLogo: true });
 			const data = new FormData();
 			data.append('HQlogo', document.getElementById('HQlogo').files[0]);
 			request({
@@ -153,6 +82,7 @@ export default class CompanyManageInfos extends Component {
 				data: data
 			}, this.refs.notif).then((res) => {
 				this.props.update();
+				this.setState({ loadLogo: false });
 			});
 		}
 	}
@@ -168,8 +98,9 @@ export default class CompanyManageInfos extends Component {
 						<h2 className="text-center">
 							Mes informations
 						</h2>
+						<h3>Mon logo</h3>
 						<form onSubmit={this.uploadLogo.bind(this)}>
-							<FileUpload identifier="HQlogo" label="Votre logo en haute qualité : Merci d'uploader une image (JPG ou PNG) de bonne qualité, carré ou presque. Utilisez le format PNG si votre logo contient des zones ou un fond transparent." accept="image/*"/>
+							<FileUpload identifier="HQlogo" loading={this.state.loadLogo} label="Merci d'uploader un fichier de bonne qualité (nous en avons besoin pour la plaque que nous posons sur la ruche). Recommandations : 1200 x 1200px, 2mo maximum. Utilisez le format PNG si votre logo contient des zones ou un fond transparent." accept="image/*"/>
 							<div className="form-group text-center">
 								<button className="btn btn-secondary">Envoyer le logo</button>
 							</div>
@@ -221,138 +152,14 @@ export default class CompanyManageInfos extends Component {
 
 					</div>
 					:null}
-
 					<div className="row">
 						<div className="col-lg-6 col-sm-12">
 							<h3 className="text-center my-4"><small>Mon adresse de facturation</small></h3>
-							{(!this.state.editBaddress)?
-								<div>
-									{this.state.baddress2}<br />
-									{this.state.bsexe_m === '0'?'Mme. ':'M. '}{this.state.baddress1}<br />
-									{this.state.baddress3}<br />
-									{(this.state.baddress4)?this.state.baddress4:null}
-									{this.state.baddress4 && <br />}
-									{this.state.bzip} {this.state.bcity}<br />
-									{this.state.bcountry}<br /><br />
-								<button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ editBaddress: true })}}><FontAwesome name="pencil" />&nbsp;Editer ces informations</button>
-								</div>
-							:<form onSubmit={this.updateBaddress.bind(this)}>
-								<div className="form-group">
-									<label>Nom de l'entreprise</label>
-									<input type="text" name="baddress2" onChange={handleChange.bind(this)} value={this.state.baddress2} className="form-control form-control-sm" placeholder="Nom de l'entreprise"/>
-								</div>
-								<div className="form-group d-flex">
-									<label className="radio-inline form-check-label">
-										<input type="radio" className="form-check-input" name="bsexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.bsexe_m === '1'}/>
-										&nbsp;M
-									</label>
-									<label className="radio-inline form-check-label ml-4">
-										<input type="radio" className="form-check-input" name="bsexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.bsexe_m === '0'}/>
-										&nbsp;Mme
-									</label>
-								</div>
-								<div className="form-group">
-									<label>Nom et prénom</label>
-									<input type="text" name="baddress1" onChange={handleChange.bind(this)} value={this.state.baddress1} className="form-control form-control-sm" placeholder="Nom et prénom"/>
-								</div>
-								<div className="form-group">
-									<label>Adresse ligne 1</label>
-									<input type="text" name="baddress3" onChange={handleChange.bind(this)} value={this.state.baddress3} className="form-control form-control-sm" placeholder="Adresse ligne 1"/>
-								</div>
-								<div className="form-group">
-									<label>Adresse ligne 2</label>
-									<input type="text" name="baddress4" onChange={handleChange.bind(this)} value={this.state.baddress4} className="form-control form-control-sm" placeholder="Adresse ligne 2"/>
-								</div>
-								<div className="form-group row">
-									<div className="col-12">
-										<label>Code postal et ville</label>
-									</div>
-									<div className="col-4">
-										<input type="text" name="bzip" onChange={handleChange.bind(this)} value={this.state.bzip} className="form-control form-control-sm" placeholder="Code postal"/>
-									</div>
-									<div className="col-8">
-										<input type="text" name="bcity" onChange={handleChange.bind(this)} value={this.state.bcity} className="form-control form-control-sm" placeholder="Ville *"/>
-									</div>
-								</div>
-								<div className="form-group">
-									<label>Pays / État</label>
-									<input type="text" name="bcountry" onChange={handleChange.bind(this)} value={this.state.bcountry} className="form-control form-control-sm" placeholder="Pays / Etat *"/>
-								</div>
-								<div className="form-group text-center">
-									<button className="btn btn-primary">Enregistrer</button>
-								</div>
-							</form>
-						}
+							<Address data={this.state.billing_address} />
 						</div>
-
 						<div className="col-lg-6 col-sm-12">
 							<h3 className="text-center my-4"><small>Mes informations de livraison</small></h3>
-							{(!this.state.editDaddress)?
-								<div>
-									{this.state.dsexe_m === '0'?'Mme. ':'M. '}{this.state.daddress1}<br />
-									{this.state.daddress3}<br />
-									{(this.state.daddress4)?this.state.daddress4:null}
-									{this.state.daddress4 && <br />}
-									{this.state.dzip} {this.state.dcity}<br />
-									{this.state.dcountry}<br />
-									<strong>Téléphone pour la livraison :</strong> {this.state.dphone}
-									<br /><br />
-									<button className="btn btn-secondary btn-sm pull-right" onClick={() => {
-											this.setState({ editDaddress: true
-											})
-										}}>
-										<FontAwesome name="pencil" />&nbsp;Editer ces informations
-									</button>
-								</div>
-								:
-								<form onSubmit={this.updateDaddress.bind(this)}>
-								<div className="form-group d-flex">
-									<label className="radio-inline form-check-label">
-										<input type="radio" className="form-check-input" name="dsexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.dsexe_m === '1'}/>
-										&nbsp;M
-									</label>
-									<label className="radio-inline form-check-label ml-4">
-										<input type="radio" className="form-check-input" name="dsexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.dsexe_m === '0'}/>
-										&nbsp;Mme
-									</label>
-								</div>
-								<div className="form-group">
-									<label>Nom et prénom</label>
-									<input type="text" name="daddress1" onChange={handleChange.bind(this)} value={this.state.daddress1} className="form-control form-control-sm" placeholder="Nom et prénom"/>
-								</div>
-								<div className="form-group">
-									<label>Adresse ligne 1</label>
-									<input type="text" name="daddress3" onChange={handleChange.bind(this)} value={this.state.daddress3} className="form-control form-control-sm" placeholder="Ligne 1"/>
-								</div>
-								<div className="form-group">
-									<label>Adresse ligne 2</label>
-									<input type="text" name="daddress4" onChange={handleChange.bind(this)} value={this.state.daddress4} className="form-control form-control-sm" placeholder="Ligne 2"/>
-								</div>
-								<div className="form-group row">
-									<div className="col-12">
-										<label>Code postal et ville</label>
-									</div>
-									<div className="col-4">
-										<input type="text" name="dzip" onChange={handleChange.bind(this)} value={this.state.dzip} className="form-control form-control-sm" placeholder="Code postal *"/>
-									</div>
-									<div className="col-8">
-										<input type="text" name="dcity" onChange={handleChange.bind(this)} value={this.state.dcity} className="form-control form-control-sm" placeholder="Ville *"/>
-									</div>
-								</div>
-								<div className="form-group">
-									<label>Pays / État</label>
-									<input type="text" name="dcountry" onChange={handleChange.bind(this)} value={this.state.dcountry} className="form-control form-control-sm" placeholder="Pays / Etat *"/>
-								</div>
-								<hr />
-								<div className="form-group">
-									<label>Téléphone pour la livraison</label>
-									<input type="text" name="dphone" onChange={handleChange.bind(this)} value={this.state.dphone} className="form-control form-control-sm" placeholder="Numéro de téléphone"/>
-								</div>
-								<div className="form-group text-center">
-									<button className="btn btn-primary">Enregistrer</button>
-								</div>
-							</form>
-							}
+							<Address data={this.state.delivery_address} />
 						</div>
 					</div>
 				</div>
