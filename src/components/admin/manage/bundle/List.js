@@ -8,9 +8,9 @@ const List = ( props ) => (
 			<tbody>
 				<tr>
 					<th>Client</th>
-					<th>Client</th>
-					<th>Client</th>
-					<th>Client</th>
+					<th>Offre</th>
+					<th>Etat du paiement</th>
+					<th>Gérer</th>
 				</tr>
 				{props.data.map((bundle) => (
 					<tr>
