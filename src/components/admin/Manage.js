@@ -50,7 +50,6 @@ export default class CompanyManage extends Component {
 								<Link to="/admin/manage/users" className="list-group-item">Gerer les utilisateurs</Link>
 								<Link to="/admin/manage/hives" className="list-group-item">Gerer les ruches</Link>
 								<Link to="/admin/manage/bundles" className="list-group-item">Gerer les parrainages</Link>
-								<Link to="/admin/manage/bundle" className="list-group-item">Gerer les parrainages</Link>
 								<Link to="/admin/manage/mails" className="list-group-item">Gerer les envois</Link>
 								<li className="list-group-item active">Gestion du contenu</li>
 								<Link to="/admin/manage/products" className="list-group-item">Gerer les produits</Link>
