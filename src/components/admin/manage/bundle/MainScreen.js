@@ -31,7 +31,7 @@ export default class AdminManageBundle extends Component {
 		return (
 			<div className="row">
 				<div className="col">
-					<h2 className="text-center my-2">Gérer les parrainages</h2>
+					<h2 className="text-center my-4">Gérer les parrainages</h2>
 					<List data={this.state.bundles} />
 				</div>
 			</div>
