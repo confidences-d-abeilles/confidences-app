@@ -22,6 +22,9 @@ export default class List extends Component {
 	}
 
 	refresh() {
+		this.setState({
+			loading: true
+		});
 		request({
 			url: '/product',
 			method: 'get'
@@ -34,6 +37,16 @@ export default class List extends Component {
 			this.setState({
 				loading: false
 			})
+		})
+	}
+
+	delete = (id) => {
+		request({
+			url: '/product/'+id,
+			method: 'delete'
+		}, this.refs.notif).then((res) => {
+			this.refresh();
+		}).catch((e) => {
 		})
 	}
 
@@ -72,6 +85,7 @@ export default class List extends Component {
 									<td>{product.price} €</td>
 									<td>{product.duty} %</td>
 									<td>{(product.price + (product.price / 100 * product.duty)).toFixed(2)} €</td>
+									<td><button className="btn btn-primary btn-sm" onClick={this.delete.bind(this, product.id)}>Supprimer</button></td>
 								</tr>
 							);
 						})}
