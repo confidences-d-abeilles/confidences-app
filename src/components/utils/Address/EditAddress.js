@@ -14,11 +14,11 @@ const EditAddress = ( props ) => (
 				</label>
 			</div>
 			<div className="form-group">
-				<label>Nom et prénom *</label>
+				<label>Nom * et prénom *</label>
 				<input type="text" name="line1" onChange={props.onChange} value={props.data.line1} className="form-control form-control-sm"/>
 			</div>
 			<div className="form-group">
-				<label>Nom de l'entreprise si nécessaire</label>
+				<label>Nom de l'entreprise</label>
 				<input type="text" name="line2" onChange={props.onChange} value={props.data.line2} className="form-control form-control-sm" />
 			</div>
 				<div className="form-group">
@@ -31,7 +31,7 @@ const EditAddress = ( props ) => (
 				</div>
 				<div className="form-group row">
 					<div className="col-12">
-						<label>Code postal et ville *</label>
+						<label>Code postal * et ville *</label>
 					</div>
 					<div className="col-4">
 						<input type="text" name="zipcode" onChange={props.onChange} value={props.data.zipcode} className="form-control form-control-sm" />

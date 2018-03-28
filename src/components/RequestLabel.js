@@ -66,9 +66,18 @@ export default class RequestLabel extends Component {
              <NotificationSystem ref="notif" />
              <div className="row justify-content-center">
                  <div className="col-lg-6 col-md-10 col-sm-12">
-                     <h2 className="text-center my-4">
-                      <span className="align-middle">Demande de Label : descriptif ? </span>
-                      </h2>
+                    <p className="align-middle">
+                      <h5 className="text-center my-4">
+                            Ce formulaire vous permet de contacter
+                            Marine du Peloux, graphiste, qui pourra
+                            vous aider à réaliser votre étiquette
+                            personnalisée. Soumettez lui votre
+                            demande en l’accompagnant d’un brief ou
+                            tout autre fichier que vous jugeriez utile.<br /></h5>
+                            <i>Ce service n’est pas inclus dans l’offre de
+                            parrainage, attendez-vous donc à recevoir un
+                            devis.</i> </p>
+
                      <form onSubmit={this.sendMail.bind(this)} className="mt-4">
                          <div className="form-group">
                              <input type="text" value={this.state.name} onChange={handleChange.bind(this)} placeholder="Votre nom *" name="name" className="form-control"/>
@@ -92,7 +101,7 @@ export default class RequestLabel extends Component {
                           </div>
 
                          <div className="form-group">
-                             <textarea value={this.state.feedback} rows="10" onChange={handleChange.bind(this)} placeholder="description de la demande *" name="feedback" className="form-control"/>
+                             <textarea value={this.state.feedback} rows="10" onChange={handleChange.bind(this)} placeholder="Votre demande *" name="feedback" className="form-control"/>
                          </div>
                          {this.state.success &&
                          <p className="alert alert-success">Votre demande a été envoyée avec succès</p>}
