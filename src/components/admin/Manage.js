@@ -4,7 +4,8 @@ import AdminManageFaq from './manage/Faq'
 import AdminManageMails from './manage/Mails'
 import AdminManageHives from './manage/Hives'
 import AdminManageBundles from './manage/Bundles'
-import AdminManageBundle from './manage/bundle/List'
+import AdminManageBundle from './manage/bundle/MainScreen'
+import AdminManageBundleId from './manage/bundle/Uniq'
 import AdminManageServer from './manage/Server'
 import Products from './manage/Products'
 import Coupons from './manage/Coupons'
@@ -73,6 +74,7 @@ export default class CompanyManage extends Component {
 									<Route exact path="/admin/manage/hives" component={AdminManageHives} />
 									<Route exact path="/admin/manage/bundles" component={AdminManageBundles} />
 									<Route exact path="/admin/manage/bundle" component={AdminManageBundle} />
+									<Route exact path="/admin/manage/bundle/:id" component={AdminManageBundleId} />
 									<Route exact path="/admin/manage/faq" component={AdminManageFaq} />
 									<Route exact path="/admin/manage/products" component={Products} />
 									<Route exact path="/admin/manage/coupons" component={Coupons} />
