@@ -17,7 +17,7 @@ export default class Address extends Component {
 			this.setState({
 				address: { ...nextProps.data, sexe_m : (nextProps.data.sexe_m)?'1':'0' }
 			})
-		}
+		} // pres operation
 	}
 
 	updateAddress = (event) => {
