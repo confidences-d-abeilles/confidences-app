@@ -66,6 +66,7 @@ export default class Feedback extends Component {
 	updateActu(e) {
 		e.preventDefault()
 		const data = new FormData();
+		console.log("update");
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
 		data.append('date', this.state.actuDate);
@@ -119,8 +120,9 @@ export default class Feedback extends Component {
 	}
 
 	deleteActu() {
+		console.log("delete");
 		request({
-			url: '/news/'+this.state.newsModify,
+			url: '/news/delete/'+this.state.newsModify,
 			method: 'DELETE'
 		}, this.refs.notif).then((res) => {
 			this.setState({
