@@ -50,9 +50,15 @@ export default class CompanyAddress extends Component {
 			method: 'post',
 			data : this.state.address
 		}, this.refs.notif).then((res) => {
-			this.setState({
-				redirect : true
-			})
+			request({
+				url : '/address',
+				method: 'post',
+				data : { ...this.state.address, type: 2 }
+			}, this.refs.notif).then((res) => {
+				this.setState({
+					redirect : true
+				})
+			});
 		});
 	}
 
