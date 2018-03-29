@@ -4,6 +4,7 @@ import request from '../services/Net'
 import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
 import Meta from './utils/Meta'
+import { Redirect } from 'react-router-dom';
 
 export default class RequestLabel extends Component {
 
@@ -17,7 +18,7 @@ export default class RequestLabel extends Component {
           email: '',
           feedback: '',
           attachment: '',
-
+          redirect: false,
           success: false
       }
   }
@@ -54,10 +55,13 @@ export default class RequestLabel extends Component {
       method: 'post',
       data: data
     }, this.refs.notif).then((res) => {
-      console.log("faire un setState a null");
+      this.setState({
+        redirect: true
+      })
     })
     console.log("coucou");
   }
+
 
    render(){
      return (
@@ -65,7 +69,7 @@ export default class RequestLabel extends Component {
              <Meta title="Label"/>
              <NotificationSystem ref="notif" />
              <div className="row justify-content-center">
-                 <div className="col-lg-6 col-md-10 col-sm-12">
+                 {!this.state.redirect ? <div className="col-lg-6 col-md-10 col-sm-12">
                     <p className="align-middle">
                       <h5 className="text-center my-4">
                             Ce formulaire vous permet de contacter
@@ -108,6 +112,17 @@ export default class RequestLabel extends Component {
                          <button className="btn btn-primary mb-4">Envoyer</button>
                      </form>
                  </div>
+                 :
+                <div className="col-lg-6 col-md-10 col-sm-12">
+                  <p className="align-middle">
+                    <h5 className="text-center my-4">
+                      Votre demande a bien ete envoyer, vous allez etre redirectionner sur la page customize
+                      {setTimeout(() => {this.setState({ redirecte: true })}, 2000)}
+                      {this.state.redirecte ? <Redirect to="/company/manage/customize" /> : null}
+                    </h5>
+                  </p>
+                </div>
+               }
              </div>
          </div>
      )
