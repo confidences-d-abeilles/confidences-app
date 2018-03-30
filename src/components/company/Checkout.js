@@ -27,7 +27,10 @@ export default class CompanyCheckout extends Component {
 			dash: false,
 			feedback: '',
 			present_date: moment(),
-			wish: false
+			wish: false,
+			delivery_address: {
+				type: 2
+			}
 		}
 	}
 
