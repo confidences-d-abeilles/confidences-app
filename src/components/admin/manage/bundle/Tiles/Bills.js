@@ -54,7 +54,6 @@ export default class Bills extends Component {
 	}
 
 	render () {
-		console.log(this.state.bills);
 		return (
 			<div>
 				<NotificationSystem ref="notif" />
@@ -65,7 +64,9 @@ export default class Bills extends Component {
 						<strong>Montant</strong> : {this.state.bills.price} €<br />
 						<strong>Document</strong> : {(this.state.bills.file)?<span><a href={config.cdn_url+'/bills/'+this.state.bills.file} target="_blank">Fichier actuel</a><br /></span>:'Aucun document pour cette facturation'}
 						<FileUpload identifier="billDoc" label="Uploader un fichier" />
-						<button className="btn btn-primary btn-sm" onClick={this.uploadFile} >Envoyer le fichier</button>
+						<div className="text-center">
+							<button className="btn btn-info btn-sm" onClick={this.uploadFile} >Envoyer le fichier</button>
+						</div>
 					</div>
 				:<Loading />}
 			</div>
