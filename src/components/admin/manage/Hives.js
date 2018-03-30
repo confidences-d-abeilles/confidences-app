@@ -7,9 +7,12 @@ import Loading from '../../utils/Loading'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import Confirm from '../../utils/Confirm';
+import SquareImg from '../../utils/SquareImg';
 import ReactGA from 'react-ga';
 import ReactStars from 'react-stars';
 import 'react-datepicker/dist/react-datepicker.css';
+import imgPlaceholder from '../../../assets/img/logo_ruche_entreprise.png';
+const config = require('../../../config.js');
 
 export default class AdminManageHives extends Component {
 
@@ -209,6 +212,20 @@ export default class AdminManageHives extends Component {
 		})
 	}
 
+	changeImg(e) {
+
+		console.log(e);
+		request({
+			url: 'hive/img/'+this.state.selected.id,
+			method: 'PUT',
+			data : {
+				img: e
+			}
+		}, this.refs.notif).then((res) => {
+			console.log("tout se passe bien ?");
+		})
+	}
+
 	render () {
 		return (
 			<div>
@@ -240,7 +257,8 @@ export default class AdminManageHives extends Component {
 															selected : hive,
 															ratio : hive.ratio,
 															feedback: hive.feedback,
-															stateFeedback: 0
+															stateFeedback: 0,
+															imgsHive: hive.imgs
 														}, this.get());
 														}} >Gérer</button>
 												</td>
@@ -369,7 +387,27 @@ export default class AdminManageHives extends Component {
 							</div>
 							<button className="btn btn-primary">Ajouter cette photo</button>
 						</form>
-					</div>:<div className="col"></div>}
+					</div>
+					:<div className="col"></div>}
+					{this.state.selected?
+						<div>
+							{this.state.imgsHive?console.log(this.state.imgsHive):console.log('pas de photo')}
+
+<div className="row justify-content-center">
+							{this.state.imgsHive.map((img) => {
+								return(
+									<div className="col-4">
+										<SquareImg className="card-img-top img-fluid" src={(img)?config.cdn_url+'/'+img:imgPlaceholder} alt="Card image cap" />
+
+											<button onClick={() => {this.changeImg(img)}} className="btn btn-primary">choisir comme photo principale</button>
+
+
+									</div>
+								)
+							})}
+					</div>
+					</div>
+					:null}
 				</div>
 			</div>
 		)
