@@ -70,14 +70,15 @@ export default class RequestLabel extends Component {
              <NotificationSystem ref="notif" />
              <div className="row justify-content-center">
                  {!this.state.redirect ? <div className="col-lg-6 col-md-10 col-sm-12">
+                  <h5 className="text-center my-4">Formulaire de contact</h5>
                     <p className="align-middle">
-                      <h5 className="text-center my-4">
+
                             Ce formulaire vous permet de contacter
                             Marine du Peloux, graphiste, qui pourra
                             vous aider à réaliser votre étiquette
                             personnalisée. Soumettez lui votre
                             demande en l’accompagnant d’un brief ou
-                            tout autre fichier que vous jugeriez utile.<br /></h5>
+                            tout autre fichier que vous jugeriez utile.<br />
                             <i>Ce service n’est pas inclus dans l’offre de
                             parrainage, attendez-vous donc à recevoir un
                             devis.</i> </p>
@@ -99,7 +100,7 @@ export default class RequestLabel extends Component {
                           <label>Joindre un fichier (png, jpg, pdf, indd, ai)</label>
                             <label htmlFor="attachment" className={(this.state.attachment)?'active-upload':'upload'} style={{ position: 'relative' }}>
                             <input type="file" className="form-control" id="attachment" onChange={() => { this.setState({ attachment: document.getElementById("attachment").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-                              Glissez votre image ici ou cliquez pour en séléctionner un parmi vos fichiers<br/>
+                              Glissez votre image ici ou cliquez pour en séléctionner un parmi vos fichiers.<br/>
                              {(this.state.attachment)?'Selectionné : '+this.state.attachment:"Aucun fichier séléctionné"}
                             </label>
                           </div>
@@ -115,12 +116,16 @@ export default class RequestLabel extends Component {
                  :
                 <div className="col-lg-6 col-md-10 col-sm-12">
                   <p className="align-middle">
-                    <h5 className="text-center my-4">
-                      Votre demande a bien ete envoyer, vous allez etre redirectionner sur la page customize
-                      {setTimeout(() => {this.setState({ redirecte: true })}, 2000)}
+                    <h3 className="text-center my-4">
+                      Votre demande a bien été envoyée &nbsp;
+                      <img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy"
+        								style={{ height: '1em' }} />
+
+                        <br /></h3></p>
+                      Vous allez etre redirigé(e) sur la page de personnalisation.
+                      {setTimeout(() => {this.setState({ redirecte: true })}, 5000)}
                       {this.state.redirecte ? <Redirect to="/company/manage/customize" /> : null}
-                    </h5>
-                  </p>
+
                 </div>
                }
              </div>
