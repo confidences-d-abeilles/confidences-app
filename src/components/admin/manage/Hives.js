@@ -397,10 +397,7 @@ export default class AdminManageHives extends Component {
 							{this.state.imgsHive.map((img) => {
 								return(
 									<div className="col-4">
-										<SquareImg className="card-img-top img-fluid" src={(img)?config.cdn_url+'/'+img:imgPlaceholder} alt="Card image cap" />
-
-											<button onClick={() => {this.changeImg(img)}} className="btn btn-primary">choisir comme photo principale</button>
-
+										<img  onClick={() => {this.changeImg(img)}} width="auto" height="120" src={(img)?config.cdn_url+'/'+img:imgPlaceholder} alt={img} />
 
 									</div>
 								)
