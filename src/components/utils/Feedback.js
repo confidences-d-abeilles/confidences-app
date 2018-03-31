@@ -81,7 +81,14 @@ export default class Feedback extends Component {
 			data: data
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				selected: ''
+				selected: '',
+				content: '',
+				title: '',
+				actuDate: moment(new Date()),
+				actuTitle: '',
+				newsTake: 0,
+				actu: '',
+				actuImg: ''
 			})
 		});
 	}
@@ -104,11 +111,11 @@ export default class Feedback extends Component {
 			}
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				content: '',
-				title: '',
-				actuDate: moment(new Date()),
-				img: ''
-			}) // trouver une facon de reaload juste le component
+				newsTake: 0,
+				actu: '',
+				actuTitle: '',
+				actuImg: ''
+			})
 		})
 	}
 
@@ -126,7 +133,12 @@ export default class Feedback extends Component {
 			method: 'DELETE'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				newsModify: null
+				newsModify: null,
+				content: '',
+				actuTitle: '',
+				actuDate: moment(new Date()),
+				actuImg: '',
+				actu: ''
 			})
 		})
 	}
