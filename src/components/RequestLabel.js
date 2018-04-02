@@ -100,7 +100,7 @@ export default class RequestLabel extends Component {
                           <label>Joindre un fichier (png, jpg, pdf, indd, ai)</label>
                             <label htmlFor="attachment" className={(this.state.attachment)?'active-upload':'upload'} style={{ position: 'relative' }}>
                             <input type="file" className="form-control" id="attachment" onChange={() => { this.setState({ attachment: document.getElementById("attachment").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-                              Glissez votre image ici ou cliquez pour en séléctionner un parmi vos fichiers.<br/>
+                              Glissez votre fichier ici ou cliquez pour en séléctionner un parmi vos fichiers. (Taille limitée à 5Mo.)<br/>
                              {(this.state.attachment)?'Selectionné : '+this.state.attachment:"Aucun fichier séléctionné"}
                             </label>
                           </div>
@@ -115,14 +115,14 @@ export default class RequestLabel extends Component {
                  </div>
                  :
                 <div className="col-lg-6 col-md-10 col-sm-12">
-                  <p className="align-middle">
+                  <p className="text-center align-middle">
                     <h3 className="text-center my-4">
                       Votre demande a bien été envoyée &nbsp;
                       <img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy"
         								style={{ height: '1em' }} />
 
                         <br /></h3></p>
-                      Vous allez etre redirigé(e) sur la page de personnalisation.
+                      Vous allez être redirigé(e) sur la page de personnalisation.
                       {setTimeout(() => {this.setState({ redirecte: true })}, 5000)}
                       {this.state.redirecte ? <Redirect to="/company/manage/customize" /> : null}
 

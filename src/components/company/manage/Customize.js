@@ -3,11 +3,17 @@ import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
 import ReactGA from 'react-ga';
 import { Link } from 'react-router-dom'
+
 import logoSquare from '../../../assets/img/logo-square.png';
+import EtiD from '../../../assets/img/label/etiquette_defaut.jpg';
+import EtiAi from '../../../assets/img/label/preview_AI.png';
+import EtiIndd from '../../../assets/img/label/preview_INDD.png';
+import EtiPdf from '../../../assets/img/label/preview_PDF.png';
 import Eti1 from '../../../assets/img/label/sample_Etiquette_E1.jpg';
 import Eti2 from '../../../assets/img/label/sample_Etiquette_E2.jpg'
 import Eti3 from '../../../assets/img/label/sample_Etiquette_E3.jpg'
 import Eti4 from '../../../assets/img/label/sample_Etiquette_E4.jpg'
+
 const config = require('../../../config.js');
 
 export default class CompanyManageCustomize extends Component {
@@ -16,8 +22,10 @@ export default class CompanyManageCustomize extends Component {
 		super(props);
 		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
-			label : '',
-			current: null
+			current: null,
+			labelCurrent: null,
+			label_format: '',
+			label: ''
 		}
 	}
 
@@ -32,11 +40,14 @@ export default class CompanyManageCustomize extends Component {
 				method: 'get'
 			}, this.refs.notif).then((bund) => {
 				this.setState({
+					ownerId: res.id,
 					bundleId: bund.id,
+					label_format: bund.label_format,
 					labelCurrent: bund.label
 				})
-				console.log(bund.label);
-				console.log(bund);
+				this.checkFormat();
+				// let check = [];
+				// check.append
 			})
 		});
 	}
@@ -54,28 +65,53 @@ export default class CompanyManageCustomize extends Component {
 			headers : {
 				'content-type': 'multipart/form-data'
 			}
-		}, this.refs.notif).then(() => {
-			this.setState({
-				labelCurrent: this.state.label,
-				label: ''
-			})
+		}, this.refs.notif).then( () => {
+			console.log(document.getElementById("label").files[0]);
+			request({
+				url: '/bundle/owner/'+this.state.ownerId,
+				method: 'get'
+			}, this.refs.notif).then((bund) => {
+				this.setState({
+					label_format: bund.label_format,
+					labelCurrent: bund.label,
+					labelDefault: ''
+				})
+				this.checkFormat();
 		})
+	})
+}
 	}
+
+	checkFormat(){
+		if (!this.state.label_format.localeCompare("pdf")){
+			this.setState({labelDefault: EtiPdf});
+		} else if (!this.state.label_format.localeCompare("AI")) {
+			this.setState({labelDefault: EtiAi});
+		} else if (!this.state.label_format.localeCompare("INDD")) {
+			this.setState({labelDefault: EtiIndd});
+		} else if (!this.state.label_format.localeCompare("DEFAULT")) {
+			this.setState({labelDefault: EtiD});
+		} else {
+			this.setState({labelDefault: null});
+		}
 	}
+
+
+	// <div className="col">
+	// 	<h2 className="text-center my-4"></h2>
+	// 	{this.state.labelCurrent ?
+	// 		<div style={{ height: '210px', maxWidth: '100%' }}>
+	// 			<img  width="auto" height="150" src={this.state.labelDefault ? this.state.labelDefault: config.cdn_url+'/'+this.state.labelCurrent} alt="parrainage1" />
+	// 		</div>
+	// 	:null}
+	// </div>
 
 	render () {
 		return (
 			<div>
 				<div className="row">
 				<NotificationSystem ref="notif" />
-				<div className="col">
-					<h2 className="text-center my-4"></h2>
-					{this.state.labelCurrent ?
-						<div style={{ height: '210px', maxWidth: '100%' }}>
-							<img src={config.cdn_url+'/'+this.state.labelCurrent} alt="labelCurrent" style={{ maxWidth: '100%', maxHeight: '100%' }} />
-						</div>
-					:null}
-				</div>
+
 			</div>
 			<div className="row">
 				<div className="col">
@@ -92,14 +128,16 @@ export default class CompanyManageCustomize extends Component {
 										<h5 className="text-center my-4">Notre étiquette personnalisée</h5>
 											<i className="card-text" style={{fontSize: '85%'}}>Une version « par défaut » est générée automatiquement. 3
 											solutions sont à votre disposition pour la modifier.</i>
-												<div style={{ width: '30%', height: '30%', backgroundColor: '#84B183', color: 'white', lineHeight: '3em', textAlign: 'center', bordel: '5px solid black', borderWith: '25px', padding: '10px'}}>
-												recuperer le label par dafault de lentreprise
-												</div>
+											<div className="col text-center">
+												<img  width="auto" height="150" src={this.state.labelDefault ? this.state.labelDefault: config.cdn_url+'/'+this.state.labelCurrent} alt="parrainage1" />
+											</div>
+												rajouter le nom type de fichier uploader ou default
 									</div>
 							</div>
 						</div>
 						</div>
 						</div>
+						<br />
 						<div className="row">
 							<div className='col'>
 								<div className="card">
@@ -157,6 +195,11 @@ export default class CompanyManageCustomize extends Component {
 							<img  width="auto" height="90" src={Eti4} alt="parrainage4" />
 							</div>
 						</div>
+						<br />
+							<p className="text-center">Ces templates sont proposés par Marine du Peloux.
+							Vous avez une idée, vous voulez lui confier la
+							réalisation de votre étiquette ? Contactez-la !</p>
+						<br />
 						<Link to="/requestlabel" className="btn btn-primary">
 							Contacter une graphiste
 						</Link>
