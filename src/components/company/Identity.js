@@ -58,8 +58,10 @@ export default class CompanyIdentity extends Component {
 	}
 	replaceNamespace(e) {
 		e.preventDefault();
+		this.setState({
+			[e.target.name]: e.target.value
+		});
 		const val = e.target.value;
-		console.log(e.target.value);
 		console.log((val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, '-'));
 		let TabSpec = {"à":"a","á":"a","â":"a","ã":"a","ä":"a","å":"a","ò":"o","ó":"o","ô":"o","õ":"o","ö":"o","ø":"o","è":"e","é":"e","ê":"e","ë":"e","ç":"c","ì":"i","í":"i","î":"i","ï":"i","ù":"u","ú":"u","û":"u","ü":"u","ÿ":"y","ñ":"n","_":" "};
 		let reg=/[àáäâèéêëçìíîïòóôõöøùúûüÿñ_]/gi;
@@ -75,7 +77,7 @@ export default class CompanyIdentity extends Component {
 				<Meta title="L'entreprise"/>
 				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/company/address" />:null}
-				<div className="row justify-content-center">
+ 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
 							<div className="progress-bar" role="progressbar" style={{width: '40%'}}></div>
