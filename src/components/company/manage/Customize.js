@@ -83,13 +83,13 @@ export default class CompanyManageCustomize extends Component {
 	}
 
 	checkFormat(){
-		if (!this.state.label_format.localeCompare("pdf")){
+		if (!this.state.label_format.localeCompare("pdf")) {
 			this.setState({labelDefault: EtiPdf});
-		} else if (!this.state.label_format.localeCompare("AI")) {
+		} else if (!this.state.label_format.localeCompare("ai")) {
 			this.setState({labelDefault: EtiAi});
-		} else if (!this.state.label_format.localeCompare("INDD")) {
+		} else if (!this.state.label_format.localeCompare("indd")) {
 			this.setState({labelDefault: EtiIndd});
-		} else if (!this.state.label_format.localeCompare("DEFAULT")) {
+		} else if (!this.state.label_format.localeCompare("default")) {
 			this.setState({labelDefault: EtiD});
 		} else {
 			this.setState({labelDefault: null});
