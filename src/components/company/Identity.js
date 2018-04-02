@@ -91,7 +91,10 @@ export default class CompanyIdentity extends Component {
 							</div>
 							<div className="form-group">
 								<label htmlFor="namespace">URL par défaut de votre future page. Vous pourrez la modifier par la suite.</label>
-								<input type="text" className="form-control" id="namespace" value={this.state.namespace} disabled />
+								<div className="input-group">
+									<span className="input-group-addon" id="basic-addon3">https://parrainagederuches.fr/parrains/</span>
+									<input type="text" className="form-control" id="namespace" value={this.state.namespace} disabled />
+								</div>
 							</div>
 							<div className="form-group">
 								<input type="text" className="form-control" name="siret" placeholder="Numéro SIRET *" onChange={this.handlesiret.bind(this)} />
