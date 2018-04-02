@@ -34,7 +34,7 @@ export default class AdminManageBundleId extends Component {
 			url: '/bundle/'+this.state.bundle.id,
 			method: 'put',
 			data: {
-				state : this.state.state
+				state : this.state.bundle.state
 			}
 		}, this.refs.notif).then((res) => {
 
