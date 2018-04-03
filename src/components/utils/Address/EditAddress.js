@@ -14,20 +14,24 @@ const EditAddress = ( props ) => (
 				</label>
 			</div>
 			<div className="form-group">
-				<label>Nom * et prénom *</label>
-				<input type="text" name="line1" onChange={props.onChange} value={props.data.line1} className="form-control form-control-sm"/>
+				<label>prénom *</label>
+				<input type="text" name="firstname" onChange={props.onChange} value={props.data.firstname} className="form-control form-control-sm"/>
+			</div>
+			<div className="form-group">
+				<label>Nom *</label>
+				<input type="text" name="name" onChange={props.onChange} value={props.data.name} className="form-control form-control-sm"/>
 			</div>
 			<div className="form-group">
 				<label>Nom de l'entreprise</label>
-				<input type="text" name="line2" onChange={props.onChange} value={props.data.line2} className="form-control form-control-sm" />
+				<input type="text" name="company_name" onChange={props.onChange} value={props.data.company_name} className="form-control form-control-sm" />
 			</div>
 				<div className="form-group">
 					<label>Adresse ligne 1 *</label>
-					<input type="text" name="line3" onChange={props.onChange} value={props.data.line3} className="form-control form-control-sm"/>
+					<input type="text" name="address_line1" onChange={props.onChange} value={props.data.address_line1} className="form-control form-control-sm"/>
 				</div>
 				<div className="form-group">
 					<label>Adresse ligne 2</label>
-					<input type="text" name="line4" onChange={props.onChange} value={props.data.line4} className="form-control form-control-sm"/>
+					<input type="text" name="address_line2" onChange={props.onChange} value={props.data.address_line2} className="form-control form-control-sm"/>
 				</div>
 				<div className="form-group row">
 					<div className="col-12">

@@ -4,12 +4,12 @@ import Loading from '../Loading'
 const ViewAddress = ( props ) => (
 	(props.data)?
 		<div>
-			{props.data.sexe_m === '0'?'Mme. ':'M. '}{props.data.line1}<br />
-			{(props.data.line2)?props.data.line2:''}
-			{(props.data.line2)?<br />:''}
-			{props.data.line3}<br />
-			{(props.data.line4)?props.data.line4:''}
-			{(props.data.line4)?<br />:''}
+			{props.data.sexe_m === '0'?'Mme. ':'M. '}{props.data.name} {props.data.firstname}<br />
+			{(props.data.company_name)?props.data.company_name:''}
+			{(props.data.company_name)?<br />:''}
+			{props.data.address_line1}<br />
+			{(props.data.address_line2)?props.data.address_line2:''}
+			{(props.data.address_line2)?<br />:''}
 			{props.data.zipcode} {props.data.city}<br />
 			{props.data.country}<br />
 			{(props.data.phone)?props.data.phone:''}
