@@ -52,7 +52,7 @@ export default class Feedback extends Component {
 					newsTake: 1,
 					actu: res[0].content,
 					actuTitle: res[0].title,
-					actuImgUp: res[0].img,
+					actuImg: res[0].img,
 					actuDate: moment(res[0].date),
 					newsModify: nextProps.name
 				}, () => {
@@ -73,7 +73,7 @@ export default class Feedback extends Component {
 		if (document.getElementById("actu-img").files[0]) {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		} else {
-			data.append('img', this.state.actuImgUp);
+			data.append('img', this.state.actuImg);
 		}
 		request({
 			url: '/news/'+this.state.newsModify,
@@ -184,9 +184,10 @@ export default class Feedback extends Component {
 						Recommandations : 400x300px, 100ko maximum - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}
 					</label>
 				</div>
-				<button className="btn btn-primary">Soumettre</button>
+				<button className="btn btn-secondary btn-sm">Soumettre</button>
 			</form>
-			{this.state.newsModify ? <Confirm action={this.deleteActu.bind(this)} text="Supprimer cette news" className="m-2"/>: null}
+			<br/>
+			{this.state.newsModify ? <Confirm action={this.deleteActu.bind(this)} text="Supprimer cette news" className="btn btn-secondary btn-sm"/>: null}
 			</div>
 		)
 	}
