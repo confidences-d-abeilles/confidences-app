@@ -59,7 +59,7 @@ export default class Hive extends Component {
 							<h2 className="mt-5" style={{ fontFamily: "HighTo" }}>INFORMATIONS SUR LA RUCHE</h2>
 							<div style={{ width : '100%', height: '1px', backgroundColor: 'black'}} className="mb-4" ></div>
 							<p style={{ fontFamily: "HighTo", fontSize: '1.25em' }}>
-								Aucune information sur cette ruche pour le moment
+								{this.state.hive.info ? this.state.hive.info : 'Aucune information sur cette ruche pour le moment'}
 							</p>
 							<div className="row">
 								{this.state.hive.imgs.map((img) => {

@@ -14,7 +14,7 @@ const EditAddress = ( props ) => (
 				</label>
 			</div>
 			<div className="form-group">
-				<label>prénom *</label>
+				<label>Prénom *</label>
 				<input type="text" name="firstname" onChange={props.onChange} value={props.data.firstname} className="form-control form-control-sm"/>
 			</div>
 			<div className="form-group">
