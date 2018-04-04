@@ -8,6 +8,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import Confirm from '../../utils/Confirm';
 import SquareImg from '../../utils/SquareImg';
+import Feedback from '../../utils/Feedback';
 import ReactGA from 'react-ga';
 import ReactStars from 'react-stars';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -203,6 +204,21 @@ export default class AdminManageHives extends Component {
 		})
 	}
 
+	saveInformation(e) {
+		console.log(this.state.info);
+		e.preventDefault();
+		request({
+			url: 'hive/information',
+			method: 'POST',
+			data : {
+				id: this.state.selected.id,
+				information: this.state.info
+			}
+		}, this.refs.notif).then((res) => {
+			console.log('info update');
+		})
+	}
+
 	updateFeedback(event) {
 		let objState = {};
 		objState[event.target.name] = event.target.value;
@@ -258,7 +274,8 @@ export default class AdminManageHives extends Component {
 															ratio : hive.ratio,
 															feedback: hive.feedback,
 															stateFeedback: 0,
-															imgsHive: hive.imgs
+															imgsHive: hive.imgs,
+															info: hive.info
 														}, this.get());
 														}} >Gérer</button>
 												</td>
@@ -273,7 +290,7 @@ export default class AdminManageHives extends Component {
 					{(this.state.selected)?
 
 					<div className="col-lg-8">
-						<h3 className="my-4">Notez cette ruche</h3>
+						<h3 className="my-4">Noter cette ruche</h3>
 							<ReactStars
 								count={5}
 								value={this.state.ratio}
@@ -281,49 +298,21 @@ export default class AdminManageHives extends Component {
   							size={24}
 							  color2={'#ffd700'} />
 						<div className="form-group">
+						<h3 className="my-4">Mémo technique sur la ruche</h3>
 									<textarea rows="5" className="form-control" name="feedback" onChange={this.updateFeedback.bind(this)} value={this.state.feedback} placeholder="Informations complémentaires concernant la ruche" />
 									{this.state.stateFeedback ? <button onClick={this.saveFeedback.bind(this)} className="btn btn-primary btn-sm mt-2">Sauvegarder</button>
 									:null}
 						</div>
-						<h3 className="my-4">Créer une news</h3>
-							<form onSubmit={this.createActu.bind(this)}>
-								<div className="form-group">
-									<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} value={this.state.actuTitle} placeholder="Titre"/>
-								</div>
-								<div className="form-group">
-									<label>Date de l'actu</label>
-									<DatePicker
-										dateFormat="DD/MM/YYYY"
-										selected={this.state.actuDate}
-										onChange={this.handleDateChange.bind(this)}
-										className="form-control"
-										/>
-								</div>
-								<div className="form-group">
-									<ReactQuill
-										name="actu"
-										className="form-control"
-										onChange={(value) => { this.setState({ actu: value })}}
-										value={this.state.actu}
-										placeholder="Texte de l'actualité"
-										modules={{
-											toolbar: [
-												['bold', 'italic', 'underline','strike', 'blockquote'],
-												[{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-												['link'],
-												['clean']
-											]
-										}}/>
-								</div>
-								<div className="form-group">
-									<label htmlFor="actu-img" className={(this.state.actuImg)?'active-upload':'upload'} style={{ position: 'relative' }}>
-										<input type="file" className="form-control" id="actu-img" onChange={() => { this.setState({ actuImg : document.getElementById("actu-img").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-										Glisser une image ou cliquez pour en séléctionner un parmi vos fichiers<br/>
-										Taille recommandée : 400x300 - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}
-									</label>
-								</div>
-								<button className="btn btn-primary">Soumettre</button>
-							</form>
+						<div className="form-group">
+							<h3 className="my-4">Information générale sur la ruche</h3>
+							<textarea rows="5" className="form-control" name="info" onChange={handleChange.bind(this)} value={this.state.info} placeholder="Informations générale concernant la ruche" />
+							<button onClick={this.saveInformation.bind(this)} className="btn btn-primary btn-sm mt-2">Sauvegarder</button>
+
+						</div>
+						<Feedback name={this.state.newsModify?this.state.newsModify:null} hiveId={this.state.selected.id}/>
+
+						{this.state.selected.news ?
+						<div>
 							<h3 className="my-4">Modifier une news</h3>
 							<select className="form-control" onChange={this.launchModify.bind(this)} name="newsModify">
 								<option selected disabled>News a modifier</option>
@@ -334,48 +323,8 @@ export default class AdminManageHives extends Component {
 									)
 								})}
 							</select>
-							{this.state.newsModify &&
-								<div>
-								<form onSubmit={this.updateActu.bind(this)} className="mt-4">
-									<div className="form-group">
-										<input type="text" className="form-control" name="actuModifyTitle" value={this.state.actuModifyTitle} onChange={handleChange.bind(this)} placeholder="Titre"/>
-									</div>
-									<div className="form-group">
-										<label>Date de l'actu</label>
-										<DatePicker
-											dateFormat="DD/MM/YYYY"
-											selected={moment(this.state.actuModifyDate)}
-											onChange={(date) => { this.setState({ actuModifyDate : date })}}
-											className="form-control"
-											/>
-									</div>
-									<div className="form-group">
-	 									<ReactQuill
-											name="actuModify"
-											className="form-control"
-											onChange={(value) => { this.setState({ actuModify: value })}}
-											value={this.state.actuModify}
-											placeholder="Texte de l'actualité"
-											modules={{
-												toolbar: [
-													['bold', 'italic', 'underline','strike', 'blockquote'],
-													[{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-													['link'],
-													['clean']
-												]
-											}}/>
-									</div>
-									<div className="form-group">
-										<label htmlFor="actu-modify-img" className={(this.state.actuModifyImg)?'active-upload':'upload'} style={{ position: 'relative' }}>
-											<input type="file" className="form-control" id="actu-modify-img" onChange={() => { this.setState({ actuModifyImg : document.getElementById("actu-modify-img").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-											Glisser une image ou cliquez pour en séléctionner un parmi vos fichiers<br/>
-											Taille recommandée : 400x300 - {(this.state.actuModifyImg)?'Selectionné : '+this.state.actuModifyImg:"Aucun fichier séléctionné"}
-										</label>
-									</div>
-									<button className="btn btn-primary m-2">Soumettre</button>
-								</form>
-								<Confirm action={this.deleteActu.bind(this)} text="Supprimer cette news" className="m-2"/>
-							</div>}
+						</div>
+						:null}
 						<h3 className="py-4">Ajouter des photos</h3>
 						<form onSubmit={this.addPhoto.bind(this)}>
 							<div className="form-group">
@@ -391,14 +340,11 @@ export default class AdminManageHives extends Component {
 					:<div className="col"></div>}
 					{this.state.selected?
 						<div>
-							{this.state.imgsHive?console.log(this.state.imgsHive):console.log('pas de photo')}
-
-<div className="row justify-content-center">
+							<div className="row justify-content-center">
 							{this.state.imgsHive.map((img) => {
 								return(
 									<div className="col-4">
 										<img  onClick={() => {this.changeImg(img)}} width="auto" height="120" src={(img)?config.cdn_url+'/'+img:imgPlaceholder} alt={img} />
-
 									</div>
 								)
 							})}

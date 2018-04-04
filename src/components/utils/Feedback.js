@@ -99,11 +99,12 @@ export default class Feedback extends Component {
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
 		data.append('date', this.state.actuDate);
+		data.append('hiveId', this.props.hiveId);
 		if (document.getElementById("actu-img").files[0]) {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		}
 		request({
-			url: '/news',
+			url: '/news'+ (this.props.hiveId ? '/hive/'+this.props.hiveId : ''),
 			method: 'post',
 			data: data,
 			header: {
