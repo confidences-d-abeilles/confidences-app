@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
 import ReactGA from 'react-ga';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Imagebox from '../../utils/Imagebox'
 
 import logoSquare from '../../../assets/img/logo-square.png';
 import EtiD from '../../../assets/img/label/etiquette_defaut.jpg';
@@ -181,18 +182,18 @@ export default class CompanyManageCustomize extends Component {
 								</div>
 						<div className="row">
 							<div className="col">
-								<img  width="auto" height="90" src={Eti1} alt="parrainage1" />
+								<Imagebox width={"auto"} height={'90'} src={Eti1} alt='Eti1'/>
 							</div>
 							<div className="col">
-							<img  width="auto" height="90" src={Eti2} alt="parrainage2" />
+								<Imagebox width={"auto"} height={'90'} src={Eti2} alt='Eti2'/>
 							</div>
 						</div>
 						<div className="row">
 							<div className="col">
-							<img  width="auto" height="90" src={Eti3} alt="parrainage3" />
+								<Imagebox width={"auto"} height={'90'} src={Eti3} alt='Eti3'/>
 							</div>
 							<div className="col">
-							<img  width="auto" height="90" src={Eti4} alt="parrainage4" />
+								<Imagebox width={"auto"} height={'90'} src={Eti4} alt='Eti4'/>
 							</div>
 						</div>
 						<br />
