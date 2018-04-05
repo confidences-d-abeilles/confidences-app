@@ -30,7 +30,8 @@ export default class CompanyAddress extends Component {
 				address: {
 					...this.state.address,
 					sexe_m: res.sexe_m?'1':'0',
-					line1: res.name+' '+res.firstname,
+					name: res.name,
+					firstname: res.firstname,
 					line2: res.company_name
 				}
 			});

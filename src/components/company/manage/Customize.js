@@ -90,7 +90,8 @@ export default class CompanyManageCustomize extends Component {
 			this.setState({labelDefault: EtiAi});
 		} else if (!this.state.label_format.localeCompare("indd")) {
 			this.setState({labelDefault: EtiIndd});
-		} else if (!this.state.label_format.localeCompare("default")) {
+		} else if (!this.state.label_format.localeCompare("Default")) {
+			console.log('default');
 			this.setState({labelDefault: EtiD});
 		} else {
 			this.setState({labelDefault: null});
