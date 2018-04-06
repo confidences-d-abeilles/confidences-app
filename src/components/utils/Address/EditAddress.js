@@ -21,10 +21,13 @@ const EditAddress = ( props ) => (
 				<label>Nom *</label>
 				<input type="text" name="name" onChange={props.onChange} value={props.data.name} className="form-control form-control-sm"/>
 			</div>
+			{props.company == true ?
 			<div className="form-group">
 				<label>Nom de l'entreprise</label>
 				<input type="text" name="company_name" onChange={props.onChange} value={props.data.company_name} className="form-control form-control-sm" />
 			</div>
+			:
+			null}
 				<div className="form-group">
 					<label>Adresse ligne 1 *</label>
 					<input type="text" name="address_line1" onChange={props.onChange} value={props.data.address_line1} className="form-control form-control-sm"/>

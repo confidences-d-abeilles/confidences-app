@@ -243,7 +243,6 @@ export default class IndividualCheckout extends Component {
 								{this.state.different && !this.state.saved &&
 									<Address data={this.state.delivery_address} />
 								}
-								<ViewAddress data={this.state.delivery_address} />
 								<h3 className="mt-5">Ce parrainage est un cadeau {!this.state.present_ok && <input type="checkbox" name="present" checked={this.state.present} onChange={handleTick.bind(this) }/>}</h3>
 								{this.state.present &&
 										<form>
