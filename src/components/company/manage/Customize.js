@@ -123,7 +123,7 @@ export default class CompanyManageCustomize extends Component {
 											<div className="col text-center">
 												<Imagebox width={"auto"} height={'150'} src={this.state.labelDefault ? this.state.labelDefault: config.cdn_url+'/'+this.state.labelCurrent} alt='Eti1'/>
 											</div>
-												rajouter le nom type de fichier uploader ou default
+											
 									</div>
 							</div>
 						</div>
