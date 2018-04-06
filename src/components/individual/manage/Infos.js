@@ -9,7 +9,7 @@ import Confirm from '../../utils/Confirm'
 import FontAwesome from 'react-fontawesome'
 import ReactGA from 'react-ga';
 import Meta from '../../utils/Meta'
-import Address from '../../utils/Address'
+import Address from '../../utils/Address/Address'
 
 export default class IndividualManageInfos extends Component {
 
@@ -63,29 +63,12 @@ export default class IndividualManageInfos extends Component {
 			res.addresses.map((address) => {
 				if (address.type === 1) {
 					this.setState({
-						bid: address.id,
-						bsexe_m: address.sexe_m?'1':'0',
-						baddress1: address.line1,
-						baddress2: address.line2,
-						baddress3: address.line3,
-						baddress4: address.line4,
-						bzip: address.zipcode,
-						bcity: address.city,
-						bcountry: address.country
+						billing_address: address
 					})
 				}
 				if (address.type === 2) {
 					this.setState({
-						did: address.id,
-						dsexe_m: address.sexe_m?'1':'0',
-						daddress1: address.line1,
-						daddress2: address.line2,
-						daddress3: address.line3,
-						daddress4: address.line4,
-						dzip: address.zipcode,
-						dcity: address.city,
-						dcountry: address.country,
-						dphone: address.phone
+						delivery_address: address
 					})
 				}
 			})
@@ -131,7 +114,7 @@ export default class IndividualManageInfos extends Component {
 			}
 		}, this.refs.notif)
 	}
-  // 
+  //
 	// updateBaddress(e) {
 	// 	e.preventDefault();
 	// 	request({
@@ -240,41 +223,18 @@ export default class IndividualManageInfos extends Component {
 									</form>}
 							</div>
 						</div>
+
 						<div className="row">
-							<div className="col-lg-6 col-sm-12 my-4">
-								<h3 className="text-center"><small>Mon adresse de facturation</small></h3>
-								{(!this.state.editBaddress)?
-									<div>
-										{this.state.bsexe_m === '0'?'Mme. ':'M. '}{this.state.baddress1}<br />
-										{this.state.baddress3}<br />
-										{(this.state.baddress4)?this.state.baddress4:null}
-										{this.state.baddress4 && <br />}
-										{this.state.bzip} {this.state.bcity}<br />
-										{this.state.bcountry}<br /><br />
-									<button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ editBaddress: true })}}><FontAwesome name="pencil" />&nbsp;Editer ces informations</button>
-									</div>
-									:
-									<Address fnct={true} type={1} var={'editBaddress'} functionDefault={this.getState} textButton={'Sauvegarder'}/>
-								}
+							<div className="col-lg-6 col-sm-12">
+								<h3 className="text-center my-4"><small>Mon adresse de facturation</small></h3>
+								<Address data={this.state.billing_address} />
 							</div>
-							<div className="col-lg-6 col-sm-12 my-4">
-								<h3 className="text-center"><small>Mes informations de livraison</small></h3>
-								{(!this.state.editDaddress)?
-									<div>
-										{this.state.dsexe_m === '0'?'Mme. ':'M. '}{this.state.daddress1}<br />
-										{this.state.daddress3}<br />
-										{(this.state.daddress4)?this.state.daddress4:null}
-										{this.state.daddress4 && <br />}
-										{this.state.dzip} {this.state.dcity}<br />
-										{this.state.dcountry}<br />
-										<strong>Téléphone pour la livraison :</strong> {this.state.dphone}
-										<br /><br />
-									<button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ editDaddress: true })}}><FontAwesome name="pencil" />&nbsp;Editer ces informations</button>
-									</div>
-									:<Address fnct={true} type={2} var={'editDaddress'} functionDefault={this.getState} textButton={'Sauvegarder'}/>}
+							<div className="col-lg-6 col-sm-12">
+								<h3 className="text-center my-4"><small>Mes informations de livraison</small></h3>
+								<Address data={this.state.delivery_address} />
 							</div>
 						</div>
-					</div>
+						</div>
 				:<Loading />}
 			</div>
 		);
