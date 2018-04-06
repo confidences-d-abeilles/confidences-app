@@ -96,7 +96,7 @@ export default class IndividualCheckout extends Component {
 			method: 'put',
 			data : {
 				state: 1,
-				present_end: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+				present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
 		}, this.refs.notif).then((res) => {
 			this.setState({ redirect : true })
@@ -107,7 +107,7 @@ export default class IndividualCheckout extends Component {
 		return new Promise(async resolve => {
 			await this.saveFeedback();
 			if (this.state.different) {
-				
+
 			}
 			await this.handlePresent();
 			resolve();
@@ -135,8 +135,9 @@ export default class IndividualCheckout extends Component {
 			method: 'put'
 		}, this.refs.notif);
 		this.setState({
-			dash: true
+			redirect: true
 		})
+
 	}
 
 	async saveDaddress() {
@@ -208,7 +209,7 @@ export default class IndividualCheckout extends Component {
 			<div className="container py-4">
 				<Meta title="Confirmation et paiement"/>
 				<NotificationSystem ref="notif" />
-				{(this.state.redirect)?<Redirect to="/individual/end" />:null}
+				{(this.state.redirect)?<Redirect to="/individual/end" paiement={true}/>:null}
 				{(this.state.back)?<Redirect to="/individual/wish" />:null}
 				{(this.state.dash)?<Redirect to="/individual/manage" />:null}
 				<div className="row justify-content-center">
