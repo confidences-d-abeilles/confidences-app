@@ -107,7 +107,7 @@ export default class IndividualCheckout extends Component {
 		return new Promise(async resolve => {
 			await this.saveFeedback();
 			if (this.state.different) {
-				await this.saveDaddress();
+				
 			}
 			await this.handlePresent();
 			resolve();
