@@ -81,8 +81,7 @@ export default class IndividualAddress extends Component {
 				</div>
 					<div className="row justify-content-center">
 						<div className="col-lg-6 col-md-10 col-sm-12">
-						<EditAddress data={this.state.address} onChange={this.changeAddress} onSubmit={this.createAddress} />
-
+							<EditAddress data={this.state.address} onChange={this.changeAddress} onSubmit={this.createAddress} />
 						</div>
 					</div>
 			</div>

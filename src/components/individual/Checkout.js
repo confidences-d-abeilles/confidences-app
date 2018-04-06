@@ -9,7 +9,9 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import ReactGA from 'react-ga';
 import 'react-datepicker/dist/react-datepicker.css';
-import Meta from '../utils/Meta'
+import Meta from '../utils/Meta';
+import Address from '../utils/Address/Address';
+import ViewAddress from '../utils/Address/ViewAddress';
 
 export default class IndividualCheckout extends Component {
 
@@ -70,35 +72,14 @@ export default class IndividualCheckout extends Component {
 					bill_number: res.number
 				});
 			});
-			res.addresses.map((address) => {
-				if (address.type == 1) {
-					this.setState({
-						bsexe_m : address.sexe_m?'1':'0',
-						baddress1 : address.line1,
-						baddress2 : address.line2,
-						baddress3 : address.line3,
-						baddress4 : address.line4,
-						bcity: address.city,
-						bzip: address.zipcode,
-						bcountry: address.country
-					})
-				}
-				if (address.type == 2) {
-					this.setState({
-						did: address.id,
-						dsexe_m : address.sexe_m?'1':'0',
-						daddress1 : address.line1,
-						daddress2 : address.line2,
-						daddress3 : address.line3,
-						daddress4 : address.line4,
-						dcity: address.city,
-						dzip: address.zipcode,
-						dcountry: address.country,
-						dphone: address.phone,
-						different: address.addr_diff
-					})
-				}
-			})
+				res.addresses.map((address) => {
+					if (address.type == 1) {
+						this.setState({ billing_address: address })
+					}
+					if (address.type == 2) {
+						this.setState({ delivery_address: address })
+					}
+				})
 		});
 	}
 
@@ -251,14 +232,7 @@ export default class IndividualCheckout extends Component {
 						<div className="row justify-content-center">
 							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="my-4">Adresse de facturation</h3>
-								<p>
-									{this.state.baddress1 && <span>{this.state.bsexe_m === '0'?'Mme. ':'M. '}</span>}
-									{(this.state.baddress1)?<span>{this.state.baddress1}<br/></span>:''}
-									{(this.state.baddress3)?<span>{this.state.baddress3}<br/></span>:''}
-									{(this.state.baddress4)?<span>{this.state.baddress4}<br/></span>:''}
-									{this.state.bzip} {this.state.bcity}<br/>
-									{this.state.bcountry}
-								</p>
+									<ViewAddress data={this.state.billing_address} />
 								<h3 className="my-4">Message</h3>
 								<div className="form-group">
 									<textarea rows="5" className="form-control" name="feedback" onChange={handleChange.bind(this)} value={this.state.feedback} placeholder="Informations complémentaires concernant votre commande ou commentaires, laissez-nous un petit message, nous y prêterons grande attention :)" />
@@ -267,53 +241,9 @@ export default class IndividualCheckout extends Component {
 							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="my-4">Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
 								{this.state.different && !this.state.saved &&
-									<form className="text-center">
-										<div className="form-group d-flex">
-								      <label className="radio-inline form-check-label">
-								        <input type="radio" className="form-check-input" name="dsexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.dsexe_m === '1'}/>
-								        &nbsp;M *
-								      </label>
-									    <label className="radio-inline form-check-label ml-4">
-								        <input type="radio" className="form-check-input" name="dsexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.dsexe_m === '0'}/>
-								        &nbsp;Mme *
-								      </label>
-										</div>
-										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress1} name="daddress1" placeholder="Nom et prénom *" onChange={handleChange.bind(this)} autoComplete="name" />
-										</div>
-										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress3} name="daddress3" placeholder="Ligne d'adresse 1 *" onChange={handleChange.bind(this)} autoComplete="address-line1" />
-										</div>
-										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.daddress4} name="daddress4" placeholder="Ligne d'adresse 2" onChange={handleChange.bind(this)} autoComplete="address-line2" />
-										</div>
-										<div className="form-group row">
-											<div className="col-4">
-												<input type="text" className="form-control" value={this.state.dzip} name="dzip" onChange={handleChange.bind(this)} autoComplete="postal-code" />
-											</div>
-											<div className="col-8">
-												<input type="text" className="form-control" value={this.state.dcity} name="dcity" onChange={handleChange.bind(this)} autoComplete="address-level2" />
-											</div>
-										</div>
-										<div className="form-group">
-											<input type="text" className="form-control" value={this.state.dcountry} name="dcountry" onChange={handleChange.bind(this)} autoComplete="country-name" />
-										</div>
-										<div className="form-group">
-											<input type="tel" className="form-control" value={this.state.dphone} name="dphone" onChange={handleChange.bind(this)} placeholder="Numéro de téléphone pour la livraison *" autoComplete="tel" />
-										</div>
-									</form>
+									<Address data={this.state.delivery_address} />
 								}
-								{this.state.saved &&
-									<div>
-										{this.state.daddress1 && <span>{this.state.dsexe_m === '0'?'Mme. ':'M. '}</span>}
-										{(this.state.daddress1)?<span>{this.state.daddress1}<br /></span>:null}
-										{(this.state.daddress3)?<span>{this.state.daddress3}<br /></span>:null}
-										{(this.state.daddress4)?<span>{this.state.daddress4}<br /></span>:null}
-										{this.state.dzip} {this.state.dcity}<br/>
-										{this.state.dcountry}<br />
-										{this.state.dphone}
-									</div>
-								}
+								<ViewAddress data={this.state.delivery_address} />
 								<h3 className="mt-5">Ce parrainage est un cadeau {!this.state.present_ok && <input type="checkbox" name="present" checked={this.state.present} onChange={handleTick.bind(this) }/>}</h3>
 								{this.state.present &&
 										<form>

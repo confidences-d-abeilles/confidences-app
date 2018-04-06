@@ -37,7 +37,6 @@ export default class Footer extends Component {
 									<li><Link to="/team" className="noStyleLink">L'équipe</Link></li>
 									<li><Link to="/contact" className="noStyleLink">Contact</Link></li>
 									<li><Link to="/jobs" className="noStyleLink">Jobs</Link></li>
-									<li><Link to="/requestlabel" className="noStyleLink">Label</Link></li>
 									<li><a href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
 								</ul>
 							</div>
