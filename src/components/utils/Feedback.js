@@ -96,6 +96,7 @@ export default class Feedback extends Component {
 	createActu(e) {
 		e.preventDefault()
 		const data = new FormData();
+		console.log(this.state.actuTitle);
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
 		data.append('date', this.state.actuDate);
