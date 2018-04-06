@@ -150,7 +150,7 @@ export default class Feedback extends Component {
 			<h3 className="text-center">Ajouter une actualité</h3>
 			<form onSubmit={this.state.newsTake?this.updateActu.bind(this):this.createActu.bind(this)}>
 				<div className="form-group">
-					<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} placeholder={this.state.newsTake?this.state.actuTitle:'Titre'}/>
+					<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} value={this.state.actuTitle} placeholder='Titre'/>
 				</div>
 				<div className="form-group">
 					<label>Date de l'actualité</label>
