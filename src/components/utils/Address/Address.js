@@ -7,15 +7,21 @@ import NotificationSystem from 'react-notification-system'
 
 export default class Address extends Component {
 
-	state = {
-		edit: false,
-		address: null
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			edit: false,
+			address: props.data
+		}
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.data) {
 			this.setState({
 				address: { ...nextProps.data, sexe_m : (nextProps.data.sexe_m)?'1':'0' }
+			}, () => {
+				console.log(this.state.address);
 			})
 		} // pres operation
 	}

@@ -59,7 +59,6 @@ export default class AdminManageUsers extends Component {
 	}
 
 	selectUser(user) {
-		console.log(user.support_lvl);
 		this.setState({
 			selectedUser: user,
 			usexe_m: user.sexe_m?'1':'0',
