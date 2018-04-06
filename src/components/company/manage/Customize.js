@@ -7,7 +7,7 @@ import Imagebox from '../../utils/Imagebox'
 
 import logoSquare from '../../../assets/img/logo-square.png';
 import EtiD from '../../../assets/img/label/etiquette_defaut.jpg';
-import DownloadEti from '../../../assets/img/etiquette.tar.gz';
+import DownloadEti from '../../../assets/img/etiquette.zip';
 import EtiAi from '../../../assets/img/label/preview_AI.png';
 import EtiIndd from '../../../assets/img/label/preview_INDD.png';
 import EtiPdf from '../../../assets/img/label/preview_PDF.png';
@@ -140,8 +140,8 @@ export default class CompanyManageCustomize extends Component {
 						<p style={{fontSize: '85%'}}>Téléchargez un modèle (format AI, INDD),
 						Modifiez-le,
 						Renvoyez-nous votre version !</p>
-
 						<form method="get" action={DownloadEti}>
+
    						<button className="btn btn-primary btn-sm" type="submit">Télécharger le modèle</button>
 						</form>
 
