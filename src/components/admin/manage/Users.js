@@ -6,6 +6,7 @@ import ReactGA from 'react-ga'
 import moment from 'moment'
 import Meta from '../../utils/Meta'
 import Confirm from '../../utils/Confirm'
+import Address from '../../utils/Address/Address'
 import { handleChange, handleTick } from '../../../services/FormService'
 
 export default class AdminManageUsers extends Component {
@@ -58,12 +59,13 @@ export default class AdminManageUsers extends Component {
 	}
 
 	selectUser(user) {
-		console.log(user.support_lvl);
 		this.setState({
 			selectedUser: user,
 			usexe_m: user.sexe_m?'1':'0',
 			bsexe_m: user.addresses[0]?user.addresses[0].sexe_m?'1':'0':'',
+			billing_address: user.addresses[0],
 			dsexe_m: user.addresses[1]?user.addresses[1].sexe_m?'1':'0':'',
+			delivery_address: user.addresses[1],
 			feedback: (user.comment)?user.comment:'',
 			supportLevel: (user.support_lvl)?user.support_lvl.toString():'',
 		});
@@ -357,6 +359,10 @@ export default class AdminManageUsers extends Component {
 															{this.state.selectedUser.addresses[0].zipcode} {this.state.selectedUser.addresses[0].city}<br />
 															{this.state.selectedUser.addresses[0].country}
 														</p>
+														<div>
+															<h3 className="text-center my-4"><small>Adresse de facturation</small></h3>
+															<Address data={this.state.billing_address} />
+														</div>
 													</div>
 											</div>
 										</div>
@@ -433,6 +439,10 @@ export default class AdminManageUsers extends Component {
 															{this.state.selectedUser.addresses[1].country}<br />
 															{this.state.selectedUser.addresses[1].phone}
 														</p>
+													</div>
+													<div className="card-block">
+														<h3 className="text-center my-4"><small>Adresse de livraison</small></h3>
+														<Address data={this.state.delivery_address} />
 													</div>
 												</div>
 											</div>

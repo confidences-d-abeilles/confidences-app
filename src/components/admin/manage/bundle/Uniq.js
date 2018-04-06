@@ -18,15 +18,27 @@ export default class AdminManageBundleId extends Component {
 			method: 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				bundle: res
+				bundle: { ...res, state : res.state.toString() }
 			})
 		})
 	}
 
-	changePayment = ( event ) => {
+	changeState = ( event ) => {
 		this.setState({
-			bundle: { ...this.state.bundle, state: event.target.value }
+			bundle: { ...this.state.bundle, state: parseInt(event.target.value) }
 		})
+	}
+
+	submitState = () => {
+		request({
+			url: '/bundle/'+this.state.bundle.id,
+			method: 'put',
+			data: {
+				state : this.state.bundle.state
+			}
+		}, this.refs.notif).then((res) => {
+
+		});
 	}
 
 	render () {
@@ -38,7 +50,7 @@ export default class AdminManageBundleId extends Component {
 				{(this.state.bundle)?
 				<div className="row">
 					<div className="col-lg-6">
-						<Payment status={this.state.bundle.state} onChange={this.changePayment} />
+						<Payment state={this.state.bundle.state.toString()} changeState={this.changeState} submitState={this.submitState} />
 						<Bills bundleId={this.state.bundle.id} />
 					</div>
 				</div>

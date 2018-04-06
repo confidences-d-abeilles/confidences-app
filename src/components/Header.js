@@ -70,9 +70,6 @@ export default class Header extends Component {
 									<Link className="nav-link" to="/jobs">Jobs</Link>
 								</li>
 								<li className="nav-item">
-									<Link className="nav-link" to="/requestlabel">Label</Link>
-								</li>
-								<li className="nav-item">
 									<a className="nav-link" href="https://confidencesdabeilles.fr/" target="_blank" rel="noopener noreferrer">Boutique <FontAwesome name="external-link" /></a>
 								</li>
 								<li className="nav-item">
@@ -99,9 +96,6 @@ export default class Header extends Component {
 								</li>
 								<li className="nav-item">
 									<Link className="nav-link" to="/jobs">Jobs</Link>
-								</li>
-								<li className="nav-item">
-									<Link className="nav-link" to="/requestlabel">Label</Link>
 								</li>
 								<li className="nav-item">
 									<a className="nav-link" href="https://confidencesdabeilles.fr/" target="_blank" rel="noopener noreferrer">Boutique <FontAwesome name="external-link" /></a>
@@ -156,7 +150,6 @@ export default class Header extends Component {
 								<Link className="dropdown-item" to="/team">L'équipe</Link>
 								<Link className="dropdown-item" to="/contact">Contact</Link>
 								<Link className="dropdown-item" to="/jobs">Jobs</Link>
-								<Link className="dropdown-item" to="/requestlabel">Label</Link>
 								<a className="dropdown-item" href="https://confidencesdabeilles.fr/" target="_blank" rel="noopener noreferrer">Boutique <FontAwesome name="external-link" /></a>
 								<a className="dropdown-item" href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog <FontAwesome name="external-link" /></a>
 							</div>

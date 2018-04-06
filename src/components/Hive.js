@@ -8,7 +8,6 @@ import ImgHive from '../assets/img/logo_ruche_entreprise.png';
 import moment from 'moment';
 import ReactGA from 'react-ga';
 import Meta from './utils/Meta'
-
 const config = require('../config.js')
 
 export default class Hive extends Component {
@@ -60,7 +59,7 @@ export default class Hive extends Component {
 							<h2 className="mt-5" style={{ fontFamily: "HighTo" }}>INFORMATIONS SUR LA RUCHE</h2>
 							<div style={{ width : '100%', height: '1px', backgroundColor: 'black'}} className="mb-4" ></div>
 							<p style={{ fontFamily: "HighTo", fontSize: '1.25em' }}>
-								Aucune information sur cette ruche pour le moment
+								{this.state.hive.info ? this.state.hive.info : 'Aucune information sur cette ruche pour le moment'}
 							</p>
 							<div className="row">
 								{this.state.hive.imgs.map((img) => {
@@ -68,8 +67,17 @@ export default class Hive extends Component {
 										return (null);
 									} else {
 										return (
-											<div className="col-6">
-												<img src={config.cdn_url+'/'+img} key={img} alt="Photo de la ruche" className="img-fluid mb-4"/>
+											<div Class="uk-container uk-margin-top">
+
+													<a  href={config.cdn_url+'/'+img} >
+		            							<img src={config.cdn_url+'/'+img} key={img} alt="Photo de la ruche" className="img-fluid mb-4"/>
+		        							</a>
+													<div class="">
+														hello world
+													</div>
+		    								<div Class="uk-panel uk-panel-box">
+													hello world
+												</div>
 											</div>
 										)
 									}

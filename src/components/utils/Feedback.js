@@ -52,7 +52,7 @@ export default class Feedback extends Component {
 					newsTake: 1,
 					actu: res[0].content,
 					actuTitle: res[0].title,
-					actuImgUp: res[0].img,
+					actuImg: res[0].img,
 					actuDate: moment(res[0].date),
 					newsModify: nextProps.name
 				}, () => {
@@ -66,13 +66,14 @@ export default class Feedback extends Component {
 	updateActu(e) {
 		e.preventDefault()
 		const data = new FormData();
+		console.log("update");
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
 		data.append('date', this.state.actuDate);
 		if (document.getElementById("actu-img").files[0]) {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		} else {
-			data.append('img', this.state.actuImgUp);
+			data.append('img', this.state.actuImg);
 		}
 		request({
 			url: '/news/'+this.state.newsModify,
@@ -80,7 +81,14 @@ export default class Feedback extends Component {
 			data: data
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				selected: ''
+				selected: '',
+				content: '',
+				title: '',
+				actuDate: moment(new Date()),
+				actuTitle: '',
+				newsTake: 0,
+				actu: '',
+				actuImg: ''
 			})
 		});
 	}
@@ -95,7 +103,7 @@ export default class Feedback extends Component {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		}
 		request({
-			url: '/news',
+			url: '/news'+ (this.props.hiveId ? '/hive/'+this.props.hiveId : ''),
 			method: 'post',
 			data: data,
 			header: {
@@ -103,11 +111,11 @@ export default class Feedback extends Component {
 			}
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				content: '',
-				title: '',
-				actuDate: moment(new Date()),
-				img: ''
-			}) // trouver une facon de reaload juste le component
+				newsTake: 0,
+				actu: '',
+				actuTitle: '',
+				actuImg: ''
+			})
 		})
 	}
 
@@ -119,12 +127,18 @@ export default class Feedback extends Component {
 	}
 
 	deleteActu() {
+		console.log("delete");
 		request({
-			url: '/news/'+this.state.newsModify,
+			url: '/news/delete/'+this.state.newsModify,
 			method: 'DELETE'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				newsModify: null
+				newsModify: null,
+				content: '',
+				actuTitle: '',
+				actuDate: moment(new Date()),
+				actuImg: '',
+				actu: ''
 			})
 		})
 	}
@@ -136,7 +150,7 @@ export default class Feedback extends Component {
 			<h3 className="text-center">Ajouter une actualité</h3>
 			<form onSubmit={this.state.newsTake?this.updateActu.bind(this):this.createActu.bind(this)}>
 				<div className="form-group">
-					<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} placeholder={this.state.newsTake?this.state.actuTitle:'Titre'}/>
+					<input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} value={this.state.actuTitle} placeholder='Titre'/>
 				</div>
 				<div className="form-group">
 					<label>Date de l'actualité</label>
@@ -170,9 +184,10 @@ export default class Feedback extends Component {
 						Recommandations : 400x300px, 100ko maximum - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}
 					</label>
 				</div>
-				<button className="btn btn-primary">Soumettre</button>
+				<button className="btn btn-secondary btn-sm">Soumettre</button>
 			</form>
-			{this.state.newsModify ? <Confirm action={this.deleteActu.bind(this)} text="Supprimer cette news" className="m-2"/>: null}
+			<br/>
+			{this.state.newsModify ? <Confirm action={this.deleteActu.bind(this)} text="Supprimer cette news" className="btn btn-secondary btn-sm"/>: null}
 			</div>
 		)
 	}
