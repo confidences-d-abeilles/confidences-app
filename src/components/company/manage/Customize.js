@@ -177,7 +177,7 @@ export default class CompanyManageCustomize extends Component {
 								<div className="row">
 									<div className="col">
 										<h5 className="text-center my-4">Éditeur en ligne</h5><br />
-										<button className="btn btn-primary">Démarrer ?</button><br />
+										<button className="btn btn-primary">Démarrer</button><br />
 										<p className="text-center">Templates disponibles</p>
 									</div>
 								</div>
@@ -189,6 +189,7 @@ export default class CompanyManageCustomize extends Component {
 								<Imagebox width={"auto"} height={'90'} src={Eti2} alt='Eti2'/>
 							</div>
 						</div>
+						<br />
 						<div className="row">
 							<div className="col">
 								<Imagebox width={"auto"} height={'90'} src={Eti3} alt='Eti3'/>
