@@ -131,7 +131,7 @@ export default class CompanyManageCustomize extends Component {
 											<i className="card-text" style={{fontSize: '85%'}}>Une version « par défaut » est générée automatiquement. 3
 											solutions sont à votre disposition pour la modifier.</i>
 											<div className="col text-center">
-												<img  width="auto" height="150" src={this.state.labelDefault ? this.state.labelDefault: config.cdn_url+'/'+this.state.labelCurrent} alt="parrainage1" />
+												<Imagebox width={"auto"} height={'150'} src={this.state.labelDefault ? this.state.labelDefault: config.cdn_url+'/'+this.state.labelCurrent} alt='Eti1'/>
 											</div>
 												rajouter le nom type de fichier uploader ou default
 									</div>

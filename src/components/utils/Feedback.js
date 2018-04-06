@@ -115,6 +115,7 @@ export default class Feedback extends Component {
 				newsTake: 0,
 				actu: '',
 				actuTitle: '',
+				actuDate: moment(new Date()),
 				actuImg: ''
 			})
 		})
@@ -181,8 +182,8 @@ export default class Feedback extends Component {
 				<div className="form-group">
 					<label htmlFor="actu-img" className={(this.state.actuImg)?'active-upload':'upload'} style={{ position: 'relative' }}>
 						<input type="file" className="form-control" id="actu-img" onChange={() => { this.setState({ actuImg : document.getElementById("actu-img").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-						Glissez une image ou cliquez pour en séléctionner un parmi vos fichiers<br/>
-						Recommandations : 400x300px, 100ko maximum - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}
+						Glissez une image ou cliquez pour en séléctionner une parmi vos fichiers<br/>
+						Recommandations : 800x600px, 100ko maximum - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}
 					</label>
 				</div>
 				<button className="btn btn-secondary btn-sm">Soumettre</button>
