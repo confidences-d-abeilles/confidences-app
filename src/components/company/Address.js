@@ -30,7 +30,8 @@ export default class CompanyAddress extends Component {
 				address: {
 					...this.state.address,
 					sexe_m: res.sexe_m?'1':'0',
-					line1: res.name+' '+res.firstname,
+					name: res.name,
+					firstname: res.firstname,
 					line2: res.company_name
 				}
 			});
@@ -50,9 +51,15 @@ export default class CompanyAddress extends Component {
 			method: 'post',
 			data : this.state.address
 		}, this.refs.notif).then((res) => {
-			this.setState({
-				redirect : true
-			})
+			request({
+				url : '/address',
+				method: 'post',
+				data : { ...this.state.address, type: 2 }
+			}, this.refs.notif).then((res) => {
+				this.setState({
+					redirect : true
+				})
+			});
 		});
 	}
 

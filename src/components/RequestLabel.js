@@ -4,6 +4,7 @@ import request from '../services/Net'
 import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
 import Meta from './utils/Meta'
+import { Redirect } from 'react-router-dom';
 
 export default class RequestLabel extends Component {
 
@@ -17,7 +18,7 @@ export default class RequestLabel extends Component {
           email: '',
           feedback: '',
           attachment: '',
-
+          redirect: false,
           success: false
       }
   }
@@ -54,10 +55,13 @@ export default class RequestLabel extends Component {
       method: 'post',
       data: data
     }, this.refs.notif).then((res) => {
-      console.log("faire un setState a null");
+      this.setState({
+        redirect: true
+      })
     })
     console.log("coucou");
   }
+
 
    render(){
      return (
@@ -65,15 +69,16 @@ export default class RequestLabel extends Component {
              <Meta title="Label"/>
              <NotificationSystem ref="notif" />
              <div className="row justify-content-center">
-                 <div className="col-lg-6 col-md-10 col-sm-12">
+                 {!this.state.redirect ? <div className="col-lg-6 col-md-10 col-sm-12">
+                  <h5 className="text-center my-4">Formulaire de contact</h5>
                     <p className="align-middle">
-                      <h5 className="text-center my-4">
+
                             Ce formulaire vous permet de contacter
                             Marine du Peloux, graphiste, qui pourra
                             vous aider à réaliser votre étiquette
                             personnalisée. Soumettez lui votre
                             demande en l’accompagnant d’un brief ou
-                            tout autre fichier que vous jugeriez utile.<br /></h5>
+                            tout autre fichier que vous jugeriez utile.<br />
                             <i>Ce service n’est pas inclus dans l’offre de
                             parrainage, attendez-vous donc à recevoir un
                             devis.</i> </p>
@@ -95,7 +100,7 @@ export default class RequestLabel extends Component {
                           <label>Joindre un fichier (png, jpg, pdf, indd, ai)</label>
                             <label htmlFor="attachment" className={(this.state.attachment)?'active-upload':'upload'} style={{ position: 'relative' }}>
                             <input type="file" className="form-control" id="attachment" onChange={() => { this.setState({ attachment: document.getElementById("attachment").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-                              Glissez votre image ici ou cliquez pour en séléctionner un parmi vos fichiers<br/>
+                              Glissez votre fichier ici ou cliquez pour en séléctionner un parmi vos fichiers. (Taille limitée à 5Mo.)<br/>
                              {(this.state.attachment)?'Selectionné : '+this.state.attachment:"Aucun fichier séléctionné"}
                             </label>
                           </div>
@@ -108,6 +113,21 @@ export default class RequestLabel extends Component {
                          <button className="btn btn-primary mb-4">Envoyer</button>
                      </form>
                  </div>
+                 :
+                <div className="col-lg-6 col-md-10 col-sm-12">
+                  <p className="text-center align-middle">
+                    <h3 className="text-center my-4">
+                      Votre demande a bien été envoyée &nbsp;
+                      <img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy"
+        								style={{ height: '1em' }} />
+
+                        <br /></h3></p>
+                      Vous allez être redirigé(e) sur la page de personnalisation.
+                      {setTimeout(() => {this.setState({ redirecte: true })}, 5000)}
+                      {this.state.redirecte ? <Redirect to="/company/manage/customize" /> : null}
+
+                </div>
+               }
              </div>
          </div>
      )

@@ -44,7 +44,7 @@ export default class CompanyIdentity extends Component {
 				data : {
 					company_name : this.state.company_name,
 					siret : this.state.siret,
-					namespace: (this.state.company_name.replace(/\W+/g, '')).replace(/\d+/g, ''),
+					namespace:this.state.namespace,
 					job : this.state.job,
 					website : this.state.website
 				}}, this.refs.notif)
@@ -56,14 +56,28 @@ export default class CompanyIdentity extends Component {
 				.catch((err) => {});
 		}
 	}
-
+	replaceNamespace(e) {
+		e.preventDefault();
+		this.setState({
+			[e.target.name]: e.target.value
+		});
+		const val = e.target.value;
+		console.log((val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, '-'));
+		let TabSpec = {"à":"a","á":"a","â":"a","ã":"a","ä":"a","å":"a","ò":"o","ó":"o","ô":"o","õ":"o","ö":"o","ø":"o","è":"e","é":"e","ê":"e","ë":"e","ç":"c","ì":"i","í":"i","î":"i","ï":"i","ù":"u","ú":"u","û":"u","ü":"u","ÿ":"y","ñ":"n","_":" "};
+		let reg=/[àáäâèéêëçìíîïòóôõöøùúûüÿñ_]/gi;
+		this.setState({
+			fakeNamespace: e.target.value,
+			namespace: (val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, '-')
+		})
+		console.log(this.state.namespace);
+	}
     render () {
         return (
 			<div className="container py-4">
 				<Meta title="L'entreprise"/>
 				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/company/address" />:null}
-				<div className="row justify-content-center">
+ 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
 							<div className="progress-bar" role="progressbar" style={{width: '40%'}}></div>
@@ -75,11 +89,14 @@ export default class CompanyIdentity extends Component {
 						<form className="text-center">
 							<h2 className="text-center my-4">Information sur l'entreprise</h2>
 							<div className="form-group">
-								<input type="text" className="form-control" name="company_name" placeholder="Raison sociale *" onChange={handleChange.bind(this)} />
+								<input type="text" className="form-control" name="company_name" placeholder="Raison sociale *" onChange={this.replaceNamespace.bind(this)} />
 							</div>
 							<div className="form-group">
 								<label htmlFor="namespace">URL par défaut de votre future page. Vous pourrez la modifier par la suite.</label>
-								<input type="text" className="form-control" id="namespace" value={'http://parrainagederuches.fr/parrains/'+(this.state.company_name.replace(/\W+/g, '')).replace(/\d+/g, '')} disabled />
+								<div className="input-group">
+									<span className="input-group-addon" id="basic-addon3">https://parrainagederuches.fr/parrains/</span>
+									<input type="text" className="form-control" id="namespace" value={this.state.namespace} disabled />
+								</div>
 							</div>
 							<div className="form-group">
 								<input type="text" className="form-control" name="siret" placeholder="Numéro SIRET *" onChange={this.handlesiret.bind(this)} />
