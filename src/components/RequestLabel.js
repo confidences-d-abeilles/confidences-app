@@ -58,8 +58,8 @@ export default class RequestLabel extends Component {
       this.setState({
         redirect: true
       })
+      setTimeout(() => {this.setState({ redirecte: true })}, 5000);
     })
-    console.log("coucou");
   }
 
 
@@ -83,7 +83,7 @@ export default class RequestLabel extends Component {
                             parrainage, attendez-vous donc à recevoir un
                             devis.</i> </p>
 
-                     <form onSubmit={this.sendMail.bind(this)} className="mt-4">
+                     <form onSubmit={this.sendMail.bind(this)} className="mt-4 text-center">
                          <div className="form-group">
                              <input type="text" value={this.state.name} onChange={handleChange.bind(this)} placeholder="Votre nom *" name="name" className="form-control"/>
                          </div>
@@ -110,7 +110,7 @@ export default class RequestLabel extends Component {
                          </div>
                          {this.state.success &&
                          <p className="alert alert-success">Votre demande a été envoyée avec succès</p>}
-                         <button className="btn btn-primary mb-4">Envoyer</button>
+                         <button className="btn btn-primary btn-sm">Envoyer</button>
                      </form>
                  </div>
                  :
@@ -120,12 +120,11 @@ export default class RequestLabel extends Component {
                       Votre demande a bien été envoyée &nbsp;
                       <img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy"
         								style={{ height: '1em' }} />
-
-                        <br /></h3></p>
+                      <br />
+                    </h3>
+                  </p>
                       Vous allez être redirigé(e) sur la page de personnalisation.
-                      {setTimeout(() => {this.setState({ redirecte: true })}, 5000)}
                       {this.state.redirecte ? <Redirect to="/company/manage/customize" /> : null}
-
                 </div>
                }
              </div>

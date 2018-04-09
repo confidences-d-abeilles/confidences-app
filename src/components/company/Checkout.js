@@ -177,7 +177,7 @@ export default class CompanyCheckout extends Component {
 						<div className="row justify-content-center">
 							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="my-4">Adresse de facturation</h3>
-								<ViewAddress data={this.state.billing_address} />
+								<ViewAddress data={this.state.billing_address} company={true}/>
 								<h3 className="my-4">Message</h3>
 								<div className="form-group">
 									<textarea rows="5" className="form-control" name="feedback" onChange={handleChange.bind(this)} value={this.state.feedback} placeholder="Informations complémentaires concernant votre commande ou commentaires, laissez-nous un petit message, nous y prêterons grande attention :)" />
@@ -185,7 +185,7 @@ export default class CompanyCheckout extends Component {
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="my-4">Adresse de livraison</h3>
-								<Address data={this.state.delivery_address} />
+								<Address data={this.state.delivery_address} company={true}/>
 							</div>
 						</div>
 						<h3 className="my-4">Paiement sécurisé</h3>

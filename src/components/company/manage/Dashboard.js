@@ -112,7 +112,7 @@ export default class CompanyManageDashboard extends Component {
 							(this.state.hivesNames)?
 						<div className="row py-4 align-items-center">
 							<div className="col-lg-4">
-								<p>Vous pouvez d'ores et déjà choisir les noms que vous souhaitez pour vos ruches</p>
+								<p>Vous pouvez maintenant choisir le nom de {this.state.user.bundles[0].hives > 1?'vos ruches':'votre ruche'}.</p>
 							</div>
 							<form className="col-lg-8" onSubmit={this.saveNames.bind(this)}>
 								{this.state.hivesNames.map((val, key) => {
@@ -168,7 +168,7 @@ export default class CompanyManageDashboard extends Component {
 										</div>)}
 									)}
 									<div className="form-group text-center">
-										<button className="btn btn-primary">Confirmer mes choix</button>
+										<button className="btn btn-primary">Confirmer mon choix</button>
 									</div>
 								</form>
 							</div>:

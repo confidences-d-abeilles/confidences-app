@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
 import Loading from '../utils/Loading'
+import Imagebox from '../utils/Imagebox'
 import moment from 'moment';
 import { getId } from '../../services/AuthService';
 
@@ -202,8 +203,10 @@ export default class CompanyPage extends Component {
 												return (
 													<div className="my-2 row">
 														<div className="actu-first-block col-lg-4">
-															<div className="actu-img" style={{ backgroundImage: `url(${config.cdn_url}/${actu.img})` }} >
-															</div>
+															<Imagebox className="actu-img"
+																src={config.cdn_url+'/'+actu.img}
+																alt={actu.img}
+															/>
 														</div>
 														<div className="actu-second-block col-lg-8">
 															<h3 className="actu-title">{actu.title}<small className="actu-date">{moment(date).format("DD.MM.YYYY")}</small></h3>
