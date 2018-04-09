@@ -44,7 +44,12 @@ export default class Hive extends Component {
 						<div className="col-lg-5 col-md-7 col-sm-12 pr-4">
 							<div className="row">
 								<div className="col-lg-7 px-5">
-									<img className="img-fluid" src={(this.state.hive.imgs[0])?config.cdn_url+'/'+this.state.hive.imgs[0]:ImgHive} alt="Photo principale de la ruche" />
+								<Imagebox
+									src={(this.state.hive.imgs[0])?config.cdn_url+'/'+this.state.hive.imgs[0]:ImgHive}
+									width={'100%'}
+									paddingTop={'100%'}
+									alt={"Photo principale de la ruche"}
+								/>
 								</div>
 								<div className="col-lg-5" style={{ backgroundColor: '#E49C00' , color: 'white', fontFamily: "HighTo", fontSize: '1.25em' }}>
 									<h2 className="mt-4">PARRAINS</h2>
@@ -68,11 +73,12 @@ export default class Hive extends Component {
 										return (null);
 									} else {
 										return (
-
-												<div className="col">
-													<Imagebox width={"auto"} height={'150'} src={config.cdn_url+'/'+img} alt='Photo de la ruche'/>
-												</div>
-											
+												<Imagebox className=" col actu-img"
+													src={config.cdn_url+'/'+img}
+													width={'50px'}
+													paddingTop={'50px'}
+													alt={"Photo de la ruche"}
+												/>
 										)
 									}
 								})}
@@ -91,7 +97,12 @@ export default class Hive extends Component {
 									return (
 										<div className="my-2 row">
 											<div className="col-lg-2">
-												<img className="img-fluid" src={config.cdn_url+'/'+actu.img} alt="Card image cap" />
+												<Imagebox
+													src={config.cdn_url+'/'+actu.img}
+													alt={"Card image cap"}
+													width={'100%'}
+													paddingTop={'100%'}
+												/>
 											</div>
 											<div className="col-lg-10">
 												<h3>{actu.title}</h3>

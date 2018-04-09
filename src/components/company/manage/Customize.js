@@ -48,8 +48,6 @@ export default class CompanyManageCustomize extends Component {
 					labelCurrent: bund.label
 				})
 				this.checkFormat();
-				// let check = [];
-				// check.append
 			})
 		});
 	}
@@ -59,7 +57,6 @@ export default class CompanyManageCustomize extends Component {
 		const formData = new FormData();
 		if (document.getElementById("label").files[0]) {
 			formData.append('label', document.getElementById("label").files[0]);
-
 		request({
 			url : '/bundle/label/'+this.state.bundleId,
 			method : 'put',
@@ -121,9 +118,9 @@ export default class CompanyManageCustomize extends Component {
 											<i className="card-text" style={{fontSize: '85%'}}>Une version « par défaut » est générée automatiquement. 3
 											solutions sont à votre disposition pour la modifier.</i>
 											<div className="col text-center">
-												<Imagebox width={"auto"} height={'150'} src={this.state.labelDefault ? this.state.labelDefault: config.cdn_url+'/'+this.state.labelCurrent} alt='Eti1'/>
+												<Imagebox width={"auto"} height={'150px'} src={this.state.labelDefault ? this.state.labelDefault: config.cdn_url+'/'+this.state.labelCurrent} alt='Eti1'/>
 											</div>
-											
+
 									</div>
 							</div>
 						</div>
@@ -165,40 +162,43 @@ export default class CompanyManageCustomize extends Component {
 				</div>
 					<div className="col">
 						<div className="card">
-							<div className="card-block">
+							<div className="card-block text-center">
 								<div className="row">
 									<div className="text-center col">
 										<h5 className="text-center my-4">Éditeur en ligne</h5><br />
-										<button className="btn btn-primary btn-sm">Démarrer</button><br />
+										<button className="btn btn-primary btn-sm">Bientôt disponible</button><br />
 										<p className="text-center">Templates disponibles</p>
 									</div>
 								</div>
 						<div className="row">
 							<div className="col">
-								<Imagebox width={"auto"} height={'90'} src={Eti1} alt='Eti1'/>
+								<Imagebox width={"auto"} height={'90px'} src={Eti1} alt='Eti1'/>
 							</div>
 							<div className="col">
-								<Imagebox width={"auto"} height={'90'} src={Eti2} alt='Eti2'/>
+								<Imagebox width={"auto"} height={'90px'} src={Eti2} alt='Eti2'/>
 							</div>
 						</div>
 						<br />
 						<div className="row">
 							<div className="col">
-								<Imagebox width={"auto"} height={'90'} src={Eti3} alt='Eti3'/>
+								<Imagebox width={"auto"} height={'90px'} src={Eti3} alt='Eti3'/>
 							</div>
 							<div className="col">
-								<Imagebox width={"auto"} height={'90'} src={Eti4} alt='Eti4'/>
+								<Imagebox width={"auto"} height={'90px'} src={Eti4} alt='Eti4'/>
 							</div>
 						</div>
 						<br />
+						<div className="row">
+							<div className="col">
 							<p className="text-center">Ces templates sont proposés par Marine du Peloux.
 							Vous avez une idée, vous voulez lui confier la
 							réalisation de votre étiquette ? Contactez-la !</p>
 						<br />
-						<Link to="/requestlabel" className="btn btn-primary">
+						<Link to="/requestlabel" className="btn btn-primary btn-sm">
 							Contacter une graphiste
 						</Link>
-
+						</div>
+					</div>
 				</div>
 				</div>
 				</div>

@@ -54,7 +54,7 @@ export default class Address extends Component {
 					<FontAwesome name="pencil" />&nbsp;Editer cette adresse
 					</button>
 				</div>
-				:<EditAddress data={this.state.address} onChange={this.updateAddress} onSubmit={this.submitAddress} />}
+				:<EditAddress data={this.state.address} onChange={this.updateAddress} onSubmit={this.submitAddress} company={this.props.company}/>}
 			</div>
 		)
 	}
