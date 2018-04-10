@@ -199,7 +199,6 @@ export default class CompanyPage extends Component {
 											<h2 style={{ color: '#E49C00' }}>{(this.state.english)?'LATEST NEWS':'LES DERNIÈRES ACTUALITÉS'}</h2>
 											<div style={{ width : '100%', height: '1px', backgroundColor: '#E49C00'}} className="mb-4" ></div>
 											{this.state.user && this.state.news.map((actu) => {
-												const date = new Date(actu.createdAt);
 												return (
 													<div className="my-2 row">
 														<div className="actu-first-block col-lg-4">
@@ -209,7 +208,7 @@ export default class CompanyPage extends Component {
 															/>
 														</div>
 														<div className="actu-second-block col-lg-8">
-															<h3 className="actu-title">{actu.title}<small className="actu-date">{moment(date).format("DD.MM.YYYY")}</small></h3>
+															<h3 className="actu-title">{actu.title}<small className="actu-date">{moment(actu.date).format("DD.MM.YYYY")}</small></h3>
 															<div style={{ width : '100%', height: '1px', backgroundColor: '#E49C00'}} className="mb-4" ></div>
 															<div className="actu-content">
 																<p>
