@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Main from '../../assets/img/end_part.jpg';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
@@ -29,12 +29,15 @@ export default class IndividualEnd extends Component {
             bundleState: res.state
           })
         })
+        setTimeout(() => {this.setState({ redirecte: true })}, 6000);
       })
     }
+
     render () {
         return (
 			<div className="container py-4">
                 <Meta title="Félicitations"/>
+                {this.state.redirecte ? <Redirect to="/individual/manage" /> : null}
 				<div className="row justify-content-center">
 					<div className="col-8">
           {!this.state.bundleState ? <h2 className="text-center my-4">Génial ! Vous avez choisi de rejoindre notre aventure.</h2>

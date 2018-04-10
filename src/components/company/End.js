@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Main from '../../assets/img/end_part.jpg';
 import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 import ReactGA from 'react-ga';
@@ -35,14 +35,17 @@ export default class CompanyEnd extends Component {
 					bundleState: res.state
 				})
 			})
+			setTimeout(() => {this.setState({ redirecte: true })}, 6000);
 		});
 	}
 
 	render () {
 		return (
+
 			<div className="container py-4">
 				<Meta title="Félicitations"/>
 				<NotificationSystem ref="notif" />
+				{this.state.redirecte ? <Redirect to="/company/manage" /> : null}
 				<div className="row justify-content-center">
 					<div className="col-8">
 					{!this.state.bundleState ? <h2 className="text-center my-4">Génial ! Vous avez choisi de rejoindre notre aventure.</h2>
@@ -51,7 +54,8 @@ export default class CompanyEnd extends Component {
 						<p className="text-center">
 							<img src={Main} className="img-fluid mx-auto d-block" alt="Img temp" />
 							<br />
-							{!this.state.bundleState ? <h4 className="text-center my-4">Toute l'équipe de Confidences d'Abeilles vous souhaite la bienvenue.</h4>
+							{!this.state.bundleState ?
+								<h4 className="text-center my-4">Toute l'équipe de Confidences d'Abeilles vous souhaite la bienvenue.</h4>
 		            :<h4 className="text-center my-4">Toute l'équipe de Confidences  d'Abeilles vous remercie !</h4>
 							}
 						</p>
