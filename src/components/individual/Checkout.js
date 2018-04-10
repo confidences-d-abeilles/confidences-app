@@ -106,9 +106,6 @@ export default class IndividualCheckout extends Component {
 	async save() {
 		return new Promise(async resolve => {
 			await this.saveFeedback();
-			if (this.state.different) {
-
-			}
 			await this.handlePresent();
 			resolve();
 		})
@@ -139,42 +136,42 @@ export default class IndividualCheckout extends Component {
 		})
 
 	}
-
-	async saveDaddress() {
-		return new Promise(resolve => {
-			if (!this.state.dsexe_m || !this.state.daddress3 || !this.state.dcity || !this.state.dzip) {
-				this.refs.notif.addNotification({
-					message : "Merci de renseigner tous les champs de votre adresse de livraison",
-					level : 'warning'
-				})
-			} else {
-				if (this.state.dphone.length > 9) {
-					request({
-						url: '/address/'+this.state.did,
-						method: 'put',
-						data: {
-							sexe_m : (this.state.dsexe_m === '0')?false:true,
-							line1: this.state.daddress1,
-							line3: this.state.daddress3,
-							line4: this.state.daddress4,
-							zipcode: this.state.dzip,
-							city: this.state.dcity,
-							country: this.state.dcountry,
-							phone: this.state.dphone,
-							addr_diff: true
-						}
-					}, this.refs.notif).then((res) => {
-						resolve();
-					})
-				} else {
-					this.refs.notif.addNotification({
-						message: 'Merci de renseigner un numero de telephone valide pour la livraison',
-						level: 'warning'
-					})
-				}
-			}
-		});
-	}
+  //
+	// async saveDaddress() {
+	// 	return new Promise(resolve => {
+	// 		if (!this.state.dsexe_m || !this.state.daddress3 || !this.state.dcity || !this.state.dzip) {
+	// 			this.refs.notif.addNotification({
+	// 				message : "Merci de renseigner tous les champs de votre adresse de livraison",
+	// 				level : 'warning'
+	// 			})
+	// 		} else {
+	// 			if (this.state.dphone.length > 9) {
+	// 				request({
+	// 					url: '/address/'+this.state.did,
+	// 					method: 'put',
+	// 					data: {
+	// 						sexe_m : (this.state.dsexe_m === '0')?false:true,
+	// 						line1: this.state.daddress1,
+	// 						line3: this.state.daddress3,
+	// 						line4: this.state.daddress4,
+	// 						zipcode: this.state.dzip,
+	// 						city: this.state.dcity,
+	// 						country: this.state.dcountry,
+	// 						phone: this.state.dphone,
+	// 						addr_diff: true
+	// 					}
+	// 				}, this.refs.notif).then((res) => {
+	// 					resolve();
+	// 				})
+	// 			} else {
+	// 				this.refs.notif.addNotification({
+	// 					message: 'Merci de renseigner un numero de telephone valide pour la livraison',
+	// 					level: 'warning'
+	// 				})
+	// 			}
+	// 		}
+	// 	});
+	// }
 
 	changeBundle() {
 		request({
@@ -195,6 +192,7 @@ export default class IndividualCheckout extends Component {
 					present_email: this.state.present_email,
 					present_message: this.state.present_message,
 					present_date: (this.state.present_date)?this.state.present_date:new Date(),
+					present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 					present_name: this.state.present_name,
 					present_firstname: this.state.present_firstname
 				}
