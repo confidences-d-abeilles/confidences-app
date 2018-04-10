@@ -82,7 +82,7 @@ export default class CompanyCheckout extends Component {
 			method: 'put',
 			data : {
 				state: 1,
-				present_end: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+				present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
 		}, this.refs.notif).then((res) => {
 			this.setState({ redirect : true })
@@ -141,7 +141,7 @@ export default class CompanyCheckout extends Component {
 					present_email: this.state.present_email,
 					present_message: this.state.present_message,
 					present_date: (this.state.present_date)?this.state.present_date:new Date(),
-					present_end: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
+					present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 					present_name: this.state.present_name,
 					present_firstname: this.state.present_firstname
 				}
