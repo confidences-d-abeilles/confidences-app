@@ -25,7 +25,9 @@ export default class CompanyEnd extends Component {
 		}, this.refs.notif)
 		.then((res) => {
 			this.setState({
-				namespace: res.namespace
+				namespace: res.namespace,
+				firstname: res.firstname,
+				name: res.name
 			})
 			request({
 				url : '/bundle/owner/'+res.id,
@@ -34,6 +36,18 @@ export default class CompanyEnd extends Component {
 				this.setState({
 					bundleState: res.state
 				})
+				request({
+					url : '/marv/ob',
+					method : 'PUT',
+					data : {
+						feedback: res.feedback,
+						type: res.state,
+						name: this.state.name,
+						firstname: this.state.firstname
+					}
+				}, this.refs.notif).then((res) =>{
+
+					})
 			})
 			setTimeout(() => {this.setState({ redirecte: true })}, 6000);
 		});
