@@ -53,6 +53,7 @@ export default class Feedback extends Component {
 					actu: res[0].content,
 					actuTitle: res[0].title,
 					actuImg: res[0].img,
+					oldImg:res[0].img,
 					actuDate: moment(res[0].date),
 					newsModify: nextProps.name
 				}, () => {
@@ -70,6 +71,7 @@ export default class Feedback extends Component {
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
 		data.append('date', this.state.actuDate);
+		data.append('oldImg', this.state.oldImg);
 		if (document.getElementById("actu-img").files[0]) {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		} else {
@@ -88,7 +90,8 @@ export default class Feedback extends Component {
 				actuTitle: '',
 				newsTake: 0,
 				actu: '',
-				actuImg: ''
+				actuImg: '',
+				newsModify: null
 			})
 		});
 	}
@@ -96,13 +99,16 @@ export default class Feedback extends Component {
 	createActu(e) {
 		e.preventDefault()
 		const data = new FormData();
+		console.log("creation de news")
 		console.log(this.state.actuTitle);
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
 		data.append('date', this.state.actuDate);
+		console.log()
 		if (document.getElementById("actu-img").files[0]) {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		}
+
 		request({
 			url: '/news'+ (this.props.hiveId ? '/hive/'+this.props.hiveId : ''),
 			method: 'post',
