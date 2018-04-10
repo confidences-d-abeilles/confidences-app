@@ -62,7 +62,13 @@ export default class IndividualCheckout extends Component {
 				price: res.bundles[0].price,
 				bundle_id: res.bundles[0].id,
 				duplicate: true,
-				feedback: res.bundles[0].feedback
+				feedback: res.bundles[0].feedback,
+				present: res.bundles[0].present,
+				present_message: res.bundles[0].message,
+				present_email: res.bundles[0].email,
+				present_firstname: res.bundles[0].firstname,
+				present_name: res.bundles[0].name,
+				present_date: moment(res.bundles[0].present_date)
 			});
 			request({
 				url: '/bill/bundle/'+res.bundles[0].id,
@@ -71,6 +77,7 @@ export default class IndividualCheckout extends Component {
 				this.setState({
 					bill_number: res.number
 				});
+
 			});
 				res.addresses.map((address) => {
 					if (address.type == 1) {
@@ -136,42 +143,6 @@ export default class IndividualCheckout extends Component {
 		})
 
 	}
-  //
-	// async saveDaddress() {
-	// 	return new Promise(resolve => {
-	// 		if (!this.state.dsexe_m || !this.state.daddress3 || !this.state.dcity || !this.state.dzip) {
-	// 			this.refs.notif.addNotification({
-	// 				message : "Merci de renseigner tous les champs de votre adresse de livraison",
-	// 				level : 'warning'
-	// 			})
-	// 		} else {
-	// 			if (this.state.dphone.length > 9) {
-	// 				request({
-	// 					url: '/address/'+this.state.did,
-	// 					method: 'put',
-	// 					data: {
-	// 						sexe_m : (this.state.dsexe_m === '0')?false:true,
-	// 						line1: this.state.daddress1,
-	// 						line3: this.state.daddress3,
-	// 						line4: this.state.daddress4,
-	// 						zipcode: this.state.dzip,
-	// 						city: this.state.dcity,
-	// 						country: this.state.dcountry,
-	// 						phone: this.state.dphone,
-	// 						addr_diff: true
-	// 					}
-	// 				}, this.refs.notif).then((res) => {
-	// 					resolve();
-	// 				})
-	// 			} else {
-	// 				this.refs.notif.addNotification({
-	// 					message: 'Merci de renseigner un numero de telephone valide pour la livraison',
-	// 					level: 'warning'
-	// 				})
-	// 			}
-	// 		}
-	// 	});
-	// }
 
 	changeBundle() {
 		request({
@@ -239,7 +210,7 @@ export default class IndividualCheckout extends Component {
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="my-4">Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
-								{this.state.different && !this.state.saved &&
+								{!this.state.saved &&
 									<Address data={this.state.delivery_address} />
 								}
 								<h3 className="mt-5">Ce parrainage est un cadeau {!this.state.present_ok && <input type="checkbox" name="present" checked={this.state.present} onChange={handleTick.bind(this) }/>}</h3>
@@ -247,16 +218,16 @@ export default class IndividualCheckout extends Component {
 										<form>
 										<p>L’adresse de votre bénéficiaire est différente ? Merci de sélectionner « Adresse de livraison différente » et de remplir tous les champs.</p>
 										<div className="form-group">
-											<input type="text" className="form-control" name="present_name" onChange={handleChange.bind(this)} placeholder="Nom du bénéficiaire *" />
+											<input type="text" className="form-control"  value={this.state.present_name} name="present_name" onChange={handleChange.bind(this)} placeholder="Nom du bénéficiaire *" />
 										</div>
 										<div className="form-group">
-											<input type="text" className="form-control" name="present_firstname" onChange={handleChange.bind(this)} placeholder="Prénom du bénéficiaire *" />
+											<input type="text" className="form-control" value={this.state.present_firstname} name="present_firstname" onChange={handleChange.bind(this)} placeholder="Prénom du bénéficiaire *" />
 										</div>
 										<div className="form-group">
-											<input type="email" className="form-control" name="present_email" onChange={handleChange.bind(this)} placeholder="Email du bénéficiaire *" />
+											<input type="email" className="form-control" value={this.state.present_email} name="present_email" onChange={handleChange.bind(this)} placeholder="Email du bénéficiaire *" />
 										</div>
 										<div className="form-group">
-											<textarea className="form-control" name="present_message" onChange={handleChange.bind(this)} placeholder="Message personnalisé à joindre (optionnel)" />
+											<textarea className="form-control" value={this.state.present_message} name="present_message" onChange={handleChange.bind(this)} placeholder="Message personnalisé à joindre (optionnel)" />
 										</div>
 										<div className="form-group">
 											<label>Notifier l'heureux bénéficiaire à partir du :</label>

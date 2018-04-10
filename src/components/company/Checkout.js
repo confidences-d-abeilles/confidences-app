@@ -55,7 +55,7 @@ export default class CompanyCheckout extends Component {
 				method: 'get'
 			}, this.refs.notif).then((res) => {
 				this.setState({
-					//bill_number: res.number
+					bill_number: res.number
 				});
 			});
 			res.addresses.map((address) => {
