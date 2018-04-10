@@ -332,7 +332,7 @@ export default class AdminManageUsers extends Component {
 													<strong>Adresse email :</strong> {this.state.selectedUser.email}<br />
 													<strong>Téléphone :</strong> {this.state.selectedUser.phone}<br />
 													<Confirm class="btn btn-secondary btn-sm my-2" action={this.deleteUser.bind(this, this.state.selectedUser.id)} text="Supprimer l'utilisateur" />
-													<Confirm class="btn btn-secondary btn-sm my-2" action={this.promoteUser.bind(this, this.state.selectedUser.id)} text="Promouvoir l'utilisateur" />
+													<button className="btn btn-secondary btn-sm my-2" omClick={this.promoteUser.bind(this, this.state.selectedUser.id)}>Promouvoir l'utilisateur</button>
 												</p>
 											</div>
 										</div>
