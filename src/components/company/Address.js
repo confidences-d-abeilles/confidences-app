@@ -59,7 +59,7 @@ export default class CompanyAddress extends Component {
 				data : { ...this.state.address, type: 2 }
 			}, this.refs.notif).then((res) => {
 				this.setState({
-					redirect : false
+					redirect : true
 				})
 			});
 		});
