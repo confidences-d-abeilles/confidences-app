@@ -157,7 +157,7 @@ export default class CompanyCheckout extends Component {
 				<Meta title="Validation et paiement"/>
 				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/company/end" />:null}
-				{(this.state.dash)?<Redirect to="/company/manage" />:null}
+				{(this.state.dash)?<Redirect to="/company/end" />:null}
 				{(this.state.wish)?<Redirect to="/company/wish" />:null}
 				<div className="row justify-content-center">
 					<div className="col">

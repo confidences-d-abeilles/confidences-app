@@ -155,11 +155,11 @@ export default class CompanyManageInfos extends Component {
 					<div className="row">
 						<div className="col-lg-6 col-sm-12">
 							<h3 className="text-center my-4"><small>Mon adresse de facturation</small></h3>
-							<Address data={this.state.billing_address} />
+							<Address data={this.state.billing_address} company={true} />
 						</div>
 						<div className="col-lg-6 col-sm-12">
 							<h3 className="text-center my-4"><small>Mes informations de livraison</small></h3>
-							<Address data={this.state.delivery_address} />
+							<Address data={this.state.delivery_address} company={true}/>
 						</div>
 					</div>
 				</div>

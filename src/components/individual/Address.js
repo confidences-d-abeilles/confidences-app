@@ -33,6 +33,7 @@ export default class IndividualAddress extends Component {
 					sexe_m: res.sexe_m?'1':'0',
 					name: res.name,
 					firstname: res.firstname,
+					phone: res.phone
 				}
 			});
 		});
