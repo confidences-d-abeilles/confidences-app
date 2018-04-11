@@ -112,13 +112,19 @@ export default class CompanyManageCustomize extends Component {
 					<div className="row">
 						<div className="col text-center">
 							<div className="card">
-								<div className="card-block">
+								<div className="card-block text-center">
 									<div>
 										<h5 className="text-center my-4">Notre étiquette personnalisée</h5>
 											<i className="card-text" style={{fontSize: '85%'}}>Une version « par défaut » est générée automatiquement. 3
 											solutions sont à votre disposition pour la modifier.</i>
-											<div className="col text-center">
-												<Imagebox width={"auto"} height={'150px'} src={this.state.labelDefault ? this.state.labelDefault: config.cdn_url+'/'+this.state.labelCurrent} alt='Eti1'/>
+											<div className=" row card-img text-center">
+
+											<Imagebox className="col"
+												src={this.state.labelDefault ? this.state.labelDefault: config.cdn_url+'/'+this.state.labelCurrent}
+												width={'auto'}
+												paddingTop={'230px'}
+												alt={"Eti1"}
+											/>
 											</div>
 
 									</div>
