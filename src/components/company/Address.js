@@ -32,7 +32,8 @@ export default class CompanyAddress extends Component {
 					sexe_m: res.sexe_m?'1':'0',
 					name: res.name,
 					firstname: res.firstname,
-					line2: res.company_name
+					company_name: res.company_name,
+					phone: res.phone
 				}
 			});
 		});
@@ -51,6 +52,7 @@ export default class CompanyAddress extends Component {
 			method: 'post',
 			data : this.state.address
 		}, this.refs.notif).then((res) => {
+			console.log(this.state.address);
 			request({
 				url : '/address',
 				method: 'post',
@@ -78,8 +80,8 @@ export default class CompanyAddress extends Component {
 				<div className="row justify-content-center">
 					<div className="col-lg-6 col-md-10 col-sm-12">
 						<h2 className="text-center my-4">Adresse de facturation</h2>
-						<p className="alert alert-info">Merci de renseigner ici l’adresse de facturation de votre société. Si l’adresse de livraison n’est pas la même, vous aurez toujours la possibilité de la modifier par la suite.</p>
 						<EditAddress company={true} data={this.state.address} onChange={this.changeAddress} onSubmit={this.createAddress} />
+						<p className="alert alert-info">Merci de renseigner ici l’adresse de facturation de votre société. Si l’adresse de livraison n’est pas la même, vous aurez toujours la possibilité de la modifier par la suite.</p>
 					</div>
 				</div>
 				{(this.state.redirect)?

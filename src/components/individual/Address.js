@@ -33,6 +33,7 @@ export default class IndividualAddress extends Component {
 					sexe_m: res.sexe_m?'1':'0',
 					name: res.name,
 					firstname: res.firstname,
+					phone: res.phone
 				}
 			});
 		});
@@ -83,6 +84,7 @@ export default class IndividualAddress extends Component {
 						<div className="col-lg-6 col-md-10 col-sm-12">
 							<h2 className="text-center my-4">Adresse de facturation</h2>
 							<EditAddress company={false} data={this.state.address} onChange={this.changeAddress} onSubmit={this.createAddress} />
+							<p className="alert alert-info">Merci de renseigner votre adresse personnelle, celle de livraison viendra après et vous pourrez toujours les modifier depuis votre tableau de bord.</p>
 						</div>
 					</div>
 			</div>

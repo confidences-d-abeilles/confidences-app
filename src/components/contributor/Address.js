@@ -6,6 +6,7 @@ import { isLoggedIn } from '../../services/AuthService';
 import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
+import EditAddress from '../utils/Address/EditAddress'
 
 export default class ContributorAddress extends Component {
 	constructor(props) {
@@ -14,56 +15,55 @@ export default class ContributorAddress extends Component {
 		this.state = {
 			redirect: false,
 			message: '',
-			sexe_m: '',
-			address1: '',
-			address2: '',
-			address3: '',
-			address4: '',
-			city: '',
-			zipcode: '',
-			country: 'France'
-		}
-	}
-
-	addAddress(e) {
-		e.preventDefault();
-		if (!this.state.sexe_m || !this.state.address3 || !this.state.city || !this.state.zipcode) {
-			this.refs.notif.addNotification({
-				message : 'Merci de remplir tous les champs obligatoires',
-				level : 'warning'
-			})
-		} else {
-			request({
-				url: '/address',
-				method : 'post',
-				data : {
-					sexe_m : (this.state.sexe_m === '0')?false:true,
-					line1 : this.state.address1,
-					line2 : this.state.address2,
-					line3 : this.state.address3,
-					line4 : this.state.address4,
-					city : this.state.city,
-					zipcode : this.state.zipcode,
-					country: this.state.country,
-					type : 1
-				}
-			}, this.refs.notif).then((res) => {
-				this.setState({ redirect : true });
-			})
+			address: {
+				country: 'France',
+				type: 1
+			}
 		}
 	}
 
 	componentDidMount() {
 		request({
 			url: '/user/me',
-			method : 'get'
+			method: 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				sexe_m: res.sexe_m?'1':'0',
-				address1: res.firstname+' '+res.name
+				address: {
+					...this.state.address,
+					sexe_m: res.sexe_m?'1':'0',
+					name: res.name,
+					firstname: res.firstname,
+				}
 			});
+		});
+	}
+
+	changeAddress = (e) => {
+		this.setState({
+			address: { ...this.state.address, [e.target.name] : e.target.value }
 		})
 	}
+
+	createAddress = (e) => {
+		e.preventDefault();
+		request({
+			url : '/address',
+			method: 'post',
+			data : this.state.address
+		}, this.refs.notif).then((res) => {
+			request({
+				url : '/address',
+				method: 'post',
+				data : { ...this.state.address, type: 2 }
+			}, this.refs.notif).then((res) => {
+				this.setState({
+					redirect : true
+				})
+			});
+		});
+	}
+
+
 
     render () {
         return (
@@ -83,43 +83,13 @@ export default class ContributorAddress extends Component {
 				</div>
 				<div className="row justify-content-center">
 					<div className="col-6">
-						<form className="text-center">
-							<h2 className="text-center my-4">Votre adresse</h2>
-							<div className="form-group d-flex">
-					      <label className="radio-inline form-check-label">
-					        <input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.sexe_m === '1'}/>
-					        &nbsp;M *
-					      </label>
-						    <label className="radio-inline form-check-label ml-4">
-					        <input type="radio" className="form-check-input" name="sexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.sexe_m === '0'}/>
-					        &nbsp;Mme *
-					      </label>
-							</div>
-							<div className="form-group">
-								<input type="text" name="address1" className="form-control" placeholder="Nom et prénom *" value={this.state.address1} onChange={handleChange.bind(this)} />
-							</div>
-							<div className="form-group">
-								<input type="text" name="address3" className="form-control" placeholder="Adresse ligne 1 *" onChange={handleChange.bind(this)} />
-							</div>
-							<div className="form-group">
-								<input type="text" name="address4" className="form-control" placeholder="Adresse ligne 2" onChange={handleChange.bind(this)} />
-							</div>
-							<div className="form-group">
-								<input type="text" name="city" className="form-control" placeholder="Ville *" onChange={handleChange.bind(this)} />
-							</div>
-							<div className="form-group">
-								<input type="number" name="zipcode" className="form-control" placeholder="Code postal *" onChange={handleChange.bind(this)} />
-							</div>
-							<div className="form-group">
-								<input type="text" name="country" className="form-control" placeholder="Pays *" value={this.state.country} onChange={handleChange.bind(this)} />
-							</div>
-							<p>
-								Remarque : votre adresse n’est utile que pour la
-								rédaction du contrat. Ne vous inquiétez pas, nous
-								n’allons pas vous contacter par voie postale.
-							</p>
-							<input type="submit" className="btn btn-primary" value="Continuer" onClick={this.addAddress.bind(this)} />
-						</form>
+					<h2 className="text-center my-4">Votre adresse</h2>
+					<EditAddress company={false} data={this.state.address} onChange={this.changeAddress} onSubmit={this.createAddress} />
+						<p className="alert alert-info">
+							Remarque : votre adresse n’est utile que pour la
+							rédaction du contrat. Ne vous inquiétez pas, nous
+							n’allons pas vous contacter par voie postale.
+						</p>
 					</div>
 				</div>
 
