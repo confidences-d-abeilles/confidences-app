@@ -82,7 +82,7 @@ export default class CompanyCheckout extends Component {
 			method: 'put',
 			data : {
 				state: 1,
-				present_end: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+				present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
 		}, this.refs.notif).then((res) => {
 			this.setState({ redirect : true })
@@ -141,7 +141,7 @@ export default class CompanyCheckout extends Component {
 					present_email: this.state.present_email,
 					present_message: this.state.present_message,
 					present_date: (this.state.present_date)?this.state.present_date:new Date(),
-					present_end: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
+					present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1)),
 					present_name: this.state.present_name,
 					present_firstname: this.state.present_firstname
 				}
@@ -157,7 +157,7 @@ export default class CompanyCheckout extends Component {
 				<Meta title="Validation et paiement"/>
 				<NotificationSystem ref="notif" />
 				{(this.state.redirect)?<Redirect to="/company/end" />:null}
-				{(this.state.dash)?<Redirect to="/company/manage" />:null}
+				{(this.state.dash)?<Redirect to="/company/end" />:null}
 				{(this.state.wish)?<Redirect to="/company/wish" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
@@ -177,7 +177,7 @@ export default class CompanyCheckout extends Component {
 						<div className="row justify-content-center">
 							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="my-4">Adresse de facturation</h3>
-								<ViewAddress data={this.state.billing_address} />
+								<ViewAddress data={this.state.billing_address} company={true}/>
 								<h3 className="my-4">Message</h3>
 								<div className="form-group">
 									<textarea rows="5" className="form-control" name="feedback" onChange={handleChange.bind(this)} value={this.state.feedback} placeholder="Informations complémentaires concernant votre commande ou commentaires, laissez-nous un petit message, nous y prêterons grande attention :)" />
@@ -185,7 +185,7 @@ export default class CompanyCheckout extends Component {
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="my-4">Adresse de livraison</h3>
-								<Address data={this.state.delivery_address} />
+								<Address data={this.state.delivery_address} company={true}/>
 							</div>
 						</div>
 						<h3 className="my-4">Paiement sécurisé</h3>

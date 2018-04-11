@@ -3,6 +3,7 @@ import request from '../../../../services/Net';
 import NotificationSystem from 'react-notification-system'
 import { handleChange } from '../../../../services/FormService'
 import ReactGA from 'react-ga';
+import Address from '../../../utils/Address/Address'
 
 export default class ContributorManageInfosSocial extends Component {
 
@@ -34,14 +35,7 @@ export default class ContributorManageInfosSocial extends Component {
 				res.addresses.map((address) => {
 					if (address.type === 1) {
 						this.setState({
-							bid: address.id,
-							bsexe_m: address.sexe_m?'1':'0',
-							bline1: address.line1,
-							bline2: address.line2,
-							bline3: address.line3,
-							bline4: address.line4,
-							bzipcode: address.zipcode,
-							bcity: address.city
+							billing_address: address
 						})
 					}
 
@@ -125,41 +119,7 @@ export default class ContributorManageInfosSocial extends Component {
 						<div className="row">
 							<div className="col-6">
 								<span className="lead">Adresse :<br /></span>
-								<form key={this.state.user.id}>
-									<div className="form-group d-flex">
-										<label className="radio-inline form-check-label">
-											<input type="radio" className="form-check-input" name="bsexe_m" value="1" onChange={handleChange.bind(this)} checked={this.state.bsexe_m === '1'}/>
-											&nbsp;M
-										</label>
-										<label className="radio-inline form-check-label ml-4">
-											<input type="radio" className="form-check-input" name="bsexe_m" value="0" onChange={handleChange.bind(this)} checked={this.state.bsexe_m === '0'}/>
-											&nbsp;Mme
-										</label>
-									</div>
-									<div className="form-group">
-										<input type="texte" name="bline1" onChange={handleChange.bind(this)} value={this.state.bline1} className="form-control" placeholder="Nom et prénom" />
-									</div>
-									<div className="form-group">
-										<input type="texte" name="bline2" onChange={handleChange.bind(this)} value={this.state.bline2} className="form-control" placeholder="Etablissement (optionnel)" />
-									</div>
-									<div className="form-group">
-										<input type="texte" name="bline3" onChange={handleChange.bind(this)} value={this.state.bline3} className="form-control" placeholder="Ligne 1" />
-									</div>
-									<div className="form-group">
-										<input type="texte" name="bline4" onChange={handleChange.bind(this)} value={this.state.bline4} className="form-control" placeholder="Ligne 2" />
-									</div>
-									<div className="form-group row">
-										<div className="col-4">
-											<input type="texte" name="bzipcode" onChange={handleChange.bind(this)} value={this.state.bzipcode} className="form-control" />
-										</div>
-										<div className="col-8">
-											<input type="texte" name="bcity" onChange={handleChange.bind(this)} value={this.state.bcity} className="form-control" />
-										</div>
-									</div>
-									<div className="form-group">
-										<input type="submit" value="Enregistrer" className="btn btn-primary" onClick={this.submitBaddress.bind(this)} />
-									</div>
-								</form>
+								<Address data={this.state.billing_address} />
 							</div>
 						</div>
 					</div>

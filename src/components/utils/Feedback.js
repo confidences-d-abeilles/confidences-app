@@ -53,6 +53,7 @@ export default class Feedback extends Component {
 					actu: res[0].content,
 					actuTitle: res[0].title,
 					actuImg: res[0].img,
+					oldImg:res[0].img,
 					actuDate: moment(res[0].date),
 					newsModify: nextProps.name
 				}, () => {
@@ -70,6 +71,7 @@ export default class Feedback extends Component {
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
 		data.append('date', this.state.actuDate);
+		data.append('oldImg', this.state.oldImg);
 		if (document.getElementById("actu-img").files[0]) {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		} else {
@@ -88,7 +90,8 @@ export default class Feedback extends Component {
 				actuTitle: '',
 				newsTake: 0,
 				actu: '',
-				actuImg: ''
+				actuImg: '',
+				newsModify: null
 			})
 		});
 	}
@@ -96,13 +99,16 @@ export default class Feedback extends Component {
 	createActu(e) {
 		e.preventDefault()
 		const data = new FormData();
+		console.log("creation de news")
 		console.log(this.state.actuTitle);
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
 		data.append('date', this.state.actuDate);
+		console.log()
 		if (document.getElementById("actu-img").files[0]) {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		}
+
 		request({
 			url: '/news'+ (this.props.hiveId ? '/hive/'+this.props.hiveId : ''),
 			method: 'post',
@@ -115,6 +121,7 @@ export default class Feedback extends Component {
 				newsTake: 0,
 				actu: '',
 				actuTitle: '',
+				actuDate: moment(new Date()),
 				actuImg: ''
 			})
 		})
@@ -181,8 +188,8 @@ export default class Feedback extends Component {
 				<div className="form-group">
 					<label htmlFor="actu-img" className={(this.state.actuImg)?'active-upload':'upload'} style={{ position: 'relative' }}>
 						<input type="file" className="form-control" id="actu-img" onChange={() => { this.setState({ actuImg : document.getElementById("actu-img").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-						Glissez une image ou cliquez pour en séléctionner un parmi vos fichiers<br/>
-						Recommandations : 400x300px, 100ko maximum - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}
+						Glissez une image ou cliquez pour en séléctionner une parmi vos fichiers<br/>
+						Recommandations : 800x600px, 100ko maximum - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}
 					</label>
 				</div>
 				<button className="btn btn-secondary btn-sm">Soumettre</button>

@@ -16,7 +16,7 @@ export default class Address extends Component {
 		this.state = {
 			fnct: props.fnct,
 			id: '',
-			sexe_m: props.user ? props.user.sexe_m?'1':'0':'',
+			sexe_m: props.user ? props.user.sexe_m ? '1':'0':'',
 			address1: props.user ? props.user.name+' '+props.user.firstname:'',
 			address2: '',
 			address3: '',
