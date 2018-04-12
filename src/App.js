@@ -14,7 +14,6 @@ import MyRouter from './components/Router'
 
 const config = require('./config.js');
 
-
 class ScrollToTop extends Component {
 	componentDidUpdate(prevProps) {
 		window.scrollTo(0, 0);
@@ -43,7 +42,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<StripeProvider apiKey="pk_live_gx64GVXrwS7Kr84xcn7l8S5Y">
+			<StripeProvider apiKey={config.stripe_api_key}>
 				<ScrollToTop>
 					<Router>
 						<Switch>
