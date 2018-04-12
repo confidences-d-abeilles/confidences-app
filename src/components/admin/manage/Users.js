@@ -68,6 +68,7 @@ export default class AdminManageUsers extends Component {
 			delivery_address: user.addresses[1],
 			feedback: (user.comment)?user.comment:'',
 			supportLevel: (user.support_lvl)?user.support_lvl.toString():'',
+			userType: user.user_type
 		});
 	}
 
@@ -287,6 +288,28 @@ export default class AdminManageUsers extends Component {
 		}
 	}
 
+	synchro (address) {
+		console.log(address);
+
+		if (address.line1) {
+			console.log('je split');
+			const splitAddress = address.line1.split(' ').reverse();
+			console.log(splitAddress[0]);
+			console.log(splitAddress.slice(1).join(' '));
+			console.log(address.line2);
+			console.log(address.line3);
+			request({
+				url: '/address/'+address.id,
+				method: 'PUT',
+				data: { ...address, ['firstname'] : splitAddress[0], ['name'] : splitAddress.slice(1).join(' '), ['company_name'] : address.line2, ['address_line1'] : address.line3 }
+			}, this.refs.notif).then((res) => {
+				this.setState({ edit : false });
+			})
+		} else {
+			console.log('pas de besoinde split');
+		}
+	}
+
 	render () {
 		return (
 			<div className="container-fluid">
@@ -335,6 +358,7 @@ export default class AdminManageUsers extends Component {
 													<button className="btn btn-secondary btn-sm my-2" onClick={this.promoteUser.bind(this, this.state.selectedUser.id)}>Promouvoir l'utilisateur</button>
 												</p>
 											</div>
+
 										</div>
 									</div>
 										{this.state.selectedUser.addresses && this.state.selectedUser.addresses[0] &&
@@ -362,7 +386,11 @@ export default class AdminManageUsers extends Component {
 														</p>
 														<div>
 															<h3 className="text-center my-4"><small>Adresse de facturation</small></h3>
-															<Address data={this.state.billing_address} />
+															<Address data={this.state.billing_address} company={this.state.selectedUser.user_type == 2?true:false}/>
+														</div>
+														<div className="card-block">
+															<h3 className="card-title">Syncronisation des donnees user</h3>
+															<button class="btn btn-secondary btn-sm my-2" onClick={this.synchro.bind(this, this.state.billing_address)} >Synchronisation des donnees de l'utilisateur</button>
 														</div>
 													</div>
 											</div>
@@ -378,6 +406,10 @@ export default class AdminManageUsers extends Component {
 															{this.state.stateFeedback ? <button onClick={this.saveFeedback.bind(this)} className="btn btn-primary">Sauvegarder</button>
 															:null}
 														</div>
+													</div>
+													<div className="card-block">
+														<h3 className="card-title">Syncronisation des donnees user</h3>
+														<button class="btn btn-secondary btn-sm my-2" onClick={this.synchro.bind(this, this.state.billing_address)} >Synchronisation des donnees de l'utilisateur</button>
 													</div>
 												</div>
 											</div>

@@ -82,6 +82,7 @@ export default class IndividualCheckout extends Component {
 				res.addresses.map((address) => {
 					if (address.type == 1) {
 						this.setState({ billing_address: address })
+						console.log(address);
 					}
 					if (address.type == 2) {
 						this.setState({ delivery_address: address })
@@ -209,8 +210,8 @@ export default class IndividualCheckout extends Component {
 								</div>
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
-								<h3 className="my-4">Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
-								{!this.state.saved &&
+								<h3 className="my-4">Adresse de livraison différente {!this.state.different && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
+								{this.state.different &&
 									<Address data={this.state.delivery_address} />
 								}
 								<h3 className="mt-5">Ce parrainage est un cadeau {!this.state.present_ok && <input type="checkbox" name="present" checked={this.state.present} onChange={handleTick.bind(this) }/>}</h3>
