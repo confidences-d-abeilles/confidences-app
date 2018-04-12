@@ -184,8 +184,10 @@ export default class CompanyCheckout extends Component {
 								</div>
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
-								<h3 className="my-4">Adresse de livraison</h3>
-								<Address data={this.state.delivery_address} company={true}/>
+								<h3 className="my-4">Adresse de livraison <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/></h3>
+								{this.state.different &&
+									<Address data={this.state.delivery_address} company={true}/>
+								}
 							</div>
 						</div>
 						<h3 className="my-4">Paiement sécurisé</h3>
