@@ -151,6 +151,21 @@ export default class CompanyCheckout extends Component {
 		});
 	}
 
+	changeAddress(e) {
+			this.setState({
+				different : !this.state.different,
+				delivery_address: { ...this.state.delivery_address, ['addr_diff'] : !this.state.different}
+			}, () => {
+				request({
+					url: '/address/diff',
+					method: 'PUT',
+					data: this.state.delivery_address
+				}, this.refs.notif).then((res) => {
+					console.log('diff ok');
+				})
+			})
+	}
+
 	render () {
 		return (
 			<div className="container py-4">
@@ -184,7 +199,7 @@ export default class CompanyCheckout extends Component {
 								</div>
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
-								<h3 className="my-4">Adresse de livraison <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/></h3>
+								<h3 className="my-4">Adresse de livraison <input type="checkbox" name="different" checked={this.state.different} onChange={this.changeAddress.bind(this) }/></h3>
 								{this.state.different &&
 									<Address data={this.state.delivery_address} company={true}/>
 								}

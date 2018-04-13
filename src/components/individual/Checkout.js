@@ -77,7 +77,6 @@ export default class IndividualCheckout extends Component {
 				this.setState({
 					bill_number: res.number
 				});
-
 			});
 				res.addresses.map((address) => {
 					if (address.type == 1) {
@@ -85,7 +84,12 @@ export default class IndividualCheckout extends Component {
 						console.log(address);
 					}
 					if (address.type == 2) {
-						this.setState({ delivery_address: address })
+						this.setState({
+							delivery_address: address,
+							different: address.addr_diff
+						})
+						console.log('addr diff');
+						console.log(this.state.different);
 					}
 				})
 		});
@@ -149,7 +153,7 @@ export default class IndividualCheckout extends Component {
 		request({
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'delete'
-		}, this.refs.notif). then((res) => {
+		}, this.refs.notif).then((res) => {
 			this.setState({ back : true });
 		})
 	}
@@ -172,6 +176,21 @@ export default class IndividualCheckout extends Component {
 				resolve();
 			})
 		});
+	}
+
+	changeAddress(e) {
+			this.setState({
+				different : !this.state.different,
+				delivery_address: { ...this.state.delivery_address, ['addr_diff'] : !this.state.different}
+			}, () => {
+				request({
+					url: '/address/diff',
+					method: 'PUT',
+					data: this.state.delivery_address
+				}, this.refs.notif).then((res) => {
+					console.log('diff ok');
+				})
+			})
 	}
 
     render () {
@@ -210,7 +229,7 @@ export default class IndividualCheckout extends Component {
 								</div>
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
-								<h3 className="my-4">Adresse de livraison différente {!this.state.different && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
+								<h3 className="my-4">Adresse de livraison différente <input type="checkbox" name="different" checked={this.state.different} onChange={this.changeAddress.bind(this)}/></h3>
 								{this.state.different &&
 									<Address data={this.state.delivery_address} />
 								}
