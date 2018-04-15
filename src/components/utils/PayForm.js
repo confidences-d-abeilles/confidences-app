@@ -39,6 +39,8 @@ class PayForm extends Component {
 				method: 'post',
 				data: {
 					source: source,
+					dateStart: this.props.date,
+					dateEnd: new Date(new Date(this.props.date).setFullYear(new Date().getFullYear() + 1)),
 					redirect: config.app_url+this.props.endpoint
 				}
 			}, this.refs.notif).then((res) => {

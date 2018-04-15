@@ -88,8 +88,6 @@ export default class IndividualCheckout extends Component {
 							delivery_address: address,
 							different: address.addr_diff
 						})
-						console.log('addr diff');
-						console.log(this.state.different);
 					}
 				})
 		});
