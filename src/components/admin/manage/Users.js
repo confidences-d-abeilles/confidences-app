@@ -471,7 +471,7 @@ export default class AdminManageUsers extends Component {
 													</div>
 													<div className="card-block">
 														<h3 className="text-center my-4"><small>Adresse de livraison</small></h3>
-														<Address data={this.state.delivery_address} />
+														<Address data={this.state.delivery_address} company={this.state.selectedUser.user_type == 2?true:false}/>
 													</div>
 													<div className="card-block">
 														<h3 className="card-title">Synchronisation des donnees user</h3>
