@@ -5,11 +5,11 @@ const EditAddress = ( props ) => (
 		{props.data && <form onSubmit={props.onSubmit}>
 			<div className="form-group d-flex">
 				<label className="radio-inline form-check-label">
-					<input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={props.onChange} checked={props.data.sexe_m === '1'}/>
+					<input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={props.onChange} checked={props.data.sexe_m == true}/>
 					&nbsp;M
 				</label>
 				<label className="radio-inline form-check-label ml-4">
-					<input type="radio" className="form-check-input" name="sexe_m" value="0" onChange={props.onChange} checked={props.data.sexe_m === '0'}/>
+					<input type="radio" className="form-check-input" name="sexe_m" value="0" onChange={props.onChange} checked={props.data.sexe_m == false}/>
 					&nbsp;Mme
 				</label>
 			</div>
