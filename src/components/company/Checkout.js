@@ -28,6 +28,7 @@ export default class CompanyCheckout extends Component {
 			feedback: '',
 			present_date: moment(),
 			wish: false,
+			different: false,
 			delivery_address: {
 				type: 2
 			}
@@ -55,7 +56,7 @@ export default class CompanyCheckout extends Component {
 				method: 'get'
 			}, this.refs.notif).then((res) => {
 				this.setState({
-					bill_number: res.number
+					//bill_number: res.number
 				});
 			});
 			res.addresses.map((address) => {
@@ -63,7 +64,10 @@ export default class CompanyCheckout extends Component {
 					this.setState({ billing_address: address })
 				}
 				if (address.type == 2) {
-					this.setState({ delivery_address: address })
+					this.setState({
+						delivery_address: address,
+						different: address.addr_diff
+					})
 				}
 			})
 		});
@@ -76,6 +80,7 @@ export default class CompanyCheckout extends Component {
 	}
 
 	async setWaitingPayment() {
+		console.log('setWaitingPayment');
 		await this.save();
 		request({
 			url: '/bundle/'+this.state.bundle_id,
@@ -151,6 +156,21 @@ export default class CompanyCheckout extends Component {
 		});
 	}
 
+	changeAddress(e) {
+			this.setState({
+				different : !this.state.different,
+				delivery_address: { ...this.state.delivery_address, ['addr_diff'] : !this.state.different}
+			}, () => {
+				request({
+					url: '/address/diff',
+					method: 'PUT',
+					data: this.state.delivery_address
+				}, this.refs.notif).then((res) => {
+					console.log('diff ok');
+				})
+			})
+	}
+
 	render () {
 		return (
 			<div className="container py-4">
@@ -184,8 +204,10 @@ export default class CompanyCheckout extends Component {
 								</div>
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
-								<h3 className="my-4">Adresse de livraison</h3>
-								<Address data={this.state.delivery_address} company={true}/>
+								<h3 className="my-4">Adresse de livraison différente <input type="checkbox" name="different" checked={this.state.different} onChange={this.changeAddress.bind(this) }/></h3>
+								{this.state.different &&
+									<Address data={this.state.delivery_address} company={true}/>
+								}
 							</div>
 						</div>
 						<h3 className="my-4">Paiement sécurisé</h3>
@@ -215,7 +237,7 @@ export default class CompanyCheckout extends Component {
 							<div className="col-lg-9 col-md-10 col-sm-12">
 								{this.state.paytype === '0' &&
 									<Elements locale="fr">
-										<PayForm price={this.state.price} bundle={this.state.bundle_id} for={this.state.company_name} endpoint="/company/end" />
+										<PayForm price={this.state.price} bundle={this.state.bundle_id} date={(this.state.present_date)?this.state.present_date:new Date()} for={this.state.company_name} endpoint="/company/end" />
 									</Elements>
 								}
 
