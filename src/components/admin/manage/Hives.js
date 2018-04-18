@@ -343,8 +343,8 @@ export default class AdminManageHives extends Component {
 							<div className="row justify-content-center">
 							{this.state.imgsHive.map((img) => {
 								return(
-									<div className="col-4">
-										<img  onClick={() => {this.changeImg(img)}} width="auto" height="120" src={(img)?config.cdn_url+'/'+img:imgPlaceholder} alt={img} />
+									<div className="col">
+										<img  onClick={() => {this.changeImg(img)}} width="100px" height="100px" src={(img)?config.cdn_url+'/'+img:imgPlaceholder} alt={img} />
 									</div>
 								)
 							})}

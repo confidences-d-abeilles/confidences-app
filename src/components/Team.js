@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Gaetan from '../assets/img/gaetan.jpg'
 import Nico from '../assets/img/nico.jpg'
 import Clem from '../assets/img/clement.jpg'
+import Benoit from '../assets/img/benoit.jpg'
+import Lea from '../assets/img/lea.jpg'
 import Profile from '../assets/img/profile.png'
 import { Link } from 'react-router-dom'
 import FontAwesome from 'react-fontawesome'
@@ -65,6 +67,52 @@ export default class Team extends Component {
 							Clément est étudiant à l'école 42 (école de développement informatique parisienne) mais également développeur freelance et apiculteur amateur. Il travaille très régulièrement pour des professionnels indépendants ou des jeunes entreprises à la réalisation de leurs sites internet et applications mobiles. Il réalise entre autres la plateforme de parrainage sur laquelle vous naviguez à l'initiative de Confidences d’Abeilles.
 						</p>
 					</div>
+					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
+						<img src={Profile} alt="Someone" className="w-50 rounded-circle"/>
+						<h3 className="text-center mt-4">VOUS</h3>
+						<h4 className="text-center mb-4"><small>STAGIAIRE</small></h4>
+						<p className="text-justify">
+							Vous cherchez un stage ? Vous voulez rejoindre une équipe jeune, dynamique, passionnée par son travail et qui adore le challenge ? Alors vous êtes au bon endroit 😊<br /><br />
+							Pour accompagner notre développement nous avons constamment besoin de nouveaux talents, de personnes passionnées. Nous cherchons donc des stagiaires pour ces différents postes : <strong>Web Designer</strong>, <strong>ReactJS / NodeJS Developer</strong>, <strong>UI/UX Designer</strong>, <strong>Community Manager</strong>, <strong>Communication</strong>, <strong>Marketing et Business Developer</strong>.
+							<br /><br />
+							Vous pensez avoir le profil type ? C’est parfait, notre aventure prometteuse ne fait que débuter. Envolez-vous donc avec nous !
+						</p>
+						<p className="text-center">
+								<Link className="btn btn-secondary" to="/apply">Postuler</Link>
+						</p>
+						<p className="text-justify">
+							Aucune offre ne vous correspond ? Confidences d’Abeilles est toujours à la recherche de personnes talentueuses, n’hésitez pas à postuler !
+						</p>
+					</div>
+				</div>
+				<div className="row justify-content-around">
+					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
+						<img src={Lea} alt="Gaetan" className="w-50 rounded-circle"/>
+						<h3 className="text-center mt-4">LEA</h3>
+						<h4 className="text-center mb-4"><small>MARKETING & COMMUNICATION ASSISTANT</small></h4>
+						<p className="text-center">
+
+						</p>
+						<p className="text-justify">
+							Etudiante à l'IAE de Annecy-le-Vieux en dernière année de licence Marketing et communication, Léa, notre jeune stagiaire et amoureuse des produits de la ruche, est aujourd'hui en charge du développement du service de parrainage ainsi que de la communication chez Confidences d'Abeilles.
+						</p>
+					</div>
+					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
+						<img src={Benoit} alt="Benoit" className="w-50 rounded-circle"/>
+						<h3 className="text-center mt-4">BENOÎT LAMANT</h3>
+						<h4 className="text-center mb-4"><small>COMMUNITY & EVENT CONSULTANT</small></h4>
+						<p className="text-center">
+							<a href="https://www.linkedin.com/in/beno%C3%AEt-lamant-88b48a130/" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
+						</p>
+						<p className="text-justify">
+							Après avoir suivi un cursus commercial, Benoît s’oriente vers une licence en Event & Management.
+							Il s’inspire de l’environnement qui l’entoure et le motive dans ses projets.
+							Réel adepte de la communication, il fait de l’adaptation, de l’originalité et du partage de sensations les points clés de sa stratégie opérationnelle.
+							C'est un grand amateur des produits de la ruche.
+						</p>
+					</div>
+				</div>
+				<div className="row justify-content-around">
 					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
 						<img src={Profile} alt="Someone" className="w-50 rounded-circle"/>
 						<h3 className="text-center mt-4">VOUS</h3>
