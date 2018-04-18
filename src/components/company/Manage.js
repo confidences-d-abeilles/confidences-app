@@ -66,7 +66,7 @@ export default class CompanyManage extends Component {
 		}
 		if (this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].state === 0 ) {
 			return (
-				<p className="alert alert-danger mt-4">Vous n'avez pas encore reglé votre parrainage. <Link to="/company/payment">Cliquez ici</Link> pour le faire maintenant</p>
+				<p className="alert alert-danger mt-4">Vous n'avez pas encore réglé votre parrainage. <Link to="/company/payment">Cliquez ici</Link> pour le faire ou <Link to="/company/checkout">la pour modifier</Link>l'offre choisie</p>
 			);
 		}
 
