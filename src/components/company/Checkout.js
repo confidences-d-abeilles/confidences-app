@@ -49,7 +49,8 @@ export default class CompanyCheckout extends Component {
 				duplicate: true,
 				different: res.bundles[0].addr_diff,
 				feedback: res.bundles[0].feedback,
-				user: res
+				user: res,
+				bundleState: res.bundles[0].state
 			});
 			request({
 				url: '/bill/bundle/'+res.bundles[0].id,
@@ -179,6 +180,7 @@ export default class CompanyCheckout extends Component {
 				{(this.state.redirect)?<Redirect to="/company/end" />:null}
 				{(this.state.dash)?<Redirect to="/company/end" />:null}
 				{(this.state.wish)?<Redirect to="/company/wish" />:null}
+				{(this.state.bundleState > 0)?<Redirect to="/individual/manage" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
@@ -250,14 +252,14 @@ export default class CompanyCheckout extends Component {
 											<strong>BIC : </strong>OPSPFR21OKL<br/><br />
 											<strong>Numéro de facture à indiquer dans la référence du virement : </strong>{this.state.bill_number}
 											</p>
-											<p>S’il ne vous est pas possible de procéder de suite au virement nous vous invitions à
-												choisir l’option « Payer plus tard » et à ajouter Confidences d’Abeilles comme un
-												nouveau bénéficiaire sur votre compte. Une fois le bénéficiaire ajouté et le
-												virement réalisé, vous serrez invité à revenir sur cette page et à confirmer votre
-												virement.
-												De notre côté, la validation prend entre 2 et 3 jours. Un mail vous informera de la
-												bonne prise en compte de votre parrainage.</p>
+											<p>
+											Si	votre	banque	vous	impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
+											invitons	à	sélectionner	«	Virement	en	cours	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
+											alors	adressé	3	jours	plus	tard. <br />
+											De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
+											</p>
 											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement effectué</button>
+											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>
 										</div>
 									}
 

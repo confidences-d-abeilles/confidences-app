@@ -152,7 +152,7 @@ export default class Feedback extends Component {
 	}
 
 	updateImg() {
-		if (document.getElementById('actu-img').files[0].size < 5000000){
+		if (document.getElementById('actu-img').files[0].size < 5100000){
 			this.setState({
 				actuImg : document.getElementById("actu-img").files[0].name
 			})
