@@ -91,9 +91,11 @@ export default class RequestLabel extends Component {
                          <div className="form-group">
                              <input type="text" value={this.state.firstname} onChange={handleChange.bind(this)} placeholder="Votre prenom *" name="firstname" className="form-control"/>
                          </div>
+                         {this.userState == 2 ?
                          <div className="form-group">
                              <input type="text" value={this.state.society} onChange={handleChange.bind(this)} placeholder="Nom de l'entreprise *" name="society" className="form-control"/>
                          </div>
+                         : null}
                          <div className="form-group">
                              <input type="text" value={this.state.email} onChange={handleChange.bind(this)} placeholder="Votre email *" name="email" className="form-control"/>
                          </div>
@@ -125,7 +127,7 @@ export default class RequestLabel extends Component {
                     </h3>
                   </p>
                       Vous allez être redirigé(e) sur la page de personnalisation.
-                      {this.state.redirecte ? <Redirect to="/company/manage/customize" /> : null}
+                      {this.state.redirecte ? <Redirect to="/individual/manage/customize" /> : null}
                 </div>
                }
              </div>
