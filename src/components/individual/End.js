@@ -11,9 +11,6 @@ export default class IndividualEnd extends Component {
         super(props)
         ReactGA.pageview(this.props.location.pathname);
         console.log(props.location);
-        this.state = {
-          bundleState: 0,
-        }
     }
 
     componentDidMount() {
@@ -29,7 +26,7 @@ export default class IndividualEnd extends Component {
             bundleState: res.state
           })
         })
-        setTimeout(() => {this.setState({ redirecte: true })}, 6000);
+        setTimeout(() => {this.setState({ redirecte: true })}, 8000);
       })
     }
 

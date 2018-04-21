@@ -31,7 +31,8 @@ export default class Team extends Component {
 							<a href="https://www.facebook.com/popowych" target="_blank" rel="noopener noreferrer"><FontAwesome name='facebook-official' size="2x" /></a>&nbsp;&nbsp;&nbsp;
 							<a href="https://twitter.com/GaetanEksz" target="_blank" rel="noopener noreferrer"><FontAwesome name='twitter' size="2x" /></a>&nbsp;&nbsp;&nbsp;
 							<a href="mailto:gaetan@confidencesdabeilles.fr"><FontAwesome name='envelope-o' size="2x" /></a>&nbsp;&nbsp;&nbsp;
-							<a href="https://www.linkedin.com/in/gaetaneksz" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
+							<a href="https://www.linkedin.com/in/gaetaneksz" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>&nbsp;&nbsp;&nbsp;
+							<a href="https://medium.com/@geksz" target="_blank" rel="noopener noreferrer"><FontAwesome name='medium' size="2x" /></a>
 						</p>
 						<p className="text-justify">
 							Gaëtan est en dernière année d’étude à l’Ecole des Mines. Une école d’ingénieur généraliste dans laquelle il est rentré à la suite d’une classe préparatoire en Physique-Chimie. Apiculteur depuis l’âge de 14 ans, il a co-fondé Confidences d’Abeilles en 2015. En tant que président, il a développé la marque et son image en s’occupant entre autres de la communication, du branding et du design. Il est par ailleurs responsable de la production, de la qualité, de la commercialisation et des partenariats de plus en plus nombreux.<br />Passionné d’apiculture, il rédige les articles de vulgarisation du blog et continue de superviser l’association d’apiculture qu’il a fondé sur son campus étudiant.<br />Le projet de parrainage de ruches est pour lui un premier pas. Un premier pas vers la création d’une communauté sociale apicole de personnes averties ; amateurs, professionnels, parrains œuvrant ensemble pour changer la donne. Des synergies avec d’autres acteurs sont déjà en place.
@@ -91,7 +92,10 @@ export default class Team extends Component {
 						<h3 className="text-center mt-4">LEA</h3>
 						<h4 className="text-center mb-4"><small>MARKETING & COMMUNICATION ASSISTANT</small></h4>
 						<p className="text-center">
-
+						<p className="text-center">
+							<a href="mailto:lea@confidencesdabeilles.fr"><FontAwesome name='envelope-o' size="2x" /></a>&nbsp;&nbsp;&nbsp;
+							<a href="https://www.linkedin.com/in/léa-sengèle-147b63149" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
+						</p>
 						</p>
 						<p className="text-justify">
 							Etudiante à l'IAE de Annecy-le-Vieux en dernière année de licence Marketing et communication, Léa, notre jeune stagiaire et amoureuse des produits de la ruche, est aujourd'hui en charge du développement du service de parrainage ainsi que de la communication chez Confidences d'Abeilles.

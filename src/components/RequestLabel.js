@@ -32,7 +32,8 @@ export default class RequestLabel extends Component {
 				name: res.name,
         firstname: res.firstname,
 				society: res.company_name,
-				email: res.email
+				email: res.email,
+        userState: res.user_type
 			}, () => {
 				console.log(res);
 			})
@@ -44,7 +45,7 @@ export default class RequestLabel extends Component {
     const data = new FormData();
     data.append('name', this.state.name);
     data.append('firstname', this.state.firstname);
-    data.append('society', this.state.society);
+    data.append('society', this.state.userState == 2 ? this.state.society : null);
     data.append('email', this.state.email);
     data.append('feedback', this.state.feedback);
     if (document.getElementById("attachment").files[0]) {
