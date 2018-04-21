@@ -258,8 +258,8 @@ export default class CompanyCheckout extends Component {
 											alors	adressé	3	jours	plus	tard. <br />
 											De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 											</p>
+											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement effectué</button>
-											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>
 										</div>
 									}
 

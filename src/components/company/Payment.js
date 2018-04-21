@@ -116,6 +116,7 @@ export default class CompanyPayment extends Component {
 						De notre côté, la validation prend entre 2 et 3 jours. Un mail vous informera de la
 						bonne prise en compte de votre parrainage.</p>
 					<p className="text-center">
+						<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement effectué</button>
 					</p>
 					</div>
