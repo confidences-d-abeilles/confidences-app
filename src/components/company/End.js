@@ -14,7 +14,6 @@ export default class CompanyEnd extends Component {
 		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			namespace: '',
-			bundleState: 0,
 		}
 	}
 
@@ -49,7 +48,7 @@ export default class CompanyEnd extends Component {
 
 					})
 			})
-			setTimeout(() => {this.setState({ redirecte: true })}, 6000);
+			setTimeout(() => {this.setState({ redirecte: true })}, 8000);
 		});
 	}
 

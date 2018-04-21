@@ -16,7 +16,7 @@ export default class JobsDesigner extends Component {
 				<Meta title="Offre de stage"/>
 				<div className="row mt-4 justify-content-center align-items-center">
 					<div className="col-lg-9 col-md-10 col-sm-12">
-						<h1 className="text-center my-4">Offre de stage Business Development mai 2018</h1>
+						<h1 className="text-center my-4">Offre de stage Business Development - Mai 2018</h1>
 						<h2>A propos</h2>
 						<p>
 							Confidences d’Abeilles est une jeune entreprise annécienne qui développe des produits et
