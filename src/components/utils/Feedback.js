@@ -82,6 +82,7 @@ export default class Feedback extends Component {
 			method: 'put',
 			data: data
 		}, this.refs.notif).then((res) => {
+			console.log(res);
 			this.setState({
 				selected: '',
 				content: '',
