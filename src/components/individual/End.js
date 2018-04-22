@@ -11,6 +11,9 @@ export default class IndividualEnd extends Component {
         super(props)
         ReactGA.pageview(this.props.location.pathname);
         console.log(props.location);
+        this.state = {
+          redirecte: false
+        }
     }
 
     componentDidMount() {

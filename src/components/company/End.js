@@ -36,7 +36,7 @@ export default class CompanyEnd extends Component {
 					bundleState: res.state
 				})
 				request({
-					url : 'user/marv/ob',
+					url : '/user/marv/ob',
 					method : 'PUT',
 					data : {
 						feedback: res.feedback,
