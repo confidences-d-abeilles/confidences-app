@@ -4,6 +4,7 @@ import Main from '../../assets/img/end_part.jpg';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
 import request from '../../services/Net';
+import NotificationSystem from 'react-notification-system'
 
 export default class IndividualEnd extends Component {
 
@@ -35,8 +36,9 @@ export default class IndividualEnd extends Component {
 
     render () {
         return (
-			<div className="container py-4">
-                <Meta title="Félicitations"/>
+  			<div className="container py-4">
+          <Meta title="Félicitations"/>
+          <NotificationSystem ref="notif" />
                 {this.state.redirecte ? <Redirect to="/individual/manage" /> : null}
 				<div className="row justify-content-center">
 					<div className="col-8">
