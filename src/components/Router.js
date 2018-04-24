@@ -70,6 +70,7 @@ import Jobs from './Jobs';
 import JobsReact from './JobsReact';
 import JobsDesigner from './JobsDesigner';
 import JobsMarketing from './JobsMarketing';
+import JobsBusinessDev from './JobsBusinessDev';
 import JobsEvent from './JobsEvent';
 import Faq from './Faq';
 import Prices from './Prices';
@@ -153,6 +154,7 @@ export default class MyRouter extends Component {
 								<Route exact path="/jobs/reactjs" component={JobsReact} />
 								<Route exact path="/jobs/designer" component={JobsDesigner} />
 								<Route exact path="/jobs/marketing" component={JobsMarketing} />
+								<Route exact path="/jobs/businessdev" component={JobsBusinessDev} />
 								<Route exact path="/jobs/event" component={JobsEvent} />
 								<Route exact path="/cgv" component={Cgv} />
 								<Route exact path="/mentions_legales" component={Mentions} />

@@ -100,8 +100,8 @@ export default class CompanyManageCustomize extends Component {
 		return (
 			<div>
 				<div className="row">
-				<NotificationSystem ref="notif" />
-			</div>
+					<NotificationSystem ref="notif" />
+				</div>
 			<div className="row">
 				<div className="col">
 				<h2 className="text-center my-4">Personnaliser nos pots de miel</h2>
