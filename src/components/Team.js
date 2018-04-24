@@ -58,7 +58,7 @@ export default class Team extends Component {
 					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
 						<img src={Clem} alt="Clement" className="w-50 rounded-circle"/>
 						<h3 className="text-center mt-4">CLEMENT CHAMPOUILLON</h3>
-						<h4 className="text-center mb-4"><small>WEB DEVELOPPER</small></h4>
+						<h4 className="text-center mb-4"><small>WEB DEVELOPER</small></h4>
 						<p className="text-center">
 							<a href="https://www.facebook.com/clement.champouillon" target="_blank" rel="noopener noreferrer"><FontAwesome name='facebook-official' size="2x" /></a>&nbsp;&nbsp;&nbsp;
 							<a href="mailto:clement@champouillon.com"><FontAwesome name='envelope-o' size="2x" /></a>&nbsp;&nbsp;&nbsp;
@@ -70,19 +70,14 @@ export default class Team extends Component {
 					</div>
 					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
 						<img src={Profile} alt="Someone" className="w-50 rounded-circle"/>
-						<h3 className="text-center mt-4">VOUS</h3>
-						<h4 className="text-center mb-4"><small>STAGIAIRE</small></h4>
-						<p className="text-justify">
-							Vous cherchez un stage ? Vous voulez rejoindre une équipe jeune, dynamique, passionnée par son travail et qui adore le challenge ? Alors vous êtes au bon endroit 😊<br /><br />
-							Pour accompagner notre développement nous avons constamment besoin de nouveaux talents, de personnes passionnées. Nous cherchons donc des stagiaires pour ces différents postes : <strong>Web Designer</strong>, <strong>ReactJS / NodeJS Developer</strong>, <strong>UI/UX Designer</strong>, <strong>Community Manager</strong>, <strong>Communication</strong>, <strong>Marketing et Business Developer</strong>.
-							<br /><br />
-							Vous pensez avoir le profil type ? C’est parfait, notre aventure prometteuse ne fait que débuter. Envolez-vous donc avec nous !
-						</p>
+						<h3 className="text-center mt-4">KEVIN</h3>
+						<h4 className="text-center mb-4"><small>WEB DEVELOPER</small></h4>
 						<p className="text-center">
-								<Link className="btn btn-secondary" to="/apply">Postuler</Link>
 						</p>
 						<p className="text-justify">
-							Aucune offre ne vous correspond ? Confidences d’Abeilles est toujours à la recherche de personnes talentueuses, n’hésitez pas à postuler !
+							Kevin est lui aussi étudiant à l'école 42. Plus que notre stagiaire web development il seconde Clément dans réalisation de la plateforme et se charge d'implémenter les nombreuses fonctionnalités à venir.
+							<br /><br />
+							Kevin est un excellent grimpeur que vous pourrez croiser sur un bloc parisien.
 						</p>
 					</div>
 				</div>
@@ -92,10 +87,8 @@ export default class Team extends Component {
 						<h3 className="text-center mt-4">LEA</h3>
 						<h4 className="text-center mb-4"><small>MARKETING & COMMUNICATION ASSISTANT</small></h4>
 						<p className="text-center">
-						<p className="text-center">
 							<a href="mailto:lea@confidencesdabeilles.fr"><FontAwesome name='envelope-o' size="2x" /></a>&nbsp;&nbsp;&nbsp;
 							<a href="https://www.linkedin.com/in/léa-sengèle-147b63149" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
-						</p>
 						</p>
 						<p className="text-justify">
 							Etudiante à l'IAE de Annecy-le-Vieux en dernière année de licence Marketing et communication, Léa, notre jeune stagiaire et amoureuse des produits de la ruche, est aujourd'hui en charge du développement du service de parrainage ainsi que de la communication chez Confidences d'Abeilles.
