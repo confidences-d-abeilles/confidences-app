@@ -32,7 +32,8 @@ export default class RequestLabel extends Component {
 				name: res.name,
         firstname: res.firstname,
 				society: res.company_name,
-				email: res.email
+				email: res.email,
+        userState: res.user_type
 			}, () => {
 				console.log(res);
 			})
@@ -44,7 +45,7 @@ export default class RequestLabel extends Component {
     const data = new FormData();
     data.append('name', this.state.name);
     data.append('firstname', this.state.firstname);
-    data.append('society', this.state.society);
+    data.append('society', this.state.userState == 2 ? this.state.society : null);
     data.append('email', this.state.email);
     data.append('feedback', this.state.feedback);
     if (document.getElementById("attachment").files[0]) {
@@ -90,9 +91,11 @@ export default class RequestLabel extends Component {
                          <div className="form-group">
                              <input type="text" value={this.state.firstname} onChange={handleChange.bind(this)} placeholder="Votre prenom *" name="firstname" className="form-control"/>
                          </div>
+                         {this.userState == 2 ?
                          <div className="form-group">
                              <input type="text" value={this.state.society} onChange={handleChange.bind(this)} placeholder="Nom de l'entreprise *" name="society" className="form-control"/>
                          </div>
+                         : null}
                          <div className="form-group">
                              <input type="text" value={this.state.email} onChange={handleChange.bind(this)} placeholder="Votre email *" name="email" className="form-control"/>
                          </div>
@@ -124,7 +127,7 @@ export default class RequestLabel extends Component {
                     </h3>
                   </p>
                       Vous allez être redirigé(e) sur la page de personnalisation.
-                      {this.state.redirecte ? <Redirect to="/company/manage/customize" /> : null}
+                      {this.state.redirecte ? <Redirect to="/individual/manage/customize" /> : null}
                 </div>
                }
              </div>

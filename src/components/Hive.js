@@ -67,22 +67,35 @@ export default class Hive extends Component {
 							<p style={{ fontFamily: "HighTo", fontSize: '1.25em' }}>
 								{this.state.hive.info ? this.state.hive.info : 'Aucune information sur cette ruche pour le moment'}
 							</p>
-							<div className="row">
-								{this.state.hive.imgs.map((img) => {
+								{this.state.hive.imgs.map((img, index) => {
 									if (img === this.state.hive.imgs[0]) {
 										return (null);
 									} else {
+										if (index != 1){ index += 1; }
 										return (
-												<Imagebox className=" col actu-img"
-													src={config.cdn_url+'/'+img}
-													width={'50px'}
-													paddingTop={'50px'}
-													alt={"Photo de la ruche"}
-												/>
+											<div className="row">
+												<div className="col-lg-6">
+													<Imagebox
+														src={config.cdn_url+'/'+this.state.hive.imgs[index]}
+														width={"100%"}
+														paddingTop={"100%"}
+														alt={"Photo de la ruche"}
+													/>
+												</div>
+
+												<div className="col-lg-6">
+													<Imagebox
+														src={this.state.hive.imgs[index+1] ? config.cdn_url+'/'+this.state.hive.imgs[index+1] : null}
+														width={"100%"}
+														paddingTop={"100%"}
+														alt={"Photo de la ruche"}
+													/>
+												</div>
+											</div>
+
 										)
 									}
 								})}
-							</div>
 						</div>
 						<div className="col-lg-7 col-md-4 col-sm-12" style={{ fontFamily: "HighTo", fontSize: '1.25em' }}>
 							<h2 className="text-center">ACTUALITÉS</h2>

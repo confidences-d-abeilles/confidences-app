@@ -121,6 +121,11 @@ export default class Apply extends Component {
                                     </div>
                                     <div className="form-check">
                                         <label className="form-check-label">
+                                            <input type="radio" name="type" className="form-check-input" onChange={handleChange.bind(this)} checked={(this.state.type === '8')?true:false} value="8" /> Business Developer [Stage - 8 semaines]
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <label className="form-check-label">
                                             <input type="radio" name="type" className="form-check-input" onChange={handleChange.bind(this)} checked={(this.state.type === '6')?true:false} value="6" /> Apicultrice / Apiculteur
                                         </label>
                                     </div>

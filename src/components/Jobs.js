@@ -66,6 +66,9 @@ export default class Jobs extends Component {
 						<p className="text-center">
 							<Link className="btn btn-secondary" to="/jobs/event">Stage Community / Event Manager</Link>
 						</p>
+						<p className="text-center">
+							<Link className="btn btn-secondary" to="/jobs/businessdev">Business Developer</Link>
+						</p>
 						<p className="text-center my-5">
 							<Link className="btn btn-secondary" to="/apply">Postuler</Link>
 						</p>

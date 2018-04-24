@@ -82,6 +82,7 @@ export default class Feedback extends Component {
 			method: 'put',
 			data: data
 		}, this.refs.notif).then((res) => {
+			console.log(res);
 			this.setState({
 				selected: '',
 				content: '',
@@ -91,7 +92,8 @@ export default class Feedback extends Component {
 				newsTake: 0,
 				actu: '',
 				actuImg: '',
-				newsModify: null
+				newsModify: null,
+				oldImg: ''
 			})
 		});
 	}
@@ -104,11 +106,10 @@ export default class Feedback extends Component {
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
 		data.append('date', this.state.actuDate);
-		console.log()
+		data.append('date_formated', moment(this.state.actuDate).format("DD/MM/YYYY"))
 		if (document.getElementById("actu-img").files[0]) {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		}
-
 		request({
 			url: '/news'+ (this.props.hiveId ? '/hive/'+this.props.hiveId : ''),
 			method: 'post',
@@ -124,6 +125,7 @@ export default class Feedback extends Component {
 				actuDate: moment(new Date()),
 				actuImg: ''
 			})
+			document.getElementById('actu-img').value = "";
 		})
 	}
 
@@ -149,6 +151,17 @@ export default class Feedback extends Component {
 				actu: ''
 			})
 		})
+	}
+
+	updateImg() {
+		if (document.getElementById('actu-img').files[0].size < 5100000){
+			this.setState({
+				actuImg : document.getElementById("actu-img").files[0].name
+			})
+		} else {
+			console.log("taille pas bonne");
+			document.getElementById('actu-img').value = "";
+		}
 	}
 
 	render() {
@@ -187,7 +200,7 @@ export default class Feedback extends Component {
 				</div>
 				<div className="form-group">
 					<label htmlFor="actu-img" className={(this.state.actuImg)?'active-upload':'upload'} style={{ position: 'relative' }}>
-						<input type="file" className="form-control" id="actu-img" onChange={() => { this.setState({ actuImg : document.getElementById("actu-img").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
+						<input type="file" className="form-control" id="actu-img" onChange={() => { this.updateImg() }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
 						Glissez une image ou cliquez pour en séléctionner une parmi vos fichiers<br/>
 						Recommandations : 800x600px, 100ko maximum - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier séléctionné"}
 					</label>

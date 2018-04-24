@@ -47,7 +47,7 @@ export default class Bundle extends Component {
 		if (this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].state === 0 ) {
 			return (
                 <div className="text-center">
-                    <p className="alert alert-danger mt-4">Vous n'avez pas encore réglé votre parrainage. <Link to="/individual/checkout">Cliquez ici</Link> pour le faire maintenant</p>
+                    <p className="alert alert-danger mt-4">Vous n'avez pas encore réglé votre parrainage. <Link to="/individual/payment">Cliquez ici</Link> pour le faire ou <Link to="/individual/checkout">là pour modifier</Link> l'offre choisie</p>
     				<a href="#" className="btn btn-secondary m-2 disabled" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
                 </div>
 			);
