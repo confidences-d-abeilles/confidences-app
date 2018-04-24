@@ -106,6 +106,7 @@ export default class Feedback extends Component {
 		data.append('content', this.state.actu);
 		data.append('title', this.state.actuTitle);
 		data.append('date', this.state.actuDate);
+		data.append('date_formated', moment(this.state.actuDate).format("DD/MM/YYYY"))
 		if (document.getElementById("actu-img").files[0]) {
 			data.append('img', document.getElementById('actu-img').files[0]);
 		}
