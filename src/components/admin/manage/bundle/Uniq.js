@@ -4,12 +4,14 @@ import request from '../../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import Payment from './Tiles/Payment'
 import Bills from './Tiles/Bills'
+import Parrains from './Tiles/Parrains'
 import { Link } from 'react-router-dom'
 
 export default class AdminManageBundleId extends Component {
 
 	state = {
-		bundle: null
+		bundle: null,
+		parrain: null
 	}
 
 	componentDidMount() {
@@ -19,6 +21,15 @@ export default class AdminManageBundleId extends Component {
 		}, this.refs.notif).then((res) => {
 			this.setState({
 				bundle: { ...res, state : res.state.toString() }
+			});
+			request({
+				url: '/user/public',
+				method: 'get'
+			}, this.refs.notif).then((res) => {
+				this.setState({
+					parrain: res[0]
+				})
+				console.log(res);
 			})
 		})
 	}
@@ -52,6 +63,7 @@ export default class AdminManageBundleId extends Component {
 					<div className="col-lg-6">
 						<Payment state={this.state.bundle.state.toString()} changeState={this.changeState} submitState={this.submitState} />
 						<Bills bundleId={this.state.bundle.id} />
+						<Parrains parrain={this.state.parrain} />
 					</div>
 				</div>
 				:<Loading />}
