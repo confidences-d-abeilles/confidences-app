@@ -5,6 +5,7 @@ import { handleChange } from '../../../services/FormService'
 import ReactQuill from 'react-quill'
 import Loading from '../../utils/Loading'
 import DatePicker from 'react-datepicker';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Confirm from '../../utils/Confirm';
 import SquareImg from '../../utils/SquareImg';
@@ -50,6 +51,19 @@ export default class AdminManageHives extends Component {
 		}, this.refs.notif).then((res) => {
 			this.setState({
 				hives: res
+			})
+		})
+	}
+
+	getOne() {
+		console.log("getOne");
+		request({
+			url: '/hive/'+this.state.id_selected,
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			console.log(res.parrains);
+			this.setState({
+				selected: res
 			})
 		})
 	}
@@ -270,13 +284,14 @@ export default class AdminManageHives extends Component {
 												<td>
 													<button className="btn btn-link btn-sm" onClick={() => {
 														this.setState({
-															selected : hive,
+															//selected : hive,
+															id_selected: hive.id,
 															ratio : hive.ratio,
 															feedback: hive.feedback,
 															stateFeedback: 0,
 															imgsHive: hive.imgs,
 															info: hive.info
-														}, this.get());
+														}, () => {this.getOne()});
 														}} >Gérer</button>
 												</td>
 											</tr>
@@ -309,6 +324,17 @@ export default class AdminManageHives extends Component {
 							<button onClick={this.saveInformation.bind(this)} className="btn btn-primary btn-sm mt-2">Sauvegarder</button>
 
 						</div>
+
+						<div >
+							<h3 className="my-4">Parrain lie a cette ruche</h3>
+							{this.state.selected &&
+								this.state.selected.parrains.map((user, key) => {
+								return (
+									<h3 key={key} className="my-0"><small>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</small><br />{(key+1 < this.state.selected.parrains.length)?' ~':''}</h3>			
+								)
+							})}
+						</div>
+
 						<Feedback name={this.state.newsModify?this.state.newsModify:null} hiveId={this.state.selected.id}/>
 
 						{this.state.selected.news ?
@@ -325,6 +351,12 @@ export default class AdminManageHives extends Component {
 							</select>
 						</div>
 						:null}
+						<br/>
+						<div className="text-center">
+						<Link to={"/hive/"+this.state.selected.id} className="btn btn-primary btn-sm">
+							Page de la ruche
+						</Link>
+						</div>
 						<h3 className="py-4">Ajouter des photos</h3>
 						<form onSubmit={this.addPhoto.bind(this)}>
 							<div className="form-group">

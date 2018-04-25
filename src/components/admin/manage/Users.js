@@ -288,28 +288,6 @@ export default class AdminManageUsers extends Component {
 		}
 	}
 
-	synchro (address) {
-		console.log(address);
-
-		if (address.line1) {
-			console.log('je split');
-			const splitAddress = address.line1.split(' ').reverse();
-			console.log(splitAddress[0]);
-			console.log(splitAddress.slice(1).join(' '));
-			console.log(address.line2);
-			console.log(address.line3);
-			request({
-				url: '/address/'+address.id,
-				method: 'PUT',
-				data: { ...address, ['firstname'] : splitAddress[0], ['name'] : splitAddress.slice(1).join(' '), ['company_name'] : address.line2, ['address_line1'] : address.line3 }
-			}, this.refs.notif).then((res) => {
-				this.setState({ edit : false });
-			})
-		} else {
-			console.log('pas de besoinde split');
-		}
-	}
-
 	render () {
 		return (
 			<div className="container-fluid">
@@ -366,31 +344,8 @@ export default class AdminManageUsers extends Component {
 												<div className="card">
 													<div className="card-block">
 														<h3 className="card-title">Adresse de facturation</h3>
-														<p className="card-text">
-															<div className="form-group d-flex">
-													      <label className="radio-inline form-check-label">
-													        <input type="radio" className="form-check-input" name="bsexe_m" value="1" onChange={this.updateSexe.bind(this)} checked={this.state.bsexe_m === '1'}/>
-													        &nbsp;M
-													      </label>
-														    <label className="radio-inline form-check-label ml-4">
-													        <input type="radio" className="form-check-input" name="bsexe_m" value="0" onChange={this.updateSexe.bind(this)} checked={this.state.bsexe_m === '0'}/>
-													        &nbsp;Mme
-													      </label>
-															</div>
-															{this.state.selectedUser.addresses[0].line1}<br />
-															{this.state.selectedUser.addresses[0].line2}<br />
-															{this.state.selectedUser.addresses[0].line3}<br />
-															{this.state.selectedUser.addresses[0].line4}<br />
-															{this.state.selectedUser.addresses[0].zipcode} {this.state.selectedUser.addresses[0].city}<br />
-															{this.state.selectedUser.addresses[0].country}
-														</p>
 														<div>
-															<h3 className="text-center my-4"><small>Adresse de facturation</small></h3>
 															<Address data={this.state.billing_address} company={this.state.selectedUser.user_type == 2?true:false}/>
-														</div>
-														<div className="card-block">
-															<h3 className="card-title">Synchronisation des donnees user</h3>
-															<button class="btn btn-secondary btn-sm my-2" onClick={this.synchro.bind(this, this.state.billing_address)} >Synchronisation des donnees de l'utilisateur</button>
 														</div>
 													</div>
 											</div>
@@ -449,33 +404,9 @@ export default class AdminManageUsers extends Component {
 												<div className="card">
 													<div className="card-block">
 														<h3 className="card-title">Adresse de livraison :</h3>
-														<p className="card-text">
-															<div className="form-group d-flex">
-													      <label className="radio-inline form-check-label">
-													        <input type="radio" className="form-check-input" name="dsexe_m" value="1" onChange={this.updateSexe.bind(this)} checked={this.state.dsexe_m === '1'}/>
-													        &nbsp;M
-													      </label>
-														    <label className="radio-inline form-check-label ml-4">
-													        <input type="radio" className="form-check-input" name="dsexe_m" value="0" onChange={this.updateSexe.bind(this)} checked={this.state.dsexe_m === '0'}/>
-													        &nbsp;Mme
-													      </label>
+															<div>
+																<Address data={this.state.delivery_address} company={this.state.selectedUser.user_type == 2?true:false}/>
 															</div>
-															{this.state.selectedUser.addresses[1].line1}<br />
-															{this.state.selectedUser.addresses[1].line2}<br />
-															{this.state.selectedUser.addresses[1].line3}<br />
-															{this.state.selectedUser.addresses[1].line4}<br />
-															{this.state.selectedUser.addresses[1].zipcode} {this.state.selectedUser.addresses[1].city}<br />
-															{this.state.selectedUser.addresses[1].country}<br />
-															{this.state.selectedUser.addresses[1].phone}
-														</p>
-													</div>
-													<div className="card-block">
-														<h3 className="text-center my-4"><small>Adresse de livraison</small></h3>
-														<Address data={this.state.delivery_address} company={this.state.selectedUser.user_type == 2?true:false}/>
-													</div>
-													<div className="card-block">
-														<h3 className="card-title">Synchronisation des donnees user</h3>
-														<button class="btn btn-secondary btn-sm my-2" onClick={this.synchro.bind(this, this.state.delivery_address)} >Synchronisation des donnees de l'utilisateur</button>
 													</div>
 												</div>
 											</div>
