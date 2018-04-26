@@ -4,7 +4,6 @@ import request from '../../services/Net';
 import NotificationSystem from 'react-notification-system'
 import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
-import moment from 'moment';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
 

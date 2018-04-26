@@ -22,13 +22,35 @@ export default class IndividualEnd extends Component {
   			url : '/user/me',
   			method : 'get'
   		}, this.refs.notif).then((res) => {
+        let user = res;
         request({
     			url : '/bundle/owner/'+res.id,
     			method : 'get'
     		}, this.refs.notif).then((res) => {
+          let bundle = res;
           this.setState({
             bundleState: res.state
           })
+          if (res.state === 2 && res.present) {
+            request({
+      				url: '/bill/bundle/'+res.id,
+      				method: 'get'
+      			}, this.refs.notif).then((res) => {
+      				request({
+      					url: '/mail/send_301',
+      					method: 'PUT',
+      					data: {
+      						owner: user,
+      						bundle: bundle,
+      						date: new Date(),
+      						bill: res
+      					}
+      				}, this.refs.notif).then((res) => {
+      					console.log("mail envoyer");
+      				})
+      			})
+          }
+
         })
         setTimeout(() => {this.setState({ redirecte: true })}, 8000);
       })

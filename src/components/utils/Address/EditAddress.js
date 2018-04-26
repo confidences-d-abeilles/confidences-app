@@ -5,11 +5,11 @@ const EditAddress = ( props ) => (
 		{props.data && <form onSubmit={props.onSubmit}>
 			<div className="form-group d-flex">
 				<label className="radio-inline form-check-label">
-					<input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={props.onChange} checked={props.data.sexe_m == true}/>
+					<input type="radio" className="form-check-input" name="sexe_m" value="1" onChange={props.onChange} checked={props.data.sexe_m ^ 0}/>
 					&nbsp;M
 				</label>
 				<label className="radio-inline form-check-label ml-4">
-					<input type="radio" className="form-check-input" name="sexe_m" value="0" onChange={props.onChange} checked={props.data.sexe_m == false}/>
+					<input type="radio" className="form-check-input" name="sexe_m" value="0" onChange={props.onChange} checked={props.data.sexe_m ^ 1}/>
 					&nbsp;Mme
 				</label>
 			</div>
@@ -21,7 +21,7 @@ const EditAddress = ( props ) => (
 				<label>Nom *</label>
 				<input type="text" name="name" onChange={props.onChange} value={props.data.name} className="form-control form-control-sm"/>
 			</div>
-			{props.company == true ?
+			{props.company === true ?
 			<div className="form-group">
 				<label>Nom de l'entreprise</label>
 				<input type="text" name="company_name" onChange={props.onChange} value={props.data.company_name} className="form-control form-control-sm" />

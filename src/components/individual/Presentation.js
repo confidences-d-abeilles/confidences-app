@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 import { Link } from 'react-router-dom';
 import first from '../../assets/img/P/1.jpg';
 import second from '../../assets/img/P/2.jpg';

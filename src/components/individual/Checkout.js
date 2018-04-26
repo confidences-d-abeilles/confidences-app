@@ -80,11 +80,11 @@ export default class IndividualCheckout extends Component {
 				});
 			});
 				res.addresses.map((address) => {
-					if (address.type == 1) {
+					if (address.type === 1) {
 						this.setState({ billing_address: address })
 						console.log(address);
 					}
-					if (address.type == 2) {
+					if (address.type === 2) {
 						this.setState({
 							delivery_address: address,
 							different: address.addr_diff
