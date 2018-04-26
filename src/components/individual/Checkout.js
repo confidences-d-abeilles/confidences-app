@@ -79,7 +79,7 @@ export default class IndividualCheckout extends Component {
 					bill_number: res.number
 				});
 			});
-				res.addresses.map((address) => {
+				res.addresses.forEach((address) => {
 					if (address.type === 1) {
 						this.setState({ billing_address: address })
 						console.log(address);

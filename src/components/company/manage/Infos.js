@@ -3,11 +3,7 @@ import React, { Component } from 'react'
 import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import { handleChange } from '../../../services/FormService'
-import Loading from '../../utils/Loading'
 import { Redirect } from 'react-router-dom'
-import { logout } from '../../../services/AuthService'
-import Confirm from '../../utils/Confirm'
-import ReactGA from 'react-ga';
 import Meta from '../../utils/Meta'
 import FontAwesome from 'react-fontawesome'
 import FileUpload from '../../utils/FileUpload'
@@ -39,7 +35,7 @@ export default class CompanyManageInfos extends Component {
 				email: res.email,
 				phone: res.phone
 			});
-			res.addresses.map((address) => {
+			res.addresses.forEach((address) => {
 				if (address.type === 1) {
 					this.setState({
 						billing_address: address
