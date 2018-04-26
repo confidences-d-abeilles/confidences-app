@@ -5,7 +5,6 @@ import ReactGA from 'react-ga';
 import { Link } from 'react-router-dom';
 import Imagebox from '../../utils/Imagebox'
 
-import logoSquare from '../../../assets/img/logo-square.png';
 import EtiD from '../../../assets/img/label/etiquette_defaut.jpg';
 import DownloadEti from '../../../assets/img/etiquette.zip';
 import EtiAi from '../../../assets/img/label/preview_AI.png';

@@ -279,7 +279,7 @@ export default class AdminManageHives extends Component {
 									<tr><th>Nom</th><th>Occupation</th><th></th></tr>
 									{this.state.hives && this.state.hives.map((hive) => {
 										return (
-											<tr className={(this.state.selected.id === hive.id)?'table-info':''}>
+											<tr className={(this.state.selected.id === hive.id)?'table-info':null}>
 												<td>{hive.name}</td><td>{hive.occupation} %</td>
 												<td>
 													<button className="btn btn-link btn-sm" onClick={() => {
@@ -330,7 +330,7 @@ export default class AdminManageHives extends Component {
 							{this.state.selected &&
 								this.state.selected.parrains.map((user, key) => {
 								return (
-									<h3 key={key} className="my-0"><small>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</small><br />{(key+1 < this.state.selected.parrains.length)?' ~':''}</h3>			
+									<h3 key={key} className="my-0"><small>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</small><br />{(key+1 < this.state.selected.parrains.length)?' ~':''}</h3>
 								)
 							})}
 						</div>
