@@ -20,17 +20,10 @@ export default class AdminManageBundleId extends Component {
 			method: 'get'
 		}, this.refs.notif).then((res) => {
 			this.setState({
-				bundle: { ...res, state : res.state.toString() }
+				bundle: { ...res, state : res.state.toString() },
+				owner: res.owner
 			});
-			request({
-				url: '/user/public',
-				method: 'get'
-			}, this.refs.notif).then((res) => {
-				this.setState({
-					parrain: res[0]
-				})
-				console.log(res);
-			})
+			console.log(res.owner);
 		})
 	}
 
@@ -63,7 +56,8 @@ export default class AdminManageBundleId extends Component {
 					<div className="col-lg-6">
 						<Payment state={this.state.bundle.state.toString()} changeState={this.changeState} submitState={this.submitState} />
 						<Bills bundleId={this.state.bundle.id} />
-						<Parrains parrain={this.state.parrain} />
+						{this.state.owner.user_type == 2 ?<Parrains parrain={this.state.owner} bundleLabel={this.state.bundle.label}/>
+						:null}
 					</div>
 				</div>
 				:<Loading />}

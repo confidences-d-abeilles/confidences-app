@@ -7,7 +7,6 @@ import moment from 'moment'
 import Meta from '../../utils/Meta'
 import Confirm from '../../utils/Confirm'
 import Address from '../../utils/Address/Address'
-import { handleChange, handleTick } from '../../../services/FormService'
 
 export default class AdminManageUsers extends Component {
 
