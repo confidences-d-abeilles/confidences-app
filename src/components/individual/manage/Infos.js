@@ -58,7 +58,7 @@ export default class IndividualManageInfos extends Component {
 				email: res.email,
 				phone: res.phone
 			});
-			res.addresses.map((address) => {
+			res.addresses.forEach((address) => {
 				if (address.type === 1) {
 					this.setState({
 						billing_address: address

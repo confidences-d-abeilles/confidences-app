@@ -81,6 +81,8 @@ export default class AdminManageUsers extends Component {
 				return ("AA");
 			case 4:
 				return ("A");
+			default:
+				return (" ")
 		}
 	}
 
@@ -344,7 +346,7 @@ export default class AdminManageUsers extends Component {
 													<div className="card-block">
 														<h3 className="card-title">Adresse de facturation</h3>
 														<div>
-															<Address data={this.state.billing_address} company={this.state.selectedUser.user_type == 2?true:false}/>
+															<Address data={this.state.billing_address} company={this.state.selectedUser.user_type === 2?true:false}/>
 														</div>
 													</div>
 											</div>
@@ -404,7 +406,7 @@ export default class AdminManageUsers extends Component {
 													<div className="card-block">
 														<h3 className="card-title">Adresse de livraison :</h3>
 															<div>
-																<Address data={this.state.delivery_address} company={this.state.selectedUser.user_type == 2?true:false}/>
+																<Address data={this.state.delivery_address} company={this.state.selectedUser.user_type === 2?true:false}/>
 															</div>
 													</div>
 												</div>

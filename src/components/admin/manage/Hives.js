@@ -2,13 +2,9 @@ import React, { Component } from 'react'
 import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import { handleChange } from '../../../services/FormService'
-import ReactQuill from 'react-quill'
 import Loading from '../../utils/Loading'
-import DatePicker from 'react-datepicker';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import Confirm from '../../utils/Confirm';
-import SquareImg from '../../utils/SquareImg';
 import Feedback from '../../utils/Feedback';
 import ReactGA from 'react-ga';
 import ReactStars from 'react-stars';

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import Main from '../../assets/img/end_part.jpg';
-import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
 import request from '../../services/Net';

@@ -79,19 +79,14 @@ export default class Bundle extends Component {
 		switch(nb) {
 			case 0:
 				return ("Non reglé");
-				break;
 			case 1:
 				return("En attente de validation");
-				break;
 			case 2:
 				return ("Payé");
-				break;
 			case 3:
 				return ("Payé et en place");
-				break;
 			default:
 				return ("N / A");
-				break;
 		}
 	}
 

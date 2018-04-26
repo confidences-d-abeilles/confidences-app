@@ -51,7 +51,7 @@ const EditAddress = ( props ) => (
 					<label>Pays *</label>
 					<input type="text" name="country" onChange={props.onChange} value={props.data.country} className="form-control form-control-sm" />
 				</div>
-				{props.data.type == 2 ?
+				{props.data.type === 2 ?
 					<div className="form-group">
 						<label>Numéro de téléphone *</label>
 						<input type="text" name="phone" onChange={props.onChange} value={props.data.phone} className="form-control form-control-sm" />
