@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import request from '../../services/Net';
-import { handleChange, handleTick } from '../../services/FormService'
 import NotificationSystem from 'react-notification-system'
 import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
-import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'

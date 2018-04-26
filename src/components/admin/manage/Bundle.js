@@ -137,11 +137,29 @@ export default class Bundle extends Component {
 			data.append('present_date', new Date());
 			data.append('present_end', new Date(new Date().setFullYear(new Date().getFullYear() + 1)));
 		}
+		console.log(this.props);
 		request({
 			url: '/bundle/'+this.props.id,
 			method: 'put',
 			data : data
 		}, this.refs.notif).then((res) => {
+			request({
+				url: '/bill/bundle/'+this.props.id,
+				method: 'get'
+			}, this.refs.notif).then((res) => {
+				request({
+					url: '/mail/send_201',
+					method: 'PUT',
+					data: {
+						owner: this.props.owner,
+						bundle: this.props.bundle,
+						date: new Date(),
+						bill: res
+					}
+				}, this.refs.notif).then((res) => {
+					console.log("mail envoyer");
+				})
+			})
 			this.props.refresh();
 		});
 	}

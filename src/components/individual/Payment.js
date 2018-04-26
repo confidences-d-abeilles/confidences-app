@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import request from '../../services/Net';
 import { handleChange, handleTick } from '../../services/FormService'
 import NotificationSystem from 'react-notification-system'
