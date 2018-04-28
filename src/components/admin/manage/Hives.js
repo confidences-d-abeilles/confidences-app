@@ -289,6 +289,9 @@ export default class AdminManageHives extends Component {
 															info: hive.info
 														}, () => {this.getOne()});
 														}} >Gérer</button>
+														<Link to={"/hive/"+hive.id} className="btn btn-link btn-sm">
+															Voir
+														</Link>
 												</td>
 											</tr>
 										)
@@ -299,8 +302,16 @@ export default class AdminManageHives extends Component {
 						</div>
 					</div>
 					{(this.state.selected)?
-
-					<div className="col-lg-8">
+						<div className="col-lg-8">
+						<div >
+							<h3 className="my-4">Parrain lie a cette ruche</h3>
+							{this.state.selected &&
+								this.state.selected.parrains.map((user, key) => {
+								return (
+									<h2 key={key}><small>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</small><br />{(key+1 < this.state.selected.parrains.length)?' ~':''}</h2>
+								)
+							})}
+						</div>
 						<h3 className="my-4">Noter cette ruche</h3>
 							<ReactStars
 								count={5}
@@ -318,17 +329,6 @@ export default class AdminManageHives extends Component {
 							<h3 className="my-4">Information générale sur la ruche</h3>
 							<textarea rows="5" className="form-control" name="info" onChange={handleChange.bind(this)} value={this.state.info} placeholder="Informations générale concernant la ruche" />
 							<button onClick={this.saveInformation.bind(this)} className="btn btn-primary btn-sm mt-2">Sauvegarder</button>
-
-						</div>
-
-						<div >
-							<h3 className="my-4">Parrain lie a cette ruche</h3>
-							{this.state.selected &&
-								this.state.selected.parrains.map((user, key) => {
-								return (
-									<h3 key={key} className="my-0"><small>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</small><br />{(key+1 < this.state.selected.parrains.length)?' ~':''}</h3>
-								)
-							})}
 						</div>
 
 						<Feedback name={this.state.newsModify?this.state.newsModify:null} hiveId={this.state.selected.id}/>
@@ -347,12 +347,6 @@ export default class AdminManageHives extends Component {
 							</select>
 						</div>
 						:null}
-						<br/>
-						<div className="text-center">
-						<Link to={"/hive/"+this.state.selected.id} className="btn btn-primary btn-sm">
-							Page de la ruche
-						</Link>
-						</div>
 						<h3 className="py-4">Ajouter des photos</h3>
 						<form onSubmit={this.addPhoto.bind(this)}>
 							<div className="form-group">
