@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import Main from '../../assets/img/end_part.jpg';
+import moment from 'moment'
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
 import request from '../../services/Net';
@@ -11,7 +12,6 @@ export default class IndividualEnd extends Component {
     constructor(props) {
         super(props)
         ReactGA.pageview(this.props.location.pathname);
-        console.log(props.location);
         this.state = {
           redirecte: false
         }
@@ -31,7 +31,8 @@ export default class IndividualEnd extends Component {
           this.setState({
             bundleState: res.state
           })
-          if (res.state === 2 && res.present) {
+          if (res.state === 2 && !res.present) {
+            console.log('mail 301');
             request({
       				url: '/bill/bundle/'+res.id,
       				method: 'get'
@@ -42,7 +43,7 @@ export default class IndividualEnd extends Component {
       					data: {
       						owner: user,
       						bundle: bundle,
-      						date: new Date(),
+      						date: moment(new Date()).format("DD/MM/YYYY"),
       						bill: res
       					}
       				}, this.refs.notif).then((res) => {
@@ -61,8 +62,8 @@ export default class IndividualEnd extends Component {
   			<div className="container py-4">
           <Meta title="Félicitations"/>
           <NotificationSystem ref="notif" />
-                {this.state.redirecte ? <Redirect to="/individual/manage" /> : null}
-				<div className="row justify-content-center">
+          {this.state.redirecte ? <Redirect to="/individual/manage" /> : null}
+				  <div className="row justify-content-center">
 					<div className="col-8">
           {!this.state.bundleState ? <h2 className="text-center my-4">Génial ! Vous avez choisi de rejoindre notre aventure.</h2>
             :<h2 className="text-center my-4">Félicitations ! Vous faites désormais partie de la grande famille des parrains d'abeilles.</h2>

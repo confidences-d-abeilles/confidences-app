@@ -41,10 +41,10 @@ export default class Present extends Component {
     					<div className="col-lg-9 col-md-10 col-sm-12">
     						<ul className="nav nav-tabs justify-content-center" role="tablist">
     							<li className="nav-item">
-    								<a className="nav-link active lead" data-toggle="tab" href="#how-offer">Comment offrir un parrainage d'Abeilles</a>
+    								<a className="nav-link active lead" data-toggle="tab" href="#how-offer">Comment offrir un parrainage ?</a>
     							</li>
     							<li className="nav-item">
-    								<a className="nav-link lead" data-toggle="tab" href="#presentation">Présentation rapide</a>
+    								<a className="nav-link lead" data-toggle="tab" href="#presentation">Offrir un parrainage, c’est quoi ?</a>
     							</li>
     						</ul>
     						<div className="tab-content" style={{ overflowX : 'auto' }}>
@@ -88,8 +88,11 @@ class HowOfferPresent extends Component {
                       Désignez votre bénéficiaire en cochant
                       « Ce parrainage est un cadeau » et en
                       renseignant ses coordonnées.
-                      ATTENTION à la date à partir de
-                      laquelle doit être notifié le bénéficiaire.<br /><strong>Un délai de 3 jours est recommandé.</strong>
+
+                  </li>
+                  <li className="my-4">
+                  ATTENTION à la date à partir de
+                  laquelle doit être notifié le bénéficiaire.<br /><strong>Un délai de 3 jours est recommandé.</strong>
                   </li>
                   <li className="my-4">
                       Terminez en réglant votre cadeau (la
@@ -125,34 +128,25 @@ class PresentationPresent extends Component {
         <div className="row">
             <div className="col">
               <p>
-                  En deux mots, votre heureux bénéficiaire
-                  devient le parrain de 10 000 abeilles par
-                  exemple. 10 000, tant que ça ?! Eh oui, il faut
-                  savoir qu’une ruche compte en moyenne 50
-                  000 individus. Des informations comme celle-ci mais aussi des photos de leurs abeilles, les
-                  heureux parrains en recevront tout au long
-                  de l’année que dure leur parrainage. Il y a
-                  beaucoup à apprendre sur ce monde
-                  fascinant. Plus captivant encore, ils auront la
-                  possibilité de prendre part aux visites des
-                  ruches au cours de l’année ! L’occasion pour
-                  eux d’enfiler la fameuse combinaison de
-                  l’apiculteur et de plonger littéralement au
-                  cœur de la colonie !<br /><br />
-                  Enfin, après avoir bien travaillé, les abeilles
-                  partageront une partie de leur trésor pour le
-                  plus grand plaisir des petits et des grands. Un
-                  moment gastronomique inoubliable.<br /><br />
-                  <strong>Non seulement les parrains prennent plaisir
-                  à suivre l’évolution de leur ruche via une
-                  page dédiée mais en plus ils participent à la
-                  sauvegarde d’une espèce menacée</strong> ; les
-                  abeilles, par leur activité de pollinisation,
-                  protègent la biodiversité et préservent donc
-                  notre environnement. Celui-ci étant plus
-                  fécond il nécessite moins de traitements
-                  nuisibles aux abeilles par exemple. C’est un
-                  cercle vertueux qu’il faut réussir à amorcer !
+                Votre cadeau permet à l’heureux bénéficiaire de devenir parrain de 10 000 abeilles (ou
+                plus). 10 000, tant que ça ?! Eh oui, il faut savoir qu’une ruche compte en moyenne 50 000
+                individus. Des informations comme celle-ci mais aussi des photos de leurs abeilles, les
+                heureux parrains en recevront tout au long de l’année que dure leur parrainage. Il y a
+                beaucoup à apprendre sur ce monde fascinant et plus captivant encore. Ils auront aussi la
+                possibilité de prendre part aux visites des ruches au cours de l’année ! L’occasion pour eux
+                d’enfiler la fameuse combinaison de l’apiculteur et de plonger littéralement au cœur de la
+                colonie !
+              </p>
+              <p>
+                Enfin, après avoir bien travaillé, les abeilles partageront une partie de leur trésor pour le
+                plus grand plaisir des petits et des grands. Un moment gastronomique inoubliable.
+              </p>
+              <p>
+                <strong>Par votre cadeau, les parrains prennent plaisir à suivre l’évolution de leur ruche via une
+                page dédiée et participent également à la sauvegarde d’un métier et d’une espèce menacée.</strong><br />
+                Les abeilles, par leur activité de pollinisation, protègent la biodiversité et préservent donc
+                notre environnement. Celui-ci étant plus fécond il nécessite moins de traitements
+                nuisibles aux abeilles. C’est un cercle vertueux qu’il faut réussir à amorcer !
               </p>
             </div>
         </div>

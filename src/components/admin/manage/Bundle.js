@@ -148,7 +148,7 @@ export default class Bundle extends Component {
 					data: {
 						owner: this.props.owner,
 						bundle: this.props.bundle,
-						date: new Date(),
+						date: moment(new Date()).format("DD/MM/YYYY"),
 						bill: res
 					}
 				}, this.refs.notif).then((res) => {
