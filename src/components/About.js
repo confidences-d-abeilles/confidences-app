@@ -69,8 +69,8 @@ export default class About extends Component {
 					<div className="col-lg-9 col-md-10 col-sm-12">
 						<h3>Demain ... </h3>
 						<p>
-						Confidences d’Abeilles soutient ConnectHive dans le développement de l’apiculture connectée de demain.
-						Elle apporte également son aide à l’association EMAPI, association d’apiculture des Mines d’Alès, dans la gestion de son rucher.
+						Confidences d’Abeilles soutient <a href="http://connecthive.com/" target="_blank">ConnectHive</a> dans le développement de l’apiculture connectée de demain.
+						Elle apporte également son aide à l’association <a href="https://emapiblog.wordpress.com/" target="_blank">EMAPI</a>, association d’apiculture des Mines d’Alès, dans la gestion de son rucher.
 						</p>
 						<p className="text-right my-4">Nicolas &amp; Gaëtan &amp; les abeilles…</p>
 					</div>

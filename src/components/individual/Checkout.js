@@ -289,7 +289,7 @@ export default class IndividualCheckout extends Component {
 							<div className="col-lg-9 col-md-10 col-sm-12">
 								{this.state.paytype === '0' &&
 									<Elements locale="fr">
-										<PayForm price={this.state.price} before={this.save.bind(this)} bundle={this.state.bundle_id} for={this.state.firstname+' '+this.state.name} endpoint="/individual/end" />
+										<PayForm price={this.state.price} before={this.save.bind(this)} bundle={this.state.bundle_id} date={(this.state.present_date)?this.state.present_date:new Date()} for={this.state.firstname+' '+this.state.name} endpoint="/individual/end" />
 									</Elements>
 								}
 
