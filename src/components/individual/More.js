@@ -91,7 +91,8 @@ export default class More extends Component {
 							abeilles. Frissons et miel frais garantis !
 						</p>
 						<p className="text-center">
-							<Link to="/signup/individual" className="btn btn-secondary mr-4">Parrainer une ruche</Link><a href={leaflet} className="btn btn-secondary mr-4" target="_blank">Télécharger la plaquette de présentation</a>
+							<Link to="/signup/individual" className="btn btn-secondary mr-4">Devenir parrain</Link>
+							<a href={leaflet} className="btn btn-secondary mr-4" target="_blank">Découvrir la plaquette</a>
 						</p>
 					</div>
 				</div>

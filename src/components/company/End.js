@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import Main from '../../assets/img/end_part.jpg';
 import ReactGA from 'react-ga';
+import moment from 'moment'
 import Meta from '../utils/Meta'
 import request from '../../services/Net';
 import NotificationSystem from 'react-notification-system'
@@ -27,6 +28,7 @@ export default class CompanyEnd extends Component {
 				firstname: res.firstname,
 				name: res.name
 			})
+			let user = res;
 			request({
 				url : '/bundle/owner/'+res.id,
 				method : 'get'
@@ -34,6 +36,27 @@ export default class CompanyEnd extends Component {
 				this.setState({
 					bundleState: res.state
 				})
+				let bundle = res;
+				if (res.state === 2) {
+					console.log('mail 201');
+					request({
+						url: '/bill/bundle/'+res.id,
+						method: 'get'
+					}, this.refs.notif).then((res) => {
+						request({
+							url: '/mail/send_201',
+							method: 'PUT',
+							data: {
+								owner: user,
+								bundle: bundle,
+								date: moment(new Date()).format("DD/MM/YYYY"),
+								bill: res
+							}
+						}, this.refs.notif).then((res) => {
+							console.log("mail envoyer");
+						})
+					})
+				}
 				request({
 					url : '/user/marv/ob',
 					method : 'PUT',
@@ -44,7 +67,6 @@ export default class CompanyEnd extends Component {
 						firstname: this.state.firstname
 					}
 				}, this.refs.notif).then((res) =>{
-
 					})
 			})
 			setTimeout(() => {this.setState({ redirecte: true })}, 8000);

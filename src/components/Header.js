@@ -61,6 +61,9 @@ export default class Header extends Component {
 									<Link className="nav-link" to="/about">Notre histoire</Link>
 								</li>
 								<li className="nav-item">
+									<Link className="nav-link" to="/ourvalues">Nos valeurs</Link>
+								</li>
+								<li className="nav-item">
 									<Link className="nav-link" to="/team">L'équipe</Link>
 								</li>
 								<li className="nav-item">
@@ -87,6 +90,9 @@ export default class Header extends Component {
 							<ul className="navbar-nav">
 								<li className="nav-item">
 									<Link className="nav-link" to="/about">Notre histoire</Link>
+								</li>
+								<li className="nav-item">
+									<Link className="nav-link" to="/ourvalues">Nos valeurs</Link>
 								</li>
 								<li className="nav-item">
 									<Link className="nav-link" to="/team">L'équipe</Link>
@@ -147,6 +153,7 @@ export default class Header extends Component {
 							</a>
 							<div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 								<Link className="dropdown-item" to="/about">Notre histoire</Link>
+								<Link className="dropdown-item" to="/ourvalues">Nos valeurs</Link>
 								<Link className="dropdown-item" to="/team">L'équipe</Link>
 								<Link className="dropdown-item" to="/contact">Contact</Link>
 								<Link className="dropdown-item" to="/jobs">Jobs</Link>
@@ -169,6 +176,7 @@ export default class Header extends Component {
 					</a>
 					<div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<Link className="dropdown-item" to="/about">Notre histoire</Link>
+						<Link className="dropdown-item" to="/ourvalues">Nos valeurs</Link>
 						<Link className="dropdown-item" to="/team">L'équipe</Link>
 						<Link className="dropdown-item" to="/contact">Contact</Link>
 						<Link className="dropdown-item" to="/jobs">Jobs</Link>

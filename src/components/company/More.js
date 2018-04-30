@@ -39,8 +39,8 @@ export default class More extends Component {
 							n’est pas en achetant des crédits carbones, que l’on aborde efficacement l’impact local
 							d’une entreprise. L’intégration de pratiques responsables bénéficiant à toutes les parties
 							prenantes (dont la société), devient dès lors un enjeu de taille pour l’entreprise. En effet,
-							en dégradant son environnement, l’entreprise ne fait que conditionner son
-							autodestruction/dégradation. L’intérêt de celle-ci réside donc, dans la protection de
+							en dégradant son environnement, l’entreprise ne crée pas des conditions favorables à sa
+							propre réussite. L’intérêt de celle-ci réside donc, dans la protection de
 							l’écosystème dans lequel elle évolue.<br /><br />
 						</p>
 						<h3 className="my-4">Comment le faire ?</h3>
@@ -56,8 +56,7 @@ export default class More extends Component {
 							l’environnement s’en porte mieux et les abeilles aussi. Le cercle vertueux est bouclé !
 							<br/><br/>
 							<p className="text-center">
-								<Link to="/signup/company" className="btn btn-secondary btn-warning mr-4">Parrainer une ruche</Link>
-								<a href={broch} className="btn btn-secondary btn-warning m-4" target="_blank">Télécharger la brochure de présentation</a>
+								<Link to="/signup/company" className="btn btn-secondary btn-warning mr-4">Devenir parrain</Link>
 							</p>
 							<br/>
 						</p>
@@ -150,12 +149,13 @@ export default class More extends Component {
 							</ul>
 							<p className="text-center">
 								<Link to="/signup/company" className="btn btn-secondary btn-warning mr-4">Parrainer une ruche</Link>
-								<a href={broch} className="btn btn-secondary btn-warning m-4" target="_blank">Télécharger la brochure de présentation</a>
+								<a href={broch} className="btn btn-secondary btn-warning m-4" target="_blank">Découvrir la brochure</a>
 							</p>
 						</p>
 						<h3 className="text-warning my-4">Tarifs et Conditions</h3>
 						<br/>
 						<a href="https://parrainagederuches.fr/prices"  target="_blank">Consulter les tarifs</a>
+						<br />
 						<p>
 							Ces tarifs comprennent l’ensemble des éléments cités ci-dessus ainsi que les frais de port
 							pour l’envoi des pots de miel en France métropolitaine.<br />
@@ -175,10 +175,6 @@ export default class More extends Component {
 							<strong className="text-warning">Le 1er juillet et le 31 décembre</strong>, vous recevrez le miel de vos abeilles après la récolte de printemps ; à partir du mois de mai de l’année suivante.
 							<br/><br/>
 							<strong className="text-warning">Le 1er janvier et le 30 juin</strong>, vous recevrez le miel de vos abeilles à l’automne, à partir du mois d’octobre.
-						</p>
-						<p className="text-center">
-							<Link to="/signup/company" className="btn btn-secondary btn-warning mr-4">Parrainer une ruche</Link>
-							<a href={broch} className="btn btn-secondary btn-warning m-4" target="_blank">Brochure de présentation</a>
 						</p>
 						<h3 className="text-warning my-4">Événement</h3>
 						<p>
@@ -201,8 +197,9 @@ export default class More extends Component {
 							</ul>
 						</p>
 						<p className="text-center">
-							<Link to="/signup/company" className="btn btn-secondary btn-warning mr-4">Parrainer une ruche</Link>
-							<a href={broch} className="btn btn-secondary btn-warning m-4" target="_blank">Brochure de présentation</a>
+							<Link to="/signup/company" className="btn btn-secondary btn-warning mr-4">Devenir parrain</Link>
+							<a href={broch} className="btn btn-secondary btn-warning m-4" target="_blank">Consulter la brochure</a>
+							<Link to="/faq" className="btn btn-secondary btn-warning mr-4">FAQ</Link>
 						</p>
 					</div>
 				</div>

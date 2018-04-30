@@ -138,27 +138,30 @@ export default class Bundle extends Component {
 			method: 'put',
 			data : data
 		}, this.refs.notif).then((res) => {
-			request({
-				url: '/bill/bundle/'+this.props.id,
-				method: 'get'
-			}, this.refs.notif).then((res) => {
-				request({
-					url: '/mail/send_201',
-					method: 'PUT',
-					data: {
-						owner: this.props.owner,
-						bundle: this.props.bundle,
-						date: moment(new Date()).format("DD/MM/YYYY"),
-						bill: res
-					}
-				}, this.refs.notif).then((res) => {
-					console.log("mail envoyer");
-				})
-			})
+
+
 			this.props.refresh();
 		});
 	}
+// request for mailjet update Paiement
 
+	// request({
+	// 	url: '/bill/bundle/'+this.props.id,
+	// 	method: 'get'
+	// }, this.refs.notif).then((res) => {
+	// 	request({
+	// 		url: '/mail/send_201',
+	// 		method: 'PUT',
+	// 		data: {
+	// 			owner: this.props.owner,
+	// 			bundle: this.props.bundle,
+	// 			date: moment(new Date()).format("DD/MM/YYYY"),
+	// 			bill: res
+	// 		}
+	// 	}, this.refs.notif).then((res) => {
+	// 		console.log("mail envoyer");
+	// 	})
+// })
 	uploadCertif() {
 		const data = new FormData();
 		if (document.getElementById("certif").files[0]) {

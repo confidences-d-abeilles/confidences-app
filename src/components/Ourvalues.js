@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Banner from './../assets/img/part_more.jpg'
+import Banner from './../assets/img/ourvalues.jpg'
 import ReactGA from 'react-ga';
 import Meta from './utils/Meta'
 
@@ -21,7 +21,7 @@ export default class More extends Component {
 					</div>
 					<div className="col-9">
 						<h2 className="text-center my-5">Nos valeurs</h2>
-						<h3 className="text-center">Authenticité</h3>
+						<h3>Authenticité</h3>
 						<p>
 							L’apiculture, c’est d’abord un héritage ; celui de notre grand-oncle qui veillait avec soins
 							sur une vingtaine de ruches dans les Monts d’Or lyonnais. Son attachement et son respect
@@ -32,14 +32,14 @@ export default class More extends Component {
 							le miel est stocké dans le même maturateur utilisé 50 ans auparavant. Sans ces valeurs
 							solides, notre miel ne pourrait revendiquer ni cette richesse ni cette finesse.
 						</p>
-						<h3 className="text-center">Découverte & partage </h3>
+						<h3>Découverte & partage </h3>
 						<p>
 							Nous sommes de ceux qui aiment le savoir-faire, les traditions, le respect du produit, et le
 							goût. Animés par l’échange, le partage et le souhait de vous faire plaisir, nous essayons de
 							vous proposer un miel unique, riche de notre environnement encore préservé des Alpes.
 							Notre philosophie : vous faire voyager à travers notre terroir. <br /><br />
 						</p>
-						<h3 className="text-center">Excellence & plaisir  </h3>
+						<h3>Excellence & plaisir  </h3>
 						<p>
 							L’excellence est au cœur de notre projet : faire plaisir à nos clients en les surprenant nous
 							pousse en permanence à tendre vers l’excellence. Nous nous engageons sur l’origine de
@@ -49,7 +49,7 @@ export default class More extends Component {
 							saveurs, couleurs et textures au gré des fleurs butinées. Confidences d’Abeilles raffine
 							cette richesse et vous la propose pour votre plus grand plaisir.<br /><br />
 						</p>
-						<h3 className="text-center">Respect & passion </h3>
+						<h3>Respect & passion </h3>
 						<p>
 							L’apiculture est un savoir-faire ancestral qui véhicule de belles valeurs, celle du respect de
 							l’abeille et de son environnement. Vivre en harmonie avec les abeilles et la nature est
