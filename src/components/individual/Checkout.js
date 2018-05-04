@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import request from '../../services/Net';
 import { handleChange, handleTick } from '../../services/FormService'
 import NotificationSystem from 'react-notification-system'
@@ -79,12 +79,12 @@ export default class IndividualCheckout extends Component {
 					bill_number: res.number
 				});
 			});
-				res.addresses.map((address) => {
-					if (address.type == 1) {
+				res.addresses.forEach((address) => {
+					if (address.type === 1) {
 						this.setState({ billing_address: address })
 						console.log(address);
 					}
-					if (address.type == 2) {
+					if (address.type === 2) {
 						this.setState({
 							delivery_address: address,
 							different: address.addr_diff
@@ -289,7 +289,7 @@ export default class IndividualCheckout extends Component {
 							<div className="col-lg-9 col-md-10 col-sm-12">
 								{this.state.paytype === '0' &&
 									<Elements locale="fr">
-										<PayForm price={this.state.price} before={this.save.bind(this)} bundle={this.state.bundle_id} for={this.state.firstname+' '+this.state.name} endpoint="/individual/end" />
+										<PayForm price={this.state.price} before={this.save.bind(this)} bundle={this.state.bundle_id} date={(this.state.present_date)?this.state.present_date:new Date()} for={this.state.firstname+' '+this.state.name} endpoint="/individual/end" />
 									</Elements>
 								}
 

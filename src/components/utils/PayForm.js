@@ -3,7 +3,6 @@ import { CardNumberElement, CardExpiryElement, CardCVCElement } from 'react-stri
 import {injectStripe} from 'react-stripe-elements';
 import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
-import { Redirect } from 'react-router-dom'
 import Loading from './Loading'
 
 const config = require('../../config.js');

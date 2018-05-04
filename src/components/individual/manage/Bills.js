@@ -1,13 +1,7 @@
 import React, { Component } from 'react'
 import request from '../../../services/Net'
-import NotificationSystem from 'react-notification-system'
-import FontAwesome from 'react-fontawesome'
-import Loading from '../../utils/Loading'
-import moment from 'moment';
 import ReactGA from 'react-ga';
 import Meta from '../../utils/Meta'
-
-const config = require('../../../config.js');
 
 export default class Bills extends Component {
 

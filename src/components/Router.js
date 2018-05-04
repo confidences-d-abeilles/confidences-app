@@ -64,6 +64,7 @@ import Presignup from './Presignup';
 import Cgv from './Cgv';
 import Mentions from './Mentions';
 import About from './About';
+import Ourvalues from './Ourvalues';
 import Team from './Team';
 import Contact from './Contact';
 import Jobs from './Jobs';
@@ -146,6 +147,7 @@ export default class MyRouter extends Component {
 								<Route exact path="/present" component={Present} />
 								<Route exact path="/faq" component={Faq} />
 								<Route exact path="/about" component={About} />
+								<Route exact path="/ourvalues" component={Ourvalues} />
 								<Route exact path="/team" component={Team} />
 								<Route exact path="/contact" component={Contact} />
 								<Route exact path="/apply" component={Apply} />
