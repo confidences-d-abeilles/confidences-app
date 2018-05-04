@@ -64,6 +64,7 @@ import Presignup from './Presignup';
 import Cgv from './Cgv';
 import Mentions from './Mentions';
 import About from './About';
+import Ourvalues from './Ourvalues';
 import Team from './Team';
 import Contact from './Contact';
 import Jobs from './Jobs';
@@ -83,7 +84,7 @@ import RequestLabel from './RequestLabel';
 import Present from './Present';
 import Confirm from './Confirm';
 import NotFound from './utils/NotFound';
-
+import Newslettersignup from './Newslettersignup';
 import Pay from './Pay';
 
 //admin
@@ -146,6 +147,7 @@ export default class MyRouter extends Component {
 								<Route exact path="/present" component={Present} />
 								<Route exact path="/faq" component={Faq} />
 								<Route exact path="/about" component={About} />
+								<Route exact path="/ourvalues" component={Ourvalues} />
 								<Route exact path="/team" component={Team} />
 								<Route exact path="/contact" component={Contact} />
 								<Route exact path="/apply" component={Apply} />
@@ -156,6 +158,7 @@ export default class MyRouter extends Component {
 								<Route exact path="/jobs/marketing" component={JobsMarketing} />
 								<Route exact path="/jobs/businessdev" component={JobsBusinessDev} />
 								<Route exact path="/jobs/event" component={JobsEvent} />
+								<Route exact path="/Newsletter/Signup" component={Newslettersignup} />
 								<Route exact path="/cgv" component={Cgv} />
 								<Route exact path="/mentions_legales" component={Mentions} />
 								<Route exact path="/tarifs" component={Prices} />

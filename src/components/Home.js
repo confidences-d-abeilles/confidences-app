@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import imgPlaceholder from '../assets/img/img-placeholder.gif';
 import NotificationSystem from 'react-notification-system'
 import request from '../services/Net'
 import { Link } from 'react-router-dom'
@@ -13,9 +12,7 @@ import sixth from '../assets/img/homepage/6.jpg';
 import seventh from '../assets/img/homepage/7.jpg';
 import Slider from 'react-slick';
 import Loading from './utils/Loading';
-import FontAwesome from 'react-fontawesome'
 import ReactGA from 'react-ga';
-import { isLoggedIn, getUserType } from '../services/AuthService';
 import Meta from './utils/Meta'
 
 const defaultImg = require("../assets/img/profile.png")

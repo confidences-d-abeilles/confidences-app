@@ -11,8 +11,6 @@ import Meta from '../utils/Meta';
 import leaflet_e from '../../assets/leaflet_e.pdf'
 import brochure from '../../assets/brochure.pdf'
 
-const config = require('../../config.js');
-
 export default class ContributorApproach extends Component {
 
 	constructor(props) {
