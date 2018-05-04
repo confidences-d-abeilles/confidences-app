@@ -244,7 +244,8 @@ export default class Bundle extends Component {
 								<div className="card-block">
 									<h3 className="card-title">Demande</h3>
 									<p className="card-text">
-										Date : {moment(this.state.bundle.start_date).format("DD/MM/YYYY")}<br />
+										Begin date : {moment(this.state.bundle.start_date).format("DD/MM/YYYY")}<br />
+										End date : {moment(this.state.bundle.end_date).format("DD/MM/YYYY")}<br />
 										<DatePicker
 											dateFormat="DD/MM/YYYY"
 											selected={this.state.bundleStart}
