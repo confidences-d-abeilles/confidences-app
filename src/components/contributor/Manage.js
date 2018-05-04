@@ -82,11 +82,14 @@ export default class ContributorManage extends Component {
 						<br />
 						<ul className="list-group">
 							<li className="list-group-item"><Link to="/contributor/manage">Tableau de bord</Link></li>
-							<li className="list-group-item"><Link to="/contributor/manage/infos">Mes informations</Link></li>
 							<li className="list-group-item"><Link to="/contributor/manage/approaches">Mes entreprises</Link></li>
+							<li className="list-group-item"><Link to="/contributor/manage">Support de communication</Link></li>
+							<li className="list-group-item"><Link to="/contributor/manage/infos">Mes informations</Link></li>
 							<li className="list-group-item"><Link to="/contributor/manage/contract">Mon contrat</Link></li>
-							<li className="list-group-item"><Link to="/contributor/manage/conditions">Conditions spécifiques</Link></li>
+							<li className="list-group-item"><Link to="/contributor/manage">Mes commissions</Link></li>
+							<li className="list-group-item"><Link to="/contributor/manage/conditions">Conditions spécifiques d'utilisation</Link></li>
 							<li className="list-group-item"><Link to="/contributor/manage/help">Aide</Link></li>
+							<li className="list-group-item"><Link to="/contributor/manage">Deconnexion</Link></li>
 						</ul>
 					</div>
 					<div className="col-9">

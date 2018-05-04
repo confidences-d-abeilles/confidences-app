@@ -17,7 +17,6 @@ import waitLogo from '../../assets/img/waitlogo.png';
 import Meta from '../utils/Meta'
 import NotFound from '../utils/NotFound'
 import FontAwesome from 'react-fontawesome'
-import { getUserType } from '../../services/AuthService';
 import ReactGA from 'react-ga';
 
 const config = require('../../config.js');

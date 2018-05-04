@@ -101,6 +101,10 @@ export default class CompanyIdentity extends Component {
 							<div className="form-group">
 								<input type="text" className="form-control" name="siret" placeholder="Numéro SIRET *" onChange={this.handlesiret.bind(this)} />
 							</div>
+							<div className="text-center">
+								<a href="https://www.societe.com/" target="_blank">Trouver mon SIRET</a>
+							</div>
+							<br/>
 							<div className="form-group">
 								<input type="text" className="form-control" name="job" placeholder="Votre position *" onChange={handleChange.bind(this)} />
 								<small id="emailHelp" className="form-text text-muted">Cela nous permet d'être plus pertinents dans notre communication</small>

@@ -1,39 +1,19 @@
 import React, { Component } from 'react'
-import { handleChange, handleTick } from '../../services/FormService'
-import { Link } from 'react-router-dom'
+import { handleChange } from '../../services/FormService'
 import NotificationSystem from 'react-notification-system'
 import request from '../../services/Net'
 import ReactQuill from 'react-quill';
-import ReactGA from 'react-ga';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import Confirm from './Confirm';
-const config = require('../../config.js');
 
 export default class Feedback extends Component {
 
 	constructor (props) {
 		super (props);
 		this.state = {
-			id_user : '',
 			name : '',
-			namespace : '',
-			description : '',
-			involvement : '',
-			logo: null,
-			cover: null,
-			link1_name: '',
-			link1_url: '',
-			link2_name: '',
-			link2_url: '',
-			bundle: null,
-			visible: false,
-			english: false,
-			bundle_state: 0,
-			bundle: [],
 			newsTake: 0,
-			newsActu: '',
-			newsTitle: '',
 			actuDate: moment(new Date()),
 			actu: ''
 		}

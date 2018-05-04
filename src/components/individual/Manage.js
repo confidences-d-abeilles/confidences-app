@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import imgPlaceholder from '../../assets/img/img-placeholder.gif';
-import request from '../../services/Net';
 import { isLoggedIn } from '../../services/AuthService';
 import { Redirect, Route, Link, Switch } from 'react-router-dom';
 import IndividualManageInfos from './manage/Infos'
