@@ -239,10 +239,9 @@ export default class CompanyCheckout extends Component {
 							<div className="col-lg-9 col-md-10 col-sm-12">
 								{this.state.paytype === '0' &&
 									<Elements locale="fr">
-										<PayForm price={this.state.price} bundle={this.state.bundle_id} date={(this.state.present_date)?this.state.present_date:new Date()} for={this.state.company_name} endpoint="/company/end" />
+										<PayForm price={this.state.price} before={this.save.bind(this)} bundle={this.state.bundle_id} date={(this.state.present_date)?this.state.present_date:new Date()} for={this.state.company_name} endpoint="/company/end" />
 									</Elements>
 								}
-
 								{this.state.paytype === '1' &&
 									<div>
 										<p>Veuillez trouver nos coordonnées bancaires pour procéder au virement</p>
