@@ -9,7 +9,10 @@ import moment from 'moment';
 import ReactGA from 'react-ga';
 import Meta from './utils/Meta'
 import Imagebox from './utils/Imagebox'
+import ReactStars from 'react-stars';
+
 const config = require('../config.js')
+
 
 export default class Hive extends Component {
 
@@ -63,6 +66,12 @@ export default class Hive extends Component {
 								</div>
 							</div>
 							<h2 className="mt-5" style={{ fontFamily: "HighTo" }}>INFORMATIONS SUR LA RUCHE</h2>
+							<ReactStars
+								count={5}
+								value={this.state.hive.ratio}
+								edit={false}
+  							size={24}
+							  color2={'#ffd700'} />
 							<div style={{ width : '100%', height: '1px', backgroundColor: 'black'}} className="mb-4" ></div>
 							<p style={{ fontFamily: "HighTo", fontSize: '1.25em' }}>
 								{this.state.hive.info ? this.state.hive.info : 'Aucune information sur cette ruche pour le moment'}
@@ -71,7 +80,7 @@ export default class Hive extends Component {
 									if (img === this.state.hive.imgs[0]) {
 										return (null);
 									} else {
-										if (index != 1){ index += 1; }
+										if (index !== 1){ index += 1; }
 										return (
 											<div className="row">
 												<div className="col-lg-6">

@@ -17,7 +17,6 @@ import waitLogo from '../../assets/img/waitlogo.png';
 import Meta from '../utils/Meta'
 import NotFound from '../utils/NotFound'
 import FontAwesome from 'react-fontawesome'
-import { getUserType } from '../../services/AuthService';
 import ReactGA from 'react-ga';
 
 const config = require('../../config.js');
@@ -74,6 +73,12 @@ export default class CompanyManage extends Component {
 			return (
 				<p className="alert alert-warning mt-4">La validation du règlement de votre parrainage est en cours</p>
 			);
+		}
+
+		if (this.state.user && this.state.user.newsletter) {
+			return (
+				<p className="alert alert-warning mt-4">Vous êtes inscrit(e) à la newsletter. Une fois tous les 2 mois vous recevrez des nouvelles de vos abeilles ainsi que des nôtres. Si vous ne souhaitez pas la recevoir, merci de modifier <Link to="/company/account">vos préférences.</Link></p>
+			)
 		}
 
 		if (this.state.user && !this.state.user.bundles[0]) {

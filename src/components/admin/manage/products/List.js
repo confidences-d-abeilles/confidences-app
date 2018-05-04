@@ -53,20 +53,15 @@ export default class List extends Component {
 	decode(type) {
 		switch (type) {
 			case 10:
-				return "Parrainage entreprise"
-				break;
+				return ("Parrainage entreprise");
 			case 11:
-				return "Produit suplémentaire entreprise"
-				break;
+				return ("Produit suplémentaire entreprise");
 			case 20:
-				return "Parrainage particulier"
-				break;
+				return ("Parrainage particulier");
 			case 21:
-				return "Produit suplémentaire particulier"
-				break;
+				return ("Produit suplémentaire particulier");
 			default:
 				return null;
-				break;
 		}
 	}
 

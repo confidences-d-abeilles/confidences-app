@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import Version1 from '../../../assets/img/P/etiqu1.jpg';
-import Version2 from '../../../assets/img/P/etiqu2.jpg';
 import ReactGA from 'react-ga';
-import FontAwesome from 'react-fontawesome'
-import { handleChange } from '../../../services/FormService'
 import request from '../../../services/Net'
 import Loading from '../../utils/Loading'
 import NotificationSystem from 'react-notification-system'
@@ -11,17 +7,9 @@ import Meta from '../../utils/Meta'
 import { Link } from 'react-router-dom';
 import Imagebox from '../../utils/Imagebox'
 
-import logoSquare from '../../../assets/img/logo-square.png';
 import EtiD from '../../../assets/img/label/etiquette_defaut_individual.jpg';
-import DownloadEti from '../../../assets/img/etiquette.zip';
-import EtiAi from '../../../assets/img/label/preview_AI.png';
-import EtiIndd from '../../../assets/img/label/preview_INDD.png';
-import EtiPdf from '../../../assets/img/label/preview_PDF.png';
 import Eti1 from '../../../assets/img/label/sample_Etiquette_P1.jpg';
 import Eti2 from '../../../assets/img/label/sample_Etiquette_P2.jpg'
-
-
-const config = require('../../../config.js');
 
 export default class Custom extends Component {
 

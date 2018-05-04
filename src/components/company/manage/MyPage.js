@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { handleChange, handleTick } from '../../../services/FormService'
-import { Link } from 'react-router-dom'
 import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
-import ReactQuill from 'react-quill';
 import Loading from '../../utils/Loading'
 import ReactGA from 'react-ga';
 import moment from 'moment';
@@ -32,7 +30,6 @@ export default class CompanyManageMyPage extends Component {
 			english: false,
 			bundle_date: new Date(),
 			bundle_state: 0,
-			bundle: [],
 			allFeedback: null
 		}
 	}
@@ -147,7 +144,6 @@ export default class CompanyManageMyPage extends Component {
 	replaceNamespace(e) {
 		e.preventDefault();
 		const val = e.target.value;
-		console.log((val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, '-'));
 		let TabSpec = {"à":"a","á":"a","â":"a","ã":"a","ä":"a","å":"a","ò":"o","ó":"o","ô":"o","õ":"o","ö":"o","ø":"o","è":"e","é":"e","ê":"e","ë":"e","ç":"c","ì":"i","í":"i","î":"i","ï":"i","ù":"u","ú":"u","û":"u","ü":"u","ÿ":"y","ñ":"n","_":" "};
 		let reg=/[àáäâèéêëçìíîïòóôõöøùúûüÿñ_]/gi;
 		this.setState({

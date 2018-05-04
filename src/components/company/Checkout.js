@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import request from '../../services/Net';
 import NotificationSystem from 'react-notification-system';
 import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
-import { handleChange, handleTick } from '../../services/FormService';
+import { handleChange } from '../../services/FormService';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta';
 import Address from '../utils/Address/Address';
@@ -21,6 +21,7 @@ export default class CompanyCheckout extends Component {
 			bill_number: '',
 			redirect: false,
 			hives: 0,
+			products : [],
 			paytype: '',
 			price: 0,
 			saved: false,
@@ -45,6 +46,7 @@ export default class CompanyCheckout extends Component {
 				hives: res.bundles[0].hives,
 				pots: res.bundles[0].pots,
 				price: res.bundles[0].price,
+				products: res.bundles[0].products,
 				bundle_id: res.bundles[0].id,
 				duplicate: true,
 				different: res.bundles[0].addr_diff,
@@ -60,11 +62,11 @@ export default class CompanyCheckout extends Component {
 					bill_number: res.number
 				});
 			});
-			res.addresses.map((address) => {
-				if (address.type == 1) {
+			res.addresses.forEach((address) => {
+				if (address.type === 1) {
 					this.setState({ billing_address: address })
 				}
-				if (address.type == 2) {
+				if (address.type === 2) {
 					this.setState({
 						delivery_address: address,
 						different: address.addr_diff
@@ -172,6 +174,26 @@ export default class CompanyCheckout extends Component {
 			})
 	}
 
+	 send_mail_6() {
+		 request({
+			 url: '/bill/bundle/'+this.state.bundle_id,
+			 method: 'get'
+		 }, this.refs.notif).then((res) => {
+			 request({
+				 url: '/mail/send_6',
+				 method: 'put',
+				 data : {
+					 owner: this.state.user,
+					 bill: res
+				 }
+			 }, this.refs.notif).then((res) => {
+				console.log("mail envoyer");
+			 })
+		 }, this.refs.notif).then((res) => {
+			 this.setWaitingPayment();
+		 })
+	 }
+
 	render () {
 		return (
 			<div className="container py-4">
@@ -180,7 +202,7 @@ export default class CompanyCheckout extends Component {
 				{(this.state.redirect)?<Redirect to="/company/end" />:null}
 				{(this.state.dash)?<Redirect to="/company/end" />:null}
 				{(this.state.wish)?<Redirect to="/company/wish" />:null}
-				{(this.state.bundleState > 0)?<Redirect to="/individual/manage" />:null}
+				{(this.state.bundleState > 0)?<Redirect to="/company/manage" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
@@ -195,6 +217,7 @@ export default class CompanyCheckout extends Component {
 							changeBundle={this.changeBundle}
 							hives={this.state.hives}
 							pots={this.state.pots}
+							products={this.state.products}
 							price={this.state.price} />
 						<div className="row justify-content-center">
 							<div className="col-lg-6 col-md-10 col-sm-12">
@@ -239,10 +262,9 @@ export default class CompanyCheckout extends Component {
 							<div className="col-lg-9 col-md-10 col-sm-12">
 								{this.state.paytype === '0' &&
 									<Elements locale="fr">
-										<PayForm price={this.state.price} bundle={this.state.bundle_id} date={(this.state.present_date)?this.state.present_date:new Date()} for={this.state.company_name} endpoint="/company/end" />
+										<PayForm price={this.state.price} before={this.save.bind(this)} bundle={this.state.bundle_id} date={(this.state.present_date)?this.state.present_date:new Date()} for={this.state.company_name} endpoint="/company/end" />
 									</Elements>
 								}
-
 								{this.state.paytype === '1' &&
 									<div>
 										<p>Veuillez trouver nos coordonnées bancaires pour procéder au virement</p>
@@ -259,7 +281,7 @@ export default class CompanyCheckout extends Component {
 											De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 											</p>
 											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement effectué</button>
+											<button onClick={this.send_mail_6.bind(this)} className="btn btn-primary">Virement effectué</button>
 										</div>
 									}
 

@@ -4,8 +4,6 @@ import NotificationSystem from 'react-notification-system'
 import { Redirect } from 'react-router-dom'
 import FooterPage from './FooterPage'
 import ReactHtmlParser from 'react-html-parser'
-import FontAwesome from 'react-fontawesome'
-import imgPlaceholder from '../../assets/img/profile.png';
 import { Link } from 'react-router-dom'
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
@@ -178,7 +176,7 @@ export default class CompanyPage extends Component {
 											<div style={{ width : '100%', height: '2px', backgroundColor: '#E49C00'}} className="mb-4" ></div>
 											{this.state.hives.map((hive) => {
 												return (
-													<div className={(this.state.selectedHive == hive.id)?'ruche ruche-me':'ruche'} data-hive={hive.id} onMouseEnter={this.displayImg.bind(this)}>
+													<div className={(this.state.selectedHive === hive.id)?'ruche ruche-me':'ruche'} data-hive={hive.id} onMouseEnter={this.displayImg.bind(this)}>
 														<img src={require("../../assets/img/rayon.png")} className="img-fluid rayon" alt="Rayon" />
 														<p style={{ padding: '0px', margin: '0', overflowX: 'visible'}} className="" >{hive.name.toUpperCase()}</p>
 														<Link to={'/hive/'+hive.id} style={{ color: '#666666', fontSize: '0.9em', lineHeight: '1em' }} >Voir en détails</Link>

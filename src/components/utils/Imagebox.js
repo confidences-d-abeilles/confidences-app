@@ -1,13 +1,5 @@
 import React, { Component } from 'react'
-import { handleChange, handleTick } from '../../services/FormService'
-import { Link } from 'react-router-dom'
-import NotificationSystem from 'react-notification-system'
-import request from '../../services/Net'
-import ReactQuill from 'react-quill';
 import Lightbox from 'lightbox-react'
-import ReactGA from 'react-ga';
-import Confirm from './Confirm';
-const config = require('../../config.js');
 
 export default class Imagebox extends Component {
 
