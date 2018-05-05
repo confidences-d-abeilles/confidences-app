@@ -95,6 +95,18 @@ export default class Bundle extends Component {
 
 
     render () {
+
+        let dispDateInfoCadeau;
+        if (this.state.user && this.state.user.bundles[0]){
+            if (this.state.user.bundles[0].state < 2 && this.state.user.bundles[0].present &&
+                moment(this.state.user.bundles[0].start_date).isBefore(moment())) {
+                dispDateInfoCadeau = moment().format("DD/MM/YYYY");
+            }
+            else {
+                dispDateInfoCadeau = moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY");
+            }
+        }
+
         return (
             <div>
                 <Meta title="Mon parrainage" />
@@ -118,7 +130,9 @@ export default class Bundle extends Component {
                                 <h3 className="text-center"><small>J'ai choisi d'offrir mon parrainage à</small></h3>
                                 <strong>{this.state.present_firstname} {this.state.present_name}</strong><br />
                                 dont l'adresse mail est <strong>{this.state.present_email}</strong><br />
-                            Les premières informations sur ce cadeau seront envoyées le <strong>{moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}</strong><br /><br />
+                                Les premières informations sur ce cadeau seront envoyées le <strong>{dispDateInfoCadeau}</strong><br />
+                            {(this.state.user.bundles[0].state < 2) ? (<div>
+                                    Tant que votre parrainage n'est pas réglé, le bénéficiaire du cadeau ne sera pas informé !<br /></div>):null}<br />
                         <button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ edit_present : true })}}><FontAwesome name="pencil" /> Modifier ces informations</button>
                     </div>}
                     {this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].present && this.state.edit_present &&
