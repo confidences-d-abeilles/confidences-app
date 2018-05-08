@@ -6,7 +6,7 @@ import { logout } from '../../../services/AuthService'
 import { handleChange } from '../../../services/FormService'
 import ReactGA from 'react-ga';
 import FontAwesome from 'react-fontawesome'
-import { Redirect } from 'react-router-dom'
+import { NavLink, Link, Redirect } from 'react-router-dom'
 import Meta from '../../utils/Meta'
 
 export default class Account extends Component {
@@ -16,7 +16,8 @@ export default class Account extends Component {
         ReactGA.pageview(this.props.location.pathname);
         this.state = {
             sessions : null,
-            logout: false
+            logout: false,
+            Newsletter: false
         }
     }
 
@@ -50,6 +51,18 @@ export default class Account extends Component {
 		}
 	}
 
+  updateNewsletter (e) {
+    this.setState({
+      newsletter: e.target.value
+    })
+    request({
+      url: '/Newsletter/giveup',
+      method: 'PUT'
+    },this.refs.notif).then((res) => {
+      console.log("change newsletter admision");
+    })
+  }
+
     render () {
         return (
             <div className="row">
@@ -70,6 +83,30 @@ export default class Account extends Component {
                                 </div>
                                 <button className="btn btn-primary mb-4">Enregistrer</button>
                             </form>
+                            {this.state.newsletter ?
+                            <div>
+                              <h3 className="text-center my-4"><small>Modifier mon abonnement a la newsletter</small></h3>
+                              <div className="form-group d-flex">
+                        				<label className="radio-inline form-check-label">
+                        					<input type="radio" className="form-check-input" name="newsletter" value={true} onChange={this.updateNewsletter.bind(this)} checked={this.state.newsletter ^ 0}/>
+                        					&nbsp;inscrit
+                        				</label>
+                        				<label className="radio-inline form-check-label ml-4">
+                        					<input type="radio" className="form-check-input" name="newsletter" value={false} onChange={this.updateNewsletter.bind(this)} checked={this.state.newsletter ^ 1}/>
+                        					&nbsp;pas inscrit
+                        				</label>
+                        			</div>
+                            </div>
+                            :
+                            <div>
+                            <h3 className="text-center my-4"><small>Vous voullez etre inscrit a la newsletter</small></h3>
+                              <div className="text-center">
+                                <Link className="btn btn-warning btn-sm" to="/Newsletter/Signup">Je m'inscris !</Link>
+                                <a className="nav-link" href="https://confidencesdabeilles.fr/blog" target="_blank">Je m'inscris !</a>
+                                <button className="btn btn-warning btn-sm">Je m'inscris !</button>
+                              </div>
+                            </div>
+                          }
                         </div>
                         <div className="col-lg-6 text-center">
                             <h3 className="text-center my-4"><small>Supprimer mon compte</small></h3>
