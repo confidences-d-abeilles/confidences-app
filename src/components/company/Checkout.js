@@ -172,6 +172,26 @@ export default class CompanyCheckout extends Component {
 			})
 	}
 
+	 send_mail_6() {
+		 request({
+			 url: '/bill/bundle/'+this.state.bundle_id,
+			 method: 'get'
+		 }, this.refs.notif).then((res) => {
+			 request({
+				 url: '/mail/send_6',
+				 method: 'put',
+				 data : {
+					 owner: this.state.user,
+					 bill: res
+				 }
+			 }, this.refs.notif).then((res) => {
+				console.log("mail envoyer");
+			 })
+		 }, this.refs.notif).then((res) => {
+			 this.setWaitingPayment();
+		 })
+	 }
+
 	render () {
 		return (
 			<div className="container py-4">
@@ -258,7 +278,7 @@ export default class CompanyCheckout extends Component {
 											De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 											</p>
 											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement effectué</button>
+											<button onClick={this.send_mail_6.bind(this)} className="btn btn-primary">Virement effectué</button>
 										</div>
 									}
 

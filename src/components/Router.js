@@ -84,7 +84,7 @@ import RequestLabel from './RequestLabel';
 import Present from './Present';
 import Confirm from './Confirm';
 import NotFound from './utils/NotFound';
-
+import Newslettersignup from './Newslettersignup';
 import Pay from './Pay';
 
 //admin
@@ -158,6 +158,7 @@ export default class MyRouter extends Component {
 								<Route exact path="/jobs/marketing" component={JobsMarketing} />
 								<Route exact path="/jobs/businessdev" component={JobsBusinessDev} />
 								<Route exact path="/jobs/event" component={JobsEvent} />
+								<Route exact path="/Newsletter/Signup" component={Newslettersignup} />
 								<Route exact path="/cgv" component={Cgv} />
 								<Route exact path="/mentions_legales" component={Mentions} />
 								<Route exact path="/tarifs" component={Prices} />
