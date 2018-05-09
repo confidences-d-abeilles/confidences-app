@@ -71,31 +71,6 @@ export default class Signup extends Component {
 				}
 			}, this.refs.notificationSystem).catch((err) => {
 			})
-			.then((res) => {
-				request({
-					url: '/authenticate',
-					method : 'post',
-					data : {
-						email : this.state.email,
-						password : this.state.password
-					}
-				}, this.refs.notificationSystem).then((res) => {
-					login(res.id, res.token, res.user_type);
-					if (res.user_type === 2) {
-						this.setState({
-							redirect : 'company/identity'
-						})
-					} else if (res.user_type === 1) {
-						this.setState({
-							redirect : 'individual/address'
-						})
-					} else if (res.user_type === 3) {
-						this.setState({
-							redirect : 'contributor/address'
-						})
-					}
-				})
-			})
 			.catch((err) => {
 			});
 		}
