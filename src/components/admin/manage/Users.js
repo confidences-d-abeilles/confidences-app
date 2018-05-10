@@ -60,6 +60,7 @@ export default class AdminManageUsers extends Component {
 	selectUser(user) {
 		this.setState({
 			selectedUser: user,
+			bundle_id: user.bundles ? user.bundles[0].id : null,
 			usexe_m: user.sexe_m?'1':'0',
 			bsexe_m: user.addresses[0]?user.addresses[0].sexe_m?'1':'0':'',
 			billing_address: user.addresses[0],
@@ -69,6 +70,14 @@ export default class AdminManageUsers extends Component {
 			supportLevel: (user.support_lvl)?user.support_lvl.toString():'',
 			userType: user.user_type
 		});
+		request({
+			url: '/bundle/owner/'+user.id,
+			method: 'GET'
+		}, this.refs.notif).then((res) => {
+			this.setState({
+				bundle_id: res.id
+			})
+		})
 	}
 
 	renderType(type) {
@@ -84,6 +93,25 @@ export default class AdminManageUsers extends Component {
 			default:
 				return (" ")
 		}
+	}
+
+	sendMail16() {
+		request({
+			url: '/bill/bundle/'+this.state.bundle_id,
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			request({
+				url: '/mail/send_16',
+				method: 'put',
+				data : {
+					owner: this.state.selectedUser,
+					bill: res
+				}
+			}, this.refs.notif).then((res) => {
+			 console.log("mail envoyer");
+			})
+		}, this.refs.notif).then((res) => {
+		})
 	}
 
 	sendMail202() {
@@ -417,6 +445,7 @@ export default class AdminManageUsers extends Component {
 												<div className="card-block">
 													<h3 className="card-title">Envoi de mails</h3>
 													<p className="card-text">
+														<button className="btn btn-sm btn-info my-2" onClick={this.sendMail16.bind(this)} >16 : Oups... </button><br />
 														<button className="btn btn-sm btn-info my-2" onClick={this.sendHoustonMail.bind(this)} >2 : Houston we had a problem</button><br />
 														<button className="btn btn-sm btn-info my-2" onClick={this.sendLaterMail.bind(this)} >4 : Fin onboard avec payer plus tard</button><br />
 														<button className="btn btn-sm btn-info my-2" onClick={this.sendEncoursMail.bind(this)} >8 : Attribution ruche en cours</button><br />
