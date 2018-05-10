@@ -69,8 +69,7 @@ export default class Signup extends Component {
 					password : this.state.password,
 					user_type : this.state.user_type
 				}
-			}, this.refs.notificationSystem).catch((err) => {
-			})
+			}, this.refs.notificationSystem)
 			.then((res) => {
 				request({
 					url: '/authenticate',
