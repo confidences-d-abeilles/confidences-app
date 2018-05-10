@@ -21,6 +21,7 @@ export default class CompanyCheckout extends Component {
 			bill_number: '',
 			redirect: false,
 			hives: 0,
+			products : [],
 			paytype: '',
 			price: 0,
 			saved: false,
@@ -45,6 +46,7 @@ export default class CompanyCheckout extends Component {
 				hives: res.bundles[0].hives,
 				pots: res.bundles[0].pots,
 				price: res.bundles[0].price,
+				products: res.bundles[0].products,
 				bundle_id: res.bundles[0].id,
 				duplicate: true,
 				different: res.bundles[0].addr_diff,
@@ -215,6 +217,7 @@ export default class CompanyCheckout extends Component {
 							changeBundle={this.changeBundle}
 							hives={this.state.hives}
 							pots={this.state.pots}
+							products={this.state.products}
 							price={this.state.price} />
 						<div className="row justify-content-center">
 							<div className="col-lg-6 col-md-10 col-sm-12">

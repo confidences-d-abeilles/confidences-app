@@ -69,9 +69,6 @@ export default class CompanyWish extends Component {
 	}
 
 	calcPrice() {
-		console.log(this.state.couponsOk);
-		console.log(this.state.optionsOk);
-		console.log(this.state.codesOk);
 		this.setState({ price : '0' }, () => {
 			this.state.products.map((e) => {
 				const qty = (e.qty)?parseFloat(e.qty):0;
@@ -124,18 +121,10 @@ export default class CompanyWish extends Component {
 				}
 			});
 		});
-		tmp3.map((code) => {
-			tmp4 = this.state.codesOk.filter((codeOk) => {
-				if (code.id === codeOk.id) {
-					return true;
-				}
-				return false;
-			})
-		})
 		this.setState({
 			couponsOk: tmp,
 			codes: tmp3,
-			codesOk: tmp4,
+			codesOk: this.state.codesOk,
 			options: tmp2
 		}, () => {
 			this.calcPrice();
@@ -173,7 +162,6 @@ export default class CompanyWish extends Component {
 	}
 
 	selectOption(e) {
-		console.log("Selecting option");
 		this.setState({
 			optionSelect: e.target.value
 		});
