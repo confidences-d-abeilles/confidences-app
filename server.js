@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 const metaLoader = require('./public/meta');
 
-app.use('static', express.static('./build/static'));
+app.use('static', express.static(path.resolve(__dirname, './build/static')));
 
 app.get('/*', (req, res) => {
     res.writeHead( 200, { "Content-Type": "text/html" } );
