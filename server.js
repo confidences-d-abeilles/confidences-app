@@ -4,7 +4,7 @@ const path = require('path');
 
 const metaLoader = require('./public/meta');
 
-app.use('/static', express.static(path.resolve(__dirname, './build/static')));
+app.use('/', express.static(path.resolve(__dirname, './build')));
 
 app.get('/*', (req, res) => {
     res.writeHead( 200, { "Content-Type": "text/html" } );
