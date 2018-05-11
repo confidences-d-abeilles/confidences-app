@@ -99,7 +99,7 @@ export default class Account extends Component {
                             </div>
                             :
                             <div>
-                            <h3 className="text-center my-4"><small>Vous voulew vous inscrire a la newsletter ?</small></h3>
+                            <h3 className="text-center my-4"><small>Vous voulez vous inscrire a la newsletter ?</small></h3>
                               <div className="text-center">
                                 <Link className="btn btn-warning btn-sm" to="/Newsletter/Signup">Je m'inscris !</Link>
                                 <a className="nav-link" href="https://confidencesdabeilles.fr/blog" target="_blank">Je m'inscris !</a>
