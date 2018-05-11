@@ -5,7 +5,10 @@ module.exports = {
         switch(endpoint) {
             case '/':
                 return {
-                    title : "Accueil"
+                    title : "Accueil",
+                    ogtitle: "Parrainez des abeilles et soutenez-nous !",
+                    ogdescription: "Le parrainage est une action commune. Ensemble, nous agissons en faveur de la filière française du miel et, plus largement, nous protégeons nos chères butineuses et notre environnement.",
+                    ogurl: "https://parrainagederuches.fr/"
                 }
             case '/team':
                 return {
