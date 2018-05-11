@@ -6,10 +6,10 @@ const metaLoader = require('./public/meta');
 
 app.use('/', express.static(path.resolve(__dirname, './build')));
 
-app.get('/*', (req, res) => {
-    res.writeHead( 200, { "Content-Type": "text/html" } );
-    res.end(baseHtml(metaLoader.load(req.url)));
-})
+// app.get('/*', (req, res) => {
+//     res.writeHead( 200, { "Content-Type": "text/html" } );
+//     res.end(baseHtml(metaLoader.load(req.url)));
+// })
 
 app.listen(5000, () => {
     console.log("Server started");
