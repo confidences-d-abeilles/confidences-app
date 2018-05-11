@@ -6,8 +6,7 @@ const metaLoader = require('./public/meta');
 app.use(express.static('./build'));
 
 app.get('/*', (req, res) => {
-    console.log(req.url);
-    console.log(metaLoader.load(req.url));
+    res.writeHead( 200, { "Content-Type": "text/html" } );
     res.end(baseHtml(metaLoader.load(req.url)));
 })
 
