@@ -11,7 +11,7 @@ app.use('/', express.static('build'));
 
 app.get('/*', (req, res) => {
     res.writeHead( 200, { "Content-Type": "text/html" } );
-    res.end(composeHtml(html, metaLoader.load(req.url)));
+    res.end(composeHtml(html.toString(), metaLoader.load(req.url)));
 })
 
 app.listen(5000, () => {
@@ -20,6 +20,6 @@ app.listen(5000, () => {
 
 
 function composeHtml(html, meta) {
-    html.replace("<title>Confidences d'Abeilles</title>", "<title>"+meta.title+"</title>")
-    return 
+    html = html.replace("<title>Confidences d'Abeilles</title>", "<title>"+meta.title+"</title>");
+    return html;
 }
