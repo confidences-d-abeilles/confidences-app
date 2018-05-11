@@ -11,7 +11,7 @@ app.get('/*', (req, res) => {
     res.end(baseHtml(metaLoader.load(req.url)));
 })
 
-app.listen(3000, () => {
+app.listen(5000, () => {
     console.log("Server started");
 })
 
