@@ -23,17 +23,16 @@ function composeHtml(html, meta) {
     if (meta.title) {
         html = html.replace("<title>Confidences d'Abeilles</title>", "<title>"+meta.title+"</title>");
     }
+    let splitted = html.split('</head>');
+    let output = splitted[0];
     if (meta.ogtitle) {
-        html = html.replace('<meta id="og-title" property="og:title" content="Parrainez des abeilles et soutenez-nous !" />',
-        '<meta id="og-title" property="og:title" content="'+meta.ogtitle+'" />');
+        output = output + '<meta id="og-title" property="og:title" content="' + meta.ogtitle + '" />';
     }
     if (meta.ogdescription) {
-        html = html.replace('<meta id="og-description" property="og:description" content="Le parrainage est une action commune. Ensemble, nous agissons en faveur de la filière française du miel et, plus largement, nous protégeons nos chères butineuses et notre environnement." />',
-        '<meta id="og-description" property="og:description" content="'+meta.ogdescription+'" />');
+        output = output + '<meta id="og-description" property="og:description" content="'+meta.ogdescription+'" />';
     }
     if (meta.ogurl) {
-        html = html.replace('<meta id="og-url" property="og:url" content="https://parrainagederuches.fr" />',
-        '<meta id="og-url" property="og:url" content="'+meta.ogurl+'" />');
+        output = output + '<meta id="og-url" property="og:url" content="'+meta.ogurl+'" />';
     }
-    return html;
+    return output + '</head>' + splitted[1];
 }
