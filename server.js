@@ -3,7 +3,6 @@ const app = express();
 
 const metaLoader = require('./public/meta');
 
-app.use(express.static('./build'));
 app.use('static', express.static('./build/static'));
 
 app.get('/*', (req, res) => {
