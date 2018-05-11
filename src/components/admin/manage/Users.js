@@ -70,13 +70,17 @@ export default class AdminManageUsers extends Component {
 			supportLevel: (user.support_lvl)?user.support_lvl.toString():'',
 			userType: user.user_type
 		});
+		console.log(user);
 		request({
 			url: '/bundle/owner/'+user.id,
 			method: 'GET'
 		}, this.refs.notif).then((res) => {
-			this.setState({
-				bundle_id: res.id
-			})
+			console.log(res);
+				if (res) {
+				this.setState({
+					bundle_id: res.id
+				})
+			}
 		})
 	}
 
@@ -445,14 +449,9 @@ export default class AdminManageUsers extends Component {
 												<div className="card-block">
 													<h3 className="card-title">Envoi de mails</h3>
 													<p className="card-text">
-														<button className="btn btn-sm btn-info my-2" onClick={this.sendMail16.bind(this)} >16 : Oups... </button><br />
-														<button className="btn btn-sm btn-info my-2" onClick={this.sendHoustonMail.bind(this)} >2 : Houston we had a problem</button><br />
-														<button className="btn btn-sm btn-info my-2" onClick={this.sendLaterMail.bind(this)} >4 : Fin onboard avec payer plus tard</button><br />
-														<button className="btn btn-sm btn-info my-2" onClick={this.sendEncoursMail.bind(this)} >8 : Attribution ruche en cours</button><br />
-														<button className="btn btn-sm btn-info my-2" onClick={this.sendCadeauMail.bind(this)} >10 : Cadeau</button><br />
-														<button className="btn btn-sm btn-warning my-2" onClick={this.sendMail202.bind(this)} >202 : Paiement attente</button><br />
-														<button className="btn btn-sm btn-warning my-2" onClick={this.sendMail203.bind(this)} >203 : Attribution ruche en cours</button><br />
-														<button className="btn btn-sm btn-warning my-2" onClick={this.sendMail205.bind(this)} >205 : Virement ok</button><br />
+														{this.state.bundle_id ? <button className="btn btn-sm btn-info my-2" onClick={this.sendMail16.bind(this)} >16 : Oups... </button>
+														: null
+														}
 													</p>
 												</div>
 											</div>

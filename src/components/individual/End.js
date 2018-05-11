@@ -57,6 +57,8 @@ export default class IndividualEnd extends Component {
           }
 
         })
+        console.log(user);
+        console.log(user.id);
         request({
     			url: '/newsletter/create',
     			method: 'put',
