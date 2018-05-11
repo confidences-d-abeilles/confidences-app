@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const fs = require('fs');
 
-const html = fs.readFileSync('./index.html');
+const html = fs.readFileSync('./build/index.html');
 
 const metaLoader = require('./public/meta');
 
