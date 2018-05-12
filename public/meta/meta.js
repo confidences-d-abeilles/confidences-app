@@ -10,7 +10,7 @@ module.exports = {
             ogurl: "https://parrainagederuches.fr/",
             ogimg: "https://parrainagederuches.fr/metastatic/general.jpg"
         }
-
+        console.log(endpoint);
         switch(endpoint) {
             case '/team':
                 return {
