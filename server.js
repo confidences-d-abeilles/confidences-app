@@ -11,7 +11,7 @@ app.use('/', express.static('build'));
 app.use('/metastatic', express.static('public/meta'));
 
 app.get('/*', (req, res) => {
-    res.writeHead( 200, { "Content-Type": "text/html" } );
+    console.log(metaLoader.load(req.url));
     res.end(composeHtml(html.toString(), metaLoader.load(req.url)));
 })
 
