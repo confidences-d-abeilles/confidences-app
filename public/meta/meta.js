@@ -8,7 +8,8 @@ module.exports = {
                     title : "Accueil",
                     ogtitle: "Parrainez des abeilles et soutenez-nous !",
                     ogdescription: "Le parrainage est une action commune. Ensemble, nous agissons en faveur de la filière française du miel et, plus largement, nous protégeons nos chères butineuses et notre environnement.",
-                    ogurl: "https://parrainagederuches.fr/"
+                    ogurl: "https://parrainagederuches.fr/",
+                    ogimg: "https://parrainagederuches.fr/metastatic/general.jpg"
                 }
             case '/team':
                 return {
@@ -22,7 +23,8 @@ module.exports = {
                     title: "Offrir un parrainage",
                     ogtitle: "Parrainer des abeilles ? Un cadeau aussi original qu&#39;utile !",
                     ogdescription: "Vous cherchiez un cadeau original qu’on puisse à la fois toucher du regard, expérimenter, déguster et qui soit concrètement bénéfique pour notre environnement ? Alors n’attendez plus et offrez un parrainage d’abeilles !",
-                    ogurl: "https://parrainagederuches.fr/present"
+                    ogurl: "https://parrainagederuches.fr/present",
+                    ogimg: "https://parrainagederuches.fr/metastatic/cadeau.jpg"
                 }
             case '/jobs':
                 return {
