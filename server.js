@@ -5,9 +5,10 @@ const fs = require('fs');
 
 const html = fs.readFileSync('./build/index.html');
 
-const metaLoader = require('./public/meta');
+const metaLoader = require('./public/meta/meta');
 
 app.use('/', express.static('build'));
+app.use('/metastatic', express.static('public/meta'));
 
 app.get('/*', (req, res) => {
     res.writeHead( 200, { "Content-Type": "text/html" } );
@@ -20,11 +21,12 @@ app.listen(5000, () => {
 
 
 function composeHtml(html, meta) {
-    if (meta.title) {
-        html = html.replace("<title>Confidences d'Abeilles</title>", "<title>"+meta.title+"</title>");
-    }
+   
     let splitted = html.split('</head>');
     let output = splitted[0];
+    if (meta.title) {
+        output = output + '<title>' + meta.title + '</title>';
+    }
     if (meta.ogtitle) {
         output = output + '<meta id="og-title" property="og:title" content="' + meta.ogtitle + '" />';
     }
@@ -33,6 +35,9 @@ function composeHtml(html, meta) {
     }
     if (meta.ogurl) {
         output = output + '<meta id="og-url" property="og:url" content="'+meta.ogurl+'" />';
+    }
+    if (meta.ogimg) {
+        output = output + '<meta id="og-image" property="og:image" content="' + meta.ogimg + '" />';
     }
     return output + '</head>' + splitted[1];
 }
