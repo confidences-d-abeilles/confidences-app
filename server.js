@@ -10,10 +10,6 @@ const metaLoader = require('./public/meta/meta');
 app.use('/', express.static('build'));
 app.use('/metastatic', express.static('public/meta'));
 
-app.get('/', (req, res) => {
-    res.end(composeHtml(html.toString(), metaLoader.load(req.url)));
-})
-
 app.get('/*', (req, res) => {
     res.end(composeHtml(html.toString(), metaLoader.load(req.url)));
 })
@@ -25,8 +21,8 @@ app.listen(5000, () => {
 
 function composeHtml(html, meta) {
    
-    let splitted = html.split('</head>');
-    let output = splitted[0];
+    let splitted = html.split('<title>Confidences d\'Abeilles</title>');
+    let output = "";
     if (meta.title) {
         output = output + '<title>' + meta.title + '</title>';
     }
@@ -42,5 +38,5 @@ function composeHtml(html, meta) {
     if (meta.ogimg) {
         output = output + '<meta id="og-image" property="og:image" content="' + meta.ogimg + '" />';
     }
-    return output + '</head>' + splitted[1];
+    return splitted[0] + output + splitted[2];
 }
