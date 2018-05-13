@@ -25,18 +25,23 @@ export default class ContributorManageApproaches extends Component {
 					url: '/getUser/'+lead.owner,
 					method: 'GET'
 				}, this.refs.notif). then((res) => {
-					if (!res.bundles[0]) {
-						initial_array[index]['hive'] = 0;
-						initial_array[index]['status'] = 'demarcher';
-					} else {
-						initial_array[index]['hive'] = res.bundles[0].state;
-						initial_array[index]['status'] = res.bundles[0].hives;
-					}
+						console.log(res.bundles[0]);
+						initial_array[index]['hive'] = res.bundles[0].hives;
+						initial_array[index]['Commission'] = '';
+						if (res.bundles[0].state == 0) {
+							initial_array[index]['status'] = 'Inscrite';
+						} else if (res.bundles[0].state == 1) {
+							initial_array[index]['status'] = 'Marraine';
+						} else if (res.bundles[0].state == 2) {
+							initial_array[index]['status'] = 'Terminée';
+							initial_array[index]['Commission'] = '0'+'€';
+						} else {
+							initial_array[index]['status'] = 'Démarchée';
+						}
 					this.setState({ leads : initial_array});
 					return ;
 				})
 			})
-			// console.log(res.leads);
 			 this.setState({ loading: false })
 		});
 	}
