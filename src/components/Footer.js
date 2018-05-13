@@ -34,6 +34,7 @@ export default class Footer extends Component {
 								<h3 className="text-left">La société</h3>
 								<ul>
 									<li><Link to="/about" className="noStyleLink">Notre histoire</Link></li>
+									<li><Link to="/ourvalues" className="noStyleLink">Nos valeurs</Link></li>
 									<li><Link to="/team" className="noStyleLink">L'équipe</Link></li>
 									<li><Link to="/contact" className="noStyleLink">Contact</Link></li>
 									<li><Link to="/jobs" className="noStyleLink">Jobs</Link></li>
