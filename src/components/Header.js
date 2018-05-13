@@ -31,6 +31,7 @@ export default class Header extends Component {
 				email: this.state.email
 			}
  		}, this.refs.notif).then((res) => {
+			this.setState({email: '', firstname: ''});
  			console.log('good');
  		})
 	}
@@ -149,15 +150,15 @@ export default class Header extends Component {
 					</ul>
 					:
 					<ul className="navbar-nav hidden-md-down">
-						<li className="nav-item dropdown">
-							<a className="nav-link dropdown-toggle" style={{ cursor : 'pointer' }} href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<li className="nav-item">
+							<a className="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Newsletter
 							</a>
-							<div className="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink">
+							<div className="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink" >
 								<form onSubmit={this.Newsletter.bind(this)}>
 									<div className="form-group">
 										<input type="text" className="form-control" name="email" onChange={handleChange.bind(this)}  placeholder='email'/>
-										<input type="text" className="form-control" name="firstname" onChange={handleChange.bind(this)}  placeholder='firstname'/>
+										<input type="text" className="form-control" name="firstname" onChange={handleChange.bind(this)}  placeholder='prénom'/>
 										<button className="btn btn-secondary btn-sm">Soumettre</button>
 									</div>
 								</form>

@@ -10,7 +10,8 @@ export default class ContributorManageApproaches extends Component {
 		super(props);
 		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
-			loading: true
+			loading: true,
+			leads: []
 		}
 	}
 
@@ -19,20 +20,24 @@ export default class ContributorManageApproaches extends Component {
 			url : '/user/me',
 			method : 'get'
 		}, this.refs.notif).then((res) => {
-			this.setState({ leads : res.leads, loading: false })
-			res.leads.forEach((lead, index) => {
-				console.log(lead.owner);
+			res.leads.map((lead, index, initial_array) => {
 				request({
-					url: '/getUser/',
-					method: 'GET',
-					data: {
-						idUser: lead.owner
-					}
+					url: '/getUser/'+lead.owner,
+					method: 'GET'
 				}, this.refs.notif). then((res) => {
-					console.log(res);
-					res.leads[index].append();
+					if (!res.bundles[0]) {
+						initial_array[index]['hive'] = 0;
+						initial_array[index]['status'] = 'demarcher';
+					} else {
+						initial_array[index]['hive'] = res.bundles[0].state;
+						initial_array[index]['status'] = res.bundles[0].hives;
+					}
+					this.setState({ leads : initial_array});
+					return ;
 				})
 			})
+			// console.log(res.leads);
+			 this.setState({ loading: false })
 		});
 	}
 
@@ -45,10 +50,19 @@ export default class ContributorManageApproaches extends Component {
 					<table className="table">
 						<tbody>
 							<tr>
-								<th>Nom de l'entreprise</th><th>Statut</th><th>Date</th><th>Ruches parrainées</th><th>Commission perçue</th>
+								<th>Nom de l'entreprise</th>
+								<th>Statut</th>
+								<th>Date</th>
+								<th>Ruches parrainées</th>
+								<th>Commission perçue</th>
 							</tr>
 							{this.state.leads.map((lead) => {
-								return (<tr><td>{lead.company_name}</td><td>{lead.converted?'Parrain':'Démarchée'}</td><td>{moment(lead.createdAt).format("DD/MM/YYYY")}</td></tr>)
+								return (<tr>
+									<td>{lead.company_name}</td>
+									<td>{lead.status}</td>
+									<td>{moment(lead.createdAt).format("DD/MM/YYYY")}</td>
+									<td>{lead.hive}</td>
+									</tr>)
 							})}
 						</tbody>
 					</table>

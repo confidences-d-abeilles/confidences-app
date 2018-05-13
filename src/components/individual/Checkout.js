@@ -56,6 +56,7 @@ export default class IndividualCheckout extends Component {
 		}, this.refs.notif)
 		.then((res) => {
 			this.setState({
+				user: res,
 				name: res.name,
 				firstname: res.firstname,
 				bees: res.bundles[0].bees,

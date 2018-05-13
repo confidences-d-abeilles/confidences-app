@@ -71,6 +71,7 @@ export default class CompanyIdentity extends Component {
 		})
 		console.log(this.state.namespace);
 	}
+	
     render () {
         return (
 			<div className="container py-4">
