@@ -25,8 +25,7 @@ export default class ContributorManageApproaches extends Component {
 					url: '/getUser/'+lead.owner,
 					method: 'GET'
 				}, this.refs.notif). then((res) => {
-						console.log(res.bundles[0]);
-						initial_array[index]['hive'] = res.bundles[0].hives;
+						initial_array[index]['hive'] = res.bundles[0] ? res.bundles[0].hives : '0';
 						initial_array[index]['Commission'] = '';
 						if (res.bundles[0].state == 0) {
 							initial_array[index]['status'] = 'Inscrite';
