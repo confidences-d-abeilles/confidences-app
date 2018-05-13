@@ -25,8 +25,9 @@ export default class ContributorManageApproaches extends Component {
 					url: '/getUser/'+lead.owner,
 					method: 'GET'
 				}, this.refs.notif). then((res) => {
-						initial_array[index]['hive'] = res.bundles[0] ? res.bundles[0].hives : '0';
-						initial_array[index]['Commission'] = '';
+					initial_array[index]['hive'] = res.bundles[0] ? res.bundles[0].hives : '0';
+					initial_array[index]['Commission'] = '';
+					if (res.bundles[0]) {
 						if (res.bundles[0].state == 0) {
 							initial_array[index]['status'] = 'Inscrite';
 						} else if (res.bundles[0].state == 1) {
@@ -34,9 +35,10 @@ export default class ContributorManageApproaches extends Component {
 						} else if (res.bundles[0].state == 2) {
 							initial_array[index]['status'] = 'Terminée';
 							initial_array[index]['Commission'] = '0'+'€';
-						} else {
-							initial_array[index]['status'] = 'Démarchée';
 						}
+					} else {
+						initial_array[index]['status'] = 'Démarchée';
+					}
 					this.setState({ leads : initial_array});
 					return ;
 				})
