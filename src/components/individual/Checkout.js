@@ -69,7 +69,7 @@ export default class IndividualCheckout extends Component {
 				present_email: res.bundles[0].email,
 				present_firstname: res.bundles[0].firstname,
 				present_name: res.bundles[0].name,
-				present_date: moment(res.bundles[0].present_date),
+				present_date: moment(res.bundles[0].start_date),
 				bundleState: res.bundles[0].state
 			});
 			request({
@@ -277,6 +277,7 @@ export default class IndividualCheckout extends Component {
 										        selected={this.state.present_date}
 										        onChange={this.handleDateChange.bind(this)}
 												className="form-control"
+												minDate={new Date()}
 											    />
 										</div>
 									</form>
