@@ -150,7 +150,7 @@ export default class Header extends Component {
 					</ul>
 					:
 					<ul className="navbar-nav hidden-md-down">
-						<li className="nav-item">
+						{/* <li className="nav-item">
 							<a className="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Newsletter
 							</a>
@@ -163,7 +163,7 @@ export default class Header extends Component {
 									</div>
 								</form>
 							</div>
-						</li>
+						</li> */}
 						<li className="nav-item">
 							<NavLink className="nav-link" to="/company/presentation" activeStyle={{backgroundColor: 'rgb(230,230,230)',
 							boxShadow: '0px 0px 5px 2px rgb(230,230,230)'}}>Entreprise</NavLink>
