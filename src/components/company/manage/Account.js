@@ -17,10 +17,21 @@ export default class Account extends Component {
         this.state = {
             sessions : null,
             logout: false,
-            Newsletter: false
+            newsletter: false
         }
     }
 
+    componentDidMount() {
+      request({
+        url : '/user/me',
+        method : 'get'
+      }, this.refs.notif).then((res) => {
+        this.setState({
+          newsletter: res.newsletter
+        })
+      })
+    }
+    
     deleteAccount() {
     	request({
     		url: '/user',
@@ -51,17 +62,21 @@ export default class Account extends Component {
 		}
 	}
 
-  updateNewsletter (e) {
-    this.setState({
-      newsletter: e.target.value
-    })
-    request({
-      url: '/Newsletter/giveup',
-      method: 'PUT'
-    },this.refs.notif).then((res) => {
-      console.log("change newsletter admision");
-    })
-  }
+
+      updateNewsletter (e) {
+        let stat = e.target.value;
+        request({
+          url: '/user/newsletter',
+          method: 'PUT',
+          data: {
+            status: stat
+          }
+        },this.refs.notif).then((res) => {
+          this.setState({
+            newsletter: !stat.localeCompare('true') ? true : false
+          })
+        })
+      }
 
     render () {
         return (
@@ -88,14 +103,14 @@ export default class Account extends Component {
                               <div>
                               <h3 className="text-center my-4"><small>Vous êtes inscrit à la newsletter.</small></h3>
                                 <div className="text-center">
-                                  <Link className="btn btn-warning btn-sm" to="/Newsletter/Signup">Me désinscrire</Link>
+                                  <button className="btn btn-warning btn-sm" value={false} onClick={this.updateNewsletter.bind(this)}>Me désinscrire</button>
                                 </div>
                               </div>
                             :
                             <div>
-                            <h3 className="text-center my-4"><small>Vous n'êtes pas inscrit à la newsletter.</small></h3>
+                              <h3 className="text-center my-4"><small>Vous n'êtes pas inscrit à la newsletter.</small></h3>
                               <div className="text-center">
-                                <Link className="btn btn-warning btn-sm" to="/Newsletter/Signup">M'inscrire</Link>
+                                <button className="btn btn-warning btn-sm" value={true} onClick={this.updateNewsletter.bind(this)}>M'inscrire</button>
                               </div>
                             </div>
                           }

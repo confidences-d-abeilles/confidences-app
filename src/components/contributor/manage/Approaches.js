@@ -26,7 +26,7 @@ export default class ContributorManageApproaches extends Component {
 					method: 'GET'
 				}, this.refs.notif). then((res) => {
 					initial_array[index]['hive'] = res.bundles[0] ? res.bundles[0].hives : '0';
-					initial_array[index]['Commission'] = '';
+					initial_array[index]['commission'] = '';
 					if (res.bundles[0]) {
 						if (res.bundles[0].state == 0) {
 							initial_array[index]['status'] = 'Inscrite';
@@ -34,7 +34,7 @@ export default class ContributorManageApproaches extends Component {
 							initial_array[index]['status'] = 'Marraine';
 						} else if (res.bundles[0].state == 2) {
 							initial_array[index]['status'] = 'Terminée';
-							initial_array[index]['Commission'] = '0'+'€';
+							initial_array[index]['commission'] = 100 * res.bundles[0].state+'€';
 						}
 					} else {
 						initial_array[index]['status'] = 'Démarchée';
@@ -68,6 +68,7 @@ export default class ContributorManageApproaches extends Component {
 									<td>{lead.status}</td>
 									<td>{moment(lead.createdAt).format("DD/MM/YYYY")}</td>
 									<td>{lead.hive}</td>
+									<td>{lead.commission}</td>
 									</tr>)
 							})}
 						</tbody>
