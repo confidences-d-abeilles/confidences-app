@@ -6,8 +6,8 @@ import { logout } from '../../../services/AuthService'
 import { handleChange } from '../../../services/FormService'
 import ReactGA from 'react-ga';
 import FontAwesome from 'react-fontawesome'
-import { Redirect } from 'react-router-dom'
 import Meta from '../../utils/Meta'
+import { NavLink, Link, Redirect } from 'react-router-dom'
 
 export default class Account extends Component {
 
@@ -16,8 +16,20 @@ export default class Account extends Component {
         ReactGA.pageview(this.props.location.pathname);
         this.state = {
             sessions : null,
-            logout: false
+            logout: false,
+            newsletter: false
         }
+    }
+
+    componentDidMount() {
+      request({
+        url : '/user/me',
+        method : 'get'
+      }, this.refs.notif).then((res) => {
+        this.setState({
+          newsletter: res.newsletter
+        })
+      })
     }
 
     deleteAccount() {
@@ -50,6 +62,22 @@ export default class Account extends Component {
 		}
 	}
 
+
+    updateNewsletter (e) {
+      let stat = e.target.value;
+      request({
+        url: '/user/newsletter',
+        method: 'PUT',
+        data: {
+          status: stat
+        }
+      },this.refs.notif).then((res) => {
+        this.setState({
+          newsletter: !stat.localeCompare('true') ? true : false
+        })
+      })
+    }
+
     render () {
         return (
             <div className="row">
@@ -70,6 +98,22 @@ export default class Account extends Component {
                                 </div>
                                 <button className="btn btn-primary mb-4">Enregistrer</button>
                             </form>
+                            <h3 className="text-center my-4"><small>Newsletter</small></h3>
+                            {this.state.newsletter ?
+                              <div>
+                              <h3 className="text-center my-4"><small>Vous êtes inscrit à la newsletter.</small></h3>
+                                <div className="text-center">
+                                  <button className="btn btn-warning btn-sm" value={false} onClick={this.updateNewsletter.bind(this)}>Me désinscrire</button>
+                                </div>
+                              </div>
+                            :
+                            <div>
+                              <h3 className="text-center my-4"><small>Vous n'êtes pas inscrit à la newsletter.</small></h3>
+                              <div className="text-center">
+                                <button className="btn btn-warning btn-sm" value={true} onClick={this.updateNewsletter.bind(this)}>M'inscrire</button>
+                              </div>
+                            </div>
+                          }
                         </div>
                         <div className="col-lg-6 text-center">
                             <h3 className="text-center my-4"><small>Supprimer mon compte</small></h3>

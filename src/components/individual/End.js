@@ -57,6 +57,18 @@ export default class IndividualEnd extends Component {
           }
 
         })
+        console.log(user);
+        console.log(user.id);
+        request({
+    			url: '/newsletter/create',
+    			method: 'put',
+  	 			data: {
+  	 				firstname: user.firstname,
+  	 				email: user.email,
+            id: user.id
+  	 			}
+    		}, this.refs.notif).then((res) => {
+    		})
         setTimeout(() => {this.setState({ redirecte: true })}, 8000);
       })
     }
