@@ -62,6 +62,12 @@ export default class Bundle extends Component {
 			);
 		}
 
+    if (this.state.user && this.state.user.newsletter) {
+      return (
+        <p className="alert alert-warning mt-4">Vous êtes inscrit(e) à la newsletter. Une fois tous les 2 mois vous recevrez des nouvelles de vos abeilles ainsi que des nôtres. Si vous ne souhaitez pas la recevoir, merci de modifier <Link to="/individual/account">vos préférences.</Link></p>
+      )
+    }
+
 		if (this.state.user && !this.state.user.bundles[0]) {
 			return (<Redirect to="/individual/wish" />);
 		}
