@@ -56,6 +56,8 @@ export default class AdminManageBundleId extends Component {
 					<div className="col-lg-6">
 						<Payment state={this.state.bundle.state.toString()} changeState={this.changeState} submitState={this.submitState} />
 						<Bills bundleId={this.state.bundle.id} />
+					</div>
+					<div className="col-lg-6">
 						{this.state.owner.user_type == 2 ?<Parrains parrain={this.state.owner} bundleLabel={this.state.bundle.label}/>
 						:null}
 					</div>

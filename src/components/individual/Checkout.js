@@ -56,6 +56,7 @@ export default class IndividualCheckout extends Component {
 		}, this.refs.notif)
 		.then((res) => {
 			this.setState({
+				user: res,
 				name: res.name,
 				firstname: res.firstname,
 				bees: res.bundles[0].bees,
@@ -68,7 +69,7 @@ export default class IndividualCheckout extends Component {
 				present_email: res.bundles[0].email,
 				present_firstname: res.bundles[0].firstname,
 				present_name: res.bundles[0].name,
-				present_date: moment(res.bundles[0].present_date),
+				present_date: moment(res.bundles[0].start_date),
 				bundleState: res.bundles[0].state
 			});
 			request({
@@ -107,6 +108,7 @@ export default class IndividualCheckout extends Component {
 			method: 'put',
 			data : {
 				state: 1,
+				present_date: (this.state.present)?this.state.present_date:new Date(),
 				present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
 		}, this.refs.notif).then((res) => {
@@ -145,7 +147,6 @@ export default class IndividualCheckout extends Component {
 		this.setState({
 			redirect: true
 		})
-
 	}
 
 	changeBundle() {
@@ -166,7 +167,7 @@ export default class IndividualCheckout extends Component {
 					present: this.state.present,
 					present_email: this.state.present_email,
 					present_message: this.state.present_message,
-					present_date: (this.state.present_date)?this.state.present_date:new Date(),
+					present_date: (this.state.present)?this.state.present_date:new Date(),
 					present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1)),
 					present_name: this.state.present_name,
 					present_firstname: this.state.present_firstname
@@ -190,6 +191,26 @@ export default class IndividualCheckout extends Component {
 					console.log('diff ok');
 				})
 			})
+	}
+
+	send_mail_6() {
+		request({
+			url: '/bill/bundle/'+this.state.bundle_id,
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			request({
+				url: '/mail/send_6',
+				method: 'put',
+				data : {
+					owner: this.state.user,
+					bill: res
+				}
+			}, this.refs.notif).then((res) => {
+			 console.log("mail envoyer");
+			})
+		}, this.refs.notif).then((res) => {
+			this.setWaitingPayment();
+		})
 	}
 
     render () {
@@ -256,6 +277,7 @@ export default class IndividualCheckout extends Component {
 										        selected={this.state.present_date}
 										        onChange={this.handleDateChange.bind(this)}
 												className="form-control"
+												minDate={new Date()}
 											    />
 										</div>
 									</form>
@@ -310,7 +332,7 @@ export default class IndividualCheckout extends Component {
 										</p>
 										<p>
 											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement effectué</button>
+											<button onClick={this.send_mail_6.bind(this)} className="btn btn-primary">Virement effectué</button>
 										</p>
 									</div>
 								}

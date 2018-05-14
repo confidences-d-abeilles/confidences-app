@@ -3,6 +3,9 @@ import logoSquare from '../assets/img/logo-square.png';
 import { NavLink, Link, Redirect } from 'react-router-dom';
 import { isLoggedIn } from '../services/AuthService';
 import FontAwesome from 'react-fontawesome'
+import { handleChange } from '../services/FormService'
+import request from '../services/Net';
+import NotificationSystem from 'react-notification-system'
 
 export default class Header extends Component {
 
@@ -10,13 +13,33 @@ export default class Header extends Component {
 		super(props);
 		this.state = {
 			redirect : false,
-			banner: true
+			banner: true,
+			email: '',
+			firstname: ''
 		}
+	}
+
+	Newsletter(e) {
+		e.preventDefault();
+		 console.log(this.state.email);
+		 console.log(this.state.firstname);
+		 request({
+ 			url: '/newsletter/create',
+ 			method: 'put',
+			data: {
+				firstname: this.state.firstname,
+				email: this.state.email
+			}
+ 		}, this.refs.notif).then((res) => {
+			this.setState({email: '', firstname: ''});
+ 			console.log('good');
+ 		})
 	}
 
 	render () {
 		return (
 			<div>
+				<NotificationSystem ref="notif" />
 				{this.state.banner &&
 				<div style={{ width: '100%', height: 'auto', backgroundColor: '#424242', color: 'white', lineHeight: '3em', textAlign: 'center' }}>
 					&nbsp;&nbsp;Ceci est la première version de la plateforme. Si vous rencontrez des difficultés au cours de son utilisation, <Link to="/contact">contactez nous</Link> ! <button className="btn btn-link" onClick={() => { this.setState({ banner: false }); }}>Fermer</button>
@@ -127,6 +150,20 @@ export default class Header extends Component {
 					</ul>
 					:
 					<ul className="navbar-nav hidden-md-down">
+						{/* <li className="nav-item">
+							<a className="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Newsletter
+							</a>
+							<div className="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink" >
+								<form onSubmit={this.Newsletter.bind(this)}>
+									<div className="form-group">
+										<input type="text" className="form-control" name="firstname" onChange={handleChange.bind(this)} value={this.state.firstname} placeholder='prénom'/>
+										<input type="text" className="form-control" name="email" onChange={handleChange.bind(this)} value={this.state.email} placeholder='email'/>
+										<button className="btn btn-secondary btn-sm">Soumettre</button>
+									</div>
+								</form>
+							</div>
+						</li> */}
 						<li className="nav-item">
 							<NavLink className="nav-link" to="/company/presentation" activeStyle={{backgroundColor: 'rgb(230,230,230)',
 							boxShadow: '0px 0px 5px 2px rgb(230,230,230)'}}>Entreprise</NavLink>
