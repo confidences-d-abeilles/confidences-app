@@ -6,8 +6,8 @@ import { logout } from '../../../services/AuthService'
 import { handleChange } from '../../../services/FormService'
 import ReactGA from 'react-ga';
 import FontAwesome from 'react-fontawesome'
-import { Redirect } from 'react-router-dom'
 import Meta from '../../utils/Meta'
+import { NavLink, Link, Redirect } from 'react-router-dom'
 
 export default class Account extends Component {
 
@@ -50,6 +50,19 @@ export default class Account extends Component {
 		}
 	}
 
+
+    updateNewsletter (e) {
+      this.setState({
+        newsletter: e.target.value
+      })
+      request({
+        url: '/Newsletter/giveup',
+        method: 'PUT'
+      },this.refs.notif).then((res) => {
+        console.log("change newsletter admision");
+      })
+    }
+
     render () {
         return (
             <div className="row">
@@ -70,6 +83,22 @@ export default class Account extends Component {
                                 </div>
                                 <button className="btn btn-primary mb-4">Enregistrer</button>
                             </form>
+                            <h3 className="text-center my-4"><small>Newsletter</small></h3>
+                            {this.state.newsletter ?
+                              <div>
+                              <h3 className="text-center my-4"><small>Vous êtes inscrit à la newsletter.</small></h3>
+                                <div className="text-center">
+                                  <Link className="btn btn-warning btn-sm" to="/Newsletter/Signup">Me désinscrire</Link>
+                                </div>
+                              </div>
+                            :
+                            <div>
+                            <h3 className="text-center my-4"><small>Vous n'êtes pas inscrit à la newsletter.</small></h3>
+                              <div className="text-center">
+                                <Link className="btn btn-warning btn-sm" to="/Newsletter/Signup">M'inscrire</Link>
+                              </div>
+                            </div>
+                          }
                         </div>
                         <div className="col-lg-6 text-center">
                             <h3 className="text-center my-4"><small>Supprimer mon compte</small></h3>

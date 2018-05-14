@@ -157,8 +157,8 @@ export default class Header extends Component {
 							<div className="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink" >
 								<form onSubmit={this.Newsletter.bind(this)}>
 									<div className="form-group">
-										<input type="text" className="form-control" name="email" onChange={handleChange.bind(this)}  placeholder='email'/>
-										<input type="text" className="form-control" name="firstname" onChange={handleChange.bind(this)}  placeholder='prénom'/>
+										<input type="text" className="form-control" name="firstname" onChange={handleChange.bind(this)} value={this.state.firstname} placeholder='prénom'/>
+										<input type="text" className="form-control" name="email" onChange={handleChange.bind(this)} value={this.state.email} placeholder='email'/>
 										<button className="btn btn-secondary btn-sm">Soumettre</button>
 									</div>
 								</form>
