@@ -147,7 +147,6 @@ export default class IndividualCheckout extends Component {
 		this.setState({
 			redirect: true
 		})
-
 	}
 
 	changeBundle() {
