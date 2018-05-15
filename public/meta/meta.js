@@ -99,6 +99,38 @@ module.exports = {
 					ogurl: "https://parrainagederuches.fr/hives",
 					ogimg: "https://parrainagederuches.fr/metastatic/hives.jpg"
 				}
+			case '/parrains/perus':
+				return {
+					title: "Perus",
+					ogtitle: "Les Perús bees volent dans les Alpes !",
+					ogdescription: "L’éthique, le respect, la promotion de l’artisanat local et du savoir-faire ont toujours été nos leitmotivs. Ces apiculteurs les partagent aussi pour préserver l’apiculture française. On a eu envie de leur donner un coup de main ! On se régale d’avance !",
+					ogurl: "https://parrainagederuches.fr/parrains/perus",
+					ogimg: "https://parrainagederuches.fr/metastatic/perus.jpg"
+				}
+			case '/parrains/agencethuria':
+				return {
+					title: "Thuria",
+					ogtitle: "Bzz bzz... Ça bourdonne chez Thuria !",
+					ogdescription: "Thuria prend son envol avec 2 ruches parrainées chez Confidences d’Abeilles ! La « ruche » ne bourdonne plus seulement de talents, mais de véritables abeilles !",
+					ogurl: "https://parrainagederuches.fr/parrains/agencethuria",
+					ogimg: "https://parrainagederuches.fr/metastatic/thuria.jpg"
+				}
+			case '/parrains/injection-74':
+				return {
+					title: "Injection 74",
+					ogtitle: "Une ruche pour réaffirmer nos engagements environnemantaux !",
+					ogdescription: "Bien conscients que notre activité économiques à des conséquences environnementales, nous agissons concrètement pour préserver la biodiversité en parrainant une ruche. C'est aussi le moyen de sensibiliser nos clients à l'intégration de matières recyclées dans nos produits.",
+					ogurl: "https://parrainagederuches.fr/parrains/injection-74",
+					ogimg: "https://parrainagederuches.fr/metastatic/injection74.jpg"
+				}
+			case '/parrains/imag-in-tech':
+				return {
+					title: "Imagin Tech",
+					ogtitle: "Bee connected avec IMAG'IN TECH !",
+					ogdescription: "IMAG'IN TECH ne se contente plus seulement d'améliorer et simplifier votre environnement domestique, elle participe à la protection de la biodiversité. En parrainant une ruche, IMAG’IN TECH veut sensibiliser ses clients à l’installation de système économe en énergie.",
+					ogurl: "https://parrainagederuches.fr/parrains/imag-in-tech",
+					ogimg: "https://parrainagederuches.fr/metastatic/imagin-tech.jpg"
+				}
 			default:
 				return {
 					...init
