@@ -525,25 +525,7 @@ export default class AdminManageUsers extends Component {
 												<div className="card-block">
 													<h3 className="card-title">Historique de mails</h3>
 													<p className="card-text">
-														1 : Premiers pas (inscription)<br />
-														2 : Houston we had a problem<br />
-														3 : Paiement en attente de validation (clic sur virement effectué)<br />
-														4 : Fin onboard avec payer plus tard<br />
-														5 : Confirmation parrainage (CB ok)<br />
-														6 : Virement OK<br />
-														7 : Échec paiement<br />
-														8 : Attribution ruche en cours<br />
-														9 : Bonne nouvelle (ruche attribuée)<br />
-														10 : Cadeau<br />
-														11 : Attribution longue<br />
-														12 : Relance 4 jours<br />
-														13 : Relance 2 semaines <br />
-														14 : Relance 4 semaines <br />
-														15 : Relance 8 semaines <br />
-														16 : Expedition miel <br />
-														202 : Paiement attente<br />
-														203 : Attribution ruche en cours<br />
-														205 : Virement ok
+														16 : Oups... <br />
 													</p>
 													<p className="card-table">
 														<table className="table table-sm">
