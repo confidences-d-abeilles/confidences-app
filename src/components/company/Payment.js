@@ -13,7 +13,8 @@ export default class CompanyPayment extends Component {
 		super(props);
 		this.state = {
 			bees: null,
-			redirect: false
+			redirect: false,
+			company_name: null
 		}
 		ReactGA.pageview(this.props.location.pathname);
 	}
@@ -28,7 +29,8 @@ export default class CompanyPayment extends Component {
 				bees: res.bundles[0].bees,
 				price: res.bundles[0].price,
 				bundle_id: res.bundles[0].id,
-				duplicate: true
+				duplicate: true,
+				company_name: res.company_name
 			});
 			request({
 				url: '/bill/bundle/'+res.bundles[0].id,
