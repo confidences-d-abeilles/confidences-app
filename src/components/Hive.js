@@ -60,7 +60,7 @@ export default class Hive extends Component {
 									{this.state.hive &&
 										this.state.hive.parrains.map((user, key) => {
 											return (
-												<h3 key={key} className="my-0"><small>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</small><br />{(key+1 < this.state.hive.parrains.length)?' ~':''}</h3>
+												<h3 key={key} className="my-0"><small><a href={"/parrains/"+user.namespace} target="_blank">{(user.company_name)?user.company_name:user.firstname+' '+user.name}</a></small><br />{(key+1 < this.state.hive.parrains.length)?' ~':''}</h3>
 											)
 										})}
 								</div>

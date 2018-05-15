@@ -67,6 +67,27 @@ export default class CompanyPayment extends Component {
 		});
 	}
 
+
+		 send_mail_6() {
+			 request({
+				 url: '/bill/bundle/'+this.state.bundle_id,
+				 method: 'get'
+			 }, this.refs.notif).then((res) => {
+				 request({
+					 url: '/mail/send_6',
+					 method: 'put',
+					 data : {
+						 owner: this.state.user,
+						 bill: res
+					 }
+				 }, this.refs.notif).then((res) => {
+					console.log("mail envoyer");
+				 })
+			 }, this.refs.notif).then((res) => {
+				 this.setWaitingPayment();
+			 })
+		 }
+
 	setWaitingPayment() {
 		const data = new FormData();
 		data.append('state', 1);
@@ -116,7 +137,7 @@ export default class CompanyPayment extends Component {
 						</p>
 					<p className="text-center">
 						<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement effectué</button>
+						<button onClick={this.send_mail_6.bind(this)} className="btn btn-primary">Virement effectué</button>
 					</p>
 					</div>
 				</div>

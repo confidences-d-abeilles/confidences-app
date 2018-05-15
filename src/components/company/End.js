@@ -73,8 +73,7 @@ export default class CompanyEnd extends Component {
 				}, this.refs.notif).then((res) =>{
 					})
 			})
-			console.log(user.id);
-			console.log(user);
+
 			request({
   			url: '/newsletter/create',
   			method: 'put',
@@ -83,7 +82,7 @@ export default class CompanyEnd extends Component {
 	 				email: user.email,
 					id: user.id
 	 			}
-  		}, this.refs.notif).then((res) => {
+  		}).then((res) => {
   			console.log('good');
   		})
 			setTimeout(() => {this.setState({ redirecte: true })}, 8000);

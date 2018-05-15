@@ -55,10 +55,7 @@ export default class IndividualEnd extends Component {
       				})
       			})
           }
-
         })
-        console.log(user);
-        console.log(user.id);
         request({
     			url: '/newsletter/create',
     			method: 'put',
@@ -67,7 +64,7 @@ export default class IndividualEnd extends Component {
   	 				email: user.email,
             id: user.id
   	 			}
-    		}, this.refs.notif).then((res) => {
+    		}).then((res) => {
     		})
         setTimeout(() => {this.setState({ redirecte: true })}, 8000);
       })
