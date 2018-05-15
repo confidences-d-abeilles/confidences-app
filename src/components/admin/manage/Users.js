@@ -8,6 +8,7 @@ import Meta from '../../utils/Meta'
 import Confirm from '../../utils/Confirm'
 import Address from '../../utils/Address/Address'
 import UserGeneral from './users/General'
+import FontAwesome from 'react-fontawesome'
 
 import { handleChange, handleTick } from '../../../services/FormService'
 import { EventEmitter } from 'events';
@@ -20,12 +21,20 @@ export default class AdminManageUsers extends Component {
 		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			users : null,
+			filteredUsers : null,
 			selectedUser: null,
 			bsexe_m: '', /* sexe bill */
 			dsexe_m: '',  /* sexe delivery */
 			feedback: '',
 			stateFeedback: 0,
-			supportLevel: null
+			supportLevel: null,
+			filters : {
+				p : true,
+				e : true,
+				aa : true,
+				edit : true,
+				admin : true
+			}
 		}
 	}
 
@@ -40,6 +49,8 @@ export default class AdminManageUsers extends Component {
 		}, this.refs.notif).then((res) => {
 			this.setState({
 				users : res
+			}, () => {
+				this.filter();
 			});
 		})
 	}
@@ -351,22 +362,68 @@ export default class AdminManageUsers extends Component {
 		}
 	}
 
+	checkFilter = (e) => {
+		this.setState({
+			filters : {
+				...this.state.filters,
+				[e.target.name] : !this.state.filters[e.target.name]
+			}
+		}, () => { this.filter() });
+	}
+	filter = () => {
+		const filteredUsers = this.state.users.filter((e) => (
+			(e.user_type === 1 && this.state.filters.p)
+			|| (e.user_type === 2 && this.state.filters.e)
+			|| (e.user_type === 3 && this.state.filters.aa)
+			|| (e.user_type === 4 && this.state.filters.edit)
+			|| (e.user_type === 5 && this.state.filters.admin)
+		));
+		console.log(filteredUsers);
+		this.setState({
+			filteredUsers : filteredUsers
+		});
+	}
+
+	order = () => {
+		const ordered = this.state.filteredUsers.sort((a, b) => {
+			const aCommonName = (a.company_name)?a.company_name:a.name;
+			const bCommonName = (b.company_name)?b.company_name:b.name;
+			if (aCommonName.toLowerCase() < bCommonName.toLowerCase()) return -1;
+			if (aCommonName.toLowerCase() > bCommonName.toLowerCase()) return 1;
+			return 0;
+		});
+		this.setState({
+			filteredUsers : ordered
+		});
+	}
+
 	render () {
 		return (
 			<div className="container-fluid">
 				<Meta title="Gestion des utilisateurs"/>
 				<div className="row">
 					<NotificationSystem ref="notif" />
-					<h2 className="text-center my-4">Gérer les utilisateurs</h2>
+					<div className="col">
+						<h2 className="text-center my-4">Gérer les utilisateurs</h2>
+					</div>
 				</div>
-				<div className="row">
+				<div className="row mb-2">
+					<div className="col">
+						<label htmlFor="p"><input type="checkbox" name="p" id="p" checked={this.state.filters.p} onChange={this.checkFilter} /> Particuliers</label>&nbsp;&nbsp;
+						<label htmlFor="e"><input type="checkbox" name="e" id="e" checked={this.state.filters.e} onChange={this.checkFilter} /> Entreprises</label>&nbsp;&nbsp;
+						<label htmlFor="aa"><input type="checkbox" name="aa" id="aa" checked={this.state.filters.aa} onChange={this.checkFilter} /> Apporteurs d'Affaires</label>&nbsp;&nbsp;
+						<label htmlFor="edit"><input type="checkbox" name="edit" id="edit" checked={this.state.filters.edit} onChange={this.checkFilter} /> Editors</label>&nbsp;&nbsp;
+						<label htmlFor="admin"><input type="checkbox" name="admin" id="admin" checked={this.state.filters.admin} onChange={this.checkFilter} /> Admins</label>&nbsp;&nbsp;
+						<button className="btn btn-link btn-sm" onClick={this.order}>Trier par noms</button>
+					</div>
+				</div>
+				<div className="row">				
 					<div className="col-3" style={{ maxHeight: '50vh', overflowY : 'scroll' }}>
-						{this.state.users?
+						{this.state.filteredUsers?
 						<table className="table table-sm">
 							<tbody>
-								<tr><th>Denomination</th><th></th></tr>
-								{this.state.users.map((user) => {
-									return (<tr key={user.id}><td><span className="badge badge-info">{this.renderType(user.user_type)}</span> {(user.company_name)?user.company_name:user.firstname+' '+user.name}</td><td><button className="btn btn-sm btn-link" onClick={this.selectUser.bind(this, user)}>Manage</button></td></tr>)
+								{this.state.filteredUsers.map((user) => {
+									return (<tr key={user.id}><td><span className="badge badge-info">{this.renderType(user.user_type)}</span> {(user.company_name)?user.company_name:user.name+' '+user.firstname}</td><td><button className="btn btn-sm btn-link" onClick={this.selectUser.bind(this, user)}><FontAwesome name="pencil" /></button></td></tr>)
 								})}
 							</tbody>
 						</table>
