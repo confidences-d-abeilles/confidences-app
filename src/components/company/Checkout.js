@@ -32,7 +32,8 @@ export default class CompanyCheckout extends Component {
 			different: false,
 			delivery_address: {
 				type: 2
-			}
+			},
+			company_name: null
 		}
 	}
 
@@ -52,6 +53,7 @@ export default class CompanyCheckout extends Component {
 				different: res.bundles[0].addr_diff,
 				feedback: res.bundles[0].feedback,
 				user: res,
+				company_name: res.company_name,
 				bundleState: res.bundles[0].state
 			});
 			request({
