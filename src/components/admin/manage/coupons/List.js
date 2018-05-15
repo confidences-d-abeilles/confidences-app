@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import NotificationSystem from 'react-notification-system'
-import Loading from '../../../utils/Loading'
 import request from '../../../../services/Net'
 import moment from 'moment'
 import FontAwesome from 'react-fontawesome'

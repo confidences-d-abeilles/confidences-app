@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Loading from './utils/Loading';
 
 const config = require("../config.js");
 

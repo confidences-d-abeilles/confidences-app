@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { handleChange } from '../../services/FormService';
 import request from '../../services/Net';
 import { Redirect } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
 import ReactGA from 'react-ga';
-import Meta from '../utils/Meta'
 import MainProduct from './wish/MainProduct'
 import Product from './wish/Product'
 
@@ -55,7 +53,7 @@ export default class CompanyWish extends Component {
 
 	updateProducts(product) {
 		let tmp = this.state.products.filter((e, key) => {
-			return (e.id != product.id)
+			return (e.id !== product.id)
 		});
 		tmp.push(product);
 		tmp.sort(this.sortProducts);
@@ -71,9 +69,6 @@ export default class CompanyWish extends Component {
 	}
 
 	calcPrice() {
-		console.log(this.state.couponsOk);
-		console.log(this.state.optionsOk);
-		console.log(this.state.codesOk);
 		this.setState({ price : '0' }, () => {
 			this.state.products.map((e) => {
 				const qty = (e.qty)?parseFloat(e.qty):0;
@@ -109,35 +104,27 @@ export default class CompanyWish extends Component {
 		let tmp4 = [];
 		this.state.coupons.map((coupon) => {
 			this.state.products.forEach((product) => {
-				if (coupon.type == 0 && coupon.product.id == product.id && product.qty >= coupon.min) {
+				if (coupon.type === 0 && coupon.product.id === product.id && product.qty >= coupon.min) {
 					coupon.qty = product.qty;
 					tmp.push(coupon);
 					this.setState((prev) => { price: prev.price - coupon.amount * coupon.qty })
 				}
-				if (coupon.type == 1 && coupon.product.id == product.id) {
+				if (coupon.type === 1 && coupon.product.id === product.id) {
 					coupon.qty = product.qty;
 					tmp2.push(coupon);
 					this.setState((prev) => { price: prev.price - coupon.amount * coupon.qty })
 				}
-				if (coupon.type == 2 && coupon.product.id == product.id && product.qty <= coupon.max) {
+				if (coupon.type === 2 && coupon.product.id === product.id && product.qty <= coupon.max) {
 					coupon.qty = product.qty;
 					tmp3.push(coupon);
 					this.setState((prev) => { price: prev.price - coupon.amount * coupon.qty })
 				}
 			});
 		});
-		tmp3.map((code) => {
-			tmp4 = this.state.codesOk.filter((codeOk) => {
-				if (code.id == codeOk.id) {
-					return true;
-				}
-				return false;
-			})
-		})
 		this.setState({
 			couponsOk: tmp,
 			codes: tmp3,
-			codesOk: tmp4,
+			codesOk: this.state.codesOk,
 			options: tmp2
 		}, () => {
 			this.calcPrice();
@@ -150,7 +137,7 @@ export default class CompanyWish extends Component {
 		let notValid = true;
 		this.state.codes.map((coupon) => {
 			this.state.products.forEach((product) => {
-				if (coupon.type == 2 && coupon.code == this.state.code && coupon.product.id == product.id) {
+				if (coupon.type === 2 && coupon.code === this.state.code && coupon.product.id === product.id) {
 					this.setState({
 						code: '',
 						codeResult: 'Le code a bien été appliqué'
@@ -175,16 +162,15 @@ export default class CompanyWish extends Component {
 	}
 
 	selectOption(e) {
-		console.log("Selecting option");
 		this.setState({
 			optionSelect: e.target.value
 		});
 		let tmp = [];
 		this.state.coupons.map((coupon) => {
-			if (coupon.id == e.target.value) {
+			if (coupon.id === e.target.value) {
 				let tmp2 = coupon;
 				this.state.products.map((e) => {
-					if (e.id == coupon.product.id) {
+					if (e.id === coupon.product.id) {
 						tmp2.qty = e.qty;
 					}
 				});
@@ -204,14 +190,14 @@ export default class CompanyWish extends Component {
 			method: 'get'
 		}, this.refs.notif).then((res) => {
 			res = res.filter((e) => {
-				return (e.type == 10 || e.type == 11)
+				return (e.type === 10 || e.type === 11)
 			})
 			res = res.map((e) => {
 				let tmp = e;
-				if (e.type == 10) {
+				if (e.type === 10) {
 					tmp.qty = '1';
 				}
-				if (e.type == 11) {
+				if (e.type === 11) {
 					tmp.qty = '0';
 				}
 				return tmp;
@@ -274,7 +260,7 @@ export default class CompanyWish extends Component {
 						{this.state.options.map((e) => {
 							return (
 								<div key={e.id} >
-									<input type="radio" id={e.id} name="optionSelect" onChange={this.selectOption.bind(this)} value={e.id} checked={this.state.optionSelect == e.id} />&nbsp;
+									<input type="radio" id={e.id} name="optionSelect" onChange={this.selectOption.bind(this)} value={e.id} checked={this.state.optionSelect === e.id} />&nbsp;
 									<label htmlFor={e.id} >{e.designation} ( { - e.amount} € / ruche )</label>
 									</div>
 								)

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
 import Loading from '../../utils/Loading'
-import { handleChange } from '../../../services/FormService'
 import moment from 'moment'
 
 const config = require('../../../config.js');
@@ -47,6 +45,7 @@ export default class CompanyManageDashboard extends Component {
 					});
 				}
 			}
+			console.log(res.bundles[0]);
 			this.setState({
 				loading : false
 			});
@@ -63,7 +62,7 @@ export default class CompanyManageDashboard extends Component {
 
 	saveNames(e) {
 		e.preventDefault();
-		if (this.state.hivesNames.indexOf('') != -1) {
+		if (this.state.hivesNames.indexOf('') !== -1) {
 			this.refs.notif.addNotification({
 				message : "Il manque certains noms de ruches, veillez à tous les sélectionner.",
 				level: 'warning'

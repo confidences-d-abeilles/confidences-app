@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import Main from '../../assets/img/end_part.jpg';
-import imgPlaceholder from '../../assets/img/img-placeholder.gif';
 import ReactGA from 'react-ga';
+import moment from 'moment'
 import Meta from '../utils/Meta'
 import request from '../../services/Net';
 import NotificationSystem from 'react-notification-system'
+import Loading from '../utils/Loading'
 
 export default class CompanyEnd extends Component {
 
@@ -14,11 +15,12 @@ export default class CompanyEnd extends Component {
 		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			namespace: '',
-			bundleState: 0,
+			loading: false
 		}
 	}
 
 	componentDidMount() {
+		this.setState({loading:true});
 		request({
 			url : '/user/me',
 			method : 'get'
@@ -29,6 +31,8 @@ export default class CompanyEnd extends Component {
 				firstname: res.firstname,
 				name: res.name
 			})
+			let user = res;
+			let bundle = res.bundles[0];
 			request({
 				url : '/bundle/owner/'+res.id,
 				method : 'get'
@@ -36,8 +40,29 @@ export default class CompanyEnd extends Component {
 				this.setState({
 					bundleState: res.state
 				})
+				this.setState({loading:false});
+				if (res.state === 2) {
+					console.log('mail 201');
+					request({
+						url: '/bill/bundle/'+res.id,
+						method: 'get'
+					}, this.refs.notif).then((res) => {
+						request({
+							url: '/mail/send_201',
+							method: 'PUT',
+							data: {
+								owner: user,
+								bundle: bundle,
+								date: moment(new Date()).format("DD/MM/YYYY"),
+								bill: res
+							}
+						}, this.refs.notif).then((res) => {
+							console.log("mail envoyer");
+						})
+					})
+				}
 				request({
-					url : '/marv/ob',
+					url : '/user/marv/ob',
 					method : 'PUT',
 					data : {
 						feedback: res.feedback,
@@ -46,22 +71,38 @@ export default class CompanyEnd extends Component {
 						firstname: this.state.firstname
 					}
 				}, this.refs.notif).then((res) =>{
-
 					})
 			})
-			setTimeout(() => {this.setState({ redirecte: true })}, 6000);
+			console.log(user.id);
+			console.log(user);
+			request({
+  			url: '/newsletter/create',
+  			method: 'put',
+	 			data: {
+	 				firstname: user.firstname,
+	 				email: user.email,
+					id: user.id
+	 			}
+  		}, this.refs.notif).then((res) => {
+  			console.log('good');
+  		})
+			setTimeout(() => {this.setState({ redirecte: true })}, 8000);
 		});
 	}
 
 	render () {
 		return (
-
 			<div className="container py-4">
 				<Meta title="Félicitations"/>
 				<NotificationSystem ref="notif" />
 				{this.state.redirecte ? <Redirect to="/company/manage" /> : null}
 				<div className="row justify-content-center">
-					<div className="col-8">
+				{(this.state.loading)?
+					<div className="col-8 text-center">
+						<h3>En attente de confirmation</h3>
+							<Loading />
+					</div>
+					:<div className="col-8">
 					{!this.state.bundleState ? <h2 className="text-center my-4">Génial ! Vous avez choisi de rejoindre notre aventure.</h2>
             :<h2 className="text-center my-4">Félicitations ! Vous faites désormais partie de la grande famille des parrains de ruches.</h2>
 					}
@@ -82,6 +123,7 @@ export default class CompanyEnd extends Component {
 							</div>
 						</div>
 					</div>
+				}
 				</div>
 			</div>
 		);

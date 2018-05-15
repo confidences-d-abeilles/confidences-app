@@ -7,10 +7,10 @@ import moment from 'moment'
 import Meta from '../../utils/Meta'
 import Confirm from '../../utils/Confirm'
 import Address from '../../utils/Address/Address'
-import UserGeneral from './users/General'
 
 import { handleChange, handleTick } from '../../../services/FormService'
 import { EventEmitter } from 'events';
+
 
 export default class AdminManageUsers extends Component {
 
@@ -70,15 +70,27 @@ export default class AdminManageUsers extends Component {
 	selectUser(user) {
 		this.setState({
 			selectedUser: user,
+			usexe_m: user.sexe_m?'1':'0',
 			bsexe_m: user.addresses[0]?user.addresses[0].sexe_m?'1':'0':'',
 			billing_address: user.addresses[0],
 			dsexe_m: user.addresses[1]?user.addresses[1].sexe_m?'1':'0':'',
 			delivery_address: user.addresses[1],
 			feedback: (user.comment)?user.comment:'',
 			supportLevel: (user.support_lvl)?user.support_lvl.toString():'',
-		}, () => {
-			console.log(this.state.selectedUser);
+			userType: user.user_type
 		});
+		console.log(user);
+		request({
+			url: '/bundle/owner/'+user.id,
+			method: 'GET'
+		}, this.refs.notif).then((res) => {
+			console.log(res);
+				if (res) {
+				this.setState({
+					bundle_id: res.id
+				})
+			}
+		})
 	}
 
 	renderType(type) {
@@ -93,7 +105,27 @@ export default class AdminManageUsers extends Component {
 				return ("Editor");
 			case 5:
 				return ("Admin");
+
 		}
+	}
+
+	sendMail16() {
+		request({
+			url: '/bill/bundle/'+this.state.bundle_id,
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			request({
+				url: '/mail/send_16',
+				method: 'put',
+				data : {
+					owner: this.state.selectedUser,
+					bill: res
+				}
+			}, this.refs.notif).then((res) => {
+			 console.log("mail envoyer");
+			})
+		}, this.refs.notif).then((res) => {
+		})
 	}
 
 	sendMail202() {
@@ -353,27 +385,8 @@ export default class AdminManageUsers extends Component {
 												<div className="card">
 													<div className="card-block">
 														<h3 className="card-title">Adresse de facturation</h3>
-														<p className="card-text">
-															<div className="form-group d-flex">
-													      <label className="radio-inline form-check-label">
-													        <input type="radio" className="form-check-input" name="bsexe_m" value="1" onChange={this.updateSexe.bind(this)} checked={this.state.bsexe_m === '1'}/>
-													        &nbsp;M
-													      </label>
-														    <label className="radio-inline form-check-label ml-4">
-													        <input type="radio" className="form-check-input" name="bsexe_m" value="0" onChange={this.updateSexe.bind(this)} checked={this.state.bsexe_m === '0'}/>
-													        &nbsp;Mme
-													      </label>
-															</div>
-															{this.state.selectedUser.addresses[0].line1}<br />
-															{this.state.selectedUser.addresses[0].line2}<br />
-															{this.state.selectedUser.addresses[0].line3}<br />
-															{this.state.selectedUser.addresses[0].line4}<br />
-															{this.state.selectedUser.addresses[0].zipcode} {this.state.selectedUser.addresses[0].city}<br />
-															{this.state.selectedUser.addresses[0].country}
-														</p>
 														<div>
-															<h3 className="text-center my-4"><small>Adresse de facturation</small></h3>
-															<Address data={this.state.billing_address} />
+															<Address data={this.state.billing_address} company={this.state.selectedUser.user_type === 2?true:false}/>
 														</div>
 													</div>
 											</div>
@@ -432,29 +445,9 @@ export default class AdminManageUsers extends Component {
 												<div className="card">
 													<div className="card-block">
 														<h3 className="card-title">Adresse de livraison :</h3>
-														<p className="card-text">
-															<div className="form-group d-flex">
-													      <label className="radio-inline form-check-label">
-													        <input type="radio" className="form-check-input" name="dsexe_m" value="1" onChange={this.updateSexe.bind(this)} checked={this.state.dsexe_m === '1'}/>
-													        &nbsp;M
-													      </label>
-														    <label className="radio-inline form-check-label ml-4">
-													        <input type="radio" className="form-check-input" name="dsexe_m" value="0" onChange={this.updateSexe.bind(this)} checked={this.state.dsexe_m === '0'}/>
-													        &nbsp;Mme
-													      </label>
+															<div>
+																<Address data={this.state.delivery_address} company={this.state.selectedUser.user_type === 2?true:false}/>
 															</div>
-															{this.state.selectedUser.addresses[1].line1}<br />
-															{this.state.selectedUser.addresses[1].line2}<br />
-															{this.state.selectedUser.addresses[1].line3}<br />
-															{this.state.selectedUser.addresses[1].line4}<br />
-															{this.state.selectedUser.addresses[1].zipcode} {this.state.selectedUser.addresses[1].city}<br />
-															{this.state.selectedUser.addresses[1].country}<br />
-															{this.state.selectedUser.addresses[1].phone}
-														</p>
-													</div>
-													<div className="card-block">
-														<h3 className="text-center my-4"><small>Adresse de livraison</small></h3>
-														<Address data={this.state.delivery_address} />
 													</div>
 												</div>
 											</div>
@@ -464,13 +457,9 @@ export default class AdminManageUsers extends Component {
 												<div className="card-block">
 													<h3 className="card-title">Envoi de mails</h3>
 													<p className="card-text">
-														<button className="btn btn-sm btn-info my-2" onClick={this.sendHoustonMail.bind(this)} >2 : Houston we had a problem</button><br />
-														<button className="btn btn-sm btn-info my-2" onClick={this.sendLaterMail.bind(this)} >4 : Fin onboard avec payer plus tard</button><br />
-														<button className="btn btn-sm btn-info my-2" onClick={this.sendEncoursMail.bind(this)} >8 : Attribution ruche en cours</button><br />
-														<button className="btn btn-sm btn-info my-2" onClick={this.sendCadeauMail.bind(this)} >10 : Cadeau</button><br />
-														<button className="btn btn-sm btn-warning my-2" onClick={this.sendMail202.bind(this)} >202 : Paiement attente</button><br />
-														<button className="btn btn-sm btn-warning my-2" onClick={this.sendMail203.bind(this)} >203 : Attribution ruche en cours</button><br />
-														<button className="btn btn-sm btn-warning my-2" onClick={this.sendMail205.bind(this)} >205 : Virement ok</button><br />
+														{this.state.bundle_id ? <button className="btn btn-sm btn-info my-2" onClick={this.sendMail16.bind(this)} >16 : Oups... </button>
+														: null
+														}
 													</p>
 												</div>
 											</div>

@@ -47,7 +47,7 @@ export default class Bundle extends Component {
 		if (this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].state === 0 ) {
 			return (
                 <div className="text-center">
-                    <p className="alert alert-danger mt-4">Vous n'avez pas encore réglé votre parrainage. <Link to="/individual/checkout">Cliquez ici</Link> pour le faire maintenant</p>
+                    <p className="alert alert-danger mt-4">Vous n'avez pas encore réglé votre parrainage. <Link to="/individual/payment">Cliquez ici</Link> pour le faire ou <Link to="/individual/checkout">là pour modifier</Link> l'offre choisie</p>
     				<a href="#" className="btn btn-secondary m-2 disabled" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
                 </div>
 			);
@@ -61,6 +61,12 @@ export default class Bundle extends Component {
                 </div>
 			);
 		}
+
+    if (this.state.user && this.state.user.newsletter) {
+      return (
+        <p className="alert alert-warning mt-4">Vous êtes inscrit(e) à la newsletter. Une fois tous les 2 mois vous recevrez des nouvelles de vos abeilles ainsi que des nôtres. Si vous ne souhaitez pas la recevoir, merci de modifier <Link to="/individual/manage/account">vos préférences.</Link></p>
+      )
+    }
 
 		if (this.state.user && !this.state.user.bundles[0]) {
 			return (<Redirect to="/individual/wish" />);
@@ -95,6 +101,18 @@ export default class Bundle extends Component {
 
 
     render () {
+
+        let dispDateInfoCadeau;
+        if (this.state.user && this.state.user.bundles[0]){
+            if (this.state.user.bundles[0].state < 2 && this.state.user.bundles[0].present &&
+                moment(this.state.user.bundles[0].start_date).isBefore(moment())) {
+                dispDateInfoCadeau = moment().format("DD/MM/YYYY");
+            }
+            else {
+                dispDateInfoCadeau = moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY");
+            }
+        }
+
         return (
             <div>
                 <Meta title="Mon parrainage" />
@@ -118,7 +136,9 @@ export default class Bundle extends Component {
                                 <h3 className="text-center"><small>J'ai choisi d'offrir mon parrainage à</small></h3>
                                 <strong>{this.state.present_firstname} {this.state.present_name}</strong><br />
                                 dont l'adresse mail est <strong>{this.state.present_email}</strong><br />
-                            Les premières informations sur ce cadeau seront envoyées le <strong>{moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}</strong><br /><br />
+                                Les premières informations sur ce cadeau seront envoyées le <strong>{dispDateInfoCadeau}</strong><br />
+                            {(this.state.user.bundles[0].state < 2) ? (<div>
+                                    Tant que votre parrainage n'est pas réglé, le bénéficiaire du cadeau ne sera pas informé !<br /></div>):null}<br />
                         <button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ edit_present : true })}}><FontAwesome name="pencil" /> Modifier ces informations</button>
                     </div>}
                     {this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].present && this.state.edit_present &&

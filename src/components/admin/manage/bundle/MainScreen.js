@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import request from '../../../../services/Net'
 import List from './List'
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import request from '../../services/Net';
 import { handleChange, handleTick } from '../../services/FormService'
 import NotificationSystem from 'react-notification-system'
@@ -56,6 +56,7 @@ export default class IndividualCheckout extends Component {
 		}, this.refs.notif)
 		.then((res) => {
 			this.setState({
+				user: res,
 				name: res.name,
 				firstname: res.firstname,
 				bees: res.bundles[0].bees,
@@ -68,7 +69,8 @@ export default class IndividualCheckout extends Component {
 				present_email: res.bundles[0].email,
 				present_firstname: res.bundles[0].firstname,
 				present_name: res.bundles[0].name,
-				present_date: moment(res.bundles[0].present_date)
+				present_date: moment(res.bundles[0].start_date),
+				bundleState: res.bundles[0].state
 			});
 			request({
 				url: '/bill/bundle/'+res.bundles[0].id,
@@ -77,14 +79,17 @@ export default class IndividualCheckout extends Component {
 				this.setState({
 					bill_number: res.number
 				});
-
 			});
-				res.addresses.map((address) => {
-					if (address.type == 1) {
+				res.addresses.forEach((address) => {
+					if (address.type === 1) {
 						this.setState({ billing_address: address })
+						console.log(address);
 					}
-					if (address.type == 2) {
-						this.setState({ delivery_address: address })
+					if (address.type === 2) {
+						this.setState({
+							delivery_address: address,
+							different: address.addr_diff
+						})
 					}
 				})
 		});
@@ -103,6 +108,7 @@ export default class IndividualCheckout extends Component {
 			method: 'put',
 			data : {
 				state: 1,
+				present_date: (this.state.present)?this.state.present_date:new Date(),
 				present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
 		}, this.refs.notif).then((res) => {
@@ -141,14 +147,13 @@ export default class IndividualCheckout extends Component {
 		this.setState({
 			redirect: true
 		})
-
 	}
 
 	changeBundle() {
 		request({
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'delete'
-		}, this.refs.notif). then((res) => {
+		}, this.refs.notif).then((res) => {
 			this.setState({ back : true });
 		})
 	}
@@ -162,7 +167,7 @@ export default class IndividualCheckout extends Component {
 					present: this.state.present,
 					present_email: this.state.present_email,
 					present_message: this.state.present_message,
-					present_date: (this.state.present_date)?this.state.present_date:new Date(),
+					present_date: (this.state.present)?this.state.present_date:new Date(),
 					present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1)),
 					present_name: this.state.present_name,
 					present_firstname: this.state.present_firstname
@@ -173,6 +178,41 @@ export default class IndividualCheckout extends Component {
 		});
 	}
 
+	changeAddress(e) {
+			this.setState({
+				different : !this.state.different,
+				delivery_address: { ...this.state.delivery_address, ['addr_diff'] : !this.state.different}
+			}, () => {
+				request({
+					url: '/address/diff',
+					method: 'PUT',
+					data: this.state.delivery_address
+				}, this.refs.notif).then((res) => {
+					console.log('diff ok');
+				})
+			})
+	}
+
+	send_mail_6() {
+		request({
+			url: '/bill/bundle/'+this.state.bundle_id,
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			request({
+				url: '/mail/send_6',
+				method: 'put',
+				data : {
+					owner: this.state.user,
+					bill: res
+				}
+			}, this.refs.notif).then((res) => {
+			 console.log("mail envoyer");
+			})
+		}, this.refs.notif).then((res) => {
+			this.setWaitingPayment();
+		})
+	}
+
     render () {
         return (
 			<div className="container py-4">
@@ -181,6 +221,7 @@ export default class IndividualCheckout extends Component {
 				{(this.state.redirect)?<Redirect to="/individual/end" paiement={true}/>:null}
 				{(this.state.back)?<Redirect to="/individual/wish" />:null}
 				{(this.state.dash)?<Redirect to="/individual/manage" />:null}
+				{(this.state.bundleState > 0)?<Redirect to="/individual/manage" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
@@ -209,8 +250,8 @@ export default class IndividualCheckout extends Component {
 								</div>
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
-								<h3 className="my-4">Adresse de livraison différente {!this.state.saved && <input type="checkbox" name="different" checked={this.state.different} onChange={handleTick.bind(this) }/>}</h3>
-								{!this.state.saved &&
+								<h3 className="my-4">Adresse de livraison différente <input type="checkbox" name="different" checked={this.state.different} onChange={this.changeAddress.bind(this)}/></h3>
+								{this.state.different &&
 									<Address data={this.state.delivery_address} />
 								}
 								<h3 className="mt-5">Ce parrainage est un cadeau {!this.state.present_ok && <input type="checkbox" name="present" checked={this.state.present} onChange={handleTick.bind(this) }/>}</h3>
@@ -236,6 +277,7 @@ export default class IndividualCheckout extends Component {
 										        selected={this.state.present_date}
 										        onChange={this.handleDateChange.bind(this)}
 												className="form-control"
+												minDate={new Date()}
 											    />
 										</div>
 									</form>
@@ -269,7 +311,7 @@ export default class IndividualCheckout extends Component {
 							<div className="col-lg-9 col-md-10 col-sm-12">
 								{this.state.paytype === '0' &&
 									<Elements locale="fr">
-										<PayForm price={this.state.price} before={this.save.bind(this)} bundle={this.state.bundle_id} for={this.state.firstname+' '+this.state.name} endpoint="/individual/end" />
+										<PayForm price={this.state.price} before={this.save.bind(this)} bundle={this.state.bundle_id} date={(this.state.present_date)?this.state.present_date:new Date()} for={this.state.firstname+' '+this.state.name} endpoint="/individual/end" />
 									</Elements>
 								}
 
@@ -282,17 +324,18 @@ export default class IndividualCheckout extends Component {
 											<strong>BIC : </strong>OPSPFR21OKL<br/><br />
 											<strong>Numéro de facture à indiquer dans la référence du virement : </strong>{this.state.bill_number}
 										</p>
-										<p>S’il ne vous est pas possible de procéder de suite au virement nous vous invitions à
-										choisir l’option « Payer plus tard » et à ajouter Confidences d’Abeilles comme un
-										nouveau bénéficiaire sur votre compte. Une fois le bénéficiaire ajouté et le
-										virement réalisé, vous serrez invité à revenir sur cette page et à confirmer votre
-										virement.
-										De notre côté, la validation prend entre 2 et 3 jours. Un mail vous informera de la
-										bonne prise en compte de votre parrainage.</p>
-										<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement effectué</button>
+										<p>
+										Si	votre	banque	vous	impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
+										invitons	à	sélectionner	«	Virement	en	cours	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
+										alors	adressé	3	jours	plus	tard. <br />
+										De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
+										</p>
+										<p>
+											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<button onClick={this.send_mail_6.bind(this)} className="btn btn-primary">Virement effectué</button>
+										</p>
 									</div>
 								}
-
 								{this.state.paytype === '2' &&
 									<div>
 										<p>
