@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import request from '../../services/Net';
 import { handleChange, handleTick } from '../../services/FormService'
 import NotificationSystem from 'react-notification-system'
@@ -111,11 +111,14 @@ export default class IndividualPayement extends Component {
 							<strong>BIC : </strong>OPSPFR21OKL<br/><br />
 							<strong>Numéro de facture à indiquer dans la référence du virement : </strong>{this.state.bill_number}
 						</p>
-						<p>Une fois le bénéficiaire ajouté et le
-						virement réalisé, merci de confirmer le virement ci-dessous.
-						De notre côté, la validation prend entre 2 et 3 jours. Un mail vous informera de la
-						bonne prise en compte de votre parrainage.</p>
+						<p>
+						Si	votre	banque	vous	impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
+						invitons	à	sélectionner	«	Virement	en	cours	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
+						alors	adressé	3	jours	plus	tard. <br />
+						De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
+						</p>
 					<p className="text-center">
+						<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement effectué</button>
 					</p>
 					</div>

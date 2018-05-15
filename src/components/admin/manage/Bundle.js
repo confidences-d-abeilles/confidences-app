@@ -79,19 +79,14 @@ export default class Bundle extends Component {
 		switch(nb) {
 			case 0:
 				return ("Non reglé");
-				break;
 			case 1:
 				return("En attente de validation");
-				break;
 			case 2:
 				return ("Payé");
-				break;
 			case 3:
 				return ("Payé et en place");
-				break;
 			default:
 				return ("N / A");
-				break;
 		}
 	}
 
@@ -133,7 +128,8 @@ export default class Bundle extends Component {
 		e.preventDefault();
 		const data = new FormData();
 		data.append('state', this.state.stateSelector);
-		if (this.state.present == false && this.state.stateSelector === '2') {
+		if (this.state.present === 0 && this.state.stateSelector === '2') {
+			console.log('present === 0');
 			data.append('present_date', new Date());
 			data.append('present_end', new Date(new Date().setFullYear(new Date().getFullYear() + 1)));
 		}
@@ -142,10 +138,30 @@ export default class Bundle extends Component {
 			method: 'put',
 			data : data
 		}, this.refs.notif).then((res) => {
+
+
 			this.props.refresh();
 		});
 	}
+// request for mailjet update Paiement
 
+	// request({
+	// 	url: '/bill/bundle/'+this.props.id,
+	// 	method: 'get'
+	// }, this.refs.notif).then((res) => {
+	// 	request({
+	// 		url: '/mail/send_201',
+	// 		method: 'PUT',
+	// 		data: {
+	// 			owner: this.props.owner,
+	// 			bundle: this.props.bundle,
+	// 			date: moment(new Date()).format("DD/MM/YYYY"),
+	// 			bill: res
+	// 		}
+	// 	}, this.refs.notif).then((res) => {
+	// 		console.log("mail envoyer");
+	// 	})
+// })
 	uploadCertif() {
 		const data = new FormData();
 		if (document.getElementById("certif").files[0]) {
@@ -228,7 +244,8 @@ export default class Bundle extends Component {
 								<div className="card-block">
 									<h3 className="card-title">Demande</h3>
 									<p className="card-text">
-										Date : {moment(this.state.bundle.start_date).format("DD/MM/YYYY")}<br />
+										Begin date : {moment(this.state.bundle.start_date).format("DD/MM/YYYY")}<br />
+										End date : {moment(this.state.bundle.end_date).format("DD/MM/YYYY")}<br />
 										<DatePicker
 											dateFormat="DD/MM/YYYY"
 											selected={this.state.bundleStart}

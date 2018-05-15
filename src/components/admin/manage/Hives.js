@@ -2,12 +2,9 @@ import React, { Component } from 'react'
 import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import { handleChange } from '../../../services/FormService'
-import ReactQuill from 'react-quill'
 import Loading from '../../utils/Loading'
-import DatePicker from 'react-datepicker';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
-import Confirm from '../../utils/Confirm';
-import SquareImg from '../../utils/SquareImg';
 import Feedback from '../../utils/Feedback';
 import ReactGA from 'react-ga';
 import ReactStars from 'react-stars';
@@ -50,6 +47,19 @@ export default class AdminManageHives extends Component {
 		}, this.refs.notif).then((res) => {
 			this.setState({
 				hives: res
+			})
+		})
+	}
+
+	getOne() {
+		console.log("getOne");
+		request({
+			url: '/hive/'+this.state.id_selected,
+			method: 'get'
+		}, this.refs.notif).then((res) => {
+			console.log(res.parrains);
+			this.setState({
+				selected: res
 			})
 		})
 	}
@@ -265,19 +275,23 @@ export default class AdminManageHives extends Component {
 									<tr><th>Nom</th><th>Occupation</th><th></th></tr>
 									{this.state.hives && this.state.hives.map((hive) => {
 										return (
-											<tr className={(this.state.selected.id === hive.id)?'table-info':''}>
+											<tr className={(this.state.selected.id === hive.id)?'table-info':null}>
 												<td>{hive.name}</td><td>{hive.occupation} %</td>
 												<td>
 													<button className="btn btn-link btn-sm" onClick={() => {
 														this.setState({
-															selected : hive,
+															//selected : hive,
+															id_selected: hive.id,
 															ratio : hive.ratio,
 															feedback: hive.feedback,
 															stateFeedback: 0,
 															imgsHive: hive.imgs,
 															info: hive.info
-														}, this.get());
+														}, () => {this.getOne()});
 														}} >Gérer</button>
+														<Link to={"/hive/"+hive.id} className="btn btn-link btn-sm">
+															Voir
+														</Link>
 												</td>
 											</tr>
 										)
@@ -288,8 +302,16 @@ export default class AdminManageHives extends Component {
 						</div>
 					</div>
 					{(this.state.selected)?
-
-					<div className="col-lg-8">
+						<div className="col-lg-8">
+						<div >
+							<h3 className="my-4">Parrain lie a cette ruche</h3>
+							{this.state.selected &&
+								this.state.selected.parrains.map((user, key) => {
+								return (
+									<h2 key={key}><small>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</small><br />{(key+1 < this.state.selected.parrains.length)?' ~':''}</h2>
+								)
+							})}
+						</div>
 						<h3 className="my-4">Noter cette ruche</h3>
 							<ReactStars
 								count={5}
@@ -307,8 +329,8 @@ export default class AdminManageHives extends Component {
 							<h3 className="my-4">Information générale sur la ruche</h3>
 							<textarea rows="5" className="form-control" name="info" onChange={handleChange.bind(this)} value={this.state.info} placeholder="Informations générale concernant la ruche" />
 							<button onClick={this.saveInformation.bind(this)} className="btn btn-primary btn-sm mt-2">Sauvegarder</button>
-
 						</div>
+
 						<Feedback name={this.state.newsModify?this.state.newsModify:null} hiveId={this.state.selected.id}/>
 
 						{this.state.selected.news ?
@@ -343,8 +365,8 @@ export default class AdminManageHives extends Component {
 							<div className="row justify-content-center">
 							{this.state.imgsHive.map((img) => {
 								return(
-									<div className="col-4">
-										<img  onClick={() => {this.changeImg(img)}} width="auto" height="120" src={(img)?config.cdn_url+'/'+img:imgPlaceholder} alt={img} />
+									<div className="col">
+										<img  onClick={() => {this.changeImg(img)}} width="100px" height="100px" src={(img)?config.cdn_url+'/'+img:imgPlaceholder} alt={img} />
 									</div>
 								)
 							})}

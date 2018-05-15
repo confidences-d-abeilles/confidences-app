@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Gaetan from '../assets/img/gaetan.jpg'
 import Nico from '../assets/img/nico.jpg'
 import Clem from '../assets/img/clement.jpg'
+import Benoit from '../assets/img/benoit.jpg'
+import Lea from '../assets/img/lea.jpg'
 import Profile from '../assets/img/profile.png'
 import { Link } from 'react-router-dom'
 import FontAwesome from 'react-fontawesome'
@@ -29,7 +31,8 @@ export default class Team extends Component {
 							<a href="https://www.facebook.com/popowych" target="_blank" rel="noopener noreferrer"><FontAwesome name='facebook-official' size="2x" /></a>&nbsp;&nbsp;&nbsp;
 							<a href="https://twitter.com/GaetanEksz" target="_blank" rel="noopener noreferrer"><FontAwesome name='twitter' size="2x" /></a>&nbsp;&nbsp;&nbsp;
 							<a href="mailto:gaetan@confidencesdabeilles.fr"><FontAwesome name='envelope-o' size="2x" /></a>&nbsp;&nbsp;&nbsp;
-							<a href="https://www.linkedin.com/in/gaetaneksz" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
+							<a href="https://www.linkedin.com/in/gaetaneksz" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>&nbsp;&nbsp;&nbsp;
+							<a href="https://medium.com/@geksz" target="_blank" rel="noopener noreferrer"><FontAwesome name='medium' size="2x" /></a>
 						</p>
 						<p className="text-justify">
 							Gaëtan est en dernière année d’étude à l’Ecole des Mines. Une école d’ingénieur généraliste dans laquelle il est rentré à la suite d’une classe préparatoire en Physique-Chimie. Apiculteur depuis l’âge de 14 ans, il a co-fondé Confidences d’Abeilles en 2015. En tant que président, il a développé la marque et son image en s’occupant entre autres de la communication, du branding et du design. Il est par ailleurs responsable de la production, de la qualité, de la commercialisation et des partenariats de plus en plus nombreux.<br />Passionné d’apiculture, il rédige les articles de vulgarisation du blog et continue de superviser l’association d’apiculture qu’il a fondé sur son campus étudiant.<br />Le projet de parrainage de ruches est pour lui un premier pas. Un premier pas vers la création d’une communauté sociale apicole de personnes averties ; amateurs, professionnels, parrains œuvrant ensemble pour changer la donne. Des synergies avec d’autres acteurs sont déjà en place.
@@ -55,7 +58,7 @@ export default class Team extends Component {
 					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
 						<img src={Clem} alt="Clement" className="w-50 rounded-circle"/>
 						<h3 className="text-center mt-4">CLEMENT CHAMPOUILLON</h3>
-						<h4 className="text-center mb-4"><small>WEB DEVELOPPER</small></h4>
+						<h4 className="text-center mb-4"><small>WEB DEVELOPER</small></h4>
 						<p className="text-center">
 							<a href="https://www.facebook.com/clement.champouillon" target="_blank" rel="noopener noreferrer"><FontAwesome name='facebook-official' size="2x" /></a>&nbsp;&nbsp;&nbsp;
 							<a href="mailto:clement@champouillon.com"><FontAwesome name='envelope-o' size="2x" /></a>&nbsp;&nbsp;&nbsp;
@@ -65,6 +68,48 @@ export default class Team extends Component {
 							Clément est étudiant à l'école 42 (école de développement informatique parisienne) mais également développeur freelance et apiculteur amateur. Il travaille très régulièrement pour des professionnels indépendants ou des jeunes entreprises à la réalisation de leurs sites internet et applications mobiles. Il réalise entre autres la plateforme de parrainage sur laquelle vous naviguez à l'initiative de Confidences d’Abeilles.
 						</p>
 					</div>
+					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
+						<img src={Profile} alt="Someone" className="w-50 rounded-circle"/>
+						<h3 className="text-center mt-4">KEVIN</h3>
+						<h4 className="text-center mb-4"><small>WEB DEVELOPER</small></h4>
+						<p className="text-center">
+						</p>
+						<p className="text-justify">
+							Kevin est lui aussi étudiant à l'école 42. Plus que notre stagiaire web development il seconde Clément dans réalisation de la plateforme et se charge d'implémenter les nombreuses fonctionnalités à venir.
+							<br /><br />
+							Kevin est un excellent grimpeur que vous pourrez croiser sur un bloc parisien.
+						</p>
+					</div>
+				</div>
+				<div className="row justify-content-around">
+					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
+						<img src={Lea} alt="Gaetan" className="w-50 rounded-circle"/>
+						<h3 className="text-center mt-4">LEA</h3>
+						<h4 className="text-center mb-4"><small>MARKETING & COMMUNICATION ASSISTANT</small></h4>
+						<p className="text-center">
+							<a href="mailto:lea@confidencesdabeilles.fr"><FontAwesome name='envelope-o' size="2x" /></a>&nbsp;&nbsp;&nbsp;
+							<a href="https://www.linkedin.com/in/léa-sengèle-147b63149" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
+						</p>
+						<p className="text-justify">
+							Etudiante à l'IAE de Annecy-le-Vieux en dernière année de licence Marketing et communication, Léa, notre jeune stagiaire et amoureuse des produits de la ruche, est aujourd'hui en charge du développement du service de parrainage ainsi que de la communication chez Confidences d'Abeilles.
+						</p>
+					</div>
+					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
+						<img src={Benoit} alt="Benoit" className="w-50 rounded-circle"/>
+						<h3 className="text-center mt-4">BENOÎT LAMANT</h3>
+						<h4 className="text-center mb-4"><small>COMMUNITY & EVENT CONSULTANT</small></h4>
+						<p className="text-center">
+							<a href="https://www.linkedin.com/in/beno%C3%AEt-lamant-88b48a130/" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
+						</p>
+						<p className="text-justify">
+							Après avoir suivi un cursus commercial, Benoît s’oriente vers une licence en Event & Management.
+							Il s’inspire de l’environnement qui l’entoure et le motive dans ses projets.
+							Réel adepte de la communication, il fait de l’adaptation, de l’originalité et du partage de sensations les points clés de sa stratégie opérationnelle.
+							C'est un grand amateur des produits de la ruche.
+						</p>
+					</div>
+				</div>
+				<div className="row justify-content-around">
 					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
 						<img src={Profile} alt="Someone" className="w-50 rounded-circle"/>
 						<h3 className="text-center mt-4">VOUS</h3>

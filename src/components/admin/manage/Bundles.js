@@ -49,7 +49,7 @@ export default class AdminManageBundles extends Component {
 												<td>{(bundle.owner)?bundle.owner.firstname+' '+bundle.owner.name+' '+bundle.owner.company_name:'[corrupted]'}</td>
 												<td>{(bundle.hives)?bundle.hives+' ruches':bundle.bees+' abeilles'}</td>
 												<td>{bundle.state}</td>
-												<td><button className="btn btn-link btn-sm" onClick={() => { this.setState({manage_id : bundle.id })}}>Gérer</button></td>
+												<td><button className="btn btn-link btn-sm" onClick={() => { this.setState({manage_id : bundle.id, bundle_owner: bundle.owner, bundle: bundle})}}>Gérer</button></td>
 											</tr>
 										)
 									})}
@@ -58,7 +58,7 @@ export default class AdminManageBundles extends Component {
 							:<Loading />}
 						</div>
 						<div className="col">
-							{this.state.manage_id != 0 && <Bundle id={this.state.manage_id} refresh={this.get.bind(this)} />}
+							{this.state.manage_id != 0 && <Bundle id={this.state.manage_id} owner={this.state.bundle_owner} bundle={this.state.bundle} refresh={this.get.bind(this)} />}
 						</div>
 					</div>
 				</div>

@@ -5,7 +5,6 @@ import ReactGA from 'react-ga';
 import { Link } from 'react-router-dom';
 import Imagebox from '../../utils/Imagebox'
 
-import logoSquare from '../../../assets/img/logo-square.png';
 import EtiD from '../../../assets/img/label/etiquette_defaut.jpg';
 import DownloadEti from '../../../assets/img/etiquette.zip';
 import EtiAi from '../../../assets/img/label/preview_AI.png';
@@ -100,8 +99,8 @@ export default class CompanyManageCustomize extends Component {
 		return (
 			<div>
 				<div className="row">
-				<NotificationSystem ref="notif" />
-			</div>
+					<NotificationSystem ref="notif" />
+				</div>
 			<div className="row">
 				<div className="col">
 				<h2 className="text-center my-4">Personnaliser nos pots de miel</h2>

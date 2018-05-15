@@ -9,7 +9,10 @@ import moment from 'moment';
 import ReactGA from 'react-ga';
 import Meta from './utils/Meta'
 import Imagebox from './utils/Imagebox'
+import ReactStars from 'react-stars';
+
 const config = require('../config.js')
+
 
 export default class Hive extends Component {
 
@@ -63,26 +66,45 @@ export default class Hive extends Component {
 								</div>
 							</div>
 							<h2 className="mt-5" style={{ fontFamily: "HighTo" }}>INFORMATIONS SUR LA RUCHE</h2>
+							<ReactStars
+								count={5}
+								value={this.state.hive.ratio}
+								edit={false}
+  							size={24}
+							  color2={'#ffd700'} />
 							<div style={{ width : '100%', height: '1px', backgroundColor: 'black'}} className="mb-4" ></div>
 							<p style={{ fontFamily: "HighTo", fontSize: '1.25em' }}>
 								{this.state.hive.info ? this.state.hive.info : 'Aucune information sur cette ruche pour le moment'}
 							</p>
-							<div className="row">
-								{this.state.hive.imgs.map((img) => {
+								{this.state.hive.imgs.map((img, index) => {
 									if (img === this.state.hive.imgs[0]) {
 										return (null);
 									} else {
+										if (index !== 1){ index += 1; }
 										return (
-												<Imagebox className=" col actu-img"
-													src={config.cdn_url+'/'+img}
-													width={'50px'}
-													paddingTop={'50px'}
-													alt={"Photo de la ruche"}
-												/>
+											<div className="row">
+												<div className="col-lg-6">
+													<Imagebox
+														src={config.cdn_url+'/'+this.state.hive.imgs[index]}
+														width={"100%"}
+														paddingTop={"100%"}
+														alt={"Photo de la ruche"}
+													/>
+												</div>
+
+												<div className="col-lg-6">
+													<Imagebox
+														src={this.state.hive.imgs[index+1] ? config.cdn_url+'/'+this.state.hive.imgs[index+1] : null}
+														width={"100%"}
+														paddingTop={"100%"}
+														alt={"Photo de la ruche"}
+													/>
+												</div>
+											</div>
+
 										)
 									}
 								})}
-							</div>
 						</div>
 						<div className="col-lg-7 col-md-4 col-sm-12" style={{ fontFamily: "HighTo", fontSize: '1.25em' }}>
 							<h2 className="text-center">ACTUALITÉS</h2>

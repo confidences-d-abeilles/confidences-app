@@ -55,6 +55,7 @@ export default class Signup extends Component {
 				level: 'error'
 			});
 		} else {
+			console.log(this.state.sexe_m);
 			request({
 				method: 'post',
 				url: '/user',
@@ -68,8 +69,7 @@ export default class Signup extends Component {
 					password : this.state.password,
 					user_type : this.state.user_type
 				}
-			}, this.refs.notificationSystem).catch((err) => {
-			})
+			}, this.refs.notificationSystem)
 			.then((res) => {
 				request({
 					url: '/authenticate',

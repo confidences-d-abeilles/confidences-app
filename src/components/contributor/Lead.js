@@ -80,7 +80,7 @@ export default class ContributorLead extends Component {
 								<input type="text" name="company_name" className="form-control" placeholder="Raison sociale de l'entreprise" onChange={handleChange.bind(this)} />
 							</div>
 							<div className="form-group">
-								<input type="text" name="siret" className="form-control" placeholder="Numero de siret" onChange={this.handlesiret.bind(this)} />
+								<input type="text" name="siret" className="form-control" placeholder="Numéro SIRET" onChange={this.handlesiret.bind(this)} />
 							</div>
 							<div className="form-group">
 								<select name="contact" onChange={handleChange.bind(this)} className="form-control">

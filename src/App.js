@@ -8,7 +8,6 @@ import {
 	Route,
 	Redirect
 } from 'react-router-dom';
-import io from 'socket.io-client'
 import ReactGA from 'react-ga';
 import MyRouter from './components/Router'
 

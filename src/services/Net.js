@@ -23,7 +23,7 @@ const request = function(options, notificationSystem) {
 		  notificationSystem.addNotification({
     		message: error.response.data,
     		level: 'warning'
-    	  });
+			});
 	  } else {
 		  notificationSystem.addNotification({
 			message: error.response.data,

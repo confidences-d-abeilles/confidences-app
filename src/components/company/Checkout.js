@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import request from '../../services/Net';
 import NotificationSystem from 'react-notification-system';
 import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
-import { handleChange, handleTick } from '../../services/FormService';
+import { handleChange } from '../../services/FormService';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta';
 import Address from '../utils/Address/Address';
@@ -21,6 +21,7 @@ export default class CompanyCheckout extends Component {
 			bill_number: '',
 			redirect: false,
 			hives: 0,
+			products : [],
 			paytype: '',
 			price: 0,
 			saved: false,
@@ -28,6 +29,7 @@ export default class CompanyCheckout extends Component {
 			feedback: '',
 			present_date: moment(),
 			wish: false,
+			different: false,
 			delivery_address: {
 				type: 2
 			}
@@ -44,11 +46,13 @@ export default class CompanyCheckout extends Component {
 				hives: res.bundles[0].hives,
 				pots: res.bundles[0].pots,
 				price: res.bundles[0].price,
+				products: res.bundles[0].products,
 				bundle_id: res.bundles[0].id,
 				duplicate: true,
 				different: res.bundles[0].addr_diff,
 				feedback: res.bundles[0].feedback,
-				user: res
+				user: res,
+				bundleState: res.bundles[0].state
 			});
 			request({
 				url: '/bill/bundle/'+res.bundles[0].id,
@@ -58,12 +62,15 @@ export default class CompanyCheckout extends Component {
 					bill_number: res.number
 				});
 			});
-			res.addresses.map((address) => {
-				if (address.type == 1) {
+			res.addresses.forEach((address) => {
+				if (address.type === 1) {
 					this.setState({ billing_address: address })
 				}
-				if (address.type == 2) {
-					this.setState({ delivery_address: address })
+				if (address.type === 2) {
+					this.setState({
+						delivery_address: address,
+						different: address.addr_diff
+					})
 				}
 			})
 		});
@@ -76,6 +83,7 @@ export default class CompanyCheckout extends Component {
 	}
 
 	async setWaitingPayment() {
+		console.log('setWaitingPayment');
 		await this.save();
 		request({
 			url: '/bundle/'+this.state.bundle_id,
@@ -151,6 +159,41 @@ export default class CompanyCheckout extends Component {
 		});
 	}
 
+	changeAddress(e) {
+			this.setState({
+				different : !this.state.different,
+				delivery_address: { ...this.state.delivery_address, ['addr_diff'] : !this.state.different}
+			}, () => {
+				request({
+					url: '/address/diff',
+					method: 'PUT',
+					data: this.state.delivery_address
+				}, this.refs.notif).then((res) => {
+					console.log('diff ok');
+				})
+			})
+	}
+
+	 send_mail_6() {
+		 request({
+			 url: '/bill/bundle/'+this.state.bundle_id,
+			 method: 'get'
+		 }, this.refs.notif).then((res) => {
+			 request({
+				 url: '/mail/send_6',
+				 method: 'put',
+				 data : {
+					 owner: this.state.user,
+					 bill: res
+				 }
+			 }, this.refs.notif).then((res) => {
+				console.log("mail envoyer");
+			 })
+		 }, this.refs.notif).then((res) => {
+			 this.setWaitingPayment();
+		 })
+	 }
+
 	render () {
 		return (
 			<div className="container py-4">
@@ -159,6 +202,7 @@ export default class CompanyCheckout extends Component {
 				{(this.state.redirect)?<Redirect to="/company/end" />:null}
 				{(this.state.dash)?<Redirect to="/company/end" />:null}
 				{(this.state.wish)?<Redirect to="/company/wish" />:null}
+				{(this.state.bundleState > 0)?<Redirect to="/company/manage" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
@@ -173,6 +217,7 @@ export default class CompanyCheckout extends Component {
 							changeBundle={this.changeBundle}
 							hives={this.state.hives}
 							pots={this.state.pots}
+							products={this.state.products}
 							price={this.state.price} />
 						<div className="row justify-content-center">
 							<div className="col-lg-6 col-md-10 col-sm-12">
@@ -184,8 +229,10 @@ export default class CompanyCheckout extends Component {
 								</div>
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
-								<h3 className="my-4">Adresse de livraison</h3>
-								<Address data={this.state.delivery_address} company={true}/>
+								<h3 className="my-4">Adresse de livraison différente <input type="checkbox" name="different" checked={this.state.different} onChange={this.changeAddress.bind(this) }/></h3>
+								{this.state.different &&
+									<Address data={this.state.delivery_address} company={true}/>
+								}
 							</div>
 						</div>
 						<h3 className="my-4">Paiement sécurisé</h3>
@@ -215,10 +262,9 @@ export default class CompanyCheckout extends Component {
 							<div className="col-lg-9 col-md-10 col-sm-12">
 								{this.state.paytype === '0' &&
 									<Elements locale="fr">
-										<PayForm price={this.state.price} bundle={this.state.bundle_id} for={this.state.company_name} endpoint="/company/end" />
+										<PayForm price={this.state.price} before={this.save.bind(this)} bundle={this.state.bundle_id} date={(this.state.present_date)?this.state.present_date:new Date()} for={this.state.company_name} endpoint="/company/end" />
 									</Elements>
 								}
-
 								{this.state.paytype === '1' &&
 									<div>
 										<p>Veuillez trouver nos coordonnées bancaires pour procéder au virement</p>
@@ -228,14 +274,14 @@ export default class CompanyCheckout extends Component {
 											<strong>BIC : </strong>OPSPFR21OKL<br/><br />
 											<strong>Numéro de facture à indiquer dans la référence du virement : </strong>{this.state.bill_number}
 											</p>
-											<p>S’il ne vous est pas possible de procéder de suite au virement nous vous invitions à
-												choisir l’option « Payer plus tard » et à ajouter Confidences d’Abeilles comme un
-												nouveau bénéficiaire sur votre compte. Une fois le bénéficiaire ajouté et le
-												virement réalisé, vous serrez invité à revenir sur cette page et à confirmer votre
-												virement.
-												De notre côté, la validation prend entre 2 et 3 jours. Un mail vous informera de la
-												bonne prise en compte de votre parrainage.</p>
-											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement effectué</button>
+											<p>
+											Si	votre	banque	vous	impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
+											invitons	à	sélectionner	«	Virement	en	cours	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
+											alors	adressé	3	jours	plus	tard. <br />
+											De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
+											</p>
+											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<button onClick={this.send_mail_6.bind(this)} className="btn btn-primary">Virement effectué</button>
 										</div>
 									}
 
