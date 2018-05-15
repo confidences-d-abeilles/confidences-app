@@ -8,6 +8,10 @@ import Meta from '../../utils/Meta'
 import Confirm from '../../utils/Confirm'
 import Address from '../../utils/Address/Address'
 
+import { handleChange, handleTick } from '../../../services/FormService'
+import { EventEmitter } from 'events';
+
+
 export default class AdminManageUsers extends Component {
 
 	constructor(props) {
@@ -16,7 +20,6 @@ export default class AdminManageUsers extends Component {
 		this.state = {
 			users : null,
 			selectedUser: null,
-			usexe_m: '', /* sexe user */
 			bsexe_m: '', /* sexe bill */
 			dsexe_m: '',  /* sexe delivery */
 			feedback: '',
@@ -49,18 +52,24 @@ export default class AdminManageUsers extends Component {
 		});
 	}
 
-	promoteUser(id) {
+	promoteUser = (e) => {
+		this.setState({
+			selectedUser: {
+				...this.state.selectedUser,
+				[e.target.name]: e.target.value
+			}
+		});
 		request({
-			url : '/users/'+id+'/promote',
+			url : '/users/'+this.state.selectedUser.id+'/promote/'+e.target.value,
 			method : 'patch'
 		}, this.refs.notif).then((res) => {
+			this.getUsers();
 		});
 	}
 
 	selectUser(user) {
 		this.setState({
 			selectedUser: user,
-			bundle_id: user.bundles ? user.bundles[0].id : null,
 			usexe_m: user.sexe_m?'1':'0',
 			bsexe_m: user.addresses[0]?user.addresses[0].sexe_m?'1':'0':'',
 			billing_address: user.addresses[0],
@@ -93,9 +102,10 @@ export default class AdminManageUsers extends Component {
 			case 3:
 				return ("AA");
 			case 4:
-				return ("A");
-			default:
-				return (" ")
+				return ("Editor");
+			case 5:
+				return ("Admin");
+
 		}
 	}
 
@@ -221,6 +231,25 @@ export default class AdminManageUsers extends Component {
 		})
 	}
 
+	updateGeneralSexe = (event) => {
+		this.setState({
+			selectedUser : {
+				...this.state.selectedUser,
+				[event.target.name]: (event.target.value === '1')?true:false
+			}
+		})
+		console.log(event.target.value);
+		request({
+			url: '/user/' + this.state.selectedUser.id,
+			method: 'put',
+			data: {
+				sexe_m: (event.target.value === '1')?true:false
+			}
+		}, this.refs.notif).then(() => {
+				this.getUsers();
+		});
+	}
+
 	updateSexe(event) {
 		event.preventDefault();
 		let objState = {};
@@ -332,11 +361,11 @@ export default class AdminManageUsers extends Component {
 				<div className="row">
 					<div className="col-3" style={{ maxHeight: '50vh', overflowY : 'scroll' }}>
 						{this.state.users?
-						<table className="table">
+						<table className="table table-sm">
 							<tbody>
 								<tr><th>Denomination</th><th></th></tr>
 								{this.state.users.map((user) => {
-									return (<tr key={user.id}><td>({this.renderType(user.user_type)}) {(user.company_name)?user.company_name:user.firstname+' '+user.name}</td><td><button className="btn btn-sm btn-link" onClick={this.selectUser.bind(this, user)}>Manage</button></td></tr>)
+									return (<tr key={user.id}><td><span className="badge badge-info">{this.renderType(user.user_type)}</span> {(user.company_name)?user.company_name:user.firstname+' '+user.name}</td><td><button className="btn btn-sm btn-link" onClick={this.selectUser.bind(this, user)}>Manage</button></td></tr>)
 								})}
 							</tbody>
 						</table>
@@ -346,31 +375,10 @@ export default class AdminManageUsers extends Component {
 							<div className="col-lg-9 col-md-12">
 								<div className="row">
 									<div className="col-lg-6 col-md-12 my-2">
-										<div className="card">
-											<div className="card-block">
-												<h3 className="card-title">Informations generales</h3>
-												<p className="card-text">
-													<strong>Date d'inscription :</strong> {moment(this.state.selectedUser.createdAt).format("DD/MM/YYYY HH:mm:ss")}<br />
-													<div className="form-group d-flex">
-											      <label className="radio-inline form-check-label">
-											        <input type="radio" className="form-check-input" name="usexe_m" value="1" onChange={this.updateSexe.bind(this)} checked={this.state.usexe_m === '1'}/>
-											        &nbsp;M
-											      </label>
-												    <label className="radio-inline form-check-label ml-4">
-											        <input type="radio" className="form-check-input" name="usexe_m" value="0" onChange={this.updateSexe.bind(this)} checked={this.state.usexe_m === '0'}/>
-											        &nbsp;Mme
-											      </label>
-													</div>
-													<strong>Nom et prenom :</strong> {this.state.selectedUser.firstname} {this.state.selectedUser.name}<br />
-													{(this.state.selectedUser.company_name)?<span><strong>Nom de la societe :</strong> {this.state.selectedUser.company_name}<br /></span>:null}
-													<strong>Adresse email :</strong> {this.state.selectedUser.email}<br />
-													<strong>Téléphone :</strong> {this.state.selectedUser.phone}<br />
-													<Confirm class="btn btn-secondary btn-sm my-2" action={this.deleteUser.bind(this, this.state.selectedUser.id)} text="Supprimer l'utilisateur" />
-													<button className="btn btn-secondary btn-sm my-2" onClick={this.promoteUser.bind(this, this.state.selectedUser.id)}>Promouvoir l'utilisateur</button>
-												</p>
-											</div>
-
-										</div>
+										<UserGeneral
+											data={this.state.selectedUser}
+											updateSexe={this.updateGeneralSexe}
+											promote={this.promoteUser} />
 									</div>
 										{this.state.selectedUser.addresses && this.state.selectedUser.addresses[0] &&
 											<div className="col-lg-6 col-md-12 my-2">

@@ -107,7 +107,7 @@ export class adminOnly extends Component {
 	}
 
 	componentDidMount() {
-		if (localStorage.getItem('user_type') != 4) {
+		if (localStorage.getItem('user_type') < 4) {
 			this.setState({ denied : true })
 		}
 	}
