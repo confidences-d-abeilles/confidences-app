@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import request from '../../../../services/Net'
 import List from './List'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 export default class AdminManageBundle extends Component {
 
@@ -12,7 +12,8 @@ export default class AdminManageBundle extends Component {
 			filtered: null,
 			criteria: '',
 			e: true,
-			p: true
+			p: true,
+			redirectId : null
 		}
 	}
 
@@ -52,6 +53,12 @@ export default class AdminManageBundle extends Component {
 		});
 	}
 
+	checkValidation = (e) => {
+		if (e.key === 'Enter') {
+			this.setState({ redirectId : this.state.filtered[0].id })
+		}
+	}
+
 	handleFilter = (e) => {
 		this.setState({
 			[e.target.name]: !this.state[e.target.name]
@@ -86,6 +93,7 @@ export default class AdminManageBundle extends Component {
 	render () {
 		return (
 			<div className="row">
+				{this.state.redirectId && <Redirect push to={"/admin/manage/bundle/"+this.state.redirectId} />}
 				<div className="col">
 				{(this.props.match.path === '/admin/manage/bundle/unpaid') &&
 					<ol className="breadcrumb">
@@ -118,7 +126,8 @@ export default class AdminManageBundle extends Component {
 					</ol>}
 					<div className="row my-2">
 						<div className="col-4">
-							<input type="text" className="form-control" value={this.state.criteria} onChange={this.search} placeholder="Rechercher..." />
+							<input type="text" className="form-control" value={this.state.criteria} onChange={this.search} placeholder="Rechercher..." onKeyPress={this.checkValidation} />
+							<small id="emailHelp" class="form-text text-muted">Appuyez sur ⏎ pour accéder au premier parrainage</small>
 						</div>
 						<div className="col-2 my-2">
 							<label htmlFor="p"><input type="checkbox" name="p" id="p" checked={this.state.p} onChange={this.handleFilter} /> Particuliers</label>&nbsp;&nbsp;
