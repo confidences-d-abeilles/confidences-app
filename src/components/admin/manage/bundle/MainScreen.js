@@ -107,6 +107,16 @@ export default class AdminManageBundle extends Component {
 		});
 	}
 
+	select = (id) => {
+		this.setState({
+			redirectId : id
+		});
+	}
+
+	onKeyDown = (e) => {
+		console.log(e);
+	}
+
 	render () {
 		return (
 			<div className="row">
@@ -144,14 +154,14 @@ export default class AdminManageBundle extends Component {
 					<div className="row my-2">
 						<div className="col-4">
 							<input type="text" className="form-control" value={this.state.criteria} ref="searchInput" onChange={this.search} placeholder="Rechercher..." onKeyDown={this.checkValidation} />
-							<small id="emailHelp" class="form-text text-muted">Appuyez sur ⏎ pour accéder au premier parrainage, ⇩ ou ⇧ pour naviguer</small>
+							<small className="form-text text-muted">Appuyez sur ⏎ pour accéder au premier parrainage, ⇩ ou ⇧ pour naviguer</small>
 						</div>
 						<div className="col-2 my-2">
 							<label htmlFor="p"><input type="checkbox" name="p" id="p" checked={this.state.p} onChange={this.handleFilter} /> Particuliers</label>&nbsp;&nbsp;
 							<label htmlFor="e"><input type="checkbox" name="e" id="e" checked={this.state.e} onChange={this.handleFilter} /> Entreprises</label>&nbsp;&nbsp;
 						</div>
 					</div>
-					<List data={this.state.filtered} />
+					<List data={this.state.filtered} select={this.select} />
 				</div>
 			</div>
 		)
