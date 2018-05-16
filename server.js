@@ -9,6 +9,7 @@ const metaLoader = require('./public/meta/meta');
 
 app.use('/', express.static('build'));
 app.use('/metastatic', express.static('public/meta'));
+app.use('/static', express.static('build/static'));
 
 app.get('/*', (req, res) => {
     res.end(composeHtml(html.toString(), metaLoader.load(req.url)));
