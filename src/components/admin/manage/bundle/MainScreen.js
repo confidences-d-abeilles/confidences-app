@@ -18,7 +18,8 @@ export default class AdminManageBundle extends Component {
 	}
 
 	componentDidMount() {
-		this.get()
+		this.get();
+		this.refs.searchInput.focus(); 
 	}
 
 	get() {
@@ -56,6 +57,22 @@ export default class AdminManageBundle extends Component {
 	checkValidation = (e) => {
 		if (e.key === 'Enter') {
 			this.setState({ redirectId : this.state.filtered[0].id })
+		}
+		if (e.key === 'ArrowDown') {
+			const tmp = this.state.filtered;
+			const row = tmp.shift();
+			tmp.push(row);
+			this.setState({
+				filtered : tmp
+			})
+		}
+		if (e.key === 'ArrowUp') {
+			const tmp = this.state.filtered;
+			const row = tmp.pop();
+			tmp.unshift(row);
+			this.setState({
+				filtered : tmp
+			})
 		}
 	}
 
@@ -126,8 +143,8 @@ export default class AdminManageBundle extends Component {
 					</ol>}
 					<div className="row my-2">
 						<div className="col-4">
-							<input type="text" className="form-control" value={this.state.criteria} onChange={this.search} placeholder="Rechercher..." onKeyPress={this.checkValidation} />
-							<small id="emailHelp" class="form-text text-muted">Appuyez sur ⏎ pour accéder au premier parrainage</small>
+							<input type="text" className="form-control" value={this.state.criteria} ref="searchInput" onChange={this.search} placeholder="Rechercher..." onKeyDown={this.checkValidation} />
+							<small id="emailHelp" class="form-text text-muted">Appuyez sur ⏎ pour accéder au premier parrainage, ⇩ ou ⇧ pour naviguer</small>
 						</div>
 						<div className="col-2 my-2">
 							<label htmlFor="p"><input type="checkbox" name="p" id="p" checked={this.state.p} onChange={this.handleFilter} /> Particuliers</label>&nbsp;&nbsp;
