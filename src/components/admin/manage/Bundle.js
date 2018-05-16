@@ -133,7 +133,7 @@ export default class Bundle extends Component {
 		if (this.state.present === 0 && this.state.stateSelector === '2') {
 			console.log('present === 0');
 			data.append('present_date', new Date());
-			data.append('present_end', new Date(new Date().setFullYear(new Date().getFullYear() + 1)));
+			// data.append('present_end', new Date(new Date().setFullYear(new Date().getFullYear() + 1)));
 		}
 		request({
 			url: '/bundle/'+this.props.id,
@@ -145,25 +145,7 @@ export default class Bundle extends Component {
 			this.props.refresh();
 		});
 	}
-// request for mailjet update Paiement
 
-	// request({
-	// 	url: '/bill/bundle/'+this.props.id,
-	// 	method: 'get'
-	// }, this.refs.notif).then((res) => {
-	// 	request({
-	// 		url: '/mail/send_201',
-	// 		method: 'PUT',
-	// 		data: {
-	// 			owner: this.props.owner,
-	// 			bundle: this.props.bundle,
-	// 			date: moment(new Date()).format("DD/MM/YYYY"),
-	// 			bill: res
-	// 		}
-	// 	}, this.refs.notif).then((res) => {
-	// 		console.log("mail envoyer");
-	// 	})
-// })
 	uploadCertif() {
 		const data = new FormData();
 		if (document.getElementById("certif").files[0]) {
