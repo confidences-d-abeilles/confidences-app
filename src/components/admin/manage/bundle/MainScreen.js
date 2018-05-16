@@ -25,8 +25,17 @@ export default class AdminManageBundle extends Component {
 			url: '/bundle',
 			method: 'get'
 		}, this.refs.notif).then((res) => {
+			if (this.props.match.path === '/admin/manage/bundle/unpaid') {
+				res = res.filter((e) => (e.state === 0));
+			}
 			if (this.props.match.path === '/admin/manage/bundle/pending') {
 				res = res.filter((e) => (e.state === 1));
+			}
+			if (this.props.match.path === '/admin/manage/bundle/paid') {
+				res = res.filter((e) => (e.state === 2));
+			}
+			if (this.props.match.path === '/admin/manage/bundle/ok') {
+				res = res.filter((e) => (e.state === 3));
 			}
 			this.setState({
 				bundles : res,
@@ -78,13 +87,32 @@ export default class AdminManageBundle extends Component {
 		return (
 			<div className="row">
 				<div className="col">
-					{(this.props.match.path === '/admin/manage/bundle/pending')?
+				{(this.props.match.path === '/admin/manage/bundle/unpaid') &&
+					<ol className="breadcrumb">
+						<li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
+						<li className="breadcrumb-item"><Link to="/admin/manage/bundle">Parrainages</Link></li>
+						<li className="breadcrumb-item active">Non payés</li>
+					</ol>}
+					{(this.props.match.path === '/admin/manage/bundle/pending') &&
 					<ol className="breadcrumb">
 						<li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
 						<li className="breadcrumb-item"><Link to="/admin/manage/bundle">Parrainages</Link></li>
 						<li className="breadcrumb-item active">En attente de validation</li>
-					</ol>
-					:<ol className="breadcrumb">
+					</ol>}
+					{(this.props.match.path === '/admin/manage/bundle/paid') &&
+					<ol className="breadcrumb">
+						<li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
+						<li className="breadcrumb-item"><Link to="/admin/manage/bundle">Parrainages</Link></li>
+						<li className="breadcrumb-item active">Payés</li>
+					</ol>}
+					{(this.props.match.path === '/admin/manage/bundle/ok') &&
+					<ol className="breadcrumb">
+						<li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
+						<li className="breadcrumb-item"><Link to="/admin/manage/bundle">Parrainages</Link></li>
+						<li className="breadcrumb-item active">Payés et en place</li>
+					</ol>}
+					{(this.props.match.path === '/admin/manage/bundle') &&
+					<ol className="breadcrumb">
 						<li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
 						<li className="breadcrumb-item active">Parrainages</li>
 					</ol>}
