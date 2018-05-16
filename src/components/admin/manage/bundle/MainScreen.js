@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import request from '../../../../services/Net'
 import List from './List'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 export default class AdminManageBundle extends Component {
 
@@ -12,12 +12,14 @@ export default class AdminManageBundle extends Component {
 			filtered: null,
 			criteria: '',
 			e: true,
-			p: true
+			p: true,
+			redirectId : null
 		}
 	}
 
 	componentDidMount() {
-		this.get()
+		this.get();
+		this.refs.searchInput.focus(); 
 	}
 
 	get() {
@@ -52,6 +54,28 @@ export default class AdminManageBundle extends Component {
 		});
 	}
 
+	checkValidation = (e) => {
+		if (e.key === 'Enter') {
+			this.setState({ redirectId : this.state.filtered[0].id })
+		}
+		if (e.key === 'ArrowDown') {
+			const tmp = this.state.filtered;
+			const row = tmp.shift();
+			tmp.push(row);
+			this.setState({
+				filtered : tmp
+			})
+		}
+		if (e.key === 'ArrowUp') {
+			const tmp = this.state.filtered;
+			const row = tmp.pop();
+			tmp.unshift(row);
+			this.setState({
+				filtered : tmp
+			})
+		}
+	}
+
 	handleFilter = (e) => {
 		this.setState({
 			[e.target.name]: !this.state[e.target.name]
@@ -83,9 +107,20 @@ export default class AdminManageBundle extends Component {
 		});
 	}
 
+	select = (id) => {
+		this.setState({
+			redirectId : id
+		});
+	}
+
+	onKeyDown = (e) => {
+		console.log(e);
+	}
+
 	render () {
 		return (
 			<div className="row">
+				{this.state.redirectId && <Redirect push to={"/admin/manage/bundle/"+this.state.redirectId} />}
 				<div className="col">
 				{(this.props.match.path === '/admin/manage/bundle/unpaid') &&
 					<ol className="breadcrumb">
@@ -118,14 +153,15 @@ export default class AdminManageBundle extends Component {
 					</ol>}
 					<div className="row my-2">
 						<div className="col-4">
-							<input type="text" className="form-control" value={this.state.criteria} onChange={this.search} placeholder="Rechercher..." />
+							<input type="text" className="form-control" value={this.state.criteria} ref="searchInput" onChange={this.search} placeholder="Rechercher..." onKeyDown={this.checkValidation} />
+							<small className="form-text text-muted">Appuyez sur ⏎ pour accéder au premier parrainage, ⇩ ou ⇧ pour naviguer</small>
 						</div>
 						<div className="col-2 my-2">
 							<label htmlFor="p"><input type="checkbox" name="p" id="p" checked={this.state.p} onChange={this.handleFilter} /> Particuliers</label>&nbsp;&nbsp;
 							<label htmlFor="e"><input type="checkbox" name="e" id="e" checked={this.state.e} onChange={this.handleFilter} /> Entreprises</label>&nbsp;&nbsp;
 						</div>
 					</div>
-					<List data={this.state.filtered} />
+					<List data={this.state.filtered} select={this.select} />
 				</div>
 			</div>
 		)
