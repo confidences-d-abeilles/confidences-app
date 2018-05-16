@@ -7,6 +7,7 @@ import AdminManageBundles from './manage/Bundles'
 import AdminManageBundle from './manage/bundle/MainScreen'
 import AdminManageBundleId from './manage/bundle/Uniq'
 import AdminManageServer from './manage/Server'
+import AdminManageHome from './manage/Home'
 import Products from './manage/Products'
 import Coupons from './manage/Coupons'
 import request from '../../services/Net'
@@ -66,18 +67,17 @@ export default class CompanyManage extends Component {
 						<div className="col-lg-10 col-md-12">
 							<div className="row">
 								<div className="col-12">
-									{(this.state.user)?this.checkInfos():''}
-								</div>
-							</div>
-							<div className="row">
-								<div className="col-12">
+									<Route exact path="/admin/manage" component={AdminManageHome} />
 									<Route exact path="/admin/manage/users" component={AdminManageUsers} />
 									<Route exact path="/admin/manage/mails" component={AdminManageMails} />
 									<Route exact path="/admin/manage/hives" component={AdminManageHives} />
 									<Route exact path="/admin/manage/bundles" component={AdminManageBundles} />
 									<Route exact path="/admin/manage/bundle" component={AdminManageBundle} />
 									<Switch>
+										<Route exact path="/admin/manage/bundle/unpaid" component={AdminManageBundle} />
 										<Route exact path="/admin/manage/bundle/pending" component={AdminManageBundle} />
+										<Route exact path="/admin/manage/bundle/paid" component={AdminManageBundle} />
+										<Route exact path="/admin/manage/bundle/ok" component={AdminManageBundle} />
 										<Route exact path="/admin/manage/bundle/:id" component={AdminManageBundleId} />
 									</Switch>
 									<Route exact path="/admin/manage/faq" component={AdminManageFaq} />
