@@ -15,30 +15,59 @@ export default class Header extends Component {
 			redirect : false,
 			banner: (localStorage.getItem('hide'))?false:true,
 			email: '',
-			firstname: ''
+			firstname: '',
+			newsletter : false
 		}
-	}
-
-	Newsletter(e) {
-		e.preventDefault();
-		 console.log(this.state.email);
-		 console.log(this.state.firstname);
-		 request({
- 			url: '/newsletter/create',
- 			method: 'put',
-			data: {
-				firstname: this.state.firstname,
-				email: this.state.email
-			}
- 		}, this.refs.notif).then((res) => {
-			this.setState({email: '', firstname: ''});
- 			console.log('good');
- 		})
 	}
 
 	hide = () => {
 		localStorage.setItem("hide", true);
 	}
+
+	subNewsletter = (e) => {
+		e.preventDefault();
+		request({
+			url: '/newsletter',
+			method: 'post',
+			data: {
+				firstname: this.state.firstname,
+				email: this.state.email
+			}
+		}, this.refs.notif).then((res) => {
+			this.refs.newsmodal.style.display = 'none';
+			this.refs.newsmodal.classList.remove("show");
+			this.setState({
+				email: '',
+				firstname: ''
+			});
+		})
+	}
+
+	newsletterPopup = () => (
+		<div className="modal fade" id="newsmodal" data-backdrop={false} ref="newsmodal">
+			<div className="modal-dialog" role="document">
+				<form className="modal-content" onSubmit={this.subNewsletter} >
+					<div className="modal-header">
+						<h5 className="modal-title">S'abonner à la newsletter</h5>
+						<button type="button" className="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div className="modal-body">
+						<div className="form-group">
+							<input type="text" name="firstname" value={this.state.firstname} className="form-control" onChange={handleChange.bind(this)} placeholder="Votre prénom..." />
+						</div>
+						<div className="form-group">
+							<input type="email" name="email" value={this.state.email} className="form-control" onChange={handleChange.bind(this)} placeholder="Votre adresse email..." />
+						</div>
+					</div>
+					<div className="modal-footer">
+						<input type="submit" className="btn btn-secondary" value="Valider" />
+					</div>
+				</form>
+			</div>
+		</div>
+	)
 
 	render () {
 		return (
@@ -85,6 +114,9 @@ export default class Header extends Component {
 						{(isLoggedIn())?
 							<ul className="navbar-nav">
 								<li className="nav-item">
+									<Link className="nav-link" to="/newsletter">Newsletter</Link>
+								</li>
+								<li className="nav-item">
 									<Link className="nav-link" to="/about">Notre histoire</Link>
 								</li>
 								<li className="nav-item">
@@ -115,6 +147,9 @@ export default class Header extends Component {
 							</ul>
 							:
 							<ul className="navbar-nav">
+								<li className="nav-item">
+									<Link className="nav-link" to="/newsletter">Newsletter</Link>
+								</li>
 								<li className="nav-item">
 									<Link className="nav-link" to="/about">Notre histoire</Link>
 								</li>
@@ -188,6 +223,13 @@ export default class Header extends Component {
 				}
 				{(isLoggedIn())?
 					<ul className="navbar-nav ml-auto hidden-md-down">
+						<li className="nav-item">
+							<strong className="nav-link"
+								style={{ cursor : 'pointer' }}
+								data-toggle="modal" data-target="#newsmodal">
+								<FontAwesome name="envelope-o" /> Newsletter
+							</strong>
+						</li>
 						<li className="nav-item dropdown">
 							<a className="nav-link dropdown-toggle" style={{ cursor : 'pointer' }} href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								La société
@@ -236,9 +278,9 @@ export default class Header extends Component {
 
 	</ul>
 	}
-
+	{this.newsletterPopup()}
 	</nav>
-	</div>
+</div>
 );
 }
 }
