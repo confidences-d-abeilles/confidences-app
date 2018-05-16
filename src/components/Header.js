@@ -51,7 +51,7 @@ export default class Header extends Component {
 					{(this.state.redirect)?<Redirect to="/" />:null}
 					<Link className="navbar-brand" to="/">
 						<img src={logoSquare} width="auto" height="64" alt="Logo Confidences d'Abeilles" />
-						<h2 className="badge badge-danger" style={{ position: 'absolute', top: '75px', left: '75px', fontSize: '2em', zIndex: 1000 }}>{(process.env.NODE_ENV === "development")?'Bêta':null}</h2>
+						<h2 className="badge badge-danger" style={{ position: 'absolute', top: '75px', left: '75px', fontSize: '1.5em', zIndex: 1000 }}>{(process.env.NODE_ENV === "development")?'Bêta':null}</h2>
 					</Link>
 					<div className="hidden-lg-up collapse" style={{justifyContent: 'space-between'}} id="navbarNav" onClick={() => { document.getElementById("navbarNav").classList.remove("show") }}>
 						{(isLoggedIn())?

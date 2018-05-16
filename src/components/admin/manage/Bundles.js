@@ -4,6 +4,8 @@ import request from '../../../services/Net'
 import Bundle from './Bundle'
 import Loading from '../../utils/Loading';
 import ReactGA from 'react-ga';
+import { Link } from 'react-router-dom'
+
 export default class AdminManageBundles extends Component {
 
 	constructor(props) {
@@ -36,7 +38,10 @@ export default class AdminManageBundles extends Component {
 			<div className="row">
 				<NotificationSystem ref="notif" />
 				<div className="col">
-					<h2 className="text-center my-4">Gestion des parrainages</h2>
+					<ol className="breadcrumb">
+						<li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
+						<li className="breadcrumb-item active">Parrainages</li>
+					</ol>
 					<div className="row">
 						<div className="col" style={{ maxHeight: '50vh', overflowY : 'scroll' }}>
 							{this.state.bundles?
