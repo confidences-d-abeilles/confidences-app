@@ -9,7 +9,7 @@ import Confirm from '../../utils/Confirm'
 import Address from '../../utils/Address/Address'
 import UserGeneral from './users/General'
 import FontAwesome from 'react-fontawesome'
-
+import { Link } from 'react-router-dom'
 import { handleChange, handleTick } from '../../../services/FormService'
 import { EventEmitter } from 'events';
 
@@ -399,12 +399,15 @@ export default class AdminManageUsers extends Component {
 
 	render () {
 		return (
-			<div className="container-fluid">
+			<div>
 				<Meta title="Gestion des utilisateurs"/>
 				<div className="row">
 					<NotificationSystem ref="notif" />
 					<div className="col">
-						<h2 className="text-center my-4">Gérer les utilisateurs</h2>
+						<ol className="breadcrumb">
+							<li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
+							<li className="breadcrumb-item active">Utilisateurs</li>
+						</ol>
 					</div>
 				</div>
 				<div className="row mb-2">

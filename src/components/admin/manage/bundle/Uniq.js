@@ -48,9 +48,12 @@ export default class AdminManageBundleId extends Component {
 	render () {
 		return (
 			<div>
-				<Link className="btn btn-info btn-sm" to="/admin/manage/bundle"> {'<'} Retour aux parrainages</Link>
 				<NotificationSystem ref="notif" />
-				<h2 className="text-center my-2">Parrainage{(this.state.bundle)?' de '+this.state.bundle.owner.firstname+' '+this.state.bundle.owner.name:''}</h2>
+				<ol className="breadcrumb">
+					<li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
+					<li className="breadcrumb-item"><Link to="/admin/manage/bundle">Parrainages</Link></li>
+					<li className="breadcrumb-item active">Parrainage{(this.state.bundle)?' de '+this.state.bundle.owner.firstname+' '+this.state.bundle.owner.name:''}</li>
+				</ol>
 				{(this.state.bundle)?
 				<div className="row">
 					<div className="col-lg-6">
