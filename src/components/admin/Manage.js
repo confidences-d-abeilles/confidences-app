@@ -43,7 +43,7 @@ export default class CompanyManage extends Component {
 
 	render () {
 		return (
-				<div className="container-fluid py-4 sticky-top">
+				<div className="container-fluid py-4">
 					<Meta title="Dashboard"/>
 					<NotificationSystem ref="notif" />
 					<div className="row justify-content-center">
