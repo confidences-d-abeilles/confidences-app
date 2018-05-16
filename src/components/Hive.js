@@ -10,6 +10,7 @@ import ReactGA from 'react-ga';
 import Meta from './utils/Meta'
 import Imagebox from './utils/Imagebox'
 import ReactStars from 'react-stars';
+import { Link } from 'react-router-dom'
 
 const config = require('../config.js')
 
@@ -59,9 +60,16 @@ export default class Hive extends Component {
 									<div style={{ width : '100%', height: '1px', backgroundColor: 'white'}} className="mb-4" ></div>
 									{this.state.hive &&
 										this.state.hive.parrains.map((user, key) => {
-											return (
-												<h3 key={key} className="my-0"><small>{(user.company_name)?user.company_name:user.firstname+' '+user.name}</small><br />{(key+1 < this.state.hive.parrains.length)?' ~':''}</h3>
-											)
+											console.log(user);
+											if (user.company_name) {
+												return (
+													<h3 key={key}><Link to={'/parrains/'+user.namespace} style={{ color : 'white' }}>{user.company_name}</Link></h3>
+												)
+											} else {
+												return (
+													<h3 key={key}>{user.firstname+' '+user.name}</h3>
+												)
+											}
 										})}
 								</div>
 							</div>
