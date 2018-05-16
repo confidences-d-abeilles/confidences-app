@@ -107,9 +107,9 @@ export default class IndividualCheckout extends Component {
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
 			data : {
-				state: 1,
-				present_date: (this.state.present)?this.state.present_date:new Date(),
-				present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
+				state: 1
+				// present_date: (this.state.present)?this.state.present_date:new Date(),
+				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
 		}, this.refs.notif).then((res) => {
 			this.setState({ redirect : true })
@@ -168,7 +168,7 @@ export default class IndividualCheckout extends Component {
 					present_email: this.state.present_email,
 					present_message: this.state.present_message,
 					present_date: (this.state.present)?this.state.present_date:new Date(),
-					present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1)),
+					// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1)),
 					present_name: this.state.present_name,
 					present_firstname: this.state.present_firstname
 				}
@@ -193,7 +193,7 @@ export default class IndividualCheckout extends Component {
 			})
 	}
 
-	send_mail_6() {
+	sendMail6() {
 		request({
 			url: '/bill/bundle/'+this.state.bundle_id,
 			method: 'get'
@@ -211,6 +211,15 @@ export default class IndividualCheckout extends Component {
 		}, this.refs.notif).then((res) => {
 			this.setWaitingPayment();
 		})
+	}
+
+	sendMail12() {
+		request({
+			url: '/mail/send_12',
+			method: 'put',
+		}).then((res) => {
+		})
+		this.setWaitingPayment();
 	}
 
     render () {
@@ -331,8 +340,8 @@ export default class IndividualCheckout extends Component {
 										De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 										</p>
 										<p>
-											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<button onClick={this.send_mail_6.bind(this)} className="btn btn-primary">Virement effectué</button>
+											<button onClick={this.sendMail12.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<button onClick={this.sendMail6.bind(this)} className="btn btn-primary">Virement effectué</button>
 										</p>
 									</div>
 								}
