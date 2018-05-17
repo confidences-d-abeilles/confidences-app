@@ -5,13 +5,10 @@ import Loading from '../../utils/Loading'
 import ReactGA from 'react-ga'
 import moment from 'moment'
 import Meta from '../../utils/Meta'
-import Confirm from '../../utils/Confirm'
 import Address from '../../utils/Address/Address'
 import UserGeneral from './users/General'
 import FontAwesome from 'react-fontawesome'
 import { Link } from 'react-router-dom'
-import { handleChange, handleTick } from '../../../services/FormService'
-import { EventEmitter } from 'events';
 
 
 export default class AdminManageUsers extends Component {
@@ -117,7 +114,8 @@ export default class AdminManageUsers extends Component {
 				return ("Editor");
 			case 5:
 				return ("Admin");
-
+			default:
+				return null;
 		}
 	}
 

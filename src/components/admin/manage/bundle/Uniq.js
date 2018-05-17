@@ -29,7 +29,7 @@ export default class AdminManageBundleId extends Component {
 
 	changeState = ( event ) => {
 		this.setState({
-			bundle: { ...this.state.bundle, state: parseInt(event.target.value) }
+			bundle: { ...this.state.bundle, state: parseInt(event.target.value, 10) }
 		})
 	}
 
@@ -61,7 +61,7 @@ export default class AdminManageBundleId extends Component {
 						<Bills bundleId={this.state.bundle.id} />
 					</div>
 					<div className="col-lg-6">
-						{this.state.owner.user_type == 2 ?<Parrains parrain={this.state.owner} bundleLabel={this.state.bundle.label}/>
+						{this.state.owner.user_type === 2 ?<Parrains parrain={this.state.owner} bundleLabel={this.state.bundle.label}/>
 						:null}
 					</div>
 				</div>

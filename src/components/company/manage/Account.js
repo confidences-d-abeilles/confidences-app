@@ -6,7 +6,7 @@ import { logout } from '../../../services/AuthService'
 import { handleChange } from '../../../services/FormService'
 import ReactGA from 'react-ga';
 import FontAwesome from 'react-fontawesome'
-import { NavLink, Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import Meta from '../../utils/Meta'
 
 export default class Account extends Component {

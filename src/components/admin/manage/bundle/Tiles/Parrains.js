@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import SquareImg from '../../../../utils/SquareImg';
 
 const config = require('../../../../../config.js')

@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import Banner from './../assets/img/ourvalues.jpg'
-import ReactGA from 'react-ga';
 import Meta from './utils/Meta'
 import { handleChange } from '../services/FormService'
 import request from '../services/Net';

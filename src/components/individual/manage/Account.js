@@ -7,7 +7,7 @@ import { handleChange } from '../../../services/FormService'
 import ReactGA from 'react-ga';
 import FontAwesome from 'react-fontawesome'
 import Meta from '../../utils/Meta'
-import { NavLink, Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 export default class Account extends Component {
 

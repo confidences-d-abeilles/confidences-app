@@ -78,21 +78,25 @@ export default class CompanyWish extends Component {
 					}
 					return { price: parseFloat(prev.price) + parseFloat(e.price) * qty}
 				})
+				return null;
 			});
 			this.state.couponsOk.map((e) => {
 				this.setState((prev) => {
 					return { price: parseFloat(prev.price) - parseFloat(e.amount) * parseFloat(e.qty) }
 				})
+				return null;
 			})
 			this.state.optionsOk.map((e) => {
 				this.setState((prev) => {
 					return { price: parseFloat(prev.price) - parseFloat(e.amount) * parseFloat(e.qty), pots: parseFloat(prev.pots) - parseFloat(e.pots) * parseFloat(e.qty) }
 				})
+				return null;
 			})
 			this.state.codesOk.map((e) => {
 				this.setState((prev) => {
 					return { price: parseFloat(prev.price) - parseFloat(e.amount) * parseFloat(e.qty) }
 				})
+				return null;
 			})
 		});
 	}
@@ -101,25 +105,23 @@ export default class CompanyWish extends Component {
 		let tmp = [];
 		let tmp2 = [];
 		let tmp3 = [];
-		let tmp4 = [];
 		this.state.coupons.map((coupon) => {
 			this.state.products.forEach((product) => {
 				if (coupon.type === 0 && coupon.product.id === product.id && product.qty >= coupon.min) {
 					coupon.qty = product.qty;
 					tmp.push(coupon);
-					this.setState((prev) => { price: prev.price - coupon.amount * coupon.qty })
 				}
 				if (coupon.type === 1 && coupon.product.id === product.id) {
 					coupon.qty = product.qty;
 					tmp2.push(coupon);
-					this.setState((prev) => { price: prev.price - coupon.amount * coupon.qty })
 				}
 				if (coupon.type === 2 && coupon.product.id === product.id && product.qty <= coupon.max) {
 					coupon.qty = product.qty;
 					tmp3.push(coupon);
-					this.setState((prev) => { price: prev.price - coupon.amount * coupon.qty })
 				}
+				return;
 			});
+			return null;
 		});
 		this.setState({
 			couponsOk: tmp,
@@ -147,6 +149,7 @@ export default class CompanyWish extends Component {
 					tmp.push(coupon);
 				}
 			});
+			return null;
 		});
 		if (notValid) {
 			this.setState({
@@ -173,9 +176,11 @@ export default class CompanyWish extends Component {
 					if (e.id === coupon.product.id) {
 						tmp2.qty = e.qty;
 					}
+				return null;
 				});
 				tmp.push(tmp2);
 			}
+			return null;			
 		});
 		this.setState({
 			optionsOk : tmp
@@ -240,6 +245,7 @@ export default class CompanyWish extends Component {
 									<MainProduct product={e} key={e.id} update={this.updateProducts.bind(this)} pots={this.state.pots} />
 								)
 							}
+							return null;
 						})}
 						<h3 className="my-2"><small>Produits supplémentaires</small></h3>
 						<p>Merci de sélectionner le nombre de produits à ajouter à votre offre.</p>
@@ -249,6 +255,7 @@ export default class CompanyWish extends Component {
 									<Product product={e} key={e.id} update={this.updateProducts.bind(this)} />
 								)
 							}
+							return null;
 						})}
 					</div>
 					<div className="col-lg-6 pt-5">

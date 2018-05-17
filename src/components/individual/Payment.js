@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import request from '../../services/Net';
-import { handleChange, handleTick } from '../../services/FormService'
 import NotificationSystem from 'react-notification-system'
 import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
-import DatePicker from 'react-datepicker';
-import moment from 'moment';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
 
@@ -43,7 +40,7 @@ export default class IndividualPayement extends Component {
 				});
 			});
 			res.addresses.map((address) => {
-				if (address.type == 1) {
+				if (address.type === 1) {
 					this.setState({
 						baddress1 : address.line1,
 						baddress2 : address.line2,
@@ -54,7 +51,7 @@ export default class IndividualPayement extends Component {
 						bcountry: address.country
 					})
 				}
-				if (address.type == 2) {
+				if (address.type === 2) {
 					this.setState({
 						did: address.id,
 						daddress1 : address.line1,
@@ -66,6 +63,7 @@ export default class IndividualPayement extends Component {
 						dcountry: address.country
 					})
 				}
+				return null;
 			})
 		});
 	}
@@ -73,7 +71,7 @@ export default class IndividualPayement extends Component {
 	setWaitingPayment() {
 		const data = new FormData();
 		data.append('state', 1);
-		if (this.state.present == false) {
+		if (this.state.present === false) {
 			data.append('present_date', new Date());
 			// data.append('present_end', new Date(new Date().setFullYear(new Date().getFullYear() + 1)));
 		}

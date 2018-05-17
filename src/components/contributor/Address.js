@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import request from '../../services/Net';
-import { handleChange } from '../../services/FormService';
 import { isLoggedIn } from '../../services/AuthService';
 import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
