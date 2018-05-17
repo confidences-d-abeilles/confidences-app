@@ -34,7 +34,7 @@ export default class IndividualCheckout extends Component {
 			saved: false,
 			different: false,
 			present: false,
-			present_date: moment(),
+			present_date: moment(new Date()),
 			present_message: '',
 			present_email: '',
 			present_ok: false,
@@ -69,9 +69,10 @@ export default class IndividualCheckout extends Component {
 				present_email: res.bundles[0].email,
 				present_firstname: res.bundles[0].firstname,
 				present_name: res.bundles[0].name,
-				present_date: moment(res.bundles[0].start_date),
+				present_date: res.bundles[0].start_date ? moment(res.bundles[0].start_date) : moment(new Date()),
 				bundleState: res.bundles[0].state
 			});
+
 			request({
 				url: '/bill/bundle/'+res.bundles[0].id,
 				method: 'get'
@@ -96,9 +97,11 @@ export default class IndividualCheckout extends Component {
 	}
 
 	handleDateChange(date) {
-		this.setState({
-			present_date: date
-		});
+		if (date >= new Date().setDate(new Date().getDate() - 1)) {
+			this.setState({
+				present_date: date
+			});
+		}
 	}
 
 	async setWaitingPayment() {
@@ -112,6 +115,7 @@ export default class IndividualCheckout extends Component {
 				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
 		}, this.refs.notif).then((res) => {
+				console.log(this.state.present_date);
 			this.setState({ redirect : true })
 		})
 	}
@@ -283,11 +287,10 @@ export default class IndividualCheckout extends Component {
 											<label>Notifier l'heureux bénéficiaire à partir du :</label>
 											<DatePicker
 												dateFormat="DD/MM/YYYY"
-										        selected={this.state.present_date}
-										        onChange={this.handleDateChange.bind(this)}
+										    selected={this.state.present_date}
+										    onChange={this.handleDateChange.bind(this)}
 												className="form-control"
-												minDate={new Date()}
-											    />
+											/>
 										</div>
 									</form>
 								}
