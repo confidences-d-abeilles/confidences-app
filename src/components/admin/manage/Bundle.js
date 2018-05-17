@@ -6,7 +6,6 @@ import Confirm from '../../utils/Confirm'
 import DatePicker from 'react-datepicker';
 import moment from 'moment'
 import FontAwesome from 'react-fontawesome'
-import { Link } from 'react-router-dom'
 
 const config = require("../../../config.js");
 

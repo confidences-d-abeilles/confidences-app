@@ -58,7 +58,7 @@ export default class About extends Component {
 							proposer des produits d’exception. <br />
 							Ce modèle philanthropique est certes louable, mais sans soutien il ne peut pas perdurer. <br /><br />
 							C’est tout l’objet du parrainage de ruches mis en place par Confidences d’Abeilles et
-							accessible sur <a href="https://parrainagederuches.fr"  target="_blank"> parrainagederuches.fr</a>. Via ce service, nous vous invitons à ouvrir les yeux
+							accessible sur <a href="https://parrainagederuches.fr" rel="noopener noreferrer" target="_blank"> parrainagederuches.fr</a>. Via ce service, nous vous invitons à ouvrir les yeux
 							sur le monde des abeilles, à vous émerveiller devant leur génie et à les soutenir.
 							Cette action est aussi le moyen pour nous de pérenniser notre activité dans un secteur en
 							proie à diverses difficultés.
@@ -69,8 +69,8 @@ export default class About extends Component {
 					<div className="col-lg-9 col-md-10 col-sm-12">
 						<h3>Demain ... </h3>
 						<p>
-						Confidences d’Abeilles soutient <a href="http://connecthive.com/" target="_blank">ConnectHive</a> dans le développement de l’apiculture connectée de demain.
-						Elle apporte également son aide à l’association <a href="https://emapiblog.wordpress.com/" target="_blank">EMAPI</a>, association d’apiculture des Mines d’Alès, dans la gestion de son rucher.
+						Confidences d’Abeilles soutient <a href="http://connecthive.com/" rel="noopener noreferrer" target="_blank">ConnectHive</a> dans le développement de l’apiculture connectée de demain.
+						Elle apporte également son aide à l’association <a href="https://emapiblog.wordpress.com/" rel="noopener noreferrer" target="_blank">EMAPI</a>, association d’apiculture des Mines d’Alès, dans la gestion de son rucher.
 						</p>
 						<p className="text-right my-4">Nicolas &amp; Gaëtan &amp; les abeilles…</p>
 					</div>

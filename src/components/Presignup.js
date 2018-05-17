@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Meta from './utils/Meta';
-import { login, isLoggedIn } from '../services/AuthService'
+import { isLoggedIn } from '../services/AuthService'
 
 export default class Presignup extends Component {
 
