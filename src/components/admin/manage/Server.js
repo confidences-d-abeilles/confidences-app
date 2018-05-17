@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
-import { Link } from 'react-router-dom'
-import Loading from '../../utils/Loading'
-import PayForm from '../../utils/PayForm'
-import { Elements } from 'react-stripe-elements'
 import ReactGA from 'react-ga';
 export default class AdminManageServer extends Component {
 

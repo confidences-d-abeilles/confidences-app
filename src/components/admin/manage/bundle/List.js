@@ -1,6 +1,5 @@
 import React from 'react'
 import Loading from '../../../utils/Loading'
-import { Link } from 'react-router-dom'
 import State from './State.js'
 import FontAwesome from 'react-fontawesome'
 

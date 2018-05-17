@@ -24,15 +24,15 @@ export default class ContributorManageApproaches extends Component {
 				request({
 					url: '/getUser/'+lead.owner,
 					method: 'GET'
-				}, this.refs.notif). then((res) => {
+				}, this.refs.notif).then((res) => {
 					initial_array[index]['hive'] = res.bundles[0] ? res.bundles[0].hives : '0';
 					initial_array[index]['commission'] = '';
 					if (res.bundles[0]) {
-						if (res.bundles[0].state == 0) {
+						if (res.bundles[0].state === 0) {
 							initial_array[index]['status'] = 'Inscrite';
-						} else if (res.bundles[0].state == 1) {
+						} else if (res.bundles[0].state === 1) {
 							initial_array[index]['status'] = 'Marraine';
-						} else if (res.bundles[0].state == 2) {
+						} else if (res.bundles[0].state === 2) {
 							initial_array[index]['status'] = 'Terminée';
 							initial_array[index]['commission'] = 100 * res.bundles[0].state+'€';
 						}
@@ -40,8 +40,8 @@ export default class ContributorManageApproaches extends Component {
 						initial_array[index]['status'] = 'Démarchée';
 					}
 					this.setState({ leads : initial_array});
-					return ;
 				})
+				return null;
 			})
 			 this.setState({ loading: false })
 		});

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import AdminManageUsers from './manage/Users'
+import AdminManageUser from './manage/users/MainScreen'
+import AdminManageUserId from './manage/users/Fiche'
 import AdminManageFaq from './manage/Faq'
 import AdminManageMails from './manage/Mails'
 import AdminManageHives from './manage/Hives'
@@ -51,6 +53,7 @@ export default class CompanyManage extends Component {
 						<div className="col-lg-2 col-md-6">
 							<ul className="list-group">
 								<li className="list-group-item active">Gestion clients</li>
+								<Link to="/admin/manage/user" className="list-group-item"><FontAwesome name="user" fixedWidth={true} />&nbsp;&nbsp;Utilisateurs</Link>
 								<Link to="/admin/manage/users" className="list-group-item"><FontAwesome name="user" fixedWidth={true} />&nbsp;&nbsp;Utilisateurs</Link>
 								<Link to="/admin/manage/hives" className="list-group-item"><FontAwesome name="archive" fixedWidth={true} />&nbsp;&nbsp;Ruches</Link>
 								<Link to="/admin/manage/bundles" className="list-group-item"><FontAwesome name="folder" fixedWidth={true} />&nbsp;&nbsp;Parrainages</Link>
@@ -68,6 +71,8 @@ export default class CompanyManage extends Component {
 							<div className="row">
 								<div className="col-12">
 									<Route exact path="/admin/manage" component={AdminManageHome} />
+									<Route exact path="/admin/manage/user" component={AdminManageUser} />
+									<Route exact path="/admin/manage/user/:id" component={AdminManageUserId} />
 									<Route exact path="/admin/manage/users" component={AdminManageUsers} />
 									<Route exact path="/admin/manage/mails" component={AdminManageMails} />
 									<Route exact path="/admin/manage/hives" component={AdminManageHives} />

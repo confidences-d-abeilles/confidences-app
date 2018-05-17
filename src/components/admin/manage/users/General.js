@@ -1,5 +1,4 @@
 import React from 'react'
-import Confirm from '../../../utils/Confirm'
 import moment from 'moment'
 
 const UserGeneral = ( props ) => (
