@@ -47,16 +47,12 @@ export default class List extends Component {
 		switch (type) {
 			case 0:
 				return "Systématique";
-				break;
 			case 1:
 				return "Option";
-				break;
 			case 2:
 				return "Offre temporaire";
-				break;
 			default:
 				return null;
-				break;
 		}
 	}
 

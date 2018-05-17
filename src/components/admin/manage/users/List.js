@@ -1,8 +1,6 @@
 import React from 'react'
 import Loading from '../../../utils/Loading'
-import { Link } from 'react-router-dom'
 import State from './State.js'
-import FontAwesome from 'react-fontawesome'
 
 const List = ( props ) => (
 	(props.data)?
@@ -41,7 +39,8 @@ const renderType = (type) => {
 			return ("Editeur");
 		case 5:
 			return ("Administrateur");
-
+		default:
+			return null;
 	}
 }
 

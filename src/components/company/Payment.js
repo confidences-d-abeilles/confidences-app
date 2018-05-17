@@ -42,7 +42,7 @@ export default class CompanyPayment extends Component {
 				});
 			});
 			res.addresses.map((address) => {
-				if (address.type == 1) {
+				if (address.type === 1) {
 					this.setState({
 						baddress1 : address.line1,
 						baddress2 : address.line2,
@@ -53,7 +53,7 @@ export default class CompanyPayment extends Component {
 						bcountry: address.country
 					})
 				}
-				if (address.type == 2) {
+				if (address.type === 2) {
 					this.setState({
 						did: address.id,
 						daddress1 : address.line1,
@@ -65,6 +65,7 @@ export default class CompanyPayment extends Component {
 						dcountry: address.country
 					})
 				}
+				return null;
 			})
 		});
 	}
@@ -93,7 +94,7 @@ export default class CompanyPayment extends Component {
 	setWaitingPayment() {
 		const data = new FormData();
 		data.append('state', 1);
-		if (this.state.present == false) {
+		if (this.state.present === false) {
 			data.append('present_date', new Date());
 			// data.append('present_end', new Date(new Date().setFullYear(new Date().getFullYear() + 1)));
 		}

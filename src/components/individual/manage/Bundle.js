@@ -48,7 +48,7 @@ export default class Bundle extends Component {
 			return (
                 <div className="text-center">
                     <p className="alert alert-danger mt-4">Vous n'avez pas encore réglé votre parrainage. <Link to="/individual/payment">Cliquez ici</Link> pour le faire ou <Link to="/individual/checkout">là pour modifier</Link> l'offre choisie</p>
-    				<a href="#" className="btn btn-secondary m-2 disabled" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
+    				<a href="/" className="btn btn-secondary m-2 disabled" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
                 </div>
 			);
 		}
@@ -57,7 +57,7 @@ export default class Bundle extends Component {
 			return (
                 <div className="text-center">
     				<p className="alert alert-warning mt-4">La validation du règlement de votre parrainage est en cours</p>
-                    <a href="#" className="btn btn-secondary m-2 disabled" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
+                    <a href="/" className="btn btn-secondary m-2 disabled" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
                 </div>
 			);
 		}

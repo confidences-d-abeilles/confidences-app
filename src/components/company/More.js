@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Banner from '../../assets/img/ent_more.jpg';
-import leaflet from '../../assets/leaflet_e.pdf';
 import broch from '../../assets/brochure.pdf';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
-const config = require('../../config.js');
 
 export default class More extends Component {
 
@@ -95,7 +93,7 @@ export default class More extends Component {
 									Décrivez votre activité, présentez vos engagements, ajoutez des liens vers votre site internet, publiez vos actualités et présentez vos ruches aux visiteurs.
 									La configuration est très simple et nous vous guidons.
 									La page est optimisée pour être partagée sur les réseaux sociaux.
-									<a href="https://parrainagederuches.fr/parrains/perus"  target="_blank"> Voir un exemple </a>
+									<a href="https://parrainagederuches.fr/parrains/perus" rel="noopener noreferrer" target="_blank"> Voir un exemple </a>
 									De même, les sliders et autres photos utilisées sur notre plateforme mettent à l’honneur les parrains
 									<br /><br />
 								</li>
@@ -129,7 +127,7 @@ export default class More extends Component {
 									1 graphiste à votre écoute pour réaliser des étiquettes exclusives (frais de création non compris)
 								</li>
 								<li>
-									1 page dédiée à votre société (détails des actions responsables menées, photos et actualités de la ruches parrainée) <a href="https://parrainagederuches.fr/parrains/perus"  target="_blank">Voir un exemple</a>
+									1 page dédiée à votre société (détails des actions responsables menées, photos et actualités de la ruches parrainée) <a href="https://parrainagederuches.fr/parrains/perus" rel="noopener noreferrer" target="_blank">Voir un exemple</a>
 								</li>
 								<li>
 									1 éditeur d’actualité (pour alimenter vous-même la page dédiée)
@@ -149,12 +147,12 @@ export default class More extends Component {
 							</ul>
 							<p className="text-center">
 								<Link to="/signup/company" className="btn btn-secondary btn-warning mr-4">Parrainer une ruche</Link>
-								<a href={broch} className="btn btn-secondary btn-warning m-4" target="_blank">Découvrir la brochure</a>
+								<a href={broch} className="btn btn-secondary btn-warning m-4" rel="noopener noreferrer" target="_blank">Découvrir la brochure</a>
 							</p>
 						</p>
 						<h3 className="text-warning my-4">Tarifs et Conditions</h3>
 						<br/>
-						<a href="https://parrainagederuches.fr/prices"  target="_blank">Consulter les tarifs</a>
+						<a href="https://parrainagederuches.fr/prices" rel="noopener noreferrer" target="_blank">Consulter les tarifs</a>
 						<br />
 						<p>
 							Ces tarifs comprennent l’ensemble des éléments cités ci-dessus ainsi que les frais de port
@@ -198,7 +196,7 @@ export default class More extends Component {
 						</p>
 						<p className="text-center">
 							<Link to="/signup/company" className="btn btn-secondary btn-warning mr-4">Devenir parrain</Link>
-							<a href={broch} className="btn btn-secondary btn-warning m-4" target="_blank">Consulter la brochure</a>
+							<a href={broch} className="btn btn-secondary btn-warning m-4" rel="noopener noreferrer" target="_blank">Consulter la brochure</a>
 							<Link to="/faq" className="btn btn-secondary btn-warning mr-4">FAQ</Link>
 						</p>
 					</div>

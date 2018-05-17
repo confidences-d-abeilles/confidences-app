@@ -185,7 +185,6 @@ export default class IndividualCheckout extends Component {
 	changeAddress(e) {
 			this.setState({
 				different : !this.state.different,
-				delivery_address: { ...this.state.delivery_address, ['addr_diff'] : !this.state.different}
 			}, () => {
 				request({
 					url: '/address/diff',
