@@ -114,13 +114,6 @@ export default class Header extends Component {
 						{(isLoggedIn())?
 							<ul className="navbar-nav">
 								<li className="nav-item">
-									<strong className="nav-link"
-										style={{ cursor : 'pointer' }}
-										data-toggle="modal" data-target="#newsmodal">
-										<FontAwesome name="envelope-o" /> Newsletter
-									</strong>
-								</li>
-								<li className="nav-item">
 									<Link className="nav-link" to="/about">Notre histoire</Link>
 								</li>
 								<li className="nav-item">
@@ -184,7 +177,7 @@ export default class Header extends Component {
 									<Link className="nav-link" to="/login">Se connecter</Link>
 								</li>
 								<li className="nav-item">
-									<Link className="btn btn-primary" to="/presignup">Créer un compte</Link>
+									<Link className="nav-link" to="/presignup">Créer un compte</Link>
 								</li>
 							</ul>
 						}
@@ -197,20 +190,6 @@ export default class Header extends Component {
 					</ul>
 					:
 					<ul className="navbar-nav hidden-md-down">
-						{/* <li className="nav-item">
-							<a className="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Newsletter
-							</a>
-							<div className="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink" >
-								<form onSubmit={this.Newsletter.bind(this)}>
-									<div className="form-group">
-										<input type="text" className="form-control" name="firstname" onChange={handleChange.bind(this)} value={this.state.firstname} placeholder='prénom'/>
-										<input type="text" className="form-control" name="email" onChange={handleChange.bind(this)} value={this.state.email} placeholder='email'/>
-										<button className="btn btn-secondary btn-sm">Soumettre</button>
-									</div>
-								</form>
-							</div>
-						</li> */}
 						<li className="nav-item">
 							<NavLink className="nav-link" to="/company/presentation" activeStyle={{backgroundColor: 'rgb(230,230,230)',
 							boxShadow: '0px 0px 5px 2px rgb(230,230,230)'}}>Entreprise</NavLink>
@@ -231,13 +210,6 @@ export default class Header extends Component {
 				}
 				{(isLoggedIn())?
 					<ul className="navbar-nav ml-auto hidden-md-down">
-						<li className="nav-item">
-							<strong className="nav-link"
-								style={{ cursor : 'pointer' }}
-								data-toggle="modal" data-target="#newsmodal">
-								<FontAwesome name="envelope-o" /> Newsletter
-							</strong>
-						</li>
 						<li className="nav-item dropdown">
 							<a className="nav-link dropdown-toggle" style={{ cursor : 'pointer' }} href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								La société
