@@ -71,7 +71,7 @@ export default class Fiche extends Component {
 						</div>
 						<div className="newcard">
 							<h4>Emails</h4>
-							<Email emails={this.state.user.emails} />
+							<Email user={this.state.user} />
 						</div>
 					</div>}
 				</div>
