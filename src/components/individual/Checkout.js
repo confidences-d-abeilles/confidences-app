@@ -111,8 +111,8 @@ export default class IndividualCheckout extends Component {
 			method: 'put',
 			data : {
 				state: 1,
-				bankTransferDone: 'true'
-				// present_date: (this.state.present)?this.state.present_date:new Date(),
+				bankTransferDone: 'true',
+				present_date: (this.state.present)?this.state.present_date: moment(new Date()),
 				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
 		}, this.refs.notif).then((res) => {
@@ -197,34 +197,34 @@ export default class IndividualCheckout extends Component {
 			})
 	}
 
-	sendMail6() {
-		request({
-			url: '/bill/bundle/'+this.state.bundle_id,
-			method: 'get'
-		}, this.refs.notif).then((res) => {
-			request({
-				url: '/mail/send_6',
-				method: 'put',
-				data : {
-					owner: this.state.user,
-					bill: res
-				}
-			}, this.refs.notif).then((res) => {
-			 console.log("mail envoyer");
-			})
-		}, this.refs.notif).then((res) => {
-			this.setWaitingPayment();
-		})
-	}
-
-	sendMail12() {
-		request({
-			url: '/mail/send_12',
-			method: 'put',
-		}).then((res) => {
-		})
-		this.setWaitingPayment();
-	}
+	// sendMail6() {
+	// 	request({
+	// 		url: '/bill/bundle/'+this.state.bundle_id,
+	// 		method: 'get'
+	// 	}, this.refs.notif).then((res) => {
+	// 		request({
+	// 			url: '/mail/send_6',
+	// 			method: 'put',
+	// 			data : {
+	// 				owner: this.state.user,
+	// 				bill: res
+	// 			}
+	// 		}, this.refs.notif).then((res) => {
+	// 		 console.log("mail envoyer");
+	// 		})
+	// 	}, this.refs.notif).then((res) => {
+	// 	})
+	// 	this.setWaitingPayment();
+	// }
+  //
+	// sendMail12() {
+	// 	request({
+	// 		url: '/mail/send_12',
+	// 		method: 'put',
+	// 	}).then((res) => {
+	// 	})
+	// 	this.setWaitingPayment();
+	// }
 
     render () {
         return (
@@ -234,7 +234,7 @@ export default class IndividualCheckout extends Component {
 				{(this.state.redirect)?<Redirect to="/individual/end" paiement={true}/>:null}
 				{(this.state.back)?<Redirect to="/individual/wish" />:null}
 				{(this.state.dash)?<Redirect to="/individual/manage" />:null}
-				{(this.state.bundleState > 0)?<Redirect to="/individual/manage" />:null}
+				{(this.state.bundleState > 5)?<Redirect to="/individual/manage" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
@@ -343,8 +343,8 @@ export default class IndividualCheckout extends Component {
 										De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 										</p>
 										<p>
-											<button onClick={this.sendMail12.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<button onClick={this.sendMail6.bind(this)} className="btn btn-primary">Virement effectué</button>
+											<button onClick={this.setWaitingPayment.bind(this)} value={false} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<button onClick={this.setWaitingPayment.bind(this)} value={true} className="btn btn-primary">Virement effectué</button>
 										</p>
 									</div>
 								}
