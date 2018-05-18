@@ -89,7 +89,7 @@ export default class CompanyCheckout extends Component {
 		console.log('setWaitingPayment');
 		console.log(this.state.bundle_id);
 		e.preventDefault();
-		//await this.save();
+		await this.save();
 		request({
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
@@ -178,34 +178,7 @@ export default class CompanyCheckout extends Component {
 			})
 	}
 
-	 // send_mail_6() {
-		//  request({
-		// 	 url: '/bill/bundle/'+this.state.bundle_id,
-		// 	 method: 'get'
-		//  }, this.refs.notif).then((res) => {
-		// 	 request({
-		// 		 url: '/mail/send_6',
-		// 		 method: 'put',
-		// 		 data : {
-		// 			 owner: this.state.user,
-		// 			 bill: res
-		// 		 }
-		// 	 }, this.refs.notif).then((res) => {
-		// 		console.log("mail envoyer");
-		// 	 })
-		//  }, this.refs.notif).then((res) => {
-		// 	 this.setWaitingPayment();
-		//  })
-	 // }
-   //
-	 // send_mail_12() {
-		//  request({
-		// 	 url: '/mail/send_12',
-		// 	 method: 'put',
-		//  }).then((res) => {
-		//  })
-		//  this.setWaitingPayment();
-	 // }
+
 
 	render () {
 		return (
@@ -215,7 +188,7 @@ export default class CompanyCheckout extends Component {
 				{(this.state.redirect)?<Redirect to="/company/end" />:null}
 				{(this.state.dash)?<Redirect to="/company/end" />:null}
 				{(this.state.wish)?<Redirect to="/company/wish" />:null}
-				{(this.state.bundleState > 0)?<Redirect to="/company/manage" />:null}
+				{(this.state.bundleState > 5)?<Redirect to="/company/manage" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
