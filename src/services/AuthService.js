@@ -53,7 +53,7 @@ export class contributorOnly extends Component {
 	}
 
 	componentDidMount() {
-		if (localStorage.getItem('user_type') !== 3) {
+		if (localStorage.getItem('user_type') !== '3') {
 			this.setState({ denied : true })
 		}
 	}
@@ -71,7 +71,7 @@ export class companyOnly extends Component {
 	}
 
 	componentDidMount() {
-		if (localStorage.getItem('user_type') !== 2) {
+		if (localStorage.getItem('user_type') !== '2') {
 			this.setState({ denied : true })
 		}
 	}
@@ -89,7 +89,7 @@ export class individualOnly extends Component {
 	}
 
 	componentDidMount() {
-		if (localStorage.getItem('user_type') !== 1) {
+		if (localStorage.getItem('user_type') !== '1') {
 			this.setState({ denied : true })
 		}
 	}
@@ -107,7 +107,7 @@ export class adminOnly extends Component {
 	}
 
 	componentDidMount() {
-		if (localStorage.getItem('user_type') < 4) {
+		if (localStorage.getItem('user_type') < '4') {
 			this.setState({ denied : true })
 		}
 	}
