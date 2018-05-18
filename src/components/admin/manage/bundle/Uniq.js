@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import Loading from '../../../utils/Loading'
 import request from '../../../../services/Net'
 import NotificationSystem from 'react-notification-system'
-import Payment from './Tiles/Payment'
-import Bills from './Tiles/Bills'
-import Parrains from './Tiles/Parrains'
+import Payment from './tiles/Payment'
+import Bills from './tiles/Bills'
+import Parrains from './tiles/Parrains'
 import { Link } from 'react-router-dom'
 
 export default class AdminManageBundleId extends Component {
