@@ -31,6 +31,17 @@
 <meta id="og-image" property="og:image" content="https://parrainagederuches.fr/metastatic/general.jpg" />
 <title>Confidences d'Abeilles</title>
 
+<<<<<<< HEAD
+=======
+<style>
+	@keyframes blinker {
+		50% {
+			opacity: 0;
+		}
+	}
+</style>
+
+>>>>>>> master
 
 <!-- SSR Meta -->
 
@@ -56,7 +67,9 @@ Learn how to configure a non-root public URL by running `npm run build`.
 		}
 	});
 	</script>
-	<div id="root"></div>
+	<div id="root">
+		<img src="%PUBLIC_URL%/logo.png" style="position: fixed; top : 50%; max-height : 10em; max-width: 80%; left : 50%; transform: translate(-50%, -50%); animation: blinker 1s linear infinite;" />
+	</div>
 	<!--
 	This HTML file is a template.
 	If you open it directly in the browser, you will see an empty page.
