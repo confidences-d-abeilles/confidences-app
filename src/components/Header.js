@@ -31,7 +31,8 @@ export default class Header extends Component {
 			method: 'post',
 			data: {
 				firstname: this.state.firstname,
-				email: this.state.email
+				email: this.state.email,
+				listId: '17334'
 			}
 		}, this.refs.notif).then((res) => {
 			this.refs.newsmodal.style.display = 'none';
