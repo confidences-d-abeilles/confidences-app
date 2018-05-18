@@ -190,20 +190,6 @@ export default class Header extends Component {
 					</ul>
 					:
 					<ul className="navbar-nav hidden-md-down">
-						{/* <li className="nav-item">
-							<a className="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Newsletter
-							</a>
-							<div className="dropdown-menu text-center" aria-labelledby="navbarDropdownMenuLink" >
-								<form onSubmit={this.Newsletter.bind(this)}>
-									<div className="form-group">
-										<input type="text" className="form-control" name="firstname" onChange={handleChange.bind(this)} value={this.state.firstname} placeholder='prénom'/>
-										<input type="text" className="form-control" name="email" onChange={handleChange.bind(this)} value={this.state.email} placeholder='email'/>
-										<button className="btn btn-secondary btn-sm">Soumettre</button>
-									</div>
-								</form>
-							</div>
-						</li> */}
 						<li className="nav-item">
 							<NavLink className="nav-link" to="/company/presentation" activeStyle={{backgroundColor: 'rgb(230,230,230)',
 							boxShadow: '0px 0px 5px 2px rgb(230,230,230)'}}>Entreprise</NavLink>
