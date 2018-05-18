@@ -177,7 +177,7 @@ export default class Header extends Component {
 									<Link className="nav-link" to="/login">Se connecter</Link>
 								</li>
 								<li className="nav-item">
-									<Link className="btn btn-primary" to="/presignup">Créer un compte</Link>
+									<Link className="nav-link" to="/presignup">Créer un compte</Link>
 								</li>
 							</ul>
 						}
