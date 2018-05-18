@@ -114,13 +114,6 @@ export default class Header extends Component {
 						{(isLoggedIn())?
 							<ul className="navbar-nav">
 								<li className="nav-item">
-									<strong className="nav-link"
-										style={{ cursor : 'pointer' }}
-										data-toggle="modal" data-target="#newsmodal">
-										<FontAwesome name="envelope-o" /> Newsletter
-									</strong>
-								</li>
-								<li className="nav-item">
 									<Link className="nav-link" to="/about">Notre histoire</Link>
 								</li>
 								<li className="nav-item">
@@ -231,13 +224,6 @@ export default class Header extends Component {
 				}
 				{(isLoggedIn())?
 					<ul className="navbar-nav ml-auto hidden-md-down">
-						<li className="nav-item">
-							<strong className="nav-link"
-								style={{ cursor : 'pointer' }}
-								data-toggle="modal" data-target="#newsmodal">
-								<FontAwesome name="envelope-o" /> Newsletter
-							</strong>
-						</li>
 						<li className="nav-item dropdown">
 							<a className="nav-link dropdown-toggle" style={{ cursor : 'pointer' }} href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								La société
