@@ -94,7 +94,8 @@ export default class CompanyCheckout extends Component {
 			method: 'put',
 			data : {
 				state: 1,
-				bankTransferDone: e.target.value
+				bankTransferDone: e.target.value,
+				present_date: moment(new Date()),
 				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
 		}, this.refs.notif).then((res) => {
