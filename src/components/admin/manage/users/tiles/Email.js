@@ -1,17 +1,25 @@
 import React from 'react'
 import moment from 'moment'
+import Newsletter from './Newsletter'
+
+/* This stateless component take a user as props */
 
 const Email = ( props ) => (
-	<table className="table table-sm">
-		<tbody>
-			<tr><th>Type de mail</th><th>Date</th><th>État</th></tr>
-			{props.emails.map((elem) => {
-				return (
-					<tr><td>{elem.type_email} : {getEmailType(elem.type_email)}</td><td>{moment(elem.time).format("DD/MM/YY HH[h]mm")}</td><td>{getTag(elem.state)}</td></tr>
-					);
-			})}
-		</tbody>
-	</table>
+	<div>
+		<Newsletter firstname={props.user.firstname} email={props.user.email} />
+		<h4><small>Historique des envois transactionnels</small></h4>
+		<table className="table table-sm">
+			<tbody>
+				<tr><th>Type de mail</th><th>Date</th><th>État</th></tr>
+				{props.user.emails.map((elem) => {
+					return (
+						<tr><td>{elem.type_email} : {getEmailType(elem.type_email)}</td><td>{moment(elem.time).format("DD/MM/YY HH[h]mm")}</td><td>{getTag(elem.state)}</td></tr>
+						);
+				})}
+			</tbody>
+		</table>
+		<hr/>
+	</div>
 )
 
 export default Email;
