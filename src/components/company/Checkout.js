@@ -30,6 +30,7 @@ export default class CompanyCheckout extends Component {
 			present_date: moment(),
 			wish: false,
 			different: false,
+			bundle_id: null,
 			delivery_address: {
 				type: 2
 			},
@@ -84,18 +85,21 @@ export default class CompanyCheckout extends Component {
 		});
 	}
 
-	async setWaitingPayment() {
+	async setWaitingPayment(e) {
 		console.log('setWaitingPayment');
-		await this.save();
+		console.log(this.state.bundle_id);
+		e.preventDefault();
+		//await this.save();
 		request({
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
 			data : {
-				state: 1
+				state: 1,
+				bankTransferDone: e.target.value
 				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
 		}, this.refs.notif).then((res) => {
-			this.setState({ redirect : true })
+			this.setState({ redirect : false })
 		})
 	}
 
@@ -174,34 +178,34 @@ export default class CompanyCheckout extends Component {
 			})
 	}
 
-	 send_mail_6() {
-		 request({
-			 url: '/bill/bundle/'+this.state.bundle_id,
-			 method: 'get'
-		 }, this.refs.notif).then((res) => {
-			 request({
-				 url: '/mail/send_6',
-				 method: 'put',
-				 data : {
-					 owner: this.state.user,
-					 bill: res
-				 }
-			 }, this.refs.notif).then((res) => {
-				console.log("mail envoyer");
-			 })
-		 }, this.refs.notif).then((res) => {
-			 this.setWaitingPayment();
-		 })
-	 }
-
-	 send_mail_12() {
-		 request({
-			 url: '/mail/send_12',
-			 method: 'put',
-		 }).then((res) => {
-		 })
-		 this.setWaitingPayment();
-	 }
+	 // send_mail_6() {
+		//  request({
+		// 	 url: '/bill/bundle/'+this.state.bundle_id,
+		// 	 method: 'get'
+		//  }, this.refs.notif).then((res) => {
+		// 	 request({
+		// 		 url: '/mail/send_6',
+		// 		 method: 'put',
+		// 		 data : {
+		// 			 owner: this.state.user,
+		// 			 bill: res
+		// 		 }
+		// 	 }, this.refs.notif).then((res) => {
+		// 		console.log("mail envoyer");
+		// 	 })
+		//  }, this.refs.notif).then((res) => {
+		// 	 this.setWaitingPayment();
+		//  })
+	 // }
+   //
+	 // send_mail_12() {
+		//  request({
+		// 	 url: '/mail/send_12',
+		// 	 method: 'put',
+		//  }).then((res) => {
+		//  })
+		//  this.setWaitingPayment();
+	 // }
 
 	render () {
 		return (
@@ -289,8 +293,8 @@ export default class CompanyCheckout extends Component {
 											alors	adressé	3	jours	plus	tard. <br />
 											De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 											</p>
-											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<button onClick={this.send_mail_6.bind(this)} className="btn btn-primary">Virement effectué</button>
+											<button onClick={this.setWaitingPayment.bind(this)} value={false} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<button onClick={this.setWaitingPayment.bind(this)} value={true} className="btn btn-primary">Virement effectué</button>
 										</div>
 									}
 
