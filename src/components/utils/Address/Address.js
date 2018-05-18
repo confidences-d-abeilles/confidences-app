@@ -51,6 +51,7 @@ export default class Address extends Component {
 					<button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ edit: true })}}>
 					<FontAwesome name="pencil" />&nbsp;Editer cette adresse
 					</button>
+					<div className="clearfix"></div>
 				</div>
 				:<EditAddress data={this.state.address} onChange={this.updateAddress} onSubmit={this.submitAddress} company={this.props.company}/>}
 			</div>

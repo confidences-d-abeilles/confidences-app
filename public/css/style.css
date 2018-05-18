@@ -12,6 +12,14 @@
     position: relative;
 }
 
+.newcard {
+    box-shadow: 0 0 5px silver;
+    background-color: #FAFAFA;
+    margin : 1em 0;
+    padding : 1.5em;
+    border-radius : 2px;
+}
+
 .btn-company:hover, .btn-company:focus {
     text-decoration: none;
     color: #E49C00;
