@@ -88,18 +88,20 @@ export default class CompanyCheckout extends Component {
 	async setWaitingPayment(e) {
 		console.log('setWaitingPayment');
 		e.preventDefault();
+		console.log(e.target.value);
+		const bankTransferDone = e.target.value;
 		await this.save();
 		request({
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
 			data : {
 				state: 1,
-				bankTransferDone: e.target.value,
 				present_date: moment(new Date()),
+				bankTransferDone: bankTransferDone
 				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
 		}, this.refs.notif).then((res) => {
-			this.setState({ redirect : false })
+			this.setState({ redirect : true })
 		})
 	}
 
