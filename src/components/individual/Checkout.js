@@ -110,7 +110,8 @@ export default class IndividualCheckout extends Component {
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
 			data : {
-				state: 1
+				state: 1,
+				bankTransferDone: 'true'
 				// present_date: (this.state.present)?this.state.present_date:new Date(),
 				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
@@ -171,7 +172,7 @@ export default class IndividualCheckout extends Component {
 					present: this.state.present,
 					present_email: this.state.present_email,
 					present_message: this.state.present_message,
-					present_date: (this.state.present)?this.state.present_date:new Date(),
+					present_date: (this.state.present)?this.state.present_date: moment(new Date()),
 					// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1)),
 					present_name: this.state.present_name,
 					present_firstname: this.state.present_firstname

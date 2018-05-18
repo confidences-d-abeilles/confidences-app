@@ -87,7 +87,6 @@ export default class CompanyCheckout extends Component {
 
 	async setWaitingPayment(e) {
 		console.log('setWaitingPayment');
-		console.log(this.state.bundle_id);
 		e.preventDefault();
 		await this.save();
 		request({
@@ -188,7 +187,7 @@ export default class CompanyCheckout extends Component {
 				{(this.state.redirect)?<Redirect to="/company/end" />:null}
 				{(this.state.dash)?<Redirect to="/company/end" />:null}
 				{(this.state.wish)?<Redirect to="/company/wish" />:null}
-				{(this.state.bundleState > 5)?<Redirect to="/company/manage" />:null}
+				{(this.state.bundleState > 0)?<Redirect to="/company/manage" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
