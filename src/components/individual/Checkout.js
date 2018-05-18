@@ -104,13 +104,14 @@ export default class IndividualCheckout extends Component {
 		}
 	}
 
-	async setWaitingPayment() {
+	setWaitingPayment = async transferDone => {
 		await this.save();
 		request({
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
 			data : {
-				state: 1
+				state: 1,
+				bankTransferDone: (transferDone?'true':'false')
 				// present_date: (this.state.present)?this.state.present_date:new Date(),
 				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
@@ -342,8 +343,8 @@ export default class IndividualCheckout extends Component {
 										De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 										</p>
 										<p>
-											<button onClick={this.sendMail12.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<button onClick={this.sendMail6.bind(this)} className="btn btn-primary">Virement effectué</button>
+											<button onClick={this.setWaitingPayment(false)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<button onClick={this.setWaitingPayment(true)} className="btn btn-primary">Virement effectué</button>
 										</p>
 									</div>
 								}
