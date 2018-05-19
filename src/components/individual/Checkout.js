@@ -47,6 +47,9 @@ export default class IndividualCheckout extends Component {
 			name: '',
 			firstname: ''
 		}
+
+		this.transferBank = false;
+		this.transferBankDone = false;
 	}
 
 	componentDidMount() {
@@ -104,43 +107,39 @@ export default class IndividualCheckout extends Component {
 		}
 	}
 
-	async setWaitingPayment() {
-		await this.save();
-		request({
-			url: '/bundle/'+this.state.bundle_id,
-			method: 'put',
-			data : {
-				state: 1,
-				bankTransferDone: 'true',
-				present_date: (this.state.present)?this.state.present_date: moment(new Date()),
-				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
-			}
-		}, this.refs.notif).then((res) => {
-				console.log(this.state.present_date);
+	setWaitingPayment = async transferDone => {
+		this.transferBank = true;
+		this.transferBankDone = transferDone;
+
+		this.save().then((res) => {
 			this.setState({ redirect : true })
-		})
+		});
 	}
 
 	async save() {
-		return new Promise(async resolve => {
-			await this.saveFeedback();
-			await this.handlePresent();
-			resolve();
-		})
-	}
-
-	async saveFeedback() {
+		console.log('save bundle request');
 		return new Promise(resolve => {
 			request({
-				url: '/bundle/'+this.state.bundle_id,
-				method: 'put',
-				data: {
-					feedback: this.state.feedback
-				}
+			url: '/bundle/'+this.state.bundle_id,
+			method: 'put',
+			data : {
+				state : this.transferBank?1:this.state.bundleState,
+				bankTransferDone: (this.transferBankDone?'true':'false'),
+				feedback: this.state.feedback,
+				present: this.state.present,
+				present_email: this.state.present_email,
+				present_message: this.state.present_message,
+				present_date: (this.state.present)?this.state.present_date:new Date(),
+				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1)),
+				present_name: this.state.present_name,
+				present_firstname: this.state.present_firstname
+				// present_date: (this.state.present)?this.state.present_date:new Date(),
+				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
+			}
 			}, this.refs.notif).then((res) => {
 				resolve();
 			})
-		})
+		});
 	}
 
 	async noAction() {
@@ -148,10 +147,16 @@ export default class IndividualCheckout extends Component {
 		await request({
 			url: '/user/later',
 			method: 'put'
-		}, this.refs.notif);
-		this.setState({
-			redirect: true
-		})
+		}, null).then( () => {
+			this.setState({
+				redirect: true
+			})
+		}).catch(e => {
+			this.refs.notif.addNotification({
+	      		message: 'Erreur de sauvegarde !',
+	      		level: 'error'
+  			});
+		});
 	}
 
 	changeBundle() {
@@ -161,26 +166,6 @@ export default class IndividualCheckout extends Component {
 		}, this.refs.notif).then((res) => {
 			this.setState({ back : true });
 		})
-	}
-
-	async handlePresent() {
-		return new Promise(resolve => {
-			request({
-				url: '/bundle/'+this.state.bundle_id,
-				method: 'put',
-				data : {
-					present: this.state.present,
-					present_email: this.state.present_email,
-					present_message: this.state.present_message,
-					present_date: (this.state.present)?this.state.present_date: moment(new Date()),
-					// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1)),
-					present_name: this.state.present_name,
-					present_firstname: this.state.present_firstname
-				}
-			}, this.refs.notif).then((res) => {
-				resolve();
-			})
-		});
 	}
 
 	changeAddress(e) {
@@ -196,35 +181,6 @@ export default class IndividualCheckout extends Component {
 				})
 			})
 	}
-
-	// sendMail6() {
-	// 	request({
-	// 		url: '/bill/bundle/'+this.state.bundle_id,
-	// 		method: 'get'
-	// 	}, this.refs.notif).then((res) => {
-	// 		request({
-	// 			url: '/mail/send_6',
-	// 			method: 'put',
-	// 			data : {
-	// 				owner: this.state.user,
-	// 				bill: res
-	// 			}
-	// 		}, this.refs.notif).then((res) => {
-	// 		 console.log("mail envoyer");
-	// 		})
-	// 	}, this.refs.notif).then((res) => {
-	// 	})
-	// 	this.setWaitingPayment();
-	// }
-  //
-	// sendMail12() {
-	// 	request({
-	// 		url: '/mail/send_12',
-	// 		method: 'put',
-	// 	}).then((res) => {
-	// 	})
-	// 	this.setWaitingPayment();
-	// }
 
     render () {
         return (
@@ -343,8 +299,8 @@ export default class IndividualCheckout extends Component {
 										De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 										</p>
 										<p>
-											<button onClick={this.setWaitingPayment.bind(this)} value={false} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<button onClick={this.setWaitingPayment.bind(this)} value={true} className="btn btn-primary">Virement effectué</button>
+											<button onClick={e => this.setWaitingPayment(false, e)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<button onClick={e => this.setWaitingPayment(true, e)} className="btn btn-primary">Virement effectué</button>
 										</p>
 									</div>
 								}
