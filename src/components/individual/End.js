@@ -64,7 +64,7 @@ export default class IndividualEnd extends Component {
   	 				email: user.email,
             id: user.id
   	 			}
-    		}).then((res) => {
+    		}, this.refs.notif).then((res) => {
     		})
         setTimeout(() => {this.setState({ redirecte: true })}, 8000);
       })
