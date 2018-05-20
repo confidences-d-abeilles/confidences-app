@@ -36,6 +36,8 @@ export default class CompanyCheckout extends Component {
 			},
 			company_name: null
 		}
+		this.transferBank = false;
+		this.transferBankDone = false;
 	}
 
 	componentDidMount() {
