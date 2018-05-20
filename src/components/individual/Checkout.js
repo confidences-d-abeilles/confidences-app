@@ -190,7 +190,7 @@ export default class IndividualCheckout extends Component {
 				{(this.state.redirect)?<Redirect to="/individual/end" paiement={true}/>:null}
 				{(this.state.back)?<Redirect to="/individual/wish" />:null}
 				{(this.state.dash)?<Redirect to="/individual/manage" />:null}
-				{(this.state.bundleState > 5)?<Redirect to="/individual/manage" />:null}
+				{(this.state.bundleState > 0)?<Redirect to="/individual/manage" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
