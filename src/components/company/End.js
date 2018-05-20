@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import Main from '../../assets/img/end_part.jpg';
 import ReactGA from 'react-ga';
-import moment from 'moment'
 import Meta from '../utils/Meta'
 import request from '../../services/Net';
 import NotificationSystem from 'react-notification-system'
@@ -29,62 +28,32 @@ export default class CompanyEnd extends Component {
 			this.setState({
 				namespace: res.namespace,
 				firstname: res.firstname,
-				name: res.name
+				name: res.name,
+				bundleState: res.bundles[0].state,
+				loading: false
 			})
-			let user = res;
-			let bundle = res.bundles[0];
 			request({
-				url : '/bundle/owner/'+res.id,
-				method : 'get'
-			}, this.refs.notif).then((res) => {
-				this.setState({
-					bundleState: res.state
-				})
-				this.setState({loading:false});
-				if (res.state === 2) {
-					console.log('mail 201');
-					request({
-						url: '/bill/bundle/'+res.id,
-						method: 'get'
-					}, this.refs.notif).then((res) => {
-						request({
-							url: '/mail/send_201',
-							method: 'PUT',
-							data: {
-								owner: user,
-								bundle: bundle,
-								date: moment(new Date()).format("DD/MM/YYYY"),
-								bill: res
-							}
-						}, this.refs.notif).then((res) => {
-							console.log("mail envoyer");
-						})
-					})
+				url : '/user/marv/ob',
+				method : 'PUT',
+				data : {
+					feedback: res.feedback,
+					type: res.state,
+					name: this.state.name,
+					firstname: this.state.firstname
 				}
-				request({
-					url : '/user/marv/ob',
-					method : 'PUT',
-					data : {
-						feedback: res.feedback,
-						type: res.state,
-						name: this.state.name,
-						firstname: this.state.firstname
-					}
-				}, this.refs.notif).then((res) =>{
-					})
+			}, this.refs.notif).then((res) =>{
 			})
-
-			request({
-  			url: '/newsletter/create',
-  			method: 'put',
-	 			data: {
-	 				firstname: user.firstname,
-	 				email: user.email,
-					id: user.id
-	 			}
-  		}).then((res) => {
-  			console.log('good');
-  		})
+			// request({
+  		// 	url: '/newsletter/create',
+  		// 	method: 'put',
+	 		// 	data: {
+	 		// 		firstname: user.firstname,
+	 		// 		email: user.email,
+			// 		id: user.id
+	 		// 	}
+  		// }).then((res) => {
+  		// 	console.log('good');
+  		// })
 			setTimeout(() => {this.setState({ redirecte: true })}, 8000);
 		});
 	}
