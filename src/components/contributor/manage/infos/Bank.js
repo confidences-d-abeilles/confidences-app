@@ -11,7 +11,6 @@ export default class ContributorManageInfosBank extends Component {
 		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			iban : '',
-			bic : '',
 			name : ''
 		}
 	}
@@ -23,7 +22,6 @@ export default class ContributorManageInfosBank extends Component {
 		}, this.refs.notif).then((res) => {
 			this.setState({
 				iban: res.iban,
-				bic: res.bic,
 				name: res.account_holder
 			});
 		})
@@ -36,7 +34,6 @@ export default class ContributorManageInfosBank extends Component {
 			method: 'put',
 			data : {
 				iban: this.state.iban,
-				bic: this.state.bic,
 				account_holder: this.state.name
 			}
 		}, this.refs.notif);
@@ -50,9 +47,6 @@ export default class ContributorManageInfosBank extends Component {
 					<form onSubmit={this.updateBank.bind(this)}>
 						<div className="form-group">
 							<input type="text" name="iban" onChange={handleChange.bind(this)} className="form-control" value={this.state.iban} placeholder="IBAN"/>
-						</div>
-						<div className="form-group">
-							<input type="text" name="bic" onChange={handleChange.bind(this)} className="form-control" value={this.state.bic} placeholder="BIC"/>
 						</div>
 						<div className="form-group">
 							<input type="text" name="name" onChange={handleChange.bind(this)} className="form-control" value={this.state.name} placeholder="Nom du titulaire du compte"/>
