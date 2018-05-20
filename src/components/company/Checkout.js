@@ -79,39 +79,58 @@ export default class CompanyCheckout extends Component {
 		});
 	}
 
-	handleDateChange(date) {
-		this.setState({
-			present_date: date
+	setWaitingPayment = async transferDone => {
+		this.transferBank = true;
+		this.transferBankDone = transferDone;
+
+		this.save().then((res) => {
+			this.setState({ redirect : true })
 		});
 	}
 
-	async setWaitingPayment(e) {
-		console.log('setWaitingPayment');
-		e.preventDefault();
-		console.log(e.target.value);
-		const bankTransferDone = e.target.value;
-		await this.save();
-		request({
+	async save() {
+		console.log('save bundle request');
+		return new Promise(resolve => {
+			request({
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
 			data : {
-				state: 1,
-				present_date: moment(new Date()),
-				bankTransferDone: bankTransferDone
+				state : this.transferBank?1:this.state.bundleState,
+				bankTransferDone: (this.transferBankDone?'true':'false'),
+				feedback: this.state.feedback,
+				present: this.state.present,
+				present_email: this.state.present_email,
+				present_message: this.state.present_message,
+				present_date: (this.state.present)?this.state.present_date:new Date(),
+				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1)),
+				present_name: this.state.present_name,
+				present_firstname: this.state.present_firstname
+				// present_date: (this.state.present)?this.state.present_date:new Date(),
 				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
-		}, this.refs.notif).then((res) => {
-			this.setState({ redirect : true })
-		})
+			}, this.refs.notif).then((res) => {
+				resolve();
+			})
+		});
 	}
 
-	async save() {
-		return new Promise(async resolve => {
-			await this.saveFeedback();
-			await this.handlePresent();
-			resolve();
-		})
+	async noAction() {
+		await this.save();
+		await request({
+			url: '/user/later',
+			method: 'put'
+		}, null).then( () => {
+			this.setState({
+				redirect: true
+			})
+		}).catch(e => {
+			this.refs.notif.addNotification({
+	      		message: 'Erreur de sauvegarde !',
+	      		level: 'error'
+  			});
+		});
 	}
+
 
 	async saveFeedback() {
 		return new Promise(resolve => {
@@ -127,17 +146,6 @@ export default class CompanyCheckout extends Component {
 		})
 	}
 
-	async noAction() {
-		await this.save();
-		await request({
-			url: '/user/later',
-			method: 'put'
-		}, this.refs.notif);
-		this.setState({
-			dash: true
-		})
-	}
-
 	changeBundle = () => {
 		request({
 			url: '/bundle/'+this.state.bundle_id,
@@ -147,24 +155,24 @@ export default class CompanyCheckout extends Component {
 		})
 	}
 
-	async handlePresent() {
-		return new Promise(resolve => {
-			request({
-				url: '/bundle/'+this.state.bundle_id,
-				method: 'put',
-				data : {
-					present: this.state.present,
-					present_email: this.state.present_email,
-					present_message: this.state.present_message,
-					present_date: (this.state.present_date)?this.state.present_date:new Date(),
-					present_name: this.state.present_name,
-					present_firstname: this.state.present_firstname
-				}
-			}, this.refs.notif).then((res) => {
-				resolve();
-			})
-		});
-	}
+	// async handlePresent() {
+	// 	return new Promise(resolve => {
+	// 		request({
+	// 			url: '/bundle/'+this.state.bundle_id,
+	// 			method: 'put',
+	// 			data : {
+	// 				present: this.state.present,
+	// 				present_email: this.state.present_email,
+	// 				present_message: this.state.present_message,
+	// 				present_date: (this.state.present_date)?this.state.present_date:new Date(),
+	// 				present_name: this.state.present_name,
+	// 				present_firstname: this.state.present_firstname
+	// 			}
+	// 		}, this.refs.notif).then((res) => {
+	// 			resolve();
+	// 		})
+	// 	});
+	// }
 
 	changeAddress(e) {
 			this.setState({
@@ -268,8 +276,8 @@ export default class CompanyCheckout extends Component {
 											alors	adressé	3	jours	plus	tard. <br />
 											De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 											</p>
-											<button onClick={this.setWaitingPayment.bind(this)} value={false} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<button onClick={this.setWaitingPayment.bind(this)} value={true} className="btn btn-primary">Virement effectué</button>
+											<button onClick={e => this.setWaitingPayment(false, e)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<button onClick={e => this.setWaitingPayment(true, e)} className="btn btn-primary">Virement effectué</button>
 										</div>
 									}
 

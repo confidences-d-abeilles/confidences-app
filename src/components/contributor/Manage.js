@@ -115,7 +115,7 @@ export default class ContributorManage extends Component {
 							<Route exact path="/contributor/manage/contract" component={ContributorManageContract} />
 							<Route exact path="/contributor/manage/help" component={ContributorManageHelp} />
 							<Route path="/contributor/manage/infos" component={ContributorManageInfos} />
-							<Route exact path="/contributor/manage/leads" component={ContributorManageApproaches} />
+							<Route exact path="/contributor/manage/approaches" component={ContributorManageApproaches} />
 							<Route exact path="/contributor/manage/support" component={ContributorManageSupport} />
 							<Route component={NotFound} />
 						</Switch>
