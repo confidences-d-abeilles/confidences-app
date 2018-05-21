@@ -16,6 +16,8 @@ export default class IndividualPayement extends Component {
 			redirect: false
 		}
 		ReactGA.pageview(this.props.location.pathname);
+		this.transferBank = false;
+		this.transferBankDone = false;
 	}
 
 	componentDidMount() {
@@ -28,81 +30,54 @@ export default class IndividualPayement extends Component {
 				bees: res.bundles[0].bees,
 				price: res.bundles[0].price,
 				bundle_id: res.bundles[0].id,
+				bundle_present: res.bundles[0].present,
+				start_date: res.bundles[0].start_date,
 				duplicate: true
-			});
+			})
+		})
+	}
+
+	setWaitingPayment = async transferDone => {
+		this.transferBank = true;
+		this.transferBankDone = transferDone;
+
+		this.save().then((res) => {
+			this.setState({ redirect : false })
+		});
+	}
+
+	async save() {
+		console.log('save bundle request');
+		return new Promise(resolve => {
 			request({
-				url: '/bill/bundle/'+res.bundles[0].id,
-				method: 'get'
+				url: '/bundle/'+this.state.bundle_id,
+				method: 'put',
+				data : {
+					state : this.transferBank?1:this.state.bundleState,
+					bankTransferDone: (this.transferBankDone?'true':'false'),
+					present_date: (this.state.present)?this.state.start_date:new Date(),
+				}
 			}, this.refs.notif).then((res) => {
-				this.setState({
-					bill_number: res.number,
-					present: res.present
-				});
-			});
-			res.addresses.map((address) => {
-				if (address.type === 1) {
-					this.setState({
-						baddress1 : address.line1,
-						baddress2 : address.line2,
-						baddress3 : address.line3,
-						baddress4 : address.line4,
-						bcity: address.city,
-						bzip: address.zipcode,
-						bcountry: address.country
-					})
-				}
-				if (address.type === 2) {
-					this.setState({
-						did: address.id,
-						daddress1 : address.line1,
-						daddress2 : address.line2,
-						daddress3 : address.line3,
-						daddress4 : address.line4,
-						dcity: address.city,
-						dzip: address.zipcode,
-						dcountry: address.country
-					})
-				}
-				return null;
+				resolve();
 			})
 		});
 	}
 
-	setWaitingPayment() {
-		const data = new FormData();
-		data.append('state', 1);
-		if (this.state.present === false) {
-			data.append('present_date', new Date());
-			// data.append('present_end', new Date(new Date().setFullYear(new Date().getFullYear() + 1)));
-		}
-		request({
-			url: '/bundle/'+this.state.bundle_id,
-			method: 'put',
-			data : data
-		}, this.refs.notif).then((res) => {
-			this.setState({ redirect : true })
-		})
-	}
-
-	send_mail_6() {
-		request({
-			url: '/bill/bundle/'+this.state.bundle_id,
-			method: 'get'
-		}, this.refs.notif).then((res) => {
-			request({
-				url: '/mail/send_6',
-				method: 'put',
-				data : {
-					owner: this.state.user,
-					bill: res
-				}
-			}, this.refs.notif).then((res) => {
-			 console.log("mail envoyer");
-			})
-		}, this.refs.notif).then((res) => {
-			this.setWaitingPayment();
-		})
-	}
+	// setWaitingPayment() {
+	// 	const data = new FormData();
+	// 	data.append('state', 1);
+	// 	if (this.state.present === false) {
+	// 		data.append('present_date', new Date());
+	// 		// data.append('present_end', new Date(new Date().setFullYear(new Date().getFullYear() + 1)));
+	// 	}
+	// 	request({
+	// 		url: '/bundle/'+this.state.bundle_id,
+	// 		method: 'put',
+	// 		data : data
+	// 	}, this.refs.notif).then((res) => {
+	// 		this.setState({ redirect : true })
+	// 	})
+	// }
 
     render () {
         return (
@@ -117,7 +92,7 @@ export default class IndividualPayement extends Component {
 					<div className="col-lg-6">
 						<h3 className="text-center my-4"><small>Paiement sécurisé par carte bancaire</small></h3>
 						<Elements locale="fr">
-							<PayForm price={this.state.price} before={() => {}} bundle={this.state.bundle_id} for={this.state.company_name} endpoint="/individual/end" />
+							<PayForm price={this.state.price} before={this.save.bind(this)} bundle={this.state.bundle_id} date={(this.state.present)?this.state.start_date:new Date()} for={this.state.firstname+' '+this.state.name} endpoint="/individual/end" />
 						</Elements>
 					</div>
 					<div className="col-lg-6" style={{ borderStyle: 'solid', borderColor: '#E49C00', borderWidth: '0 0 0 4px'}}>
@@ -136,8 +111,8 @@ export default class IndividualPayement extends Component {
 						De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 						</p>
 					<p className="text-center">
-						<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<button onClick={this.send_mail_6.bind(this)} className="btn btn-primary">Virement effectué</button>
+						<button onClick={e => this.setWaitingPayment(false, e)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button onClick={e => this.setWaitingPayment(true, e)} className="btn btn-primary">Virement effectué</button>
 					</p>
 					</div>
 				</div>
