@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import request from '../../services/Net';
 import ContributorManageDashboard from './manage/Dashboard';
 import ContributorManageInfos from './manage/Infos';
-import ContributorManageApproaches from './manage/Approaches';
+import ContributorManageLeads from './manage/Leads';
 import ContributorManageConditions from './manage/Conditions';
 import ContributorManageContract from './manage/Contract';
 import ContributorManageHelp from './manage/Help';
@@ -83,7 +83,7 @@ export default class ContributorManage extends Component {
 						<br />
 						<ul className="list-group">
 							<li className="list-group-item"><Link to="/contributor/manage">Tableau de bord</Link></li>
-							<li className="list-group-item"><Link to="/contributor/manage/approaches">Mes entreprises</Link></li>
+							<li className="list-group-item"><Link to="/contributor/manage/leads">Mes entreprises</Link></li>
 							<li className="list-group-item"><Link to="/contributor/manage/support">Support de communication</Link></li>
 							<li className="list-group-item"><Link to="/contributor/manage/infos">Mes informations</Link></li>
 							<li className="list-group-item"><Link to="/contributor/manage/contract">Mon contrat</Link></li>
@@ -115,7 +115,7 @@ export default class ContributorManage extends Component {
 							<Route exact path="/contributor/manage/contract" component={ContributorManageContract} />
 							<Route exact path="/contributor/manage/help" component={ContributorManageHelp} />
 							<Route path="/contributor/manage/infos" component={ContributorManageInfos} />
-							<Route exact path="/contributor/manage/approaches" component={ContributorManageApproaches} />
+							<Route exact path="/contributor/manage/leads" component={ContributorManageLeads} />
 							<Route exact path="/contributor/manage/support" component={ContributorManageSupport} />
 							<Route component={NotFound} />
 						</Switch>
