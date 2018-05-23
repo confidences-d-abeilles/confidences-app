@@ -1,5 +1,5 @@
 import React from 'react'
-import State from '../State'
+import State from '../State/State'
 import moment from 'moment'
 
 const Bundle = ( props ) => {
