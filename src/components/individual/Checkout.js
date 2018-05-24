@@ -48,8 +48,7 @@ export default class IndividualCheckout extends Component {
 			firstname: ''
 		}
 
-		this.transferBank = false;
-		this.transferBankDone = false;
+		this.bundleState = 0;
 	}
 
 	componentDidMount() {
@@ -107,9 +106,8 @@ export default class IndividualCheckout extends Component {
 		}
 	}
 
-	setWaitingPayment = async transferDone => {
-		this.transferBank = true;
-		this.transferBankDone = transferDone;
+	setWaitingPayment = state => {
+		this.bundleState = state;
 
 		this.save().then((res) => {
 			this.setState({ redirect : true })
@@ -123,18 +121,14 @@ export default class IndividualCheckout extends Component {
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
 			data : {
-				state : this.transferBank?1:this.state.bundleState,
-				bankTransferDone: (this.transferBankDone?'true':'false'),
+				state : this.bundleState,
 				feedback: this.state.feedback,
 				present: this.state.present,
 				present_email: this.state.present_email,
 				present_message: this.state.present_message,
 				present_date: (this.state.present)?this.state.present_date:new Date(),
-				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1)),
 				present_name: this.state.present_name,
 				present_firstname: this.state.present_firstname
-				// present_date: (this.state.present)?this.state.present_date:new Date(),
-				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
 			}, this.refs.notif).then((res) => {
 				resolve();
@@ -293,14 +287,14 @@ export default class IndividualCheckout extends Component {
 											<strong>Numéro de facture à indiquer dans la référence du virement : </strong>{this.state.bill_number}
 										</p>
 										<p>
-										Si	votre	banque	vous	impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
-										invitons	à	sélectionner	«	Virement	en	cours	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
-										alors	adressé	3	jours	plus	tard. <br />
-										De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
+											Si	votre	banque	vous	impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
+											invitons	à	sélectionner	«	Bénéficiaire ajouté	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
+											alors	adressé	3	jours	plus	tard. <br />
+											De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 										</p>
 										<p>
-											<button onClick={e => this.setWaitingPayment(false, e)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<button onClick={e => this.setWaitingPayment(true, e)} className="btn btn-primary">Virement effectué</button>
+											<button onClick={this.setWaitingPayment.bind(this, 0)} className="btn btn-primary">Bénéficiaire ajouté</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<button onClick={this.setWaitingPayment.bind(this, 1)} className="btn btn-primary">Virement effectué</button>
 										</p>
 									</div>
 								}
