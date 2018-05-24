@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import request from '../../../../services/Net'
 import NotificationSystem from 'react-notification-system'
-import General from './tiles/General'
+import General from './tiles/General/General'
 import Bundle from './tiles/Bundle'
 import Address from '../../../utils/Address/Address'
 import Email from './tiles/Email'
@@ -13,7 +13,8 @@ export default class Fiche extends Component {
 	constructor (props) {
 		super (props);
 		this.state = {
-			user : null
+			user : null,
+			redirect : false
 		}
 	}
 
@@ -32,9 +33,21 @@ export default class Fiche extends Component {
 		}, this.refs.notifs);
 	}
 
+	deleteUser = () => {
+		request({
+			url : '/user/'+this.props.match.params.id,
+			method : 'delete'
+		}).then((res) => {
+			this.setState({
+				redirect : true
+			})
+		}, this.refs.notifs);
+	}
+
 	render () {
 		return (
 			<div>
+				{this.state.redirect && <Redirect to="/admin/manage/user" />}
 				<NotificationSystem ref="notif" />
 				<div className="row">
 					<div className="col">
@@ -48,7 +61,7 @@ export default class Fiche extends Component {
 				<div className="row">
 					{this.state.user &&
 					<div className="col-lg-4">
-						<General data={this.state.user} />
+						<General data={this.state.user} delete={this.deleteUser} />
 						{this.state.user.addresses.map(element => (
 							<div className="newcard">
 								<h4>{(element.type === 1)?'Adresse de facturation':'Adresse de livraison'}</h4>
