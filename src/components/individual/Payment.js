@@ -70,10 +70,10 @@ export default class IndividualPayement extends Component {
 							<strong>Numéro de facture à indiquer dans la référence du virement : </strong>{this.state.bill_number}
 						</p>
 						<p>
-						Si	votre	banque	vous	impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
-						invitons	à	sélectionner	«	Virement	en	cours	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
-						alors	adressé	3	jours	plus	tard. <br />
-						De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
+							Si votre banque vous impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
+							invitons	à	sélectionner	«	Bénéficiaire ajouté	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
+							alors	adressé	3	jours	plus	tard. <br />
+							De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 						</p>
 					<p className="text-center">
 						<button onClick={this.updateBundleState.bind(this, 0)} className="btn btn-primary">Bénéficiaire ajouté</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
