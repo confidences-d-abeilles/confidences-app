@@ -1,7 +1,7 @@
 import React from 'react';
-import Loading from '../../../../utils/Loading'
+import Loading from '../../../../../utils/Loading'
 import moment from 'moment'
-import UserType from '../UserType/UserType'
+import UserType from '../../UserType/UserType'
 
 const Genral = ( props ) => (
 	<div className="newcard">
@@ -11,6 +11,7 @@ const Genral = ( props ) => (
 				<p className="text-muted m-0"><small>Inscrit le {moment(props.data.createdAt).format("DD/MM/YYYY HH:mm:ss")}</small></p>
 				<p className="m-0">Email : {props.data.email}</p>
 				<p className="m-0">Téléphone : {props.data.phone}</p>
+				<button className="btn btn-danger btn-sm mt-2" onClick={props.delete} >Supprimer cet utilisateur</button>
 			</div>
 		:<Loading />}
 	</div>
