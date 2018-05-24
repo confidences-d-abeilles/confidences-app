@@ -17,8 +17,6 @@ export default class CompanyPayment extends Component {
 			company_name: null
 		}
 		ReactGA.pageview(this.props.location.pathname);
-		this.transferBank = false;
-		this.transferBankDone = false;
 	}
 
 	componentDidMount() {
@@ -28,23 +26,23 @@ export default class CompanyPayment extends Component {
 		}, this.refs.notif)
 		.then((res) => {
 			this.setState({
-				bees: res.bundles[0].bees,
 				price: res.bundles[0].price,
 				bundle_id: res.bundles[0].id,
-				bundle_present: res.bundles[0].present,
-				start_date: res.bundles[0].start_date,
-				duplicate: true,
-				company_name: res.company_name
 			});
 		});
 	}
 
-	setWaitingPayment = async transferDone => {
-		this.transferBank = true;
-		this.transferBankDone = transferDone;
-
-		this.save().then((res) => {
-			this.setState({ redirect : false })
+	updateBundleState = (state) => {
+		return new Promise(resolve => {
+			request({
+				url: '/bundle/'+this.state.bundle_id,
+				method: 'put',
+				data : {
+					state : state
+				}
+			}, this.refs.notif).then((res) => {
+				this.setState({ redirect : true })
+			})
 		});
 	}
 
@@ -65,24 +63,8 @@ export default class CompanyPayment extends Component {
 		});
 	}
 
-	// setWaitingPayment() {
-	// 	const data = new FormData();
-	// 	data.append('state', 1);
-	// 	if (this.state.present === false) {
-	// 		data.append('present_date', new Date());
-	// 		// data.append('present_end', new Date(new Date().setFullYear(new Date().getFullYear() + 1)));
-	// 	}
-	// 	request({
-	// 		url: '/bundle/'+this.state.bundle_id,
-	// 		method: 'put',
-	// 		data : data
-	// 	}, this.refs.notif).then((res) => {
-	// 		this.setState({ redirect : true })
-	// 	})
-	// }
-
-    render () {
-        return (
+	render () {
+		return (
 			<div className="container py-4">
 				<Meta title="Paiement"/>
 				<NotificationSystem ref="notif" />
@@ -107,18 +89,18 @@ export default class CompanyPayment extends Component {
 							<strong>Numéro de facture à indiquer dans la référence du virement : </strong>{this.state.bill_number}
 						</p>
 						<p>
-						Si	votre	banque	vous	impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
-						invitons	à	sélectionner	«	Virement	en	cours	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
-						alors	adressé	3	jours	plus	tard. <br />
-						De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
+							Si votre banque vous impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
+							invitons	à	sélectionner	«	Bénéficiaire ajouté	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
+							alors	adressé	3	jours	plus	tard. <br />
+							De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 						</p>
 					<p className="text-center">
-						<button onClick={e => this.setWaitingPayment(false, e)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<button onClick={e => this.setWaitingPayment(true, e)} className="btn btn-primary">Virement effectué</button>
+						<button onClick={this.updateBundleState.bind(this, 0)} className="btn btn-primary">Bénéficiaire ajouté</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button onClick={this.updateBundleState.bind(this, 1)} className="btn btn-primary">Virement effectué</button>
 					</p>
 					</div>
 				</div>
 			</div>
-        );
-    }
+		);
+	}
 }

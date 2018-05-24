@@ -36,8 +36,7 @@ export default class CompanyCheckout extends Component {
 			},
 			company_name: null
 		}
-		this.transferBank = false;
-		this.transferBankDone = false;
+		this.bundleState = 0;
 	}
 
 	componentDidMount() {
@@ -81,9 +80,8 @@ export default class CompanyCheckout extends Component {
 		});
 	}
 
-	setWaitingPayment = async transferDone => {
-		this.transferBank = true;
-		this.transferBankDone = transferDone;
+	setWaitingPayment = state => {
+		this.bundleState = state;
 
 		this.save().then((res) => {
 			this.setState({ redirect : true })
@@ -91,24 +89,19 @@ export default class CompanyCheckout extends Component {
 	}
 
 	async save() {
-		console.log('save bundle request');
 		return new Promise(resolve => {
 			request({
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
 			data : {
-				state : this.transferBank?1:this.state.bundleState,
-				bankTransferDone: (this.transferBankDone?'true':'false'),
+				state : this.bundleState,
 				feedback: this.state.feedback,
 				present: this.state.present,
 				present_email: this.state.present_email,
 				present_message: this.state.present_message,
 				present_date: (this.state.present)?this.state.present_date:new Date(),
-				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1)),
 				present_name: this.state.present_name,
 				present_firstname: this.state.present_firstname
-				// present_date: (this.state.present)?this.state.present_date:new Date(),
-				// present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
 			}
 			}, this.refs.notif).then((res) => {
 				resolve();
@@ -156,25 +149,6 @@ export default class CompanyCheckout extends Component {
 			this.setState({ wish : true });
 		})
 	}
-
-	// async handlePresent() {
-	// 	return new Promise(resolve => {
-	// 		request({
-	// 			url: '/bundle/'+this.state.bundle_id,
-	// 			method: 'put',
-	// 			data : {
-	// 				present: this.state.present,
-	// 				present_email: this.state.present_email,
-	// 				present_message: this.state.present_message,
-	// 				present_date: (this.state.present_date)?this.state.present_date:new Date(),
-	// 				present_name: this.state.present_name,
-	// 				present_firstname: this.state.present_firstname
-	// 			}
-	// 		}, this.refs.notif).then((res) => {
-	// 			resolve();
-	// 		})
-	// 	});
-	// }
 
 	changeAddress(e) {
 			this.setState({
@@ -271,34 +245,33 @@ export default class CompanyCheckout extends Component {
 											<strong>IBAN : </strong>FR36 1973 3000 01LU 3121 1050 436<br/>
 											<strong>BIC : </strong>OPSPFR21OKL<br/><br />
 											<strong>Numéro de facture à indiquer dans la référence du virement : </strong>{this.state.bill_number}
-											</p>
-											<p>
+										</p>
+										<p>
 											Si	votre	banque	vous	impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
-											invitons	à	sélectionner	«	Virement	en	cours	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
+											invitons	à	sélectionner	«	Bénéficiaire ajouté	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
 											alors	adressé	3	jours	plus	tard. <br />
 											De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
-											</p>
-											<button onClick={e => this.setWaitingPayment(false, e)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<button onClick={e => this.setWaitingPayment(true, e)} className="btn btn-primary">Virement effectué</button>
-										</div>
-									}
-
-									{this.state.paytype === '2' &&
-										<div>
-											<p>
-												Vous pouvez choisir de régler votre parrainage quand bon vous semble. En cliquant
-												sur « Payer plus tard » vous serez redirigé vers votre tableau de bord. Les
-												fonctionnalités sont quelque peu bridées et <strong>votre page dédiée ne peut être
-												publiquement consultée.</strong><br /><br />
-											N’oubliez pas que pour un parrainage effectué entre :
-											<ul><li>Le 1er juillet et le 31 décembre, vous recevez le miel de vos abeilles à partir du
-												mois de mai de l’année suivante.</li>
-											<li>Le 1er janvier et le 30 juin, vous recevez le miel de vos abeilles à partir du mois
-												d’octobre.</li></ul>
-											Bonne visite sur notre plateforme !
 										</p>
-										<button onClick={this.noAction.bind(this)} className="btn btn-primary">Payer plus tard</button>
+										<button onClick={this.setWaitingPayment.bind(this, 0)} className="btn btn-primary">Bénéficiaire ajouté</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<button onClick={this.setWaitingPayment.bind(this, 1)} className="btn btn-primary">Virement effectué</button>
 									</div>
+								}
+								{this.state.paytype === '2' &&
+									<div>
+										<p>
+											Vous pouvez choisir de régler votre parrainage quand bon vous semble. En cliquant
+											sur « Payer plus tard » vous serez redirigé vers votre tableau de bord. Les
+											fonctionnalités sont quelque peu bridées et <strong>votre page dédiée ne peut être
+											publiquement consultée.</strong><br /><br />
+										N’oubliez pas que pour un parrainage effectué entre :
+										<ul><li>Le 1er juillet et le 31 décembre, vous recevez le miel de vos abeilles à partir du
+											mois de mai de l’année suivante.</li>
+										<li>Le 1er janvier et le 30 juin, vous recevez le miel de vos abeilles à partir du mois
+											d’octobre.</li></ul>
+										Bonne visite sur notre plateforme !
+									</p>
+									<button onClick={this.noAction.bind(this)} className="btn btn-primary">Payer plus tard</button>
+								</div>
 								}
 							</div>
 						</div>
