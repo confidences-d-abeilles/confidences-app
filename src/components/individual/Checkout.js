@@ -48,7 +48,7 @@ export default class IndividualCheckout extends Component {
 			firstname: ''
 		}
 
-		this.bundleState = 0;
+		this.bundleState = undefined;
 	}
 
 	componentDidMount() {
@@ -115,7 +115,7 @@ export default class IndividualCheckout extends Component {
 	}
 
 	async save() {
-		console.log('save bundle request');
+		console.log('save bundle request' + this.bundleState);
 		return new Promise(resolve => {
 			request({
 			url: '/bundle/'+this.state.bundle_id,
