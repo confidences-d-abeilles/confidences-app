@@ -18,7 +18,9 @@ export default class Account extends Component {
 				this.state = {
 						sessions : null,
 						logout: false,
-						newsletter: null
+						newsletter: null,
+						email : '',
+						firstname : ''
 				}
 		}
 
@@ -28,6 +30,10 @@ export default class Account extends Component {
 				method : 'get'
 			}, this.refs.notif).then((res) => {
 				console.log(res);
+				this.setState({
+					email : res.email,
+					firstname : res.firstname
+				});
 				request({
 					url : '/newsletter/'+res.email+'/17334',
 					method : 'get'	
@@ -68,17 +74,31 @@ export default class Account extends Component {
 	}
 
 
-		updateNewsletter (e) {
+		sub(e) {
 			let stat = e.target.value;
 			request({
-				url: '/user/newsletter',
-				method: 'PUT',
-				data: {
-					status: stat
+				url: '/newsletter',
+				method: 'post',
+				data : {
+					email : this.state.email,
+					listId : '17334',
+					firstname : this.state.firstname
 				}
 			},this.refs.notif).then((res) => {
 				this.setState({
-					newsletter: !stat.localeCompare('true') ? true : false
+					newsletter: !this.state.newsletter
+				})
+			})
+		}
+		
+		unsub(e) {
+			let stat = e.target.value;
+			request({
+				url: '/newsletter/'+this.state.email+'/17334',
+				method: 'delete'
+			},this.refs.notif).then((res) => {
+				this.setState({
+					newsletter: !this.state.newsletter
 				})
 			})
 		}
@@ -114,14 +134,14 @@ export default class Account extends Component {
 															<div>
 															<p>Vous êtes inscrit à la newsletter.</p>
 															<div className="text-center">
-																<button className="btn btn-secondary btn-sm" value={false} onClick={this.updateNewsletter.bind(this)}>Me désinscrire</button>
+																<button className="btn btn-secondary btn-sm" value={false} onClick={this.unsub.bind(this)}>Me désinscrire</button>
 															</div>
 															</div>
 														:
 														<div>
 															<p>Vous n'êtes pas inscrit à la newsletter.</p>
 															<div className="text-center">
-																<button className="btn btn-secondary btn-sm" value={true} onClick={this.updateNewsletter.bind(this)}>M'inscrire</button>
+																<button className="btn btn-secondary btn-sm" value={true} onClick={this.sub.bind(this)}>M'inscrire</button>
 															</div>
 														</div>
 													}
