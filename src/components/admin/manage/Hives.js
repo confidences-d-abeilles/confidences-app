@@ -258,7 +258,10 @@ export default class AdminManageHives extends Component {
 				<div className="row">
 					<NotificationSystem ref="notif" />
 					<div className="col">
-						<h2 className="text-center my-4">Gérer les ruches</h2>
+						<ol className="breadcrumb">
+							<li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
+							<li className="breadcrumb-item active">Ruches</li>
+						</ol>
 					</div>
 				</div>
 				<div className="row">
@@ -270,7 +273,7 @@ export default class AdminManageHives extends Component {
 						</form>
 						<div style={{ maxHeight: '50vh', overflowY : 'scroll' }}>
 							{this.state.hives?
-							<table className="table">
+							<table className="table table-sm">
 								<tbody>
 									<tr><th>Nom</th><th>Occupation</th><th></th></tr>
 									{this.state.hives && this.state.hives.map((hive) => {

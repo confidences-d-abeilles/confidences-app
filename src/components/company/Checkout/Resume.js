@@ -18,6 +18,7 @@ const Resume = ( props ) => (
 					</div>
 				)
 			}
+			return null;
 		})}
 		<br />
 		<strong>Le coût total est de {props.price} euros par an.</strong>

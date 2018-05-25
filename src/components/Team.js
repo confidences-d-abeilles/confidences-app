@@ -115,7 +115,7 @@ export default class Team extends Component {
 						<h3 className="text-center mt-4">VOUS</h3>
 						<h4 className="text-center mb-4"><small>STAGIAIRE</small></h4>
 						<p className="text-justify">
-							Vous cherchez un stage ? Vous voulez rejoindre une équipe jeune, dynamique, passionnée par son travail et qui adore le challenge ? Alors vous êtes au bon endroit 😊<br /><br />
+							Vous cherchez un stage ? Vous voulez rejoindre une équipe jeune, dynamique, passionnée par son travail et qui adore le challenge ? Alors vous êtes au bon endroit <span role="img" aria-label="Smile">😊</span><br /><br />
 							Pour accompagner notre développement nous avons constamment besoin de nouveaux talents, de personnes passionnées. Nous cherchons donc des stagiaires pour ces différents postes : <strong>Web Designer</strong>, <strong>ReactJS / NodeJS Developer</strong>, <strong>UI/UX Designer</strong>, <strong>Community Manager</strong>, <strong>Communication</strong>, <strong>Marketing et Business Developer</strong>.
 							<br /><br />
 							Vous pensez avoir le profil type ? C’est parfait, notre aventure prometteuse ne fait que débuter. Envolez-vous donc avec nous !

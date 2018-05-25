@@ -36,7 +36,7 @@ export default class CompanyPage extends Component {
 			url : 'users/namespace/'+this.props.match.params.namespace,
 			method : 'get'
 		}, this.refs.notif).then((res) => {
-			if (!res.visible && res.id != getId() ) {
+			if (!res.visible && res.id !== getId() ) {
 				this.setState({ redirect : true });
 			}
 			this.setState({
@@ -186,7 +186,7 @@ export default class CompanyPage extends Component {
 											<div style={{ position : 'relative' }}>
 												{this.state.hives.map((hive) => {
 													return (
-														<div style={{ backgroundImage: 'url('+config.cdn_url+'/'+hive.imgs[0]+')', height: '10em', width: '100%' }} alt={hive.name} className={(this.state.selectedHive == hive.id)?'ruche-img':'ruche-img-hidden'} id={"img-"+hive.id} />
+														<div style={{ backgroundImage: 'url('+config.cdn_url+'/'+hive.imgs[0]+')', height: '10em', width: '100%' }} alt={hive.name} className={(this.state.selectedHive === hive.id)?'ruche-img':'ruche-img-hidden'} id={"img-"+hive.id} />
 													)
 												})}
 											</div>

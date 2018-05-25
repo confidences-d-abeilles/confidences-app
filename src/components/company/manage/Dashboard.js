@@ -98,7 +98,7 @@ export default class CompanyManageDashboard extends Component {
 							<a href={config.cdn_url + '/' + this.state.user.bundles[0].certif}
 								className="btn btn-secondary m-2" target="_blank">Télécharger mon certificat de parrainage
 							</a> :
-							<a href="#" className="btn btn-secondary m-2 disabled" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
+							<a href="/" className="btn btn-secondary m-2 disabled" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
 						}
 					</div>
 				</div>

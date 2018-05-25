@@ -56,20 +56,19 @@ export default class CompanyIdentity extends Component {
 				.catch((err) => {});
 		}
 	}
+
 	replaceNamespace(e) {
 		e.preventDefault();
 		this.setState({
 			[e.target.name]: e.target.value
 		});
 		const val = e.target.value;
-		console.log((val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, '-'));
 		let TabSpec = {"à":"a","á":"a","â":"a","ã":"a","ä":"a","å":"a","ò":"o","ó":"o","ô":"o","õ":"o","ö":"o","ø":"o","è":"e","é":"e","ê":"e","ë":"e","ç":"c","ì":"i","í":"i","î":"i","ï":"i","ù":"u","ú":"u","û":"u","ü":"u","ÿ":"y","ñ":"n","_":" "};
 		let reg=/[àáäâèéêëçìíîïòóôõöøùúûüÿñ_]/gi;
 		this.setState({
 			fakeNamespace: e.target.value,
 			namespace: (val.replace(reg,function(){ return TabSpec[arguments[0].toLowerCase()];}).toLowerCase()).replace(/\W+/g, '-')
 		})
-		console.log(this.state.namespace);
 	}
 	
     render () {
@@ -103,7 +102,7 @@ export default class CompanyIdentity extends Component {
 								<input type="text" className="form-control" name="siret" placeholder="Numéro SIRET *" onChange={this.handlesiret.bind(this)} />
 							</div>
 							<div className="text-center">
-								<a href="https://www.societe.com/" target="_blank">Trouver mon SIRET</a>
+								<a href="https://www.societe.com/" rel="noopener noreferrer" target="_blank">Trouver mon SIRET</a>
 							</div>
 							<br/>
 							<div className="form-group">

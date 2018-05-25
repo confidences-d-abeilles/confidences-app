@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
 import request from '../../../services/Net'
-import Loading from '../../utils/Loading'
 import NotificationSystem from 'react-notification-system'
 import Meta from '../../utils/Meta'
 import { Link } from 'react-router-dom';
