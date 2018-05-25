@@ -1,13 +1,15 @@
-	import React, { Component } from 'react'
-	import request from '../../../services/Net'
-	import { Redirect, Link } from 'react-router-dom'
-	import Loading from '../../utils/Loading'
-	import moment from 'moment'
-	import FontAwesome from 'react-fontawesome'
-	import { handleChange } from '../../../services/FormService'
-	import NotificationSystem from 'react-notification-system'
-	import ReactGA from 'react-ga';
-	import Meta from '../../utils/Meta'
+import React, { Component } from 'react'
+import request from '../../../services/Net'
+import { Redirect, Link } from 'react-router-dom'
+import Loading from '../../utils/Loading'
+import moment from 'moment'
+import FontAwesome from 'react-fontawesome'
+import { handleChange } from '../../../services/FormService'
+import NotificationSystem from 'react-notification-system'
+import ReactGA from 'react-ga';
+import Meta from '../../utils/Meta'
+import Details from './bundle/Details'
+
 
 	const config = require('../../../config.js');
 
@@ -68,12 +70,6 @@
 				);
 			}
 
-		if (this.state.user && this.state.user.newsletter) {
-		return (
-			<p className="alert alert-warning mt-4">Vous êtes inscrit(e) à la newsletter. Une fois tous les 2 mois vous recevrez des nouvelles de vos abeilles ainsi que des nôtres. Si vous ne souhaitez pas la recevoir, merci de modifier <Link to="/individual/manage/account">vos préférences.</Link></p>
-		)
-		}
-
 			if (this.state.user && !this.state.user.bundles[0]) {
 				return (<Redirect to="/individual/wish" />);
 			}
@@ -129,12 +125,7 @@
 							{(this.state.user)?this.checkInfos():''}
 						</div>
 						{(this.state.user && this.state.user.bundles[0])?
-						<div className="col-lg-6 my-4">
-							<h3 className="text-center"><small>Détails</small></h3>
-							Offre : Parrainage de {this.state.user.bundles[0].bees} abeilles<br />
-							Date de début : {moment(this.state.user.bundles[0].start_date).format("DD/MM/YYYY")}<br />
-							Date de fin: {moment(this.state.user.bundles[0].end_date).format("DD/MM/YYYY")}
-						</div>
+							<Details data={this.state.user.bundles[0]} />
 						:<Loading />}
 						<div className="col-lg-6 my-4">
 							{this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].present && !this.state.edit_present &&
