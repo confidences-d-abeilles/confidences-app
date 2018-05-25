@@ -54,7 +54,7 @@ import Details from './bundle/Details'
 							<Link to="/individual/payment">Cliquez ici</Link> pour le faire ou <Link to="/individual/checkout">sur ce lien</Link>&nbsp;
 							si vous souhaitez modifier l'offre choisie.&nbsp;
 							Si vous avez ajouté Confidences d'Abeilles en tant que bénéficiaire, effectuez votre virement&nbsp;
-							et confirmez le grace aux liens ci-contre lorsque vous le pourrez.
+							et confirmez le <Link to="/individual/payment">ici</Link>.
 						</p>
 						<a href="/" className="btn btn-secondary m-2 disabled" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
 					</div>
