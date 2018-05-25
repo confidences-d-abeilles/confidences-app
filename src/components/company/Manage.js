@@ -70,7 +70,7 @@ export default class CompanyManage extends Component {
 					<Link to="/company/payment">Cliquez ici</Link> pour le faire ou <Link to="/company/checkout">sur ce lien</Link>&nbsp;
 					si vous souhaitez modifier l'offre choisie.&nbsp;
 					Si vous avez ajouté Confidences d'Abeilles en tant que bénéficiaire, effectuez votre virement&nbsp;
-					et confirmez le grace aux liens ci-contre lorsque vous le pourrez.
+					et confirmez <Link to="/company/payment">ici</Link>.
 				</p>
 			);
 		}
