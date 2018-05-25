@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import request from '../../services/Net';
-import { handleChange, handleTick } from '../../services/FormService'
 import NotificationSystem from 'react-notification-system'
 import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
-import DatePicker from 'react-datepicker';
-import moment from 'moment';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
 
@@ -15,7 +12,6 @@ export default class IndividualPayement extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			bees: null,
 			redirect: false
 		}
 		ReactGA.pageview(this.props.location.pathname);
@@ -28,66 +24,28 @@ export default class IndividualPayement extends Component {
 		}, this.refs.notif)
 		.then((res) => {
 			this.setState({
-				bees: res.bundles[0].bees,
 				price: res.bundles[0].price,
 				bundle_id: res.bundles[0].id,
-				duplicate: true
-			});
+			})
+		})
+	}
+
+	updateBundleState = (state) => {
+		return new Promise(resolve => {
 			request({
-				url: '/bill/bundle/'+res.bundles[0].id,
-				method: 'get'
+				url: '/bundle/'+this.state.bundle_id,
+				method: 'put',
+				data : {
+					state : state
+				}
 			}, this.refs.notif).then((res) => {
-				this.setState({
-					bill_number: res.number,
-					present: res.present
-				});
-			});
-			res.addresses.map((address) => {
-				if (address.type == 1) {
-					this.setState({
-						baddress1 : address.line1,
-						baddress2 : address.line2,
-						baddress3 : address.line3,
-						baddress4 : address.line4,
-						bcity: address.city,
-						bzip: address.zipcode,
-						bcountry: address.country
-					})
-				}
-				if (address.type == 2) {
-					this.setState({
-						did: address.id,
-						daddress1 : address.line1,
-						daddress2 : address.line2,
-						daddress3 : address.line3,
-						daddress4 : address.line4,
-						dcity: address.city,
-						dzip: address.zipcode,
-						dcountry: address.country
-					})
-				}
+				this.setState({ redirect : true })
 			})
 		});
 	}
 
-	setWaitingPayment() {
-		const data = new FormData();
-		data.append('state', 1);
-		if (this.state.present == false) {
-			data.append('present_date', new Date());
-			data.append('present_end', new Date(new Date().setFullYear(new Date().getFullYear() + 1)));
-		}
-		request({
-			url: '/bundle/'+this.state.bundle_id,
-			method: 'put',
-			data : data
-		}, this.refs.notif).then((res) => {
-			this.setState({ redirect : true })
-		})
-	}
-
-    render () {
-        return (
+	render () {
+		return (
 			<div className="container py-4">
 				<Meta title="Paiement"/>
 				<NotificationSystem ref="notif" />
@@ -99,7 +57,7 @@ export default class IndividualPayement extends Component {
 					<div className="col-lg-6">
 						<h3 className="text-center my-4"><small>Paiement sécurisé par carte bancaire</small></h3>
 						<Elements locale="fr">
-							<PayForm price={this.state.price} before={() => {}} bundle={this.state.bundle_id} for={this.state.company_name} endpoint="/individual/end" />
+							<PayForm price={this.state.price} bundle={this.state.bundle_id} date={(this.state.present)?this.state.start_date:new Date()} for={this.state.firstname+' '+this.state.name} endpoint="/individual/end" />
 						</Elements>
 					</div>
 					<div className="col-lg-6" style={{ borderStyle: 'solid', borderColor: '#E49C00', borderWidth: '0 0 0 4px'}}>
@@ -112,18 +70,18 @@ export default class IndividualPayement extends Component {
 							<strong>Numéro de facture à indiquer dans la référence du virement : </strong>{this.state.bill_number}
 						</p>
 						<p>
-						Si	votre	banque	vous	impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
-						invitons	à	sélectionner	«	Virement	en	cours	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
-						alors	adressé	3	jours	plus	tard. <br />
-						De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
+							Si votre banque vous impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
+							invitons	à	sélectionner	«	Bénéficiaire ajouté	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
+							alors	adressé	3	jours	plus	tard. <br />
+							De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 						</p>
 					<p className="text-center">
-						<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement effectué</button>
+						<button onClick={this.updateBundleState.bind(this, 0)} className="btn btn-primary">Bénéficiaire ajouté</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button onClick={this.updateBundleState.bind(this, 1)} className="btn btn-primary">Virement effectué</button>
 					</p>
 					</div>
 				</div>
 			</div>
-        );
-    }
+		);
+	}
 }

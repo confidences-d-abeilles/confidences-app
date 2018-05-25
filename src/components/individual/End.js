@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import Main from '../../assets/img/end_part.jpg';
-import moment from 'moment'
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
 import request from '../../services/Net';
@@ -25,50 +24,25 @@ export default class IndividualEnd extends Component {
   			url : '/user/me',
   			method : 'get'
   		}, this.refs.notif).then((res) => {
-        let user = res;
         request({
     			url : '/bundle/owner/'+res.id,
     			method : 'get'
     		}, this.refs.notif).then((res) => {
-          let bundle = res;
           this.setState({
             bundleState: res.state
           })
           this.setState({loading:false});
-          if (res.state === 2 && !res.present) {
-            console.log('mail 301');
-            request({
-      				url: '/bill/bundle/'+res.id,
-      				method: 'get'
-      			}, this.refs.notif).then((res) => {
-      				request({
-      					url: '/mail/send_301',
-      					method: 'PUT',
-      					data: {
-      						owner: user,
-      						bundle: bundle,
-      						date: moment(new Date()).format("DD/MM/YYYY"),
-      						bill: res
-      					}
-      				}, this.refs.notif).then((res) => {
-      					console.log("mail envoyer");
-      				})
-      			})
-          }
-
         })
-        console.log(user);
-        console.log(user.id);
-        request({
-    			url: '/newsletter/create',
-    			method: 'put',
-  	 			data: {
-  	 				firstname: user.firstname,
-  	 				email: user.email,
-            id: user.id
-  	 			}
-    		}, this.refs.notif).then((res) => {
-    		})
+        // request({
+    		// 	url: '/newsletter/create',
+    		// 	method: 'put',
+  	 		// 	data: {
+  	 		// 		firstname: res.firstname,
+  	 		// 		email: res.email,
+        //     id: res.id
+  	 		// 	}
+    		// }, this.refs.notif).then((res) => {
+    		// })
         setTimeout(() => {this.setState({ redirecte: true })}, 8000);
       })
     }

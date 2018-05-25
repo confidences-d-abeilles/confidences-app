@@ -34,7 +34,7 @@ export default class IndividualCheckout extends Component {
 			saved: false,
 			different: false,
 			present: false,
-			present_date: moment(),
+			present_date: moment(new Date()),
 			present_message: '',
 			present_email: '',
 			present_ok: false,
@@ -47,6 +47,8 @@ export default class IndividualCheckout extends Component {
 			name: '',
 			firstname: ''
 		}
+
+		this.bundleState = undefined;
 	}
 
 	componentDidMount() {
@@ -69,9 +71,10 @@ export default class IndividualCheckout extends Component {
 				present_email: res.bundles[0].email,
 				present_firstname: res.bundles[0].firstname,
 				present_name: res.bundles[0].name,
-				present_date: moment(res.bundles[0].start_date),
+				present_date: res.bundles[0].start_date ? moment(res.bundles[0].start_date) : moment(new Date()),
 				bundleState: res.bundles[0].state
 			});
+
 			request({
 				url: '/bill/bundle/'+res.bundles[0].id,
 				method: 'get'
@@ -96,46 +99,41 @@ export default class IndividualCheckout extends Component {
 	}
 
 	handleDateChange(date) {
-		this.setState({
-			present_date: date
+		if (date >= new Date().setDate(new Date().getDate() - 1)) {
+			this.setState({
+				present_date: date
+			});
+		}
+	}
+
+	setWaitingPayment = state => {
+		this.bundleState = state;
+
+		this.save().then((res) => {
+			this.setState({ redirect : true })
 		});
 	}
 
-	async setWaitingPayment() {
-		await this.save();
-		request({
+	async save() {
+		console.log('save bundle request' + this.bundleState);
+		return new Promise(resolve => {
+			request({
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
 			data : {
-				state: 1,
+				state : this.bundleState,
+				feedback: this.state.feedback,
+				present: this.state.present,
+				present_email: this.state.present_email,
+				present_message: this.state.present_message,
 				present_date: (this.state.present)?this.state.present_date:new Date(),
-				present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1))
+				present_name: this.state.present_name,
+				present_firstname: this.state.present_firstname
 			}
-		}, this.refs.notif).then((res) => {
-			this.setState({ redirect : true })
-		})
-	}
-
-	async save() {
-		return new Promise(async resolve => {
-			await this.saveFeedback();
-			await this.handlePresent();
-			resolve();
-		})
-	}
-
-	async saveFeedback() {
-		return new Promise(resolve => {
-			request({
-				url: '/bundle/'+this.state.bundle_id,
-				method: 'put',
-				data: {
-					feedback: this.state.feedback
-				}
 			}, this.refs.notif).then((res) => {
 				resolve();
 			})
-		})
+		});
 	}
 
 	async noAction() {
@@ -143,10 +141,16 @@ export default class IndividualCheckout extends Component {
 		await request({
 			url: '/user/later',
 			method: 'put'
-		}, this.refs.notif);
-		this.setState({
-			redirect: true
-		})
+		}, null).then( () => {
+			this.setState({
+				redirect: true
+			})
+		}).catch(e => {
+			this.refs.notif.addNotification({
+	      		message: 'Erreur de sauvegarde !',
+	      		level: 'error'
+  			});
+		});
 	}
 
 	changeBundle() {
@@ -158,30 +162,9 @@ export default class IndividualCheckout extends Component {
 		})
 	}
 
-	async handlePresent() {
-		return new Promise(resolve => {
-			request({
-				url: '/bundle/'+this.state.bundle_id,
-				method: 'put',
-				data : {
-					present: this.state.present,
-					present_email: this.state.present_email,
-					present_message: this.state.present_message,
-					present_date: (this.state.present)?this.state.present_date:new Date(),
-					present_end: new Date(new Date(this.state.present_date).setFullYear(new Date().getFullYear() + 1)),
-					present_name: this.state.present_name,
-					present_firstname: this.state.present_firstname
-				}
-			}, this.refs.notif).then((res) => {
-				resolve();
-			})
-		});
-	}
-
 	changeAddress(e) {
 			this.setState({
 				different : !this.state.different,
-				delivery_address: { ...this.state.delivery_address, ['addr_diff'] : !this.state.different}
 			}, () => {
 				request({
 					url: '/address/diff',
@@ -193,26 +176,6 @@ export default class IndividualCheckout extends Component {
 			})
 	}
 
-	send_mail_6() {
-		request({
-			url: '/bill/bundle/'+this.state.bundle_id,
-			method: 'get'
-		}, this.refs.notif).then((res) => {
-			request({
-				url: '/mail/send_6',
-				method: 'put',
-				data : {
-					owner: this.state.user,
-					bill: res
-				}
-			}, this.refs.notif).then((res) => {
-			 console.log("mail envoyer");
-			})
-		}, this.refs.notif).then((res) => {
-			this.setWaitingPayment();
-		})
-	}
-
     render () {
         return (
 			<div className="container py-4">
@@ -221,7 +184,7 @@ export default class IndividualCheckout extends Component {
 				{(this.state.redirect)?<Redirect to="/individual/end" paiement={true}/>:null}
 				{(this.state.back)?<Redirect to="/individual/wish" />:null}
 				{(this.state.dash)?<Redirect to="/individual/manage" />:null}
-				{(this.state.bundleState > 0)?<Redirect to="/individual/manage" />:null}
+				{(this.state.bundleState > 5)?<Redirect to="/individual/manage" />:null}
 				<div className="row justify-content-center">
 					<div className="col">
 						<div className="progress">
@@ -274,11 +237,10 @@ export default class IndividualCheckout extends Component {
 											<label>Notifier l'heureux bénéficiaire à partir du :</label>
 											<DatePicker
 												dateFormat="DD/MM/YYYY"
-										        selected={this.state.present_date}
-										        onChange={this.handleDateChange.bind(this)}
+										    selected={this.state.present_date}
+										    onChange={this.handleDateChange.bind(this)}
 												className="form-control"
-												minDate={new Date()}
-											    />
+											/>
 										</div>
 									</form>
 								}
@@ -325,14 +287,14 @@ export default class IndividualCheckout extends Component {
 											<strong>Numéro de facture à indiquer dans la référence du virement : </strong>{this.state.bill_number}
 										</p>
 										<p>
-										Si	votre	banque	vous	impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
-										invitons	à	sélectionner	«	Virement	en	cours	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
-										alors	adressé	3	jours	plus	tard. <br />
-										De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
+											Si	votre	banque	vous	impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
+											invitons	à	sélectionner	«	Bénéficiaire ajouté	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
+											alors	adressé	3	jours	plus	tard. <br />
+											De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 										</p>
 										<p>
-											<button onClick={this.setWaitingPayment.bind(this)} className="btn btn-primary">Virement en cours</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<button onClick={this.send_mail_6.bind(this)} className="btn btn-primary">Virement effectué</button>
+											<button onClick={this.setWaitingPayment.bind(this, 0)} className="btn btn-primary">Bénéficiaire ajouté</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<button onClick={this.setWaitingPayment.bind(this, 1)} className="btn btn-primary">Virement effectué</button>
 										</p>
 									</div>
 								}

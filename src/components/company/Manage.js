@@ -65,7 +65,13 @@ export default class CompanyManage extends Component {
 		}
 		if (this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].state === 0 ) {
 			return (
-				<p className="alert alert-danger mt-4">Vous n'avez pas encore réglé votre parrainage. <Link to="/company/payment">Cliquez ici</Link> pour le faire ou <Link to="/company/checkout">là pour modifier</Link> l'offre choisie</p>
+				<p className="alert alert-danger mt-4">
+					Vous n'avez pas encore réglé votre parrainage.&nbsp;
+					<Link to="/company/payment">Cliquez ici</Link> pour le faire ou <Link to="/company/checkout">sur ce lien</Link>&nbsp;
+					si vous souhaitez modifier l'offre choisie.&nbsp;
+					Si vous avez ajouté Confidences d'Abeilles en tant que bénéficiaire, effectuez votre virement&nbsp;
+					et confirmez le grace aux liens ci-contre lorsque vous le pourrez.
+				</p>
 			);
 		}
 

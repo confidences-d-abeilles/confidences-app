@@ -22,26 +22,28 @@ export default class ContributorManageApproaches extends Component {
 		}, this.refs.notif).then((res) => {
 			res.leads.map((lead, index, initial_array) => {
 				request({
-					url: '/getUser/'+lead.owner,
+					url: '/getUser/'+lead.siret,
 					method: 'GET'
-				}, this.refs.notif). then((res) => {
-					initial_array[index]['hive'] = res.bundles[0] ? res.bundles[0].hives : '0';
+				}).then((res) => {
 					initial_array[index]['commission'] = '';
-					if (res.bundles[0]) {
-						if (res.bundles[0].state == 0) {
-							initial_array[index]['status'] = 'Inscrite';
-						} else if (res.bundles[0].state == 1) {
-							initial_array[index]['status'] = 'Marraine';
-						} else if (res.bundles[0].state == 2) {
-							initial_array[index]['status'] = 'Terminée';
-							initial_array[index]['commission'] = 100 * res.bundles[0].state+'€';
+					initial_array[index]['hive'] = '0';
+					initial_array[index]['status'] = 'Démarchée';
+					if (res && res.bundles[0]) {
+						initial_array[index]['hive'] = res.bundles[0] ? res.bundles[0].hives : '0';
+						if (res.bundles[0]) {
+							if (res.bundles[0].state === 0) {
+								initial_array[index]['status'] = 'Inscrite';
+							} else if (res.bundles[0].state === 1) {
+								initial_array[index]['status'] = 'Marraine';
+							} else if (res.bundles[0].state === 2) {
+								initial_array[index]['status'] = 'Terminée';
+								initial_array[index]['commission'] = 100 * res.bundles[0].state+'€';
+							}
 						}
-					} else {
-						initial_array[index]['status'] = 'Démarchée';
 					}
 					this.setState({ leads : initial_array});
-					return ;
 				})
+				return null;
 			})
 			 this.setState({ loading: false })
 		});

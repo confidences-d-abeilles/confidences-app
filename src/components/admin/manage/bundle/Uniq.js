@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import Loading from '../../../utils/Loading'
 import request from '../../../../services/Net'
 import NotificationSystem from 'react-notification-system'
-import Payment from './Tiles/Payment'
-import Bills from './Tiles/Bills'
-import Parrains from './Tiles/Parrains'
+import Payment from './tiles/Payment'
+import Bills from './tiles/Bills'
+import Parrains from './tiles/Parrains'
 import { Link } from 'react-router-dom'
 
 export default class AdminManageBundleId extends Component {
@@ -29,7 +29,7 @@ export default class AdminManageBundleId extends Component {
 
 	changeState = ( event ) => {
 		this.setState({
-			bundle: { ...this.state.bundle, state: parseInt(event.target.value) }
+			bundle: { ...this.state.bundle, state: parseInt(event.target.value, 10) }
 		})
 	}
 
@@ -48,9 +48,12 @@ export default class AdminManageBundleId extends Component {
 	render () {
 		return (
 			<div>
-				<Link className="btn btn-info btn-sm" to="/admin/manage/bundle"> {'<'} Retour aux parrainages</Link>
 				<NotificationSystem ref="notif" />
-				<h2 className="text-center my-2">Parrainage{(this.state.bundle)?' de '+this.state.bundle.owner.firstname+' '+this.state.bundle.owner.name:''}</h2>
+				<ol className="breadcrumb">
+					<li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
+					<li className="breadcrumb-item"><Link to="/admin/manage/bundle">Parrainages</Link></li>
+					<li className="breadcrumb-item active">Parrainage{(this.state.bundle)?' de '+this.state.bundle.owner.firstname+' '+this.state.bundle.owner.name:''}</li>
+				</ol>
 				{(this.state.bundle)?
 				<div className="row">
 					<div className="col-lg-6">
@@ -58,7 +61,7 @@ export default class AdminManageBundleId extends Component {
 						<Bills bundleId={this.state.bundle.id} />
 					</div>
 					<div className="col-lg-6">
-						{this.state.owner.user_type == 2 ?<Parrains parrain={this.state.owner} bundleLabel={this.state.bundle.label}/>
+						{this.state.owner.user_type === 2 ?<Parrains parrain={this.state.owner} bundleLabel={this.state.bundle.label}/>
 						:null}
 					</div>
 				</div>

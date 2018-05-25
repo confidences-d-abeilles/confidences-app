@@ -3,10 +3,6 @@ import MetaTags from 'react-meta-tags';
 
 export default class Meta extends Component {
 
-    constructor(props) {
-        super (props);
-    }
-
     render () {
         return (
             <MetaTags>
