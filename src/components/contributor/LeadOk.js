@@ -48,7 +48,7 @@ export default class ContributorLeadOk extends Component {
 								<Link className="btn btn-primary" to="/account">Mon tableau de bord</Link>
 							</div>
 							<div className="col text-center">
-								<Link className="btn btn-primary" to="/contributor/manage/approaches">Mes démarches</Link>
+								<Link className="btn btn-primary" to="/contributor/manage/leads">Mes démarches</Link>
 							</div>
 						</div>
 					</div>
