@@ -95,6 +95,7 @@ export default class CompanyCheckout extends Component {
 			method: 'put',
 			data : {
 				state : this.bundleState,
+				later: (this.state.paytype === '2')?true:undefined,
 				feedback: this.state.feedback,
 				present: this.state.present,
 				present_email: this.state.present_email,
