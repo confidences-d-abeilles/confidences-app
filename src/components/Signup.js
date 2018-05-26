@@ -101,6 +101,12 @@ export default class Signup extends Component {
 	}
 
 	render () {
+		const linkInfoPresent = () => {
+			if (this.state.user_type === 1) {
+				return <Link to="/present"><button type="button" className="btn btn-link btn-sm">Comment offrir un parrainage en 6 étapes ?</button></Link>
+			}
+		}
+
 		return (
 			<div className="container py-4">
 				<Meta title="Inscription"/>
@@ -150,7 +156,8 @@ export default class Signup extends Component {
 							<div className="form-group">
 								<input type="password" name="confirmation" className="form-control" placeholder="Confirmation du mot de passe *" onChange={handleChange.bind(this)} />
 							</div>
-							<p>Vous avez déjà un compte ? <Link to="/login">Connectez vous</Link></p>
+							<p>{linkInfoPresent()}<br/>
+							Vous avez déjà un compte ? <Link to="/login">Connectez vous</Link></p>
 							<input type="submit" value="Valider" className="btn btn-primary" onClick={this.register.bind(this)} />
 						</form>
 					</div>
