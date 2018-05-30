@@ -29,7 +29,7 @@ const getEmailType = (type) => {
 		return ("Premiers pas (inscription)");
 	}
 	if (type === 2) {
-		return ("Houston, we had a problem");
+		return ("Actu ruche");
 	}
 	if (type === 3) {
 		return ("Paiement en attente de validation (clic sur virement effectué)");
