@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ReactGA from 'react-ga';
-import Meta from './utils/Meta'
+import Meta from '../../utils/Meta'
 
 export default class Jobs extends Component {
 
@@ -16,14 +16,14 @@ export default class Jobs extends Component {
 				<Meta title="Jobs" />
 				<div className="row">
 					<div className="col">
-						<img src={require('../assets/img/jobs.jpg')} alt="Gaetan et Nicolas" className="img-fluid" />
+						<img src={require('../../../assets/img/jobs.jpg')} alt="Gaetan et Nicolas" className="img-fluid" />
 					</div>
 				</div>
 				<div className="row mt-4 justify-content-center align-items-center">
 					<div className="col-lg-9 col-md-10 col-sm-12">
 						<h1 className="text-center my-4">
 							<span className="align-middle">Travailler avec nous ?&nbsp;</span>
-							<img src={require('../assets/img/smiley/in-love.svg')} alt="smiley in love"
+							<img src={require('../../../assets/img/smiley/in-love.svg')} alt="smiley in love"
 								style={{ height: '1em' }} />
 						</h1>
 						<p>
@@ -33,7 +33,7 @@ export default class Jobs extends Component {
 							comment ? En fait, il faut savoir qu’une ruche c’est <strong>50 000 ouvrières</strong> qui
 							travaillent de concert pour servir leur reine mère.<br/>
 							<span className="align-middle">Ceci explique donc cela&nbsp; </span>
-							<img src={require('../assets/img/smiley/nerd.svg')} alt="smiley nerd"
+							<img src={require('../../../assets/img/smiley/nerd.svg')} alt="smiley nerd"
 								style={{ height: '1em' }} />
 						</p>
 						<p>
