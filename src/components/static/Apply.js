@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { handleChange } from '../services/FormService'
-import request from '../services/Net'
+import { handleChange } from '../../services/FormService'
+import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
-import Meta from './utils/Meta'
+import Meta from '../utils/Meta'
 
 export default class Apply extends Component {
 
@@ -63,7 +63,7 @@ export default class Apply extends Component {
                 <div className="row justify-content-center">
                     <div className="col-lg-6 col-md-10 col-sm-12">
                         <h2 className="text-center my-4"><span className="align-middle">CARRIÈRES : N’HÉSITEZ PLUS, REJOIGNEZ NOUS </span>
-                        <img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy"
+                        <img src={require('../../assets/img/smiley/happy.svg')} alt="smiley happy"
                             style={{ height: '1em' }} /></h2>
                         <p>Vous aimez l’aventure, vous avez de l’ambition et vous êtes ultra motivé ! Pas de doute, vous êtes la pierre angulaire de notre future team.
                             <br /><br />
