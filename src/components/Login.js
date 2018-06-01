@@ -80,8 +80,9 @@ export default class Signup extends Component {
 							<div className="form-group">
 								<input type="password" name="password" className="form-control" placeholder="Mot de passe" onChange={handleChange.bind(this)} />
 							</div>
+							<input type="submit" className="btn btn-primary my-2" value="Se connecter" onClick={this.login.bind(this)} /><br />
 							<Link to="/forgot">Mot de passe oublié ?</Link><br/>
-							<input type="submit" className="btn btn-primary my-2" value="Se connecter" onClick={this.login.bind(this)} />
+							<Link to="/presignup">Je n'ai pas encore de compte</Link><br/>
 						</form>}
 					</div>
 				</div>

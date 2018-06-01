@@ -90,9 +90,6 @@ export default class Header extends Component {
 					<div className="hidden-lg-up collapse" style={{justifyContent: 'space-between'}} id="navbarNav" onClick={() => { document.getElementById("navbarNav").classList.remove("show") }}>
 						{(isLoggedIn())?
 							<ul className="navbar-nav">
-								<li className="nav-item" data-toggle="collapse" data-target="#navbarNav">
-									<Link className="nav-link" to="/prices">Tarifs</Link>
-								</li>
 								<div className="dropdown-divider"></div>
 							</ul>
 							:
@@ -185,9 +182,7 @@ export default class Header extends Component {
 			</div>
 				{(isLoggedIn())?
 					<ul className="navbar-nav hidden-md-down">
-						<li className="nav-item">
-							<Link className="nav-link" to="/prices">Tarifs</Link>
-						</li>
+						
 					</ul>
 					:
 					<ul className="navbar-nav hidden-md-down">
