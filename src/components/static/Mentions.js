@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
-import Meta from './utils/Meta'
+import Meta from '../utils/Meta'
 
 export default class Home extends Component {
 
