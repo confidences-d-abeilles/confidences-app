@@ -156,10 +156,12 @@ export default class Signup extends Component {
 							<div className="form-group">
 								<input type="password" name="confirmation" className="form-control" placeholder="Confirmation du mot de passe *" onChange={handleChange.bind(this)} />
 							</div>
-							<p>{linkInfoPresent()}<br/>
-							Vous avez déjà un compte ? <Link to="/login">Connectez vous</Link></p>
 							<input type="submit" value="Valider" className="btn btn-primary" onClick={this.register.bind(this)} />
 						</form>
+						<p className="mt-3 text-center">
+							Vous avez déjà un compte ? <Link to="/login">Connectez vous</Link><br />
+							{linkInfoPresent()}
+						</p>
 					</div>
 				</div>
 			</div>
