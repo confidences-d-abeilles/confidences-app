@@ -1,12 +1,14 @@
 import React from 'react'
 import moment from 'moment'
 import Newsletter from './Newsletter'
+import Sendmail from './Sendmail/Sendmail'
 
 /* This stateless component take a user as props */
 
 const Email = ( props ) => (
 	<div>
 		<Newsletter firstname={props.user.firstname} email={props.user.email} />
+		<Sendmail id={props.user.id} />
 		<h4><small>Historique des envois transactionnels</small></h4>
 		<table className="table table-sm">
 			<tbody>
