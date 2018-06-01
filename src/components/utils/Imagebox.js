@@ -13,7 +13,7 @@ export default class Imagebox extends Component {
   render () {
     return(
 
-      <div onClick={() => this.setState({ isOpen: true })} className={this.props.className} style={{ width: this.props.width, cursor: 'pointer', height: this.props.height, paddingTop: this.props.paddingTop, backgroundImage: `url(${this.props.src})`, backgroundSize: 'cover' }}>
+      <div onClick={() => this.setState({ isOpen: true })} className={this.props.className} style={{ width: this.props.width, cursor: 'pointer', height: this.props.height, backgroundPosition : 'center', paddingTop: this.props.paddingTop, backgroundImage: `url(${this.props.src})`, backgroundSize: 'cover' }}>
         {this.state.isOpen && <Lightbox mainSrc={this.props.src} onCloseRequest={() => this.setState({ isOpen: false })}/>}
       </div>
     );
