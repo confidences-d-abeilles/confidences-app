@@ -15,7 +15,7 @@ export default class Sendmail extends Component {
 				userId : this.props.id
 			}
 		}, this.refs.notif).then(res => {
-
+			this.props.refresh();
 		});
 	}
 

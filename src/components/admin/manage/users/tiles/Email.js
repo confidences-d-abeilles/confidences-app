@@ -8,14 +8,14 @@ import Sendmail from './Sendmail/Sendmail'
 const Email = ( props ) => (
 	<div>
 		<Newsletter firstname={props.user.firstname} email={props.user.email} />
-		<Sendmail id={props.user.id} />
+		<Sendmail id={props.user.id} refresh={props.refresh} />
 		<h4><small>Historique des envois transactionnels</small></h4>
 		<table className="table table-sm">
 			<tbody>
 				<tr><th>Type de mail</th><th>Date</th><th>État</th></tr>
 				{props.user.emails.map((elem) => {
 					return (
-						<tr><td>{elem.type_email} : {getEmailType(elem.type_email)}</td><td>{moment(elem.time).format("DD/MM/YY HH[h]mm")}</td><td>{getTag(elem.state)}</td></tr>
+						<tr key={elem.id} ><td>{elem.type_email} : {getEmailType(elem.type_email)}</td><td>{moment(elem.time).format("DD/MM/YY HH[h]mm")}</td><td>{getTag(elem.state)}</td></tr>
 						);
 				})}
 			</tbody>
