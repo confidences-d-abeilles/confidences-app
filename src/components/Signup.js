@@ -55,7 +55,6 @@ export default class Signup extends Component {
 				level: 'error'
 			});
 		} else {
-			console.log(this.state.sexe_m);
 			request({
 				method: 'post',
 				url: '/user',

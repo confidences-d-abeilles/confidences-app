@@ -13,7 +13,6 @@ export default class Signup extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			message: '',
 			email: '',
 			password: '',
 			redirect: false,
@@ -30,19 +29,17 @@ export default class Signup extends Component {
 
 	login(e) {
 		e.preventDefault();
-		this.setState({
-			message: '',
-			loading: true
-		});
+
 		if (!this.state.email || !this.state.password) {
 			this.refs.notificationSystem.addNotification({
 				message: "Merci de renseigner tous les champs",
 				level: 'warning'
 			});
-			this.setState({
-				loading: false
-			})
 		} else {
+			this.setState({
+				loading: true
+			});
+
 			request({
 				url : '/authenticate',
 				method : 'POST',
