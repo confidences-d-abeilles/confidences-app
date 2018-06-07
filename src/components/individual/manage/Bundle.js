@@ -127,7 +127,7 @@ export default class Bundle extends Component {
 					{(this.state.user && this.state.user.bundles[0])?
 						<div>
 							<Details data={this.state.user.bundles[0]} />
-							<Hive hive={this.state.user.bundles[0].contain[0]} />
+							{this.state.user.bundles[0].contain && <Hive hive={this.state.user.bundles[0].contain[0]} />}
 						</div>
 					:<Loading />}
 					<div className="col-lg-6 my-4">
