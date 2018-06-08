@@ -15,7 +15,6 @@ import Coupons from './manage/Coupons'
 import request from '../../services/Net'
 import FontAwesome from 'react-fontawesome'
 import NotificationSystem from 'react-notification-system'
-import Meta from '../utils/Meta'
 
 import {
 	Route,
@@ -47,7 +46,6 @@ export default class CompanyManage extends Component {
 	render () {
 		return (
 				<div className="container-fluid py-4">
-					<Meta title="Dashboard"/>
 					<NotificationSystem ref="notif" />
 					<div className="row justify-content-center">
 						<div className="col-lg-2 col-md-6">
