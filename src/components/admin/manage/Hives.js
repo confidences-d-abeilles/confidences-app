@@ -6,6 +6,7 @@ import Loading from '../../utils/Loading'
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Feedback from '../../utils/Feedback';
+import Meta from '../../utils/Meta';
 import ReactGA from 'react-ga';
 import ReactStars from 'react-stars';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -257,6 +258,7 @@ export default class AdminManageHives extends Component {
 			<div>
 				<div className="row">
 					<NotificationSystem ref="notif" />
+					<Meta title="Gérer les ruches" />
 					<div className="col">
 						<ol className="breadcrumb">
 							<li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
