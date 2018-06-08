@@ -121,7 +121,7 @@ export default class Bundle extends Component {
 				<NotificationSystem ref="notif" />
 				<div className="row">
 					<div className="col-lg-12">
-						<h2 className="my-5 text-center">Mon parrainage</h2>
+						<h2 className="my-2 text-center">Mon parrainage</h2>
 						{(this.state.user)?this.checkInfos():''}
 					</div>
 					{(this.state.user && this.state.user.bundles[0])?
