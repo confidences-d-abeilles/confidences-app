@@ -72,7 +72,7 @@ import JobsMarketing from './static/jobs/JobsMarketing';
 import JobsBusinessDev from './static/jobs/JobsBusinessDev';
 import JobsEvent from './static/jobs/JobsEvent';
 import Faq from './static/Faq';
-import Prices from './Prices';
+import Prices from './static/Prices';
 import Hives from './Hives';
 import Hive from './Hive';
 import Forgot from './Forgot';
@@ -83,6 +83,7 @@ import Present from './Present';
 import Confirm from './Confirm';
 import NotFound from './utils/NotFound';
 import Newslettersignup from './static/Newslettersignup';
+import Partners from './static/Partners';
 
 //admin
 
@@ -109,7 +110,7 @@ export default class MyRouter extends Component {
 								<Route exact path="/forgot" component={Forgot} />
 								<Route exact path="/reset/:token" component={Reset} />
 								<Route exact path="/login" component={Login} />
-								<Route exact path="/contributor/presentation" component={ContributorPresentation} />
+								<Route exact path="/partners" component={Partners} />
 								<Route exact path="/contributor/checkout" component={ContributorCheckout} />
 								<Route exact path="/contributor/wish" component={ContributorWish} />
 								<Route exact path="/contributor/final" component={ContributorFinal} />
