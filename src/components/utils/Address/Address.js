@@ -48,10 +48,11 @@ export default class Address extends Component {
 				{(!this.state.edit)?
 				<div>
 					<ViewAddress data={this.state.address} />
-					<button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ edit: true })}}>
-					<FontAwesome name="pencil" />&nbsp;Editer cette adresse
-					</button>
-					<div className="clearfix"></div>
+					<div className="text-right mt-2">
+						<button className="btn btn-secondary btn-sm" onClick={() => { this.setState({ edit: true })}}>
+							<FontAwesome name="pencil" />&nbsp;Editer cette adresse
+						</button>
+					</div>
 				</div>
 				:<EditAddress data={this.state.address} onChange={this.updateAddress} onSubmit={this.submitAddress} company={this.props.company}/>}
 			</div>
