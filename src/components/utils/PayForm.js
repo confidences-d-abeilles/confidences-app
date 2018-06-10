@@ -52,7 +52,7 @@ class PayForm extends Component {
 			loading: true
 		})
 		let price = this.props.price;
-		if (monthlyPayment) {
+		if (this.state.monthlyPayment) {
 			price = this.monthlyPrice[this.props.nbBees];
 		}
 		price = price * 100;
