@@ -25,10 +25,16 @@ class PayForm extends Component {
 		this.setState({
 			loading: true
 		})
+		let price = this.props.price;
+		if (monthlyPayment) {
+			price = this.monthlyPrice[this.props.nbBees];
+		}
+		price = price * 100;
 		this.props.stripe.createSource({
 			owner: {
 				name: this.props.for
 			},
+			amount: price,
 			metadata : {
 				bundle: this.props.bundle
 			}
