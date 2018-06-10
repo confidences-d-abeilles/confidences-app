@@ -74,6 +74,7 @@ export default class IndividualCheckout extends Component {
 				present_date: res.bundles[0].start_date ? moment(res.bundles[0].start_date) : moment(new Date()),
 				bundleState: res.bundles[0].state
 			});
+			this.bundleState = res.bundles[0].state;
 
 			request({
 				url: '/bill/bundle/'+res.bundles[0].id,
