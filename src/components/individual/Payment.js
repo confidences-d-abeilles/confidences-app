@@ -26,6 +26,7 @@ export default class IndividualPayement extends Component {
 			this.setState({
 				price: res.bundles[0].price,
 				bundle_id: res.bundles[0].id,
+				nbBees: res.bundles[0].bees
 			})
 		})
 	}
@@ -57,7 +58,7 @@ export default class IndividualPayement extends Component {
 					<div className="col-lg-6">
 						<h3 className="text-center my-4"><small>Paiement sécurisé par carte bancaire</small></h3>
 						<Elements locale="fr">
-							<PayForm price={this.state.price} bundle={this.state.bundle_id} date={(this.state.present)?this.state.start_date:new Date()} for={this.state.firstname+' '+this.state.name} endpoint="/individual/end" />
+							<PayForm price={this.state.price} nbBees={this.state.nbBees} bundle={this.state.bundle_id} date={(this.state.present)?this.state.start_date:new Date()} for={this.state.firstname+' '+this.state.name} endpoint="/individual/end" />
 						</Elements>
 					</div>
 					<div className="col-lg-6" style={{ borderStyle: 'solid', borderColor: '#E49C00', borderWidth: '0 0 0 4px'}}>

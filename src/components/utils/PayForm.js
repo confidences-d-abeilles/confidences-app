@@ -4,6 +4,7 @@ import {injectStripe} from 'react-stripe-elements';
 import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import Loading from './Loading'
+import { getUserType } from '../../services/AuthService';
 
 const config = require('../../config.js');
 
@@ -13,8 +14,33 @@ class PayForm extends Component {
 		super(props);
 		this.state = {
 			redirect: false,
-			loading: false
+			loading: false,
+			monthlyPayment: false,
+			priceFormat: this.props.price + ' €'
 		}
+
+		this.monthlyPrice = {
+			'10000': 8,
+			'20000': 14,
+			'30000': 19,
+			'40000': 23,
+			'50000': 27
+		};
+	}
+
+	monthlyPaymentChanged = (ev) => {
+		let monthlyPayment = false;
+		let priceFormat = this.props.price + ' €';
+
+		if (ev.target.checked) {
+			monthlyPayment = true;
+			priceFormat = this.monthlyPrice[this.props.nbBees] + ' € / mois';
+		}
+
+		this.setState({
+			monthlyPayment: monthlyPayment,
+			priceFormat: priceFormat
+		})
 	}
 
 	async handleSubmit (ev) {
@@ -30,7 +56,8 @@ class PayForm extends Component {
 				name: this.props.for
 			},
 			metadata : {
-				bundle: this.props.bundle
+				bundle: this.props.bundle,
+				monthlyPayment: this.state.monthlyPayment
 			}
 		}).then(({source}) => {
 			request({
@@ -64,6 +91,11 @@ class PayForm extends Component {
 				<NotificationSystem ref="notif" />
 				<div className="col-lg-6">
 					<form onSubmit={this.handleSubmit.bind(this)} className="text-center" style={{ padding: '10px', margin: '10px'}} >
+						{(getUserType() === '1')?
+							<div class="form-group">
+								<label><input type="checkbox" className="form-check-input" onChange={this.monthlyPaymentChanged} checked={this.state.monthlyPayment}/>Paiement mensuel</label>
+							</div>
+						:null}
 						<label>Numéro de carte bancaire</label>
 						<CardNumberElement style={{ base: { fontSize: '18px' }}} />
 						<label>Date d'expiration</label>
@@ -76,7 +108,7 @@ class PayForm extends Component {
 								<Loading />
 								Paiement en cours
 							</div>:
-							<button className="btn btn-primary mt-3">Payer {this.props.price} €</button>
+							<button className="btn btn-primary mt-3">Payer {this.state.priceFormat}</button>
 							}
 					</form>
 					</div>
