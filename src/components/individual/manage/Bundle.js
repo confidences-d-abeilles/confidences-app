@@ -78,9 +78,10 @@ export default class Bundle extends Component {
 			return (
 				<p className="text-center my-5">
 					{this.state.user.hive_id &&
-					<Link className="btn btn-secondary m-2" to={'/hive/'+this.state.user.hive_id}>Voir la page de ma ruche</Link>}
+					<Link className="btn btn-secondary m-2 btn-sm" to={'/hive/'+this.state.user.hive_id}>Voir la page de ma ruche</Link>}
 					{this.state.user.bundles[0].certif &&
-					<a href={config.cdn_url+'/'+this.state.user.bundles[0].certif} className="btn btn-secondary m-2" target="_blank">Télécharger mon certificat de parrainage</a>}
+					<a href={config.cdn_url+'/'+this.state.user.bundles[0].certif} className="btn btn-secondary m-2 btn-sm" target="_blank">Télécharger mon certificat de parrainage</a>}
+					<a href="https://confidences-dabeilles-visites.appointedd.com/" target="_blank" rel="noopener noreferrer" className="btn btn-info btn-sm m-2">Réserver pour une visite du rucher</a>
 				</p>
 			)
 		}
@@ -124,16 +125,19 @@ export default class Bundle extends Component {
 						<h2 className="my-2 text-center">Mon parrainage</h2>
 						{(this.state.user)?this.checkInfos():''}
 					</div>
-					{(this.state.user && this.state.user.bundles[0])?
-						<div>
-							<Details data={this.state.user.bundles[0]} />
-							{this.state.user.bundles[0].contain && <Hive hive={this.state.user.bundles[0].contain[0]} />}
-						</div>
-					:<Loading />}
-					<div className="col-lg-6 my-4">
+				</div>
+				{(this.state.user && this.state.user.bundles[0])?
+				<div className="row">
+						<Details data={this.state.user.bundles[0]} />
+						{this.state.user.bundles[0].contain && <Hive hive={this.state.user.bundles[0].contain[0]} />}
+				</div>
+				:<Loading />}
+				<div className="row mt-4">
+					<div className="col-lg-12">
 						{this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].present && !this.state.edit_present &&
 							<div>
 								<h3 className="text-center"><small>J'ai choisi d'offrir mon parrainage à</small></h3>
+								<hr />
 								<strong>{this.state.present_firstname} {this.state.present_name}</strong><br />
 								dont l'adresse mail est <strong>{this.state.present_email}</strong><br />
 								Les premières informations sur ce cadeau seront envoyées le <strong>{dispDateInfoCadeau}</strong><br />
