@@ -44,78 +44,36 @@ export function getUserType() {
 	return localStorage.getItem('user_type');
 }
 
-export const restricted = props => {
+export const individualOnly = props => {
 	const userType = getUserType();
-	console.log(userType);
-	switch (userType) {
-		case null:
-			return(<Redirect to={"/login"+props.match.path} />);
-		case !props.required:
-			return(<Redirect to={"/account"} />);
-	}
-	return (
-		<div>
-		
-		</div>
-	);
-}
-
-export class contributorOnly extends Component {
-
-	constructor(props) {
-		super(props);
-		console.log('contributorOnly');
-		this.state = { denied : false }
-	}
-
-	componentDidMount() {
-		if (localStorage.getItem('user_type') !== '3') {
-			this.setState({ denied : true })
-		}
-	}
-
-	render () {
-		return (<div>{this.state.denied  && <Redirect to="/" />}</div>)
+	if (userType === null) {
+		return(<Redirect to={"/login"+props.match.path} />);
+	} else if (userType !== "1") {
+		return(<Redirect to={"/account"} />);
+	} else {
+		return null;
 	}
 }
 
-export class companyOnly extends Component {
-
-	constructor(props) {
-		super(props);
-		this.state = { denied : false }
-	}
-
-	componentDidMount() {
-		if (localStorage.getItem('user_type') !== '2') {
-			this.setState({ denied : true })
-		}
-	}
-
-	render () {
-		return (<div>{this.state.denied  && <Redirect to="/" />}</div>)
+export const contributorOnly = props => {
+	const userType = getUserType();
+	if (userType === null) {
+		return(<Redirect to={"/login"+props.match.path} />);
+	} else if (userType !== "3") {
+		return(<Redirect to={"/account"} />);
+	} else {
+		return null;
 	}
 }
 
-export class individualOnly extends Component {
-
-	constructor(props) {
-		super(props);
-		this.state = {
-			denied : false,
-			loggedOut : false
-		}
-	}
-
-	componentDidMount() {
-		if (localStorage.getItem('user_type') !== '1') {
-			this.setState({ denied : true })
-		}
-	}
-
-	render () {
-		console.log(this.props.match.path);
-		return (<div>{this.state.denied  && <Redirect to={"/login"+this.props.match.path} />}</div>)
+export const companyOnly = props => {
+	const userType = getUserType();
+	if (userType === null) {
+		return(<Redirect to={"/login"+props.match.path} />);
+	} else if (userType !== "2") {
+		return(<Redirect to={"/account"} />);
+	} else {
+		return null;
 	}
 }
 
