@@ -109,7 +109,7 @@ export default class MyRouter extends Component {
 								<Route exact path="/" component={Home} />
 								<Route exact path="/forgot" component={Forgot} />
 								<Route exact path="/reset/:token" component={Reset} />
-								<Route exact path="/login" component={Login} />
+								<Route path="/login" component={Login} />
 								<Route exact path="/partners" component={Partners} />
 								<Route exact path="/contributor/checkout" component={ContributorCheckout} />
 								<Route exact path="/contributor/wish" component={ContributorWish} />
