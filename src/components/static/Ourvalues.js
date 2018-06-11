@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Banner from './../assets/img/ourvalues.jpg'
+import Banner from './../../assets/img/ourvalues.jpg'
 import ReactGA from 'react-ga';
-import Meta from './utils/Meta'
+import Meta from '../utils/Meta'
 
 export default class More extends Component {
 

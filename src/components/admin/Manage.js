@@ -15,7 +15,6 @@ import Coupons from './manage/Coupons'
 import request from '../../services/Net'
 import FontAwesome from 'react-fontawesome'
 import NotificationSystem from 'react-notification-system'
-import Meta from '../utils/Meta'
 
 import {
 	Route,
@@ -47,7 +46,6 @@ export default class CompanyManage extends Component {
 	render () {
 		return (
 				<div className="container-fluid py-4">
-					<Meta title="Dashboard"/>
 					<NotificationSystem ref="notif" />
 					<div className="row justify-content-center">
 						<div className="col-lg-2 col-md-6">
@@ -58,7 +56,7 @@ export default class CompanyManage extends Component {
 								<Link to="/admin/manage/hives" className="list-group-item"><FontAwesome name="archive" fixedWidth={true} />&nbsp;&nbsp;Ruches</Link>
 								<Link to="/admin/manage/bundles" className="list-group-item"><FontAwesome name="folder" fixedWidth={true} />&nbsp;&nbsp;Parrainages</Link>
 								<Link to="/admin/manage/bundle" className="list-group-item"><FontAwesome name="folder" fixedWidth={true} />&nbsp;&nbsp;Parrainages</Link>
-								<Link to="/admin/manage/bundle" className="list-group-item"><FontAwesome name="envelope" fixedWidth={true} />&nbsp;&nbsp;Emailing</Link>
+								<Link to="/admin/manage/mails" className="list-group-item"><FontAwesome name="envelope" fixedWidth={true} />&nbsp;&nbsp;Emailing</Link>
 								<li className="list-group-item active">Gestion du contenu</li>
 								<Link to="/admin/manage/products" className="list-group-item"><FontAwesome name="shopping-basket" fixedWidth={true} />&nbsp;&nbsp;Produits</Link>
 								<Link to="/admin/manage/coupons" className="list-group-item"><FontAwesome name="tag" fixedWidth={true} />&nbsp;&nbsp;Coupons</Link>

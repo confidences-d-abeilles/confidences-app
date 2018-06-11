@@ -36,7 +36,7 @@ export default class CompanyCheckout extends Component {
 			},
 			company_name: null
 		}
-		this.bundleState = 0;
+		this.bundleState = undefined;
 	}
 
 	componentDidMount() {
@@ -58,6 +58,8 @@ export default class CompanyCheckout extends Component {
 				company_name: res.company_name,
 				bundleState: res.bundles[0].state
 			});
+			this.bundleState = res.bundles[0].state;
+
 			request({
 				url: '/bill/bundle/'+res.bundles[0].id,
 				method: 'get'
@@ -95,6 +97,7 @@ export default class CompanyCheckout extends Component {
 			method: 'put',
 			data : {
 				state : this.bundleState,
+				later: (this.state.paytype === '2')?true:undefined,
 				feedback: this.state.feedback,
 				present: this.state.present,
 				present_email: this.state.present_email,

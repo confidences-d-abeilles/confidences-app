@@ -75,7 +75,6 @@ export default class Account extends Component {
 
 
 		sub(e) {
-			let stat = e.target.value;
 			request({
 				url: '/newsletter',
 				method: 'post',
@@ -92,7 +91,6 @@ export default class Account extends Component {
 		}
 		
 		unsub(e) {
-			let stat = e.target.value;
 			request({
 				url: '/newsletter/'+this.state.email+'/17334',
 				method: 'delete'

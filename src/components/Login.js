@@ -13,7 +13,6 @@ export default class Signup extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			message: '',
 			email: '',
 			password: '',
 			redirect: false,
@@ -23,6 +22,12 @@ export default class Signup extends Component {
 	}
 
 	componentDidMount() {
+		const pathname = this.props.location.pathname;
+		this.direction = pathname.substr(6);
+		if (this.direction.length === 0) {
+			this.direction = '/account';
+		}
+		console.log(this.direction);
 		if (isLoggedIn(true)) {
 			this.setState({ redirect : true })
 		}
@@ -30,19 +35,17 @@ export default class Signup extends Component {
 
 	login(e) {
 		e.preventDefault();
-		this.setState({
-			message: '',
-			loading: true
-		});
+
 		if (!this.state.email || !this.state.password) {
 			this.refs.notificationSystem.addNotification({
 				message: "Merci de renseigner tous les champs",
 				level: 'warning'
 			});
-			this.setState({
-				loading: false
-			})
 		} else {
+			this.setState({
+				loading: true
+			});
+
 			request({
 				url : '/authenticate',
 				method : 'POST',
@@ -80,13 +83,14 @@ export default class Signup extends Component {
 							<div className="form-group">
 								<input type="password" name="password" className="form-control" placeholder="Mot de passe" onChange={handleChange.bind(this)} />
 							</div>
+							<input type="submit" className="btn btn-primary my-2" value="Se connecter" onClick={this.login.bind(this)} /><br />
 							<Link to="/forgot">Mot de passe oublié ?</Link><br/>
-							<input type="submit" className="btn btn-primary my-2" value="Se connecter" onClick={this.login.bind(this)} />
+							<Link to="/presignup">Je n'ai pas encore de compte</Link><br/>
 						</form>}
 					</div>
 				</div>
 				{(this.state.redirect)?
-					<Redirect to="/account" />
+					<Redirect to={this.direction} />
 					:null}
 				</div>
 			);

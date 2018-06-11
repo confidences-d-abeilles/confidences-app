@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import request from '../../../services/Net';
 import ReactGA from 'react-ga'
+import Meta from '../../utils/Meta';
 import { Link } from 'react-router-dom'
 
 export default class Home extends Component {
@@ -62,6 +63,7 @@ export default class Home extends Component {
 	render () {
 		return (
 			<div>
+				<Meta title="Admin Dashboard"/>
 				<div className="row">
 					<div className="col">
 						<ol className="breadcrumb">

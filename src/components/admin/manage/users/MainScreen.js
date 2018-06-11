@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import List from './List'
 import request from '../../../../services/Net'
+import Meta from '../../../utils/Meta'
 import { Redirect, Link } from 'react-router-dom'
 import NotificationSystem from 'react-notification-system'
+import ReactGA from 'react-ga';
 
 export default class MainScreen extends Component {
 
 	constructor(props) {
 		super(props);
+		ReactGA.pageview(this.props.location.pathname);
 		this.state = {
 			users : [],
 			filtered : [],
@@ -121,6 +124,7 @@ export default class MainScreen extends Component {
 		return (
 			<div>
 				<NotificationSystem ref="notif" />
+				<Meta title="Gérer les utilisateurs"/>	
 				{this.state.selectedId && <Redirect to={'/admin/manage/user/'+this.state.selectedId} push />}
 				<div className="row">
 					<div className="col">

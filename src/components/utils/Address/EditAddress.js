@@ -59,7 +59,9 @@ const EditAddress = ( props ) => (
 					:
 					null
 				}
-				<button className="btn btn-secondary btn-sm">Enregistrer</button>
+				<div className="form-group text-center">
+					<button className="btn btn-secondary btn-sm">Enregistrer</button>
+				</div>
 		</form>}
 	</div>
 )
