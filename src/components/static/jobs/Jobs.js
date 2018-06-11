@@ -79,6 +79,13 @@ export default class Jobs extends Component {
 								<p className="text-center">
 									<Link className="btn btn-secondary" to="/jobs/businessdev">Business Developer</Link>
 								</p>
+								<p className="my-4">
+									Aucune offre ne vous correspond ? Confidences d’Abeilles et ses partenaires sont toujours
+									à la recherche de personnes talentueuses, n’hésitez pas à postuler !
+								</p>
+								<p className="text-center">
+									<Link className="btn btn-secondary" to="/apply">Postuler</Link>
+								</p>
 							</div>
 							<div id="contributor" className="tab-pane" role="tabpanel">
 								<div className="row justify-content-center align-items-center">
@@ -123,13 +130,6 @@ export default class Jobs extends Component {
 								</div>
 							</div>
 						</div>
-						<p className="my-4">
-							Aucune offre ne vous correspond ? Confidences d’Abeilles et ses partenaires sont toujours
-							à la recherche de personnes talentueuses, n’hésitez pas à postuler !
-						</p>
-						<p className="text-center">
-							<Link className="btn btn-secondary" to="/apply">Postuler</Link>
-						</p>
 					</div>
 				</div>
 			</div>
