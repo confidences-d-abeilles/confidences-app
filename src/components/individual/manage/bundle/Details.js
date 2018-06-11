@@ -6,7 +6,8 @@ const Details = props => (
 	<div>
 		{(props.data)?
 			<div>
-				<h3 className="text-center"><small>Détails</small></h3>
+				<h3><small>Détails</small></h3>
+				<hr />
 				Offre : Parrainage de {props.data.bees} abeilles<br />
 				{(props.data.start_date && props.data.state >= 2)?
 					<div>

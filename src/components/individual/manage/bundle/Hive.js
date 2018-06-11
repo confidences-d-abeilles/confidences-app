@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Hive = props => (
 	<div>
-		<h3 className="my-3"><small>Mes ruche</small></h3>
+		<h3 className="mt-3"><small>Ma ruche</small></h3>
 		<hr />
 		{(props.hive)?
 			<Link to={'/hive/'+props.hive.id}>{props.hive.name}</Link>	
