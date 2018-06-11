@@ -45,9 +45,10 @@ export function getUserType() {
 }
 
 export const individualOnly = props => {
+	console.log(props);
 	const userType = getUserType();
 	if (userType === null) {
-		return(<Redirect to={"/login"+props.match.path} />);
+		return(<Redirect to={"/login"+props.location.pathname} />);
 	} else if (userType !== "1") {
 		return(<Redirect to={"/account"} />);
 	} else {
@@ -58,7 +59,7 @@ export const individualOnly = props => {
 export const contributorOnly = props => {
 	const userType = getUserType();
 	if (userType === null) {
-		return(<Redirect to={"/login"+props.match.path} />);
+		return(<Redirect to={"/login"+props.location.pathname} />);
 	} else if (userType !== "3") {
 		return(<Redirect to={"/account"} />);
 	} else {
@@ -69,7 +70,7 @@ export const contributorOnly = props => {
 export const companyOnly = props => {
 	const userType = getUserType();
 	if (userType === null) {
-		return(<Redirect to={"/login"+props.match.path} />);
+		return(<Redirect to={"/login"+props.location.pathname} />);
 	} else if (userType !== "2") {
 		return(<Redirect to={"/account"} />);
 	} else {
