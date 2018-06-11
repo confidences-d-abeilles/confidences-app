@@ -14,7 +14,6 @@ import Logout from './Logout';
 
 //AA
 
-import ContributorPresentation from './contributor/Presentation';
 import ContributorAddress from './contributor/Address';
 import ContributorWish from './contributor/Wish';
 import ContributorFinal from './contributor/Final';
@@ -102,14 +101,16 @@ export default class MyRouter extends Component {
 							<Route path="/contributor/manage" component={contributorOnly} />
 							<Route path="/admin" component={adminOnly} />
 							<Route path="/individual/wish" component={individualOnly} />
+							<Route path="/individual/payment" component={individualOnly} />
 							<Route path="/individual/manage" component={individualOnly} />
 							<Route path="/company/wish" component={companyOnly} />
+							<Route path="/company/payment" component={companyOnly} />
 							<Route path="/company/manage" component={companyOnly} />
 							<Switch>
 								<Route exact path="/" component={Home} />
 								<Route exact path="/forgot" component={Forgot} />
 								<Route exact path="/reset/:token" component={Reset} />
-								<Route exact path="/login" component={Login} />
+								<Route path="/login" component={Login} />
 								<Route exact path="/partners" component={Partners} />
 								<Route exact path="/contributor/checkout" component={ContributorCheckout} />
 								<Route exact path="/contributor/wish" component={ContributorWish} />
