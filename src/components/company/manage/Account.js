@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import Confirm from '../../utils/Confirm'
+import Loading from '../../utils/Loading'
 import { logout } from '../../../services/AuthService'
 import { handleChange } from '../../../services/FormService'
 import ReactGA from 'react-ga';
@@ -17,7 +18,9 @@ export default class Account extends Component {
         this.state = {
             sessions : null,
             logout: false,
-            newsletter: false
+            newsletter: null,
+						email : '',
+						firstname : ''
         }
     }
 
@@ -27,8 +30,15 @@ export default class Account extends Component {
         method : 'get'
       }, this.refs.notif).then((res) => {
         this.setState({
-          newsletter: res.newsletter
-        })
+          email : res.email,
+          firstname : res.firstname
+        });
+        request({
+					url : '/newsletter/'+res.email+'/17334',
+					method : 'get'	
+				}, this.refs.notif).then(res => {
+					this.setState({ newsletter : res });
+				})
       })
     }
     
@@ -78,6 +88,33 @@ export default class Account extends Component {
         })
       }
 
+      sub(e) {
+        request({
+          url: '/newsletter',
+          method: 'post',
+          data : {
+            email : this.state.email,
+            listId : '17334',
+            firstname : this.state.firstname
+          }
+        },this.refs.notif).then((res) => {
+          this.setState({
+            newsletter: !this.state.newsletter
+          })
+        })
+      }
+      
+      unsub(e) {
+        request({
+          url: '/newsletter/'+this.state.email+'/17334',
+          method: 'delete'
+        },this.refs.notif).then((res) => {
+          this.setState({
+            newsletter: !this.state.newsletter
+          })
+        })
+      }
+
     render () {
         return (
             <div className="row">
@@ -98,22 +135,25 @@ export default class Account extends Component {
                                 </div>
                                 <button className="btn btn-primary mb-4">Enregistrer</button>
                             </form>
-                            <h3 className="text-center my-4"><small>Newsletter</small></h3>
-                            {this.state.newsletter ?
-                              <div>
-                              <h3 className="text-center my-4"><small>Vous êtes inscrit à la newsletter.</small></h3>
-                                <div className="text-center">
-                                  <button className="btn btn-warning btn-sm" value={false} onClick={this.updateNewsletter.bind(this)}>Me désinscrire</button>
-                                </div>
-                              </div>
-                            :
-                            <div>
-                              <h3 className="text-center my-4"><small>Vous n'êtes pas inscrit à la newsletter.</small></h3>
-                              <div className="text-center">
-                                <button className="btn btn-warning btn-sm" value={true} onClick={this.updateNewsletter.bind(this)}>M'inscrire</button>
-                              </div>
-                            </div>
-                          }
+                            <h3 className="my-2"><small>Newsletter</small></h3>
+														<hr />
+														{(this.state.newsletter === null)?
+														<Loading />:
+														(this.state.newsletter)?
+															<div>
+															<p>Vous êtes inscrit à la newsletter.</p>
+															<div className="text-center">
+																<button className="btn btn-secondary btn-sm" value={false} onClick={this.unsub.bind(this)}>Me désinscrire</button>
+															</div>
+															</div>
+														:
+														<div>
+															<p>Vous n'êtes pas inscrit à la newsletter.</p>
+															<div className="text-center">
+																<button className="btn btn-secondary btn-sm" value={true} onClick={this.sub.bind(this)}>M'inscrire</button>
+															</div>
+														</div>
+													}
                         </div>
                         <div className="col-lg-6 text-center">
                             <h3 className="text-center my-4"><small>Supprimer mon compte</small></h3>

@@ -90,9 +90,6 @@ export default class Header extends Component {
 					<div className="hidden-lg-up collapse" style={{justifyContent: 'space-between'}} id="navbarNav" onClick={() => { document.getElementById("navbarNav").classList.remove("show") }}>
 						{(isLoggedIn())?
 							<ul className="navbar-nav">
-								<li className="nav-item" data-toggle="collapse" data-target="#navbarNav">
-									<Link className="nav-link" to="/prices">Tarifs</Link>
-								</li>
 								<div className="dropdown-divider"></div>
 							</ul>
 							:
@@ -104,7 +101,7 @@ export default class Header extends Component {
 									<Link className="nav-link" to="/individual/presentation">Particulier</Link>
 								</li>
 								<li className="nav-item">
-									<Link className="nav-link" to="/contributor/presentation">Partenaire</Link>
+									<Link className="nav-link" to="/partners">Partenaires</Link>
 								</li>
 								<li className="nav-item">
 									<Link className="nav-link" to="/prices">Tarifs</Link>
@@ -185,9 +182,7 @@ export default class Header extends Component {
 			</div>
 				{(isLoggedIn())?
 					<ul className="navbar-nav hidden-md-down">
-						<li className="nav-item">
-							<Link className="nav-link" to="/prices">Tarifs</Link>
-						</li>
+						
 					</ul>
 					:
 					<ul className="navbar-nav hidden-md-down">
@@ -200,8 +195,8 @@ export default class Header extends Component {
 							boxShadow: '0px 0px 5px 2px rgb(230,230,230)'}}>Particulier</NavLink>
 						</li>
 						<li className="nav-item">
-							<NavLink className="nav-link" to="/contributor/presentation" activeStyle={{backgroundColor: 'rgb(230,230,230)',
-							boxShadow: '0px 0px 5px 2px rgb(230,230,230)'}}>Partenaire</NavLink>
+							<NavLink className="nav-link" to="/partners" activeStyle={{backgroundColor: 'rgb(230,230,230)',
+							boxShadow: '0px 0px 5px 2px rgb(230,230,230)'}}>Partenaires</NavLink>
 						</li>
 						<li className="nav-item">
 							<NavLink className="nav-link" to="/prices" activeStyle={{backgroundColor: 'rgb(230,230,230)',

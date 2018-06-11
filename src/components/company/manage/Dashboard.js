@@ -45,7 +45,6 @@ export default class CompanyManageDashboard extends Component {
 					});
 				}
 			}
-			console.log(res.bundles[0]);
 			this.setState({
 				loading : false
 			});

@@ -140,58 +140,53 @@ export default class IndividualManageInfos extends Component {
 				<Meta title="Mes informations"/>
 				{this.state.logout && <Redirect to="/" />}
 				<NotificationSystem ref="notif" />
-				<div className="row my-5">
-					<div className="col">
-						<h2 className="text-center">
-							Mes informations
-						</h2>
-					</div>
-				</div>
+				<h2 className="text-center my-2">
+					Mes informations
+				</h2>
 				{(this.state.user)?
 					<div>
 						<div className="row">
 							<div className="col-lg-6 col-sm-12">
-								<h3 className="text-center"><small>Mes informations</small></h3>
-							</div>
-						</div>
-						<div className="row">
-							<div className="col-lg-6 col-sm-12 my-4">
-								{(!this.state.editInfos)?
-									<div>
-										<strong>Nom :</strong> {this.state.user.name}<br />
-										<strong>Prénom :</strong> {this.state.user.firstname}<br />
-										<strong>Numéro de téléphone :</strong> {this.state.phone}<br />
-										<strong>Email :</strong> {this.state.email}<br /><br />
-										<button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ editInfos: true })}}><FontAwesome name="pencil" />&nbsp;Editer ces informations</button>
-									</div>
-									:
-									<form onSubmit={this.changeInfos.bind(this)}>
-										<div className="form-group">
-											<label>Numéro de téléphone</label>
-											<input type="tel" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="Numéro de téléphone" />
+								<div className="newcard">
+									{(!this.state.editInfos)?
+										<div>
+											<h3 className="mb-2"><small>Informations générales</small></h3>
+											<strong>Nom :</strong> {this.state.user.name}<br />
+											<strong>Prénom :</strong> {this.state.user.firstname}<br />
+											<strong>Numéro de téléphone :</strong> {this.state.phone}<br />
+											<strong>Email :</strong> {this.state.email}
+											<div className="text-right mt-2">
+												<button className="btn btn-secondary btn-sm" onClick={() => { this.setState({ editInfos: true })}}><FontAwesome name="pencil" />&nbsp;Editer ces informations</button>
+											</div>
 										</div>
-										<div className="form-group">
-											<label>Email</label>
-											<input type="email" name="email" onChange={handleChange.bind(this)} value={this.state.email} className="form-control form-control-sm" placeholder="Email" />
-										</div>
-										<div className="form-group text-center">
-											<button className="btn btn-primary">Enregistrer</button>
-										</div>
-									</form>}
-							</div>
-						</div>
-
-						<div className="row">
-							<div className="col-lg-6 col-sm-12">
-								<h3 className="text-center my-4"><small>Mon adresse de facturation</small></h3>
-								<Address data={this.state.billing_address} />
+										:
+										<form onSubmit={this.changeInfos.bind(this)}>
+											<div className="form-group">
+												<label>Numéro de téléphone</label>
+												<input type="tel" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="Numéro de téléphone" />
+											</div>
+											<div className="form-group">
+												<label>Email</label>
+												<input type="email" name="email" onChange={handleChange.bind(this)} value={this.state.email} className="form-control form-control-sm" placeholder="Email" />
+											</div>
+											<div className="form-group text-center">
+												<button className="btn btn-secondary btn-sm">Enregistrer</button>
+											</div>
+										</form>}
+								</div>
+								<div className="newcard">
+									<h3 className="mb-2"><small>Adresse de facturation</small></h3>
+									<Address data={this.state.billing_address} />
+								</div>
 							</div>
 							<div className="col-lg-6 col-sm-12">
-								<h3 className="text-center my-4"><small>Mes informations de livraison</small></h3>
-								<Address data={this.state.delivery_address} />
+								<div className="newcard">
+									<h3 className="mb-2"><small>Informations de livraison</small></h3>
+									<Address data={this.state.delivery_address} />
+								</div>
 							</div>
 						</div>
-						</div>
+					</div>
 				:<Loading />}
 			</div>
 		);

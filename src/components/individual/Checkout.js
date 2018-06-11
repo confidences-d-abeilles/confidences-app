@@ -74,6 +74,7 @@ export default class IndividualCheckout extends Component {
 				present_date: res.bundles[0].start_date ? moment(res.bundles[0].start_date) : moment(new Date()),
 				bundleState: res.bundles[0].state
 			});
+			this.bundleState = res.bundles[0].state;
 
 			request({
 				url: '/bill/bundle/'+res.bundles[0].id,
@@ -122,6 +123,7 @@ export default class IndividualCheckout extends Component {
 			method: 'put',
 			data : {
 				state : this.bundleState,
+				later: (this.state.paytype === '2')?true:undefined,
 				feedback: this.state.feedback,
 				present: this.state.present,
 				present_email: this.state.present_email,
@@ -273,7 +275,7 @@ export default class IndividualCheckout extends Component {
 							<div className="col-lg-9 col-md-10 col-sm-12">
 								{this.state.paytype === '0' &&
 									<Elements locale="fr">
-										<PayForm price={this.state.price} before={this.save.bind(this)} bundle={this.state.bundle_id} date={(this.state.present_date)?this.state.present_date:new Date()} for={this.state.firstname+' '+this.state.name} endpoint="/individual/end" />
+										<PayForm price={this.state.price} nbBees={this.state.bees} before={this.save.bind(this)} bundle={this.state.bundle_id} date={(this.state.present_date)?this.state.present_date:new Date()} for={this.state.firstname+' '+this.state.name} endpoint="/individual/end" />
 									</Elements>
 								}
 
@@ -301,15 +303,17 @@ export default class IndividualCheckout extends Component {
 								{this.state.paytype === '2' &&
 									<div>
 										<p>
-											Vous pouvez choisir de régler votre parrainage quand bon vous semble. En cliquant sur « Payer plus tard » vous serez redirigé vers votre tableau de bord. Les fonctionnalités sont quelque peu bridées.
-											En effet, nous avons besoin de la confirmation de paiement pour attribuer une ruche aux abeilles que vous souhaitez parrainer ; <strong>vous ne pouvez donc pas encore consulter la page de la ruche.</strong><br /><br />
-											N’oubliez pas que pour un parrainage effectué entre :
-											<ul><li>Le 1er juillet et le 31 décembre, vous recevez le miel de vos abeilles à partir du
-											mois de mai de l’année suivante.</li>
-											<li>Le 1er janvier et le 30 juin, vous recevez le miel de vos abeilles à partir du mois
-											d’octobre.</li></ul>
-											Bonne visite sur notre plateforme !
+											Vous pouvez choisir de régler votre parrainage quand bon vous semble. En cliquant sur « Payer plus tard » vous serez redirigé vers votre tableau de bord.
+											Les fonctionnalités sont quelque peu bridées.
+											En effet, nous avons besoin de la confirmation de paiement pour attribuer une ruche aux abeilles que vous souhaitez parrainer ; <strong>vous ne pouvez donc
+											pas encore consulter la page de la ruche.</strong>
 										</p>
+										<p>N’oubliez pas que pour un parrainage effectué entre :</p>
+											<ul>
+												<li>Le 1er juillet et le 31 décembre, vous recevez le miel de vos abeilles à partir du mois de mai de l’année suivante.</li>
+												<li>Le 1er janvier et le 30 juin, vous recevez le miel de vos abeilles à partir du mois d’octobre.</li>
+											</ul>
+										<p>Bonne visite sur notre plateforme !</p>
 										<button onClick={this.noAction.bind(this)} className="btn btn-primary">Payer plus tard</button>
 									</div>
 								}

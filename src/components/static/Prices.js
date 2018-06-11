@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { handleTick } from '../services/FormService'
+import { handleTick } from '../../services/FormService'
 import ReactGA from 'react-ga';
-import Meta from './utils/Meta'
+import Meta from '../utils/Meta'
 
 export default class Prices extends Component {
 

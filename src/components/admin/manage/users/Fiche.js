@@ -6,7 +6,7 @@ import General from './tiles/General/General'
 import Bundle from './tiles/Bundle'
 import Address from '../../../utils/Address/Address'
 import Email from './tiles/Email'
-import Memo from './tiles/Memo'
+import Memo from './tiles/Memo/Memo'
 
 export default class Fiche extends Component {
 
@@ -63,7 +63,7 @@ export default class Fiche extends Component {
 					<div className="col-lg-4">
 						<General data={this.state.user} delete={this.deleteUser} />
 						{this.state.user.addresses.map(element => (
-							<div className="newcard">
+							<div className="newcard" key={element.id} >
 								<h4>{(element.type === 1)?'Adresse de facturation':'Adresse de livraison'}</h4>
 								<Address data={element} />
 							</div>
@@ -80,11 +80,11 @@ export default class Fiche extends Component {
 					<div className="col-lg-4">
 						<div className="newcard">
 							<h4>Memo</h4>
-							<Memo memo={this.state.user.comment} />
+							<Memo user={this.state.user} />
 						</div>
 						<div className="newcard">
 							<h4>Emails</h4>
-							<Email user={this.state.user} />
+							<Email user={this.state.user} refresh={this.getUser} />
 						</div>
 					</div>}
 				</div>

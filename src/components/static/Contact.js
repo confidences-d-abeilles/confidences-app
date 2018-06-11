@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import request from '../services/Net'
+import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
-import { handleChange } from '../services/FormService'
+import { handleChange } from '../../services/FormService'
 import FontAwesome from 'react-fontawesome'
-import { isLoggedIn } from '../services/AuthService'
+import { isLoggedIn } from '../../services/AuthService'
 import { Link } from 'react-router-dom'
 import ReactGA from 'react-ga';
-import Meta from './utils/Meta'
+import Meta from '../utils/Meta'
 
 export default class Contact extends Component {
 
@@ -77,7 +77,7 @@ export default class Contact extends Component {
 				<div className="row justify-content-center">
 					<div className="col-lg-6 col-md-10 col-sm-12">
 						<h2 className="text-center my-4"><span className="align-middle">La réponse à votre question se trouve peut-être dans notre FAQ </span>
-							<img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy"
+							<img src={require('../../assets/img/smiley/happy.svg')} alt="smiley happy"
 								style={{ height: '1em' }} />
 						</h2>
 						<div className="input-group">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ReactGA from 'react-ga';
-import Meta from './utils/Meta'
+import Meta from '../../utils/Meta'
 
 export default class JobsReact extends Component {
 

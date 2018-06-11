@@ -14,7 +14,6 @@ import Logout from './Logout';
 
 //AA
 
-import ContributorPresentation from './contributor/Presentation';
 import ContributorAddress from './contributor/Address';
 import ContributorWish from './contributor/Wish';
 import ContributorFinal from './contributor/Final';
@@ -59,30 +58,31 @@ import Header from './Header';
 import Footer from './Footer';
 import Signup from './Signup';
 import Presignup from './Presignup';
-import Cgv from './Cgv';
-import Mentions from './Mentions';
-import About from './About';
-import Ourvalues from './Ourvalues';
+import Cgv from './static/Cgv';
+import Mentions from './static/Mentions';
+import About from './static/About';
+import Ourvalues from './static/Ourvalues';
 import Team from './Team';
-import Contact from './Contact';
-import Jobs from './Jobs';
-import JobsReact from './JobsReact';
-import JobsDesigner from './JobsDesigner';
-import JobsMarketing from './JobsMarketing';
-import JobsBusinessDev from './JobsBusinessDev';
-import JobsEvent from './JobsEvent';
-import Faq from './Faq';
-import Prices from './Prices';
+import Contact from './static/Contact';
+import Jobs from './static/jobs/Jobs';
+import JobsReact from './static/jobs/JobsReact';
+import JobsDesigner from './static/jobs/JobsDesigner';
+import JobsMarketing from './static/jobs/JobsMarketing';
+import JobsBusinessDev from './static/jobs/JobsBusinessDev';
+import JobsEvent from './static/jobs/JobsEvent';
+import Faq from './static/Faq';
+import Prices from './static/Prices';
 import Hives from './Hives';
 import Hive from './Hive';
 import Forgot from './Forgot';
 import Reset from './Reset';
-import Apply from './Apply';
+import Apply from './static/Apply';
 import RequestLabel from './RequestLabel';
 import Present from './Present';
 import Confirm from './Confirm';
 import NotFound from './utils/NotFound';
-import Newslettersignup from './Newslettersignup';
+import Newslettersignup from './static/Newslettersignup';
+import Partners from './static/Partners';
 
 //admin
 
@@ -101,15 +101,17 @@ export default class MyRouter extends Component {
 							<Route path="/contributor/manage" component={contributorOnly} />
 							<Route path="/admin" component={adminOnly} />
 							<Route path="/individual/wish" component={individualOnly} />
+							<Route path="/individual/payment" component={individualOnly} />
 							<Route path="/individual/manage" component={individualOnly} />
 							<Route path="/company/wish" component={companyOnly} />
+							<Route path="/company/payment" component={companyOnly} />
 							<Route path="/company/manage" component={companyOnly} />
 							<Switch>
 								<Route exact path="/" component={Home} />
 								<Route exact path="/forgot" component={Forgot} />
 								<Route exact path="/reset/:token" component={Reset} />
-								<Route exact path="/login" component={Login} />
-								<Route exact path="/contributor/presentation" component={ContributorPresentation} />
+								<Route path="/login" component={Login} />
+								<Route exact path="/partners" component={Partners} />
 								<Route exact path="/contributor/checkout" component={ContributorCheckout} />
 								<Route exact path="/contributor/wish" component={ContributorWish} />
 								<Route exact path="/contributor/final" component={ContributorFinal} />
@@ -155,7 +157,7 @@ export default class MyRouter extends Component {
 								<Route exact path="/jobs/marketing" component={JobsMarketing} />
 								<Route exact path="/jobs/businessdev" component={JobsBusinessDev} />
 								<Route exact path="/jobs/event" component={JobsEvent} />
-								<Route exact path="/Newsletter/Signup" component={Newslettersignup} />
+								<Route exact path="/newsletter/signup" component={Newslettersignup} />
 								<Route exact path="/cgv" component={Cgv} />
 								<Route exact path="/mentions_legales" component={Mentions} />
 								<Route exact path="/tarifs" component={Prices} />
