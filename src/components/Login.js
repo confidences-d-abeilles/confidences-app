@@ -22,6 +22,12 @@ export default class Signup extends Component {
 	}
 
 	componentDidMount() {
+		const pathname = this.props.location.pathname;
+		this.direction = pathname.substr(6);
+		if (this.direction.length === 0) {
+			this.direction = '/account';
+		}
+		console.log(this.direction);
 		if (isLoggedIn(true)) {
 			this.setState({ redirect : true })
 		}
@@ -84,7 +90,7 @@ export default class Signup extends Component {
 					</div>
 				</div>
 				{(this.state.redirect)?
-					<Redirect to="/account" />
+					<Redirect to={this.direction} />
 					:null}
 				</div>
 			);

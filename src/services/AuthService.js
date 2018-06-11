@@ -44,6 +44,22 @@ export function getUserType() {
 	return localStorage.getItem('user_type');
 }
 
+export const restricted = props => {
+	const userType = getUserType();
+	console.log(userType);
+	switch (userType) {
+		case null:
+			return(<Redirect to={"/login"+props.match.path} />);
+		case !props.required:
+			return(<Redirect to={"/account"} />);
+	}
+	return (
+		<div>
+		
+		</div>
+	);
+}
+
 export class contributorOnly extends Component {
 
 	constructor(props) {
@@ -85,7 +101,10 @@ export class individualOnly extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { denied : false }
+		this.state = {
+			denied : false,
+			loggedOut : false
+		}
 	}
 
 	componentDidMount() {
@@ -95,7 +114,8 @@ export class individualOnly extends Component {
 	}
 
 	render () {
-		return (<div>{this.state.denied  && <Redirect to="/" />}</div>)
+		console.log(this.props.match.path);
+		return (<div>{this.state.denied  && <Redirect to={"/login"+this.props.match.path} />}</div>)
 	}
 }
 
