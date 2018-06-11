@@ -61,6 +61,7 @@ class PayForm extends Component {
 				name: this.props.for
 			},
 			amount: price,
+			currency: 'eur',
 			metadata : {
 				bundle: this.props.bundle,
 				monthlyPayment: this.state.monthlyPayment
