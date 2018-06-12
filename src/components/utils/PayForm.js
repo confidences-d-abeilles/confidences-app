@@ -16,8 +16,8 @@ class PayForm extends Component {
 			redirect: false,
 			loading: false,
 			monthlyPayment: false,
-			priceFormat: this.props.price + ' €'
-		}
+			priceFormat: 'u €'
+		};
 
 		this.monthlyPrice = {
 			'10000': 8,
@@ -26,6 +26,12 @@ class PayForm extends Component {
 			'40000': 23,
 			'50000': 27
 		};
+	}
+
+	componentDidMount() {
+		this.setState({
+			priceFormat: this.props.price + ' €'
+		});
 	}
 
 	monthlyPaymentChanged = (ev) => {
@@ -115,7 +121,7 @@ class PayForm extends Component {
 								<Loading />
 								Paiement en cours
 							</div>:
-							<button className="btn btn-primary mt-3">Payer {this.state.priceFormat}</button>
+							<button className="btn btn-primary mt-3">Payer {this.props.price} €</button>
 							}
 					</form>
 					</div>
