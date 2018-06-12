@@ -121,7 +121,7 @@ class PayForm extends Component {
 								<Loading />
 								Paiement en cours
 							</div>:
-							<button className="btn btn-primary mt-3">Payer {this.state.priceFormat}</button>
+							<button className="btn btn-primary mt-3">Payer {this.props.price} €</button>
 							}
 					</form>
 					</div>
