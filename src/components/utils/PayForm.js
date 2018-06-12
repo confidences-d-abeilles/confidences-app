@@ -16,7 +16,7 @@ class PayForm extends Component {
 			redirect: false,
 			loading: false,
 			monthlyPayment: false,
-			priceFormat: this.props.price + ' €'
+			priceFormat: props.price + ' €'
 		}
 
 		this.monthlyPrice = {
