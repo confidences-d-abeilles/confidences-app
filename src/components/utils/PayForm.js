@@ -29,9 +29,9 @@ class PayForm extends Component {
 	}
 
 	componentDidMount() {
-		this.state = {
+		this.setState({
 			priceFormat: this.props.price + ' €'
-		};
+		});
 	}
 
 	monthlyPaymentChanged = (ev) => {
