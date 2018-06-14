@@ -26,7 +26,9 @@ export default class IndividualPayement extends Component {
 		.then((res) => {
 			this.setState({
 				price: res.bundles[0].price,
-				bundle_id: res.bundles[0].id
+				bundle_id: res.bundles[0].id,
+				name: res.name,
+				firstname: res.firstname
 			})
 			this.nbBees = res.bundles[0].bees;
 		})
