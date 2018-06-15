@@ -361,7 +361,7 @@ export default class AdminManageHives extends Component {
 							<button className="btn btn-primary">Ajouter cette photo</button>
 						</form>
 						{this.state.selected?
-							<Pictures data={this.state.selected.imgs} />
+							<Pictures data={this.state.selected.imgs} hiveId={this.state.selected.id} refresh={this.getOne.bind(this)} />
 						:null}
 					</div>
 					:<div className="col"></div>}
