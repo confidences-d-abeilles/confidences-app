@@ -158,7 +158,9 @@ export default class AdminManageHives extends Component {
 				header: {
 					'content-type' : 'multipart/form-data'
 				}
-			}, this.refs.notif)
+			}, this.refs.notif).then(res => {
+				this.getOne();
+			});
 		}
 	}
 
