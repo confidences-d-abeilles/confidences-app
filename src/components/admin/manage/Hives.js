@@ -10,8 +10,7 @@ import Meta from '../../utils/Meta';
 import ReactGA from 'react-ga';
 import ReactStars from 'react-stars';
 import 'react-datepicker/dist/react-datepicker.css';
-import imgPlaceholder from '../../../assets/img/logo_ruche_entreprise.png';
-const config = require('../../../config.js');
+import Pictures from './hives/Pictures';
 
 export default class AdminManageHives extends Component {
 
@@ -53,12 +52,10 @@ export default class AdminManageHives extends Component {
 	}
 
 	getOne() {
-		console.log("getOne");
 		request({
 			url: '/hive/'+this.state.id_selected,
 			method: 'get'
 		}, this.refs.notif).then((res) => {
-			console.log(res.parrains);
 			this.setState({
 				selected: res
 			})
@@ -280,7 +277,7 @@ export default class AdminManageHives extends Component {
 									<tr><th>Nom</th><th>Occupation</th><th></th></tr>
 									{this.state.hives && this.state.hives.map((hive) => {
 										return (
-											<tr className={(this.state.selected.id === hive.id)?'table-info':null}>
+											<tr key={hive.id} className={(this.state.selected.id === hive.id)?'table-info':null}>
 												<td>{hive.name}</td><td>{hive.occupation} %</td>
 												<td>
 													<button className="btn btn-link btn-sm" onClick={() => {
@@ -346,7 +343,7 @@ export default class AdminManageHives extends Component {
 								{this.state.selected.news.map((actu) => {
 									const date = (actu.date)?moment(actu.date):moment(actu.createdAt);
 									return (
-										<option value={actu.id}>{actu.title} ( {date.format("DD/MM/YYYY")} )</option>
+										<option value={actu.id} key={actu.id}>{actu.title} ( {date.format("DD/MM/YYYY")} )</option>
 									)
 								})}
 							</select>
@@ -363,21 +360,11 @@ export default class AdminManageHives extends Component {
 							</div>
 							<button className="btn btn-primary">Ajouter cette photo</button>
 						</form>
+						{this.state.selected?
+							<Pictures data={this.state.selected.imgs} />
+						:null}
 					</div>
 					:<div className="col"></div>}
-					{this.state.selected?
-						<div>
-							<div className="row justify-content-center">
-							{this.state.imgsHive.map((img) => {
-								return(
-									<div className="col">
-										<img  onClick={() => {this.changeImg(img)}} width="100px" height="100px" src={(img)?config.cdn_url+'/'+img:imgPlaceholder} alt={img} />
-									</div>
-								)
-							})}
-					</div>
-					</div>
-					:null}
 				</div>
 			</div>
 		)
