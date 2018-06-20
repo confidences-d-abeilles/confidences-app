@@ -26,7 +26,7 @@ export default class Footer extends Component {
 								<ul>
 									<li><Link to="/company/presentation" className="noStyleLink">Entreprise</Link></li>
 									<li><Link to="/individual/presentation" className="noStyleLink">Particulier</Link></li>
-									<li><Link to="/contributor/presentation" className="noStyleLink">Partenaire</Link></li>
+									<li><Link to="/partners" className="noStyleLink">Partenaires</Link></li>
 									<li><Link to="/prices" className="noStyleLink">Tarifs</Link></li>
 								</ul>
 							</div>
