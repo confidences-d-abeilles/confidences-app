@@ -5,7 +5,7 @@ import IndividualManageInfos from './manage/Infos'
 import Bills from './manage/Bills'
 import NotificationSystem from 'react-notification-system'
 import Account from './manage/Account'
-import Custom from './manage/Custom';
+import Custom from './manage/custom/Custom';
 import profile from '../../assets/img/profile2.png';
 import Bundle from './manage/Bundle'
 import FontAwesome from 'react-fontawesome'
