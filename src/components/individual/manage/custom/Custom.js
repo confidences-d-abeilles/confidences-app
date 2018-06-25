@@ -84,7 +84,7 @@ export default class Custom extends Component {
 							<div>
 								<p>Visuel actuel de votre étiquette. Pour le modifier veuillez cliquer sur "Recommencer la personnalisation" en dessous de celui-ci.</p>
 								<Document file={config.cdn_url+'/label/'+this.state.userId+'.pdf'} >
-									<Page pageNumber={1} width={1200} className="label" />
+									<Page pageNumber={1} width={500} className="label" />
 								</Document>
 								<button className="btn btn-secondary" onClick={() => { this.setState({ step : 1 }); }}>Recommencer la personnalisation <FontAwesome name="magic" /></button>
 							</div>)
@@ -131,7 +131,7 @@ export default class Custom extends Component {
 									<p className="lead">Voici le rendu de votre étiquette personnalisée !</p>
 									<p>Les mentions entre parenthèses sont provisoires et seront remplacées lorsque les informations seront disponibles.</p>
 									<Document file={config.cdn_url+'/label/'+this.state.userId+'.pdf'} >
-										<Page pageNumber={1} width={1200} className="label" />
+										<Page pageNumber={1} width={500} className="label" />
 									</Document>
 									<button className="btn btn-secondary" onClick={() => { this.setState({ step : 1 }); }}>Recommencer la personnalisation <FontAwesome name="magic" /></button>
 								</div>}
