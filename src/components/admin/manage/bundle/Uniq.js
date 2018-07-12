@@ -45,6 +45,13 @@ export default class AdminManageBundleId extends Component {
 		});
 	}
 
+	downloadLabel = () => {
+		request({
+			url: '/bundle/'+this.props.id+'/label',
+			method: 'get'
+		}, this.refs.notif);
+	}
+
 	render () {
 		return (
 			<div>

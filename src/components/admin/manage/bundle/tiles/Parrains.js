@@ -21,6 +21,7 @@ const Parrains = ( props ) => (
         <div className="row">
           <div className="col">
             <h3 className="card-title">Label</h3>
+			<button className="btn btn-info btn-sm" onClick={props.downloadLabel}>Télécharger</button>
             <a href={config.cdn_url+'/'+props.bundleLabel} target="_blank">
               <SquareImg className="card-img-top img-fluid" src={config.cdn_url+'/'+props.bundleLabel} alt="Bundle label" />
             </a>
