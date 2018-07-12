@@ -5,6 +5,7 @@ import NotificationSystem from 'react-notification-system'
 import Payment from './tiles/Payment'
 import Bills from './tiles/Bills'
 import Parrains from './tiles/Parrains'
+import Label from './tiles/Label'
 import { Link } from 'react-router-dom'
 
 export default class AdminManageBundleId extends Component {
@@ -66,6 +67,7 @@ export default class AdminManageBundleId extends Component {
 					<div className="col-lg-6">
 						<Payment state={this.state.bundle.state.toString()} changeState={this.changeState} submitState={this.submitState} />
 						<Bills bundleId={this.state.bundle.id} />
+						<Label downloadLabel={this.downloadLabel} />
 					</div>
 					<div className="col-lg-6">
 						{this.state.owner.user_type === 2 ?<Parrains parrain={this.state.owner} bundleLabel={this.state.bundle.label}/>
