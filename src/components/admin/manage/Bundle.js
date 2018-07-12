@@ -157,6 +157,13 @@ export default class Bundle extends Component {
 		}, this.refs.notif)
 	}
 
+	downloadLabel() {
+		request({
+			url: '/bundle/'+this.props.id+'/label',
+			method: 'get'
+		}, this.refs.notif);
+	}
+
 	render () {
 		return (
 			<div>
@@ -218,6 +225,14 @@ export default class Bundle extends Component {
 									</div>
 									<div className="form-group">
 										<button className="btn btn-primary" onClick={this.uploadCertif.bind(this)} >Uploader le certificat</button>
+									</div>
+								</div>
+							</div>
+							<div className="card mt-4">
+								<div className="card-block">
+									<h3 className="card-title">Etiquette</h3>
+									<div className="form-group">
+										<button className="btn btn-primary" onClick={this.downloadLabel.bind(this)} >Télécharger l'étiquette'</button>
 									</div>
 								</div>
 							</div>
