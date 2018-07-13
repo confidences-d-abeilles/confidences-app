@@ -19,7 +19,7 @@ export default class AdminManageBundle extends Component {
 
 	componentDidMount() {
 		this.get();
-		this.refs.searchInput.focus(); 
+		this.refs.searchInput.focus();
 	}
 
 	get() {
@@ -86,7 +86,6 @@ export default class AdminManageBundle extends Component {
 
 	filter = () => {
 		let res = this.state.bundles.filter((elem) => {
-			console.log(elem.name.indexOf(this.state.criteria));
 			if ((elem.owner.name.toLowerCase().indexOf(this.state.criteria) >= 0)
 			|| (elem.owner.firstname.toLowerCase().indexOf(this.state.criteria) >= 0)
 			|| (elem.owner.company_name.toLowerCase().indexOf(this.state.criteria) >= 0)) {
