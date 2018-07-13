@@ -7,7 +7,7 @@ import Loading from '../../../utils/Loading'
 import { handleChange } from '../../../../services/FormService'
 import FontAwesome from 'react-fontawesome'
 import {Document, Page} from 'react-pdf';
-import './Custom.css';
+import '../../../utils/css/LabelPdf.css';
 
 import Eti1 from '../../../../assets/img/label/sample_Etiquette_P1.jpg';
 import Eti2 from '../../../../assets/img/label/sample_Etiquette_P2.jpg'
@@ -49,7 +49,7 @@ export default class Custom extends Component {
 					this.generate();
 				}
 			});
-			
+
 		});
 	}
 
@@ -146,5 +146,5 @@ export default class Custom extends Component {
 }
 
 			//
-			      
+
 			// </div>
