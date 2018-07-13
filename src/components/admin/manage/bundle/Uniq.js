@@ -63,9 +63,12 @@ export default class AdminManageBundleId extends Component {
 				method: 'GET',
 				responseType: 'arraybuffer',
 			});
-			let regexp = /filename="(.*)"/gi;
-			let retrievedFileName = regexp.exec(response.headers['content-disposition'])[1];
-			if (!retrievedFileName) {
+			let retrievedFileName;
+			try {
+				let regexp = /filename="(.*)"/gi;
+				retrievedFileName = regexp.exec(response.headers['content-disposition'])[1];
+			} catch (err) {
+				console.log('erreur filename');
 				retrievedFileName = 'label_' + this.state.bundle.owner.name + '.pdf';
 			}
 			fileDownload(response.data, retrievedFileName);
