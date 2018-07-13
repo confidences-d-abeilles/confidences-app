@@ -65,6 +65,15 @@ module.exports = {
 					ogurl: "https://parrainagederuches.fr/present",
 					ogimg: "https://parrainagederuches.fr/metastatic/cadeau.jpg"
 				}
+			case '/partners':
+				return {
+					...init,
+					title: "Partenaires",
+					ogtitle: "Main dans la main avec Confidences d'Abeilles !",
+					ogdescription: "Découvrez les partenaires qui ont rejoint l’aventure et qui soutiennent notre projet !",
+					ogurl: "https://parrainagederuches.fr/partners",
+					ogimg: "https://parrainagederuches.fr/metastatic/partners.jpg"
+				}
 			case '/about':
 				return {
 					...init,

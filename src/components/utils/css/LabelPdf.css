@@ -1,0 +1,10 @@
+.label canvas {
+	width: 80% !important;
+	margin: auto;
+	height: auto !important;
+	margin-bottom: 2em;
+}
+
+.label .ReactPDF__Page__textContent {
+	display: none;
+}
