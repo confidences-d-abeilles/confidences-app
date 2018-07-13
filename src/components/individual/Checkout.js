@@ -48,8 +48,14 @@ export default class IndividualCheckout extends Component {
 			firstname: ''
 		}
 
-		this.bundleState = undefined;
+		this.bankTransfer = this.bankTransferEnum.NO_TRANSFER;
 	}
+
+	bankTransferEnum = Object.freeze({
+		NO_TRANSFER: 0,
+		BANK_ACCOUNT_ADDED: 1,
+		BANK_TRANSFER_DONE: 2,
+	});
 
 	componentDidMount() {
 		request({
@@ -74,7 +80,6 @@ export default class IndividualCheckout extends Component {
 				present_date: res.bundles[0].start_date ? moment(res.bundles[0].start_date) : moment(new Date()),
 				bundleState: res.bundles[0].state
 			});
-			this.bundleState = res.bundles[0].state;
 
 			request({
 				url: '/bill/bundle/'+res.bundles[0].id,
@@ -84,18 +89,17 @@ export default class IndividualCheckout extends Component {
 					bill_number: res.number
 				});
 			});
-				res.addresses.forEach((address) => {
-					if (address.type === 1) {
-						this.setState({ billing_address: address })
-						console.log(address);
-					}
-					if (address.type === 2) {
-						this.setState({
-							delivery_address: address,
-							different: address.addr_diff
-						})
-					}
-				})
+			res.addresses.forEach((address) => {
+				if (address.type === 1) {
+					this.setState({ billing_address: address })
+				}
+				else if (address.type === 2) {
+					this.setState({
+						delivery_address: address,
+						different: address.addr_diff
+					})
+				}
+			})
 		});
 	}
 
@@ -107,8 +111,8 @@ export default class IndividualCheckout extends Component {
 		}
 	}
 
-	setWaitingPayment = state => {
-		this.bundleState = state;
+	setBankTransfer = done => {
+		this.bankTransfer = done ? this.bankTransferEnum.BANK_TRANSFER_DONE:this.bankTransferEnum.BANK_ACCOUNT_ADDED;
 
 		this.save().then((res) => {
 			this.setState({ redirect : true })
@@ -116,14 +120,14 @@ export default class IndividualCheckout extends Component {
 	}
 
 	async save() {
-		console.log('save bundle request' + this.bundleState);
 		return new Promise(resolve => {
 			request({
 			url: '/bundle/'+this.state.bundle_id,
 			method: 'put',
 			data : {
-				state : this.bundleState,
-				later: (this.state.paytype === '2')?true:undefined,
+				state : (this.bankTransfer === this.bankTransferEnum.BANK_TRANSFER_DONE) ? 1:0,
+				virementBenefAdd: (this.bankTransfer === this.bankTransferEnum.BANK_ACCOUNT_ADDED) ? true:false,
+				later: (this.state.paytype === '2')?true:false,
 				feedback: this.state.feedback,
 				present: this.state.present,
 				present_email: this.state.present_email,
@@ -295,8 +299,8 @@ export default class IndividualCheckout extends Component {
 											De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
 										</p>
 										<p>
-											<button onClick={this.setWaitingPayment.bind(this, 0)} className="btn btn-primary">Bénéficiaire ajouté</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<button onClick={this.setWaitingPayment.bind(this, 1)} className="btn btn-primary">Virement effectué</button>
+											<button onClick={this.setBankTransfer.bind(this, false)} className="btn btn-primary">Bénéficiaire ajouté</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<button onClick={this.setBankTransfer.bind(this, true)} className="btn btn-primary">Virement effectué</button>
 										</p>
 									</div>
 								}

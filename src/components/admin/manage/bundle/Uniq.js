@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import Loading from '../../../utils/Loading'
 import request from '../../../../services/Net'
+import { client } from '../../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import Payment from './tiles/Payment'
 import Bills from './tiles/Bills'
 import Parrains from './tiles/Parrains'
+import Label from './tiles/Label'
 import { Link } from 'react-router-dom'
+import fileDownload from 'js-file-download'
 
 export default class AdminManageBundleId extends Component {
 
@@ -23,7 +26,15 @@ export default class AdminManageBundleId extends Component {
 				bundle: { ...res, state : res.state.toString() },
 				owner: res.owner
 			});
-			console.log(res.owner);
+
+			request({
+				method: 'get',
+				url: '/user/' + res.owner.id,
+			}, this.refs.notifs).then((res2) => {
+				this.setState({
+					userLabelFilename: res2.label
+				});
+			})
 		})
 	}
 
@@ -45,6 +56,29 @@ export default class AdminManageBundleId extends Component {
 		});
 	}
 
+	downloadLabel = async () => {
+		try {
+			let response = await client({
+				url: '/bundle/'+this.state.bundle.id+'/label',
+				method: 'GET',
+				responseType: 'arraybuffer',
+			});
+			let retrievedFileName;
+			try {
+				let regexp = /filename="(.*)"/gi;
+				retrievedFileName = regexp.exec(response.headers['content-disposition'])[1];
+			} catch (err) {
+				console.log('erreur filename');
+				retrievedFileName = 'label_' + this.state.bundle.owner.name + '.pdf';
+			}
+			fileDownload(response.data, retrievedFileName);
+		}
+		catch (error) {
+			console.error(error);
+			this.refs.notif.addNotification({message: 'download fail', level: 'error'});
+		}
+	}
+
 	render () {
 		return (
 			<div>
@@ -59,6 +93,7 @@ export default class AdminManageBundleId extends Component {
 					<div className="col-lg-6">
 						<Payment state={this.state.bundle.state.toString()} changeState={this.changeState} submitState={this.submitState} />
 						<Bills bundleId={this.state.bundle.id} />
+						<Label labelFilename={this.state.userLabelFilename} downloadLabel={this.downloadLabel} />
 					</div>
 					<div className="col-lg-6">
 						{this.state.owner.user_type === 2 ?<Parrains parrain={this.state.owner} bundleLabel={this.state.bundle.label}/>

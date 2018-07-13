@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
-import request from '../../../services/Net'
+import request from '../../../../services/Net'
 import NotificationSystem from 'react-notification-system'
-import Meta from '../../utils/Meta'
-import Loading from '../../utils/Loading'
-import { handleChange } from '../../../services/FormService'
+import Meta from '../../../utils/Meta'
+import Loading from '../../../utils/Loading'
+import { handleChange } from '../../../../services/FormService'
 import FontAwesome from 'react-fontawesome'
+import {Document, Page} from 'react-pdf';
+import '../../../utils/css/LabelPdf.css';
 
-import Eti1 from '../../../assets/img/label/sample_Etiquette_P1.jpg';
-import Eti2 from '../../../assets/img/label/sample_Etiquette_P2.jpg'
+import Eti1 from '../../../../assets/img/label/sample_Etiquette_P1.jpg';
+import Eti2 from '../../../../assets/img/label/sample_Etiquette_P2.jpg'
 
-const config = require('../../../config.js');
+const config = require('../../../../config.js');
 
 export default class Custom extends Component {
 
@@ -47,7 +49,7 @@ export default class Custom extends Component {
 					this.generate();
 				}
 			});
-			
+
 		});
 	}
 
@@ -81,7 +83,9 @@ export default class Custom extends Component {
 							:
 							<div>
 								<p>Visuel actuel de votre étiquette. Pour le modifier veuillez cliquer sur "Recommencer la personnalisation" en dessous de celui-ci.</p>
-								<object data={config.cdn_url+'/label/'+this.state.userId+'.pdf#zoom=200'} type="application/pdf" style={{ width: '100%' }} height="400">Votre étiquette</object>
+								<Document file={config.cdn_url+'/label/'+this.state.label} >
+									<Page pageNumber={1} width={500} className="label" />
+								</Document>
 								<button className="btn btn-secondary" onClick={() => { this.setState({ step : 1 }); }}>Recommencer la personnalisation <FontAwesome name="magic" /></button>
 							</div>)
 					}
@@ -126,7 +130,9 @@ export default class Custom extends Component {
 								<div>
 									<p className="lead">Voici le rendu de votre étiquette personnalisée !</p>
 									<p>Les mentions entre parenthèses sont provisoires et seront remplacées lorsque les informations seront disponibles.</p>
-									<object data={config.cdn_url+'/label/'+this.state.userId+'.pdf#zoom=200'} type="application/pdf" style={{ width: '100%' }} height="400">Votre étiquette</object>
+									<Document file={config.cdn_url+'/label/'+this.state.label} >
+										<Page pageNumber={1} width={500} className="label" />
+									</Document>
 									<button className="btn btn-secondary" onClick={() => { this.setState({ step : 1 }); }}>Recommencer la personnalisation <FontAwesome name="magic" /></button>
 								</div>}
 							</div>
@@ -140,5 +146,5 @@ export default class Custom extends Component {
 }
 
 			//
-			      
+
 			// </div>
