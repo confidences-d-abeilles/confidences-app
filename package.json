@@ -21,7 +21,7 @@
     "react-pdf": "^2.5.3",
     "react-quill": "^1.1.0",
     "react-router-dom": "^4.1.2",
-    "react-scripts": "^1.0.10",
+    "react-scripts": "^1.1.4",
     "react-slick": "^0.18.1",
     "react-stars": "^2.2.5",
     "react-stripe-elements": "^1.2.0",

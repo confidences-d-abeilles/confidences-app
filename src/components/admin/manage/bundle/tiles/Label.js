@@ -10,7 +10,7 @@ const Label = ( props ) => (
 		{props.labelFilename &&
 			<a href={config.cdn_url+'/label/'+props.labelFilename} target="_blank">
 				<Document file={config.cdn_url+'/label/'+props.labelFilename} >
-					<Page pageNumber={1} className="label" />
+					<Page pageNumber={1} width="500" className="label" />
 				</Document>
 			</a>
 		}
