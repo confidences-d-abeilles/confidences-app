@@ -71,7 +71,7 @@ export default class AdminManageBundleId extends Component {
 			fileDownload(response.data, retrievedFileName);
 		}
 		catch (error) {
-			console.log(error);
+			console.error(error);
 			this.refs.notif.addNotification({message: 'download fail', level: 'error'});
 		}
 	}
