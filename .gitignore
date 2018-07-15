@@ -22,5 +22,5 @@ yarn-error.log*
 
 /src/config.js
 
-package-lock.json
 .sass-cache
+
