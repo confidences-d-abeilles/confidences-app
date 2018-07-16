@@ -55,20 +55,24 @@ export default class Bills extends Component {
 
 	render () {
 		return (
-			<div>
-				<NotificationSystem ref="notif" />
-				<h3>Facture</h3>
-				{(this.state.bills && !this.state.loading)?
-					<div>
-						<strong>Numéro</strong> : {this.state.bills.number}<br />
-						<strong>Montant</strong> : {this.state.bills.price} €<br />
-						<strong>Document</strong> : {(this.state.bills.file)?<span><a href={config.cdn_url+'/bills/'+this.state.bills.file} target="_blank">Fichier actuel</a><br /></span>:'Aucun document pour cette facturation'}
-						<FileUpload identifier="billDoc" label="Uploader un fichier" />
-						<div className="text-center">
-							<button className="btn btn-info btn-sm" onClick={this.uploadFile} >Envoyer le fichier</button>
+			<div className="card mb-4 bg-light">
+				<h4 className="card-header">Facture</h4>
+				<div className="card-body p-2">
+					{(this.state.bills && !this.state.loading)?
+						<div className="card-text">
+							<strong>Numéro</strong> : {this.state.bills.number}<br />
+							<strong>Montant</strong> : {this.state.bills.price} €<br />
+							<strong>Document</strong> : {(this.state.bills.file)?<span><a href={config.cdn_url+'/bills/'+this.state.bills.file} target="_blank">Fichier actuel</a><br /></span>:'Aucun document pour cette facturation'}
+							<FileUpload identifier="billDoc" label="Uploader un fichier" />
+							<div className="text-center">
+								<button className="btn btn-info btn-sm" onClick={this.uploadFile} >Envoyer le fichier</button>
+							</div>
 						</div>
-					</div>
-				:<Loading />}
+					:
+						<div className="card-text"><Loading /></div>
+					}
+					<NotificationSystem ref="notif" />
+				</div>
 			</div>
 		)
 	}

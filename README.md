@@ -1,6 +1,6 @@
 # Plateforme de parrainage de Confidences d'Abeilles
 ## Prérequis
-Quel que soit le système, vous devez être préalablement équipé de `nodejs` en version `9.5` ou plus, et `npm` en version `5.6` ou plus. Ces 2 programmes sont installable selon votre système en téléchargement ou directement via votre gestionnaire d'application, notamment sur Linux.
+Quel que soit le système, vous devez être préalablement équipé de `nodejs` en version `10.6.0` ou plus, et `npm` en version `6.1.0` ou plus. Ces 2 programmes sont installable selon votre système en téléchargement ou directement via votre gestionnaire d'application, notamment sur Linux.
 ## Recupération des fichiers sources
 Clonez les fichiers de ce repo, via les commandes habituelles
 ```shell
