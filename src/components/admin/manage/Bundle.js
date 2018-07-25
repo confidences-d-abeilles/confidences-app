@@ -160,11 +160,13 @@ export default class Bundle extends Component {
 	render () {
 		let beginDate = 'unavailable';
 		let endDate = 'unavailable';
-		if (typeof this.state.bundle.start_date !== 'undefined' && this.state.bundle.start_date) {
-			beginDate = moment(this.state.bundle.start_date).format("DD/MM/YYYY");
-		}
-		if (typeof this.state.bundle.end_date !== 'undefined' && this.state.bundle.end_date) {
-			endDate = moment(this.state.bundle.end_date).format("DD/MM/YYYY")
+		if (this.state.bundle) {
+			if (typeof this.state.bundle.start_date !== 'undefined' && this.state.bundle.start_date) {
+				beginDate = moment(this.state.bundle.start_date).format("DD/MM/YYYY");
+			}
+			if (typeof this.state.bundle.end_date !== 'undefined' && this.state.bundle.end_date) {
+				endDate = moment(this.state.bundle.end_date).format("DD/MM/YYYY")
+			}
 		}
 
 		return (
