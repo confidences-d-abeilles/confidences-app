@@ -63,6 +63,7 @@ class PayForm extends Component {
 		}
 		price = price * 100;
 		this.props.stripe.createSource({
+			type: 'card',
 			owner: {
 				name: this.props.for
 			},
