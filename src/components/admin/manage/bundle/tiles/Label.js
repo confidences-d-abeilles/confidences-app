@@ -55,13 +55,13 @@ class Label extends Component {
 									<Page pageNumber={1} width={500} className="label" />
 								</Document>
 							</a>
-						</p>:(
+						</p>:
 						<p className="card-text text-center">
-							this.props.loading ?(
+							{this.props.loading ?
 								<Loading />:
-								<p>Label non trouvé</p>)
+								<p>Label non trouvé</p>}
 						</p>
-					)}
+					}
 					<hr />
 					<label>Mention : <input type="text" className="form-control" name="mention" value={this.state.mention} onChange={handleChange.bind(this)} /></label>
 					<label>Model : <input type="text" className="form-control" name="model" value={this.state.model} onChange={handleChange.bind(this)} /></label>
