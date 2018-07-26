@@ -86,9 +86,12 @@ export default class AdminManageBundle extends Component {
 
 	filter = () => {
 		let res = this.state.bundles.filter((elem) => {
-			if ((elem.owner.name.toLowerCase().indexOf(this.state.criteria) >= 0)
-			|| (elem.owner.firstname.toLowerCase().indexOf(this.state.criteria) >= 0)
-			|| (elem.owner.company_name.toLowerCase().indexOf(this.state.criteria) >= 0)) {
+			if ((elem.owner && elem.owner.name && elem.owner.name.toLowerCase().indexOf(this.state.criteria) >= 0)
+			|| (elem.owner && elem.owner.firstname && elem.owner.firstname.toLowerCase().indexOf(this.state.criteria) >= 0)
+			|| (elem.owner && elem.owner.company_name && elem.owner.company_name.toLowerCase().indexOf(this.state.criteria) >= 0)
+			|| (elem.owner && elem.name && elem.name.toLowerCase().indexOf(this.state.criteria) >= 0)
+			|| (elem.owner && elem.firstname && elem.firstname.toLowerCase().indexOf(this.state.criteria) >= 0)
+			|| (elem.owner && elem.email && elem.email.toLowerCase().indexOf(this.state.criteria) >= 0)) {
 				return true;
 			} else {
 				return false;
