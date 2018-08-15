@@ -16,15 +16,15 @@ class PayForm extends Component {
 			redirect: false,
 			loading: false,
 			monthlyPayment: false,
-			priceFormat: 'u €'
+			priceFormat: ' €'
 		};
 
 		this.monthlyPrice = {
-			'10000': 8,
-			'20000': 14,
-			'30000': 19,
-			'40000': 23,
-			'50000': 27
+			'10000': 10,
+			'20000': 17,
+			'30000': 23,
+			'40000': 27,
+			'50000': 32
 		};
 	}
 
