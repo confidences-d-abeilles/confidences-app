@@ -161,7 +161,7 @@ export default class CompanyCheckout extends Component {
 
 	changeAddress(e) {
 			this.setState({
-				different : !this.state.different
+				different: e.target.checked
 			}, () => {
 				request({
 					url: '/address/diff',

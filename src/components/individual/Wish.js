@@ -38,15 +38,15 @@ export default class IndividualWish extends Component {
 
 	getPrice(bees) {
 		if (bees === '10000') {
-			return (70);
+			return (85);
 		} else if (bees === '20000') {
-			return (135);
+			return (160);
 		} else if (bees === '30000') {
-			return (195);
+			return (230);
 		} else if (bees === '40000') {
-			return (250);
+			return (295);
 		} else if (bees === '50000') {
-			return (300);
+			return (350);
 		} else {
 			return (0);
 		}
