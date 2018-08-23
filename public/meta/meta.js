@@ -140,6 +140,46 @@ module.exports = {
 					ogurl: "https://parrainagederuches.fr/parrains/imag-in-tech",
 					ogimg: "https://parrainagederuches.fr/metastatic/imagin-tech.jpg"
 				}
+			case '/parrains/isa-workwear':
+				return {
+					title: "Isa France",
+					ogtitle: "ISA France équipe les apiculteurs dont elle parraine une ruche !",
+					ogdescription: "Consciente de ses responsabilités, ISA WORKWEAR vient de s’engager aux côtés des apiculteurs dans la préservation de l’apiculture française et la biodiversité locale. Bien évidemment, elle réalise le marquage des tenues de protection, son cœur de métier.",
+					ogurl: "https://parrainagederuches.fr/parrains/isa-workwear",
+					ogimg: "https://parrainagederuches.fr/metastatic/isa-workwear.jpg"
+				}
+			case '/parrains/brigitte-consulting':
+				return {
+					title: "Brigitte Consulting",
+					ogtitle: "Brigitte Consulting, du conseils pour les abeilles !",
+					ogdescription: "15 ans après, Brigitte Consulting reste la solution originale à toutes vos questions ! En parrainant une ruche chez Confidences d'Abeilles, Brigitte Consulting apporte des solutions de communication pour mettre l'abeille et son miel à l'honneur. Une solution gagnante pour tout le monde !",
+					ogurl: "https://parrainagederuches.fr/parrains/brigitte-consulting",
+					ogimg: "https://parrainagederuches.fr/metastatic/brigitte-consulting.jpg"
+				}
+			case '/parrains/allianz-albertville-faverges':
+				return {
+					title: "Allianz",
+					ogtitle: "Allianz, l'assureur des abeilles !",
+					ogdescription: "L’agence Allianz de Damien PERINET-MARQUET n’assure pas seulement l'activité de Confidences d’Abeilles ! Elle s'engage à ses côtés en parrainant une ruche. L'esprit de la maison, c'est aussi de soutenir des projets locaux et innovants !",
+					ogurl: "https://parrainagederuches.fr/parrains/allianz-albertville-faverges",
+					ogimg: "https://parrainagederuches.fr/metastatic/allianz-albertville-faverges.jpg"
+				}
+			case '/parrains/campagne-de-the':
+				return {
+					title: "La Campagne du thé",
+					ogtitle: "Un peu de miel dans votre thé ?",
+					ogdescription: "La Campagne de Thé se lance dans un partenariat aussi audacieux que gourmand ! En parrainant deux ruches chez Confidences d'Abeilles, l'entreprise soutient les apiculteurs, les abeilles et la garantie d'un miel exceptionnel à associer avec les thés savoureux de l'entreprise !",
+					ogurl: "https://parrainagederuches.fr/parrains/campagne-de-the",
+					ogimg: "https://parrainagederuches.fr/metastatic/teekampagne.jpg"
+				}
+			case '/parrains/genie-alpes-forage':
+				return {
+					title: "Génie Alpes Forage",
+					ogtitle: "Prochain chantier pour Génie Alpes Forage : une ruche !",
+					ogdescription: "Fort de son expérience montagnarde, Génie Alpes Forage, soucieuse de cet environnement, s'engage aux cotés de Confidences d'Abeilles en parrainant une ruche !",
+					ogurl: "https://parrainagederuches.fr/parrains/genie-alpes-forage",
+					ogimg: "https://parrainagederuches.fr/metastatic/genie-alpes-forage.jpg"
+				}
 			default:
 				return {
 					...init
