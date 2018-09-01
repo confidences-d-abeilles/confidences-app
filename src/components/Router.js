@@ -95,82 +95,82 @@ export default class MyRouter extends Component {
 			<div id="wrapper">
 				<div id="noFooter">
 					<Header />
-						<div className="container-fluid">
-							<Route path="/contributor/wish" component={contributorOnly} />
-							<Route path="/contributor/lead" component={contributorOnly} />
-							<Route path="/contributor/manage" component={contributorOnly} />
-							<Route path="/admin" component={adminOnly} />
-							<Route path="/individual/wish" component={individualOnly} />
-							<Route path="/individual/payment" component={individualOnly} />
-							<Route path="/individual/manage" component={individualOnly} />
-							<Route path="/company/wish" component={companyOnly} />
-							<Route path="/company/payment" component={companyOnly} />
-							<Route path="/company/manage" component={companyOnly} />
-							<Switch>
-								<Route exact path="/" component={Home} />
-								<Route exact path="/forgot" component={Forgot} />
-								<Route exact path="/reset/:token" component={Reset} />
-								<Route path="/login" component={Login} />
-								<Route exact path="/partners" component={Partners} />
-								<Route exact path="/contributor/checkout" component={ContributorCheckout} />
-								<Route exact path="/contributor/wish" component={ContributorWish} />
-								<Route exact path="/contributor/final" component={ContributorFinal} />
-								<Route path="/contributor/approach" component={ContributorApproach} />
-								<Route path="/contributor/parrains" component={ContributorParrains} />
-								<Route exact path="/contributor/prelead" component={ContributorPreLead} />
-								<Route exact path="/contributor/lead" component={ContributorLead} />
-								<Route exact path="/contributor/leadok" component={ContributorLeadOk} />
-								<Route exact path="/contributor/address" component={ContributorAddress} />
-								<Route path="/contributor/manage" component={ContributorManage} />
-								<Route exact path="/individual/presentation" component={IndividualPresentation} />
-								<Route exact path="/individual/more" component={IndividualMore} />
-								<Route exact path="/individual/address" component={IndividualAddress} />
-								<Route exact path="/individual/wish" component={IndividualWish} />
-								<Route exact path="/individual/checkout" component={IndividualCheckout} />
-								<Route exact path="/individual/payment" component={IndividualPayement} />
-								<Route exact path="/individual/end" component={IndividualEnd} />
-								<Route path="/individual/manage" component={IndividualManage} />
-								<Route exact path="/company/presentation" component={CompanyPresentation} />
-								<Route exact path="/company/more" component={CompanyMore} />
-								<Route exact path="/company/identity" component={CompanyIdentity} />
-								<Route exact path="/company/address" component={CompanyAddress} />
-								<Route exact path="/company/wish" component={CompanyWish} />
-								<Route exact path="/company/checkout" component={CompanyCheckout} />
-								<Route exact path="/company/payment" component={CompanyPayement} />
-								<Route exact path="/company/end" component={CompanyEnd} />
-								<Route path="/company/manage" component={CompanyManage} />
-								<Route exact path="/presignup" component={Presignup} />
-								<Route exact path="/signup/:type" component={Signup} />
-								<Route path="/admin/manage" component={AdminManage} />
-								<Route exact path="/ruches/list" component={RuchesList} />
-								<Route exact path="/present" component={Present} />
-								<Route exact path="/faq" component={Faq} />
-								<Route exact path="/about" component={About} />
-								<Route exact path="/ourvalues" component={Ourvalues} />
-								<Route exact path="/team" component={Team} />
-								<Route exact path="/contact" component={Contact} />
-								<Route exact path="/apply" component={Apply} />
-								<Route exact path="/requestlabel" component={RequestLabel} />
-								<Route exact path="/jobs" component={Jobs} />
-								<Route exact path="/jobs/reactjs" component={JobsReact} />
-								<Route exact path="/jobs/designer" component={JobsDesigner} />
-								<Route exact path="/jobs/marketing" component={JobsMarketing} />
-								<Route exact path="/jobs/businessdev" component={JobsBusinessDev} />
-								<Route exact path="/jobs/event" component={JobsEvent} />
-								<Route exact path="/newsletter/signup" component={Newslettersignup} />
-								<Route exact path="/cgv" component={Cgv} />
-								<Route exact path="/mentions_legales" component={Mentions} />
-								<Route exact path="/tarifs" component={Prices} />
-								<Route exact path="/prices" component={Prices} />
-								<Route exact path="/hives" component={Hives} />
-								<Route exact path="/hive/:id" component={Hive} />
-								<Route exact path="/confirm/:token" component={Confirm} />
-								<Route exact path="/logout" component={Logout} />
-								<Route exact path="/account" component={MyAccount} />
-								<Route component={NotFound} />
-							</Switch>
-						</div>
+					<div className="container-fluid">
+						<Route path="/contributor/wish" component={contributorOnly} />
+						<Route path="/contributor/lead" component={contributorOnly} />
+						<Route path="/contributor/manage" component={contributorOnly} />
+						<Route path="/admin" component={adminOnly} />
+						<Route path="/individual/wish" component={individualOnly} />
+						<Route path="/individual/payment" component={individualOnly} />
+						<Route path="/individual/manage" component={individualOnly} />
+						<Route path="/company/wish" component={companyOnly} />
+						<Route path="/company/payment" component={companyOnly} />
+						<Route path="/company/manage" component={companyOnly} />
+						<Switch>
+							<Route exact path="/" component={Home} />
+							<Route exact path="/forgot" component={Forgot} />
+							<Route exact path="/reset/:token" component={Reset} />
+							<Route path="/login" component={Login} />
+							<Route exact path="/partners" component={Partners} />
+							<Route exact path="/contributor/checkout" component={ContributorCheckout} />
+							<Route exact path="/contributor/wish" component={ContributorWish} />
+							<Route exact path="/contributor/final" component={ContributorFinal} />
+							<Route path="/contributor/approach" component={ContributorApproach} />
+							<Route path="/contributor/parrains" component={ContributorParrains} />
+							<Route exact path="/contributor/prelead" component={ContributorPreLead} />
+							<Route exact path="/contributor/lead" component={ContributorLead} />
+							<Route exact path="/contributor/leadok" component={ContributorLeadOk} />
+							<Route exact path="/contributor/address" component={ContributorAddress} />
+							<Route path="/contributor/manage" component={ContributorManage} />
+							<Route exact path="/individual/presentation" component={IndividualPresentation} />
+							<Route exact path="/individual/more" component={IndividualMore} />
+							<Route exact path="/individual/address" component={IndividualAddress} />
+							<Route exact path="/individual/wish" component={IndividualWish} />
+							<Route exact path="/individual/checkout" component={IndividualCheckout} />
+							<Route exact path="/individual/payment" component={IndividualPayement} />
+							<Route exact path="/individual/end" component={IndividualEnd} />
+							<Route path="/individual/manage" component={IndividualManage} />
+							<Route exact path="/company/presentation" component={CompanyPresentation} />
+							<Route exact path="/company/more" component={CompanyMore} />
+							<Route exact path="/company/identity" component={CompanyIdentity} />
+							<Route exact path="/company/address" component={CompanyAddress} />
+							<Route exact path="/company/wish" component={CompanyWish} />
+							<Route exact path="/company/checkout" component={CompanyCheckout} />
+							<Route exact path="/company/payment" component={CompanyPayement} />
+							<Route exact path="/company/end" component={CompanyEnd} />
+							<Route path="/company/manage" component={CompanyManage} />
+							<Route exact path="/presignup" component={Presignup} />
+							<Route exact path="/signup/:type" component={Signup} />
+							<Route path="/admin/manage" component={AdminManage} />
+							<Route exact path="/ruches/list" component={RuchesList} />
+							<Route exact path="/present" component={Present} />
+							<Route exact path="/faq" component={Faq} />
+							<Route exact path="/about" component={About} />
+							<Route exact path="/ourvalues" component={Ourvalues} />
+							<Route exact path="/team" component={Team} />
+							<Route exact path="/contact" component={Contact} />
+							<Route exact path="/apply" component={Apply} />
+							<Route exact path="/requestlabel" component={RequestLabel} />
+							<Route exact path="/jobs" component={Jobs} />
+							<Route exact path="/jobs/reactjs" component={JobsReact} />
+							<Route exact path="/jobs/designer" component={JobsDesigner} />
+							<Route exact path="/jobs/marketing" component={JobsMarketing} />
+							<Route exact path="/jobs/businessdev" component={JobsBusinessDev} />
+							<Route exact path="/jobs/event" component={JobsEvent} />
+							<Route exact path="/newsletter/signup" component={Newslettersignup} />
+							<Route exact path="/cgv" component={Cgv} />
+							<Route exact path="/mentions_legales" component={Mentions} />
+							<Route exact path="/tarifs" component={Prices} />
+							<Route exact path="/prices" component={Prices} />
+							<Route exact path="/hives" component={Hives} />
+							<Route exact path="/hive/:id" component={Hive} />
+							<Route exact path="/confirm/:token" component={Confirm} />
+							<Route exact path="/logout" component={Logout} />
+							<Route exact path="/account" component={MyAccount} />
+							<Route component={NotFound} />
+						</Switch>
 					</div>
+				</div>
 				<Footer />
 			</div>
 		)
