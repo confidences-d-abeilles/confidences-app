@@ -1,4 +1,6 @@
-export default const APropos = <>
+import React from 'react';
+
+export const APropos = <React.Fragment>
 	<h2>A propos</h2>
 	<p>
 		Confidences d’Abeilles est une jeune entreprise annécienne qui développe des produits et
@@ -15,4 +17,4 @@ export default const APropos = <>
 		de débriefer la semaine tout en sirotant une bière maison. Des freelances interviennent aussi
 		régulièrement.
 	</p>
-</>
+</React.Fragment>

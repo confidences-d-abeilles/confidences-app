@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import Meta from '../../utils/Meta'
-import APropos from './APropos'
+import { APropos } from './APropos'
 
 export default class JobsDesigner extends Component {
 
@@ -72,7 +72,7 @@ export default class JobsDesigner extends Component {
 						</p>
 						<h2>Conditions</h2>
 						<p>
-							Contactez-nous et faites-nous des propositions<img src={require('../assets/img/smiley/happy.svg')}
+							Contactez-nous et faites-nous des propositions<img src={require('../../../assets/img/smiley/happy.svg')}
 								alt="smiley happy" style={{ height: '1em' }} /><br/>
 							Rémunération à la clé bien entendu<br/>
 							Télétravail possible
