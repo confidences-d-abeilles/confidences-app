@@ -182,7 +182,7 @@ export default class Header extends Component {
 			</div>
 				{(isLoggedIn())?
 					<ul className="navbar-nav hidden-md-down">
-						
+
 					</ul>
 					:
 					<ul className="navbar-nav hidden-md-down">
