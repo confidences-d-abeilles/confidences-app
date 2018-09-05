@@ -17,7 +17,7 @@ export default class JobsDesigner extends Component {
 				<Meta title="Offre de stage"/>
 				<div className="row mt-4 justify-content-center align-items-center">
 					<div className="col-lg-9 col-md-10 col-sm-12">
-						<h1 className="text-center my-4">Offre de stage Business Developer - Janvier 2019</h1>
+						<h1 className="text-center my-4">Offre de stage Business Development - Mai 2018</h1>
 						<APropos/>
 						<h2>Missions</h2>
 						<p>
@@ -94,8 +94,8 @@ export default class JobsDesigner extends Component {
 						</p>
 						<h2>Conditions</h2>
 						<p>
-							4-6 mois à partir de Janvier 2019 – stage conventionné<br/>
-							Stage rémunéré + commissions en fonction des résultats
+              8 semaines à partir de Mai 2018 – stage conventionné<br/>
+              Stage rémunéré selon implication et résultats
 						</p>
 					</div>
 				</div>

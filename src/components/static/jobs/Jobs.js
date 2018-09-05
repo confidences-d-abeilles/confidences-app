@@ -65,10 +65,7 @@ export default class Jobs extends Component {
 									embarqués | communicants</strong> nous sommes intéressés. Retrouvez nos offres de stage de 4 à 6 mois.
 								</p>
 								<p className="text-center">
-									<Link className="btn btn-secondary" to="/jobs/reactjs">Stage ReactJS / NodeJS developer</Link>
-								</p>
-								<p className="text-center">
-									<Link className="btn btn-secondary" to="/jobs/designer">Stage UX Designer</Link>
+									<Link className="btn btn-secondary" to="/jobs/production">CDI / CDD Responsable Production Apicole</Link>
 								</p>
 								<p className="text-center">
 									<Link className="btn btn-secondary" to="/jobs/marketing">Stage Communication / Marketing</Link>
@@ -77,7 +74,13 @@ export default class Jobs extends Component {
 									<Link className="btn btn-secondary" to="/jobs/event">Stage Community / Event Manager</Link>
 								</p>
 								<p className="text-center">
-									<Link className="btn btn-secondary" to="/jobs/businessdev">Business Developer</Link>
+									<Link className="btn btn-secondary" to="/jobs/businessdev">Stage Business Developer</Link>
+								</p>
+								<p className="text-center">
+									<Link className="btn btn-secondary" to="/jobs/reactjs">Stage ReactJS / NodeJS developer</Link>
+								</p>
+								<p className="text-center">
+									<Link className="btn btn-secondary" to="/jobs/designer">Mission UX Designer</Link>
 								</p>
 								<p className="my-4">
 									Aucune offre ne vous correspond ? Confidences d’Abeilles et ses partenaires sont toujours

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ReactGA from 'react-ga';
 import Meta from '../../utils/Meta'
+import APropos from './APropos'
 
 export default class JobsDesigner extends Component {
 
@@ -16,19 +17,8 @@ export default class JobsDesigner extends Component {
 				<Meta title="Offre de stage"/>
 				<div className="row mt-4 justify-content-center align-items-center">
 					<div className="col-lg-9 col-md-10 col-sm-12">
-						<h1 className="text-center my-4">Offre de stage UX Designer - Janvier 2018</h1>
-						<h2>A propos</h2>
-						<p>
-							Confidences d’Abeilles est une jeune entreprise annécienne qui développe des produits et
-							des services autour de l’apiculture.
-						</p>
-						<p>
-							L’esprit de la marque est la découverte et le partage des trésors que peuvent produire les abeilles.
-							L’excellence est une exigence qui amène chaque jour les membres de l’équipe à travailler avec passion,
-							respect et humilité. L’authenticité est le maître mot chez Confidences d’Abeilles.<br/>
-							L’équipe est actuellement composée des deux fondateurs et d’une troisième personne qui a rejoint
-							l’aventure pour le lancement du service de parrainage. Des freelances interviennent régulièrement.
-						</p>
+						<h1 className="text-center my-4">Mission UX Designer</h1>
+						<APropos/>
 						<h2>Missions</h2>
 						<p>
 							Vous êtes toujours au fait des dernières innovations ? Vous aimez partager
@@ -82,8 +72,9 @@ export default class JobsDesigner extends Component {
 						</p>
 						<h2>Conditions</h2>
 						<p>
-							4-6 mois à partir de Janvier 2018 – stage conventionné<br/>
-							Stage rémunéré selon profil<br/>
+							Contactez-nous et faites-nous des propositions<img src={require('../assets/img/smiley/happy.svg')}
+								alt="smiley happy" style={{ height: '1em' }} /><br/>
+							Rémunération à la clé bien entendu<br/>
 							Télétravail possible
 						</p>
 					</div>
