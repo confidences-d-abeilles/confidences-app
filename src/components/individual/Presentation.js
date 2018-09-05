@@ -6,6 +6,8 @@ import third from '../../assets/img/P/3.jpg';
 import fourth from '../../assets/img/P/4.jpg';
 import fifth from '../../assets/img/P/5.jpg';
 import sixth from '../../assets/img/P/6.jpg';
+import seventh from '../../assets/img/P/7.jpg';
+import eighth from '../../assets/img/P/8.jpg';
 import leaflet from '../../assets/leaflet_p.pdf';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
@@ -44,6 +46,8 @@ export default class IndividualPresentation extends Component {
 								<li data-target="#carouselHome" data-slide-to="3"></li>
 								<li data-target="#carouselHome" data-slide-to="4"></li>
 								<li data-target="#carouselHome" data-slide-to="5"></li>
+								<li data-target="#carouselHome" data-slide-to="6"></li>
+								<li data-target="#carouselHome" data-slide-to="7"></li>
 							</ol>
 							<div className="carousel-inner" role="listbox">
 								<div className="carousel-item active">
@@ -63,6 +67,12 @@ export default class IndividualPresentation extends Component {
 								</div>
 								<div className="carousel-item">
 									<img className="d-block" src={sixth} alt="Sixth slide" />
+								</div>
+								<div className="carousel-item">
+									<img className="d-block" src={seventh} alt="Seventh slide" />
+								</div>
+								<div className="carousel-item">
+									<img className="d-block" src={eighth} alt="Eighth slide" />
 								</div>
 							</div>
 						</div>
