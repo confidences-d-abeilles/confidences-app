@@ -4,6 +4,8 @@ import {
 	Route
 } from 'react-router-dom';
 
+import ManageRedirections from './utils/ManageRedirections';
+
 import { contributorOnly } from '../services/AuthService'
 import { individualOnly } from '../services/AuthService'
 import { adminOnly } from '../services/AuthService'
@@ -96,6 +98,9 @@ export default class MyRouter extends Component {
 				<div id="noFooter">
 					<Header />
 					<div className="container-fluid">
+						{/* Manage redirections, like 301 redirections */}
+						<ManageRedirections />
+
 						<Route path="/contributor/wish" component={contributorOnly} />
 						<Route path="/contributor/lead" component={contributorOnly} />
 						<Route path="/contributor/manage" component={contributorOnly} />
