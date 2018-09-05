@@ -55,10 +55,8 @@ class IndividualPrices extends Component {
 	}
 
 	render () {
-		let pricesArr = (this.state.several)? this.indPricesMo : this.indPricesYe;
-
-		let pricesCells = [];
-		for (let price of pricesArr) {
+		const pricesArr = (this.state.several)? this.indPricesMo : this.indPricesYe;
+		const pricesCells = pricesArr.map(price => {
 			let priceDispl;
 			if (this.state.several) {
 				priceDispl = price + '€/mois (' + price * 12 + '€/an)';
@@ -66,9 +64,8 @@ class IndividualPrices extends Component {
 			else {
 				priceDispl = price + '€/an';
 			}
-
-			pricesCells.push(<td>{priceDispl}</td>);
-		}
+			return <td key={price}>{priceDispl}</td>
+		});
 
 		return (
 			<div>
