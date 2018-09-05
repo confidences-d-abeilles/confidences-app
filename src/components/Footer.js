@@ -15,7 +15,7 @@ export default class Footer extends Component {
 							<div>
 								<Link to="/"><img src={logo} alt="Logo Confidences d'Abeilles" className="img-fluid" style={{ maxHeight: '128px' }}/></Link><br /><br />
 								<a href="https://www.facebook.com/confidencesdabeille" target="_blank" rel="noopener noreferrer"><FontAwesome name='facebook-official' size="2x" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<a href="https://twitter.com/Cosme_conf" target="_blank" rel="noopener noreferrer"><FontAwesome name='twitter' size="2x" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<a href="https://twitter.com/cdabeille" target="_blank" rel="noopener noreferrer"><FontAwesome name='twitter' size="2x" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<a href="https://www.instagram.com/confidences_dabeilles/" target="_blank" rel="noopener noreferrer"><FontAwesome name='instagram' size="2x" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<a href="https://www.linkedin.com/company-beta/11010483/" target="_blank" rel="noopener noreferrer"><FontAwesome name='linkedin' size="2x" /></a>
 							</div>
@@ -28,6 +28,7 @@ export default class Footer extends Component {
 									<li><Link to="/individual/presentation" className="noStyleLink">Particulier</Link></li>
 									<li><Link to="/partners" className="noStyleLink">Partenaires</Link></li>
 									<li><Link to="/prices" className="noStyleLink">Tarifs</Link></li>
+									<li><Link to="/hives" className="noStyleLink">Les ruches</Link></li>
 								</ul>
 							</div>
 							<div className="col-lg-4 col-md-4 col-sm-6 mb-4">
