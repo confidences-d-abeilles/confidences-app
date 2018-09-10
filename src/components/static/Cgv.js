@@ -20,8 +20,10 @@ export default class Home extends Component {
                 <li>tous dommages causés suite à une intrusion frauduleuse d'un tiers sur notre site ayant provoqué une modification des informations présentes.</li>
                 <li>tous dommages, directs ou indirects, sans aucune distinction des causes, origines, natures ou conséquences, provoqués suite à l'accès d’une personne non autorisée sur notre site, ainsi que l'utilisation des informations qu'il contient.</li>
                 </ul>
+				<p>Tout accès, inscription, création d’un Compte implique l’acceptation des présentes Conditions Générales
+					d’Utilisation, sans aucune réserve.</p>
                 <p>
-                Les présentes Conditions Générales de Vente s'appliquent, sans restriction ni réserve, à l'ensemble des ventes conclues par la société Confidences d’Abeilles (« le Vendeur ») auprès d’acheteurs professionnels ou non (« les Clients, le Client ou les Parrains, le Parrain »), désirant acquérir les Produits ou les services proposés à la vente par le Vendeur (« les Produits ou les Services ») uniquement sur les sites internet <a href="https://parrainagederuches.fr">parrainagederuches.fr</a>, <a href="https://parrainerdesabeilles.fr">parrainerdesabeilles.fr</a> ci-après désigné « le Site Internet ». Le Client à la possibilité de les imprimer et les conserver.<br/>
+                Elles s'appliquent aussi, sans restriction ni réserve, à l'ensemble des ventes conclues par la société Confidences d’Abeilles (« le Vendeur ») auprès d’acheteurs professionnels ou non (« les Clients, le Client ou les Parrains, le Parrain »), désirant acquérir les Produits ou les services proposés à la vente par le Vendeur (« les Produits ou les Services ») uniquement sur les sites internet <a href="https://parrainagederuches.fr">parrainagederuches.fr</a>, <a href="https://parrainerdesabeilles.fr">parrainerdesabeilles.fr</a> ci-après désigné « le Site Internet ». Le Client à la possibilité de les imprimer et les conserver.<br/>
                 Ceci implique que toute commande d'un Produit proposé à la vente sur le Site Internet emporte pour le Client acceptation pleine et entière des présentes Conditions Générales de Vente ; de plus le Client reconnaît en avoir pris connaissance préalablement à sa commande.
                 </p><p>
                 Le Site Internet est la propriété de Confidences d'Abeilles dans son intégralité, ainsi que l'ensemble des droits y afférant. Toute reproduction, intégrale ou partielle, doit systématiquement être soumise à autorisation du ou des propriétaires. Sont approuvées sans demandes spécifiques, les références de type lien hypertexte vers le site.
@@ -161,6 +163,18 @@ export default class Home extends Component {
                 </p><p>
                 Afin d'améliorer les performances du site et l’expérience client, Confidences d'Abeilles et ses prestataires autorisés peuvent utiliser des outils de mesure d'audience et de suivi de navigation (tels que des cookies, marqueurs (« tags ») etc.). Ces outils ne permettent pas d’identifier nominativement le Client mais enregistrent des informations relatives à sa navigation et peuvent notamment être utilisées dans le cadre d'un programme d’offres commerciales spécifiques. Nous informons que tout Client qui le souhaite peut s’opposer à l'enregistrement ou l'utilisation de ces outils en configurant son navigateur à cet effet.
                 </p>
+				<h3>Newsletter</h3>
+				<p>
+					Tous les deux mois, Confidences d’Abeilles adresse par courrier électronique à ses abonnées sa « newsletter »
+					(lettre d’information) en mettant leur mettant à disposition un lien de désabonnement figurant au bas de
+					chaque courrier électronique de prospection commerciale. Le simple fait de remplir et de valider le premier
+					formulaire de création d’un Compte Parrain (Entreprise, Particulier, Apporteur d’Affaires) fait de l’utilisateur
+					un abonné à la Newsletter de Confidences d’Abeilles. Il lui donne ainsi à Confidences d’Abeilles l’autorisation
+					de lui envoyer des courriers électroniques de prospection commerciale à l’adresse qu’il aura renseigné lors de
+					la création de son compte.<br/>
+					Le désabonnement est aussi possible directement depuis l’espace personnel du Parrain, menu « mon
+					compte ».
+				</p>
                 <h2>Article 11 – Modification des présentes Conditions Générales de Vente</h2>
                 <p>
                 Confidences d'Abeilles se réserve le droit de modifier à tout moment le contenu ou les caractéristiques de ses Conditions Générales de Vente. Chaque commande donne lieu à l'acceptation des Conditions Générales de Vente dans leur version en vigueur.<br />

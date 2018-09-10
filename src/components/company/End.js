@@ -31,18 +31,7 @@ export default class CompanyEnd extends Component {
 				name: res.name,
 				bundleState: res.bundles[0].state,
 				loading: false
-			})
-			request({
-				url : '/user/marv/ob',
-				method : 'PUT',
-				data : {
-					feedback: res.feedback,
-					type: res.state,
-					name: this.state.name,
-					firstname: this.state.firstname
-				}
-			}, this.refs.notif).then((res) =>{
-			})
+			});
 			// request({
   		// 	url: '/newsletter/create',
   		// 	method: 'put',
