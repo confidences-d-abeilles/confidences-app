@@ -158,6 +158,17 @@ export default class Bundle extends Component {
 	}
 
 	render () {
+		let beginDate = 'unavailable';
+		let endDate = 'unavailable';
+		if (this.state.bundle) {
+			if (typeof this.state.bundle.start_date !== 'undefined' && this.state.bundle.start_date) {
+				beginDate = moment(this.state.bundle.start_date).format("DD/MM/YYYY");
+			}
+			if (typeof this.state.bundle.end_date !== 'undefined' && this.state.bundle.end_date) {
+				endDate = moment(this.state.bundle.end_date).format("DD/MM/YYYY")
+			}
+		}
+
 		return (
 			<div>
 				<NotificationSystem ref="notif" />
@@ -227,8 +238,8 @@ export default class Bundle extends Component {
 								<div className="card-block">
 									<h3 className="card-title">Demande</h3>
 									<p className="card-text">
-										Begin date : {moment(this.state.bundle.start_date).format("DD/MM/YYYY")}<br />
-										End date : {moment(this.state.bundle.end_date).format("DD/MM/YYYY")}<br />
+										Begin date : {beginDate}<br />
+										End date : {endDate}<br />
 										<DatePicker
 											dateFormat="DD/MM/YYYY"
 											selected={this.state.bundleStart}

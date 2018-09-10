@@ -106,6 +106,9 @@ export default class Header extends Component {
 								<li className="nav-item">
 									<Link className="nav-link" to="/prices">Tarifs</Link>
 								</li>
+								<li className="nav-item">
+									<Link className="nav-link" to="/hives">Les ruches</Link>
+								</li>
 								<div className="dropdown-divider"></div>
 							</ul>
 						}
@@ -182,7 +185,7 @@ export default class Header extends Component {
 			</div>
 				{(isLoggedIn())?
 					<ul className="navbar-nav hidden-md-down">
-						
+
 					</ul>
 					:
 					<ul className="navbar-nav hidden-md-down">
@@ -201,6 +204,10 @@ export default class Header extends Component {
 						<li className="nav-item">
 							<NavLink className="nav-link" to="/prices" activeStyle={{backgroundColor: 'rgb(230,230,230)',
 							boxShadow: '0px 0px 5px 2px rgb(230,230,230)'}}>Tarifs</NavLink>
+						</li>
+						<li className="nav-item">
+							<NavLink className="nav-link" to="/hives" activeStyle={{backgroundColor: 'rgb(230,230,230)',
+							boxShadow: '0px 0px 5px 2px rgb(230,230,230)'}}>Les ruches</NavLink>
 						</li>
 					</ul>
 				}

@@ -83,9 +83,9 @@ export default class CompanyPayment extends Component {
 						<h3 className="text-center my-4"><small>Paiement par virement bancaire</small></h3>
 						<p>Veuillez trouver nos coordonnées bancaires pour procéder au virement</p>
 						<p>
-							<strong>Domiciliation : </strong>OLKYPAY GRENOBLE<br />
-							<strong>IBAN : </strong>FR36 1973 3000 01LU 3121 1050 436<br/>
-							<strong>BIC : </strong>OPSPFR21OKL<br/><br />
+							<strong>Domiciliation : </strong>QONTO - 92641 BOULOGNE-BILLANCOURT<br />
+							<strong>IBAN : </strong>FR76 1679 8000 0100 0004 1298 259<br/>
+							<strong>BIC : </strong>TRZOFR21XXX<br/><br />
 							<strong>Numéro de facture à indiquer dans la référence du virement : </strong>{this.state.bill_number}
 						</p>
 						<p>

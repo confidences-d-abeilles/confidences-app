@@ -212,7 +212,7 @@ export default class IndividualCheckout extends Component {
 						<div className="row justify-content-center">
 							<div className="col-lg-6 col-md-10 col-sm-12">
 								<h3 className="my-4">Adresse de facturation</h3>
-									<ViewAddress data={this.state.billing_address} />
+								<ViewAddress data={this.state.billing_address} />
 								<h3 className="my-4">Message</h3>
 								<div className="form-group">
 									<textarea rows="5" className="form-control" name="feedback" onChange={handleChange.bind(this)} value={this.state.feedback} placeholder="Informations complémentaires concernant votre commande ou commentaires, laissez-nous un petit message, nous y prêterons grande attention :)" />
@@ -225,7 +225,7 @@ export default class IndividualCheckout extends Component {
 								}
 								<h3 className="mt-5">Ce parrainage est un cadeau {!this.state.present_ok && <input type="checkbox" name="present" checked={this.state.present} onChange={handleTick.bind(this) }/>}</h3>
 								{this.state.present &&
-										<form>
+									<form>
 										<p>L’adresse de votre bénéficiaire est différente ? Merci de sélectionner « Adresse de livraison différente » et de remplir tous les champs.</p>
 										<div className="form-group">
 											<input type="text" className="form-control"  value={this.state.present_name} name="present_name" onChange={handleChange.bind(this)} placeholder="Nom du bénéficiaire *" />
@@ -243,8 +243,8 @@ export default class IndividualCheckout extends Component {
 											<label>Notifier l'heureux bénéficiaire à partir du :</label>
 											<DatePicker
 												dateFormat="DD/MM/YYYY"
-										    selected={this.state.present_date}
-										    onChange={this.handleDateChange.bind(this)}
+												selected={this.state.present_date}
+												onChange={this.handleDateChange.bind(this)}
 												className="form-control"
 											/>
 										</div>
@@ -287,9 +287,9 @@ export default class IndividualCheckout extends Component {
 									<div>
 										<p>Veuillez trouver nos coordonnées bancaires pour procéder au virement</p>
 										<p>
-											<strong>Domiciliation : </strong>OLKYPAY GRENOBLE<br />
-											<strong>IBAN : </strong>FR36 1973 3000 01LU 3121 1050 436<br/>
-											<strong>BIC : </strong>OPSPFR21OKL<br/><br />
+											<strong>Domiciliation : </strong>QONTO - 92641 BOULOGNE-BILLANCOURT<br />
+											<strong>IBAN : </strong>FR76 1679 8000 0100 0004 1298 259<br/>
+											<strong>BIC : </strong>TRZOFR21XXX<br/><br />
 											<strong>Numéro de facture à indiquer dans la référence du virement : </strong>{this.state.bill_number}
 										</p>
 										<p>
