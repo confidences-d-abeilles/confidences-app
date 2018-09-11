@@ -77,13 +77,17 @@ class IndividualPrices extends Component {
 				<table className="table">
 					<tbody>
 						<tr>
+							<td colspan="5">
+								<ul>
+									<li>Votre nom sur une ruche</li>
+									<li>Une page dédiée à la ruche avec des photos de vos abeilles et des actualités régulières</li>
+									<li>Des pots de miel personnalisés</li>
+									<li>Expédition des pots via le service Colissimo incluse</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
 							<th>10 000 abeilles</th><th>20 000 abeilles</th><th>30 000 abeilles</th><th>40 000 abeilles</th><th>50 000 abeilles (1 ruche complète)</th>
-						</tr>
-						<tr>
-							<td>Votre nom sur une ruche</td><td>Votre nom sur une ruche</td><td>Votre nom sur une ruche</td><td>Votre nom sur une ruche</td><td>Une ruche à votre nom</td>
-						</tr>
-						<tr>
-							<td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à votre ruche avec photos & actualités</td>
 						</tr>
 						<tr>
 							<td>8 pots de 250g</td><td>16 pots de 250g</td><td>24 pots de 250g</td><td>32 pots de 250g</td><td>40 pots de 250g</td>
