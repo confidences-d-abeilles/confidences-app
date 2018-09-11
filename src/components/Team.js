@@ -136,13 +136,13 @@ export default class Team extends Component {
 						<h3 className="text-center mt-4">VOUS</h3>
 						<h4 className="text-center mb-4"><small>STAGIAIRE</small></h4>
 						<p className="text-justify">
-							Vous cherchez un stage ? Vous voulez rejoindre une équipe jeune, dynamique, passionnée par son travail et qui adore le challenge ? Alors vous êtes au bon endroit <span role="img" aria-label="Smile">😊</span><br /><br />
+							Vous cherchez un stage ? Vous voulez rejoindre une équipe jeune, dynamique, passionnée par son travail et qui adore le challenge ? Alors vous êtes au bon endroit <img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy" style={{ height: '1em' }} /><br /><br />
 							Pour accompagner notre développement nous avons constamment besoin de nouveaux talents, de personnes passionnées. Nous cherchons donc des stagiaires pour ces différents postes : <strong>Web Designer</strong>, <strong>ReactJS / NodeJS Developer</strong>, <strong>UI/UX Designer</strong>, <strong>Community Manager</strong>, <strong>Communication</strong>, <strong>Marketing et Business Developer</strong>.
 							<br /><br />
 							Vous pensez avoir le profil type ? C’est parfait, notre aventure prometteuse ne fait que débuter. Envolez-vous donc avec nous !
 						</p>
 						<p className="text-center">
-								<Link className="btn btn-secondary" to="/apply">Postuler</Link>
+								<Link className="btn btn-secondary" to="/jobs">Postuler</Link>
 						</p>
 						<p className="text-justify">
 							Aucune offre ne vous correspond ? Confidences d’Abeilles est toujours à la recherche de personnes talentueuses, n’hésitez pas à postuler !
