@@ -118,7 +118,7 @@ export default class Team extends Component {
 					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
 						<img src={Marion} alt="Marion" className="w-50 rounded-circle"/>
 						<h3 className="text-center mt-4">MARION LETUR</h3>
-						<h4 className="text-center mb-4"><small>GRAPHISTE & WEBDESIGNER</small></h4>https://www.behance.net/leturm
+						<h4 className="text-center mb-4"><small>GRAPHISTE & WEBDESIGNER</small></h4>
 						<p className="text-center">
 							<a href="https://www.instagram.com/larecruedesign/" target="_blank" rel="noopener noreferrer"><FontAwesome name='instagram' size="2x" /></a>&nbsp;&nbsp;&nbsp;
 							<a href="https://fr-fr.facebook.com/larecruedesign/" target="_blank" rel="noopener noreferrer"><FontAwesome name='facebook-official' size="2x" /></a>&nbsp;&nbsp;&nbsp;
@@ -136,13 +136,13 @@ export default class Team extends Component {
 						<h3 className="text-center mt-4">VOUS</h3>
 						<h4 className="text-center mb-4"><small>STAGIAIRE</small></h4>
 						<p className="text-justify">
-							Vous cherchez un stage ? Vous voulez rejoindre une équipe jeune, dynamique, passionnée par son travail et qui adore le challenge ? Alors vous êtes au bon endroit <span role="img" aria-label="Smile">😊</span><br /><br />
+							Vous cherchez un stage ? Vous voulez rejoindre une équipe jeune, dynamique, passionnée par son travail et qui adore le challenge ? Alors vous êtes au bon endroit <img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy" style={{ height: '1em' }} /><br /><br />
 							Pour accompagner notre développement nous avons constamment besoin de nouveaux talents, de personnes passionnées. Nous cherchons donc des stagiaires pour ces différents postes : <strong>Web Designer</strong>, <strong>ReactJS / NodeJS Developer</strong>, <strong>UI/UX Designer</strong>, <strong>Community Manager</strong>, <strong>Communication</strong>, <strong>Marketing et Business Developer</strong>.
 							<br /><br />
 							Vous pensez avoir le profil type ? C’est parfait, notre aventure prometteuse ne fait que débuter. Envolez-vous donc avec nous !
 						</p>
 						<p className="text-center">
-								<Link className="btn btn-secondary" to="/apply">Postuler</Link>
+								<Link className="btn btn-secondary" to="/jobs">Postuler</Link>
 						</p>
 						<p className="text-justify">
 							Aucune offre ne vous correspond ? Confidences d’Abeilles est toujours à la recherche de personnes talentueuses, n’hésitez pas à postuler !
