@@ -13,17 +13,10 @@ import MyRouter from './components/Router'
 
 const config = require('./config.js');
 
-class ScrollToTop extends Component {
-	componentDidUpdate(prevProps) {
-		window.scrollTo(0, 0);
-	}
-
-	render() {
-		return this.props.children
-	}
-}
-
-
+const ScrollToTop = () => {
+  window.scrollTo(0, 0);
+  return null;
+};
 
 class App extends Component {
 
@@ -42,15 +35,16 @@ class App extends Component {
 	render() {
 		return (
 			<StripeProvider apiKey={config.stripe_api_key}>
-				<ScrollToTop>
 					<Router>
-						<Switch>
-							<Redirect path="/perus" to="/parrains/perus" />
-							<Route path="/parrains/:namespace" component={CompanyPage} />
-							<Route component={MyRouter} />
-						</Switch>
+						<div>
+							<Route component={ScrollToTop} />
+							<Switch>
+								<Redirect path="/perus" to="/parrains/perus" />
+								<Route path="/parrains/:namespace" component={CompanyPage} />
+								<Route component={MyRouter} />
+							</Switch>
+						</div>
 					</Router>
-				</ScrollToTop>
 			</StripeProvider>
 		);
 	}
