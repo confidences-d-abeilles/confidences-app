@@ -74,18 +74,15 @@ class IndividualPrices extends Component {
 						<input type="checkbox" className="form-check-input" name="several" onClick={handleTick.bind(this)} /> Paiement en plusieurs fois
 					</label>
 				</div>
+				<hr />
+				<ul>
+					<li>Votre nom sur une ruche</li>
+					<li>Une page dédiée à la ruche avec des photos de vos abeilles et des actualités régulières</li>
+					<li>Des pots de miel personnalisés</li>
+					<li>Expédition des pots via le service Colissimo incluse</li>
+				</ul>
 				<table className="table">
 					<tbody>
-						<tr>
-							<td colspan="5">
-								<ul>
-									<li>Votre nom sur une ruche</li>
-									<li>Une page dédiée à la ruche avec des photos de vos abeilles et des actualités régulières</li>
-									<li>Des pots de miel personnalisés</li>
-									<li>Expédition des pots via le service Colissimo incluse</li>
-								</ul>
-							</td>
-						</tr>
 						<tr>
 							<th>10 000 abeilles</th><th>20 000 abeilles</th><th>30 000 abeilles</th><th>40 000 abeilles</th><th>50 000 abeilles (1 ruche complète)</th>
 						</tr>
@@ -112,29 +109,29 @@ class CompanyPrices extends Component {
 
 	render () {
 		return (
-			<table className="table my-4">
-				<tbody>
-					<tr>
-						<th>1 à 4 ruches</th><th>5 ruches ou plus</th>
-					</tr>
-					<tr>
-						<td>Ruche(s) aux couleurs de votre entreprise</td>
-						<td>Ruches aux couleurs de votre entreprise</td>
-					</tr>
-					<tr>
-						<td>Une page dédiée à votre entreprise avec des photos et actualités</td>
-						<td>Une page dédiée à votre entreprise avec des photos et actualités</td>
-					</tr>
-					<tr>
-						<td>80 pots de miel de 125g par ruche</td>
-						<td>80 pots de miel de 125g par ruche</td>
-					</tr>
-					<tr>
-						<td>{this.entrPricesYe[0]}€ HT /ruche</td>
-						<td>{this.entrPricesYe[1]}€ HT /ruche</td>
-					</tr>
-				</tbody>
-			</table>
+			<React.Fragment>
+				<ul className="mt-4">
+					<li>Ruches aux couleurs de votre entreprise</li>
+					<li>Une page dédiée à votre entreprise avec des photos de vos ruches et des actualités régulières</li>
+					<li>Des pots de miel personnalisés</li>
+					<li>Expédition des pots via le service Colissimo incluse</li>
+				</ul>
+				<table className="table">
+					<tbody>
+						<tr>
+							<th>1 à 4 ruches</th><th>5 ruches ou plus</th>
+						</tr>
+						<tr>
+							<td>80 pots de miel de 125g par ruche</td>
+							<td>80 pots de miel de 125g par ruche</td>
+						</tr>
+						<tr>
+							<td>{this.entrPricesYe[0]}€ HT /ruche</td>
+							<td>{this.entrPricesYe[1]}€ HT /ruche</td>
+						</tr>
+					</tbody>
+				</table>
+			</React.Fragment>
 		);
 	}
 }
