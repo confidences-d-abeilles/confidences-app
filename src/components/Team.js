@@ -118,7 +118,7 @@ export default class Team extends Component {
 					<div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
 						<img src={Marion} alt="Marion" className="w-50 rounded-circle"/>
 						<h3 className="text-center mt-4">MARION LETUR</h3>
-						<h4 className="text-center mb-4"><small>GRAPHISTE & WEBDESIGNER</small></h4>https://www.behance.net/leturm
+						<h4 className="text-center mb-4"><small>GRAPHISTE & WEBDESIGNER</small></h4>
 						<p className="text-center">
 							<a href="https://www.instagram.com/larecruedesign/" target="_blank" rel="noopener noreferrer"><FontAwesome name='instagram' size="2x" /></a>&nbsp;&nbsp;&nbsp;
 							<a href="https://fr-fr.facebook.com/larecruedesign/" target="_blank" rel="noopener noreferrer"><FontAwesome name='facebook-official' size="2x" /></a>&nbsp;&nbsp;&nbsp;
