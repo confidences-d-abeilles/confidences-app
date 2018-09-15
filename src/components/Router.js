@@ -72,6 +72,7 @@ import JobsDesigner from './static/jobs/JobsDesigner';
 import JobsMarketing from './static/jobs/JobsMarketing';
 import JobsBusinessDev from './static/jobs/JobsBusinessDev';
 import JobsEvent from './static/jobs/JobsEvent';
+import JobsProduction from './static/jobs/JobsProduction';
 import Faq from './static/Faq';
 import Prices from './static/Prices';
 import Hives from './Hives';
@@ -162,6 +163,7 @@ export default class MyRouter extends Component {
 							<Route exact path="/jobs/marketing" component={JobsMarketing} />
 							<Route exact path="/jobs/businessdev" component={JobsBusinessDev} />
 							<Route exact path="/jobs/event" component={JobsEvent} />
+							<Route exact path="/jobs/production" component={JobsProduction} />
 							<Route exact path="/newsletter/signup" component={Newslettersignup} />
 							<Route exact path="/cgv" component={Cgv} />
 							<Route exact path="/mentions_legales" component={Mentions} />
