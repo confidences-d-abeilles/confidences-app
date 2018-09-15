@@ -50,7 +50,7 @@ export default class Jobs extends Component {
 						</p>
 						<ul className="nav nav-tabs" role="tablist">
 							<li className="nav-item">
-								<a className="nav-link active" data-toggle="tab" href="#internship">Stage de 4 à 6 mois</a>
+								<a className="nav-link active" data-toggle="tab" href="#internship">Jobs de 4 à 6 mois</a>
 							</li>
 							<li className="nav-item">
 								<a className="nav-link" data-toggle="tab" href="#contributor">Mission freelance</a>
@@ -62,7 +62,7 @@ export default class Jobs extends Component {
 									Que ce soit en <strong>Web Development</strong> (FRONT/BACK), <strong>Web
 									Design</strong> (UI/UX), <strong>Business Development</strong>, <strong>Communication |
 									Marketing</strong>, <strong>Community | Event Management</strong> ou encore en <strong>Systèmes
-									embarqués | communicants</strong> nous sommes intéressés. Retrouvez nos offres de stage de 4 à 6 mois.
+									embarqués | communicants</strong> nous sommes intéressés. Retrouvez nos offres d'emploi de 4 à 6 mois.
 								</p>
 								<p className="text-center">
 									<Link className="btn btn-secondary" to="/jobs/production">CDI / CDD Responsable Production Apicole</Link>

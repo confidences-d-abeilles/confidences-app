@@ -41,16 +41,16 @@ export default class ContributorPresentation extends Component {
 							</ol>
 							<div className="carousel-inner" role="listbox">
 								<div className="carousel-item active">
-									<img className="d-block" src={first} alt="First slide" />
+									<img className="d-block w-100 h-100" src={first} alt="First slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={second} alt="Second slide" />
+									<img className="d-block w-100 h-100" src={second} alt="Second slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={third} alt="Third slide" />
+									<img className="d-block w-100 h-100" src={third} alt="Third slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={fourth} alt="Fourth slide" />
+									<img className="d-block w-100 h-100" src={fourth} alt="Fourth slide" />
 								</div>
 							</div>
 						</div>
