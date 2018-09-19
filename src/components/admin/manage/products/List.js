@@ -45,8 +45,14 @@ export default class List extends Component {
 			url: '/product/'+id,
 			method: 'delete'
 		}, this.refs.notif).then((res) => {
-			this.refresh();
+			let newProducts = this.state.products.filter((product) => {
+				return product.id !== id;
+			});
+			this.setState({
+				products: newProducts
+			});
 		}).catch((e) => {
+			this.refresh();
 		})
 	}
 
