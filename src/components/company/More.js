@@ -118,7 +118,7 @@ export default class More extends Component {
 							<strong>Très concrètement. Un service sur mesure incluant :</strong>
 							<ul>
 								<li>
-									80 pots de miels personnalisés (125g de miel produit par vos abeilles à offrir à vos clients, partenaires ou collaborateurs)
+									40 pots de miels personnalisés (250g de miel produit par vos abeilles à offrir à vos clients, partenaires ou collaborateurs)
 								</li>
 								<li>
 									1 outil de personnalisation des étiquettes en ligne

@@ -130,8 +130,8 @@ class CompanyPrices extends Component {
 								<th>1 à 4 ruches</th><th>5 ruches ou plus</th>
 							</tr>
 							<tr>
-								<td>80 pots de miel de 125g par ruche</td>
-								<td>80 pots de miel de 125g par ruche</td>
+								<td>40 pots de miel de 250g par ruche</td>
+								<td>40 pots de miel de 250g par ruche</td>
 							</tr>
 							<tr>
 								<td>{this.entrPricesYe[0]}€ HT /ruche</td>
