@@ -88,8 +88,8 @@ export default class Apply extends Component {
         						<label>Joignez votre CV</label>
         						<label htmlFor="cv" className={(this.state.cv)?'active-upload':'upload'} style={{ position: 'relative' }}>
         							<input type="file" className="form-control" id="cv" onChange={() => { this.setState({ cv : document.getElementById("cv").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-        							Glissez votre CV ici ou cliquez pour en séléctionner un parmi vos fichiers<br/>
-                                {(this.state.cv)?'Selectionné : '+this.state.cv:"Aucun fichier séléctionné"}
+        							Glissez votre CV ici ou cliquez pour en sélectionner un parmi vos fichiers<br/>
+                                {(this.state.cv)?'Selectionné : '+this.state.cv:"Aucun fichier sélectionné"}
         						</label>
         					</div>
                             <fieldset className="form-group">

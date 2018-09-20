@@ -154,7 +154,7 @@ export default class CompanyManageCustomize extends Component {
 								⚠ ATTENTION ⚠ Assurez-vous que les dimensions de votre
 								étiquette respectent bien 63,5x38,1mm, avec 1,5mm de fond
 								perdu gauche/droite et 0,5mm haut/bas. -
-								{(this.state.label)?'Selectionné : '+this.state.label:"Aucun fichier séléctionné"}</label>
+								{(this.state.label)?'Selectionné : '+this.state.label:"Aucun fichier sélectionné"}</label>
 								</div>
 								<input type="file" className="form-control" id="label" onChange={() => { this.setState({ label : document.getElementById("label").files[0].name }) }} style={{display:'none'}}/>
 							</div>
