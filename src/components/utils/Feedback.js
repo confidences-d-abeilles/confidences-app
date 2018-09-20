@@ -182,7 +182,7 @@ export default class Feedback extends Component {
 					<label htmlFor="actu-img" className={(this.state.actuImg)?'active-upload':'upload'} style={{ position: 'relative' }}>
 						<input type="file" className="form-control" id="actu-img" onChange={() => { this.updateImg() }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
 						Glissez une image ou cliquez pour en sélectionner une parmi vos fichiers<br/>
-						Recommandations : 800x600px, 100ko maximum - {(this.state.actuImg)?'Selectionné : '+this.state.actuImg:"Aucun fichier sélectionné"}
+						Recommandations : 800x600px, 100ko maximum - {(this.state.actuImg)?'Sélectionné : '+this.state.actuImg:"Aucun fichier sélectionné"}
 					</label>
 				</div>
 				<button className="btn btn-secondary btn-sm">Soumettre</button>

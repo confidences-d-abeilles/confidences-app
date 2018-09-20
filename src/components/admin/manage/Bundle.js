@@ -224,7 +224,7 @@ export default class Bundle extends Component {
 										<label htmlFor="certif" className={(this.state.certif)?'active-upload':'upload'} style={{ position: 'relative' }}>
 											<input type="file" className="form-control" id="certif" onChange={() => { this.setState({ certif : document.getElementById("certif").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
 											Glisser un PDF ou cliquez pour en sélectionner un parmi vos fichiers<br/>
-											{(this.state.certif)?'Selectionné : '+this.state.certif:"Aucun fichier sélectionné"}
+											{(this.state.certif)?'Sélectionné : '+this.state.certif:"Aucun fichier sélectionné"}
 										</label>
 									</div>
 									<div className="form-group">
