@@ -182,7 +182,7 @@ export default class CompanyManageMyPage extends Component {
 						<label htmlFor="cover" className={(this.state.newCover)?'active-upload':'upload'} style={{ position: 'relative' }}>
 							<input type="file" className="form-control" id="cover" onChange={() => { this.setState({ newCover : document.getElementById("cover").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
 							Glissez une {(this.state.cover)?'nouvelle':null} image ici ou cliquez pour en sélectionner une parmi vos fichiers<br/>
-							Recommandations : 1140x320px, 160ko maximum - {(this.state.newCover)?'Selectionné : '+this.state.newCover:"Aucun fichier sélectionné"}
+							Recommandations : 1140x320px, 160ko maximum - {(this.state.newCover)?'Sélectionné : '+this.state.newCover:"Aucun fichier sélectionné"}
 						</label>
 					</div>
 					<div className="form-group">
@@ -190,7 +190,7 @@ export default class CompanyManageMyPage extends Component {
 						<label htmlFor="logo" className={(this.state.newLogo)?'active-upload':'upload'} style={{ position: 'relative' }}>
 							<input type="file" className="form-control" id="logo" onChange={() => { this.setState({ newLogo : document.getElementById("logo").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
 							Glissez votre {(this.state.logo)?'nouveau':null} logo ici ou cliquez pour en sélectionner un parmi vos fichiers<br/>
-							Recommandations : 200x200px, 30ko maximum - {(this.state.newLogo)?'Selectionné : '+this.state.newLogo:"Aucun fichier sélectionné"}
+							Recommandations : 200x200px, 30ko maximum - {(this.state.newLogo)?'Sélectionné : '+this.state.newLogo:"Aucun fichier sélectionné"}
 						</label>
 
 					</div>

@@ -104,7 +104,7 @@ export default class RequestLabel extends Component {
                             <label htmlFor="attachment" className={(this.state.attachment)?'active-upload':'upload'} style={{ position: 'relative' }}>
                             <input type="file" className="form-control" id="attachment" onChange={() => { this.setState({ attachment: document.getElementById("attachment").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
                               Glissez votre fichier ici ou cliquez pour en sélectionner un parmi vos fichiers. (Taille limitée à 5Mo.)<br/>
-                             {(this.state.attachment)?'Selectionné : '+this.state.attachment:"Aucun fichier sélectionné"}
+                             {(this.state.attachment)?'Sélectionné : '+this.state.attachment:"Aucun fichier sélectionné"}
                             </label>
                           </div>
 

@@ -357,7 +357,7 @@ export default class AdminManageHives extends Component {
 								<label htmlFor="hive-img" className={(this.state.hiveImg)?'active-upload':'upload'} style={{ position: 'relative' }}>
 									<input type="file" className="form-control" id="hive-img" onChange={() => { this.setState({ hiveImg : document.getElementById("hive-img").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
 									Glisser une image ou cliquez pour en sélectionner un parmi vos fichiers<br/>
-									Taille recommandée : 400x300 - {(this.state.hiveImg)?'Selectionné : '+this.state.hiveImg:"Aucun fichier sélectionné"}
+									Taille recommandée : 400x300 - {(this.state.hiveImg)?'Sélectionné : '+this.state.hiveImg:"Aucun fichier sélectionné"}
 								</label>
 							</div>
 							<button className="btn btn-primary">Ajouter cette photo</button>
