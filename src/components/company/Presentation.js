@@ -112,7 +112,7 @@ export default class CompanyPresentation extends Component {
 								Une visibilité digitale supplémentaire
 							</li>
 							<li>
-								<strong>80 pots de miel de 125g personnalisés</strong> aux couleurs de l’entreprise : un cadeau unique pour ses collaborateurs, ses partenaires ou encore ses clients</li>
+								<strong>40 pots de miel de 250g personnalisés</strong> aux couleurs de l’entreprise : un cadeau unique pour ses collaborateurs, ses partenaires ou encore ses clients</li>
 							<li>
 								La possibilité d'organiser avec son équipe une <strong>visite de la ruche</strong> sous la fameuse tenue d'apiculteur
 							</li>

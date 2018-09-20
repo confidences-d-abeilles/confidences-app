@@ -21,7 +21,7 @@ export default class CompanyWish extends Component {
 			codesOk: [],
 			optionSelect: "",
 			price: "0",
-			pots: "80",
+			pots: "40",
 			code: '',
 			codeResult: '',
 			redirect: false
@@ -74,7 +74,7 @@ export default class CompanyWish extends Component {
 				const qty = (e.qty)?parseFloat(e.qty):0;
 				this.setState((prev) => {
 					if (e.type === 10) {
-						return { price: parseFloat(prev.price) + parseFloat(e.price) * qty, pots : 80 * qty }
+						return { price: parseFloat(prev.price) + parseFloat(e.price) * qty, pots : 40 * qty }
 					}
 					return { price: parseFloat(prev.price) + parseFloat(e.price) * qty}
 				})
@@ -180,7 +180,7 @@ export default class CompanyWish extends Component {
 				});
 				tmp.push(tmp2);
 			}
-			return null;			
+			return null;
 		});
 		this.setState({
 			optionsOk : tmp
