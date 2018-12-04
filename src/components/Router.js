@@ -38,17 +38,9 @@ import IndividualEnd from './individual/End';
 import IndividualManage from './individual/Manage';
 import IndividualMore from './individual/More';
 
-//company
+// Company
 
-import CompanyPresentation from './company/Presentation';
-import CompanyIdentity from './company/Identity';
-import CompanyAddress from './company/Address';
-import CompanyWish from './company/Wish';
-import CompanyCheckout from './company/Checkout';
-import CompanyPayement from './company/Payment';
-import CompanyEnd from './company/End';
-import CompanyManage from './company/Manage';
-import CompanyMore from './company/More';
+import CompanyRouter from '../services/CompanyRouter';
 
 
 //public
@@ -128,6 +120,7 @@ export default class MyRouter extends Component {
 							<Route exact path="/contributor/address" component={ContributorAddress} />
 							<Route path="/contributor/manage" component={ContributorManage} />
 							<Route exact path="/individual/presentation" component={IndividualPresentation} />
+							<Route path="/company" component={CompanyRouter} />
 							<Route exact path="/individual/more" component={IndividualMore} />
 							<Route exact path="/individual/address" component={IndividualAddress} />
 							<Route exact path="/individual/wish" component={IndividualWish} />
@@ -135,15 +128,6 @@ export default class MyRouter extends Component {
 							<Route exact path="/individual/payment" component={IndividualPayement} />
 							<Route exact path="/individual/end" component={IndividualEnd} />
 							<Route path="/individual/manage" component={IndividualManage} />
-							<Route exact path="/company/presentation" component={CompanyPresentation} />
-							<Route exact path="/company/more" component={CompanyMore} />
-							<Route exact path="/company/identity" component={CompanyIdentity} />
-							<Route exact path="/company/address" component={CompanyAddress} />
-							<Route exact path="/company/wish" component={CompanyWish} />
-							<Route exact path="/company/checkout" component={CompanyCheckout} />
-							<Route exact path="/company/payment" component={CompanyPayement} />
-							<Route exact path="/company/end" component={CompanyEnd} />
-							<Route path="/company/manage" component={CompanyManage} />
 							<Route exact path="/presignup" component={Presignup} />
 							<Route exact path="/signup/:type" component={Signup} />
 							<Route path="/admin/manage" component={AdminManage} />
