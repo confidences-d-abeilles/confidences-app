@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import {Document, Page} from 'react-pdf';
+import {Document, Page, pdfjs } from 'react-pdf';
 import request from '../../../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import Loading from '../../../../utils/Loading.js'
 import { handleChange } from '../../../../../services/FormService'
 import '../../../../utils/css/LabelPdf.css'
 const config = require('../../../../../config.js')
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 class Label extends Component {
 
