@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
+    "compression": "^1.7.3",
     "express": "^4.16.4",
     "js-file-download": "^0.4.4",
     "lightbox-react": "^0.1.6",

@@ -2,10 +2,13 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const fs = require('fs');
+const compression = require('compression');
 
 const html = fs.readFileSync('./build/index.html');
 
 const metaLoader = require('./public/meta/meta');
+
+app.use(compression());
 
 app.use('/', express.static('build'));
 app.use('/metastatic', express.static('public/meta'));
