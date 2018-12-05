@@ -29,14 +29,7 @@ import ContributorParrains from './contributor/Parrains'
 
 //particulier
 
-import IndividualPresentation from './individual/Presentation';
-import IndividualAddress from './individual/Address';
-import IndividualWish from './individual/Wish';
-import IndividualCheckout from './individual/Checkout';
-import IndividualPayement from './individual/Payment';
-import IndividualEnd from './individual/End';
-import IndividualManage from './individual/Manage';
-import IndividualMore from './individual/More';
+import IndividualRouter from '../services/IndividualRouter';
 
 // Company
 
@@ -119,15 +112,8 @@ export default class MyRouter extends Component {
 							<Route exact path="/contributor/leadok" component={ContributorLeadOk} />
 							<Route exact path="/contributor/address" component={ContributorAddress} />
 							<Route path="/contributor/manage" component={ContributorManage} />
-							<Route exact path="/individual/presentation" component={IndividualPresentation} />
 							<Route path="/company" component={CompanyRouter} />
-							<Route exact path="/individual/more" component={IndividualMore} />
-							<Route exact path="/individual/address" component={IndividualAddress} />
-							<Route exact path="/individual/wish" component={IndividualWish} />
-							<Route exact path="/individual/checkout" component={IndividualCheckout} />
-							<Route exact path="/individual/payment" component={IndividualPayement} />
-							<Route exact path="/individual/end" component={IndividualEnd} />
-							<Route path="/individual/manage" component={IndividualManage} />
+							<Route path="/individual" component={IndividualRouter} />
 							<Route exact path="/presignup" component={Presignup} />
 							<Route exact path="/signup/:type" component={Signup} />
 							<Route path="/admin/manage" component={AdminManage} />
