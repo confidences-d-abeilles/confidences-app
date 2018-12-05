@@ -6,11 +6,13 @@ import Meta from '../../../utils/Meta'
 import Loading from '../../../utils/Loading'
 import { handleChange } from '../../../../services/FormService'
 import FontAwesome from 'react-fontawesome'
-import {Document, Page} from 'react-pdf';
+import {Document, Page, pdfjs } from 'react-pdf';
 import '../../../utils/css/LabelPdf.css';
 
 import Eti1 from '../../../../assets/img/label/sample_Etiquette_P1.jpg';
 import Eti2 from '../../../../assets/img/label/sample_Etiquette_P2.jpg'
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const config = require('../../../../config.js');
 
