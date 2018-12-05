@@ -5,9 +5,10 @@ import {
 } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
-import CompanyPresentation from '../components/company/Presentation';
-
-
+const CompanyPresentation = Loadable({
+    loader: () => import('../components/company/Presentation'),
+    loading: () => 'Loading...',
+});
 
 const CompanyIdentity = Loadable({
     loader: () => import('../components/company/Identity'),

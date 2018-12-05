@@ -4,7 +4,6 @@ import {injectStripe} from 'react-stripe-elements';
 import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import Loading from './Loading'
-import { getUserType } from '../../services/AuthService';
 
 const config = require('../../config.js');
 
