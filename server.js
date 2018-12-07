@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const fs = require('fs');
+
+const metaResolverMiddleware = require('./metaResolver').middleware;
+
 const compression = require('compression');
 
 const html = fs.readFileSync('./build/index.html');
@@ -14,8 +17,10 @@ app.use('/', express.static('build'));
 app.use('/metastatic', express.static('public/meta'));
 app.use('/static', express.static('build/static'));
 
+app.use('/', metaResolverMiddleware);
+
 app.get('/*', (req, res) => {
-    res.end(composeHtml(html.toString(), metaLoader.load(req.url)));
+    res.end(composeHtml(html.toString(), req.meta ? req.meta : metaLoader.load(req.url)));
 })
 
 app.listen(5000, () => {
@@ -24,7 +29,7 @@ app.listen(5000, () => {
 
 
 function composeHtml(html, meta) {
-   
+
     let splitted = html.split('<title>Confidences d\'Abeilles</title>');
     let output = "";
     if (meta.title) {
@@ -44,3 +49,5 @@ function composeHtml(html, meta) {
     }
     return splitted[0] + output + splitted[2];
 }
+
+
