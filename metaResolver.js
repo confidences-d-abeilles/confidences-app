@@ -19,7 +19,7 @@ module.exports = {
         url: req.url,
       }).toArray();
       req.meta = data[0] ? data[0] : null;
-      req.meta.ogimg = config.contentDomain + req.meta.ogimg;
+      req.meta.ogimg = config.contentDomain + '/' + req.meta.ogimg;
       console.log(req.meta);
       next();
     });
