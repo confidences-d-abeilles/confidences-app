@@ -19,9 +19,10 @@ module.exports = {
         url: req.url,
       }).toArray();
       req.meta = data[0] ? data[0] : null;
-      req.meta.ogimg = config.contentDomain + '/' + req.meta.ogimg;
-      req.meta.ogurl = config.baseDomain + req.meta.url;
-      console.log(req.meta);
+      if (data[0]) {
+        req.meta.ogimg = config.contentDomain + '/' + req.meta.ogimg;
+        req.meta.ogurl = config.baseDomain + req.meta.url;
+      }
       next();
     });
   },
