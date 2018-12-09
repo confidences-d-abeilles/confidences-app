@@ -19,6 +19,7 @@ module.exports = {
         url: req.url,
       }).toArray();
       req.meta = data[0] ? data[0] : null;
+      console.log(req.meta);
       next();
     });
   },
