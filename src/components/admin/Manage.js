@@ -62,7 +62,7 @@ export default class CompanyManage extends Component {
 								<Link to="/admin/manage/coupons" className="list-group-item"><FontAwesome name="tag" fixedWidth={true} />&nbsp;&nbsp;Coupons</Link>
 								<Link to="/admin/manage/faq" className="list-group-item"><FontAwesome name="comment" fixedWidth={true} />&nbsp;&nbsp;FAQ</Link>
 								<li className="list-group-item active">Administration plateforme</li>
-								<Link to="/admin/manage/server" className="list-group-item disabled"><FontAwesome name="wrench" fixedWidth={true} />&nbsp;&nbsp;Espace technique</Link>
+								<Link to="/admin/manage/server" className="list-group-item"><FontAwesome name="wrench" fixedWidth={true} />&nbsp;&nbsp;Espace technique</Link>
 							</ul>
 						</div>
 						<div className="col-lg-10 col-md-12">
