@@ -84,6 +84,16 @@ export default class AdminManageServer extends Component {
         }, this.refs.notifs).then(res => this.getData());
     }
 
+    cancelEdition = () => {
+        this.setState({
+            id: null,
+            title: '',
+            ogtitle: '',
+            ogdescription: '',
+            url: '',
+        });
+    }
+
     edit = (meta) => () => this.setState(meta);
 
     render () {
@@ -93,19 +103,20 @@ export default class AdminManageServer extends Component {
                 <NotificationSystem ref="notif" />
                 <div className="col-lg-12">
                     <h2 className="text-center">Espace technique</h2>
+                    <h2 className="text-center">Blocs meta</h2>
                 </div>
                 <div className="col-lg-6">
-                    {meta && meta.map(e => (
+                    {meta && meta.length > 0 ? meta.map(e => (
                         <div>
                             <span className="lead">{e.title}</span>&nbsp;
-                            <span className="badge badge-info" onClick={this.edit(e)}>Editer</span>&nbsp;
-                            <span className="badge badge-danger" onClick={this.deleteMeta(e.id)}>Supprimer</span>
+                            <span className="badge badge-info" style={{ cursor: 'pointer' }} onClick={this.edit(e)}>Editer</span>&nbsp;
+                            <span className="badge badge-danger" style={{ cursor: 'pointer' }} onClick={this.deleteMeta(e.id)}>Supprimer</span>
                             <h6>{e.url}</h6>
                             <h6>{e.ogtitle}</h6>
                             <p>{e.ogdescription}</p>
                             <hr />
                         </div>
-                    ))}
+                    )) : "Aucun bloc meta pour l'instant."}
                 </div>
                 <form onSubmit={id ? this.sendEditMeta : this.sendMeta} className="col-lg-6">
                     <div className="form-group">
@@ -129,6 +140,9 @@ export default class AdminManageServer extends Component {
                         />
                     </div>
                     <div className="form-group">
+                        <p className="alert alert-info">
+                            L'url doit être de la forme /company/presentation par exemple. C'est tout ce qui se situe après le .fr.
+                        </p>
                         <input
                             type="text"
                             name="url"
@@ -147,18 +161,24 @@ export default class AdminManageServer extends Component {
                             value={ogdescription}
                         ></textarea>
                     </div>
-                    <div className="form-group">
-                        <FileUpload
-                            identifier="ogimg"
-                            label="OG Image"
-                            accept="image/*"
-                        />
-                    </div>
+                    {!id && (
+                        <div className="form-group">
+                            <p className="alert alert-warning">
+                                Attention, la modification d'un bloc méta ne permet pas d'en changer l'image. Si une modification d'image est nécessaire, supprimer puis recréer le bloc.
+                            </p>
+                            <FileUpload
+                                identifier="ogimg"
+                                label="OG Image"
+                                accept="image/*"
+                            />
+                        </div>
+                    )}
                     <div className="form-group">
                         <button
                             type="submit"
                             className="btn btn-primary"
-                        >Valider</button>
+                        >{id ? "Modifier" : "Ajouter"}</button>&nbsp;
+                        {id && <button type="button" className="btn btn-primary" onClick={this.cancelEdition}>Annuler l'edition</button>}
                     </div>
                 </form>
             </div>
