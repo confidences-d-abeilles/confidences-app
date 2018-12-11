@@ -8,16 +8,17 @@ import request from '../../../services/Net';
 export default class Address extends Component {
   constructor(props) {
     super(props);
+    const { data } = this.props;
     this.state = {
       edit: false,
-      address: props.data,
+      address: data,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.data) {
+  componentWillReceiveProps({ data }) {
+    if (data) {
       this.setState({
-        address: { ...nextProps.data, sexe_m: (nextProps.data.sexe_m) ? '1' : '0' },
+        address: { ...data, sexe_m: (data.sexe_m) ? '1' : '0' },
       });
     } // pres operation
   }
