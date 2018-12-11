@@ -56,6 +56,7 @@ export default class AdminManageServer extends Component {
             },
         }, this.refs.notif).then(res => {
             this.getData();
+            this.clear();
         })
     }
 
@@ -74,6 +75,7 @@ export default class AdminManageServer extends Component {
             }
         }, this.refs.notif).then(res => {
             this.getData();
+            this.clear();
         })
     }
 
@@ -84,7 +86,7 @@ export default class AdminManageServer extends Component {
         }, this.refs.notifs).then(res => this.getData());
     }
 
-    cancelEdition = () => {
+    clear = () => {
         this.setState({
             id: null,
             title: '',
@@ -178,7 +180,7 @@ export default class AdminManageServer extends Component {
                             type="submit"
                             className="btn btn-primary"
                         >{id ? "Modifier" : "Ajouter"}</button>&nbsp;
-                        {id && <button type="button" className="btn btn-primary" onClick={this.cancelEdition}>Annuler l'edition</button>}
+                        <button type="button" className="btn btn-primary" onClick={this.clear}>{id ? 'Annuler l\'edition' : 'Vider'}</button>
                     </div>
                 </form>
             </div>
