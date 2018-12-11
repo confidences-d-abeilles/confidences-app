@@ -8,7 +8,8 @@ import Meta from '../utils/Meta';
 export default class Apply extends Component {
   constructor(props) {
     super(props);
-    ReactGA.pageview(this.props.location.pathname);
+    const { location } = this.props;
+    ReactGA.pageview(location.pathname);
     this.state = {
       name: '',
       firstname: '',
@@ -24,14 +25,23 @@ export default class Apply extends Component {
 
   apply(e) {
     e.preventDefault();
+    const {
+      name,
+      firstname,
+      email,
+      phone,
+      linkedin,
+      presentation,
+      type,
+    } = this.state;
     const dataset = new FormData();
-    dataset.append('name', this.state.name);
-    dataset.append('firstname', this.state.firstname);
-    dataset.append('email', this.state.email);
-    dataset.append('phone', this.state.phone);
-    dataset.append('linkedin', this.state.linkedin);
-    dataset.append('presentation', this.state.presentation);
-    dataset.append('type', this.state.type);
+    dataset.append('name', name);
+    dataset.append('firstname', firstname);
+    dataset.append('email', email);
+    dataset.append('phone', phone);
+    dataset.append('linkedin', linkedin);
+    dataset.append('presentation', presentation);
+    dataset.append('type', type);
     if (document.getElementById('cv').files[0]) {
       dataset.append('cv', document.getElementById('cv').files[0]);
     }
@@ -39,7 +49,7 @@ export default class Apply extends Component {
       url: '/contact/apply',
       method: 'post',
       data: dataset,
-    }, this.refs.notif).then((res) => {
+    }, this.refs.notif).then(() => {
       this.setState({
         name: '',
         firstname: '',

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta';
+import illustration from '../../assets/img/about.jpg';
 
 export default class About extends Component {
   constructor(props) {
     super(props);
-    ReactGA.pageview(this.props.location.pathname);
+    const { location } = this.props;
+    ReactGA.pageview(location.pathname);
   }
 
   render() {
@@ -14,7 +16,7 @@ export default class About extends Component {
         <Meta title="Histoire" />
         <div className="row">
           <div className="col">
-            <img src={require('../../assets/img/about.jpg')} alt="Gaetan et Nicolas" className="img-fluid" />
+            <img src={illustration} alt="Gaetan et Nicolas" className="img-fluid" />
           </div>
         </div>
         <div className="row mt-4 justify-content-center align-items-center">

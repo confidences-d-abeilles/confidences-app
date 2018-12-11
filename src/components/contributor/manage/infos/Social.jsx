@@ -10,11 +10,10 @@ import Address from '../../../utils/Address/Address';
 export default class ContributorManageInfosSocial extends Component {
   constructor(props) {
     super(props);
-    ReactGA.pageview(this.props.location.pathname);
+    const { location } = this.props;
+    ReactGA.pageview(location.pathname);
     this.state = {
       loading: true,
-      usexe_m: '',
-      bsexe_m: '',
     };
   }
 
@@ -26,9 +25,6 @@ export default class ContributorManageInfosSocial extends Component {
       if (res) {
         this.setState({
           loading: false,
-          usexe_m: res.sexe_m ? '1' : '0',
-          firstname: res.firstname,
-          name: res.name,
           email: res.email,
           school: res.school,
           phone: res.phone,
@@ -46,89 +42,68 @@ export default class ContributorManageInfosSocial extends Component {
     });
   }
 
-  // submitInfos(e) {
-  //   e.preventDefault();
-  //   request({
-  //     url: '/user',
-  //     method: 'put',
-  //     data: {
-  //       sexe_m: this.state.usexe_m === '0' ? 'false':'true',
-  //       firstname: this.state.firstname,
-  //       name: this.state.name,
-  //       email: this.state.email,
-  //       school: this.state.school
-  //     }
-  //   }, this.refs.notif)
-  // }
-
   changeInfos(e) {
     e.preventDefault();
+    const { phone, email, school, billing_address } = this.state;
     request({
       url: '/user',
       method: 'put',
       data: {
-        phone: this.state.phone,
-        email: this.state.email,
-        school: this.state.school,
+        phone,
+        email,
+        school,
       },
-    }, this.refs.notif).then((res) => {
+    }, this.refs.notif).then(() => {
       this.setState({
         editInfos: false,
       });
     });
   }
-  // submitBaddress(e) {
-  //   e.preventDefault();
-  //   request({
-  //     url: '/address/'+this.state.bid,
-  //     method: 'put',
-  //     data: {
-  //       sexe_m: this.state.bsexe_m === '0' ? 'false':'true',
-  //       line1: this.state.bline1,
-  //       line2: this.state.bline2,
-  //       line3: this.state.bline3,
-  //       line4: this.state.bline4,
-  //       zipcode: this.state.bzipcode,
-  //       city: this.state.bcity
-  //     }
-  //   }, this.refs.notif);
-  // }
 
   render() {
+    const {
+      loading,
+      editInfos,
+      user,
+      phone,
+      email,
+      school,
+    } = this.state;
     return (
       <div>
         <NotificationSystem ref="notif" />
-        {(this.state.loading) ? 'Chargement en cours...'
+        {loading ? 'Chargement en cours...'
           : (
             <div>
               <div className="row">
                 <div className="col-lg-6 col-sm-12">
-                  {(!this.state.editInfos)
+                  {(!editInfos)
                     ? (
                       <div>
                         <strong>Nom :</strong>
                         {' '}
-                        {this.state.user.name}
+                        {user.name}
                         <br />
                         <strong>Prénom :</strong>
                         {' '}
-                        {this.state.user.firstname}
+                        {user.firstname}
                         <br />
                         <strong>Numéro de téléphone :</strong>
                         {' '}
-                        {this.state.phone}
+                        {phone}
                         <br />
                         <strong>Email :</strong>
                         {' '}
-                        {this.state.email}
+                        {email}
                         <br />
                         <strong>Ecole :</strong>
                         {' '}
-                        {this.state.school}
+                        {school}
                         <br />
                         <br />
                         <button
                           className="btn btn-secondary btn-sm pull-right"
+                          type="button"
                           onClick={() => {
                             this.setState({ editInfos: true });
                           }}
@@ -143,15 +118,15 @@ export default class ContributorManageInfosSocial extends Component {
                       <form onSubmit={this.changeInfos.bind(this)}>
                         <div className="form-group">
                           <label>Numéro de téléphone</label>
-                          <input type="tel" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="Numéro de téléphone" />
+                          <input type="tel" name="phone" onChange={handleChange.bind(this)} value={phone} className="form-control form-control-sm" placeholder="Numéro de téléphone" />
                         </div>
                         <div className="form-group">
                           <label>Email</label>
-                          <input type="email" name="email" onChange={handleChange.bind(this)} value={this.state.email} className="form-control form-control-sm" placeholder="Email" />
+                          <input type="email" name="email" onChange={handleChange.bind(this)} value={email} className="form-control form-control-sm" placeholder="Email" />
                         </div>
                         <div className="form-group">
                           <label>Ecole</label>
-                          <input type="text" name="school" onChange={handleChange.bind(this)} value={this.state.school} className="form-control form-control-sm" placeholder="school" />
+                          <input type="text" name="school" onChange={handleChange.bind(this)} value={school} className="form-control form-control-sm" placeholder="school" />
                         </div>
                         <div className="form-group text-center">
                           <button className="btn btn-primary">Enregistrer</button>
@@ -165,7 +140,7 @@ export default class ContributorManageInfosSocial extends Component {
 Adresse :
                     <br />
                   </span>
-                  <Address data={this.state.billing_address} />
+                  <Address data={billing_address} />
                 </div>
               </div>
             </div>

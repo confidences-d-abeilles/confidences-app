@@ -5,7 +5,8 @@ import Meta from '../utils/Meta';
 export default class Home extends Component {
   constructor(props) {
     super(props);
-    ReactGA.pageview(this.props.location.pathname);
+    const { location } = this.props;
+    ReactGA.pageview(location.pathname);
   }
 
   render() {

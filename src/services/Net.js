@@ -3,7 +3,7 @@ import axios from 'axios';
 const config = require('../config.js');
 
 export const client = axios.create({
-  baseURL: config.server_url,
+  baseURL: config.serverUrl,
 });
 
 const request = (options, notificationSystem) => {

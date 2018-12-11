@@ -221,7 +221,7 @@ ruche
                         {' '}
                         {ruche.name}
                         <br />
-                        <a href={`${config.app_url}/hive/${ruche.id}`}>Voir la page</a>
+                        <a href={`${config.appUrl}/hive/${ruche.id}`}>Voir la page</a>
                       </div>
                     </div>
                   ))}

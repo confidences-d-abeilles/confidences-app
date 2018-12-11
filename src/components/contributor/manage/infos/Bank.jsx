@@ -7,7 +7,8 @@ import { handleChange } from '../../../../services/FormService';
 export default class ContributorManageInfosBank extends Component {
   constructor(props) {
     super(props);
-    ReactGA.pageview(this.props.location.pathname);
+    const { location } = this.props;
+    ReactGA.pageview(location.pathname);
     this.state = {
       iban: '',
       name: '',
@@ -28,29 +29,31 @@ export default class ContributorManageInfosBank extends Component {
 
   updateBank(e) {
     e.preventDefault();
+    const { iban, name } = this.state;
     request({
       url: '/user',
       method: 'put',
       data: {
-        iban: this.state.iban,
-        account_holder: this.state.name,
+        iban,
+        account_holder: name,
       },
     }, this.refs.notif);
   }
 
   render() {
+    const { iban, name } = this.state;
     return (
       <div className="row my-4">
         <NotificationSystem ref="notif" />
         <div className="col-6">
           <form onSubmit={this.updateBank.bind(this)}>
             <div className="form-group">
-              <input type="text" name="iban" onChange={handleChange.bind(this)} className="form-control" value={this.state.iban} placeholder="IBAN" />
+              <input type="text" name="iban" onChange={handleChange.bind(this)} className="form-control" value={iban} placeholder="IBAN" />
             </div>
             <div className="form-group">
-              <input type="text" name="name" onChange={handleChange.bind(this)} className="form-control" value={this.state.name} placeholder="Nom du titulaire du compte" />
+              <input type="text" name="name" onChange={handleChange.bind(this)} className="form-control" value={name} placeholder="Nom du titulaire du compte" />
             </div>
-            <button className="btn btn-primary">Mettre à jour</button>
+            <button type="submit" className="btn btn-primary">Mettre à jour</button>
           </form>
         </div>
       </div>
