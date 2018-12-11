@@ -7,5 +7,8 @@
         "document": true,
         "FormData": true
     },
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "rules": {
+        "react/no-string-refs"
+    }
 }

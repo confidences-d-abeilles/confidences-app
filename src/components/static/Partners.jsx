@@ -7,7 +7,7 @@ import Allianz from '../../assets/img/allianz.png';
 
 import Partner from './partners/Partner';
 
-const Partners = props => (
+const Partners = () => (
   <div className="container">
     <img src={Banner} alt="Les partenaires" className="img-fluid" />
     <h2 className="text-center my-5">Nos partenaires</h2>

@@ -6,7 +6,8 @@ import Meta from '../utils/Meta';
 export default class Prices extends Component {
   constructor(props) {
     super(props);
-    ReactGA.pageview(this.props.location.pathname);
+    const { location } = this.props;
+    ReactGA.pageview(location.pathname);
   }
 
 
@@ -52,10 +53,11 @@ class IndividualPrices extends Component {
   }
 
   render() {
-    const pricesArr = (this.state.several) ? this.indPricesMo : this.indPricesYe;
+    const { several } = this.state;
+    const pricesArr = (several) ? this.indPricesMo : this.indPricesYe;
     const pricesCells = pricesArr.map((price) => {
       let priceDispl;
-      if (this.state.several) {
+      if (several) {
         priceDispl = `${price}€/mois (${price * 12}€/an)`;
       } else {
         priceDispl = `${price}€/an`;

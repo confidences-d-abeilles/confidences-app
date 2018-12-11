@@ -17,7 +17,8 @@ export default class AdminManageServer extends Component {
 
     constructor(props) {
       super(props);
-      ReactGA.pageview(this.props.location.pathname);
+      const { location } = this.props;
+      ReactGA.pageview(location.pathname);
     }
 
     componentDidMount() {
@@ -36,63 +37,67 @@ export default class AdminManageServer extends Component {
     }
 
     sendMeta = (e) => {
-        e.preventDefault();
-        const { url, title, ogtitle, ogdescription } = this.state;
-        const formData = new FormData();
-        formData.append('title', title);
-        formData.append('ogtitle', ogtitle);
-        formData.append('url', url);
-        formData.append('ogdescription', ogdescription);
-        if (document.getElementById("ogimg").files[0]) {
-            formData.append('ogimg', document.getElementById("ogimg").files[0]);
-        }
-        request({
-            url: '/meta',
-            method : 'POST',
-            data : formData,
-            headers : {
-                'content-type': 'multipart/form-data'
-            },
-        }, this.refs.notif).then(res => {
-            this.getData();
-            this.clear();
-        })
+      e.preventDefault();
+      const {
+        url, title, ogtitle, ogdescription,
+      } = this.state;
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('ogtitle', ogtitle);
+      formData.append('url', url);
+      formData.append('ogdescription', ogdescription);
+      if (document.getElementById('ogimg').files[0]) {
+        formData.append('ogimg', document.getElementById('ogimg').files[0]);
+      }
+      request({
+        url: '/meta',
+        method: 'POST',
+        data: formData,
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
+      }, this.refs.notif).then(() => {
+        this.getData();
+        this.clear();
+      });
     }
 
     sendEditMeta = (e) => {
-        e.preventDefault();
-        const { url, title, ogtitle, ogdescription, id } = this.state;
-        request({
-            url: '/meta',
-            method: 'PUT',
-            data: {
-                id,
-                title,
-                url,
-                ogtitle,
-                ogdescription,
-            }
-        }, this.refs.notif).then(res => {
-            this.getData();
-            this.clear();
-        })
+      e.preventDefault();
+      const {
+        url, title, ogtitle, ogdescription, id,
+      } = this.state;
+      request({
+        url: '/meta',
+        method: 'PUT',
+        data: {
+          id,
+          title,
+          url,
+          ogtitle,
+          ogdescription,
+        },
+      }, this.refs.notif).then(() => {
+        this.getData();
+        this.clear();
+      });
     }
 
     deleteMeta = id => () => {
       request({
         url: `/meta/${id}`,
         method: 'delete',
-      }, this.refs.notifs).then(res => this.getData());
+      }, this.refs.notifs).then(() => this.getData());
     }
 
     clear = () => {
-        this.setState({
-            id: null,
-            title: '',
-            ogtitle: '',
-            ogdescription: '',
-            url: '',
-        });
+      this.setState({
+        id: null,
+        title: '',
+        ogtitle: '',
+        ogdescription: '',
+        url: '',
+      });
     }
 
     edit = meta => () => this.setState(meta);
@@ -170,23 +175,26 @@ export default class AdminManageServer extends Component {
             <div className="form-group">
               <p className="alert alert-warning">
                                 Attention, la modification d'un bloc méta ne permet pas d'en changer l'image. Si une modification d'image est nécessaire, supprimer puis recréer le bloc.
-                            </p>
-                            <FileUpload
-                                identifier="ogimg"
-                                label="OG Image"
-                                accept="image/*"
-                            />
-                        </div>
-                    )}
-                    <div className="form-group">
-                        <button
-                            type="submit"
-                            className="btn btn-primary"
-                        >{id ? "Modifier" : "Ajouter"}</button>&nbsp;
-                        <button type="button" className="btn btn-primary" onClick={this.clear}>{id ? 'Annuler l\'edition' : 'Vider'}</button>
-                    </div>
-                </form>
+              </p>
+              <FileUpload
+                identifier="ogimg"
+                label="OG Image"
+                accept="image/*"
+              />
             </div>
+            )}
+            <div className="form-group">
+              <button
+                type="submit"
+                className="btn btn-primary"
+              >
+                {id ? 'Modifier' : 'Ajouter'}
+              </button>
+&nbsp;
+              <button type="button" className="btn btn-primary" onClick={this.clear}>{id ? 'Annuler l\'edition' : 'Vider'}</button>
+            </div>
+          </form>
+        </div>
       );
     }
 }
