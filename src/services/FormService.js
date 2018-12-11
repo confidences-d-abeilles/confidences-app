@@ -1,20 +1,14 @@
 
-export function handleChange(event) {
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
-
-    this.setState({
-        [name]: value
-    });
+export function handleChange({ target }) {
+  const { name, value } = target;
+  this.setState({
+    [name]: value,
+  });
 }
 
-export function handleTick(event) {
-	const target = event.target;
-    const name = target.name;
-    const checked = target.checked;
-
-    this.setState({
-        [name]: checked
-    });
+export function handleTick({ target }) {
+  const { name, checked } = target;
+  this.setState({
+    [name]: checked,
+  });
 }

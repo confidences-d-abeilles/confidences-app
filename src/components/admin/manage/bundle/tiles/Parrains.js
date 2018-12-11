@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 import SquareImg from '../../../../utils/SquareImg';
 
-const config = require('../../../../../config.js')
+const config = require('../../../../../config.js');
 
-const Parrains = ( props ) => (
+const Parrains = props => (
   <div className="mb-4">
     <div className="card">
       <div className="card-block text-center">
@@ -13,7 +13,7 @@ const Parrains = ( props ) => (
             <p>{props.parrain.visible ? 'page visible ' : 'page non visible'}</p>
           </div>
           <div className="col">
-              <a className="btn btn-info btn-sm" href={"/parrains/"+props.parrain.namespace} target="_blank">{"/parrains/"+props.parrain.namespace}</a>
+            <a className="btn btn-info btn-sm" href={`/parrains/${props.parrain.namespace}`} target="_blank">{`/parrains/${props.parrain.namespace}`}</a>
           </div>
         </div>
         <br />
@@ -21,20 +21,20 @@ const Parrains = ( props ) => (
         <div className="row">
           <div className="col">
             <h3 className="card-title">Label</h3>
-            <a href={config.cdn_url+'/'+props.bundleLabel} target="_blank">
-              <SquareImg className="card-img-top img-fluid" src={config.cdn_url+'/'+props.bundleLabel} alt="Bundle label" />
+            <a href={`${config.cdn_url}/${props.bundleLabel}`} target="_blank">
+              <SquareImg className="card-img-top img-fluid" src={`${config.cdn_url}/${props.bundleLabel}`} alt="Bundle label" />
             </a>
           </div>
           <div className="col">
             <h3 className="card-title">LogoHQ</h3>
-            <a href={config.cdn_url+'/'+props.parrain.HQlogo} target="_blank">
-              <SquareImg className="card-img-top img-fluid" src={config.cdn_url+'/'+props.parrain.HQlogo} alt="hqlogo" />
+            <a href={`${config.cdn_url}/${props.parrain.HQlogo}`} target="_blank">
+              <SquareImg className="card-img-top img-fluid" src={`${config.cdn_url}/${props.parrain.HQlogo}`} alt="hqlogo" />
             </a>
           </div>
         </div>
       </div>
     </div>
   </div>
-)
+);
 
 export default Parrains;

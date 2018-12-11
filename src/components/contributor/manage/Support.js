@@ -11,10 +11,11 @@ export default class ContributorManageSupport extends Component {
     ReactGA.pageview(this.props.location.pathname);
   }
 
-  render () {
+  render() {
     return (
       <div className="text-center">
-        <h5 className="modal-title">Supports de communication</h5><br />
+        <h5 className="modal-title">Supports de communication</h5>
+        <br />
         <div className="row">
           <div className="col-6">
             <div className="row justify-content-center align-items-center">

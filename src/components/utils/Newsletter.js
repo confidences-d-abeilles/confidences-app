@@ -1,11 +1,3 @@
-import React, { Component } from 'react'
+const Newsletter = () => null;
 
-export default class Newsletter extends Component {
-
-	render () {
-		return (
-			<div>
-			</div>
-		)
-	}
-}
+export default Newsletter;

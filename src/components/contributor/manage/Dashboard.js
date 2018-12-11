@@ -2,18 +2,14 @@
 import React, { Component } from 'react';
 
 export default class ContributorManageDashboard extends Component {
-
-	// constructor(props) {
-	// 	super(props);
-	// }
-
+  // constructor(props) {
+  //   super(props);
+  // }
 
 
-	render () {
-		return (
-			<div>
-
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div />
+    );
+  }
 }
