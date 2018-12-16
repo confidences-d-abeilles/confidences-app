@@ -6,7 +6,7 @@ export default class MainProduct extends Component {
 		super(props);
 		this.state = {
 			qty: "1",
-			pots: "80"
+			pots: "40"
 		}
 	}
 

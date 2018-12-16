@@ -69,30 +69,35 @@ class IndividualPrices extends Component {
 
 		return (
 			<div>
+				<table className="table table-sm mt-4 text-left">
+					<tbody>
+						<tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Votre nom sur une ruche</div></td></tr>
+						<tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Une page dédiée à la ruche avec des photos de vos abeilles et des actualités régulières</div></td></tr>
+						<tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Des pots de miel personnalisés</div></td></tr>
+						<tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Expédition des pots via le service Colissimo incluse</div></td></tr>
+						<tr><td></td></tr>
+					</tbody>
+				</table>
+				<div className="table-responsive">
+					<table className="table">
+						<tbody>
+							<tr>
+								<th>10 000 abeilles</th><th>20 000 abeilles</th><th>30 000 abeilles</th><th>40 000 abeilles</th><th>50 000 abeilles (1 ruche complète)</th>
+							</tr>
+							<tr>
+								<td>8 pots de 250g</td><td>16 pots de 250g</td><td>24 pots de 250g</td><td>32 pots de 250g</td><td>40 pots de 250g</td>
+							</tr>
+							<tr>
+								{pricesCells}
+							</tr>
+						</tbody>
+					</table>
+				</div>
 				<div className="form-check my-4">
 					<label className="form-check-label">
 						<input type="checkbox" className="form-check-input" name="several" onClick={handleTick.bind(this)} /> Paiement en plusieurs fois
 					</label>
 				</div>
-				<table className="table">
-					<tbody>
-						<tr>
-							<th>10 000 abeilles</th><th>20 000 abeilles</th><th>30 000 abeilles</th><th>40 000 abeilles</th><th>50 000 abeilles (1 ruche complète)</th>
-						</tr>
-						<tr>
-							<td>Votre nom sur une ruche</td><td>Votre nom sur une ruche</td><td>Votre nom sur une ruche</td><td>Votre nom sur une ruche</td><td>Une ruche à votre nom</td>
-						</tr>
-						<tr>
-							<td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à la ruche avec photos & actualités</td><td>Une page dédiée à votre ruche avec photos & actualités</td>
-						</tr>
-						<tr>
-							<td>8 pots de 250g</td><td>16 pots de 250g</td><td>24 pots de 250g</td><td>32 pots de 250g</td><td>40 pots de 250g</td>
-						</tr>
-						<tr>
-							{pricesCells}
-						</tr>
-					</tbody>
-				</table>
 			</div>
 		);
 	}
@@ -108,29 +113,34 @@ class CompanyPrices extends Component {
 
 	render () {
 		return (
-			<table className="table my-4">
-				<tbody>
-					<tr>
-						<th>1 à 4 ruches</th><th>5 ruches ou plus</th>
-					</tr>
-					<tr>
-						<td>Ruche(s) aux couleurs de votre entreprise</td>
-						<td>Ruches aux couleurs de votre entreprise</td>
-					</tr>
-					<tr>
-						<td>Une page dédiée à votre entreprise avec des photos et actualités</td>
-						<td>Une page dédiée à votre entreprise avec des photos et actualités</td>
-					</tr>
-					<tr>
-						<td>80 pots de miel de 125g par ruche</td>
-						<td>80 pots de miel de 125g par ruche</td>
-					</tr>
-					<tr>
-						<td>{this.entrPricesYe[0]}€ HT /ruche</td>
-						<td>{this.entrPricesYe[1]}€ HT /ruche</td>
-					</tr>
-				</tbody>
-			</table>
+			<React.Fragment>
+				<table className="table table-sm mt-4 text-left">
+					<tbody>
+						<tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Ruches aux couleurs de votre entreprise</div></td></tr>
+						<tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Une page dédiée à votre entreprise avec des photos de vos ruches et des actualités régulières</div></td></tr>
+						<tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Des pots de miel personnalisés</div></td></tr>
+						<tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Expédition des pots via le service Colissimo incluse</div></td></tr>
+						<tr><td></td></tr>
+					</tbody>
+				</table>
+				<div className="table-responsive">
+					<table className="table">
+						<tbody>
+							<tr>
+								<th>1 à 4 ruches</th><th>5 ruches ou plus</th>
+							</tr>
+							<tr>
+								<td>40 pots de miel de 250g par ruche</td>
+								<td>40 pots de miel de 250g par ruche</td>
+							</tr>
+							<tr>
+								<td>{this.entrPricesYe[0]}€ HT /ruche</td>
+								<td>{this.entrPricesYe[1]}€ HT /ruche</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</React.Fragment>
 		);
 	}
 }

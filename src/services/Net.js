@@ -17,31 +17,29 @@ const request = function(options, notificationSystem) {
 		return response.data.payload;
 	}
 
-const onError = function(error) {
-	if (error.response && notificationSystem) {
-		if (error.response.status === '400') {
-			notificationSystem.addNotification({
-				message: error.response.data,
-				level: 'warning'
-			});
+	const onError = function(error) {
+		if (error.response && notificationSystem) {
+			if (error.response.status === '400') {
+				notificationSystem.addNotification({
+					message: error.response.data,
+					level: 'warning'
+				});
+			} else {
+				notificationSystem.addNotification({
+					message: error.response.data,
+					level: 'error'
+				});
+			}
 		} else {
-			notificationSystem.addNotification({
-				message: error.response.data,
-				level: 'error'
-			});
+		// Something else happened while setting up the request
+		// triggered the error
+		console.error('Error Message:', error.message);
 		}
-	} else {
-	// Something else happened while setting up the request
-	// triggered the error
-	console.error('Error Message:', error.message);
+
+		return Promise.reject(error.response || error.message);
 	}
 
-	return Promise.reject(error.response || error.message);
-}
-
-return client(options)
-			.then(onSuccess)
-			.catch(onError);
+	return client(options).then(onSuccess).catch(onError);
 }
 
 export default request;
