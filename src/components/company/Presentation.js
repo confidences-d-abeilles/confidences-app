@@ -51,28 +51,28 @@ export default class CompanyPresentation extends Component {
 							</ol>
 							<div className="carousel-inner" role="listbox">
 								<div className="carousel-item active">
-									<img className="d-block" src={first} alt="First slide" />
+									<img className="d-block w-100 h-100" src={first} alt="First slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={second} alt="Second slide" />
+									<img className="d-block w-100 h-100" src={second} alt="Second slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={third} alt="Third slide" />
+									<img className="d-block w-100 h-100" src={third} alt="Third slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={fourth} alt="Fourth slide" />
+									<img className="d-block w-100 h-100" src={fourth} alt="Fourth slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={fifth} alt="Fifth slide" />
+									<img className="d-block w-100 h-100" src={fifth} alt="Fifth slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={sixth} alt="Sixth slide" />
+									<img className="d-block w-100 h-100" src={sixth} alt="Sixth slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={seventh} alt="Seventh slide" />
+									<img className="d-block w-100 h-100" src={seventh} alt="Seventh slide" />
 								</div>
 								<div className="carousel-item">
-									<img className="d-block" src={eighth} alt="Eighth slide" />
+									<img className="d-block w-100 h-100" src={eighth} alt="Eighth slide" />
 								</div>
 							</div>
 						</div>
@@ -112,7 +112,7 @@ export default class CompanyPresentation extends Component {
 								Une visibilité digitale supplémentaire
 							</li>
 							<li>
-								<strong>80 pots de miel de 125g personnalisés</strong> aux couleurs de l’entreprise : un cadeau unique pour ses collaborateurs, ses partenaires ou encore ses clients</li>
+								<strong>40 pots de miel de 250g personnalisés</strong> aux couleurs de l’entreprise : un cadeau unique pour ses collaborateurs, ses partenaires ou encore ses clients</li>
 							<li>
 								La possibilité d'organiser avec son équipe une <strong>visite de la ruche</strong> sous la fameuse tenue d'apiculteur
 							</li>

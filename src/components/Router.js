@@ -77,7 +77,7 @@ export default class MyRouter extends Component {
 							<Route path="/contributor/manage" component={ContributorManage} />
 							<Route path="/company" component={CompanyRouter} />
 							<Route path="/individual" component={IndividualRouter} />
-			        <Route path="/admin/manage" component={AdminManage} />
+							<Route path="/admin/manage" component={AdminManage} />
 							<Route path="/" component={PublicRouter} />
 						</Switch>
 					</div>
