@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest
+
+    working_directory: ~/confidences-app
+
+    steps:
+      - checkout
+      - run: yarn
+      - run: yarn build
