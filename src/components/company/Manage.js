@@ -98,7 +98,7 @@ export default class CompanyManage extends Component {
 						<div className="col-lg-3 col-md-4 col-sm-12">
 							<div style={{ height: '210px', maxWidth: '100%' }}>
 								{(this.state.user && this.state.user.HQlogo)?
-								<img src={process.env.CONTENT_DOMAIN+'/'+this.state.user.HQlogo} alt="Logo entreprise" style={{ maxWidth: '100%', maxHeight: '100%' }} />:
+								<img src={process.env.REACT_APP_CONTENT_DOMAIN+'/'+this.state.user.HQlogo} alt="Logo entreprise" style={{ maxWidth: '100%', maxHeight: '100%' }} />:
 									<Link to="/company/manage/infos" style={{ display: 'block', height: '100%'}}><img src={waitLogo} alt="Logo à uploader" style={{ maxHeight: '100%', width: '100%' }} /></Link>}
 							</div>
 							<ul className="list-group">

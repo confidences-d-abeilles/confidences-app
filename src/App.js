@@ -32,7 +32,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<StripeProvider apiKey={process.env.STRIPE_API_KEY}>
+			<StripeProvider apiKey={process.env.REACT_APP_STRIPE_API_KEY}>
 					<Router>
 						<div>
 							<Route component={ScrollToTop} />

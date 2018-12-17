@@ -126,9 +126,9 @@ export default class Home extends Component {
 									if (user.user_type === 1 || user.user_type  === 2) {
 										let img;
 										if (user.logo) {
-											img = process.env.CONTENT_DOMAIN+'/'+user.logo;
+											img = process.env.REACT_APP_CONTENT_DOMAIN+'/'+user.logo;
 										} else if (user.hive_img) {
-											img = process.env.CONTENT_DOMAIN+'/'+user.hive_img;
+											img = process.env.REACT_APP_CONTENT_DOMAIN+'/'+user.hive_img;
 										} else {
 											img = defaultImg;
 										}

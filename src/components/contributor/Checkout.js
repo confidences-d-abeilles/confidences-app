@@ -63,7 +63,7 @@ export default class ContributorCheckout extends Component {
 						<h2 className="text-center my-4">Validation et signature électronique du contrat</h2>
 						{this.state.contracts.map((contract) => {
 							return (
-								<object data={process.env.CONTENT_DOMAIN+"/"+contract.filename} type="application/pdf" style={{ width: '100%', height: '500px' }}>
+								<object data={process.env.REACT_APP_CONTENT_DOMAIN+"/"+contract.filename} type="application/pdf" style={{ width: '100%', height: '500px' }}>
 
 								</object>
 							)

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const client = axios.create({
-	baseURL: process.env.API_URL,
+	baseURL: process.env.REACT_APP_API_DOMAIN,
 });
 
 const request = function(options, notificationSystem) {
