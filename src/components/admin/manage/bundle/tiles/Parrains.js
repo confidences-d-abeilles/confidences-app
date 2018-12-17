@@ -19,14 +19,14 @@ const Parrains = ( props ) => (
         <div className="row">
           <div className="col">
             <h3 className="card-title">Label</h3>
-            <a href={process.env.CONTENT_DOMAIN+'/'+props.bundleLabel} target="_blank">
-              <SquareImg className="card-img-top img-fluid" src={process.env.CONTENT_DOMAIN+'/'+props.bundleLabel} alt="Bundle label" />
+            <a href={process.env.REACT_APP_CONTENT_DOMAIN+'/'+props.bundleLabel} target="_blank">
+              <SquareImg className="card-img-top img-fluid" src={process.env.REACT_APP_CONTENT_DOMAIN+'/'+props.bundleLabel} alt="Bundle label" />
             </a>
           </div>
           <div className="col">
             <h3 className="card-title">LogoHQ</h3>
-            <a href={process.env.CONTENT_DOMAIN+'/'+props.parrain.HQlogo} target="_blank">
-              <SquareImg className="card-img-top img-fluid" src={process.env.CONTENT_DOMAIN+'/'+props.parrain.HQlogo} alt="hqlogo" />
+            <a href={process.env.REACT_APP_CONTENT_DOMAIN+'/'+props.parrain.HQlogo} target="_blank">
+              <SquareImg className="card-img-top img-fluid" src={process.env.REACT_APP_CONTENT_DOMAIN+'/'+props.parrain.HQlogo} alt="hqlogo" />
             </a>
           </div>
         </div>

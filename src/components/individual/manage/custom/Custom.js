@@ -82,7 +82,7 @@ export default class Custom extends Component {
 							:
 							<div>
 								<p>Visuel actuel de votre étiquette. Pour le modifier veuillez cliquer sur "Recommencer la personnalisation" en dessous de celui-ci.</p>
-								<Document file={process.env.CONTENT_DOMAIN+'/label/'+this.state.label} >
+								<Document file={process.env.REACT_APP_CONTENT_DOMAIN+'/label/'+this.state.label} >
 									<Page pageNumber={1} width={500} className="label" />
 								</Document>
 								<button className="btn btn-secondary" onClick={() => { this.setState({ step : 1 }); }}>Recommencer la personnalisation <FontAwesome name="magic" /></button>
@@ -129,7 +129,7 @@ export default class Custom extends Component {
 								<div>
 									<p className="lead">Voici le rendu de votre étiquette personnalisée !</p>
 									<p>Les mentions entre parenthèses sont provisoires et seront remplacées lorsque les informations seront disponibles.</p>
-									<Document file={process.env.CONTENT_DOMAIN+'/label/'+this.state.label} >
+									<Document file={process.env.REACT_APP_CONTENT_DOMAIN+'/label/'+this.state.label} >
 										<Page pageNumber={1} width={500} className="label" />
 									</Document>
 									<button className="btn btn-secondary" onClick={() => { this.setState({ step : 1 }); }}>Recommencer la personnalisation <FontAwesome name="magic" /></button>

@@ -117,7 +117,7 @@ export default class CompanyManageCustomize extends Component {
 											<div className=" row card-img text-center">
 
 											<Imagebox className="col"
-												src={this.state.labelDefault ? this.state.labelDefault: process.env.CONTENT_DOMAIN+'/'+this.state.labelCurrent}
+												src={this.state.labelDefault ? this.state.labelDefault: process.env.REACT_APP_CONTENT_DOMAIN+'/'+this.state.labelCurrent}
 												width={'auto'}
 												paddingTop={'230px'}
 												alt={"Eti1"}
