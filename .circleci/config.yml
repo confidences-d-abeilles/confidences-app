@@ -10,3 +10,6 @@ jobs:
       - checkout
       - run: yarn
       - run: yarn build
+    branches:
+      only:
+        - master
