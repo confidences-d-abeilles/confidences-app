@@ -9,7 +9,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys
-      - run: ssh -oStrictHostKeyChecking=no $SSH_USER@$SSH_HOST 'wall "CI in da place"'
+      - run: ssh -oStrictHostKeyChecking=no $SSH_USER@$SSH_HOST -p 1023 'wall "CI in da place"'
     branches:
       only:
         - master
