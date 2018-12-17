@@ -5,6 +5,7 @@ import Meta from '../../../utils/Meta'
 import { Redirect, Link } from 'react-router-dom'
 import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
+import { CSVLink, CSVDownload } from "react-csv";
 
 export default class MainScreen extends Component {
 
@@ -121,6 +122,25 @@ export default class MainScreen extends Component {
 	}
 
 	render () {
+		const csvData = this.state.filtered.map(({
+			firstname,
+			name,
+			createdAt,
+			email,
+			phone,
+			addresses,
+			bundles,
+		}) => ({
+			firstname,
+			name,
+			createdAt,
+			email,
+			phone,
+			address: addresses[0] && addresses[0].address_line1,
+			zipcode: addresses[0] && addresses[0].zipcode,
+			city: addresses[0] && addresses[0].city,
+			price: bundles[0] && bundles[0].price,
+		}));
 		return (
 			<div>
 				<NotificationSystem ref="notif" />
@@ -138,6 +158,7 @@ export default class MainScreen extends Component {
 					<div className="col">
 						<input type="text" className="form-control" value={this.state.criteria} ref="searchInput" onChange={this.search} placeholder="Rechercher..." onKeyDown={this.checkValidation} />
 						<small className="form-text text-muted">Appuyez sur ⏎ pour accéder au premier utilisateur, ⇩ ou ⇧ pour naviguer</small>
+						<CSVLink data={csvData}>Exporter</CSVLink>
 					</div>
 					<div className="col">
 						<label htmlFor="p"><input type="checkbox" name="p" id="p" checked={this.state.filters.p} onChange={this.checkFilter} /> Particuliers</label><br />
