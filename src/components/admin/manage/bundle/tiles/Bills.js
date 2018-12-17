@@ -4,8 +4,6 @@ import NotificationSystem from 'react-notification-system'
 import Loading from '../../../../utils/Loading'
 import FileUpload from '../../../../utils/FileUpload'
 
-const config = require('../../../../../config.js')
-
 export default class Bills extends Component {
 
 	constructor(props) {
@@ -62,7 +60,7 @@ export default class Bills extends Component {
 						<div className="card-text">
 							<strong>Numéro</strong> : {this.state.bills.number}<br />
 							<strong>Montant</strong> : {this.state.bills.price} €<br />
-							<strong>Document</strong> : {(this.state.bills.file)?<span><a href={config.cdn_url+'/bills/'+this.state.bills.file} target="_blank">Fichier actuel</a><br /></span>:'Aucun document pour cette facturation'}
+							<strong>Document</strong> : {(this.state.bills.file)?<span><a href={process.env.CONTENT_DOMAIN+'/bills/'+this.state.bills.file} target="_blank">Fichier actuel</a><br /></span>:'Aucun document pour cette facturation'}
 							<FileUpload identifier="billDoc" label="Uploader un fichier" />
 							<div className="text-center">
 								<button className="btn btn-info btn-sm" onClick={this.uploadFile} >Envoyer le fichier</button>

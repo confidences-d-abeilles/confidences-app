@@ -16,7 +16,6 @@ import ReactGA from 'react-ga';
 import Meta from './utils/Meta'
 
 const defaultImg = require("../assets/img/profile.png")
-const config = require('../config.js');
 
 export default class Home extends Component {
 
@@ -127,9 +126,9 @@ export default class Home extends Component {
 									if (user.user_type === 1 || user.user_type  === 2) {
 										let img;
 										if (user.logo) {
-											img = config.cdn_url+'/'+user.logo;
+											img = process.env.CONTENT_DOMAIN+'/'+user.logo;
 										} else if (user.hive_img) {
-											img = config.cdn_url+'/'+user.hive_img;
+											img = process.env.CONTENT_DOMAIN+'/'+user.hive_img;
 										} else {
 											img = defaultImg;
 										}

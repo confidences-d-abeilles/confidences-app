@@ -5,8 +5,6 @@ import ReactGA from 'react-ga';
 import Loading from '../../utils/Loading'
 import moment from 'moment'
 
-const config = require('../../../config.js');
-
 export default class CompanyManageDashboard extends Component {
 
 	constructor(props) {
@@ -94,7 +92,7 @@ export default class CompanyManageDashboard extends Component {
 						<a href={(this.state.user)?'/parrains/'+this.state.user.namespace:''} target="_blank" className="btn btn-secondary disabled">Consulter ma page entreprise</a>
 
 						{(this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].certif && this.state.user.bundles[0].state > 1) ?
-							<a href={config.cdn_url + '/' + this.state.user.bundles[0].certif}
+							<a href={process.env.CONTENT_DOMAIN + '/' + this.state.user.bundles[0].certif}
 								className="btn btn-secondary m-2" target="_blank">Télécharger mon certificat de parrainage
 							</a> :
 							<a href="/" className="btn btn-secondary m-2 disabled" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
@@ -189,7 +187,7 @@ export default class CompanyManageDashboard extends Component {
 											<div className="col-lg-4">
 												<div className="card my-2 p-1">
 													Ruche {ruche.name}<br />
-												<a href={config.app_url+'/hive/'+ruche.id}>Voir la page</a>
+												<a href={process.env.APP_DOMAIN+'/hive/'+ruche.id}>Voir la page</a>
 												</div>
 											</div>
 										)

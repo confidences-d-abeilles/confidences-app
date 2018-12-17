@@ -6,7 +6,6 @@ import Loading from '../../utils/Loading'
 import ReactGA from 'react-ga';
 import moment from 'moment';
 import Feedback from '../../utils/Feedback';
-const config = require('../../../config.js');
 
 export default class CompanyManageMyPage extends Component {
 
@@ -178,7 +177,7 @@ export default class CompanyManageMyPage extends Component {
 						<label>{"https://parrainagederuches.fr/parrains/"+this.state.namespace}</label>
 					</div>
 					<div className="form-group">
-						<label>Photo de couverture de votre page {(this.state.cover)?<a href={config.cdn_url+'/'+this.state.cover} target="_blank">Visualiser l'image actuelle</a>:null}</label>
+						<label>Photo de couverture de votre page {(this.state.cover)?<a href={process.env.CONTENT_DOMAIN+'/'+this.state.cover} target="_blank">Visualiser l'image actuelle</a>:null}</label>
 						<label htmlFor="cover" className={(this.state.newCover)?'active-upload':'upload'} style={{ position: 'relative' }}>
 							<input type="file" className="form-control" id="cover" onChange={() => { this.setState({ newCover : document.getElementById("cover").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
 							Glissez une {(this.state.cover)?'nouvelle':null} image ici ou cliquez pour en sélectionner une parmi vos fichiers<br/>
@@ -186,7 +185,7 @@ export default class CompanyManageMyPage extends Component {
 						</label>
 					</div>
 					<div className="form-group">
-						<label>Logo de votre entreprise {(this.state.logo)?<a href={config.cdn_url+'/'+this.state.logo} target="_blank">Visualiser le logo actuel</a>:null}</label>
+						<label>Logo de votre entreprise {(this.state.logo)?<a href={process.env.CONTENT_DOMAIN+'/'+this.state.logo} target="_blank">Visualiser le logo actuel</a>:null}</label>
 						<label htmlFor="logo" className={(this.state.newLogo)?'active-upload':'upload'} style={{ position: 'relative' }}>
 							<input type="file" className="form-control" id="logo" onChange={() => { this.setState({ newLogo : document.getElementById("logo").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
 							Glissez votre {(this.state.logo)?'nouveau':null} logo ici ou cliquez pour en sélectionner un parmi vos fichiers<br/>

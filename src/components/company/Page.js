@@ -13,7 +13,6 @@ import moment from 'moment';
 import { getId } from '../../services/AuthService';
 
 const defaultImg = require("../../assets/img/profile.png")
-const config = require('../../config.js');
 
 export default class CompanyPage extends Component {
 
@@ -128,7 +127,7 @@ export default class CompanyPage extends Component {
 						<Meta title="Page entreprise"/>
 						<div className="row justify-content-center">
 							<h1 style={{ backgroundColor : "#E49C00",fontFamily: "HighTo" , color: 'white', padding: "0.4em 2.5em", zIndex: '5' }}><small>{(this.state.user)?this.state.user.company_name.toUpperCase():null}</small></h1>
-							<div className="col-lg-12" style={{ marginTop: '-5.3em', backgroundPosition: 'center', height: '20em', backgroundImage: 'url('+((this.state.cover)?config.cdn_url+'/'+this.state.cover:'')+')', backgroundSize: 'cover' }}>
+							<div className="col-lg-12" style={{ marginTop: '-5.3em', backgroundPosition: 'center', height: '20em', backgroundImage: 'url('+((this.state.cover)?process.env.CONTENT_DOMAIN+'/'+this.state.cover:'')+')', backgroundSize: 'cover' }}>
 							</div>
 						</div>
 					</div>
@@ -149,7 +148,7 @@ export default class CompanyPage extends Component {
 											{(this.state.user && this.state.user.description)?this.state.user.description:"Cette entreprise n'a pas encore rédigé sa description"}
 										</p>
 										<p className="text-center my-3">
-											<img src={(this.state.user && this.state.user.logo)?config.cdn_url+'/'+this.state.user.logo:defaultImg} alt="Logo entreprise" className="img-fluid" />
+											<img src={(this.state.user && this.state.user.logo)?process.env.CONTENT_DOMAIN+'/'+this.state.user.logo:defaultImg} alt="Logo entreprise" className="img-fluid" />
 										</p>
 										{(this.state.user && this.state.user.link1_url && this.state.user.link1_name)?
 											<div className="col text-center">
@@ -186,7 +185,7 @@ export default class CompanyPage extends Component {
 											<div style={{ position : 'relative' }}>
 												{this.state.hives.map((hive) => {
 													return (
-														<div style={{ backgroundImage: 'url('+config.cdn_url+'/'+hive.imgs[0]+')', height: '10em', width: '100%' }} alt={hive.name} className={(this.state.selectedHive === hive.id)?'ruche-img':'ruche-img-hidden'} id={"img-"+hive.id} />
+														<div style={{ backgroundImage: 'url('+process.env.CONTENT_DOMAIN+'/'+hive.imgs[0]+')', height: '10em', width: '100%' }} alt={hive.name} className={(this.state.selectedHive === hive.id)?'ruche-img':'ruche-img-hidden'} id={"img-"+hive.id} />
 													)
 												})}
 											</div>
@@ -201,7 +200,7 @@ export default class CompanyPage extends Component {
 													<div className="my-2 row">
 														<div className="actu-first-block col-lg-4">
 															<Imagebox className="actu-img"
-																src={config.cdn_url+'/'+actu.img}
+																src={process.env.CONTENT_DOMAIN+'/'+actu.img}
 																alt={actu.img}
 															/>
 														</div>

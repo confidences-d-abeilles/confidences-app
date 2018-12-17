@@ -5,7 +5,6 @@ import NotificationSystem from 'react-notification-system'
 import Loading from '../../../../utils/Loading.js'
 import { handleChange } from '../../../../../services/FormService'
 import '../../../../utils/css/LabelPdf.css'
-const config = require('../../../../../config.js')
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 class Label extends Component {
@@ -51,8 +50,8 @@ class Label extends Component {
 					{this.props.labelFilename ?
 						<p className="card-text text-center">
 							<button className="mb-1 btn btn-info btn-sm" onClick={this.props.downloadLabel}>Télécharger</button>
-							<a href={config.cdn_url+'/label/' + this.props.labelFilename} target="_blank">
-								<Document file={config.cdn_url + '/label/' + this.props.labelFilename} >
+							<a href={process.env.CONTENT_DOMAIN+'/label/' + this.props.labelFilename} target="_blank">
+								<Document file={process.env.CONTENT_DOMAIN + '/label/' + this.props.labelFilename} >
 									<Page pageNumber={1} width={500} className="label" />
 								</Document>
 							</a>

@@ -13,9 +13,6 @@ import Eti1 from '../../../../assets/img/label/sample_Etiquette_P1.jpg';
 import Eti2 from '../../../../assets/img/label/sample_Etiquette_P2.jpg'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
-
-const config = require('../../../../config.js');
-
 export default class Custom extends Component {
 
 	constructor(props) {
@@ -85,7 +82,7 @@ export default class Custom extends Component {
 							:
 							<div>
 								<p>Visuel actuel de votre étiquette. Pour le modifier veuillez cliquer sur "Recommencer la personnalisation" en dessous de celui-ci.</p>
-								<Document file={config.cdn_url+'/label/'+this.state.label} >
+								<Document file={process.env.CONTENT_DOMAIN+'/label/'+this.state.label} >
 									<Page pageNumber={1} width={500} className="label" />
 								</Document>
 								<button className="btn btn-secondary" onClick={() => { this.setState({ step : 1 }); }}>Recommencer la personnalisation <FontAwesome name="magic" /></button>
@@ -132,7 +129,7 @@ export default class Custom extends Component {
 								<div>
 									<p className="lead">Voici le rendu de votre étiquette personnalisée !</p>
 									<p>Les mentions entre parenthèses sont provisoires et seront remplacées lorsque les informations seront disponibles.</p>
-									<Document file={config.cdn_url+'/label/'+this.state.label} >
+									<Document file={process.env.CONTENT_DOMAIN+'/label/'+this.state.label} >
 										<Page pageNumber={1} width={500} className="label" />
 									</Document>
 									<button className="btn btn-secondary" onClick={() => { this.setState({ step : 1 }); }}>Recommencer la personnalisation <FontAwesome name="magic" /></button>
