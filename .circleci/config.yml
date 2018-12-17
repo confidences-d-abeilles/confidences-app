@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - checkout
-      - run: ssh $SSH_USER@$SSH_HOST 'wall "CI in da place"'
+      - run: ssh $SSH_USER@$SSH_HOST -p 1023 'wall "CI in da place"'
     branches:
       only:
         - master
