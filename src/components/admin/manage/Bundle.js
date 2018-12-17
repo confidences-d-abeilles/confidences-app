@@ -6,9 +6,6 @@ import Confirm from '../../utils/Confirm'
 import DatePicker from 'react-datepicker';
 import moment from 'moment'
 import FontAwesome from 'react-fontawesome'
-
-const config = require("../../../config.js");
-
 export default class Bundle extends Component {
 
 	constructor(props) {
@@ -219,7 +216,7 @@ export default class Bundle extends Component {
 								<div className="card-block">
 									<h3 className="card-title">Certificat de parrainage</h3>
 									{this.state.bundle.certif &&
-									<a href={config.cdn_url+'/'+this.state.bundle.certif} target="_blank" className="btn btn-secondary btn-sm my-2">Actuel <FontAwesome name="external-link" /></a>}
+									<a href={process.env.CONTENT_DOMAIN+'/'+this.state.bundle.certif} target="_blank" className="btn btn-secondary btn-sm my-2">Actuel <FontAwesome name="external-link" /></a>}
 									<div className="form-group">
 										<label htmlFor="certif" className={(this.state.certif)?'active-upload':'upload'} style={{ position: 'relative' }}>
 											<input type="file" className="form-control" id="certif" onChange={() => { this.setState({ certif : document.getElementById("certif").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>

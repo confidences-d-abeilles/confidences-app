@@ -12,9 +12,6 @@ import Imagebox from './utils/Imagebox'
 import ReactStars from 'react-stars';
 import { Link } from 'react-router-dom'
 
-const config = require('../config.js')
-
-
 export default class Hive extends Component {
 
 	constructor(props) {
@@ -49,7 +46,7 @@ export default class Hive extends Component {
 							<div className="row">
 								<div className="col-lg-7 px-5">
 								<Imagebox
-									src={(this.state.hive.imgs[0])?config.cdn_url+'/'+this.state.hive.imgs[0]:ImgHive}
+									src={(this.state.hive.imgs[0])?process.env.CONTENT_DOMAIN+'/'+this.state.hive.imgs[0]:ImgHive}
 									width={'100%'}
 									paddingTop={'100%'}
 									alt={"Photo principale de la ruche"}
@@ -93,7 +90,7 @@ export default class Hive extends Component {
 											return (
 												<div className="col-lg-4">
 													<Imagebox
-														src={config.cdn_url+'/'+this.state.hive.imgs[index]}
+														src={process.env.CONTENT_DOMAIN+'/'+this.state.hive.imgs[index]}
 														width={"100%"}
 														paddingTop={"100%"}
 														alt={"Photo de la ruche"}
@@ -118,7 +115,7 @@ export default class Hive extends Component {
 										<div className="my-2 row">
 											<div className="col-lg-2">
 												<Imagebox
-													src={config.cdn_url+'/'+actu.img}
+													src={process.env.CONTENT_DOMAIN+'/'+actu.img}
 													alt={"Card image cap"}
 													width={'100%'}
 													paddingTop={'100%'}

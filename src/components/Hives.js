@@ -8,8 +8,6 @@ import ReactGA from 'react-ga';
 import Meta from './utils/Meta'
 import SquareImg from './utils/SquareImg'
 
-const config = require('../config.js')
-
 export default class Hives extends Component {
 
 	constructor(props) {
@@ -43,7 +41,7 @@ export default class Hives extends Component {
 					{this.state.hives.map((hive) => {
 						if (hive.imgs && hive.imgs[0]) {
 							return (<div className="card col-lg-3 col-md-5 col-sm-11 m-1" style={{ maxWidth: '20em' }}>
-							<SquareImg className="card-img-top img-fluid" src={(hive.imgs && hive.imgs[0])?config.cdn_url+'/'+hive.imgs[0]:imgPlaceholder} alt="Card image cap" />
+							<SquareImg className="card-img-top img-fluid" src={(hive.imgs && hive.imgs[0])?process.env.CONTENT_DOMAIN+'/'+hive.imgs[0]:imgPlaceholder} alt="Card image cap" />
 							<div className="card-block" style={{ height: 'auto', flex: '0' }}>
 								<h2 className="card-title text-center" style={{ fontFamily: "HighTo"}} >{hive.name}</h2>
 								<Link to={'/hive/'+hive.id} className="btn btn-link float-right">Voir en détail</Link>

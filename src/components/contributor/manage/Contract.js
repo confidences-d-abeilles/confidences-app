@@ -4,8 +4,6 @@ import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
 
-const config = require('../../../config.js')
-
 export default class ContributorManageContract extends Component {
 
 	constructor(props) {
@@ -31,7 +29,7 @@ export default class ContributorManageContract extends Component {
 		return (
 			<div>
 				<NotificationSystem ref="notif" />
-				<object data={(this.state.user)?config.cdn_url+'/'+this.state.user.id+'.pdf':null} type="application/pdf" style={{ width: '100%' }} height="400">
+				<object data={(this.state.user)?process.env.CONTENT_DOMAIN+'/'+this.state.user.id+'.pdf':null} type="application/pdf" style={{ width: '100%' }} height="400">
 				</object>
 			</div>
 		);

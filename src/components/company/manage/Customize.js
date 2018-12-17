@@ -15,8 +15,6 @@ import Eti2 from '../../../assets/img/label/sample_Etiquette_E2.jpg'
 import Eti3 from '../../../assets/img/label/sample_Etiquette_E3.jpg'
 import Eti4 from '../../../assets/img/label/sample_Etiquette_E4.jpg'
 
-const config = require('../../../config.js');
-
 export default class CompanyManageCustomize extends Component {
 
 	constructor(props) {
@@ -119,7 +117,7 @@ export default class CompanyManageCustomize extends Component {
 											<div className=" row card-img text-center">
 
 											<Imagebox className="col"
-												src={this.state.labelDefault ? this.state.labelDefault: config.cdn_url+'/'+this.state.labelCurrent}
+												src={this.state.labelDefault ? this.state.labelDefault: process.env.CONTENT_DOMAIN+'/'+this.state.labelCurrent}
 												width={'auto'}
 												paddingTop={'230px'}
 												alt={"Eti1"}

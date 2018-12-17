@@ -5,8 +5,6 @@ import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import Loading from './Loading'
 
-const config = require('../../config.js');
-
 class PayForm extends Component {
 
 	constructor(props) {
@@ -80,7 +78,7 @@ class PayForm extends Component {
 					source: source,
 					dateStart: this.props.date,
 					dateEnd: new Date(new Date(this.props.date).setFullYear(new Date().getFullYear() + 1)),
-					redirect: config.app_url+this.props.endpoint
+					redirect: process.env.APP_DOMAIN+this.props.endpoint
 				}
 			}, this.refs.notif).then((res) => {
 				if (res) {

@@ -11,8 +11,6 @@ import {
 import ReactGA from 'react-ga';
 import MyRouter from './components/Router'
 
-const config = require('./config.js');
-
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
   return null;
@@ -34,7 +32,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<StripeProvider apiKey={config.stripe_api_key}>
+			<StripeProvider apiKey={process.env.STRIPE_API_KEY}>
 					<Router>
 						<div>
 							<Route component={ScrollToTop} />

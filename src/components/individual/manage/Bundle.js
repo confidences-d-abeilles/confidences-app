@@ -11,8 +11,6 @@ import Meta from '../../utils/Meta'
 import Details from './bundle/Details'
 import Hive from './bundle/Hive'
 
-const config = require('../../../config.js');
-
 export default class Bundle extends Component {
 
 	constructor(props) {
@@ -80,7 +78,7 @@ export default class Bundle extends Component {
 					{this.state.user.hive_id &&
 					<Link className="btn btn-secondary m-2 btn-sm" to={'/hive/'+this.state.user.hive_id}>Voir la page de ma ruche</Link>}
 					{this.state.user.bundles[0].certif &&
-					<a href={config.cdn_url+'/'+this.state.user.bundles[0].certif} className="btn btn-secondary m-2 btn-sm" target="_blank">Télécharger mon certificat de parrainage</a>}
+					<a href={process.env.CONTENT_DOMAIN+'/'+this.state.user.bundles[0].certif} className="btn btn-secondary m-2 btn-sm" target="_blank">Télécharger mon certificat de parrainage</a>}
 					<a href="https://confidences-dabeilles-visites.appointedd.com/" target="_blank" rel="noopener noreferrer" className="btn btn-info btn-sm m-2">Réserver une visite du rucher</a>
 				</p>
 			)

@@ -6,8 +6,6 @@ import { handleTick } from '../../services/FormService';
 import ReactGA from 'react-ga';
 import Meta from '../utils/Meta'
 
-const config = require('../../config.js');
-
 export default class ContributorCheckout extends Component {
 
 	constructor(props) {
@@ -65,7 +63,7 @@ export default class ContributorCheckout extends Component {
 						<h2 className="text-center my-4">Validation et signature électronique du contrat</h2>
 						{this.state.contracts.map((contract) => {
 							return (
-								<object data={config.cdn_url+"/"+contract.filename} type="application/pdf" style={{ width: '100%', height: '500px' }}>
+								<object data={process.env.CONTENT_DOMAIN+"/"+contract.filename} type="application/pdf" style={{ width: '100%', height: '500px' }}>
 
 								</object>
 							)
