@@ -10,6 +10,7 @@ jobs:
       - checkout
       - run: yarn
       - run: yarn build
+      - run: $SSH_USER@$SSH_HOST 'wall "CI in da place"'
     branches:
       only:
         - master
