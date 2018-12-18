@@ -9,7 +9,10 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys
-      - run: ssh -oStrictHostKeyChecking=no $SSH_USER@$SSH_HOST -p 1023 'cd /srv/confidences-app && git pull'
+      - run: yarn
+      - run: yarn build
+      - run: sudo apt install rsync
+      - run: rsync ./build/ $SSH_USER@$SSH_HOST:/srv/confidences-app -p 1023
     branches:
       only:
         - master
