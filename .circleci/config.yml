@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build & deploy production:
     docker:
       - image: circleci/node:latest
 
@@ -17,3 +17,21 @@ jobs:
     branches:
       only:
         - master
+  
+  build & deploy development:
+    docker:
+      - image: circleci/node:latest
+
+    working_directory: ~/confidences-app
+
+    steps:
+      - checkout
+      - add_ssh_keys
+      - run: yarn
+      - run: yarn build
+      - run: sudo apt install rsync
+      - run: rsync -av -e 'ssh -oStrictHostKeyChecking=no -p 1023' ./build $SSH_USER@$SSH_HOST:/srv/confidences-app
+      - run: ssh $SSH_USER@$SSH_HOST_DEV -oStrictHostKeyChecking=no -p 1023 '. /home/dev/.zshrc; pm2 reload app'
+    branches:
+      only:
+        - develop
