@@ -35,3 +35,7 @@ jobs:
     branches:
       only:
         - develop
+workflows:
+  production:
+    jobs:
+      - build & deploy production
