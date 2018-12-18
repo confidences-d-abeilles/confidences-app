@@ -14,9 +14,6 @@ jobs:
       - run: sudo apt install rsync
       - run: rsync -av -e 'ssh -oStrictHostKeyChecking=no -p 1023' ./build $SSH_USER@$SSH_HOST:/srv/confidences-app
       - run: ssh $SSH_USER@$SSH_HOST -oStrictHostKeyChecking=no -p 1023 '. /home/dev/.zshrc; pm2 reload app'
-    branches:
-      only:
-        - master
   
   build & deploy development:
     docker:
@@ -39,4 +36,8 @@ workflows:
   version: 2
   production:
     jobs:
-      - build & deploy production
+      - build & deploy production:
+          filters:
+            branches:
+              only:
+                - master
