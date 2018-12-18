@@ -13,7 +13,7 @@ jobs:
       - run: yarn build
       - run: sudo apt install rsync
       - run: rsync -av -e 'ssh -oStrictHostKeyChecking=no -p 1023' ./build $SSH_USER@$SSH_HOST:/srv/confidences-app
-      - run: ssh $SSH_USER@$SSH_HOST -oStrictHostKeyChecking=no -p 1023 'pm2 reload app'
+      - run: ssh $SSH_USER@$SSH_HOST -oStrictHostKeyChecking=no -p 1023 '. /home/dev/.zshrc; pm2 reload app'
     branches:
       only:
         - master
