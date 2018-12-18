@@ -25,7 +25,7 @@ jobs:
       - checkout
       - add_ssh_keys
       - run: yarn
-      - run: yarn build
+      - run: . .env.staging yarn build
       - run: sudo apt install rsync
       - run: rsync -av -e 'ssh -oStrictHostKeyChecking=no -p 1023' ./build $SSH_USER@$SSH_HOST:/srv/confidences-app
       - run: ssh $SSH_USER@$SSH_HOST_DEV -oStrictHostKeyChecking=no -p 1023 '. /home/dev/.zshrc; pm2 reload app'
