@@ -36,6 +36,7 @@ jobs:
       only:
         - develop
 workflows:
+  version: 2
   production:
     jobs:
       - build & deploy production
