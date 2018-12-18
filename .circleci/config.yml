@@ -12,7 +12,8 @@ jobs:
       - run: yarn
       - run: yarn build
       - run: sudo apt install rsync
-      - run: rsync ./build/ $SSH_USER@$SSH_HOST:/srv/confidences-app -p 1023
+      - run: rsync -av -e 'ssh -p 1023' ./build $SSH_USER@$SSH_HOST:/srv/confidences-app
+      - run: ssh $SSH_USER@$SSH_HOST -p 1023 'pm2 reload app'
     branches:
       only:
         - master
