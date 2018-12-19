@@ -12,7 +12,7 @@ jobs:
       - run: yarn
       - run: yarn build
       - run: sudo apt install rsync
-      - run: rsync -av -e 'ssh -oStrictHostKeyChecking=no -p 1023' --include ".*" ./* $SSH_USER@$SSH_HOST:/srv/confidences-app
+      - run: rsync -av -e 'ssh -oStrictHostKeyChecking=no -p 1023' --include "./.*" ./* $SSH_USER@$SSH_HOST:/srv/confidences-app
       - run: ssh $SSH_USER@$SSH_HOST -oStrictHostKeyChecking=no -p 1023 '. /home/dev/.zshrc; pm2 reload app'
   
   build & deploy development:
