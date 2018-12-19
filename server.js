@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const dotenv = require('dotenv');
 dotenv.config();
-const metaResolverMiddleware = require('./metaResolver').middleware;
+const metaResolverMiddleware = require('./server/metaResolver').middleware;
 
 const compression = require('compression');
 
