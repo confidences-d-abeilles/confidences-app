@@ -4,5 +4,6 @@
         "window": true,
         "document": true,
         "localStorage": true
-    }
+    },
+    "parser": "babel-eslint"
 }
