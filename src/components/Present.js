@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import presentPict from '../assets/img/present.jpg'
-import { Link } from 'react-router-dom'
-import Meta from './utils/Meta'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import presentPict from '../assets/img/present.jpg';
+import Meta from './utils/Meta';
 
 export default () => (
   <div className="container">
