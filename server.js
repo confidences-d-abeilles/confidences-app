@@ -1,11 +1,10 @@
+require('dotenv').config({
+    path: process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env',
+});
 const express = require('express');
 const app = express();
 const path = require('path');
 const fs = require('fs');
-
-const dotenv = require('dotenv');
-
-dotenv.config({ debug : true });
 
 const metaResolverMiddleware = require('./server/metaResolver').middleware;
 
