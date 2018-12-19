@@ -7,162 +7,162 @@ import Loadable from 'react-loadable';
 
 const RuchesList = Loadable({
     loader: () => import('../components/ruches/List'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Home = Loadable({
     loader: () => import('../components/Home'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Login = Loadable({
     loader: () => import('../components/Login'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Signup = Loadable({
     loader: () => import('../components/Signup'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Presignup = Loadable({
     loader: () => import('../components/Presignup'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Cgv = Loadable({
     loader: () => import('../components/static/Cgv'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Mentions = Loadable({
     loader: () => import('../components/static/Mentions'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const About = Loadable({
     loader: () => import('../components/static/About'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Ourvalues = Loadable({
     loader: () => import('../components/static/Ourvalues'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Team = Loadable({
     loader: () => import('../components/Team'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Contact = Loadable({
     loader: () => import('../components/static/Contact'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Jobs = Loadable({
     loader: () => import('../components/static/jobs/Jobs'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const JobsReact = Loadable({
     loader: () => import('../components/static/jobs/JobsReact'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const JobsDesigner = Loadable({
     loader: () => import('../components/static/jobs/JobsDesigner'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const JobsMarketing = Loadable({
     loader: () => import('../components/static/jobs/JobsMarketing'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const JobsBusinessDev = Loadable({
     loader: () => import('../components/static/jobs/JobsBusinessDev'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const JobsEvent = Loadable({
     loader: () => import('../components/static/jobs/JobsEvent'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Faq = Loadable({
     loader: () => import('../components/static/Faq'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Prices = Loadable({
     loader: () => import('../components/static/Prices'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Hives = Loadable({
     loader: () => import('../components/Hives'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Hive = Loadable({
     loader: () => import('../components/Hive'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Forgot = Loadable({
     loader: () => import('../components/Forgot'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Reset = Loadable({
     loader: () => import('../components/Reset'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Apply = Loadable({
     loader: () => import('../components/static/Apply'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const RequestLabel = Loadable({
     loader: () => import('../components/RequestLabel'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Present = Loadable({
     loader: () => import('../components/Present'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Confirm = Loadable({
     loader: () => import('../components/Confirm'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const NotFound = Loadable({
     loader: () => import('../components/utils/NotFound'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Newslettersignup = Loadable({
     loader: () => import('../components/static/Newslettersignup'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Partners = Loadable({
     loader: () => import('../components/static/Partners'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const MyAccount = Loadable({
     loader: () => import('../components/MyAccount'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const Logout = Loadable({
     loader: () => import('../components/Logout'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const PublicRouter = () => (

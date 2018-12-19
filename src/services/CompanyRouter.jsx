@@ -7,47 +7,47 @@ import Loadable from 'react-loadable';
 
 const CompanyPresentation = Loadable({
     loader: () => import('../components/company/Presentation'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const CompanyIdentity = Loadable({
     loader: () => import('../components/company/Identity'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const CompanyAddress = Loadable({
     loader: () => import('../components/company/Address'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const CompanyWish = Loadable({
     loader: () => import('../components/company/Wish'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const CompanyCheckout = Loadable({
     loader: () => import('../components/company/Checkout'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const CompanyPayment = Loadable({
     loader: () => import('../components/company/Payment'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const CompanyEnd = Loadable({
     loader: () => import('../components/company/End'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const CompanyManage = Loadable({
     loader: () => import('../components/company/Manage'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const CompanyMore = Loadable({
     loader: () => import('../components/company/More'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 

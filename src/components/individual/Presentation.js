@@ -135,7 +135,7 @@ export default class IndividualPresentation extends Component {
 						<Link to="/individual/more" className="btn btn-secondary">En savoir plus</Link>
 					</div>
 					<div className="col-12 text-center">
-						<a href={leaflet} className="btn btn-secondary m-4" target="_blank">Télécharger la plaquette de présentation</a>
+						<a href={leaflet} className="btn btn-secondary m-4" rel="noopener noreferrer" target="_blank">Télécharger la plaquette de présentation</a>
 					</div>
 				</div>
 			</div>

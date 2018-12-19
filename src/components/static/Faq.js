@@ -42,7 +42,7 @@ export default class Faq extends Component {
 								if (item.type === 1) {
 									return (
 										<div key={item.id}>
-											<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+											<span className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></span>
 											<p className="collapse" id={item.id}>{item.answer}</p>
 											<hr />
 										</div>
@@ -58,7 +58,7 @@ export default class Faq extends Component {
 								if (item.type === 2) {
 									return (
 										<div key={item.id}>
-											<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+											<span className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></span>
 											<p className="collapse" id={item.id}>{item.answer}</p>
 											<hr />
 										</div>
@@ -74,7 +74,7 @@ export default class Faq extends Component {
 								if (item.type === 3) {
 									return (
 										<div key={item.id}>
-											<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+											<span className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></span>
 											<p className="collapse" id={item.id}>{item.answer}</p>
 											<hr />
 										</div>

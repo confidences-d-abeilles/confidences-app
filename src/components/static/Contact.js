@@ -88,7 +88,7 @@ export default class Contact extends Component {
 							if (item.type === 1 && this.state.criteria.length > 0 && (item.question.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 || item.answer.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 )) {
 								return (
 									<div className="my-4" key={item.id}>
-										<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+										<span className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></span>
 										<p className="collapse" id={item.id}>{item.answer}</p>
 										<hr />
 									</div>
@@ -101,7 +101,7 @@ export default class Contact extends Component {
 								if (item.type === 2 && this.state.criteria.length > 0 && (item.question.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 || item.answer.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 )) {
 									return (
 										<div className="my-4" key={item.id}>
-											<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+											<span className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></span>
 											<p className="collapse" id={item.id}>{item.answer}</p>
 											<hr />
 										</div>
@@ -114,7 +114,7 @@ export default class Contact extends Component {
 								if (item.type === 3 && this.state.criteria.length > 0 && (item.question.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 || item.answer.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0 )) {
 									return (
 										<div className="my-4" key={item.id}>
-											<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+											<span className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></span>
 											<p className="collapse" id={item.id}>{item.answer}</p>
 											<hr />
 										</div>
