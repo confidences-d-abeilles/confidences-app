@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const dotenv = require('dotenv');
 
-dotenv.config({path: __dirname + '/.env.production'});
+dotenv.config({ debug : true });
 
 const metaResolverMiddleware = require('./server/metaResolver').middleware;
 
