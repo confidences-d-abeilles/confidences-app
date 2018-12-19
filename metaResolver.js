@@ -2,6 +2,8 @@ const MongoClient = require('mongodb').MongoClient;
 
 const url = process.env.REACT_APP_MONGO_URL;
 
+console.log(url);
+
 const client = MongoClient(url, {
   useNewUrlParser: true,
 });
@@ -13,14 +15,18 @@ module.exports = {
         console.error('Meta resolver middleware encountered an error, skipping... : '+err);
         next();
       }
-      const db = client.db("confidences");
-      const data = await db.collection('meta').find({
-        url: req.url,
-      }).toArray();
-      req.meta = data[0] ? data[0] : null;
-      if (data[0]) {
-        req.meta.ogimg = config.contentDomain + '/' + req.meta.ogimg;
-        req.meta.ogurl = config.baseDomain + req.meta.url;
+      try {
+        const db = client.db("confidences");
+        const data = await db.collection('meta').find({
+          url: req.url,
+        }).toArray();
+        req.meta = data[0] ? data[0] : null;
+        if (data[0]) {
+          req.meta.ogimg = config.contentDomain + '/' + req.meta.ogimg;
+          req.meta.ogurl = config.baseDomain + req.meta.url;
+        }
+      } catch (e) {
+        console.error(e);
       }
       next();
     });
