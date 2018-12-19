@@ -18,4 +18,4 @@ yarn-error.log*
 
 .sass-cache
 
-.env.local
+*.local

@@ -244,9 +244,9 @@ export default class Header extends Component {
 					</strong>
 				</li>
 				<li className="nav-item dropdown">
-					<a className="nav-link dropdown-toggle" style={{ cursor : 'pointer' }} id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span className="nav-link dropdown-toggle" style={{ cursor : 'pointer' }} id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						La société
-					</a>
+					</span>
 					<div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<Link className="dropdown-item" to="/about">Notre histoire</Link>
 						<Link className="dropdown-item" to="/ourvalues">Nos valeurs</Link>

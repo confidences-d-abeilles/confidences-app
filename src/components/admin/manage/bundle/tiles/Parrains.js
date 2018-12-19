@@ -11,7 +11,7 @@ const Parrains = ( props ) => (
             <p>{props.parrain.visible ? 'page visible ' : 'page non visible'}</p>
           </div>
           <div className="col">
-              <a className="btn btn-info btn-sm" href={"/parrains/"+props.parrain.namespace} target="_blank">{"/parrains/"+props.parrain.namespace}</a>
+              <a className="btn btn-info btn-sm" href={"/parrains/"+props.parrain.namespace} target="_blank" rel="noopener noreferrer">{"/parrains/"+props.parrain.namespace}</a>
           </div>
         </div>
         <br />
@@ -19,13 +19,13 @@ const Parrains = ( props ) => (
         <div className="row">
           <div className="col">
             <h3 className="card-title">Label</h3>
-            <a href={process.env.REACT_APP_CONTENT_DOMAIN+'/'+props.bundleLabel} target="_blank">
+            <a href={process.env.REACT_APP_CONTENT_DOMAIN+'/'+props.bundleLabel} target="_blank" rel="noopener noreferrer">
               <SquareImg className="card-img-top img-fluid" src={process.env.REACT_APP_CONTENT_DOMAIN+'/'+props.bundleLabel} alt="Bundle label" />
             </a>
           </div>
           <div className="col">
             <h3 className="card-title">LogoHQ</h3>
-            <a href={process.env.REACT_APP_CONTENT_DOMAIN+'/'+props.parrain.HQlogo} target="_blank">
+            <a href={process.env.REACT_APP_CONTENT_DOMAIN+'/'+props.parrain.HQlogo} target="_blank" rel="noopener noreferrer">
               <SquareImg className="card-img-top img-fluid" src={process.env.REACT_APP_CONTENT_DOMAIN+'/'+props.parrain.HQlogo} alt="hqlogo" />
             </a>
           </div>

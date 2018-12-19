@@ -7,42 +7,42 @@ import Loadable from 'react-loadable';
 
 const IndividualPresentation = Loadable({
     loader: () => import( '../components/individual/Presentation'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const IndividualAddress = Loadable({
     loader: () => import( '../components/individual/Address'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const IndividualWish = Loadable({
     loader: () => import( '../components/individual/Wish'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const IndividualCheckout = Loadable({
     loader: () => import( '../components/individual/Checkout'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const IndividualPayement = Loadable({
     loader: () => import( '../components/individual/Payment'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const IndividualEnd = Loadable({
     loader: () => import( '../components/individual/End'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const IndividualManage = Loadable({
     loader: () => import( '../components/individual/Manage'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const IndividualMore = Loadable({
     loader: () => import( '../components/individual/More'),
-    loading: () => 'Loading...',
+    loading: () => null,
 });
 
 const CompanyRouter = () => (
