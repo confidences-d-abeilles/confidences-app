@@ -2,8 +2,11 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const fs = require('fs');
+
 const dotenv = require('dotenv');
-dotenv.config();
+
+dotenv.config({path: __dirname + '/.env'});
+
 const metaResolverMiddleware = require('./server/metaResolver').middleware;
 
 const compression = require('compression');
