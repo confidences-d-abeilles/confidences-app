@@ -86,19 +86,6 @@ export default class CompanyPage extends Component {
 		this.setState({
 			selectedHive: e.target.dataset.hive
 		})
-		// if (e.target.dataset.hive) {
-		// 	document.getElementById("img-"+e.target.dataset.hive).style.opacity = "1";
-		// } else {
-		// 	document.getElementById("img-"+e.target.parentElement.dataset.hive).style.opacity = "1";
-		// }
-	}
-
-	hideImg(e) {
-		// if (e.target.dataset.hive) {
-		// 	document.getElementById("img-"+e.target.dataset.hive).style.opacity = "0";
-		// } else {
-		// 	document.getElementById("img-"+e.target.parentElement.dataset.hive).style.opacity = "0";
-		// }
 	}
 
 	render () {
@@ -152,11 +139,11 @@ export default class CompanyPage extends Component {
 										</p>
 										{(this.state.user && this.state.user.link1_url && this.state.user.link1_name)?
 											<div className="col text-center">
-												<a target="_blank" className="btn-company" href={(this.state.user)?this.state.user.link1_url:null}>{(this.state.user)?this.state.user.link1_name.toUpperCase():null}</a>
+												<a target="_blank" rel="noopener noreferrer" className="btn-company" href={(this.state.user)?this.state.user.link1_url:null}>{(this.state.user)?this.state.user.link1_name.toUpperCase():null}</a>
 											</div>:null}
 											{(this.state.user && this.state.user.link2_url && this.state.user.link2_name)?
 												<div className="col text-center">
-													<a target="_blank" className="btn-company" href={(this.state.user)?this.state.user.link2_url:null}>{(this.state.user)?this.state.user.link2_name.toUpperCase():null}</a>
+													<a target="_blank" rel="noopener noreferrer" className="btn-company" href={(this.state.user)?this.state.user.link2_url:null}>{(this.state.user)?this.state.user.link2_name.toUpperCase():null}</a>
 												</div>:null}
 											</div>
 											<div className="col-lg-6 px-5 py-2" style={{ backgroundColor : '#E49C00', color: 'white'}}>

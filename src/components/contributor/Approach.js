@@ -418,11 +418,11 @@ de le recontacter ultérieurement pour ne pas le déranger. Donnez-lui trois pos
 								</div>
 							</div>
 							<div className="row justify-content-center align-items-center">
-								<div className="col-2"><a href={leaflet_e} target="_blank"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
+								<div className="col-2"><a href={leaflet_e} target="_blank" rel="noopener noreferrer"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
 								<div className="col-6">Infographie - Le Parrainage de ruches par Confidences d'Abeilles</div>
 							</div>
 							<div className="row justify-content-center align-items-center my-4">
-								<div className="col-2"><a href={brochure} target="_blank"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
+								<div className="col-2"><a href={brochure} target="_blank" rel="noopener noreferrer"><img src={pdfIcon} alt="Telecharger le PDF" className="img-fluid" /></a></div>
 								<div className="col-6">Brochure détaillée du service proposé par Confidences d'Abeilles</div>
 							</div>
 						</div>
@@ -441,7 +441,7 @@ de le recontacter ultérieurement pour ne pas le déranger. Donnez-lui trois pos
 							{this.state.faq.map((item) => {
 								return (
 									<div className="my-4" key={item.id}>
-										<a className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></a>
+										<span className="lead" onClick={() => document.getElementById(item.id).classList.toggle('show')} style={{ cursor: 'pointer' }}>{item.question}      <FontAwesome name='chevron-down' /></span>
 										<p className="collapse" id={item.id}>{item.answer}</p>
 										<hr />
 									</div>

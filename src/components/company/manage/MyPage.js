@@ -159,10 +159,10 @@ export default class CompanyManageMyPage extends Component {
 				<h2 className="text-center my-4">Modifier ma page</h2>
 				<div className="row mb-4">
 					<div className="col text-center">
-						<a href={require('../../../assets/page_ent.pdf')} target="_blank" className="btn btn-secondary my-2">Comment personnaliser ma page ?</a>
+						<a href={require('../../../assets/page_ent.pdf')} target="_blank" rel="noopener noreferrer" className="btn btn-secondary my-2">Comment personnaliser ma page ?</a>
 					</div>
 					<div className="col text-center">
-						<a href={(this.state.user)?"/parrains/"+this.state.user.namespace:'/'} target="_blank" className="btn btn-secondary my-2">Voir ma page</a>
+						<a href={(this.state.user)?"/parrains/"+this.state.user.namespace:'/'} target="_blank" rel="noopener noreferrer" className="btn btn-secondary my-2">Voir ma page</a>
 					</div>
 				</div>
 				{(this.state.user)?
@@ -177,7 +177,7 @@ export default class CompanyManageMyPage extends Component {
 						<label>{"https://parrainagederuches.fr/parrains/"+this.state.namespace}</label>
 					</div>
 					<div className="form-group">
-						<label>Photo de couverture de votre page {(this.state.cover)?<a href={process.env.REACT_APP_CONTENT_DOMAIN+'/'+this.state.cover} target="_blank">Visualiser l'image actuelle</a>:null}</label>
+						<label>Photo de couverture de votre page {(this.state.cover)?<a href={process.env.REACT_APP_CONTENT_DOMAIN+'/'+this.state.cover} target="_blank" rel="noopener noreferrer">Visualiser l'image actuelle</a>:null}</label>
 						<label htmlFor="cover" className={(this.state.newCover)?'active-upload':'upload'} style={{ position: 'relative' }}>
 							<input type="file" className="form-control" id="cover" onChange={() => { this.setState({ newCover : document.getElementById("cover").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
 							Glissez une {(this.state.cover)?'nouvelle':null} image ici ou cliquez pour en sélectionner une parmi vos fichiers<br/>
@@ -185,7 +185,7 @@ export default class CompanyManageMyPage extends Component {
 						</label>
 					</div>
 					<div className="form-group">
-						<label>Logo de votre entreprise {(this.state.logo)?<a href={process.env.REACT_APP_CONTENT_DOMAIN+'/'+this.state.logo} target="_blank">Visualiser le logo actuel</a>:null}</label>
+						<label>Logo de votre entreprise {(this.state.logo)?<a href={process.env.REACT_APP_CONTENT_DOMAIN+'/'+this.state.logo} target="_blank" rel="noopener noreferrer">Visualiser le logo actuel</a>:null}</label>
 						<label htmlFor="logo" className={(this.state.newLogo)?'active-upload':'upload'} style={{ position: 'relative' }}>
 							<input type="file" className="form-control" id="logo" onChange={() => { this.setState({ newLogo : document.getElementById("logo").files[0].name }) }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
 							Glissez votre {(this.state.logo)?'nouveau':null} logo ici ou cliquez pour en sélectionner un parmi vos fichiers<br/>

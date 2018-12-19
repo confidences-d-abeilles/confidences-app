@@ -89,13 +89,13 @@ export default class CompanyManageDashboard extends Component {
 				<div className="row py-4">
 					<NotificationSystem ref="notif" />
 					<div className="col text-center">
-						<a href={(this.state.user)?'/parrains/'+this.state.user.namespace:''} target="_blank" className="btn btn-secondary disabled">Consulter ma page entreprise</a>
+						<a href={(this.state.user)?'/parrains/'+this.state.user.namespace:''} target="_blank" rel="noopener noreferrer" className="btn btn-secondary disabled">Consulter ma page entreprise</a>
 
 						{(this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].certif && this.state.user.bundles[0].state > 1) ?
 							<a href={process.env.REACT_APP_CONTENT_DOMAIN + '/' + this.state.user.bundles[0].certif}
-								className="btn btn-secondary m-2" target="_blank">Télécharger mon certificat de parrainage
+								className="btn btn-secondary m-2" target="_blank" rel="noopener noreferrer">Télécharger mon certificat de parrainage
 							</a> :
-							<a href="/" className="btn btn-secondary m-2 disabled" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
+							<a href="/" className="btn btn-secondary m-2 disabled" target="_blank" rel="noopener noreferrer" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
 						}
 					</div>
 				</div>

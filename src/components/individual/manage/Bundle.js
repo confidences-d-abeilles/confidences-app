@@ -54,7 +54,7 @@ export default class Bundle extends Component {
 						Si vous avez ajouté Confidences d'Abeilles en tant que bénéficiaire, effectuez votre virement&nbsp;
 						et confirmez le <Link to="/individual/payment">ici</Link>.
 					</p>
-					<a href="/" className="btn btn-secondary m-2 disabled" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
+					<a href="/" className="btn btn-secondary m-2 disabled" rel="noopener noreferrer" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
 				</div>
 			);
 		}
@@ -63,7 +63,7 @@ export default class Bundle extends Component {
 			return (
 				<div className="text-center">
 					<p className="alert alert-warning mt-4">La validation du règlement de votre parrainage est en cours</p>
-					<a href="/" className="btn btn-secondary m-2 disabled" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
+					<a href="/" className="btn btn-secondary m-2 disabled" target="_blank" rel="noopener noreferrer" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
 				</div>
 			);
 		}
@@ -78,7 +78,7 @@ export default class Bundle extends Component {
 					{this.state.user.hive_id &&
 					<Link className="btn btn-secondary m-2 btn-sm" to={'/hive/'+this.state.user.hive_id}>Voir la page de ma ruche</Link>}
 					{this.state.user.bundles[0].certif &&
-					<a href={process.env.REACT_APP_CONTENT_DOMAIN+'/'+this.state.user.bundles[0].certif} className="btn btn-secondary m-2 btn-sm" target="_blank">Télécharger mon certificat de parrainage</a>}
+					<a href={process.env.REACT_APP_CONTENT_DOMAIN+'/'+this.state.user.bundles[0].certif} rel="noopener noreferrer" className="btn btn-secondary m-2 btn-sm" target="_blank">Télécharger mon certificat de parrainage</a>}
 					<a href="https://confidences-dabeilles-visites.appointedd.com/" target="_blank" rel="noopener noreferrer" className="btn btn-info btn-sm m-2">Réserver une visite du rucher</a>
 				</p>
 			)

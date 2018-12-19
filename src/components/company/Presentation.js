@@ -146,7 +146,7 @@ export default class CompanyPresentation extends Component {
 						<Link to="/company/more"className="btn btn-secondary">En savoir plus</Link>
 					</div>
 					<div className="col-12 text-center">
-						<a href={leaflet} className="btn btn-secondary m-4" target="_blank">Télécharger la plaquette de présentation</a>
+						<a href={leaflet} className="btn btn-secondary m-4" target="_blank" rel="noopener noreferrer">Télécharger la plaquette de présentation</a>
 					</div>
 				</div>
 			</div>

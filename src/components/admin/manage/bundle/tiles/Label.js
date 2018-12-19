@@ -50,7 +50,7 @@ class Label extends Component {
 					{this.props.labelFilename ?
 						<p className="card-text text-center">
 							<button className="mb-1 btn btn-info btn-sm" onClick={this.props.downloadLabel}>Télécharger</button>
-							<a href={process.env.REACT_APP_CONTENT_DOMAIN+'/label/' + this.props.labelFilename} target="_blank">
+							<a href={process.env.REACT_APP_CONTENT_DOMAIN+'/label/' + this.props.labelFilename} target="_blank" rel="noopener noreferrer">
 								<Document file={process.env.REACT_APP_CONTENT_DOMAIN + '/label/' + this.props.labelFilename} >
 									<Page pageNumber={1} width={500} className="label" />
 								</Document>
