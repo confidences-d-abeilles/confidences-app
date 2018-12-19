@@ -16,7 +16,7 @@ module.exports = {
         next();
       }
       try {
-        const db = client.db("confidences");
+        const db = await client.db("confidences");
         const data = await db.collection('meta').find({
           url: req.url,
         }).toArray();
