@@ -5,7 +5,7 @@ import Meta from '../../../utils/Meta'
 import { Redirect, Link } from 'react-router-dom'
 import NotificationSystem from 'react-notification-system'
 import ReactGA from 'react-ga';
-import { CSVLink, CSVDownload } from "react-csv";
+import { CSVLink } from "react-csv";
 
 export default class MainScreen extends Component {
 

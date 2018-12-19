@@ -92,7 +92,7 @@ export default class More extends Component {
 						</p>
 						<p className="text-center">
 							<Link to="/signup/individual" className="btn btn-secondary mr-4">Devenir parrain</Link>
-							<a href={leaflet} className="btn btn-secondary mr-4" target="_blank">Découvrir la plaquette</a>
+							<a href={leaflet} className="btn btn-secondary mr-4" target="_blank" rel="noopener noreferrer">Découvrir la plaquette</a>
 						</p>
 					</div>
 				</div>
