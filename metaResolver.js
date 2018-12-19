@@ -10,7 +10,7 @@ module.exports = {
   middleware: (req, res, next) => {
     client.connect(async err => {
       if (err) {
-        console.error('Meta resolver middleware encountered an error, skipping...');
+        console.error('Meta resolver middleware encountered an error, skipping... : '+err);
         next();
       }
       const db = client.db("confidences");
