@@ -36,6 +36,8 @@ workflows:
     jobs:
       - build & deploy production:
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only:
                 - /v.*\..*\..*/
