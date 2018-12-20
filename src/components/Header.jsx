@@ -37,31 +37,34 @@ export default class Header extends Component {
     });
   }
 
-  newsletterPopup = () => (
-    <div className="modal fade" id="newsmodal" data-backdrop={false} ref="newsmodal">
-      <div className="modal-dialog" role="document">
-        <form className="modal-content" onSubmit={this.subNewsletter}>
-          <div className="modal-header">
-            <h5 className="modal-title">S'abonner à la newsletter</h5>
-            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div className="modal-body">
-            <div className="form-group">
-              <input type="text" name="firstname" value={this.state.firstname} className="form-control" onChange={handleChange.bind(this)} placeholder="Votre prénom..." />
+  newsletterPopup = () => {
+    const { firstname, email } = this.state;
+    return (
+      <div className="modal fade" id="newsmodal" data-backdrop={false} ref="newsmodal">
+        <div className="modal-dialog" role="document">
+          <form className="modal-content" onSubmit={this.subNewsletter}>
+            <div className="modal-header">
+              <h5 className="modal-title">S'abonner à la newsletter</h5>
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <div className="form-group">
-              <input type="email" name="email" value={this.state.email} className="form-control" onChange={handleChange.bind(this)} placeholder="Votre adresse email..." />
+            <div className="modal-body">
+              <div className="form-group">
+                <input type="text" name="firstname" value={firstname} className="form-control" onChange={handleChange.bind(this)} placeholder="Votre prénom..." />
+              </div>
+              <div className="form-group">
+                <input type="email" name="email" value={email} className="form-control" onChange={handleChange.bind(this)} placeholder="Votre adresse email..." />
+              </div>
             </div>
-          </div>
-          <div className="modal-footer">
-            <input type="submit" className="btn btn-secondary" value="Valider" />
-          </div>
-        </form>
+            <div className="modal-footer">
+              <input type="submit" className="btn btn-secondary" value="Valider" />
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-  )
+    );
+  }
 
   render() {
     const { redirect } = this.state;
