@@ -40,7 +40,7 @@
     "build": "CI=false react-scripts build",
     "start": "NODE_ENV=production node server.js",
     "test": "react-scripts test --env=jsdom",
-    "lint": "./node_modules/.bin/eslint .",
+    "lint": "./node_modules/.bin/eslint --cache src",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
