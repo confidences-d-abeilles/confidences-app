@@ -24,21 +24,21 @@ export default class RequestLabel extends Component {
   }
 
   componentDidMount() {
-		request({
-			url: '/user/me',
-			method: 'get'
-		}, this.refs.notif).then((res) => {
-			this.setState({
-				name: res.name,
+    request({
+      url: '/user/me',
+      method: 'get'
+    }, this.refs.notif).then((res) => {
+      this.setState({
+        name: res.name,
         firstname: res.firstname,
-				society: res.company_name,
-				email: res.email,
+        society: res.company_name,
+        email: res.email,
         userState: res.user_type
-			}, () => {
-				console.log(res);
-			})
-		});
-	}
+      }, () => {
+        console.log(res);
+      })
+    });
+  }
 
   sendMail(e) {
     e.preventDefault();
@@ -122,7 +122,7 @@ export default class RequestLabel extends Component {
                     <h3 className="text-center my-4">
                       Votre demande a bien été envoyée &nbsp;
                       <img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy"
-        								style={{ height: '1em' }} />
+                        style={{ height: '1em' }} />
                       <br />
                     </h3>
                   </p>
