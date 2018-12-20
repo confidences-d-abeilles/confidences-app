@@ -39,9 +39,11 @@ workflows:
             branches:
               only:
                 - master
+            tags:
+              only:
+                - /v.*\..*\..*/
       - build & deploy development:
           filters:
             branches:
               only:
                 - master
-                - develop
