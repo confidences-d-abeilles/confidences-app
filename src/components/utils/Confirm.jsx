@@ -22,7 +22,7 @@ export default ({ class: className, text, action }) => (
             </button>
           </div>
           <div className="modal-body">
-            <p>Etes vous certain d&aposeffectuer ceci ?</p>
+            <p>Etes vous certain d&apos;effectuer ceci ?</p>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-primary" onClick={action} data-dismiss="modal">Oui, je confirme</button>
