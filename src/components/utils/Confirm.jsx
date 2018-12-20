@@ -4,7 +4,7 @@ export default ({ class: className, text, action }) => (
   <div>
     <button
       className={className || 'btn btn-secondary btn-sm'}
-      typedata-toggle="modal"
+      data-toggle="modal"
       data-target="#confModal"
       type="button"
     >
