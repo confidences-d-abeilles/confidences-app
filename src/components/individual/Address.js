@@ -3,14 +3,14 @@ import { Redirect } from 'react-router-dom';
 import request from '../../services/Net';
 import { isLoggedIn } from '../../services/AuthService';
 import NotificationSystem from 'react-notification-system';
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta'
 import EditAddress from '../utils/Address/EditAddress'
 
 export default class IndividualAddress extends Component {
 	constructor(props) {
 		super(props);
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			redirect: false,
 			message: '',

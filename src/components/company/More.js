@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Banner from '../../assets/img/ent_more.jpg';
 import broch from '../../assets/brochure.pdf';
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta'
 
 export default class More extends Component {
 
 	constructor(props) {
 		super(props)
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			deployFirst: false,
 			deployTwo: false,

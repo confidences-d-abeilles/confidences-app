@@ -3,14 +3,14 @@ import { Redirect } from 'react-router-dom';
 import { handleChange } from '../../services/FormService';
 import  request from '../../services/Net';
 import NotificationSystem from 'react-notification-system';
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta'
 
 export default class CompanyIdentity extends Component {
 
 	constructor(props) {
 		super(props);
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			company_name: '',
 			siret: '',

@@ -9,7 +9,7 @@ export default class Home extends Component {
 
 	constructor(props) {
 		super(props)
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			users : [],
 			bundles : [],

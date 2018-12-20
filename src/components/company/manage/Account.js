@@ -5,7 +5,7 @@ import Confirm from '../../utils/Confirm'
 import Loading from '../../utils/Loading'
 import { logout } from '../../../services/AuthService'
 import { handleChange } from '../../../services/FormService'
-import ReactGA from 'react-ga';
+
 import FontAwesome from 'react-fontawesome'
 import { Redirect } from 'react-router-dom'
 import Meta from '../../utils/Meta'
@@ -14,7 +14,7 @@ export default class Account extends Component {
 
     constructor(props) {
         super(props)
-        ReactGA.pageview(this.props.location.pathname);
+        
         this.state = {
             sessions : null,
             logout: false,

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Feedback from '../../utils/Feedback';
 import Meta from '../../utils/Meta';
-import ReactGA from 'react-ga';
+
 import ReactStars from 'react-stars';
 import 'react-datepicker/dist/react-datepicker.css';
 import Pictures from './hives/Pictures';
@@ -16,7 +16,7 @@ export default class AdminManageHives extends Component {
 
 	constructor(props) {
 		super(props)
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			hives : null,
 			new: '',

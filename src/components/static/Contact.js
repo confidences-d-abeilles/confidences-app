@@ -5,7 +5,7 @@ import { handleChange } from '../../services/FormService'
 import FontAwesome from 'react-fontawesome'
 import { isLoggedIn } from '../../services/AuthService'
 import { Link } from 'react-router-dom'
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta'
 
 export default class Contact extends Component {
@@ -17,7 +17,7 @@ export default class Contact extends Component {
 			list: [],
 			criteria: ''
 		}
-		ReactGA.pageview(this.props.location.pathname);
+		
 	}
 
 	componentDidMount() {

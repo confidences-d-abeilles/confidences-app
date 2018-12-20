@@ -2,13 +2,13 @@ import moment from 'moment';
 import React,{ Component } from 'react';
 import request from '../../../services/Net';
 import NotificationSystem from 'react-notification-system'
-import ReactGA from 'react-ga';
+
 
 export default class ContributorManageApproaches extends Component {
 
 	constructor(props) {
 		super(props);
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			loading: true,
 			leads: []

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import request from '../../../../services/Net'
 import NotificationSystem from 'react-notification-system'
 import { handleChange } from '../../../../services/FormService'
-import ReactGA from 'react-ga';
+
 
 export default class ContributorManageInfosBank extends Component {
 
 	constructor(props) {
 		super(props)
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			iban : '',
 			name : ''

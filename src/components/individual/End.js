@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import Main from '../../assets/img/end_part.jpg';
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta'
 import request from '../../services/Net';
 import NotificationSystem from 'react-notification-system'
@@ -11,7 +11,7 @@ export default class IndividualEnd extends Component {
 
     constructor(props) {
         super(props)
-        ReactGA.pageview(this.props.location.pathname);
+        
         this.state = {
           redirecte: false,
           loading: false

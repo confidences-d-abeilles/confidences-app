@@ -4,7 +4,7 @@ import request from '../services/Net'
 import imgPlaceholder from '../assets/img/logo_ruche_entreprise.png';
 import { Link } from 'react-router-dom'
 import Loading from './utils/Loading'
-import ReactGA from 'react-ga';
+
 import Meta from './utils/Meta'
 import SquareImg from './utils/SquareImg'
 
@@ -16,7 +16,7 @@ export default class Hives extends Component {
       hives : null,
       criteria: ''
     }
-    ReactGA.pageview(this.props.location.pathname);
+    
   }
 
   componentDidMount() {

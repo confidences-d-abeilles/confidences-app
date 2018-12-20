@@ -4,7 +4,7 @@ import { isLoggedIn } from '../../services/AuthService';
 import { Redirect } from 'react-router-dom';
 import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
-import ReactGA from 'react-ga';
+
 import Loading from '../utils/Loading'
 import Meta from '../utils/Meta'
 
@@ -16,7 +16,7 @@ export default class IndividualWish extends Component {
 			bees: '10000',
 			loading: false
 		}
-		ReactGA.pageview(this.props.location.pathname);
+		
 	}
 
 	selectBundle(e) {

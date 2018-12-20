@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import request from '../../../services/Net'
 import NotificationSystem from 'react-notification-system'
-import ReactGA from 'react-ga';
+
 import Loading from '../../utils/Loading'
 import moment from 'moment'
 
@@ -9,7 +9,7 @@ export default class CompanyManageDashboard extends Component {
 
 	constructor(props) {
 		super(props);
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			user : null,
 			hivesNames : null,

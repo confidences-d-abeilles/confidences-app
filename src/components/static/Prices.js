@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { handleTick } from '../../services/FormService'
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta'
 
 export default class Prices extends Component {
 
   constructor(props) {
     super(props)
-    ReactGA.pageview(this.props.location.pathname);
+    
 
   }
 

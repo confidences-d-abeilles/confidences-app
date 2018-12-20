@@ -5,7 +5,7 @@ import NotificationSystem from 'react-notification-system';
 import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
 import { handleChange } from '../../services/FormService';
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta';
 import Address from '../utils/Address/Address';
 import ViewAddress from '../utils/Address/ViewAddress';
@@ -16,7 +16,7 @@ export default class CompanyCheckout extends Component {
 
 	constructor(props) {
 		super(props);
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			bill_number: '',
 			redirect: false,

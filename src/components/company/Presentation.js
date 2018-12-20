@@ -8,7 +8,7 @@ import fifth from '../../assets/img/E/5.jpg';
 import sixth from '../../assets/img/E/6.jpg';
 import seventh from '../../assets/img/E/7.jpg';
 import eighth from '../../assets/img/E/8.jpg';
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta';
 import leaflet from '../../assets/leaflet_e.pdf';
 
@@ -16,7 +16,7 @@ export default class CompanyPresentation extends Component {
 
 	constructor(props) {
 		super(props)
-		ReactGA.pageview(this.props.location.pathname);
+		
 	}
 
 	render () {

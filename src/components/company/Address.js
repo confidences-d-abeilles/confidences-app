@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import request from '../../services/Net';
 import NotificationSystem from 'react-notification-system';
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta'
 import EditAddress from '../utils/Address/EditAddress'
 
@@ -10,7 +10,7 @@ export default class CompanyAddress extends Component {
 
 	constructor(props) {
 		super(props);
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			redirect: false,
 			message: '',

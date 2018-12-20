@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom'
 import FooterPage from './FooterPage'
 import ReactHtmlParser from 'react-html-parser'
 import { Link } from 'react-router-dom'
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta'
 import Loading from '../utils/Loading'
 import Imagebox from '../utils/Imagebox'
@@ -18,7 +18,7 @@ export default class CompanyPage extends Component {
 
 	constructor(props) {
 		super (props)
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			user : null,
 			cover : null,

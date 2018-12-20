@@ -6,7 +6,7 @@ import moment from 'moment'
 import FontAwesome from 'react-fontawesome'
 import { handleChange } from '../../../services/FormService'
 import NotificationSystem from 'react-notification-system'
-import ReactGA from 'react-ga';
+
 import Meta from '../../utils/Meta'
 import Details from './bundle/Details'
 import Hive from './bundle/Hive'
@@ -19,7 +19,7 @@ export default class Bundle extends Component {
 			user: null,
 			edit_present: false
 		}
-		ReactGA.pageview(this.props.location.pathname);
+		
 	}
 
 	componentDidMount() {

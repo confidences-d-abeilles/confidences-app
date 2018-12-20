@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import ReactGA from 'react-ga';
+
 import Meta from '../../utils/Meta'
 
 export default class Jobs extends Component {
 
 	constructor(props) {
 		super(props)
-		ReactGA.pageview(this.props.location.pathname);
+		
 	}
 
 	render () {

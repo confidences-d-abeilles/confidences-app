@@ -3,7 +3,7 @@ import { handleChange, handleTick } from '../../../services/FormService'
 import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
 import Loading from '../../utils/Loading'
-import ReactGA from 'react-ga';
+
 import moment from 'moment';
 import Feedback from '../../utils/Feedback';
 
@@ -11,7 +11,7 @@ export default class CompanyManageMyPage extends Component {
 
 	constructor (props) {
 		super (props);
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			id_user : '',
 			name : '',

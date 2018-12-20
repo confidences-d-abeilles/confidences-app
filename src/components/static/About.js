@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta'
 
 export default class About extends Component {
 
   constructor(props) {
     super(props)
-    ReactGA.pageview(this.props.location.pathname);
+    
   }
 
   render () {
