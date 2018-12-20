@@ -13,6 +13,7 @@
     "lightbox-react": "^0.1.6",
     "moment": "^2.22.2",
     "mongodb": "^3.1.10",
+    "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-csv": "^1.0.19",
     "react-datepicker": "^1.8.0",
