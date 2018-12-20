@@ -3,14 +3,14 @@ import request from '../../services/Net';
 import { isLoggedIn } from '../../services/AuthService';
 import { Redirect } from 'react-router-dom';
 import NotificationSystem from 'react-notification-system';
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta'
 
 export default class ContributorWish extends Component {
 
   constructor(props) {
     super(props);
-    ReactGA.pageview(this.props.location.pathname);
+    
     this.state = {
       redirect : false
     }

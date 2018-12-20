@@ -15,7 +15,7 @@ export default class AdminManageUsers extends Component {
 
 	constructor(props) {
 		super(props)
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			users : null,
 			filteredUsers : null,

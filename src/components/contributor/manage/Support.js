@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import ReactGA from 'react-ga';
+
 import pdfIcon from '../../../assets/img/pdf.png';
 import leaflet_e from '../../../assets/leaflet_e.pdf';
 import brochure from '../../../assets/brochure.pdf';
@@ -8,7 +8,7 @@ import brochure from '../../../assets/brochure.pdf';
 export default class ContributorManageSupport extends Component {
   constructor(props) {
     super(props);
-    ReactGA.pageview(this.props.location.pathname);
+    
   }
 
   render () {

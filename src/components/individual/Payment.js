@@ -4,7 +4,7 @@ import request from '../../services/Net';
 import NotificationSystem from 'react-notification-system'
 import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta'
 
 export default class IndividualPayement extends Component {
@@ -14,7 +14,7 @@ export default class IndividualPayement extends Component {
 		this.state = {
 			redirect: false
 		}
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.nbBees = undefined;
 	}
 

@@ -9,14 +9,14 @@ import sixth from '../../assets/img/P/6.jpg';
 import seventh from '../../assets/img/P/7.jpg';
 import eighth from '../../assets/img/P/8.jpg';
 import leaflet from '../../assets/leaflet_p.pdf';
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta'
 
 export default class IndividualPresentation extends Component {
 
 	constructor(props) {
 		super(props)
-		ReactGA.pageview(this.props.location.pathname);
+		
 	}
 
 	render () {

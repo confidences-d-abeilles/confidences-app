@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NotificationSystem from 'react-notification-system'
 import request from '../../../services/Net'
-import ReactGA from 'react-ga';
+
 import { Link } from 'react-router-dom';
 import Imagebox from '../../utils/Imagebox'
 
@@ -19,7 +19,7 @@ export default class CompanyManageCustomize extends Component {
 
 	constructor(props) {
 		super(props);
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			current: null,
 			labelCurrent: null,

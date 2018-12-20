@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { handleChange } from '../../services/FormService';
 import request from '../../services/Net';
 import { Redirect } from 'react-router-dom';
-import ReactGA from 'react-ga';
+
 import MainProduct from './wish/MainProduct'
 import Product from './wish/Product'
 
@@ -10,7 +10,7 @@ export default class CompanyWish extends Component {
 
 	constructor(props) {
 		super(props);
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			products: [],
 			coupons: [],

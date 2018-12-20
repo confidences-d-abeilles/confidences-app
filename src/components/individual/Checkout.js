@@ -7,7 +7,7 @@ import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import ReactGA from 'react-ga';
+
 import 'react-datepicker/dist/react-datepicker.css';
 import Meta from '../utils/Meta';
 import Address from '../utils/Address/Address';
@@ -17,7 +17,7 @@ export default class IndividualCheckout extends Component {
 
 	constructor(props) {
 		super(props);
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			bsexe_m: '',
 			dsexe_m: '',

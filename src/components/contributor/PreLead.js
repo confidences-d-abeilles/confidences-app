@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { handleChange } from '../../services/FormService';
 import NotificationSystem from 'react-notification-system';
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta'
 
 export default class ContributorPreLead extends Component {
 
   constructor(props) {
     super(props);
-    ReactGA.pageview(this.props.location.pathname);
+    
     this.state = {
       redirect : false,
       how: '1'

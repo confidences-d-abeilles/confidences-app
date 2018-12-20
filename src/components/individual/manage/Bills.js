@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import request from '../../../services/Net'
-import ReactGA from 'react-ga';
+
 import Meta from '../../utils/Meta'
 
 export default class Bills extends Component {
@@ -11,7 +11,7 @@ export default class Bills extends Component {
 			user : null,
 			bills: null
 		}
-        ReactGA.pageview(this.props.location.pathname);
+        
 	}
 
     componentDidMount() {

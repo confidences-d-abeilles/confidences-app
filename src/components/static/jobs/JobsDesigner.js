@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import ReactGA from 'react-ga';
+
 import Meta from '../../utils/Meta'
 import { APropos } from './APropos'
 
@@ -8,7 +8,7 @@ export default class JobsDesigner extends Component {
 
 	constructor(props) {
 		super(props)
-		ReactGA.pageview(this.props.location.pathname);
+		
 	}
 
 	render () {

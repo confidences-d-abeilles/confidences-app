@@ -17,7 +17,7 @@ import waitLogo from '../../assets/img/waitlogo.png';
 import Meta from '../utils/Meta'
 import NotFound from '../utils/NotFound'
 import FontAwesome from 'react-fontawesome'
-import ReactGA from 'react-ga';
+
 
 export default class CompanyManage extends Component {
 
@@ -47,7 +47,7 @@ export default class CompanyManage extends Component {
 	}
 
 	companyManageInfosRoute = (props) => {
-		ReactGA.pageview(this.props.location.pathname);
+		
 		return(
 			<CompanyManageInfos update={this.updateMe.bind(this)} />
 		)

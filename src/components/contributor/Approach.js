@@ -6,7 +6,7 @@ import pdfIcon from '../../assets/img/pdf.png';
 import { handleChange } from '../../services/FormService';
 import request from '../../services/Net'
 import NotificationSystem from 'react-notification-system'
-import ReactGA from 'react-ga';
+
 import Meta from '../utils/Meta';
 import leaflet_e from '../../assets/leaflet_e.pdf'
 import brochure from '../../assets/brochure.pdf'
@@ -15,7 +15,7 @@ export default class ContributorApproach extends Component {
 
   constructor(props) {
     super(props)
-    ReactGA.pageview(this.props.location.pathname);
+    
     this.state = {
       question: '',
       faq: []

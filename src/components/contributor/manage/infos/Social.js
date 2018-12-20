@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import request from '../../../../services/Net';
 import NotificationSystem from 'react-notification-system'
 import { handleChange } from '../../../../services/FormService'
-import ReactGA from 'react-ga';
+
 import Address from '../../../utils/Address/Address'
 
 import FontAwesome from 'react-fontawesome'
@@ -11,7 +11,7 @@ export default class ContributorManageInfosSocial extends Component {
 
 	constructor(props) {
 		super(props);
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			loading: true,
 			usexe_m: '',

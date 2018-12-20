@@ -5,7 +5,7 @@ import { handleChange } from '../../../services/FormService'
 import Loading from '../../utils/Loading'
 import { Redirect } from 'react-router-dom'
 import FontAwesome from 'react-fontawesome'
-import ReactGA from 'react-ga';
+
 import Meta from '../../utils/Meta'
 import Address from '../../utils/Address/Address'
 
@@ -13,7 +13,7 @@ export default class IndividualManageInfos extends Component {
 
 	constructor(props) {
 		super(props)
-		ReactGA.pageview(this.props.location.pathname);
+		
 		this.state = {
 			logout: false,
 			phone: '',
