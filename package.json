@@ -3,6 +3,8 @@
   "version": "1.2.1",
   "private": true,
   "dependencies": {
+    "@emotion/core": "^10.0.5",
+    "@emotion/styled": "^10.0.5",
     "axios": "^0.18.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",

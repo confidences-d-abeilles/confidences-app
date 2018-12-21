@@ -7,6 +7,7 @@ import { isLoggedIn } from '../services/AuthService';
 import { handleChange } from '../services/FormService';
 import request from '../services/Net';
 import MyLink from './utils/Link';
+import { ButtonLink } from './utils/Button';
 import navLinks from '../config/navLinks';
 
 export default class Header extends Component {
@@ -78,9 +79,9 @@ export default class Header extends Component {
           {redirect && <Redirect to="/" />}
           <Link className="navbar-brand" to="/">
             <img src={logoSquare} width="auto" height="64" alt="Logo Confidences d'Abeilles" />
-            <h2 className="badge badge-danger" style={{ position: 'absolute', top: '75px', left: '75px', fontSize: '1.5em', zIndex: 1000 }}>{(process.env.NODE_ENV === "development")?'Bêta':null}</h2>
+            <h2 className="badge badge-danger" style={{ position: 'absolute', top: '75px', left: '75px', fontSize: '1.5em', zIndex: 1000 }}>{(process.env.NODE_ENV === "development") ? 'Bêta' : null}</h2>
           </Link>
-          <div className="hidden-lg-up collapse" style={{justifyContent: 'space-between'}} id="navbarNav" onClick={() => { document.getElementById("navbarNav").classList.remove("show") }}>
+          <div className="hidden-lg-up collapse" style={{ justifyContent: 'space-between' }} id="navbarNav" onClick={() => { document.getElementById("navbarNav").classList.remove("show") }}>
             <ul className="navbar-nav">
               {isLoggedIn() ? navLinks.mobile.loggedIn.map(props => (
                 <li className="nav-item">
@@ -110,7 +111,7 @@ export default class Header extends Component {
                       </li>
                     ))}
                   </Fragment>
-              )}
+                )}
             </ul>
           </div>
           {isLoggedIn()
@@ -140,7 +141,7 @@ export default class Header extends Component {
               </li>
             )}
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" style={{ cursor : 'pointer' }} href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a className="nav-link dropdown-toggle" style={{ cursor: 'pointer' }} href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 La société
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -152,22 +153,22 @@ export default class Header extends Component {
                 <Fragment>
                   <li className="nav-item">
                     &nbsp;&nbsp;
-                    <Link className="btn btn-primary" to="/account">Mon compte</Link>
+                    <ButtonLink url="/account" label="Mon compte" />
                   </li>
                   <li className="nav-item">
                     &nbsp;&nbsp;
-                    <Link className="btn btn-primary" to="/logout">Deconnexion</Link>
+                    <ButtonLink url="/logout" label="Deconnexion" />
                   </li>
                 </Fragment>
               ) : (
                 <Fragment>
                   <li className="nav-item">
                     &nbsp;&nbsp;
-                    <Link className="btn btn-primary" to="/login">Se connecter</Link>
+                    <ButtonLink url="/login" label="Se connecter" primary />
                   </li>
                   <li className="nav-item">
                     &nbsp;&nbsp;
-                    <Link className="btn btn-primary" to="/presignup">Créer un compte</Link>
+                    <ButtonLink url="/presignup" label="Créer un compte" />
                   </li>
                 </Fragment>
               )}
