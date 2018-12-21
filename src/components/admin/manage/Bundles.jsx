@@ -63,7 +63,7 @@ export default class AdminManageBundles extends Component {
               ) : <Loading />}
             </div>
             <div className="col">
-              {this.state.manage_id !== "0" && <Bundle id={this.state.manage_id} owner={this.state.bundle_owner} bundle={this.state.bundle} refresh={this.get.bind(this)} />}
+              {this.state.manage_id !== "0" && <Bundle id={this.state.manageId} owner={this.state.bundle_owner} bundle={this.state.bundle} refresh={this.get.bind(this)} />}
             </div>
           </div>
         </div>
