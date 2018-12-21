@@ -17,13 +17,16 @@ export default () => (
             <br />
             <a href="https://www.facebook.com/confidencesdabeille" target="_blank" rel="noopener noreferrer">
               <FontAwesome name="facebook-official" size="2x" />
-            </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="https://twitter.com/cdabeille" target="_blank" rel="noopener noreferrer">
               <FontAwesome name="twitter" size="2x" />
-            </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="https://www.instagram.com/confidences_dabeilles/" target="_blank" rel="noopener noreferrer">
               <FontAwesome name="instagram" size="2x" />
-            </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="https://www.linkedin.com/company/confidences-d'abeilles/" target="_blank" rel="noopener noreferrer">
               <FontAwesome name="linkedin" size="2x" />
             </a>
@@ -45,7 +48,7 @@ export default () => (
             <ul>
               <li><Link to="/about" className="noStyleLink">Notre histoire</Link></li>
               <li><Link to="/ourvalues" className="noStyleLink">Nos valeurs</Link></li>
-              <li><Link to="/team" className="noStyleLink">L'équipe</Link></li>
+              <li><Link to="/team" className="noStyleLink">L&apos;équipe</Link></li>
               <li><Link to="/contact" className="noStyleLink">Contact</Link></li>
               <li><Link to="/jobs" className="noStyleLink">Jobs</Link></li>
               <li><a href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
