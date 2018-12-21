@@ -1,39 +1,34 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import NotificationSystem from 'react-notification-system';
 import { handleChange } from '../../services/FormService';
 import request from '../../services/Net';
-import NotificationSystem from 'react-notification-system';
 
-import Meta from '../utils/Meta'
+import Meta from '../utils/Meta';
 
 export default class ContributorLead extends Component {
-
-  constructor(props) {
-    super(props);
-    
-    this.state = {
-      redirect : false,
-      company_name: '',
-      siret: '',
-      contact: 0,
-      error: false
-    }
+  state = {
+    redirect: false,
+    company_name: '',
+    siret: '',
+    contact: 0,
+    error: false,
   }
 
   addLead(e) {
     e.preventDefault();
     if (this.state.contact !== 0 && this.state.company_name && this.state.siret) {
       request({
-        url : '/lead',
+        url: '/lead',
         method: 'post',
-        data : {
-          company_name : this.state.company_name,
-          siret : this.state.siret,
+        data: {
+          company_name: this.state.company_name,
+          siret: this.state.siret,
           contact: this.state.contact
         }
       }, this.refs.notif).then((res) => {
         this.setState({
-          redirect : true
+          redirect: true
         })
       }).catch((err) => {
         this.setState({
@@ -50,25 +45,25 @@ export default class ContributorLead extends Component {
 
   handlesiret(event) {
     const target = event.target;
-      const name = target.name;
-      const value = target.value.replace(/ /g,'');
-      this.setState({
-          [name]: value
-      });
+    const name = target.name;
+    const value = target.value.replace(/ /g, '');
+    this.setState({
+      [name]: value
+    });
   }
 
-  render () {
+  render() {
     return (
       <div className="container py-4">
-        <Meta title="Ajouter une démarche"/>
+        <Meta title="Ajouter une démarche" />
         <NotificationSystem ref="notif" />
-        {(this.state.redirect)?
-        <Redirect to="/contributor/leadok" />
-        :null}
+        {(this.state.redirect) ?
+          <Redirect to="/contributor/leadok" />
+          : null}
         <div className="row justify-content-center">
           <div className="col">
             <div className="progress">
-              <div className="progress-bar" role="progressbar" style={{width: '66%'}}></div>
+              <div className="progress-bar" role="progressbar" style={{ width: '66%' }}></div>
             </div>
           </div>
         </div>
@@ -93,13 +88,13 @@ export default class ContributorLead extends Component {
                 </select>
               </div>
               {this.state.error &&
-              <p className="alert alert-warning">
-                Oups, vous ne pouvez pas ajouter
-                cette entreprise. Elle parraine déjà
-                des ruches ou a déjà été ajoutée
-                par un apporteur d’affaires. Rendez-
+                <p className="alert alert-warning">
+                  Oups, vous ne pouvez pas ajouter
+                  cette entreprise. Elle parraine déjà
+                  des ruches ou a déjà été ajoutée
+                  par un apporteur d’affaires. Rendez-
                 vous <Link to="/contributor/parrains">ici</Link> pour effectuer une
-                recherche des entreprises par
+                              recherche des entreprises par
                 numéro SIRET.</p>}
               <input type="submit" className="btn btn-primary" value="Continuer" onClick={this.addLead.bind(this)} />
             </form>

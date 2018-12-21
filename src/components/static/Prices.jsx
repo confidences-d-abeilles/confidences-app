@@ -3,59 +3,47 @@ import { handleTick } from '../../services/FormService'
 
 import Meta from '../utils/Meta'
 
-export default class Prices extends Component {
-
-  constructor(props) {
-    super(props)
-    
-
-  }
-
-
-  render() {
-    return (
-      <div className="container">
-        <Meta title="Tarifs"/>
-        <div className="row">
-          <div className="col">
-            <h2 className="text-center my-4">Tarifs</h2>
-            <ul className="nav nav-tabs" role="tablist">
-              <li className="nav-item">
-                <a className="nav-link active" data-toggle="tab" href="#individual">Particulier</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" data-toggle="tab" href="#company">Entreprise</a>
-              </li>
-            </ul>
-            <div className="tab-content" style={{ overflowX : 'auto' }}>
-              <div id="individual" className="tab-pane active" role="tabpanel">
-                <IndividualPrices />
-              </div>
-              <div id="company" className="tab-pane" role="tabpanel">
-                <CompanyPrices />
-              </div>
-            </div>
+export default () => (
+  <div className="container">
+    <Meta title="Tarifs" />
+    <div className="row">
+      <div className="col">
+        <h2 className="text-center my-4">Tarifs</h2>
+        <ul className="nav nav-tabs" role="tablist">
+          <li className="nav-item">
+            <a className="nav-link active" data-toggle="tab" href="#individual">Particulier</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" data-toggle="tab" href="#company">Entreprise</a>
+          </li>
+        </ul>
+        <div className="tab-content" style={{ overflowX: 'auto' }}>
+          <div id="individual" className="tab-pane active" role="tabpanel">
+            <IndividualPrices />
+          </div>
+          <div id="company" className="tab-pane" role="tabpanel">
+            <CompanyPrices />
           </div>
         </div>
       </div>
-    )
-  }
-}
+    </div>
+  </div>
+);
 
 class IndividualPrices extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      several : false
+      several: false
     }
 
     this.indPricesMo = [10, 17, 23, 27, 32];
     this.indPricesYe = [85, 160, 230, 295, 350];
   }
 
-  render () {
-    const pricesArr = (this.state.several)? this.indPricesMo : this.indPricesYe;
+  render() {
+    const pricesArr = (this.state.several) ? this.indPricesMo : this.indPricesYe;
     const pricesCells = pricesArr.map(price => {
       let priceDispl;
       if (this.state.several) {
@@ -111,7 +99,7 @@ class CompanyPrices extends Component {
     this.entrPricesYe = [635, 560];
   }
 
-  render () {
+  render() {
     return (
       <React.Fragment>
         <table className="table table-sm mt-4 text-left">
