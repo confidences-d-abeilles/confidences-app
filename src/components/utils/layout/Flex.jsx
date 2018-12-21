@@ -6,11 +6,6 @@ export const Item = styled.div`
   align-self: center;
 `;
 
-export const ItemNoGutter = styled.div`
-  padding: 0;
-  flex: 1 25rem;
-`;
-
 export const Columns = styled.div`
   display: flex;
   flex: 1 25rem;

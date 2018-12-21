@@ -73,12 +73,8 @@ export default class Home extends Component {
               <ButtonLink url="/individual/presentation" label="Service particulier" primary />
             </p>
           </Item>
-          <ItemNoGutter>
+          <Item>
             <div id="carouselHome" className="carousel slide" data-interval="2500" data-ride="carousel">
-              <ol className="carousel-indicators">
-                {/* eslint-disable-next-line react/no-array-index-key */}
-                {[6].map((e, key) => <li data-target="#carouselHome" data-slide-to={key} key={key} className={key === 0 && 'active'} />)}
-              </ol>
               <div className="carousel-inner" role="listbox">
                 {carouselSlides.map(({ element, label }, key) => (
                   <div className={key === 0 ? 'carousel-item active' : 'carousel-item'} key={label}>
@@ -87,7 +83,7 @@ export default class Home extends Component {
                 ))}
               </div>
             </div>
-          </ItemNoGutter>
+          </Item>
         </Rows>
         <div className="container py-4">
           <NotificationSystem ref="notif" />
