@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment } from 'react';
+import { Rows, Item } from '../utils/layout/Flex';
+import { ButtonLink } from '../utils/Button';
 import first from '../../assets/img/E/1.jpg';
 import second from '../../assets/img/E/2.jpg';
 import third from '../../assets/img/E/3.jpg';
@@ -13,34 +14,28 @@ import Meta from '../utils/Meta';
 import leaflet from '../../assets/leaflet_e.pdf';
 
 export default () => (
-  <div className="container py-4">
+  <Fragment>
     <Meta title="Parrainer des ruches" />
-    <div className="row align-items-center justify-content-center">
-      <div className="col-lg-6 col-md-10 col-sm-12 text-center">
-        <h2 className="text-left">Vos abeilles n’ont
-        jamais été aussi
-        proche de prendre leur
-        envol !</h2>
+    <Rows>
+      <Item>
+        <h1 className="text-left">
+          Vos abeilles n’ont
+          jamais été aussi
+          proche de prendre leur
+          envol !
+        </h1>
         <p className="text-left">
           Pour parrainer votre première ruche c’est très
           simple : complétez notre formulaire en moins
           de 3 minutes et voilà ! Vous avez accès à la
           page dédiée à votre entreprise.
         </p>
-        <Link to="/signup/company" className="btn btn-secondary my-2">Parrainer des ruches</Link>
-      </div>
-      <div className="col-lg-6 col-md-10 hidden-sm-down my-4">
+        <p className="text-center">
+          <ButtonLink url="/signup/company" label="Parrainer des ruches" primary />
+        </p>
+      </Item>
+      <Item>
         <div id="carouselHome" className="carousel slide" data-interval="3000" data-ride="carousel">
-          <ol className="carousel-indicators">
-            <li data-target="#carouselHome" data-slide-to="0" className="active"></li>
-            <li data-target="#carouselHome" data-slide-to="1"></li>
-            <li data-target="#carouselHome" data-slide-to="2"></li>
-            <li data-target="#carouselHome" data-slide-to="3"></li>
-            <li data-target="#carouselHome" data-slide-to="4"></li>
-            <li data-target="#carouselHome" data-slide-to="5"></li>
-            <li data-target="#carouselHome" data-slide-to="6"></li>
-            <li data-target="#carouselHome" data-slide-to="7"></li>
-          </ol>
           <div className="carousel-inner" role="listbox">
             <div className="carousel-item active">
               <img className="d-block w-100 h-100" src={first} alt="First slide" />
@@ -68,8 +63,8 @@ export default () => (
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </Item>
+    </Rows>
     <div className="row align-items-center">
       <div className="col">
         <h2 className="text-center my-4">Le parrainage de ruche c’est :</h2>
@@ -132,14 +127,14 @@ export default () => (
     </div>
     <div className="row justify-content-around align-items-center">
       <div className="col-lg-5 col-md-6 col-sm-12 col-xs-12 my-4 text-center">
-        <Link to="/signup/company" className="btn btn-secondary">Parrainer une ruche</Link>
+        <ButtonLink url="/signup/company" label="Parrainer une ruche" />
       </div>
       <div className="col-lg-5 col-md-6 col-sm-12 col-xs-12 my-4 text-center">
-        <Link to="/company/more" className="btn btn-secondary">En savoir plus</Link>
+        <ButtonLink url="/company/more" label="En savoir plus" />
       </div>
       <div className="col-12 text-center">
-        <a href={leaflet} className="btn btn-secondary m-4" target="_blank" rel="noopener noreferrer">Télécharger la plaquette de présentation</a>
+        <ButtonLink url={leaflet} external label="Télécharger la plaquette de présentation" primary />
       </div>
     </div>
-  </div>
+  </Fragment>
 );
