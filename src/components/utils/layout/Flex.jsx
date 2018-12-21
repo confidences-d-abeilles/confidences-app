@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 
 export const Item = styled.div`
-  padding: 5rem;
+  padding: 1rem 5rem;
   flex: 1 25rem;
   align-self: center;
+  text-align: ${({ textAlign }) => textAlign};
 `;
 
 export const Columns = styled.div`

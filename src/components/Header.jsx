@@ -71,7 +71,6 @@ export default class Header extends Component {
     const { redirect } = this.state;
     return (
       <div>
-        <NotificationSystem ref="notif" />
         <nav className="navbar navbar-toggleable-md navbar-light">
           <button className="navbar-toggler navbar-toggler-right align-self-center" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span className="navbar-toggler-icon" />

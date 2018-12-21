@@ -40,7 +40,10 @@ const PrimaryStyleString = `
   }
 `;
 
-export const ButtonStyle = styled('button')(({ primary }) => (primary ? PrimaryStyleString : SecondaryStyleString));
+export const ButtonStyle = styled('button')(({ primary }) => (
+  primary ? PrimaryStyleString : SecondaryStyleString
+));
 
-export const ButtonLink = styled(Link)(({ primary }) => (primary
-  ? PrimaryStyleString : SecondaryStyleString));
+export const ButtonLink = styled(Link)(({ primary }) => (
+  primary ? PrimaryStyleString : SecondaryStyleString
+));

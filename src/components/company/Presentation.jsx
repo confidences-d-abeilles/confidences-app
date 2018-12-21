@@ -65,13 +65,13 @@ export default () => (
         </div>
       </Item>
     </Rows>
-    <div className="row align-items-center">
-      <div className="col">
-        <h2 className="text-center my-4">Le parrainage de ruche c’est :</h2>
-      </div>
-    </div>
-    <div className="row justify-content-around align-items-start">
-      <div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>
+    <Rows>
+      <Item textAlign="center">
+        <h2>Le parrainage de ruche c’est :</h2>
+      </Item>
+    </Rows>
+    <Rows>
+      <Item>
         <h3 className="text-center my-4">Pour l'entreprise</h3>
         <ul>
           <li>
@@ -104,8 +104,8 @@ export default () => (
             La possibilité d'organiser avec son équipe une <strong>visite de la ruche</strong> sous la fameuse tenue d'apiculteur
           </li>
         </ul>
-      </div>
-      <div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>
+      </Item>
+      <Item>
         <h3 className="text-center my-4">Pour l'apiculteur</h3>
         <ul>
           <li>C’est l’assurance de maintenir notre
@@ -123,18 +123,20 @@ export default () => (
           nombre de personnes à la protection
           des abeilles</li>
         </ul>
-      </div>
-    </div>
-    <div className="row justify-content-around align-items-center">
-      <div className="col-lg-5 col-md-6 col-sm-12 col-xs-12 my-4 text-center">
+      </Item>
+    </Rows>
+    <Rows>
+      <Item textAlign="center">
         <ButtonLink url="/signup/company" label="Parrainer une ruche" />
-      </div>
-      <div className="col-lg-5 col-md-6 col-sm-12 col-xs-12 my-4 text-center">
+      </Item>
+      <Item textAlign="center">
         <ButtonLink url="/company/more" label="En savoir plus" />
-      </div>
-      <div className="col-12 text-center">
+      </Item>
+    </Rows>
+    <Rows>
+      <Item textAlign="center">
         <ButtonLink url={leaflet} external label="Télécharger la plaquette de présentation" primary />
-      </div>
-    </div>
+      </Item>
+    </Rows>
   </Fragment>
 );

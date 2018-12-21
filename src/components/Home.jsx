@@ -86,7 +86,6 @@ export default class Home extends Component {
           </Item>
         </Rows>
         <div className="container py-4">
-          <NotificationSystem ref="notif" />
           <div className="row justify-content-center align-items-center">
             <div className="col-lg-9 col-md-10 col-sm-12">
               <p>
