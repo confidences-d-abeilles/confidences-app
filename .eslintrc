@@ -1,9 +1,10 @@
 {
-    "extends": "airbnb",
-    "globals": {
-        "window": true,
-        "document": true,
-        "localStorage": true
-    },
-    "parser": "babel-eslint"
+  "extends": "airbnb",
+  "globals": {
+    "window": true,
+    "document": true,
+    "localStorage": true,
+    "FormData": true,
+  },
+  "parser": "babel-eslint"
 }
