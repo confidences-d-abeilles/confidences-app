@@ -72,7 +72,7 @@ export default class Header extends Component {
     return (
       <div>
         <NotificationSystem ref="notif" />
-        <nav className="navbar navbar-toggleable-md navbar-light" style={{ boxShadow: '0 2px 2px silver' }}>
+        <nav className="navbar navbar-toggleable-md navbar-light">
           <button className="navbar-toggler navbar-toggler-right align-self-center" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span className="navbar-toggler-icon" />
           </button>
@@ -153,7 +153,7 @@ export default class Header extends Component {
                 <Fragment>
                   <li className="nav-item">
                     &nbsp;&nbsp;
-                    <ButtonLink url="/account" label="Mon compte" />
+                    <ButtonLink url="/account" label="Mon compte" primary />
                   </li>
                   <li className="nav-item">
                     &nbsp;&nbsp;
