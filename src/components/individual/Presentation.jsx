@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment } from 'react';
+import { ButtonLink } from '../utils/Button';
+import { Rows, Item } from '../utils/layout/Flex';
 import first from '../../assets/img/P/1.jpg';
 import second from '../../assets/img/P/2.jpg';
 import third from '../../assets/img/P/3.jpg';
@@ -13,34 +14,28 @@ import leaflet from '../../assets/leaflet_p.pdf';
 import Meta from '../utils/Meta';
 
 export default () => (
-  <div className="container py-4">
+  <Fragment>
     <Meta title="Parrainer des abeilles" />
-    <div className="row align-items-center justify-content-center">
-      <div className="col-lg-6 col-md-10 col-sm-12 text-center">
-        <h2 className="text-left">Vos abeilles n’ont
-        jamais été aussi
-        proche de prendre leur
-						envol !</h2>
+    <Rows>
+      <Item>
+        <h1 className="text-left">
+          Vos abeilles n’ont
+          jamais été aussi
+          proche de prendre leur
+          envol !
+        </h1>
         <p className="text-left">
           Pour parrainer vos premières abeilles c’est très
           simple : complétez le formulaire d’inscription,
           choisissez le nombre d’abeilles et voilà !
-						</p>
-        <Link to="/signup/individual" className="btn btn-secondary m-2">Parrainer mes permières abeilles</Link>
-        <Link to="/present" className="btn btn-secondary m-2">Offrir un parrainage</Link>
-      </div>
-      <div className="col-lg-6 col-md-10 hidden-sm-down my-4">
+        </p>
+        <p className="text-center">
+          <ButtonLink url="/signup/individual" label="Parrainer mes permières abeilles" primary />
+          <ButtonLink url="/present" label="Offrir un parrainage" primary />
+        </p>
+      </Item>
+      <Item>
         <div id="carouselHome" className="carousel slide" data-interval="3000" data-ride="carousel">
-          <ol className="carousel-indicators">
-            <li data-target="#carouselHome" data-slide-to="0" className="active"></li>
-            <li data-target="#carouselHome" data-slide-to="1"></li>
-            <li data-target="#carouselHome" data-slide-to="2"></li>
-            <li data-target="#carouselHome" data-slide-to="3"></li>
-            <li data-target="#carouselHome" data-slide-to="4"></li>
-            <li data-target="#carouselHome" data-slide-to="5"></li>
-            <li data-target="#carouselHome" data-slide-to="6"></li>
-            <li data-target="#carouselHome" data-slide-to="7"></li>
-          </ol>
           <div className="carousel-inner" role="listbox">
             <div className="carousel-item active">
               <img className="d-block w-100 h-100" src={first} alt="First slide" />
@@ -68,15 +63,15 @@ export default () => (
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div className="row align-items-center justify-content-center">
-      <div className="col-lg-9 col-md-10 col-sm-12">
-        <h2 className="text-center my-4">Parrainer une ruche c'est :</h2>
-      </div>
-    </div>
-    <div className="row justify-content-around align-items-start">
-      <div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>
+      </Item>
+    </Rows>
+    <Rows>
+      <Item textAlign="center">
+        <h2>Parrainer une ruche c'est :</h2>
+      </Item>
+    </Rows>
+    <Rows>
+      <Item>
         <h3 className="text-center my-4">Pour vous</h3>
         <ul>
           <li>
@@ -99,8 +94,8 @@ export default () => (
             La possibilité de <strong>rendre visite à vos abeilles</strong> équipé(e) de la fameuse tenue de protection de l'apiculteur
 							</li>
         </ul>
-      </div>
-      <div className="col-lg-5 col-md-6 col-sm-10 card" style={{ backgroundColor: '#ECEFF1' }}>
+      </Item>
+      <Item>
         <h3 className="text-center my-4">Pour nous les apiculteurs</h3>
         <ul>
           <li>C’est l’assurance de maintenir notre
@@ -117,18 +112,20 @@ export default () => (
           nombre de personnes à la protection
 							des abeilles</li>
         </ul>
-      </div>
-    </div>
-    <div className="row align-items-center justify-content-around">
-      <div className="col-lg-4 col-md-6 col-sm-12 text-center m-4">
-        <Link to="/signup/individual" className="btn btn-secondary">Parrainer des abeilles</Link>
-      </div>
-      <div className="col-lg-4 col-md-6 col-sm-12 text-center m-4">
-        <Link to="/individual/more" className="btn btn-secondary">En savoir plus</Link>
-      </div>
-      <div className="col-12 text-center">
-        <a href={leaflet} className="btn btn-secondary m-4" rel="noopener noreferrer" target="_blank">Télécharger la plaquette de présentation</a>
-      </div>
-    </div>
-  </div>
+      </Item>
+    </Rows>
+    <Rows>
+      <Item textAlign="center">
+        <ButtonLink url="/signup/individual" label="Parrainer des abeilles" />
+      </Item>
+      <Item textAlign="center">
+        <ButtonLink url="/individual/more" label="En savoir plus" />
+      </Item>
+    </Rows>
+    <Rows>
+      <Item textAlign="center">
+        <ButtonLink url={leaflet} external primary label="Télécharger la plaquette de présentation" />
+      </Item>
+    </Rows>
+  </Fragment>
 );
