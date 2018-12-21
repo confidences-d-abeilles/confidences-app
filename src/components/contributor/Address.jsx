@@ -10,13 +10,13 @@ import EditAddress from '../utils/Address/EditAddress'
 export default class ContributorAddress extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       redirect: false,
       message: '',
       address: {
         country: 'France',
-        type: 1
+        type: 1,
       }
     }
   }
@@ -29,7 +29,7 @@ export default class ContributorAddress extends Component {
       this.setState({
         address: {
           ...this.state.address,
-          sexe_m: res.sexe_m?'1':'0',
+          sexe_m: res.sexe_m ? '1' : '0',
           name: res.name,
           firstname: res.firstname,
         }
@@ -39,24 +39,24 @@ export default class ContributorAddress extends Component {
 
   changeAddress = (e) => {
     this.setState({
-      address: { ...this.state.address, [e.target.name] : e.target.value }
+      address: { ...this.state.address, [e.target.name]: e.target.value }
     })
   }
 
   createAddress = (e) => {
     e.preventDefault();
     request({
-      url : '/address',
+      url: '/address',
       method: 'post',
-      data : this.state.address
+      data: this.state.address
     }, this.refs.notif).then((res) => {
       request({
-        url : '/address',
+        url: '/address',
         method: 'post',
-        data : { ...this.state.address, type: 2 }
+        data: { ...this.state.address, type: 2 }
       }, this.refs.notif).then((res) => {
         this.setState({
-          redirect : true
+          redirect: true
         })
       });
     });
@@ -64,26 +64,26 @@ export default class ContributorAddress extends Component {
 
 
 
-    render () {
-        return (
+  render() {
+    return (
       <div className="container py-4">
-        <Meta title="Adresse"/>
-        {(isLoggedIn())?null:<Redirect to="/" />}
-        {(this.state.redirect)?
-        <Redirect to="/contributor/wish" />
-        :null}
+        <Meta title="Adresse" />
+        {(isLoggedIn()) ? null : <Redirect to="/" />}
+        {(this.state.redirect) ?
+          <Redirect to="/contributor/wish" />
+          : null}
         <div className="row justify-content-center">
           <NotificationSystem ref="notif" />
           <div className="col">
             <div className="progress">
-              <div className="progress-bar" role="progressbar" style={{width: '50%'}}></div>
+              <div className="progress-bar" role="progressbar" style={{ width: '50%' }}></div>
             </div>
           </div>
         </div>
         <div className="row justify-content-center">
           <div className="col-6">
-          <h2 className="text-center my-4">Votre adresse</h2>
-          <EditAddress company={false} data={this.state.address} onChange={this.changeAddress} onSubmit={this.createAddress} />
+            <h2 className="text-center my-4">Votre adresse</h2>
+            <EditAddress company={false} data={this.state.address} onChange={this.changeAddress} onSubmit={this.createAddress} />
             <p className="alert alert-info">
               Remarque : votre adresse n’est utile que pour la
               rédaction du contrat. Ne vous inquiétez pas, nous
@@ -93,6 +93,6 @@ export default class ContributorAddress extends Component {
         </div>
 
       </div>
-        );
-    }
+    );
+  }
 }

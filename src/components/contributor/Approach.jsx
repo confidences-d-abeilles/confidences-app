@@ -12,14 +12,9 @@ import leaflet_e from '../../assets/leaflet_e.pdf'
 import brochure from '../../assets/brochure.pdf'
 
 export default class ContributorApproach extends Component {
-
-  constructor(props) {
-    super(props)
-    
-    this.state = {
-      question: '',
-      faq: []
-    }
+  state = {
+    question: '',
+    faq: [],
   }
 
   componentDidMount() {
@@ -38,9 +33,9 @@ export default class ContributorApproach extends Component {
     request({
       url: '/contact',
       method: 'post',
-      data : {
+      data: {
         demand: '8',
-        content : this.state.question
+        content: this.state.question
       }
     }, this.refs.notif).then((res) => {
       this.setState({
@@ -49,10 +44,10 @@ export default class ContributorApproach extends Component {
     })
   }
 
-  render () {
+  render() {
     return (
       <div className="container">
-        <Meta title="Démarchage d'entreprise"/>
+        <Meta title="Démarchage d'entreprise" />
         <NotificationSystem ref="notif" />
         <div className="row">
           <div className="col-6">
@@ -153,53 +148,53 @@ export default class ContributorApproach extends Component {
             <a href="/contributor/approach"><p className="text-center lead my-4" data-toggle="collapse" data-target="#advices" >Conseils pour améliorer votre taux de conversion <FontAwesome name='chevron-down' /></p></a>
             <div className="collapse" id="advices">
               <ul>
-              <li>Conseil n°1 : Ne pas envoyer d’email sur des boites « fourre-tout » type contact@ ou
-info@ ou encore hello@. Toujours trouver l’email du gérant / d’un responsable / d’un
+                <li>Conseil n°1 : Ne pas envoyer d’email sur des boites « fourre-tout » type contact@ ou
+  info@ ou encore hello@. Toujours trouver l’email du gérant / d’un responsable / d’un
 directeur. Si le mail n’est pas trouvable sur le site internet de la société, sur <a target="_blank" rel="noopener noreferrer" href="https://hunter.io/email-finder">hunter.io</a>,
-faire une recherche google « @nomdelentreprise.fr ou .com » (garder les guillemets)
-pour trouver la nomenclature des mails et donc par extension déterminer celui du
+                                                                                                                                                            faire une recherche google « @nomdelentreprise.fr ou .com » (garder les guillemets)
+                                                                                                                                                            pour trouver la nomenclature des mails et donc par extension déterminer celui du
 gérant.</li>
-              <li className="my-2">
-                Conseil n°2 : Pour avoir un excellent taux de réponse à vos emails, il faut vous limiter à
-trois phrases :
+                <li className="my-2">
+                  Conseil n°2 : Pour avoir un excellent taux de réponse à vos emails, il faut vous limiter à
+  trois phrases :
 <ul>
-  <li>Phrase 1 : Je me permets de vous contacter au sujet de, de la part de, à propos de</li>
-  <li>Phrase 2 : Ce que vous faites (Nous proposons aux entreprises de répondre à leurs
+                    <li>Phrase 1 : Je me permets de vous contacter au sujet de, de la part de, à propos de</li>
+                    <li>Phrase 2 : Ce que vous faites (Nous proposons aux entreprises de répondre à leurs
 enjeux en termes de RSE en parrainant des ruches…)</li>
-  <li>Phrase 3 : A quel moment et sur quel numéro seriez-vous joignable pour en
+                    <li>Phrase 3 : A quel moment et sur quel numéro seriez-vous joignable pour en
 discuter ?</li>
-</ul>
-              </li>
-              <li className="my-2">Conseil n° 3 : pour un premier mail « tentative de contact » en objet attire l’attention.
-Pour un second mail « Je n’arrive pas à vous joindre ». Pour un troisième et dernier mail
+                  </ul>
+                </li>
+                <li className="my-2">Conseil n° 3 : pour un premier mail « tentative de contact » en objet attire l’attention.
+  Pour un second mail « Je n’arrive pas à vous joindre ». Pour un troisième et dernier mail
 « dernière tentative de contact »</li>
-<li className="my-2">Conseil n°4 : sans réponse ou retour d’une personne au bout de 3 tentatives, il faut laisser tomber</li>
-<li className="my-2">Conseil n°5 : dans tous les cas appeler la personne deux jours après l’envoi du premier email. Indiquer vouloir parler à Madame ou Monsieur Untel suite à un échange d’email.</li>
-<li className="my-2">Conseil n°6 : Toujours commencer par se présenter et s’assurer que notre interlocuteur a
+                <li className="my-2">Conseil n°4 : sans réponse ou retour d’une personne au bout de 3 tentatives, il faut laisser tomber</li>
+                <li className="my-2">Conseil n°5 : dans tous les cas appeler la personne deux jours après l’envoi du premier email. Indiquer vouloir parler à Madame ou Monsieur Untel suite à un échange d’email.</li>
+                <li className="my-2">Conseil n°6 : Toujours commencer par se présenter et s’assurer que notre interlocuteur a
 un peu de temps. Script type :<ul>
-<li>Monsieur X ?</li>
-<li>Oui</li>
-<li>Untel, étudiant en … à l’école de …, <strong>je ne vous dérange pas ?</strong></li>
-<li>Non</li>
-<li>Présentation succincte de deux ou trois phrases maximum destinée à accrocher
+                    <li>Monsieur X ?</li>
+                    <li>Oui</li>
+                    <li>Untel, étudiant en … à l’école de …, <strong>je ne vous dérange pas ?</strong></li>
+                    <li>Non</li>
+                    <li>Présentation succincte de deux ou trois phrases maximum destinée à accrocher
 l’attention de la personne et entamer une discussion</li>
-</ul></li>
-<li className="my-2">Conseil n°7 : Le but est de faire parler votre interlocuteur et de rebondir sur ses points
-d’attention. Il faut toujours essayer de tisser un lien avec lui (proximité géographique,
+                  </ul></li>
+                <li className="my-2">Conseil n°7 : Le but est de faire parler votre interlocuteur et de rebondir sur ses points
+                d’attention. Il faut toujours essayer de tisser un lien avec lui (proximité géographique,
 connaissance en commun, loisir commun, etc.).</li>
-<li className="my-2">Conseil n°8 : essayer d’aborder rapidement les avantages que son entreprise aurait à
+                <li className="my-2">Conseil n°8 : essayer d’aborder rapidement les avantages que son entreprise aurait à
 parrainer une ruche</li>
-<li className="my-2">Conseil n°9 : demander à votre interlocuteur s’il a des questions à vous poser</li>
-<li className="my-2">Conseil n°10 : Préciser que l’inscription est gratuite et que le paiement peut être réalisé
+                <li className="my-2">Conseil n°9 : demander à votre interlocuteur s’il a des questions à vous poser</li>
+                <li className="my-2">Conseil n°10 : Préciser que l’inscription est gratuite et que le paiement peut être réalisé
 plus tard par carte bancaire ou virement.</li>
-<li className="my-2">Conseil n°11 : utiliser des chiffres dans votre approche. Date de création de la société,
-nombre de ruches déjà parrainées, nombre de parrains, nombre de pots de miels offerts
+                <li className="my-2">Conseil n°11 : utiliser des chiffres dans votre approche. Date de création de la société,
+                nombre de ruches déjà parrainées, nombre de parrains, nombre de pots de miels offerts
 par ruche, nombre d’abeilles.</li>
-<li className="my-2">Conseil n°12 : Téléphoner debout (aisance et assurance dans la voix qui rassure) et avec
+                <li className="my-2">Conseil n°12 : Téléphoner debout (aisance et assurance dans la voix qui rassure) et avec
 le sourire (ça s’entend aussi !).</li>
-<li className="my-2">Conseil n°13 : Si votre appel tombe mal, proposez immédiatement à votre interlocuteur
+                <li className="my-2">Conseil n°13 : Si votre appel tombe mal, proposez immédiatement à votre interlocuteur
 de le recontacter ultérieurement pour ne pas le déranger. Donnez-lui trois possibilités.</li>
-            </ul>
+              </ul>
             </div>
             <a href="/contributor/approach" className="link-nostyle"><p className="text-center lead my-4" data-toggle="collapse" data-target="#supports" >Supports de communication <FontAwesome name='chevron-down' /></p></a>
             <div className="collapse" id="supports">
@@ -223,15 +218,15 @@ de le recontacter ultérieurement pour ne pas le déranger. Donnez-lui trois pos
                       </div>
                       <div className="modal-body">
                         <p>
-                      Objet : Tentative de contact<br /><br />
-                      Bonjour Madame, Monsieur [x],<br /><br />
-                      Je me permets de vous contacter au sujet de la Responsabilité Sociétale et Environnementale (RSE)
-                      des entreprises de la part de la société Confidences d’Abeilles. Elle propose aujourd’hui un service de
-                      parrainage de ruches à destination d’entreprises comme la vôtre. En échange, vous recevrez des pots
+                          Objet : Tentative de contact<br /><br />
+                          Bonjour Madame, Monsieur [x],<br /><br />
+                          Je me permets de vous contacter au sujet de la Responsabilité Sociétale et Environnementale (RSE)
+                          des entreprises de la part de la société Confidences d’Abeilles. Elle propose aujourd’hui un service de
+                          parrainage de ruches à destination d’entreprises comme la vôtre. En échange, vous recevrez des pots
                       de miel à offrir à vos équipes ou vos partenaires.<br /><br />
-                      A quel moment et sur quel numéro seriez-vous joignable pour en discuter ?<br /><br />
-                      Je vous souhaite une excellente journée,<br /><br />
-                      [x]
+                          A quel moment et sur quel numéro seriez-vous joignable pour en discuter ?<br /><br />
+                          Je vous souhaite une excellente journée,<br /><br />
+                          [x]
                         </p>
                       </div>
                       <div className="modal-footer">
@@ -260,16 +255,16 @@ de le recontacter ultérieurement pour ne pas le déranger. Donnez-lui trois pos
                       </div>
                       <div className="modal-body">
                         <p>
-                      Objet : Tentative de contact<br /><br />
-                      Madame, Monsieur [x],<br /><br />
-                      Ayant connaissance de votre activité par le biais de [x qui travaille chez vous] je crois savoir/pense
+                          Objet : Tentative de contact<br /><br />
+                          Madame, Monsieur [x],<br /><br />
+                          Ayant connaissance de votre activité par le biais de [x qui travaille chez vous] je crois savoir/pense
                       que le service proposé par Confidences d’Abeilles vous intéresse.<br /><br />
-                      En effet, votre entreprise a la possibilité de parrainer des ruches et de répondre ainsi aux enjeux liés
-                      à la Responsabilité Sociétale et Environnementale (RSE). En échange, vous recevrez des pots de miel
+                          En effet, votre entreprise a la possibilité de parrainer des ruches et de répondre ainsi aux enjeux liés
+                          à la Responsabilité Sociétale et Environnementale (RSE). En échange, vous recevrez des pots de miel
                       à offrir à vos équipes ou vos partenaires.<br /><br />
-                      A quel moment et sur quel numéro seriez-vous joignable pour en discuter ?<br /><br />
-                      Je vous souhaite une excellente journée,<br /><br />
-                      [x]
+                          A quel moment et sur quel numéro seriez-vous joignable pour en discuter ?<br /><br />
+                          Je vous souhaite une excellente journée,<br /><br />
+                          [x]
                         </p>
                       </div>
                       <div className="modal-footer">
@@ -287,35 +282,35 @@ de le recontacter ultérieurement pour ne pas le déranger. Donnez-lui trois pos
                   </div>
                 </div>
 
-              <div className="modal fade" id="modal3">
-                <div className="modal-dialog modal-lg" role="document">
-                <div className="modal-content">
-                  <div className="modal-header">
-                  <h5 className="modal-title">Je ne connais personne dans la société</h5>
-                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                  </div>
-                  <div className="modal-body">
-                  <p>
-                    Objet : Tentative de contact<br /><br />
-                    Madame, Monsieur,<br /><br />
-                    Je m’appelle [x] et suis étudiant de/en [x]. Je me suis renseigné sur votre société et je pense que le
+                <div className="modal fade" id="modal3">
+                  <div className="modal-dialog modal-lg" role="document">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title">Je ne connais personne dans la société</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div className="modal-body">
+                        <p>
+                          Objet : Tentative de contact<br /><br />
+                          Madame, Monsieur,<br /><br />
+                          Je m’appelle [x] et suis étudiant de/en [x]. Je me suis renseigné sur votre société et je pense que le
                     service proposé par Confidences d’Abeilles est susceptible de vous intéresser.<br /><br />
-                    En effet, votre entreprise a la possibilité de parrainer des ruches et de répondre ainsi aux enjeux liés
-                    à la Responsabilité Sociétale et Environnementale (RSE). En échange elle recevra des pots de miel
+                          En effet, votre entreprise a la possibilité de parrainer des ruches et de répondre ainsi aux enjeux liés
+                          à la Responsabilité Sociétale et Environnementale (RSE). En échange elle recevra des pots de miel
                     qu’elle pourra offrir à ses équipes ou partenaires.<br /><br />
-                    A quel moment et sur quel numéro seriez-vous joignable pour en discuter ?<br /><br />
-                    Je vous souhaite une excellente journée,<br /><br />
-                    [x]
+                          A quel moment et sur quel numéro seriez-vous joignable pour en discuter ?<br /><br />
+                          Je vous souhaite une excellente journée,<br /><br />
+                          [x]
                   </p>
-                  </div>
-                  <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                      <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                </div>
-              </div>
 
               </div>
               <div className="card-deck my-4">
@@ -338,14 +333,14 @@ de le recontacter ultérieurement pour ne pas le déranger. Donnez-lui trois pos
                       </div>
                       <div className="modal-body">
                         <p>
-                      Objet : Je n’arrive pas à vous joindre<br /><br />
-                      Madame, Monsieur [x],<br /><br />
-                      Je vous ai adressé un mail il y a [x] jours à propos d’un service de parrainage de ruches. Je n’ai pas
-                      reçu de réponse de votre part. Je me permets de vous relancer puisque je pense que c’est un
+                          Objet : Je n’arrive pas à vous joindre<br /><br />
+                          Madame, Monsieur [x],<br /><br />
+                          Je vous ai adressé un mail il y a [x] jours à propos d’un service de parrainage de ruches. Je n’ai pas
+                          reçu de réponse de votre part. Je me permets de vous relancer puisque je pense que c’est un
                       excellent moyen pour vous de répondre aux enjeux liés à la RSE.<br /><br />
-                      A quel moment seriez-vous disponible par téléphone pour que je puisse vous contacter ?<br /><br />
-                      Dans l’attente de vous lire je vous souhaite une excellente journée,<br /><br />
-                      [x]
+                          A quel moment seriez-vous disponible par téléphone pour que je puisse vous contacter ?<br /><br />
+                          Dans l’attente de vous lire je vous souhaite une excellente journée,<br /><br />
+                          [x]
                         </p>
                       </div>
                       <div className="modal-footer">
@@ -374,37 +369,37 @@ de le recontacter ultérieurement pour ne pas le déranger. Donnez-lui trois pos
                       </div>
                       <div className="modal-body">
                         <p>
-                      Objet : L’offre de parrainage en détail<br /><br />
-                      Madame, Monsieur [x],<br /><br />
-                      Je vous remercie pour votre retour.<br /><br />
-                      Si je devais résumer le parrainage de ruches en entreprise, je dirais ceci : c&#39;est un partenariat
-                      gagnant-gagnant entre votre entreprise et les apiculteurs. En effet, le parrainage de ruche est un acte
-                      fort qui s&#39;inscrit pleinement dans le plan européen de Responsabilité Sociétale et Environnementale
-                      (RSE) ; disons-le clairement, c&#39;est aussi une tendance suivie par de nombreux grands groupes tels que
-                      Le Point, Groupe Leader et dernièrement Intermarché. Ces derniers ont bien compris que l&#39;impact
-                      d&#39;une telle action dépassait largement le cercle des collaborateurs. En plus de fédérer les employés
-                      autour d&#39;un projet actuellement plébiscité de toute part, ils s&#39;adressent aussi à leurs partenaires,
-                      leurs clients en démontrant l&#39;engagement pris en faveur d&#39;une noble cause. Quel cadeau plus
-                      personnalisé pourrait-on offrir à la place d’un pot de miel produit par les ruches de la société à ses
+                          Objet : L’offre de parrainage en détail<br /><br />
+                          Madame, Monsieur [x],<br /><br />
+                          Je vous remercie pour votre retour.<br /><br />
+                          Si je devais résumer le parrainage de ruches en entreprise, je dirais ceci : c&#39;est un partenariat
+                          gagnant-gagnant entre votre entreprise et les apiculteurs. En effet, le parrainage de ruche est un acte
+                          fort qui s&#39;inscrit pleinement dans le plan européen de Responsabilité Sociétale et Environnementale
+                          (RSE) ; disons-le clairement, c&#39;est aussi une tendance suivie par de nombreux grands groupes tels que
+                          Le Point, Groupe Leader et dernièrement Intermarché. Ces derniers ont bien compris que l&#39;impact
+                          d&#39;une telle action dépassait largement le cercle des collaborateurs. En plus de fédérer les employés
+                          autour d&#39;un projet actuellement plébiscité de toute part, ils s&#39;adressent aussi à leurs partenaires,
+                          leurs clients en démontrant l&#39;engagement pris en faveur d&#39;une noble cause. Quel cadeau plus
+                          personnalisé pourrait-on offrir à la place d’un pot de miel produit par les ruches de la société à ses
                       partenaires ou à ses clients ? Ceci étonnera, intriguera et plaira à coup sûr !<br /><br />
-                      Pour Confidences d&#39;Abeilles, c&#39;est l’opportunité de développer son cheptel. L&#39;installation de
-                      nouvelles ruches permet d&#39;une part de lutter contre le syndrome d&#39;effondrement des colonies et
-                      d&#39;autre part, en renforçant la population d&#39;abeilles et donc l&#39;action de pollinisation, c&#39;est la
-                      biodiversité que l&#39;on préserve. « L’union fait la force », un adage qui se vérifie année après année sur
-                      ses ruchers. Plus il y a de ruches et plus il est facile de pallier les carences de certaines, plus il est aisé
-                      d’utiliser la force des unes pour tirer les autres vers le haut. Le parrainage de ruches va donc au-delà
-                      d’une simple augmentation de la population d’abeilles ; c’est un épaulement de poids pour le cheptel
+                          Pour Confidences d&#39;Abeilles, c&#39;est l’opportunité de développer son cheptel. L&#39;installation de
+                          nouvelles ruches permet d&#39;une part de lutter contre le syndrome d&#39;effondrement des colonies et
+                          d&#39;autre part, en renforçant la population d&#39;abeilles et donc l&#39;action de pollinisation, c&#39;est la
+                          biodiversité que l&#39;on préserve. « L’union fait la force », un adage qui se vérifie année après année sur
+                          ses ruchers. Plus il y a de ruches et plus il est facile de pallier les carences de certaines, plus il est aisé
+                          d’utiliser la force des unes pour tirer les autres vers le haut. Le parrainage de ruches va donc au-delà
+                          d’une simple augmentation de la population d’abeilles ; c’est un épaulement de poids pour le cheptel
                       déjà en place et une assurance supplémentaire pour Confidences d’Abeilles.<br /><br />
-                      Parrainer une ruche pour une entreprise est donc loin d&#39;être anodin. C’est une volonté forte et
-                      résolument tournée vers l’avenir qui profite autant à l&#39;entreprise, qu’à l&#39;environnement et qu’aux
+                          Parrainer une ruche pour une entreprise est donc loin d&#39;être anodin. C’est une volonté forte et
+                          résolument tournée vers l’avenir qui profite autant à l&#39;entreprise, qu’à l&#39;environnement et qu’aux
                       apiculteurs.<br /><br />
-                      Vous pouvez retrouver ici une infographie présentant le service proposé et là un document exhaustif
+                          Vous pouvez retrouver ici une infographie présentant le service proposé et là un document exhaustif
                       avec une FAQ.<br /><br />
-                      Par ailleurs, vous trouverez ci-après mes coordonnées. Je reste à votre entière disposition si vous
+                          Par ailleurs, vous trouverez ci-après mes coordonnées. Je reste à votre entière disposition si vous
                       avez des questions.<br /><br />
-                      Je vous souhaite une excellente journée.<br /><br />
-                      [x]<br /><br />
-                      [Coordonnées]
+                          Je vous souhaite une excellente journée.<br /><br />
+                          [x]<br /><br />
+                          [Coordonnées]
                         </p>
                       </div>
                       <div className="modal-footer">

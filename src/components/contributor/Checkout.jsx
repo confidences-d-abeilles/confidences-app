@@ -1,60 +1,59 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import request from '../../services/Net';
 import NotificationSystem from 'react-notification-system';
+import request from '../../services/Net';
 import { handleTick } from '../../services/FormService';
 
-import Meta from '../utils/Meta'
+import Meta from '../utils/Meta';
 
 export default class ContributorCheckout extends Component {
-
   constructor(props) {
     super(props);
-    
+
     this.state = {
-      contracts : [],
-      signed : false
+      contracts: [],
+      signed: false,
     }
   }
 
   componentDidMount() {
     request({
-      url : '/contract',
-      method: 'get'
+      url: '/contract',
+      method: 'get',
     }, this.refs.notif).then((res) => {
-      this.setState({ contracts : res });
-    })
+      this.setState({ contracts: res });
+    });
   }
 
   proceed() {
     if (!this.state.signed) {
       this.refs.notif.addNotification({
-        message : 'Merci d\'accepter les termes du contrats',
-        level : 'warning'
+        message: 'Merci d\'accepter les termes du contrats',
+        level: 'warning'
       });
     } else {
       request({
-        url : '/contract',
-        method : 'put',
-        data : {
-          signed : true
+        url: '/contract',
+        method: 'put',
+        data: {
+          signed: true
         }
       }, this.refs.notif).then((res) => {
-        this.setState({ redirect : true });
-      }).catch((err) => {})
+        this.setState({ redirect: true });
+      }).catch((err) => { })
     }
   }
 
-    render () {
-        return (
+  render() {
+    return (
       <div className="container py-4">
-        <Meta title="Signature du contrat"/>
+        <Meta title="Signature du contrat" />
         <NotificationSystem ref="notif" />
-        {(this.state.redirect)?<Redirect to="/contributor/final" />:null}
+        {(this.state.redirect) ? <Redirect to="/contributor/final" /> : null}
         <div className="row justify-content-center">
           <div className="col">
             <div className="progress">
-              <div className="progress-bar" role="progressbar" style={{width: '100%'}}></div>
+              <div className="progress-bar" role="progressbar" style={{ width: '100%' }}></div>
             </div>
           </div>
         </div>
@@ -63,7 +62,7 @@ export default class ContributorCheckout extends Component {
             <h2 className="text-center my-4">Validation et signature électronique du contrat</h2>
             {this.state.contracts.map((contract) => {
               return (
-                <object data={process.env.REACT_APP_CONTENT_DOMAIN+"/"+contract.filename} type="application/pdf" style={{ width: '100%', height: '500px' }}>
+                <object data={process.env.REACT_APP_CONTENT_DOMAIN + "/" + contract.filename} type="application/pdf" style={{ width: '100%', height: '500px' }}>
 
                 </object>
               )
@@ -77,6 +76,6 @@ export default class ContributorCheckout extends Component {
           </div>
         </div>
       </div>
-        );
-    }
+    );
+  }
 }
