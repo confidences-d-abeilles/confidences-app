@@ -7,6 +7,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import initAnalytics from './services/analytics/init';
+import logAnalytics from './services/analytics/logAnalytics';
 import CompanyPage from './components/company/Page';
 import MyRouter from './components/Router';
 
@@ -22,8 +23,8 @@ const App = () => (
         <Route component={ScrollToTop} />
         <Switch>
           <Redirect path="/perus" to="/parrains/perus" />
-          <Route path="/parrains/:namespace" component={CompanyPage} />
-          <Route component={MyRouter} />
+          <Route path="/parrains/:namespace" component={logAnalytics(CompanyPage)} />
+          <Route component={logAnalytics(MyRouter)} />
         </Switch>
       </Fragment>
     </Router>
