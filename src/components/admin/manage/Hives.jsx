@@ -287,8 +287,7 @@ export default class AdminManageHives extends Component {
                           <td>
                             <button className="btn btn-link btn-sm" onClick={() => {
                               this.setState({
-                                //selected : hive,
-                                id_selected: hive.id,
+                                idSelected: hive.id,
                                 ratio: hive.ratio,
                                 feedback: hive.feedback,
                                 stateFeedback: 0,
