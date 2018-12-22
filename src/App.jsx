@@ -9,7 +9,7 @@ import {
 import initAnalytics from './services/analytics/init';
 import CompanyPage from './components/company/Page';
 import MyRouter from './components/Router';
-import logAnalytics from '../services/analytics/logAnalytics';
+import logAnalytics from './services/analytics/logAnalytics';
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
