@@ -9,23 +9,28 @@ import {
 import initAnalytics from './services/analytics/init';
 import CompanyPage from './components/company/Page';
 import MyRouter from './components/Router';
+import logAnalytics from '../services/analytics/logAnalytics';
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
   return null;
 };
 
+const WithAnalytics = () => logAnalytics(
+  <Fragment>
+    <Route component={ScrollToTop} />
+    <Switch>
+      <Redirect path="/perus" to="/parrains/perus" />
+      <Route path="/parrains/:namespace" component={CompanyPage} />
+      <Route component={MyRouter} />
+    </Switch>
+  </Fragment>
+);
+
 const App = () => (
   <StripeProvider apiKey={process.env.REACT_APP_STRIPE_API_KEY}>
     <Router>
-      <Fragment>
-        <Route component={ScrollToTop} />
-        <Switch>
-          <Redirect path="/perus" to="/parrains/perus" />
-          <Route path="/parrains/:namespace" component={CompanyPage} />
-          <Route component={MyRouter} />
-        </Switch>
-      </Fragment>
+      <WithAnalytics />
     </Router>
   </StripeProvider>
 );

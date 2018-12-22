@@ -10,9 +10,8 @@ import Lea from '../assets/img/lea.jpg';
 import Marion from '../assets/img/marion.jpg';
 import Profile from '../assets/img/profile.png';
 import Meta from './utils/Meta';
-import logAnalytics from '../services/analytics/logAnalytics';
 
-export default logAnalytics(() => (
+export default () => (
   <div className="container">
     <Meta title="L'équipe"/>
     <h2 className="text-center my-4">Notre équipe</h2>
@@ -143,4 +142,4 @@ export default logAnalytics(() => (
       </div>
     </div>
   </div>
-));
+);
