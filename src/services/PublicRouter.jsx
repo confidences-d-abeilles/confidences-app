@@ -75,6 +75,11 @@ const JobsDesigner = Loadable({
   loading: () => null,
 });
 
+const JobsProduction = Loadable({
+  loader: () => import('../components/static/jobs/JobsProduction'),
+  loading: () => null,
+});
+
 const JobsMarketing = Loadable({
   loader: () => import('../components/static/jobs/JobsMarketing'),
   loading: () => null,
@@ -185,6 +190,7 @@ export default () => (
     <Route exact path="/jobs" component={Jobs} />
     <Route exact path="/jobs/reactjs" component={JobsReact} />
     <Route exact path="/jobs/designer" component={JobsDesigner} />
+    <Route exact path="/jobs/production" component={JobsProduction} />
     <Route exact path="/jobs/marketing" component={JobsMarketing} />
     <Route exact path="/jobs/businessdev" component={JobsBusinessDev} />
     <Route exact path="/jobs/event" component={JobsEvent} />
