@@ -22,8 +22,8 @@ module.exports = {
         }).toArray();
         req.meta = data[0] ? data[0] : null;
         if (data[0]) {
-          req.meta.ogimg = config.contentDomain + '/' + req.meta.ogimg;
-          req.meta.ogurl = config.baseDomain + req.meta.url;
+          req.meta.ogimg = process.env.REACT_APP_CONTENT_DOMAIN + '/' + req.meta.ogimg;
+          req.meta.ogurl = process.env.REACT_APP_APP_DOMAIN + req.meta.url;
         }
       } catch (e) {
         console.error(e);
