@@ -11,7 +11,7 @@ const RuchesList = Loadable({
 });
 
 const Home = Loadable({
-  loader: () => import('../components/Home'),
+  loader: () => import('../modules/home/home.connector'),
   loading: () => null,
 });
 

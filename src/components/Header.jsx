@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
 import FontAwesome from 'react-fontawesome';
 import logoSquare from '../assets/img/logo-square.png';
 import { isLoggedIn } from '../services/AuthService';
