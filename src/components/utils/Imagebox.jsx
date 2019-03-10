@@ -1,21 +1,28 @@
-import React, { Component } from 'react'
-import Lightbox from 'lightbox-react'
+import React, { useState } from 'react';
+import Lightbox from 'lightbox-react';
+import 'lightbox-react/style.css';
 
-export default class Imagebox extends Component {
+export default ({
+ width, height, paddingTop, src, className, ...props 
+}) => {
+  const [opened, setOpened] = useState(false);
 
-  constructor (props) {
-    super(props);
-    this.state = {
-      isOpen: false
-    };
-  }
-
-  render () {
-    return(
-
-      <div onClick={() => this.setState({ isOpen: true })} className={this.props.className} style={{ width: this.props.width, cursor: 'pointer', height: this.props.height, backgroundPosition : 'center', paddingTop: this.props.paddingTop, backgroundImage: `url(${this.props.src})`, backgroundSize: 'cover' }}>
-        {this.state.isOpen && <Lightbox mainSrc={this.props.src} onCloseRequest={() => this.setState({ isOpen: false })}/>}
-      </div>
-    );
-  }
-}
+  return (
+    <div
+      onClick={() => setOpened(true)}
+      className={className}
+      style={{
+        width,
+        cursor: 'pointer',
+        height,
+        backgroundPosition: 'center',
+        paddingTop,
+        backgroundImage: `url(${src})`,
+        backgroundSize: 'cover',
+      }}
+      {...props}
+    >
+      {opened && <Lightbox mainSrc={src} onCloseRequest={() => setOpened(false)} />}
+    </div>
+  );
+};
