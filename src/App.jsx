@@ -9,17 +9,12 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import * as Sentry from '@sentry/browser';
 
 import reducers from './modules';
 import initAnalytics from './services/analytics/init';
 import logAnalytics from './services/analytics/logAnalytics';
 import CompanyPage from './components/company/Page';
 import MyRouter from './components/Router';
-
-Sentry.init({
-  dsn: 'https://5d9a3bd8d34a44e9b6091409f38392e1@sentry.io/1412093',
-});
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
