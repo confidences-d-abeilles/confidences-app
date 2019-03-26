@@ -9,7 +9,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/browser';
 
 import reducers from './modules';
 import initAnalytics from './services/analytics/init';
