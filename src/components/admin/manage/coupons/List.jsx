@@ -18,10 +18,6 @@ export default class List extends Component {
 		this.refresh();
 	}
 
-	componentWillReceiveProps() {
-		this.refresh();
-	}
-
 	refresh() {
 		request({
 			url: '/coupon',
