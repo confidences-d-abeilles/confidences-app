@@ -15,6 +15,7 @@ import initAnalytics from './services/analytics/init';
 import logAnalytics from './services/analytics/logAnalytics';
 import CompanyPage from './components/company/Page';
 import MyRouter from './components/Router';
+import Error from './services/Errors';
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
@@ -27,20 +28,22 @@ const store = createStore(
 );
 
 const App = () => (
-  <StripeProvider apiKey={process.env.REACT_APP_STRIPE_API_KEY}>
-    <Provider store={store}>
-      <Router>
-        <Fragment>
-          <Route component={ScrollToTop} />
-          <Switch>
-            <Redirect path="/perus" to="/parrains/perus" />
-            <Route path="/parrains/:namespace" component={logAnalytics(CompanyPage)} />
-            <Route component={logAnalytics(MyRouter)} />
-          </Switch>
-        </Fragment>
-      </Router>
-    </Provider>
-  </StripeProvider>
+  <Error>
+    <StripeProvider apiKey={process.env.REACT_APP_STRIPE_API_KEY}>
+      <Provider store={store}>
+        <Router>
+          <Fragment>
+            <Route component={ScrollToTop} />
+            <Switch>
+              <Redirect path="/perus" to="/parrains/perus" />
+              <Route path="/parrains/:namespace" component={logAnalytics(CompanyPage)} />
+              <Route component={logAnalytics(MyRouter)} />
+            </Switch>
+          </Fragment>
+        </Router>
+      </Provider>
+    </StripeProvider>
+  </Error>
 );
 
 export default initAnalytics(App);
