@@ -24,7 +24,7 @@ class PayChecker extends PureComponent {
   }
 
   componentWillUnmount() {
-    this.ticker.clearInterval();
+    clearInterval(this.ticker);
   }
 
   checkStatus = () => {
