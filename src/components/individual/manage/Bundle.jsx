@@ -10,6 +10,7 @@ import NotificationSystem from 'react-notification-system'
 import Meta from '../../utils/Meta'
 import Details from './bundle/Details'
 import Hive from './bundle/Hive'
+import { ButtonLink } from '../../utils/Button';
 
 export default class Bundle extends Component {
 
@@ -19,7 +20,7 @@ export default class Bundle extends Component {
 			user: null,
 			edit_present: false
 		}
-		
+
 	}
 
 	componentDidMount() {
@@ -63,7 +64,6 @@ export default class Bundle extends Component {
 			return (
 				<div className="text-center">
 					<p className="alert alert-warning mt-4">La validation du règlement de votre parrainage est en cours</p>
-					<a href="/" className="btn btn-secondary m-2 disabled" target="_blank" rel="noopener noreferrer" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
 				</div>
 			);
 		}
@@ -76,10 +76,9 @@ export default class Bundle extends Component {
 			return (
 				<p className="text-center my-5">
 					{this.state.user.hive_id &&
-					<Link className="btn btn-secondary m-2 btn-sm" to={'/hive/'+this.state.user.hive_id}>Voir la page de ma ruche</Link>}
+					  <ButtonLink secondary to={'/hive/'+this.state.user.hive_id} label="Voir la page de ma ruche" />}
 					{this.state.user.bundles[0].certif &&
 					<a href={process.env.REACT_APP_CONTENT_DOMAIN+'/'+this.state.user.bundles[0].certif} rel="noopener noreferrer" className="btn btn-secondary m-2 btn-sm" target="_blank">Télécharger mon certificat de parrainage</a>}
-					<a href="https://confidences-dabeilles-visites.appointedd.com/" target="_blank" rel="noopener noreferrer" className="btn btn-info btn-sm m-2">Réserver une visite du rucher</a>
 				</p>
 			)
 		}

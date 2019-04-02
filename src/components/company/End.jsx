@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NotificationSystem from 'react-notification-system';
 import Main from '../../assets/img/end_part.jpg';
 
 import Meta from '../utils/Meta';
 import request from '../../services/Net';
-import Loading from '../utils/Loading';
 import PayChecker from '../utils/PayChecker';
 
 export default class CompanyEnd extends Component {
   state = {
     namespace: '',
-    loading: false,
     bundleId: null,
   };
 
