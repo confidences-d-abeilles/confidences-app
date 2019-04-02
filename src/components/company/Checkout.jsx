@@ -29,7 +29,6 @@ export default class CompanyCheckout extends Component {
       feedback: '',
       present_date: moment(),
       wish: false,
-      different: false,
       bundle_id: null,
       delivery_address: {
         type: 2
@@ -58,7 +57,6 @@ export default class CompanyCheckout extends Component {
           products: res.bundles[0].products,
           bundle_id: res.bundles[0].id,
           duplicate: true,
-          different: res.bundles[0].addr_diff,
           feedback: res.bundles[0].feedback,
           user: res,
           company_name: res.company_name,
@@ -80,7 +78,6 @@ export default class CompanyCheckout extends Component {
           else if (address.type === 2) {
             this.setState({
               delivery_address: address,
-              different: address.addr_diff
             })
           }
         })
@@ -159,21 +156,6 @@ export default class CompanyCheckout extends Component {
     })
   }
 
-  changeAddress(e) {
-    this.setState({
-      different: e.target.checked
-    }, () => {
-      request({
-        url: '/address/diff',
-        method: 'PUT',
-        data: this.state.delivery_address
-      }, this.refs.notif).then((res) => {
-        console.log('diff ok');
-      })
-    })
-  }
-
-
 
   render() {
     return (
@@ -210,10 +192,8 @@ export default class CompanyCheckout extends Component {
                 </div>
               </div>
               <div className="col-lg-6 col-md-10 col-sm-12">
-                <h3 className="my-4">Adresse de livraison différente <input type="checkbox" name="different" checked={this.state.different} onChange={this.changeAddress.bind(this)} /></h3>
-                {this.state.different &&
-                  <Address data={this.state.delivery_address} company={true} />
-                }
+                <h3 className="my-4">Adresse de livraison</h3>
+                <Address data={this.state.delivery_address} company={true} />
               </div>
             </div>
             <h3 className="my-4">Paiement sécurisé</h3>
