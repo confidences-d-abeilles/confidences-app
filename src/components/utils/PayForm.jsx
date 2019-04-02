@@ -42,7 +42,7 @@ class PayForm extends Component {
 
     this.setState({
       monthlyPayment: monthlyPayment,
-      priceFormat: priceFormat
+      priceFormat: priceFormat,
     })
   }
 
