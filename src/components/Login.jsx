@@ -6,6 +6,7 @@ import { login, isLoggedIn } from '../services/AuthService';
 import Loading from './utils/Loading';
 import request from '../services/Net';
 import Meta from './utils/Meta';
+import { ButtonStyle } from './utils/Button';
 
 export default class Signup extends Component {
   state = {
@@ -78,7 +79,7 @@ export default class Signup extends Component {
                   <div className="form-group">
                     <input type="password" name="password" className="form-control" placeholder="Mot de passe" onChange={handleChange.bind(this)} />
                   </div>
-                  <input type="submit" className="btn btn-primary my-2" value="Se connecter" onClick={this.login.bind(this)} /><br />
+                  <ButtonStyle type="submit" onClick={this.login.bind(this)}>Se connecter</ButtonStyle><br />
                   <Link to="/forgot">Mot de passe oublié ?</Link>
                   <br />
                   <Link to="/presignup">Je n'ai pas encore de compte</Link>

@@ -17,7 +17,7 @@ export default class IndividualCheckout extends Component {
 
 	constructor(props) {
 		super(props);
-		
+
 		this.state = {
 			bsexe_m: '',
 			dsexe_m: '',
@@ -32,7 +32,6 @@ export default class IndividualCheckout extends Component {
 			redirect: false,
 			bees: 0,
 			saved: false,
-			different: false,
 			present: false,
 			present_date: moment(new Date()),
 			present_message: '',
@@ -96,7 +95,6 @@ export default class IndividualCheckout extends Component {
 				else if (address.type === 2) {
 					this.setState({
 						delivery_address: address,
-						different: address.addr_diff
 					})
 				}
 			})
@@ -168,20 +166,6 @@ export default class IndividualCheckout extends Component {
 		})
 	}
 
-	changeAddress(e) {
-			this.setState({
-				different : !this.state.different,
-			}, () => {
-				request({
-					url: '/address/diff',
-					method: 'PUT',
-					data: this.state.delivery_address
-				}, this.refs.notif).then((res) => {
-					console.log('diff ok');
-				})
-			})
-	}
-
     render () {
         return (
 			<div className="container py-4">
@@ -219,10 +203,8 @@ export default class IndividualCheckout extends Component {
 								</div>
 							</div>
 							<div className="col-lg-6 col-md-10 col-sm-12">
-								<h3 className="my-4">Adresse de livraison différente <input type="checkbox" name="different" checked={this.state.different} onChange={this.changeAddress.bind(this)}/></h3>
-								{this.state.different &&
-									<Address data={this.state.delivery_address} />
-								}
+                <h3 className="my-4">Adresse de livraison</h3>
+                <Address data={this.state.delivery_address} />
 								<h3 className="mt-5">Ce parrainage est un cadeau {!this.state.present_ok && <input type="checkbox" name="present" checked={this.state.present} onChange={handleTick.bind(this) }/>}</h3>
 								{this.state.present &&
 									<form>

@@ -9,6 +9,7 @@ const BaseString = `
   border-style: solid;
   border-width: 1px;
   transition: all 0.125s;
+  cursor: pointer;
 
   &:hover, &:focus, &:active {
     text-decoration: none;
