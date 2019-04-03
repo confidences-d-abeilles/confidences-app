@@ -19,7 +19,6 @@ import Error from './services/Errors';
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
-  throw new Error('Error handling exercice');
   return null;
 };
 
