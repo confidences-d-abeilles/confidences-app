@@ -1,11 +1,31 @@
 import React, { Component } from 'react';
 import * as Sentry from '@sentry/browser';
+import styled from '@emotion/styled';
 
-// Sentry.init({
-//  dsn: "https://5d9a3bd8d34a44e9b6091409f38392e1@sentry.io/1412093"
-// });
-// should have been called before using it here
-// ideally before even rendering your react app
+const Background = styled('div')({
+  width: '100vw',
+  height: '100vh',
+});
+
+const Centered = styled('div')({
+  position: 'absolute',
+  left: '50%',
+  top: '50%',
+  textAlign: 'center',
+  transform: 'translate(-50%, -50%)',
+});
+
+const Error = styled('p')({
+  color: '#E49C00',
+  fontSize: '2rem',
+  fontWeight: 'bolder',
+});
+
+const FeedBackLink = styled('a')({
+  color: 'white',
+  cursor: 'pointer',
+  textDecoration: 'underline !important',
+});
 
 export default class ErrorHandler extends Component {
   constructor(props) {
@@ -24,14 +44,20 @@ export default class ErrorHandler extends Component {
   }
 
   render() {
-    if (this.state.error) {
-      //render fallback UI
+    const { error } = this.state;
+    const { children } = this.props;
+    if (error) {
       return (
-        <a onClick={() => Sentry.showReportDialog()}>Report feedback</a>
+        <Background>
+          <Centered>
+            <Error>Une erreur est survenue 😓... Nous nous excusons de la gêne occasionnée</Error>
+            <FeedBackLink onClick={() => Sentry.showReportDialog()}>
+              Cliquez ici pour nous en dire plus sur les circonstances et nous aider à améliorer notre service
+            </FeedBackLink>
+          </Centered>
+        </Background>
       );
-    } else {
-      //when there's not an error, render children untouched
-      return this.props.children;
     }
+    return children;
   }
 }
