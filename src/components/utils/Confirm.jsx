@@ -1,15 +1,16 @@
 import React from 'react';
+import { ButtonStyle } from './Button';
 
-export default ({ class: className, text, action }) => (
+export default ({ text, action }) => (
   <div>
-    <button
-      className={className || 'btn btn-secondary btn-sm'}
+    <ButtonStyle
       data-toggle="modal"
       data-target="#confModal"
       type="button"
+      primary
     >
       {text}
-    </button>
+    </ButtonStyle>
     <div className="modal fade" id="confModal">
       <div className="modal-dialog" role="document">
         <div className="modal-content">
