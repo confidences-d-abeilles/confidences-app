@@ -6,8 +6,9 @@ import request from '../../services/Net';
 import { isLoggedIn } from '../../services/AuthService';
 import Meta from '../utils/Meta';
 import EditAddress from '../utils/Address/EditAddress';
+import { withNotification } from '../../services/withNotification';
 
-export default class IndividualAddress extends Component {
+export default withNotification(class IndividualAddress extends Component {
   state = {
     redirect: false,
     address: {
@@ -17,10 +18,11 @@ export default class IndividualAddress extends Component {
   };
 
   componentDidMount() {
+    const { notification } = this.props;
     request({
       url: '/user/me',
       method: 'get',
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         address: {
           ...this.state.address,
@@ -41,17 +43,18 @@ export default class IndividualAddress extends Component {
 
   createAddress = (e) => {
     e.preventDefault();
+    const { notification } = this.props;
     const { address } = this.state;
     request({
       url: '/address',
       method: 'post',
       data: address,
-    }, this.refs.notif).then(() => {
+    }, notification).then(() => {
       request({
         url: '/address',
         method: 'post',
         data: { ...address, type: 2 },
-      }, this.refs.notif).then(() => {
+      }, notification).then(() => {
         this.setState({
           redirect: true,
         });
@@ -89,4 +92,4 @@ export default class IndividualAddress extends Component {
       </div>
     );
   }
-}
+});

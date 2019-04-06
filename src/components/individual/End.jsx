@@ -6,21 +6,23 @@ import Main from '../../assets/img/end_part.jpg';
 
 import Meta from '../utils/Meta';
 import request from '../../services/Net';
+import { withNotification } from '../../services/withNotification';
 
-export default class IndividualEnd extends Component {
+export default withNotification(class IndividualEnd extends Component {
   state = {
     bundleId: null,
   };
 
   componentDidMount() {
+    const { notification } = this.props;
     request({
       url: '/user/me',
       method: 'get',
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       request({
         url: `/bundle/owner/${res.id}`,
         method: 'get',
-      }, this.refs.notif).then((res) => {
+      }, notification).then((res) => {
         this.setState({
           bundleState: res.state,
           bundleId: res.id,
@@ -54,4 +56,4 @@ export default class IndividualEnd extends Component {
       </div>
     );
   }
-}
+});

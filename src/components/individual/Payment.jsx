@@ -6,23 +6,25 @@ import { Elements } from 'react-stripe-elements';
 import PayForm from '../utils/PayForm'
 
 import Meta from '../utils/Meta'
+import { withNotification } from '../../services/withNotification';
 
-export default class IndividualPayement extends Component {
+export default withNotification(class IndividualPayement extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
 			redirect: false
 		}
-		
+
 		this.nbBees = undefined;
 	}
 
 	componentDidMount() {
-		request({
+    const { notification } = this.props;
+    request({
 			url : '/user/me',
 			method : 'get'
-		}, this.refs.notif)
+		}, notification)
 		.then((res) => {
 			this.setState({
 				price: res.bundles[0].price,
@@ -35,14 +37,15 @@ export default class IndividualPayement extends Component {
 	}
 
 	updateBundleState = (state) => {
-		return new Promise(resolve => {
+    const { notification } = this.props;
+    return new Promise(resolve => {
 			request({
 				url: '/bundle/'+this.state.bundle_id,
 				method: 'put',
 				data : {
 					state : state
 				}
-			}, this.refs.notif).then((res) => {
+			}, notification).then((res) => {
 				this.setState({ redirect : true })
 			})
 		});
@@ -88,4 +91,4 @@ export default class IndividualPayement extends Component {
 			</div>
 		);
 	}
-}
+});
