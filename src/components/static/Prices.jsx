@@ -1,7 +1,22 @@
-import React, { Component } from 'react'
-import { handleTick } from '../../services/FormService'
+import React, { Component } from 'react';
+import styled from '@emotion/styled';
 
-import Meta from '../utils/Meta'
+import { handleTick } from '../../services/FormService';
+import Meta from '../utils/Meta';
+
+const Wrapper = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  margin: '2rem',
+});
+
+const Item = styled('div')({
+  flex: 1,
+  padding: '0.5rem',
+  fontWeight: 'light',
+  fontSize: '1.2rem',
+  textAlign: 'center',
+});
 
 export default () => (
   <div className="container">
@@ -57,15 +72,12 @@ class IndividualPrices extends Component {
 
     return (
       <div>
-        <table className="table table-sm mt-4 text-left">
-          <tbody>
-            <tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Votre nom sur une ruche</div></td></tr>
-            <tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Une page dédiée à la ruche avec des photos de vos abeilles et des actualités régulières</div></td></tr>
-            <tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Des pots de miel personnalisés</div></td></tr>
-            <tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Expédition des pots via le service Colissimo incluse</div></td></tr>
-            <tr><td></td></tr>
-          </tbody>
-        </table>
+        <Wrapper>
+          <Item>Votre nom sur une ruche</Item>
+          <Item>Une page dédiée à la ruche avec des photos de vos abeilles et des actualités régulières</Item>
+          <Item>Des pots de miel personnalisés</Item>
+          <Item>Expédition des pots via le service Colissimo incluse</Item>
+        </Wrapper>
         <div className="table-responsive">
           <table className="table">
             <tbody>
@@ -102,15 +114,12 @@ class CompanyPrices extends Component {
   render() {
     return (
       <React.Fragment>
-        <table className="table table-sm mt-4 text-left">
-          <tbody>
-            <tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Ruches aux couleurs de votre entreprise</div></td></tr>
-            <tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Une page dédiée à votre entreprise avec des photos de vos ruches et des actualités régulières</div></td></tr>
-            <tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Des pots de miel personnalisés</div></td></tr>
-            <tr><td className="row no-gutters"><div className="col-lg-6 offset-lg-3 px-0">Expédition des pots via le service Colissimo incluse</div></td></tr>
-            <tr><td></td></tr>
-          </tbody>
-        </table>
+        <Wrapper>
+          <Item>Ruches aux couleurs de votre entreprise</Item>
+          <Item>Une page dédiée à votre entreprise avec des photos de vos ruches et des actualités régulières</Item>
+          <Item>Des pots de miel personnalisés</Item>
+          <Item>Expédition des pots via le service Colissimo incluse</Item>
+        </Wrapper>
         <div className="table-responsive">
           <table className="table">
             <tbody>
