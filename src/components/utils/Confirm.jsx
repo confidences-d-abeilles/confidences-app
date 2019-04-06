@@ -1,16 +1,16 @@
 import React from 'react';
-import { ButtonStyle } from './Button';
+import { Button } from './Button';
 
 export default ({ text, action }) => (
   <div>
-    <ButtonStyle
+    <Button
       data-toggle="modal"
       data-target="#confModal"
       type="button"
       primary
     >
       {text}
-    </ButtonStyle>
+    </Button>
     <div className="modal fade" id="confModal">
       <div className="modal-dialog" role="document">
         <div className="modal-content">

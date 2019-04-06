@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
-import { handleChange } from '../../services/FormService'
-import NotificationSystem from 'react-notification-system'
-import request from '../../services/Net'
+import React, { Component } from 'react';
 import ReactQuill from 'react-quill';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
-import Confirm from './Confirm';
 
-export default class Feedback extends Component {
+import { handleChange } from '../../services/FormService';
+import request from '../../services/Net';
+import Confirm from './Confirm';
+import { withNotification } from '../../services/withNotification';
+
+export default withNotification(class Feedback extends Component {
 
   constructor (props) {
     super (props);
@@ -20,14 +21,15 @@ export default class Feedback extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    const { notification } = this.props;
     if (nextProps.name) {
       const data = new FormData();
       data.append('id_news', nextProps.name);
       request({
         url:'/news/getOneNews/',
         method: 'POST',
-        data: data
-      },this.refs.notif).then((res) => {
+        data,
+      }, notification).then((res) => {
         this.setState({
           newsTake: 1,
           actu: res[0].content,
@@ -38,7 +40,6 @@ export default class Feedback extends Component {
           newsModify: nextProps.name
         }, () => {
           console.log(this.state.actuDate);
-          console.log("ẗest new actu");
         })
       })
     }
@@ -46,8 +47,8 @@ export default class Feedback extends Component {
 
   updateActu(e) {
     e.preventDefault()
+    const { notification } = this.props;
     const data = new FormData();
-    console.log("update");
     data.append('content', this.state.actu);
     data.append('title', this.state.actuTitle);
     data.append('date', this.state.actuDate);
@@ -58,11 +59,10 @@ export default class Feedback extends Component {
       data.append('img', this.state.actuImg);
     }
     request({
-      url: '/news/'+this.state.newsModify,
+      url: `/news/${this.state.newsModify}`,
       method: 'put',
       data: data
-    }, this.refs.notif).then((res) => {
-      console.log(res);
+    }, notification).then((res) => {
       this.setState({
         selected: '',
         content: '',
@@ -79,9 +79,9 @@ export default class Feedback extends Component {
   }
 
   createActu(e) {
-    e.preventDefault()
+    e.preventDefault();
+    const { notification } = this.props;
     const data = new FormData();
-    console.log("creation de news")
     console.log(this.state.actuTitle);
     data.append('content', this.state.actu);
     data.append('title', this.state.actuTitle);
@@ -95,15 +95,15 @@ export default class Feedback extends Component {
       method: 'post',
       data: data,
       header: {
-        'content-type' : 'multipart/form-data'
-      }
-    }, this.refs.notif).then((res) => {
+        'content-type' : 'multipart/form-data',
+      },
+    }, notification).then(() => {
       this.setState({
         newsTake: 0,
         actu: '',
         actuTitle: '',
         actuDate: moment(new Date()),
-        actuImg: ''
+        actuImg: '',
       })
       document.getElementById('actu-img').value = "";
     })
@@ -113,15 +113,14 @@ export default class Feedback extends Component {
     this.setState({
       actuDate: date
     });
-    console.log(date);
   }
 
   deleteActu() {
-    console.log("delete");
+    const { notification } = this.props;
     request({
       url: '/news/delete/'+this.state.newsModify,
       method: 'DELETE'
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         newsModify: null,
         content: '',
@@ -147,7 +146,6 @@ export default class Feedback extends Component {
   render() {
     return (
       <div>
-      <NotificationSystem ref="notif" />
       <h3 className="text-center">Ajouter une actualité</h3>
       <form onSubmit={this.state.newsTake?this.updateActu.bind(this):this.createActu.bind(this)}>
         <div className="form-group">
@@ -192,4 +190,4 @@ export default class Feedback extends Component {
       </div>
     )
   }
-}
+});

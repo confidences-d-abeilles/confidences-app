@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
 import { handleChange } from '../services/FormService';
 import { login, isLoggedIn } from '../services/AuthService';
 import Loading from './utils/Loading';
 import request from '../services/Net';
 import Meta from './utils/Meta';
-import { ButtonStyle } from './utils/Button';
+import { Button } from './utils/Button';
+import { withNotification } from '../services/withNotification';
 
-export default class Signup extends Component {
+export default withNotification(class Login extends Component {
   state = {
     email: '',
     password: '',
     redirect: false,
     loading: false,
-  }
+  };
 
   componentDidMount() {
     const { location: { pathname } } = this.props;
@@ -27,12 +27,13 @@ export default class Signup extends Component {
     }
   }
 
-  login(e) {
+  login = (e) => {
     e.preventDefault();
     const { email, password } = this.state;
+    const { notification } = this.props;
     if (!email || !password) {
-      this.refs.notificationSystem.addNotification({
-        message: "Merci de renseigner tous les champs",
+      notification.addNotification({
+        message: 'Merci de renseigner tous les champs',
         level: 'warning',
       });
     } else {
@@ -46,8 +47,8 @@ export default class Signup extends Component {
         data: {
           email,
           password,
-        }
-      }, this.refs.notificationSystem).then((res) => {
+        },
+      }, notification).then((res) => {
         login(res.id, res.token, res.user_type);
         this.setState({
           redirect: true,
@@ -61,11 +62,12 @@ export default class Signup extends Component {
   }
 
   render() {
-    const { loading, redirect } = this.state;
+    const {
+      loading, redirect, email, password,
+    } = this.state;
     return (
       <div className="container py-4">
-        <Meta title="Connexion"/>
-        <NotificationSystem ref="notificationSystem" />
+        <Meta title="Connexion" />
         <div className="row justify-content-center">
           <div className="col-lg-4 col-md-6 col-sm-12">
             <h2 className="text-center my-4">Connexion</h2>
@@ -74,12 +76,12 @@ export default class Signup extends Component {
               : (
                 <form className="text-center">
                   <div className="form-group">
-                    <input type="email" name="email" className="form-control" placeholder="Adresse email" onChange={handleChange.bind(this)} autoComplete="email" />
+                    <input type="email" name="email" className="form-control" placeholder="Adresse email" onChange={handleChange.bind(this)} autoComplete="email" value={email} />
                   </div>
                   <div className="form-group">
-                    <input type="password" name="password" className="form-control" placeholder="Mot de passe" onChange={handleChange.bind(this)} />
+                    <input type="password" name="password" className="form-control" placeholder="Mot de passe" onChange={handleChange.bind(this)} value={password} />
                   </div>
-                  <ButtonStyle type="submit" onClick={this.login.bind(this)}>Se connecter</ButtonStyle><br />
+                  <Button type="submit" onClick={this.login}>Se connecter</Button><br />
                   <Link to="/forgot">Mot de passe oublié ?</Link>
                   <br />
                   <Link to="/presignup">Je n'ai pas encore de compte</Link>
@@ -94,4 +96,4 @@ export default class Signup extends Component {
       </div>
     );
   }
-}
+});

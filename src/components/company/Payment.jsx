@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import request from '../../services/Net';
-import NotificationSystem from 'react-notification-system'
 import { Elements } from 'react-stripe-elements';
-import PayForm from '../utils/PayForm'
 
-import Meta from '../utils/Meta'
+import request from '../../services/Net';
+import PayForm from '../utils/PayForm';
+import Meta from '../utils/Meta';
+import { withNotification } from '../../services/withNotification';
 
-export default class CompanyPayment extends Component {
-
+export default withNotification(class CompanyPayment extends Component {
   constructor(props) {
     super(props);
     this.state = {
       bees: null,
       redirect: false,
-      company_name: null
-    }
-
+      company_name: null,
+    };
   }
 
   componentDidMount() {
+    const { notification } = this.props;
     request({
       url: '/user/me',
-      method: 'get'
-    }, this.refs.notif)
+      method: 'get',
+    }, notification)
       .then((res) => {
         this.setState({
           price: res.bundles[0].price,
@@ -32,34 +31,33 @@ export default class CompanyPayment extends Component {
       });
   }
 
-  updateBundleState = (state) => {
-    return new Promise(resolve => {
-      request({
-        url: '/bundle/' + this.state.bundle_id,
-        method: 'put',
-        data: {
-          state: state
-        }
-      }, this.refs.notif).then((res) => {
-        this.setState({ redirect: true })
-      })
+  updateBundleState = state => new Promise((resolve) => {
+    const { notification } = this.props;
+    request({
+      url: `/bundle/${this.state.bundle_id}`,
+      method: 'put',
+      data: {
+        state,
+      },
+    }, notification).then((res) => {
+      this.setState({ redirect: true });
     });
-  }
+  })
 
   async save() {
-    console.log('save bundle request');
-    return new Promise(resolve => {
+    const { notification } = this.props;
+    return new Promise((resolve) => {
       request({
-        url: '/bundle/' + this.state.bundle_id,
+        url: `/bundle/${this.state.bundle_id}`,
         method: 'put',
         data: {
           state: this.transferBank ? 1 : this.state.bundleState,
           bankTransferDone: (this.transferBankDone ? 'true' : 'false'),
           present_date: (this.state.present) ? this.state.start_date : new Date(),
-        }
-      }, this.refs.notif).then((res) => {
+        },
+      }, notification).then((res) => {
         resolve();
-      })
+      });
     });
   }
 
@@ -67,7 +65,6 @@ export default class CompanyPayment extends Component {
     return (
       <div className="container py-4">
         <Meta title="Paiement" />
-        <NotificationSystem ref="notif" />
         {(this.state.redirect) ? <Redirect to="/company/end" /> : null}
         <div className="row">
           <div className="col-lg-12">
@@ -83,24 +80,35 @@ export default class CompanyPayment extends Component {
             <h3 className="text-center my-4"><small>Paiement par virement bancaire</small></h3>
             <p>Veuillez trouver nos coordonnées bancaires pour procéder au virement</p>
             <p>
-              <strong>Domiciliation : </strong>QONTO - 92641 BOULOGNE-BILLANCOURT<br />
-              <strong>IBAN : </strong>FR76 1679 8000 0100 0004 1298 259<br />
-              <strong>BIC : </strong>TRZOFR21XXX<br /><br />
-              <strong>Numéro de facture à indiquer dans la référence du virement : </strong>{this.state.bill_number}
+              <strong>Domiciliation : </strong>
+QONTO - 92641 BOULOGNE-BILLANCOURT
+              <br />
+              <strong>IBAN : </strong>
+FR76 1679 8000 0100 0004 1298 259
+              <br />
+              <strong>BIC : </strong>
+TRZOFR21XXX
+              <br />
+              <br />
+              <strong>Numéro de facture à indiquer dans la référence du virement : </strong>
+              {this.state.bill_number}
             </p>
             <p>
               Si votre banque vous impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
 							invitons	à	sélectionner	«	Bénéficiaire ajouté	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
-							alors	adressé	3	jours	plus	tard. <br />
+							alors	adressé	3	jours	plus	tard.
+              {' '}
+              <br />
               De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
-						</p>
+            </p>
             <p className="text-center">
-              <button onClick={this.updateBundleState.bind(this, 0)} className="btn btn-primary">Bénéficiaire ajouté</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<button onClick={this.updateBundleState.bind(this, 1)} className="btn btn-primary">Virement effectué</button>
+              <button onClick={this.updateBundleState.bind(this, 0)} className="btn btn-primary">Bénéficiaire ajouté</button>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <button onClick={this.updateBundleState.bind(this, 1)} className="btn btn-primary">Virement effectué</button>
             </p>
           </div>
         </div>
       </div>
     );
   }
-}
+});

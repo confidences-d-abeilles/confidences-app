@@ -12,6 +12,7 @@ import {
 
 import reducers from './modules';
 import initAnalytics from './services/analytics/init';
+import { NotificationProvider } from './services/withNotification';
 import logAnalytics from './services/analytics/logAnalytics';
 import CompanyPage from './components/company/Page';
 import MyRouter from './components/Router';
@@ -29,20 +30,22 @@ const store = createStore(
 
 const App = () => (
   <Error>
-    <StripeProvider apiKey={process.env.REACT_APP_STRIPE_API_KEY}>
-      <Provider store={store}>
-        <Router>
-          <Fragment>
-            <Route component={ScrollToTop} />
-            <Switch>
-              <Redirect path="/perus" to="/parrains/perus" />
-              <Route path="/parrains/:namespace" component={logAnalytics(CompanyPage)} />
-              <Route component={logAnalytics(MyRouter)} />
-            </Switch>
-          </Fragment>
-        </Router>
-      </Provider>
-    </StripeProvider>
+    <NotificationProvider>
+      <StripeProvider apiKey={process.env.REACT_APP_STRIPE_API_KEY}>
+        <Provider store={store}>
+          <Router>
+            <Fragment>
+              <Route component={ScrollToTop} />
+              <Switch>
+                <Redirect path="/perus" to="/parrains/perus" />
+                <Route path="/parrains/:namespace" component={logAnalytics(CompanyPage)} />
+                <Route component={logAnalytics(MyRouter)} />
+              </Switch>
+            </Fragment>
+          </Router>
+        </Provider>
+      </StripeProvider>
+    </NotificationProvider>
   </Error>
 );
 

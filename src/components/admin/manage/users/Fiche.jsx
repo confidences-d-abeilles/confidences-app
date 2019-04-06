@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
+
 import request from '../../../../services/Net';
 import General from './tiles/General/General';
 import Bundle from './tiles/Bundle';
@@ -8,9 +8,9 @@ import Address from '../../../utils/Address/Address';
 import Email from './tiles/Email';
 import Memo from './tiles/Memo/Memo';
 import { login } from '../../../../services/AuthService';
+import { withNotification } from '../../../../services/withNotification';
 
-export default class Fiche extends Component {
-
+export default withNotification(class Fiche extends Component {
   state = {
     user: null,
     redirect: false,
@@ -22,14 +22,15 @@ export default class Fiche extends Component {
   }
 
   getUser = () => {
+    const { notification } = this.props;
     request({
       url: `/user/${this.props.match.params.id}`,
       method: 'get',
-    }).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         user: res,
       });
-    }, this.refs.notifs);
+    });
   };
 
   getUserId = () => {
@@ -38,29 +39,31 @@ export default class Fiche extends Component {
   };
 
   deleteUser = () => {
+    const { notification } = this.props;
     request({
       url: `/user/${this.getUserId()}`,
       method: 'delete',
-    }).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         redirect: true,
       });
-    }, this.refs.notifs);
+    });
   };
 
   impersonate = () => {
+    const { notification } = this.props;
     request({
       url: '/impersonate',
       method: 'post',
       data: {
         userId: this.getUserId(),
       },
-    }).then((res) => {
+    }, notification).then((res) => {
       login(res.id, res.token, res.user_type);
       this.setState({
         goToAccount: true,
       });
-    }, this.refs.notifs);
+    });
   };
 
   render() {
@@ -68,7 +71,6 @@ export default class Fiche extends Component {
       <div>
         {this.state.redirect && <Redirect to="/admin/manage/user" />}
         {this.state.goToAccount && <Redirect to="/account" />}
-        <NotificationSystem ref="notif" />
         <div className="row">
           <div className="col">
             <ol className="breadcrumb">
@@ -121,4 +123,4 @@ export default class Fiche extends Component {
       </div>
     );
   }
-}
+});

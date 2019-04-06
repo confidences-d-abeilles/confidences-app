@@ -1,25 +1,21 @@
-import React, { Component } from 'react'
-import NotificationSystem from 'react-notification-system'
-import request from '../../services/Net'
-import { handleChange } from '../../services/FormService'
+import React, { Component } from 'react';
 
-import Meta from '../utils/Meta'
+import request from '../../services/Net';
+import { handleChange } from '../../services/FormService';
+import Meta from '../utils/Meta';
+import { withNotification } from '../../services/withNotification';
 
-export default class ContributorParrains extends Component {
-
-  constructor(props) {
-    super(props);
-    
-    this.state = {
-      leads : []
-    }
-  }
+export default withNotification(class ContributorParrains extends Component {
+  state = {
+    leads : []
+  };
 
   componentDidMount() {
+    const { notification } = this.props;
     request({
       url: '/lead',
       method: 'get'
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({ leads : res })
     });
   }
@@ -28,7 +24,6 @@ export default class ContributorParrains extends Component {
     return (
       <div className="container">
         <Meta title="Les parrains"/>
-        <NotificationSystem ref="notif" />
         <h2 className="text-center my-2">Liste des entreprises déjà démarchées</h2>
         <div className="row my-4 justify-content-center">
           <div className="col-lg-6">
@@ -58,4 +53,4 @@ export default class ContributorParrains extends Component {
       </div>
     );
   }
-}
+});

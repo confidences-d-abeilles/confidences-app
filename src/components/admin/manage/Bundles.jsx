@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
+
 import request from '../../../services/Net';
 import Bundle from './Bundle';
 import Loading from '../../utils/Loading';
+import { withNotification } from '../../../services/withNotification';
 
-
-export default class AdminManageBundles extends Component {
+export default withNotification(class AdminManageBundles extends Component {
   state = {
     bundles: null,
     manageId: '0',
-  }
+  };
 
   componentDidMount() {
     this.get();
   }
 
   get() {
+    const { notification } = this.props;
     request({
       url: '/bundle',
       method: 'get'
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         bundles: res,
       });
@@ -31,7 +32,6 @@ export default class AdminManageBundles extends Component {
     const { bundles, manageId } = this.state;
     return (
       <div className="row">
-        <NotificationSystem ref="notif" />
         <div className="col">
           <ol className="breadcrumb">
             <li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
@@ -70,4 +70,4 @@ export default class AdminManageBundles extends Component {
       </div>
     )
   }
-}
+});

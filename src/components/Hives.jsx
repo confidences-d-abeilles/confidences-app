@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
-import NotificationSystem from 'react-notification-system';
 import { Link } from 'react-router-dom';
+
 import request from '../services/Net';
 import imgPlaceholder from '../assets/img/logo_ruche_entreprise.png';
 import Loading from './utils/Loading';
-
 import Meta from './utils/Meta';
 import SquareImg from './utils/SquareImg';
+import { withNotification } from '../services/withNotification';
 
-export default class Hives extends Component {
+export default withNotification(class Hives extends Component {
   state = {
     hives: null,
   }
 
   componentDidMount() {
+    const { notification } = this.props;
     request({
       url: '/hive',
       method: 'get',
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         hives: res.reverse(),
       });
@@ -29,7 +30,6 @@ export default class Hives extends Component {
     return (
       <div className="container-fluid">
         <Meta title="Les ruches" />
-        <NotificationSystem ref="notif" />
         <h1 style={{ fontFamily: 'HighTo', color: '#E49C00' }} className="text-center my-4">LES RUCHES</h1>
         {hives ? (
           <div className="row justify-content-center">
@@ -52,4 +52,4 @@ export default class Hives extends Component {
       </div>
     );
   }
-}
+});

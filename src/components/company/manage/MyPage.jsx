@@ -1,17 +1,16 @@
-import React, { Component } from 'react'
-import { handleChange, handleTick } from '../../../services/FormService'
-import NotificationSystem from 'react-notification-system'
-import request from '../../../services/Net'
-import Loading from '../../utils/Loading'
-
+import React, { Component } from 'react';
 import moment from 'moment';
+
+import { handleChange, handleTick } from '../../../services/FormService';
+import request from '../../../services/Net';
+import Loading from '../../utils/Loading';
 import Feedback from '../../utils/Feedback';
+import { withNotification } from '../../../services/withNotification';
 
-export default class CompanyManageMyPage extends Component {
-
+export default withNotification(class CompanyManageMyPage extends Component {
 	constructor (props) {
 		super (props);
-		
+
 		this.state = {
 			id_user : '',
 			name : '',
@@ -36,26 +35,26 @@ export default class CompanyManageMyPage extends Component {
 	componentDidMount() {
 		this.get();
 		this.getActu();
-		// this.getBundle();
 	}
 
 	getActu(){
-		request({
+    const { notification } = this.props;
+    request({
 			url:'/news/owner/',
 			method:'get'
-		}, this.refs.notif).then((res) => {
+		}, notification).then((res) => {
 			this.setState({
 				actus: res
 			})
-			console.log(res);
 		})
 	}
 
 	get() {
-		request({
+    const { notification } = this.props;
+    request({
 			url : '/user/me',
 			method: 'get'
-		}, this.refs.notif).then((res) => {
+		}, notification).then((res) => {
 			this.setState({
 				user : res,
 				id_user : res.id,
@@ -88,13 +87,14 @@ export default class CompanyManageMyPage extends Component {
 
 	submit(e) {
 		e.preventDefault();
-		if (this.state.description.length > 1000) {
-			this.refs.notif.addNotification({
+    const { notification } = this.props;
+    if (this.state.description.length > 1000) {
+			notification.addNotification({
 				message: "La présentation générale de votre entreprise est un peu trop longue. Merci de la raccourcir.",
 				level: 'warning'
 			})
 		} else if (this.state.involvement.length > 3700) {
-			this.refs.notif.addNotification({
+			notification.addNotification({
 				message: 'Le champs "Votre engagement en faveur de la biodiversité" contient trop de caractères. Merci de le raccourcir.',
 				level: 'warning'
 			})
@@ -123,7 +123,7 @@ export default class CompanyManageMyPage extends Component {
 				headers : {
 					'content-type': 'multipart/form-data'
 				}
-			}, this.refs.notif).then((res) => {
+			}, notification).then((res) => {
 				this.get()
 			}).catch((err) => {
 
@@ -155,7 +155,6 @@ export default class CompanyManageMyPage extends Component {
 	render () {
 		return (
 			<div>
-				<NotificationSystem ref="notif" />
 				<h2 className="text-center my-4">Modifier ma page</h2>
 				<div className="row mb-4">
 					<div className="col text-center">
@@ -245,4 +244,4 @@ export default class CompanyManageMyPage extends Component {
 			</div>
 		)
 	}
-}
+});

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
 import moment from 'moment';
 import ReactStars from 'react-stars';
 
@@ -11,8 +10,9 @@ import Feedback from '../../utils/Feedback';
 import Meta from '../../utils/Meta';
 import 'react-datepicker/dist/react-datepicker.css';
 import Pictures from './hives/Pictures';
+import { withNotification } from '../../../services/withNotification';
 
-export default class AdminManageHives extends Component {
+export default withNotification(class AdminManageHives extends Component {
   state = {
     hives: null,
     newHive: '',
@@ -36,10 +36,11 @@ export default class AdminManageHives extends Component {
   }
 
   get() {
+    const { notification } = this.props;
     request({
       url: '/hive',
       method: 'get',
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         hives: res,
       });
@@ -48,10 +49,11 @@ export default class AdminManageHives extends Component {
 
   getOne() {
     const { idSelected } = this.state;
+    const { notification } = this.props;
     request({
       url: `/hive/${idSelected}`,
       method: 'get',
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         selected: res,
       });
@@ -60,6 +62,7 @@ export default class AdminManageHives extends Component {
 
   addHive(e) {
     e.preventDefault();
+    const { notification } = this.props;
     const { newHive } = this.state;
     request({
       url: '/hive',
@@ -67,7 +70,7 @@ export default class AdminManageHives extends Component {
       data: {
         name: newHive,
       },
-    }, this.refs.notif).then(() => {
+    }, notification).then(() => {
       this.get();
       this.setState({
         newHive: '',
@@ -76,16 +79,18 @@ export default class AdminManageHives extends Component {
   }
 
   delete(id) {
+    const { notification } = this.props;
     request({
       url: `/hive/${id}`,
       method: 'delete',
-    }, this.refs.notif).then(() => {
+    }, notification).then(() => {
       this.get();
     });
   }
 
   createActu(e) {
     e.preventDefault();
+    const { notification } = this.props;
     const {
       actu,
       actuTitle,
@@ -106,7 +111,7 @@ export default class AdminManageHives extends Component {
       header: {
         'content-type': 'multipart/form-data',
       },
-    }, this.refs.notif).then(() => {
+    }, notification).then(() => {
       this.setState({
         actuTitle: '',
         actu: '',
@@ -117,6 +122,7 @@ export default class AdminManageHives extends Component {
 
   updateActu(e) {
     e.preventDefault();
+    const { notification } = this.props;
     const {
       actuModify,
       actuModifyTitle,
@@ -134,7 +140,7 @@ export default class AdminManageHives extends Component {
       url: `/news/${newsModify}`,
       method: 'put',
       data,
-    }, this.refs.notif).then(() => {
+    }, notification).then(() => {
       this.get();
       this.setState({
         selected: '',
@@ -144,10 +150,11 @@ export default class AdminManageHives extends Component {
 
   deleteActu() {
     const { newsModify } = this.state;
+    const { notification } = this.props;
     request({
       url: `/news/${newsModify}`,
       method: 'delete',
-    }, this.refs.notif).then(() => {
+    }, notification).then(() => {
       this.get();
       this.setState({
         selected: '',
@@ -157,6 +164,7 @@ export default class AdminManageHives extends Component {
 
   addPhoto(e) {
     e.preventDefault();
+    const { notification } = this.props;
     const { selected } = this.state;
     const data = new FormData();
     data.append('id', selected.id);
@@ -169,12 +177,13 @@ export default class AdminManageHives extends Component {
         header: {
           'content-type': 'multipart/form-data',
         },
-      }, this.refs.notif).then(() => this.getOne());
+      }, notification).then(() => this.getOne());
     }
   }
 
   launchModify(e) {
     e.preventDefault();
+    const { notification } = this.props;
     const { target: { value } } = e;
     this.setState({
       newsModify: value,
@@ -183,7 +192,7 @@ export default class AdminManageHives extends Component {
     request({
       url: `/news/${value}`,
       method: 'get',
-    }, this.refs.notif).then(({ title, content, date }) => {
+    }, notification).then(({ title, content, date }) => {
       this.setState({
         actuModifyTitle: title,
         actuModify: content,
@@ -194,6 +203,7 @@ export default class AdminManageHives extends Component {
 
   ratingChanged(e) {
     const { selected } = this.state;
+    const { notification } = this.props;
     request({
       url: '/hive/ratio',
       method: 'POST',
@@ -201,11 +211,12 @@ export default class AdminManageHives extends Component {
         id: selected.id,
         ratio: e,
       },
-    }, this.refs.notif);
+    }, notification);
   }
 
   saveFeedback(e) {
     e.preventDefault();
+    const { notification } = this.props;
     const { selected, feedback } = this.state;
     request({
       url: 'hive/feedback',
@@ -214,7 +225,7 @@ export default class AdminManageHives extends Component {
         id: selected.id,
         feedback,
       },
-    }, this.refs.notif).then(() => {
+    }, notification).then(() => {
       this.setState({
         stateFeedback: 0,
       });
@@ -223,6 +234,7 @@ export default class AdminManageHives extends Component {
 
   saveInformation(e) {
     e.preventDefault();
+    const { notification } = this.props;
     const { selected, info } = this.state;
     request({
       url: 'hive/information',
@@ -231,7 +243,7 @@ export default class AdminManageHives extends Component {
         id: selected.id,
         information: info,
       },
-    }, this.refs.notif);
+    }, notification);
   }
 
   updateFeedback(event) {
@@ -245,13 +257,14 @@ export default class AdminManageHives extends Component {
 
   changeImg(e) {
     const { selected } = this.state;
+    const { notification } = this.props;
     request({
       url: `hive/img/${selected.id}`,
       method: 'PUT',
       data: {
         img: e
       }
-    }, this.refs.notif);
+    }, notification);
   }
 
   render() {
@@ -259,7 +272,6 @@ export default class AdminManageHives extends Component {
     return (
       <div>
         <div className="row">
-          <NotificationSystem ref="notif" />
           <Meta title="Gérer les ruches" />
           <div className="col">
             <ol className="breadcrumb">
@@ -373,4 +385,4 @@ export default class AdminManageHives extends Component {
       </div>
     )
   }
-}
+});

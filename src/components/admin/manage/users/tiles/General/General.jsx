@@ -3,7 +3,7 @@ import moment from 'moment';
 import Loading from '../../../../../utils/Loading';
 import UserType from '../../UserType/UserType';
 import Confirm from '../../../../../utils/Confirm';
-import { ButtonStyle } from '../../../../../utils/Button';
+import { Button } from '../../../../../utils/Button';
 
 const General = ({ delete: deleteUser, data, impersonate }) => (
   <div className="newcard">
@@ -19,7 +19,7 @@ const General = ({ delete: deleteUser, data, impersonate }) => (
           <p className="m-0">Email : {data.email}</p>
           <p className="m-0">Téléphone : {data.phone}</p>
           <Confirm text="Supprimer cet utilisateur" class="btn btn-danger btn-sm mt-2" action={deleteUser} />
-          <ButtonStyle onClick={impersonate}>Prendre le contrôle</ButtonStyle>
+          <Button onClick={impersonate}>Prendre le contrôle</Button>
         </div>
       ) : <Loading />}
   </div>

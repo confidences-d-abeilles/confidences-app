@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import NotificationSystem from 'react-notification-system';
+
 import request from '../../../services/Net';
 import { handleChange } from '../../../services/FormService';
-
 import FileUpload from '../../utils/FileUpload';
 
 export default class AdminManageServer extends Component {
@@ -13,17 +12,18 @@ export default class AdminManageServer extends Component {
     ogdescription: '',
     ogtitle: '',
     id: null,
-  }
+  };
 
   componentDidMount() {
     this.getData();
   }
 
   getData = () => {
+    const { notification } = this.props;
     request({
       url: '/meta',
       method: 'GET',
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         meta: res,
       });
@@ -32,6 +32,7 @@ export default class AdminManageServer extends Component {
 
   sendMeta = (e) => {
     e.preventDefault();
+    const { notification } = this.props;
     const {
       url,
       title,
@@ -53,14 +54,15 @@ export default class AdminManageServer extends Component {
       headers: {
         'content-type': 'multipart/form-data',
       },
-    }, this.refs.notif).then(() => {
+    }, notification).then(() => {
       this.getData();
       this.clear();
     });
-  }
+  };
 
   sendEditMeta = (e) => {
     e.preventDefault();
+    const { notification } = this.props;
     const {
       url,
       title,
@@ -78,18 +80,19 @@ export default class AdminManageServer extends Component {
         ogtitle,
         ogdescription,
       },
-    }, this.refs.notif).then(() => {
+    }, notification).then(() => {
       this.getData();
       this.clear();
     });
-  }
+  };
 
   deleteMeta = id => () => {
+    const { notification } = this.props;
     request({
       url: `/meta/${id}`,
       method: 'delete',
-    }, this.refs.notifs).then(() => this.getData());
-  }
+    }, notification).then(() => this.getData());
+  };
 
   clear = () => {
     this.setState({
@@ -99,7 +102,7 @@ export default class AdminManageServer extends Component {
       ogdescription: '',
       url: '',
     });
-  }
+  };
 
   edit = meta => () => this.setState(meta);
 
@@ -114,7 +117,6 @@ export default class AdminManageServer extends Component {
     } = this.state;
     return (
       <div className="row">
-        <NotificationSystem ref="notif" />
         <div className="col-lg-12">
           <h2 className="text-center">Espace technique</h2>
           <h2 className="text-center">Blocs meta</h2>

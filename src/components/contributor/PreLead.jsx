@@ -1,33 +1,26 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import { handleChange } from '../../services/FormService';
-import NotificationSystem from 'react-notification-system';
 
-import Meta from '../utils/Meta'
+import { handleChange } from '../../services/FormService';
+import Meta from '../utils/Meta';
 
 export default class ContributorPreLead extends Component {
-
-  constructor(props) {
-    super(props);
-    
-    this.state = {
-      redirect : false,
-      how: '1'
-    }
-  }
+  state = {
+    redirect : false,
+    how: '1'
+  };
 
   next() {
     if (this.state.how === '1') {
-      this.setState({redirect:true})
+      this.setState({redirect:true});
     }
   }
 
 
-  render () {
+  render() {
     return (
       <div className="container py-4">
         <Meta title="Ajouter une démarche"/>
-        <NotificationSystem ref="notif" />
         {(this.state.redirect)?
         <Redirect to="/contributor/lead" />
         :null}

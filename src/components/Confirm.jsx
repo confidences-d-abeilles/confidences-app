@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
+
 import request from '../services/Net';
 import Loading from './utils/Loading';
 import Meta from './utils/Meta';
+import { withNotification } from '../services/withNotification';
 
-export default class Confirm extends Component {
+export default withNotification(class Confirm extends Component {
   state = {
     loading: true,
     redirect: false,
   }
 
   componentDidMount() {
-    const { match : { params : { token } } } = this.props;
+    const { match : { params : { token } }, notification } = this.props;
     request({
       url: `/user/email/${token}`,
       method: 'get',
-    }, this.refs.notif).then(() => {
+    }, notification).then(() => {
       this.setState({
         loading: false,
       });
@@ -34,11 +35,10 @@ export default class Confirm extends Component {
       <div className="container py-5">
         <Meta title="Confirmation d'adresse email"/>
         {redirect && <Redirect to="/account" />}
-        <NotificationSystem  ref="notif" />
         { loading
           ? <Loading />
           : <p className="alert alert-success">Votre adresse email est bien vérifié, vous allez être redirigé vers votre compte dans quelques instants</p>}
       </div>
     );
   }
-}
+});

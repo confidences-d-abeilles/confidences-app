@@ -1,20 +1,19 @@
-import React, { Component } from 'react'
-import request from '../../services/Net'
-import NotificationSystem from 'react-notification-system'
-import { Redirect } from 'react-router-dom'
-import FooterPage from './FooterPage'
-import ReactHtmlParser from 'react-html-parser'
-import { Link } from 'react-router-dom'
-
-import Meta from '../utils/Meta'
-import Loading from '../utils/Loading'
-import Imagebox from '../utils/Imagebox'
+import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
+import ReactHtmlParser from 'react-html-parser';
+
+import request from '../../services/Net';
+import FooterPage from './FooterPage';
+import Meta from '../utils/Meta';
+import Loading from '../utils/Loading';
+import Imagebox from '../utils/Imagebox';
 import { getId } from '../../services/AuthService';
+import { withNotification } from '../../services/withNotification';
 
-const defaultImg = require("../../assets/img/profile.png")
+const defaultImg = require("../../assets/img/profile.png");
 
-export default class CompanyPage extends Component {
+export default withNotification(class CompanyPage extends Component {
 
   constructor(props) {
     super(props)
@@ -31,10 +30,11 @@ export default class CompanyPage extends Component {
   }
 
   componentDidMount() {
+    const { notification } = this.props;
     request({
       url: 'users/namespace/' + this.props.match.params.namespace,
       method: 'get'
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       if (!res.visible && res.id !== getId()) {
         this.setState({ redirect: true });
       }
@@ -49,7 +49,7 @@ export default class CompanyPage extends Component {
       request({
         url: '/news/owner/' + res.id,
         method: 'get'
-      }, this.refs.notif).then((res) => {
+      }, notification).then((res) => {
         this.setState({
           news: res
         })
@@ -57,7 +57,7 @@ export default class CompanyPage extends Component {
       request({
         url: '/hive/bundle/' + res.bundles[0].id,
         method: 'get'
-      }, this.refs.notif).then((res) => {
+      }, notification).then((res) => {
         this.setState({
           hives: res,
           selectedHive: (res[0]) ? res[0].id : null,
@@ -91,7 +91,6 @@ export default class CompanyPage extends Component {
   render() {
     return (
       <div>
-        <NotificationSystem ref="notif" />
         {(this.state.redirect) ? <Redirect to="/" /> : null}
         {(!this.state.loading) ? <div>
           {(this.state.bundleState < 2) &&
@@ -215,4 +214,4 @@ export default class CompanyPage extends Component {
       </div>
     );
   }
-}
+});

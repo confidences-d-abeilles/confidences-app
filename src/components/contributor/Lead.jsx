@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
+
 import { handleChange } from '../../services/FormService';
 import request from '../../services/Net';
-
 import Meta from '../utils/Meta';
+import { withNotification } from '../../services/withNotification';
 
-export default class ContributorLead extends Component {
+export default withNotification(class ContributorLead extends Component {
   state = {
     redirect: false,
     company_name: '',
     siret: '',
     contact: 0,
     error: false,
-  }
+  };
 
   addLead(e) {
     e.preventDefault();
+    const { notification } = this.props;
     if (this.state.contact !== 0 && this.state.company_name && this.state.siret) {
       request({
         url: '/lead',
@@ -24,22 +25,22 @@ export default class ContributorLead extends Component {
         data: {
           company_name: this.state.company_name,
           siret: this.state.siret,
-          contact: this.state.contact
-        }
-      }, this.refs.notif).then((res) => {
+          contact: this.state.contact,
+        },
+      }, notification).then(() => {
         this.setState({
-          redirect: true
-        })
-      }).catch((err) => {
+          redirect: true,
+        });
+      }).catch(() => {
         this.setState({
-          error: true
-        })
+          error: true,
+        });
       });
     } else {
-      this.refs.notif.addNotification({
+      notification.addNotification({
         message: 'Merci de remplir tous les champs',
         level: 'warning'
-      })
+      });
     }
   }
 
@@ -48,7 +49,7 @@ export default class ContributorLead extends Component {
     const name = target.name;
     const value = target.value.replace(/ /g, '');
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
@@ -56,7 +57,6 @@ export default class ContributorLead extends Component {
     return (
       <div className="container py-4">
         <Meta title="Ajouter une démarche" />
-        <NotificationSystem ref="notif" />
         {(this.state.redirect) ?
           <Redirect to="/contributor/leadok" />
           : null}
@@ -104,4 +104,4 @@ export default class ContributorLead extends Component {
       </div>
     );
   }
-}
+});
