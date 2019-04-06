@@ -76,11 +76,28 @@ export default withNotification(class Login extends Component {
               : (
                 <form className="text-center">
                   <div className="form-group">
-                    <input type="email" name="email" className="form-control" placeholder="Adresse email" onChange={handleChange.bind(this)} autoComplete="email" value={email} />
+                    <input
+                      type="email"
+                      name="email"
+                      className="form-control"
+                      placeholder="Adresse email"
+                      onChange={handleChange.bind(this)}
+                      autoComplete="email"
+                      value={email}
+                      data-cy="email"
+                    />
                   </div>
                   <div className="form-group">
-                    <input type="password" name="password" className="form-control" placeholder="Mot de passe" onChange={handleChange.bind(this)} value={password} />
-                  </div>
+                    <input
+                      type="password"
+                      name="password"
+                      className="form-control"
+                      placeholder="Mot de passe"
+                      onChange={handleChange.bind(this)}
+                      value={password}
+                      data-cy="password"
+                    />
+                 </div>
                   <Button type="submit" onClick={this.login}>Se connecter</Button><br />
                   <Link to="/forgot">Mot de passe oublié ?</Link>
                   <br />

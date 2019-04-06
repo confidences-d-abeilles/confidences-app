@@ -8,7 +8,7 @@ export const NotificationProvider = ({ children }) => {
   const notificationRef = useRef();
   return (
     <Provider value={notificationRef}>
-      <NotificationSystem ref={notificationRef} />
+      <NotificationSystem ref={notificationRef} data-cy="notification" />
       {children}
     </Provider>
   );
