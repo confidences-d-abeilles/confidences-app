@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import request from '../../services/Net';
-import NotificationSystem from 'react-notification-system';
 import { Elements } from 'react-stripe-elements';
-import PayForm from '../utils/PayForm'
-import { handleChange } from '../../services/FormService';
+import moment from 'moment';
 
+import request from '../../services/Net';
+import PayForm from '../utils/PayForm';
+import { handleChange } from '../../services/FormService';
 import Meta from '../utils/Meta';
 import Address from '../utils/Address/Address';
 import ViewAddress from '../utils/Address/ViewAddress';
-import moment from 'moment';
-import Resume from './Checkout/Resume'
+import Resume from './Checkout/Resume';
+import { withNotification } from '../../services/withNotification';
 
-export default class CompanyCheckout extends Component {
+export default withNotification(class CompanyCheckout extends Component {
 
   constructor(props) {
     super(props);
@@ -45,10 +45,11 @@ export default class CompanyCheckout extends Component {
   });
 
   componentDidMount() {
+    const { notification } = this.props;
     request({
       url: '/user/me',
       method: 'get'
-    }, this.refs.notif)
+    }, notification)
       .then((res) => {
         this.setState({
           hives: res.bundles[0].hives,
@@ -66,7 +67,7 @@ export default class CompanyCheckout extends Component {
         request({
           url: '/bill/bundle/' + res.bundles[0].id,
           method: 'get'
-        }, this.refs.notif).then((res) => {
+        }, notification).then((res) => {
           this.setState({
             bill_number: res.number
           });
@@ -93,6 +94,7 @@ export default class CompanyCheckout extends Component {
   }
 
   async save() {
+    const { notification } = this.props;
     return new Promise(resolve => {
       request({
         url: '/bundle/' + this.state.bundle_id,
@@ -109,13 +111,14 @@ export default class CompanyCheckout extends Component {
           present_name: this.state.present_name,
           present_firstname: this.state.present_firstname
         }
-      }, this.refs.notif).then((res) => {
+      }, notification).then((res) => {
         resolve();
       })
     });
   }
 
   async noAction() {
+    const { notification } = this.props;
     await this.save();
     await request({
       url: '/user/later',
@@ -125,7 +128,7 @@ export default class CompanyCheckout extends Component {
         redirect: true
       })
     }).catch(e => {
-      this.refs.notif.addNotification({
+      notification.addNotification({
         message: 'Erreur de sauvegarde !',
         level: 'error'
       });
@@ -134,6 +137,7 @@ export default class CompanyCheckout extends Component {
 
 
   async saveFeedback() {
+    const { notification } = this.props;
     return new Promise(resolve => {
       request({
         url: '/bundle/' + this.state.bundle_id,
@@ -141,17 +145,18 @@ export default class CompanyCheckout extends Component {
         data: {
           feedback: this.state.feedback
         }
-      }, this.refs.notif).then((res) => {
+      }, notification).then((res) => {
         resolve();
       })
     })
   }
 
   changeBundle = () => {
+    const { notification } = this.props;
     request({
       url: '/bundle/' + this.state.bundle_id,
       method: 'delete'
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({ wish: true });
     })
   }
@@ -161,7 +166,6 @@ export default class CompanyCheckout extends Component {
     return (
       <div className="container py-4">
         <Meta title="Validation et paiement" />
-        <NotificationSystem ref="notif" />
         {(this.state.redirect) ? <Redirect to="/company/end" /> : null}
         {(this.state.dash) ? <Redirect to="/company/end" /> : null}
         {(this.state.wish) ? <Redirect to="/company/wish" /> : null}
@@ -269,4 +273,4 @@ export default class CompanyCheckout extends Component {
       </div>
     );
   }
-}
+});

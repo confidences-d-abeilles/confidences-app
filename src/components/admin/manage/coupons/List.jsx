@@ -1,83 +1,85 @@
-import React, { Component } from 'react'
-import NotificationSystem from 'react-notification-system'
-import request from '../../../../services/Net'
-import moment from 'moment'
-import FontAwesome from 'react-fontawesome'
+import React, { Component } from 'react';
+import moment from 'moment';
+import FontAwesome from 'react-fontawesome';
 
-export default class List extends Component {
+import request from '../../../../services/Net';
+import { withNotification } from '../../../../services/withNotification';
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			coupons : [],
-			loading: true
-		}
-	}
+export default withNotification(class List extends Component {
 
-	componentDidMount() {
-		this.refresh();
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      coupons : [],
+      loading: true
+    }
+  }
 
-	refresh() {
-		request({
-			url: '/coupon',
-			method: 'get'
-		}, this.refs.notif).then((res) => {
-			this.setState({
-				coupons: res,
-				loading: false
-			})
-		});
-	}
+  componentDidMount() {
+    this.refresh();
+  }
 
-	delete = (id) => {
-		request({
-			url: '/coupon/'+id,
-			method: 'delete'
-		}, this.refs.notif).then((res) => {
-			this.refresh();
-		});
-	}
+  refresh() {
+    const { notification } = this.props;
+    request({
+      url: '/coupon',
+      method: 'get'
+    }, notification).then((res) => {
+      this.setState({
+        coupons: res,
+        loading: false
+      })
+    });
+  }
 
-	decode(type) {
-		switch (type) {
-			case 0:
-				return "Systématique";
-			case 1:
-				return "Option";
-			case 2:
-				return "Offre temporaire";
-			default:
-				return null;
-		}
-	}
+  delete = (id) => {
+    const { notification } = this.props;
+    request({
+      url: '/coupon/'+id,
+      method: 'delete'
+    }, notification).then((res) => {
+      this.refresh();
+    });
+  }
 
-	render () {
-		return (
-			<div>
-				<NotificationSystem ref="notif" />
-				<table className="table table-sm">
-					<tbody>
-						<tr><th>Produit</th><th>Designation</th><th>Type</th><th>Code</th><th>Montant</th><th>Pots en -</th><th>Expiration</th><th>Qt min.</th><th>Qt max.</th><th>Actions</th></tr>
-						{this.state.coupons.map((e, key) => {
-							return (
-								<tr key={key}>
-									<td>{e.product.designation}</td>
-									<td>{e.designation}</td>
-									<td>{this.decode(e.type)}</td>
-									<td>{e.code}</td>
-									<td>{e.amount} €</td>
-									<td>{e.pots}</td>
-									<td>{moment(e.expire).format("DD/MM/YYYY")}</td>
-									<td>{e.min}</td>
-									<td>{e.max}</td>
-									<td style={{ cursor : 'pointer' }} onClick={this.delete.bind(this, e.id)}><FontAwesome name="trash" /></td>
-								</tr>
-							)
-						})}
-					</tbody>
-				</table>
-			</div>
-		)
-	}
-}
+  decode(type) {
+    switch (type) {
+      case 0:
+        return "Systématique";
+      case 1:
+        return "Option";
+      case 2:
+        return "Offre temporaire";
+      default:
+        return null;
+    }
+  }
+
+  render () {
+    return (
+      <div>
+        <table className="table table-sm">
+          <tbody>
+            <tr><th>Produit</th><th>Designation</th><th>Type</th><th>Code</th><th>Montant</th><th>Pots en -</th><th>Expiration</th><th>Qt min.</th><th>Qt max.</th><th>Actions</th></tr>
+            {this.state.coupons.map((e, key) => {
+              return (
+                <tr key={key}>
+                  <td>{e.product.designation}</td>
+                  <td>{e.designation}</td>
+                  <td>{this.decode(e.type)}</td>
+                  <td>{e.code}</td>
+                  <td>{e.amount} €</td>
+                  <td>{e.pots}</td>
+                  <td>{moment(e.expire).format("DD/MM/YYYY")}</td>
+                  <td>{e.min}</td>
+                  <td>{e.max}</td>
+                  <td style={{ cursor : 'pointer' }} onClick={this.delete.bind(this, e.id)}><FontAwesome name="trash" /></td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+    )
+  }
+});

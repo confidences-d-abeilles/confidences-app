@@ -1,31 +1,27 @@
 import React, { Component } from 'react';
-import request from '../../services/Net'
-import NotificationSystem from 'react-notification-system'
-import { handleChange } from '../../services/FormService'
-import FontAwesome from 'react-fontawesome'
-import { isLoggedIn } from '../../services/AuthService'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import FontAwesome from 'react-fontawesome';
 
-import Meta from '../utils/Meta'
+import request from '../../services/Net';
+import { handleChange } from '../../services/FormService';
+import { isLoggedIn } from '../../services/AuthService';
+import Meta from '../utils/Meta';
+import { withNotification } from '../../services/withNotification';
 
-export default class Contact extends Component {
-
-	constructor(props) {
-		super (props);
-		this.state = {
-			message: null,
-			list: [],
-			criteria: ''
-		}
-		
-	}
+export default withNotification(class Contact extends Component {
+  state = {
+    message: null,
+    list: [],
+    criteria: ''
+  };
 
 	componentDidMount() {
-		if (isLoggedIn()) {
+    const { notification } = this.props;
+    if (isLoggedIn()) {
 			request({
 				url: '/user/me',
 				method: 'get'
-			}, this.refs.notif).then((res) => {
+			}, notification).then((res) => {
 				this.setState({
 					sexe_m: (res.sexe_m?'1':'0'),
 					firstname: res.firstname,
@@ -39,7 +35,7 @@ export default class Contact extends Component {
 		request({
 			url : '/faq',
 			method : 'get'
-		}, this.refs.notif).then((res) => {
+		}, notification).then((res) => {
 			this.setState({
 				list : res
 			})
@@ -48,7 +44,8 @@ export default class Contact extends Component {
 
 	submitContact(e) {
 		e.preventDefault();
-		request({
+    const { notification } = this.props;
+    request({
 			url : '/contact',
 			method : 'post',
 			data : {
@@ -60,7 +57,7 @@ export default class Contact extends Component {
 				demand: this.state.demand,
 				content: this.state.content
 			}
-		}, this.refs.notif).then((res) => {
+		}, notification).then((res) => {
 			this.setState({
 				content: '',
 				demand: '0',
@@ -73,7 +70,6 @@ export default class Contact extends Component {
 		return (
 			<div className="container">
 				<Meta title="Contact"/>
-				<NotificationSystem ref="notif" />
 				<div className="row justify-content-center">
 					<div className="col-lg-6 col-md-10 col-sm-12">
 						<h2 className="text-center my-4"><span className="align-middle">La réponse à votre question se trouve peut-être dans notre FAQ </span>
@@ -184,4 +180,4 @@ export default class Contact extends Component {
 			</div>
 		)
 	}
-}
+});

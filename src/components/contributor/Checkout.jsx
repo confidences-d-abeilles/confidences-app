@@ -1,33 +1,31 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
+
 import request from '../../services/Net';
 import { handleTick } from '../../services/FormService';
-
 import Meta from '../utils/Meta';
+import { withNotification } from '../../services/withNotification';
 
-export default class ContributorCheckout extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      contracts: [],
-      signed: false,
-    }
-  }
+export default withNotification(class ContributorCheckout extends Component {
+  state = {
+    contracts: [],
+    signed: false,
+  };
 
   componentDidMount() {
+    const { notification } = this.props;
     request({
       url: '/contract',
       method: 'get',
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({ contracts: res });
     });
   }
 
   proceed() {
+    const { notification } = this.props;
     if (!this.state.signed) {
-      this.refs.notif.addNotification({
+      notification.addNotification({
         message: 'Merci d\'accepter les termes du contrats',
         level: 'warning'
       });
@@ -36,11 +34,11 @@ export default class ContributorCheckout extends Component {
         url: '/contract',
         method: 'put',
         data: {
-          signed: true
-        }
-      }, this.refs.notif).then((res) => {
+          signed: true,
+        },
+      }, notification).then(() => {
         this.setState({ redirect: true });
-      }).catch((err) => { })
+      }).catch(() => { });
     }
   }
 
@@ -48,7 +46,6 @@ export default class ContributorCheckout extends Component {
     return (
       <div className="container py-4">
         <Meta title="Signature du contrat" />
-        <NotificationSystem ref="notif" />
         {(this.state.redirect) ? <Redirect to="/contributor/final" /> : null}
         <div className="row justify-content-center">
           <div className="col">
@@ -78,4 +75,4 @@ export default class ContributorCheckout extends Component {
       </div>
     );
   }
-}
+});

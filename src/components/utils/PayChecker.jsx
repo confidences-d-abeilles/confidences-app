@@ -2,6 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import request from '../../services/Net';
 import Loading from './Loading';
+import { withNotification } from '../../services/withNotification';
 
 const Pending = () => (
   <Fragment>
@@ -28,11 +29,11 @@ class PayChecker extends PureComponent {
   }
 
   checkStatus = () => {
-    const { bundleId } = this.props;
+    const { bundleId, notification } = this.props;
     request({
       url: `/bundle/${bundleId}`,
       method: 'get',
-    }, this.refs.notif).then(({ state }) => {
+    }, notification).then(({ state }) => {
       this.setState({ status: parseInt(state, 10) });
     });
   };
@@ -50,4 +51,4 @@ class PayChecker extends PureComponent {
   }
 }
 
-export default PayChecker;
+export default withNotification(PayChecker);

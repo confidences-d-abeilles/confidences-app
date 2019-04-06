@@ -4,10 +4,10 @@ export const client = axios.create({
   baseURL: process.env.REACT_APP_API_DOMAIN,
 });
 
-export default (options, notificationSystem) => {
+export default (options, notification) => {
   const onSuccess = (response) => {
-    if (response.data.message && notificationSystem) {
-      notificationSystem.addNotification({
+    if (response.data.message) {
+      notification.addNotification({
         message: response.data.message,
         level: 'success',
       });
@@ -16,14 +16,14 @@ export default (options, notificationSystem) => {
   };
 
   const onError = (error) => {
-    if (error.response && notificationSystem) {
+    if (error.response) {
       if (error.response.status === '400') {
-        notificationSystem.addNotification({
+        notification.addNotification({
           message: error.response.data,
           level: 'warning',
         });
       } else {
-        notificationSystem.addNotification({
+        notification.addNotification({
           message: error.response.data,
           level: 'error',
         });

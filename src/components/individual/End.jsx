@@ -1,26 +1,28 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
-import PayChecker from '../utils/PayChecker';
-import Main from '../../assets/img/end_part.jpg';
 
+import PayChecker from '../utils/PayChecker';
 import Meta from '../utils/Meta';
 import request from '../../services/Net';
+import { withNotification } from '../../services/withNotification';
 
-export default class IndividualEnd extends Component {
+import Main from '../../assets/img/end_part.jpg';
+
+export default withNotification(class IndividualEnd extends Component {
   state = {
     bundleId: null,
   };
 
   componentDidMount() {
+    const { notification } = this.props;
     request({
       url: '/user/me',
       method: 'get',
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       request({
         url: `/bundle/owner/${res.id}`,
         method: 'get',
-      }, this.refs.notif).then((res) => {
+      }, notification).then((res) => {
         this.setState({
           bundleState: res.state,
           bundleId: res.id,
@@ -34,7 +36,6 @@ export default class IndividualEnd extends Component {
     return (
       <div className="container py-4">
         <Meta title="Félicitations" />
-        <NotificationSystem ref="notif" />
         <PayChecker bundleId={bundleId}>
           <div className="row justify-content-center">
             <div className="col-8">
@@ -54,4 +55,4 @@ export default class IndividualEnd extends Component {
       </div>
     );
   }
-}
+});

@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
-import request from '../../../../../services/Net'
-import NotificationSystem from 'react-notification-system'
-import Loading from '../../../../utils/Loading'
-import { handleChange } from '../../../../../services/FormService'
-import '../../../../utils/css/LabelPdf.css'
+
+import request from '../../../../../services/Net';
+import Loading from '../../../../utils/Loading';
+import { handleChange } from '../../../../../services/FormService';
+import '../../../../utils/css/LabelPdf.css';
+import { withNotification } from '../../../../../services/withNotification';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 class Label extends Component {
@@ -31,6 +32,7 @@ class Label extends Component {
   }
 
   updateLabel = async () => {
+    const { notification } = this.props;
     await request({
       method: 'put',
       url: '/user/' + this.props.userId + '/label',
@@ -38,13 +40,12 @@ class Label extends Component {
         model: this.state.model,
         mention: this.state.mention,
       }
-    }, this.refs.notif);
+    }, notification);
   }
 
   render() {
     return (
       <div className="card mb-4 bg-light">
-        <NotificationSystem ref="notif" />
         <h4 className="card-header">Etiquette</h4>
         <div className="card-body p-2">
           {this.props.labelFilename ?
@@ -73,4 +74,4 @@ class Label extends Component {
   }
 };
 
-export default Label;
+export default withNotification(Label);

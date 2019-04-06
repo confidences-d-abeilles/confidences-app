@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
-import NotificationSystem from 'react-notification-system'
-import request from '../../../services/Net'
+import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
-import Imagebox from '../../utils/Imagebox'
+import request from '../../../services/Net';
+import Imagebox from '../../utils/Imagebox';
 
 import EtiD from '../../../assets/img/label/etiquette_defaut.jpg';
 import DownloadEti from '../../../assets/img/etiquette.zip';
@@ -11,33 +10,30 @@ import EtiAi from '../../../assets/img/label/preview_AI.png';
 import EtiIndd from '../../../assets/img/label/preview_INDD.png';
 import EtiPdf from '../../../assets/img/label/preview_PDF.png';
 import Eti1 from '../../../assets/img/label/sample_Etiquette_E1.jpg';
-import Eti2 from '../../../assets/img/label/sample_Etiquette_E2.jpg'
-import Eti3 from '../../../assets/img/label/sample_Etiquette_E3.jpg'
-import Eti4 from '../../../assets/img/label/sample_Etiquette_E4.jpg'
+import Eti2 from '../../../assets/img/label/sample_Etiquette_E2.jpg';
+import Eti3 from '../../../assets/img/label/sample_Etiquette_E3.jpg';
+import Eti4 from '../../../assets/img/label/sample_Etiquette_E4.jpg';
+import { withNotification } from '../../../services/withNotification';
 
-export default class CompanyManageCustomize extends Component {
-
-	constructor(props) {
-		super(props);
-		
-		this.state = {
-			current: null,
-			labelCurrent: null,
-			label_format: '',
-			label: ''
-		}
-	}
+export default withNotification(class CompanyManageCustomize extends Component {
+  state = {
+    current: null,
+    labelCurrent: null,
+    label_format: '',
+    label: '',
+  };
 
 	componentDidMount() {
-		request({
+    const { notification } = this.props;
+    request({
 			url: '/user/me',
 			method: 'get'
-		}, this.refs.notif).then((res) => {
+		}, notification).then((res) => {
 			console.log(res);
 			request({
 				url: '/bundle/owner/'+res.id,
 				method: 'get'
-			}, this.refs.notif).then((bund) => {
+			}, notification).then((bund) => {
 				this.setState({
 					ownerId: res.id,
 					bundleId: bund.id,
@@ -50,8 +46,9 @@ export default class CompanyManageCustomize extends Component {
 	}
 
 	upload(e) {
-		e.preventDefault()
-		const formData = new FormData();
+		e.preventDefault();
+    const { notification } = this.props;
+    const formData = new FormData();
 		if (document.getElementById("label").files[0]) {
 			formData.append('label', document.getElementById("label").files[0]);
 		request({
@@ -61,12 +58,12 @@ export default class CompanyManageCustomize extends Component {
 			headers : {
 				'content-type': 'multipart/form-data'
 			}
-		}, this.refs.notif).then( () => {
+		}, notification).then( () => {
 			console.log(document.getElementById("label").files[0]);
 			request({
 				url: '/bundle/owner/'+this.state.ownerId,
 				method: 'get'
-			}, this.refs.notif).then((bund) => {
+			}, notification).then((bund) => {
 				this.setState({
 					label_format: bund.label_format,
 					labelCurrent: bund.label,
@@ -97,7 +94,6 @@ export default class CompanyManageCustomize extends Component {
 		return (
 			<div>
 				<div className="row">
-					<NotificationSystem ref="notif" />
 				</div>
 			<div className="row">
 				<div className="col">
@@ -209,4 +205,4 @@ export default class CompanyManageCustomize extends Component {
 		</div>
 		)
 	}
-}
+});

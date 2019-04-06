@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
-import NotificationSystem from 'react-notification-system';
 import { Redirect } from 'react-router-dom';
+
 import request from '../../services/Net';
 import { isLoggedIn } from '../../services/AuthService';
-
 import Meta from '../utils/Meta';
+import { withNotification } from '../../services/withNotification';
 
-export default class ContributorWish extends Component {
+export default withNotification(class ContributorWish extends Component {
   state = {
     redirect: false,
-  }
+  };
 
   selectContract() {
+    const { notification } = this.props;
     request({
       url: '/contract',
       method: 'post',
       data: {
         duration: 1,
       },
-    }, this.refs.notif)
+    }, notification)
       .then(() => {
         this.setState({ redirect: true });
       });
@@ -28,7 +29,6 @@ export default class ContributorWish extends Component {
     return (
       <div className="container py-4">
         <Meta title="Contrat" />
-        <NotificationSystem ref="notif" />
         {(isLoggedIn()) ? null : <Redirect to="/" />}
         {(this.state.redirect) ?
           <Redirect to="/contributor/checkout" />
@@ -67,4 +67,4 @@ votre travail de réseau.</li>
       </div>
     );
   }
-}
+});

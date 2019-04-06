@@ -1,46 +1,43 @@
 import React, { Component } from 'react';
+import {
+  Route,
+  Link,
+  Redirect,
+  Switch,
+} from 'react-router-dom';
+import FontAwesome from 'react-fontawesome';
+
 import request from '../../services/Net';
 import CompanyManageDashboard from './manage/Dashboard';
 import Account from './manage/Account';
 import CompanyManageInfos from './manage/Infos';
 import CompanyManageMyPage from './manage/MyPage';
-import CompanyManageBills from './manage/Bills'
-import CompanyManageCustomize from './manage/Customize'
-import {
-  Route,
-  Link,
-  Redirect,
-  Switch
-} from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
+import CompanyManageBills from './manage/Bills';
+import CompanyManageCustomize from './manage/Customize';
 import waitLogo from '../../assets/img/waitlogo.png';
-import Meta from '../utils/Meta'
-import NotFound from '../utils/NotFound'
-import FontAwesome from 'react-fontawesome'
+import Meta from '../utils/Meta';
+import NotFound from '../utils/NotFound';
+import { withNotification } from '../../services/withNotification';
 
-
-export default class CompanyManage extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      redirect: false,
-      user: null
-    }
-  }
+export default withNotification(class CompanyManage extends Component {
+  state = {
+    redirect: false,
+    user: null
+  };
 
   componentDidMount() {
     this.updateMe();
   }
 
   updateMe() {
+    const { notification } = this.props;
     request({
       url: '/user/me',
-      method: 'get'
-    }, this.refs.notif)
+      method: 'get',
+    }, notification)
       .then((res) => {
         this.setState({
-          user: res
+          user: res,
         });
       })
       .catch((err) => { });
@@ -93,7 +90,6 @@ export default class CompanyManage extends Component {
     return (
       <div className="container py-4">
         <Meta title="Mon espace personnel" />
-        <NotificationSystem ref="notif" />
         <div className="row">
           <div className="col-lg-3 col-md-4 col-sm-12">
             <div style={{ height: '210px', maxWidth: '100%' }}>
@@ -135,4 +131,4 @@ export default class CompanyManage extends Component {
       </div>
     );
   }
-}
+});

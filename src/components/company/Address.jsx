@@ -1,31 +1,27 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+
 import request from '../../services/Net';
-import NotificationSystem from 'react-notification-system';
+import Meta from '../utils/Meta';
+import EditAddress from '../utils/Address/EditAddress';
+import { withNotification } from '../../services/withNotification';
 
-import Meta from '../utils/Meta'
-import EditAddress from '../utils/Address/EditAddress'
-
-export default class CompanyAddress extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      redirect: false,
-      message: '',
-      address: {
-        country: 'France',
-        type: 1
-      }
-    }
-  }
+export default withNotification(class CompanyAddress extends Component {
+  state = {
+    redirect: false,
+    message: '',
+    address: {
+      country: 'France',
+      type: 1
+    },
+  };
 
   componentDidMount() {
+    const { notification } = this.props;
     request({
       url: '/user/me',
       method: 'get'
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         address: {
           ...this.state.address,
@@ -47,17 +43,18 @@ export default class CompanyAddress extends Component {
 
   createAddress = (e) => {
     e.preventDefault();
+    const { notification } = this.props;
     request({
       url: '/address',
       method: 'post',
       data: this.state.address
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       console.log(this.state.address);
       request({
         url: '/address',
         method: 'post',
         data: { ...this.state.address, type: 2 }
-      }, this.refs.notif).then((res) => {
+      }, notification).then((res) => {
         this.setState({
           redirect: true
         })
@@ -69,7 +66,6 @@ export default class CompanyAddress extends Component {
     return (
       <div className="container py-4">
         <Meta title="Adresse" />
-        <NotificationSystem ref="notif" />
         <div className="row justify-content-center">
           <div className="col">
             <div className="progress">
@@ -90,4 +86,4 @@ export default class CompanyAddress extends Component {
       </div>
     );
   }
-}
+});
