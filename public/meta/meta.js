@@ -40,7 +40,7 @@ module.exports = {
       case '/individual/presentation':
         return {
           ...init,
-          title: 'Présentation parraiange particulier',
+          title: 'Présentation parrainage particulier',
           ogtitle: 'Prenez votre envol grâce au parrainage d\'abeilles !',
           ogdescription: 'Vous avez toujours rêvé d\'avoir votre propre ruche? Confidences d\'Abeilles exauce votre rêve en vous proposant un parrainage d\'abeilles! N\'hésitez plus, et foncez découvrir notre offre !',
           ogurl: 'https://parrainagederuches.fr/individual/presentation',
