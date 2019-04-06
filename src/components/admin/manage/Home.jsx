@@ -1,26 +1,23 @@
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import React, { Component } from 'react'
 import request from '../../../services/Net';
 import Meta from '../../utils/Meta';
-import { Link } from 'react-router-dom'
+import { withNotification } from '../../../services/withNotification';
 
-export default class Home extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      users: [],
-      bundles: [],
-      nbp: 0,
-      nbe: 0,
-      nbaa: 0,
-      nbed: 0,
-      nbad: 0,
-      nbnp: 0,
-      nbea: 0,
-      nbpa: 0
-    }
-  }
+export default withNotification(class Home extends Component {
+  state = {
+    users: [],
+    bundles: [],
+    nbp: 0,
+    nbe: 0,
+    nbaa: 0,
+    nbed: 0,
+    nbad: 0,
+    nbnp: 0,
+    nbea: 0,
+    nbpa: 0
+  };
 
   componentDidMount() {
     this.getUsers();
@@ -28,10 +25,11 @@ export default class Home extends Component {
   }
 
   getUsers() {
+    const { notification } = this.props;
     request({
       url: '/user',
       method: 'get'
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         users: res,
         nbp: res.filter((e) => { return (e.user_type === 1) }).length,
@@ -44,10 +42,11 @@ export default class Home extends Component {
   }
 
   getBundles() {
+    const { notification } = this.props;
     request({
       url: '/bundle',
       method: 'get'
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         bundles: res,
         nbnp: res.filter((e) => { return (e.state === 0) }).length,
@@ -98,4 +97,4 @@ export default class Home extends Component {
       </div>
     )
   }
-}
+});

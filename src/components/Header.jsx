@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
+
 import logoSquare from '../assets/img/logo-square.png';
 import { isLoggedIn } from '../services/AuthService';
 import { handleChange } from '../services/FormService';
@@ -8,17 +9,19 @@ import request from '../services/Net';
 import MyLink from './utils/Link';
 import { ButtonLink } from './utils/Button';
 import navLinks from '../config/navLinks';
+import { withNotification } from '../services/withNotification';
 
-export default class Header extends Component {
+export default withNotification(class Header extends Component {
   state = {
     redirect: false,
     email: '',
     firstname: '',
-  }
+  };
 
   subNewsletter = (e) => {
     e.preventDefault();
     const { email, firstname } = this.state;
+    const { notification } = this.props;
     request({
       url: '/newsletter',
       method: 'post',
@@ -27,7 +30,7 @@ export default class Header extends Component {
         email,
         listId: '17334',
       },
-    }, this.refs.notif).then(() => {
+    }, notification).then(() => {
       this.refs.newsmodal.style.display = 'none';
       this.refs.newsmodal.classList.remove('show');
       this.setState({
@@ -176,4 +179,4 @@ export default class Header extends Component {
       </div>
     );
   }
-}
+});

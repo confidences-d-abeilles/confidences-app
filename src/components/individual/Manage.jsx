@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   Redirect, Route, Link, Switch,
 } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
 import FontAwesome from 'react-fontawesome';
 import { isLoggedIn } from '../../services/AuthService';
 import IndividualManageInfos from './manage/Infos';
@@ -17,7 +16,6 @@ export default class IndividualManage extends Component {
     return (
       <div className="container py-4">
         <Meta title="Mon espace personnel" />
-        <NotificationSystem ref="notif" />
         {(!isLoggedIn) ? <Redirect to="/" /> : null}
         <div className="row">
           <div className="col-lg-3 col-sm-12">

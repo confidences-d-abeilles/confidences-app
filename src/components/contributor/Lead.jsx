@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
 
 import { handleChange } from '../../services/FormService';
 import request from '../../services/Net';
@@ -58,7 +57,6 @@ export default withNotification(class ContributorLead extends Component {
     return (
       <div className="container py-4">
         <Meta title="Ajouter une démarche" />
-        <NotificationSystem ref="notif" />
         {(this.state.redirect) ?
           <Redirect to="/contributor/leadok" />
           : null}

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
-import PayChecker from '../utils/PayChecker';
-import Main from '../../assets/img/end_part.jpg';
 
+import PayChecker from '../utils/PayChecker';
 import Meta from '../utils/Meta';
 import request from '../../services/Net';
 import { withNotification } from '../../services/withNotification';
+
+import Main from '../../assets/img/end_part.jpg';
 
 export default withNotification(class IndividualEnd extends Component {
   state = {
@@ -36,7 +36,6 @@ export default withNotification(class IndividualEnd extends Component {
     return (
       <div className="container py-4">
         <Meta title="Félicitations" />
-        <NotificationSystem ref="notif" />
         <PayChecker bundleId={bundleId}>
           <div className="row justify-content-center">
             <div className="col-8">

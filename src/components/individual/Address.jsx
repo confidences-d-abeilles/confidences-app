@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
 
 import request from '../../services/Net';
 import { isLoggedIn } from '../../services/AuthService';
@@ -67,7 +66,6 @@ export default withNotification(class IndividualAddress extends Component {
     return (
       <div className="container py-4">
         <Meta title="Adresse" />
-        <NotificationSystem ref="notif" />
         {(isLoggedIn()) ? null : <Redirect to="/" />}
         {redirect && <Redirect to="/individual/wish" />}
         <div className="row justify-content-center">

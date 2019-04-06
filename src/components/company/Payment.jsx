@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Elements } from 'react-stripe-elements';
+
 import request from '../../services/Net';
 import PayForm from '../utils/PayForm';
-
 import Meta from '../utils/Meta';
 import { withNotification } from '../../services/withNotification';
 
@@ -18,10 +18,11 @@ export default withNotification(class CompanyPayment extends Component {
   }
 
   componentDidMount() {
+    const { notification } = this.props;
     request({
       url: '/user/me',
       method: 'get',
-    }, this.refs.notif)
+    }, notification)
       .then((res) => {
         this.setState({
           price: res.bundles[0].price,
@@ -31,19 +32,20 @@ export default withNotification(class CompanyPayment extends Component {
   }
 
   updateBundleState = state => new Promise((resolve) => {
+    const { notification } = this.props;
     request({
       url: `/bundle/${this.state.bundle_id}`,
       method: 'put',
       data: {
         state,
       },
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({ redirect: true });
     });
   })
 
   async save() {
-    console.log('save bundle request');
+    const { notification } = this.props;
     return new Promise((resolve) => {
       request({
         url: `/bundle/${this.state.bundle_id}`,
@@ -53,7 +55,7 @@ export default withNotification(class CompanyPayment extends Component {
           bankTransferDone: (this.transferBankDone ? 'true' : 'false'),
           present_date: (this.state.present) ? this.state.start_date : new Date(),
         },
-      }, this.refs.notif).then((res) => {
+      }, notification).then((res) => {
         resolve();
       });
     });

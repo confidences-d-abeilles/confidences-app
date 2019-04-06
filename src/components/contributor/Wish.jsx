@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import NotificationSystem from 'react-notification-system';
 import { Redirect } from 'react-router-dom';
+
 import request from '../../services/Net';
 import { isLoggedIn } from '../../services/AuthService';
-
 import Meta from '../utils/Meta';
 import { withNotification } from '../../services/withNotification';
 
@@ -30,7 +29,6 @@ export default withNotification(class ContributorWish extends Component {
     return (
       <div className="container py-4">
         <Meta title="Contrat" />
-        <NotificationSystem ref="notif" />
         {(isLoggedIn()) ? null : <Redirect to="/" />}
         {(this.state.redirect) ?
           <Redirect to="/contributor/checkout" />

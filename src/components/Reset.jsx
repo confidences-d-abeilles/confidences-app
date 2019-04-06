@@ -1,36 +1,32 @@
 import React, { Component } from 'react';
-import request from '../services/Net';
-import NotificationSystem from 'react-notification-system';
-import { handleChange } from '../services/FormService';
 import { Redirect } from 'react-router-dom';
 
-import Meta from './utils/Meta'
+import request from '../services/Net';
+import { handleChange } from '../services/FormService';
+import Meta from './utils/Meta';
+import { withNotification } from '../services/withNotification';
 
-export default class Reset extends Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      password: '',
-      confirmation: '',
-      ok: false,
-      redirect: false
-    }
-    
-  }
+export default withNotification(class Reset extends Component {
+  state = {
+    password: '',
+    confirmation: '',
+    ok: false,
+    redirect: false,
+  };
 
   resetPassword(e) {
+    const { notification } = this.props;
     e.preventDefault();
     if (this.state.confirmation !== this.state.password) {
-      this.refs.notif.addNotification({
+      notification.addNotification({
         message: 'Le mot de passe et la confirmation ne correspondent pas',
-        level: 'warning'
-      })
+        level: 'warning',
+      });
     } else if (this.state.password.length < 6) {
-      this.refs.notif.addNotification({
+      notification.addNotification({
         message: 'Le mot de passe doit contenir au moins 6 caractères',
-        level: 'warning'
-      })
+        level: 'warning',
+      });
     } else {
       request({
         url: '/user/reset',
@@ -39,7 +35,7 @@ export default class Reset extends Component {
           password : this.state.password,
           token: this.props.match.params.token
         }
-      }, this.refs.notif).then((res) => {
+      }, notification).then((res) => {
         this.setState({
           ok: true
         })
@@ -56,7 +52,6 @@ export default class Reset extends Component {
     return (
       <div className="container">
         <Meta title="Définir un nouveau mot de passe"/>
-        <NotificationSystem ref="notif" />
         {this.state.redirect && <Redirect to="/login" />}
         <div className="row justify-content-center">
           <div className="col-4">
@@ -79,4 +74,4 @@ export default class Reset extends Component {
       </div>
     )
   }
-}
+});

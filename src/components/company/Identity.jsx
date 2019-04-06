@@ -1,25 +1,20 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+
 import { handleChange } from '../../services/FormService';
 import request from '../../services/Net';
-import NotificationSystem from 'react-notification-system';
+import Meta from '../utils/Meta';
+import { withNotification } from '../../services/withNotification';
 
-import Meta from '../utils/Meta'
-
-export default class CompanyIdentity extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      company_name: '',
-      siret: '',
-      job: '',
-      website: '',
-      namespace: '',
-      redirect: false
-    }
-  }
+export default withNotification(class CompanyIdentity extends Component {
+  state = {
+    company_name: '',
+    siret: '',
+    job: '',
+    website: '',
+    namespace: '',
+    redirect: false
+  };
 
   handlesiret(event) {
     const target = event.target;
@@ -32,8 +27,9 @@ export default class CompanyIdentity extends Component {
 
   identify(e) {
     e.preventDefault();
+    const { notification } = this.props;
     if (!this.state.company_name || !this.state.siret || !this.state.job) {
-      this.refs.notif.addNotification({
+      notification.addNotification({
         message: "Merci de renseigner tous les champs",
         level: 'warning'
       })
@@ -48,7 +44,7 @@ export default class CompanyIdentity extends Component {
           job: this.state.job,
           website: this.state.website
         }
-      }, this.refs.notif)
+      }, notification)
         .then((res) => {
           this.setState({
             redirect: true
@@ -76,7 +72,6 @@ export default class CompanyIdentity extends Component {
     return (
       <div className="container py-4">
         <Meta title="L'entreprise" />
-        <NotificationSystem ref="notif" />
         {(this.state.redirect) ? <Redirect to="/company/address" /> : null}
         <div className="row justify-content-center">
           <div className="col">
@@ -123,4 +118,4 @@ export default class CompanyIdentity extends Component {
       </div>
     );
   }
-}
+});

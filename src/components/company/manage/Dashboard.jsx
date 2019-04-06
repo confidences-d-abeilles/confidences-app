@@ -47,11 +47,10 @@ export default withNotification(class CompanyManageDashboard extends Component {
 
   handleName(index, e) {
     const names = this.state.hivesNames;
-    const { notification } = this.props;
     names[index] = e.target.value;
     this.setState({
-      hivesNames: names
-    })
+      hivesNames: names,
+    });
   }
 
   saveNames(e) {

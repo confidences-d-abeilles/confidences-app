@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
 
 import { handleChange } from '../services/FormService';
 import request from '../services/Net';
 import Meta from './utils/Meta';
+import { withNotification } from '../services/withNotification';
 
-export default class RequestLabel extends Component {
+export default withNotification(class RequestLabel extends Component {
   state = {
     name: '',
     firstname: '',
@@ -16,13 +16,14 @@ export default class RequestLabel extends Component {
     attachment: '',
     redirect: false,
     success: false,
-  }
+  };
 
   componentDidMount() {
+    const { notification } = this.props;
     request({
       url: '/user/me',
       method: 'get',
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         name: res.name,
         firstname: res.firstname,
@@ -35,6 +36,7 @@ export default class RequestLabel extends Component {
 
   sendMail(e) {
     e.preventDefault();
+    const { notification } = this.props;
     const {
       name,
       firstname,
@@ -56,7 +58,7 @@ export default class RequestLabel extends Component {
       url: '/contact/label',
       method: 'post',
       data: data,
-    }, this.refs.notif).then(() => {
+    }, notification).then(() => {
       this.setState({
         redirect: true,
       });
@@ -79,7 +81,6 @@ export default class RequestLabel extends Component {
     return (
       <div className="container">
         <Meta title="Label" />
-        <NotificationSystem ref="notif" />
         <div className="row justify-content-center">
           {!redirect ? (
             <div className="col-lg-6 col-md-10 col-sm-12">
@@ -150,4 +151,4 @@ export default class RequestLabel extends Component {
 
   }
 
-}
+});

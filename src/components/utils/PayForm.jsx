@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { CardNumberElement, CardExpiryElement, CardCVCElement } from 'react-stripe-elements';
-import {injectStripe} from 'react-stripe-elements';
-import request from '../../services/Net'
-import NotificationSystem from 'react-notification-system'
-import Loading from './Loading'
+import {
+  CardNumberElement, CardExpiryElement, CardCVCElement, injectStripe
+} from 'react-stripe-elements';
+
+import request from '../../services/Net';
+import Loading from './Loading';
+import { withNotification } from '../../services/withNotification';
 
 class PayForm extends Component {
 
@@ -48,6 +50,7 @@ class PayForm extends Component {
 
   async handleSubmit (ev) {
     ev.preventDefault();
+    const { notification } = this.props;
     if (this.props.before) {
       await this.props.before();
     }
@@ -80,7 +83,7 @@ class PayForm extends Component {
           dateEnd: new Date(new Date(this.props.date).setFullYear(new Date().getFullYear() + 1)),
           redirect: process.env.REACT_APP_APP_DOMAIN+this.props.endpoint
         }
-      }, this.refs.notif).then((res) => {
+      }, notification).then((res) => {
         if (res) {
           window.location.replace(res.redirect.url);
         }
@@ -99,7 +102,6 @@ class PayForm extends Component {
   render () {
     return (
       <div className="row">
-        <NotificationSystem ref="notif" />
         <div className="col-lg-6">
           <form onSubmit={this.handleSubmit.bind(this)} className="text-center" style={{ padding: '10px', margin: '10px'}} >
             {/*(getUserType() === '1')?
@@ -135,4 +137,4 @@ class PayForm extends Component {
   }
 }
 
-export default injectStripe(PayForm)
+export default injectStripe(withNotification(PayForm));

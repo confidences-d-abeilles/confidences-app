@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
-import NotificationSystem from 'react-notification-system';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+
 import request from '../../../services/Net';
 import Loading from '../../utils/Loading';
 import Meta from '../../utils/Meta';
 import Address from '../../utils/Address/Address';
 import UserGeneral from './users/General';
+import { withNotification } from '../../../services/withNotification';
 
-
-export default class AdminManageUsers extends Component {
+export default withNotification(class AdminManageUsers extends Component {
   state = {
     users: null,
     filteredUsers: null,
@@ -34,10 +34,11 @@ export default class AdminManageUsers extends Component {
   }
 
   getUsers() {
+    const { notification } = this.props;
     request({
       url: '/user',
       method: 'get',
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         users: res
       }, () => {
@@ -47,15 +48,17 @@ export default class AdminManageUsers extends Component {
   }
 
   deleteUser(id) {
+    const { notification } = this.props;
     request({
       url: '/user/' + id,
       method: 'delete'
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.getUsers();
     });
   }
 
   promoteUser = (e) => {
+    const { notification } = this.props;
     this.setState({
       selectedUser: {
         ...this.state.selectedUser,
@@ -65,12 +68,13 @@ export default class AdminManageUsers extends Component {
     request({
       url: '/users/' + this.state.selectedUser.id + '/promote/' + e.target.value,
       method: 'patch'
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.getUsers();
     });
   }
 
   selectUser(user) {
+    const { notification } = this.props;
     this.setState({
       selectedUser: user,
       usexe_m: user.sexe_m ? '1' : '0',
@@ -86,7 +90,7 @@ export default class AdminManageUsers extends Component {
     request({
       url: '/bundle/owner/' + user.id,
       method: 'GET'
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       console.log(res);
       if (res) {
         this.setState({
@@ -114,10 +118,11 @@ export default class AdminManageUsers extends Component {
   }
 
   sendMail16() {
+    const { notification } = this.props;
     request({
       url: '/bill/bundle/' + this.state.bundle_id,
       method: 'get'
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       request({
         url: '/mail/send_16',
         method: 'put',
@@ -125,60 +130,66 @@ export default class AdminManageUsers extends Component {
           owner: this.state.selectedUser,
           bill: res
         }
-      }, this.refs.notif).then((res) => {
-        console.log("mail envoyer");
+      }, notification).then(() => {
       })
-    }, this.refs.notif).then((res) => {
+    }, notification).then(() => {
     })
   }
 
   sendMail202() {
+    const { notification } = this.props;
     request({
       url: '/mail/202/user/' + this.state.selectedUser.id,
       method: 'get'
-    }, this.refs.notif)
+    }, notification)
   }
 
   sendMail203() {
+    const { notification } = this.props;
     request({
       url: '/mail/203/user/' + this.state.selectedUser.id,
       method: 'get'
-    }, this.refs.notif)
+    }, notification)
   }
 
   sendMail205() {
+    const { notification } = this.props;
     request({
       url: '/mail/205/user/' + this.state.selectedUser.id,
-      method: 'get'
-    }, this.refs.notif)
+      method: 'get',
+    }, notification);
   }
 
   sendCadeauMail() {
+    const { notification } = this.props;
     request({
       url: '/mail/cadeau/user/' + this.state.selectedUser.id,
       method: 'get'
-    }, this.refs.notif)
+    }, notification)
   }
 
   sendHoustonMail() {
+    const { notification } = this.props;
     request({
       url: '/mail/houston/user/' + this.state.selectedUser.id,
       method: 'get'
-    }, this.refs.notif)
+    }, notification)
   }
 
   sendLaterMail() {
+    const { notification } = this.props;
     request({
       url: '/mail/later/user/' + this.state.selectedUser.id,
       method: 'get'
-    }, this.refs.notif)
+    }, notification)
   }
 
   sendEncoursMail() {
+    const { notification } = this.props;
     request({
       url: '/mail/encours/user/' + this.state.selectedUser.id,
       method: 'get'
-    }, this.refs.notif)
+    }, notification)
   }
 
   getTag(state) {
@@ -194,6 +205,7 @@ export default class AdminManageUsers extends Component {
   }
 
   updateSupportLevel(e) {
+    const { notification } = this.props;
     this.setState({
       supportLevel: e.target.value
     });
@@ -204,7 +216,7 @@ export default class AdminManageUsers extends Component {
       url: '/user/supportLvl/',
       method: 'PUT',
       data: data
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.getUsers();
     });
   }
@@ -219,7 +231,7 @@ export default class AdminManageUsers extends Component {
   }
 
   saveFeedback(event) {
-    console.log(this.state.selectedUser.id);
+    const { notification } = this.props;
     const data = new FormData();
     data.append('content', this.state.feedback);
     data.append('userId', this.state.selectedUser.id);
@@ -227,7 +239,7 @@ export default class AdminManageUsers extends Component {
       url: '/user/comment/',
       method: 'PUT',
       data: data
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         stateFeedback: 0
       });
@@ -236,26 +248,27 @@ export default class AdminManageUsers extends Component {
   }
 
   updateGeneralSexe = (event) => {
+    const { notification } = this.props;
     this.setState({
       selectedUser: {
         ...this.state.selectedUser,
         [event.target.name]: (event.target.value === '1') ? true : false
       }
     })
-    console.log(event.target.value);
     request({
       url: '/user/' + this.state.selectedUser.id,
       method: 'put',
       data: {
         sexe_m: (event.target.value === '1') ? true : false
       }
-    }, this.refs.notif).then(() => {
+    }, notification).then(() => {
       this.getUsers();
     });
   }
 
   updateSexe(event) {
     event.preventDefault();
+    const { notification } = this.props;
     let objState = {};
     objState[event.target.name] = event.target.value;
     this.setState(objState);
@@ -266,7 +279,7 @@ export default class AdminManageUsers extends Component {
         data: {
           sexe_m: (event.target.value === '0') ? false : true
         }
-      }, this.refs.notif).then(() => {
+      }, notification).then(() => {
         this.getUsers();
       });
       /* Update bill address */
@@ -277,7 +290,7 @@ export default class AdminManageUsers extends Component {
         url: '/address/' + this.state.selectedUser.addresses[0].id,
         method: 'put',
         data: copy
-      }, this.refs.notif).then(() => {
+      }, notification).then(() => {
         this.getUsers();
       });
       /* Update delivery address */
@@ -288,7 +301,7 @@ export default class AdminManageUsers extends Component {
         url: '/address/' + this.state.selectedUser.addresses[1].id,
         method: 'put',
         data: copy
-      }, this.refs.notif).then(() => {
+      }, notification).then(() => {
         this.getUsers();
       });
     }
@@ -370,7 +383,6 @@ export default class AdminManageUsers extends Component {
       || (e.user_type === 4 && this.state.filters.edit)
       || (e.user_type === 5 && this.state.filters.admin)
     ));
-    console.log(filteredUsers);
     this.setState({
       filteredUsers: filteredUsers
     });
@@ -394,7 +406,6 @@ export default class AdminManageUsers extends Component {
       <div>
         <Meta title="Gestion des utilisateurs" />
         <div className="row">
-          <NotificationSystem ref="notif" />
           <div className="col">
             <ol className="breadcrumb">
               <li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
@@ -546,4 +557,4 @@ export default class AdminManageUsers extends Component {
       </div>
     )
   }
-}
+});
