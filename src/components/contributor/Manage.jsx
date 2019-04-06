@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import {
+  Route,
+  Link,
+  Redirect,
+  Switch,
+} from 'react-router-dom';
 import request from '../../services/Net';
 import ContributorManageDashboard from './manage/Dashboard';
 import ContributorManageInfos from './manage/Infos';
@@ -7,62 +13,54 @@ import ContributorManageConditions from './manage/Conditions';
 import ContributorManageContract from './manage/Contract';
 import ContributorManageHelp from './manage/Help';
 import ContributorManageSupport from './manage/Support';
-import NotificationSystem from 'react-notification-system'
-import {
-  Route,
-  Link,
-  Redirect,
-  Switch
-} from 'react-router-dom';
 import profile from '../../assets/img/profile2.png';
-import Meta from '../utils/Meta'
-import NotFound from '../utils/NotFound'
+import Meta from '../utils/Meta';
+import NotFound from '../utils/NotFound';
+import { withNotification } from '../../services/withNotification';
 
-export default class ContributorManage extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      balance : 0,
-      leads: 0,
-      cleads: 0,
-      contracts: [],
-      loading : true
-    }
-  }
+export default withNotification(class ContributorManage extends Component {
+  state = {
+    balance : 0,
+    leads: 0,
+    cleads: 0,
+    contracts: [],
+    loading : true,
+  };
 
   componentDidMount() {
+    const { notification } = this.props;
     request({
       url : '/user/me',
       method : 'get'
-    }, this.refs.notif)
-    .then((res) => {
-      this.setState({
-        user : res,
-        loading : false,
-        leads : res.leads.length,
-        balance: res.balance
-      })
-      res.leads.map((lead) => {
-        if (lead.converted) {
-          this.setState({
-            cleads: this.state.cleads + 1
-          })
-        }
-        return null;
+    }, notification)
+      .then((res) => {
+        this.setState({
+          user : res,
+          loading : false,
+          leads : res.leads.length,
+          balance: res.balance
+        })
+        res.leads.map((lead) => {
+          if (lead.converted) {
+            this.setState({
+              cleads: this.state.cleads + 1
+            })
+          }
+          return null;
+        });
       });
-    })
   }
 
   money() {
+    const { notification } = this.props;
     request({
       url: '/user',
       method: 'put',
       data: {
         money_back: true
       }
-    }, this.refs.notif).then((res) => {
-      this.refs.notif.addNotification({
+    }, notification).then((res) => {
+      notification.addNotification({
         message: 'Votre demande a bien été prise en compte, votre virement sera effectué par nos équipes dans les plus brefs délais',
         level: 'success'
       });
@@ -73,7 +71,6 @@ export default class ContributorManage extends Component {
     return (
       <div className="container py-4">
         <Meta title="Mon espace personnel"/>
-        <NotificationSystem ref="notif" />
         {(!this.state.loading && this.state.user.contracts.length === 0)?<Redirect to="/contributor/wish" />:''}
         {(!this.state.loading && !this.state.user.addresses.length)?<Redirect to="/contributor/address" />:''}
         {(!this.state.loading && this.state.user.contracts.length > 0 && !this.state.user.contracts[0].signed)?<Redirect to="/contributor/checkout" />:''}
@@ -124,4 +121,4 @@ export default class ContributorManage extends Component {
       </div>
     );
   }
-}
+});

@@ -5,20 +5,22 @@ import request from '../../services/Net';
 import { isLoggedIn } from '../../services/AuthService';
 
 import Meta from '../utils/Meta';
+import { withNotification } from '../../services/withNotification';
 
-export default class ContributorWish extends Component {
+export default withNotification(class ContributorWish extends Component {
   state = {
     redirect: false,
-  }
+  };
 
   selectContract() {
+    const { notification } = this.props;
     request({
       url: '/contract',
       method: 'post',
       data: {
         duration: 1,
       },
-    }, this.refs.notif)
+    }, notification)
       .then(() => {
         this.setState({ redirect: true });
       });
@@ -67,4 +69,4 @@ votre travail de réseau.</li>
       </div>
     );
   }
-}
+});

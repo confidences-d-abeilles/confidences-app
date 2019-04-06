@@ -7,7 +7,7 @@ const { Provider, Consumer } = notificationContext;
 export const NotificationProvider = ({ children }) => {
   const notificationRef = useRef();
   return (
-    <Provider value='test'>
+    <Provider value={notificationRef}>
       <NotificationSystem ref={notificationRef} />
       {children}
     </Provider>
@@ -16,6 +16,6 @@ export const NotificationProvider = ({ children }) => {
 
 export const withNotification = Component => props => (
   <Consumer>
-    {notification => <Component notification={notification} {...props} />}
+    {({ current }) => <Component notification={current} {...props} />}
   </Consumer>
 );

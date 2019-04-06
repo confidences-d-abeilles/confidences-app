@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
 import Main from '../../assets/img/end_part.jpg';
 
 import Meta from '../utils/Meta';
@@ -14,11 +13,12 @@ export default class CompanyEnd extends Component {
   };
 
   componentDidMount() {
+    const { notification } = this.props;
     this.setState({ loading: true });
     request({
       url: '/user/me',
       method: 'get',
-    }, this.refs.notif)
+    }, notification)
       .then((res) => {
         this.setState({
           namespace: res.namespace,
@@ -32,7 +32,6 @@ export default class CompanyEnd extends Component {
     return (
       <div className="container py-4">
         <Meta title="Félicitations" />
-        <NotificationSystem ref="notif" />
         <PayChecker bundleId={bundleId}>
           <div className="row justify-content-center">
             <div className="col-8">

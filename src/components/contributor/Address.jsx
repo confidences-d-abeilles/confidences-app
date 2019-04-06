@@ -1,38 +1,35 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+
 import request from '../../services/Net';
 import { isLoggedIn } from '../../services/AuthService';
-import NotificationSystem from 'react-notification-system'
+import Meta from '../utils/Meta';
+import EditAddress from '../utils/Address/EditAddress';
+import { withNotification } from '../../services/withNotification';
 
-import Meta from '../utils/Meta'
-import EditAddress from '../utils/Address/EditAddress'
-
-export default class ContributorAddress extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      redirect: false,
-      message: '',
-      address: {
-        country: 'France',
-        type: 1,
-      }
-    }
-  }
+export default withNotification(class ContributorAddress extends Component {
+  state = {
+    redirect: false,
+    message: '',
+    address: {
+      country: 'France',
+      type: 1,
+    },
+  };
 
   componentDidMount() {
+    const { notification } = this.props;
     request({
       url: '/user/me',
-      method: 'get'
-    }, this.refs.notif).then((res) => {
+      method: 'get',
+    }, notification).then((res) => {
       this.setState({
         address: {
           ...this.state.address,
           sexe_m: res.sexe_m ? '1' : '0',
           name: res.name,
           firstname: res.firstname,
-        }
+        },
       });
     });
   }
@@ -40,29 +37,28 @@ export default class ContributorAddress extends Component {
   changeAddress = (e) => {
     this.setState({
       address: { ...this.state.address, [e.target.name]: e.target.value }
-    })
-  }
+    });
+  };
 
   createAddress = (e) => {
     e.preventDefault();
+    const { notification } = this.props;
     request({
       url: '/address',
       method: 'post',
       data: this.state.address
-    }, this.refs.notif).then((res) => {
+    }, notification).then(() => {
       request({
         url: '/address',
         method: 'post',
         data: { ...this.state.address, type: 2 }
-      }, this.refs.notif).then((res) => {
+      }, notification).then(() => {
         this.setState({
-          redirect: true
-        })
+          redirect: true,
+        });
       });
     });
-  }
-
-
+  };
 
   render() {
     return (
@@ -73,7 +69,6 @@ export default class ContributorAddress extends Component {
           <Redirect to="/contributor/wish" />
           : null}
         <div className="row justify-content-center">
-          <NotificationSystem ref="notif" />
           <div className="col">
             <div className="progress">
               <div className="progress-bar" role="progressbar" style={{ width: '50%' }}></div>
@@ -95,4 +90,4 @@ export default class ContributorAddress extends Component {
       </div>
     );
   }
-}
+});

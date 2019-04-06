@@ -3,10 +3,11 @@ import { Link, Redirect } from 'react-router-dom'
 import { handleChange } from '../services/FormService'
 import { login, isLoggedIn } from '../services/AuthService'
 import request from '../services/Net.js'
-import NotificationSystem from 'react-notification-system';
 import Meta from './utils/Meta';
+import { withNotification } from '../services/withNotification';
+import { Button } from './utils/Button';
 
-export default class Signup extends Component {
+export default withNotification(class Signup extends Component {
   constructor(props) {
     super(props);
     const { match : { params } } = props;
@@ -25,24 +26,24 @@ export default class Signup extends Component {
     };
   }
 
-	componentDidMount() {
-		if (isLoggedIn(true)) {
-			this.setState({ redirect : 'account' })
-		}
-	}
+  componentDidMount() {
+    if (isLoggedIn(true)) {
+      this.setState({ redirect : 'account' })
+    }
+  }
 
-	getType(type) {
-		switch (type) {
-			case 'individual':
-				return 1;
-			case 'company':
-				return 2;
-			case 'contributor':
-				return 3;
-			default:
-				return 0;
-		}
-	}
+  getType(type) {
+    switch (type) {
+      case 'individual':
+        return 1;
+      case 'company':
+        return 2;
+      case 'contributor':
+        return 3;
+      default:
+        return 0;
+    }
+  }
 
   register = (e) => {
     e.preventDefault();
@@ -57,8 +58,9 @@ export default class Signup extends Component {
       school,
       user_type,
     } = this.state;
+    const { notification } = this.props;
     if (password !== confirmation) {
-      this.refs.notificationSystem.addNotification({
+      notification.addNotification({
         message: 'Le mot de passe et sa confirmation ne sont pas identiques',
         level: 'error',
       });
@@ -76,7 +78,7 @@ export default class Signup extends Component {
           password,
           user_type,
         },
-      }, this.refs.notificationSystem)
+      }, notification)
         .then(() => {
           request({
             url: '/authenticate',
@@ -85,7 +87,7 @@ export default class Signup extends Component {
               email,
               password,
             },
-          }, this.refs.notificationSystem).then(({ id, token, user_type: uT }) => {
+          }, notification).then(({ id, token, user_type: uT }) => {
             login(id, token, uT);
             if (uT === 2) {
               this.setState({
@@ -124,7 +126,6 @@ export default class Signup extends Component {
       <div className="container py-4">
         <Meta title="Inscription"/>
         {redirect && <Redirect to={`/${redirect}`} />}
-        <NotificationSystem ref="notificationSystem" />
         <div className="row justify-content-center">
           <div className="col">
             <div className="progress">
@@ -180,7 +181,7 @@ export default class Signup extends Component {
               <div className="form-group">
                 <input type="password" name="confirmation" className="form-control" placeholder="Confirmation du mot de passe *" onChange={handleChange.bind(this)} />
               </div>
-              <input type="submit" value="Valider" className="btn btn-primary" onClick={this.register} />
+              <Button type="submit" onClick={this.register}>Valider</Button>
             </form>
             <p className="mt-3 text-center">
               Vous avez déjà un compte ? <Link to="/login">Connectez vous</Link><br />
@@ -191,4 +192,4 @@ export default class Signup extends Component {
       </div>
     );
   }
-}
+});

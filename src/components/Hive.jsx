@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import NotificationSystem from 'react-notification-system';
 import FontAwesome from 'react-fontawesome';
 import moment from 'moment';
 import ReactHtmlParser from 'react-html-parser';
@@ -8,20 +7,21 @@ import ReactStars from 'react-stars';
 import request from '../services/Net';
 import Loading from './utils/Loading';
 import ImgHive from '../assets/img/logo_ruche_entreprise.png';
-import Meta from './utils/Meta'
+import Meta from './utils/Meta';
 import Imagebox from './utils/Imagebox';
+import { withNotification } from '../services/withNotification';
 
-export default class Hive extends Component {
+export default withNotification(class Hive extends Component {
   state = {
     hive: null,
-  }
+  };
 
   componentDidMount() {
-    const { match: { params } } = this.props;
+    const { match: { params }, notification } = this.props;
     request({
       url: `/hive/${params.id}`,
       method: 'get',
-    }, this.refs.notif).then((res) => {
+    }, notification).then((res) => {
       this.setState({
         hive: res,
       });
@@ -32,8 +32,7 @@ export default class Hive extends Component {
     const { hive } = this.state;
     return (
       <div className="container-fluid">
-        <Meta title="La ruche"/>
-        <NotificationSystem ref="notif" />
+        <Meta title="La ruche" />
         {hive ? (
           <div>
             <h1 className="text-center my-4" style={{ fontFamily: "HighTo" , padding: "0.4em 2.5em", zIndex: '5', color: '#E49C00' }}>RUCHE {this.state.hive.name.toUpperCase()}</h1>
@@ -41,12 +40,12 @@ export default class Hive extends Component {
               <div className="col-lg-5 col-md-7 col-sm-12 pr-4">
                 <div className="row">
                   <div className="col-lg-7 px-5">
-                  <Imagebox
-                    src={(this.state.hive.imgs[0])?process.env.REACT_APP_CONTENT_DOMAIN+'/'+this.state.hive.imgs[0]:ImgHive}
-                    width={'100%'}
-                    paddingTop={'100%'}
-                    alt={"Photo principale de la ruche"}
-                  />
+                    <Imagebox
+                      src={(this.state.hive.imgs[0])?process.env.REACT_APP_CONTENT_DOMAIN+'/'+this.state.hive.imgs[0]:ImgHive}
+                      width={'100%'}
+                      paddingTop={'100%'}
+                      alt={"Photo principale de la ruche"}
+                    />
                   </div>
                   <div className="col-lg-5" style={{ backgroundColor: '#E49C00' , color: 'white', fontFamily: "HighTo", fontSize: '1.25em' }}>
                     <h2 className="mt-4">PARRAINS</h2>
@@ -136,4 +135,4 @@ export default class Hive extends Component {
       </div>
     )
   }
-}
+});

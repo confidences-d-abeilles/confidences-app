@@ -1,14 +1,13 @@
 import axios from 'axios';
-import { notificationContext } from './withNotification';
 
 export const client = axios.create({
   baseURL: process.env.REACT_APP_API_DOMAIN,
 });
 
-export default (options) => {
+export default (options, notification) => {
   const onSuccess = (response) => {
     if (response.data.message) {
-      notificationContext.valueOf().addNotification({
+      notification.addNotification({
         message: response.data.message,
         level: 'success',
       });
@@ -17,15 +16,14 @@ export default (options) => {
   };
 
   const onError = (error) => {
-    console.log(notificationContext.valueOf());
     if (error.response) {
       if (error.response.status === '400') {
-        notificationContext.valueOf().addNotification({
+        notification.addNotification({
           message: error.response.data,
           level: 'warning',
         });
       } else {
-        notificationContext.valueOf().addNotification({
+        notification.addNotification({
           message: error.response.data,
           level: 'error',
         });

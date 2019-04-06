@@ -41,7 +41,7 @@ const PrimaryStyleString = `
   }
 `;
 
-export const ButtonStyle = styled('button')(({ primary }) => (
+export const Button = styled('button')(({ primary }) => (
   primary ? PrimaryStyleString : SecondaryStyleString
 ));
 
