@@ -169,7 +169,7 @@ export default withNotification(class Header extends Component {
                   </li>
                   <li className="nav-item">
                     &nbsp;&nbsp;
-                    <ButtonLink url="/presignup" label="Créer un compte" />
+                    <ButtonLink url="/presignup" label="Créer un compte" data-cy="create-account" />
                   </li>
                 </Fragment>
               )}

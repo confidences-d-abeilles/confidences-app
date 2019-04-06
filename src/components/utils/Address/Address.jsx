@@ -50,7 +50,7 @@ export default withNotification(class Address extends Component {
             <div>
               <ViewAddress data={this.state.address} />
               <div className="text-right mt-2">
-                <Button onClick={() => { this.setState({ edit: true }); }}>
+                <Button onClick={() => { this.setState({ edit: true }); }} primary>
                   <FontAwesome name="pencil" />
               &nbsp;Editer cette adresse
                 </Button>

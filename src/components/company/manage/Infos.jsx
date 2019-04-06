@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import FontAwesome from 'react-fontawesome';
 
 import request from '../../../services/Net';
 import { handleChange } from '../../../services/FormService';
 import Meta from '../../utils/Meta';
-import FontAwesome from 'react-fontawesome';
 import FileUpload from '../../utils/FileUpload';
 import Address from '../../utils/Address/Address';
+import { Button } from '../../utils/Button';
+import { withNotification } from '../../../services/withNotification';
 
-export default class CompanyManageInfos extends Component {
+export default withNotification(class CompanyManageInfos extends Component {
   state = {
     logout: false,
     password: '',
@@ -56,9 +58,9 @@ export default class CompanyManageInfos extends Component {
         phone: this.state.phone,
         email: this.state.email
       }
-    }, notification).then((res) => {
+    }, notification).then(() => {
       this.setState({
-        editInfos: false
+        editInfos: false,
       })
     })
   }
@@ -95,7 +97,7 @@ export default class CompanyManageInfos extends Component {
             <form onSubmit={this.uploadLogo.bind(this)}>
               <FileUpload identifier="HQlogo" loading={this.state.loadLogo} label="Merci d'uploader un fichier de bonne qualité (nous en avons besoin pour la plaque que nous posons sur la ruche). Recommandations : 1200 x 1200px, 2mo maximum. Utilisez le format PNG si votre logo contient des zones ou un fond transparent." accept="image/*"/>
               <div className="form-group text-center">
-                <button className="btn btn-secondary">Envoyer le logo</button>
+                <Button type="submit" primary>Envoyer le logo</Button>
               </div>
             </form>
           </div>
@@ -118,12 +120,9 @@ export default class CompanyManageInfos extends Component {
                   <strong>Prénom :</strong> {this.state.user.firstname}<br />
                   <strong>Numéro de téléphone :</strong> {this.state.phone}<br />
                   <strong>Email :</strong> {this.state.email}<br /><br />
-                  <button className="btn btn-secondary btn-sm pull-right" onClick={() => {
-                    this.setState({ editInfos: true
-                      })
-                    }}>
+                  <Button onClick={() => this.setState({ editInfos: true })} primary>
                     <FontAwesome name="pencil" />&nbsp;Editer ces informations
-                  </button>
+                  </Button>
                 </div>
                 :
                 <form onSubmit={this.changeInfos.bind(this)}>
@@ -136,7 +135,7 @@ export default class CompanyManageInfos extends Component {
                     <input type="email" name="email" onChange={handleChange.bind(this)} value={this.state.email} className="form-control form-control-sm" placeholder="Email" />
                   </div>
                   <div className="form-group text-center">
-                    <button className="btn btn-primary">Enregistrer</button>
+                    <Button type="submit">Enregistrer</Button>
                   </div>
                 </form>
               }
@@ -158,4 +157,4 @@ export default class CompanyManageInfos extends Component {
         </div>
     );
   }
-}
+});
