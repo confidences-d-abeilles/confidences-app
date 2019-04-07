@@ -102,7 +102,7 @@ export default withNotification(class Fiche extends Component {
           <div className="col-lg-4">
             <div className="newcard">
               <h4>Parrainage</h4>
-              <Bundle data={this.state.user} />
+              <Bundle bundle={this.state.user.bundles[0]} />
             </div>
           </div>
           )}
