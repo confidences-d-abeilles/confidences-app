@@ -44,8 +44,8 @@ export default ({ loading, users }) => (
           biodiversité en parrainant une ruche.
           </p>
         <p className="text-center">
-          <ButtonLink url="/company/presentation" label="Service entreprise" primary />
-          <ButtonLink url="/individual/presentation" label="Service particulier" primary />
+          <ButtonLink url="/company/presentation" primary>Service entreprise</ButtonLink>
+          <ButtonLink url="/individual/presentation" primary>Service particulier</ButtonLink>
         </p>
       </Item>
       <Item>
@@ -120,10 +120,10 @@ export default ({ loading, users }) => (
       </div>
       <div className="row align-items-center justify-content-center">
         <div className="col-lg-4 col-md-6 col-sm-12 text-center my-2">
-          <ButtonLink url="/presignup" label="Parrainer une ruche" />
+          <ButtonLink url="/presignup">Parrainer une ruche</ButtonLink>
         </div>
         <div className="col-lg-4 col-md-6 col-sm-12 text-center my-2">
-          <ButtonLink url="/hives" label="Découvrir les ruches" />
+          <ButtonLink url="/hives">Découvrir les ruches</ButtonLink>
         </div>
       </div>
     </div>

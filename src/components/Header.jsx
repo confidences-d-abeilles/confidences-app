@@ -84,14 +84,14 @@ export default withNotification(class Header extends Component {
           </Link>
           <div className="hidden-lg-up collapse" style={{ justifyContent: 'space-between' }} id="navbarNav" onClick={() => { document.getElementById("navbarNav").classList.remove("show") }}>
             <ul className="navbar-nav">
-              {isLoggedIn() ? navLinks.mobile.loggedIn.map(props => (
-                <li className="nav-item">
-                  <MyLink className="nav-link" {...props} />
+              {isLoggedIn() ? navLinks.mobile.loggedIn.map(({ label, ...props }) => (
+                <li key={props.url} className="nav-item">
+                  <MyLink className="nav-link" {...props}>{label}</MyLink>
                 </li>)) : (
                   <Fragment>
-                    {navLinks.mobile.visitors.before.map(props => (
-                      <li className="nav-item">
-                        <MyLink className="nav-link" {...props} />
+                    {navLinks.mobile.visitors.before.map(({ label, ...props }) => (
+                      <li key={props.url} className="nav-item">
+                        <MyLink className="nav-link" {...props}>{label}</MyLink>
                       </li>
                     ))}
                     <li className="nav-item">
@@ -106,22 +106,22 @@ export default withNotification(class Header extends Component {
                         Newsletters
                       </strong>
                     </li>
-                    {navLinks.mobile.visitors.after.map(props => (
-                      <li className="nav-item">
-                        <MyLink className="nav-link" {...props} />
+                    {navLinks.mobile.visitors.after.map(({ label, ...props }) => (
+                      <li key={props.url} className="nav-item">
+                        <MyLink className="nav-link" {...props}>{label}</MyLink>
                       </li>
                     ))}
                   </Fragment>
-                )}
+              )}
             </ul>
           </div>
           {isLoggedIn()
             ? <ul className="navbar-nav hidden-md-down" />
             : (
               <ul className="navbar-nav hidden-md-down">
-                {navLinks.desktop.visitors.map(props => (
-                  <li className="nav-item">
-                    <MyLink className="nav-link" {...props} />
+                {navLinks.desktop.visitors.map(({ label, ...props }) => (
+                  <li key={props.url} className="nav-item">
+                    <MyLink className="nav-link" {...props}>{label}</MyLink>
                   </li>
                 ))}
               </ul>
@@ -146,7 +146,7 @@ export default withNotification(class Header extends Component {
                 La société
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                {navLinks.desktop.dropdown.map(props => <MyLink className="dropdown-item" {...props} />)}
+                {navLinks.desktop.dropdown.map(({ label, ...props }) => <MyLink className="dropdown-item" key={props.url} {...props}>{label}</MyLink>)}
               </div>
             </li>
             {isLoggedIn()
@@ -154,22 +154,22 @@ export default withNotification(class Header extends Component {
                 <Fragment>
                   <li className="nav-item">
                     &nbsp;&nbsp;
-                    <ButtonLink url="/account" label="Mon compte" primary />
+                    <ButtonLink url="/account" primary>Mon Compte</ButtonLink>
                   </li>
                   <li className="nav-item">
                     &nbsp;&nbsp;
-                    <ButtonLink url="/logout" label="Deconnexion" />
+                    <ButtonLink url="/logout">Deconnexion</ButtonLink>
                   </li>
                 </Fragment>
               ) : (
                 <Fragment>
                   <li className="nav-item">
                     &nbsp;&nbsp;
-                    <ButtonLink url="/login" label="Se connecter" primary />
+                    <ButtonLink url="/login" primary>Se connecter</ButtonLink>
                   </li>
                   <li className="nav-item">
                     &nbsp;&nbsp;
-                    <ButtonLink url="/presignup" label="Créer un compte" data-cy="create-account" />
+                    <ButtonLink url="/presignup" data-cy="create-account">Créer un compte</ButtonLink>
                   </li>
                 </Fragment>
               )}

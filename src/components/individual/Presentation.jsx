@@ -30,8 +30,8 @@ export default () => (
           choisissez le nombre d’abeilles et voilà !
         </p>
         <p className="text-center">
-          <ButtonLink url="/signup/individual" label="Parrainer mes permières abeilles" primary />
-          <ButtonLink url="/present" label="Offrir un parrainage" primary />
+          <ButtonLink url="/signup/individual" primary>Parrainer mes permières abeilles</ButtonLink>
+          <ButtonLink url="/present" primary>Offrir un parrainage</ButtonLink>
         </p>
       </Item>
       <Item>
@@ -116,15 +116,21 @@ export default () => (
     </Rows>
     <Rows>
       <Item textAlign="center">
-        <ButtonLink url="/signup/individual" label="Parrainer des abeilles" />
+        <ButtonLink url="/signup/individual">Parrainer des abeilles</ButtonLink>
       </Item>
       <Item textAlign="center">
-        <ButtonLink url="/individual/more" label="En savoir plus" />
+        <ButtonLink url="/individual/more">En savoir plus</ButtonLink>
       </Item>
     </Rows>
     <Rows>
       <Item textAlign="center">
-        <ButtonLink url={leaflet} external primary label="Télécharger la plaquette de présentation" />
+        <ButtonLink
+          url={leaflet}
+          external
+          primary
+        >
+          Télécharger la plaquette de présentation
+        </ButtonLink>
       </Item>
     </Rows>
   </Fragment>
