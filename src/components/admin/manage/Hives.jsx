@@ -11,6 +11,7 @@ import Meta from '../../utils/Meta';
 import 'react-datepicker/dist/react-datepicker.css';
 import Pictures from './hives/Pictures';
 import { withNotification } from '../../../services/withNotification';
+import { Button } from '../../utils/Button';
 
 export default withNotification(class AdminManageHives extends Component {
   state = {
@@ -104,7 +105,7 @@ export default withNotification(class AdminManageHives extends Component {
             <h3>Créer une ruche</h3>
             <form className="form-inline my-3" onSubmit={this.addHive.bind(this)}>
               <input type="text" className="form-control mx-2" name="newHive" value={newHive} placeholder="Nom commun de la nouvelle ruche" onChange={handleChange.bind(this)} />
-              <button type="submit" className="btn btn-primary">Créer la ruche</button>
+              <Button type="submit">Créer la ruche</Button>
             </form>
             <div style={{ maxHeight: '50vh', overflowY: 'scroll' }}>
               {this.state.hives
