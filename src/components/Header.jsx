@@ -84,9 +84,9 @@ export default withNotification(class Header extends Component {
           </Link>
           <div className="hidden-lg-up collapse" style={{ justifyContent: 'space-between' }} id="navbarNav" onClick={() => { document.getElementById("navbarNav").classList.remove("show") }}>
             <ul className="navbar-nav">
-              {isLoggedIn() ? navLinks.mobile.loggedIn.map(props => (
+              {isLoggedIn() ? navLinks.mobile.loggedIn.map(({ label, ...props }) => (
                 <li key={props.url} className="nav-item">
-                  <MyLink className="nav-link" {...props} />
+                  <MyLink className="nav-link" {...props}>{label}</MyLink>
                 </li>)) : (
                   <Fragment>
                     {navLinks.mobile.visitors.before.map(({ label, ...props }) => (
