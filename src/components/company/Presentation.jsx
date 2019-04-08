@@ -31,7 +31,7 @@ export default () => (
           page dédiée à votre entreprise.
         </p>
         <p className="text-center">
-          <ButtonLink url="/signup/company" label="Parrainer des ruches" primary />
+          <ButtonLink url="/signup/company" primary>Parrainer des ruches</ButtonLink>
         </p>
       </Item>
       <Item>
@@ -127,15 +127,15 @@ export default () => (
     </Rows>
     <Rows>
       <Item textAlign="center">
-        <ButtonLink url="/signup/company" label="Parrainer une ruche" />
+        <ButtonLink url="/signup/company">Parrainer une ruche</ButtonLink>
       </Item>
       <Item textAlign="center">
-        <ButtonLink url="/company/more" label="En savoir plus" />
+        <ButtonLink url="/company/more">En savoir plus</ButtonLink>
       </Item>
     </Rows>
     <Rows>
       <Item textAlign="center">
-        <ButtonLink url={leaflet} external label="Télécharger la plaquette de présentation" primary />
+        <ButtonLink url={leaflet} external primary>Télécharger la plaquette de présentation</ButtonLink>
       </Item>
     </Rows>
   </Fragment>

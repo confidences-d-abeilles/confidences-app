@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 import Link from './Link';
 import theme from '../../config/theme';
 
@@ -48,3 +49,11 @@ export const Button = styled('button')(({ primary }) => (
 export const ButtonLink = styled(Link)(({ primary }) => (
   primary ? PrimaryStyleString : SecondaryStyleString
 ));
+
+ButtonLink.propTypes = {
+  primary: PropTypes.bool,
+};
+
+ButtonLink.defaultProps = {
+  primary: false,
+};
