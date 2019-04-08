@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Meta from './utils/Meta';
 import { isLoggedIn } from '../services/AuthService';
 import { ButtonLink } from './utils/Button';
@@ -7,7 +7,7 @@ import { ButtonLink } from './utils/Button';
 export default class Presignup extends Component {
   state = {
     redirect: false,
-  }
+  };
 
   componentDidMount() {
     if (isLoggedIn(true)) {
@@ -25,8 +25,8 @@ export default class Presignup extends Component {
           <div className="col-lg-6">
             <h2 className="text-center my-5">Je suis ...</h2>
             <p className="text-center">
-              <ButtonLink to="/signup/company" primary label="Une Entreprise" />
-              <ButtonLink to="/signup/individual" data-cy="individual" primary label="Un Particulier" />
+              <ButtonLink url="/signup/company" primary>Une entreprise</ButtonLink>
+              <ButtonLink url="/signup/individual" data-cy="individual" primary>Un particulier</ButtonLink>
             </p>
           </div>
         </div>

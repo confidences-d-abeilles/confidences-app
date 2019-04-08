@@ -11,6 +11,7 @@ import AdminManageUserId from './manage/users/Fiche';
 import AdminManageFaq from './manage/Faq';
 import AdminManageMails from './manage/Mails';
 import AdminManageHives from './manage/Hives';
+import AdminManageHivesBoard from './manage/hives/Board';
 import AdminManageBundles from './manage/Bundles';
 import AdminManageBundle from './manage/bundle/MainScreen';
 import AdminManageBundleId from './manage/bundle/Uniq';
@@ -89,6 +90,7 @@ export default () => (
             <Route exact path="/admin/manage/users" component={AdminManageUsers} />
             <Route exact path="/admin/manage/mails" component={AdminManageMails} />
             <Route exact path="/admin/manage/hives" component={AdminManageHives} />
+            <Route exact path="/admin/manage/hive/:hiveId" component={AdminManageHivesBoard} />
             <Route exact path="/admin/manage/bundles" component={AdminManageBundles} />
             <Route exact path="/admin/manage/bundle" component={AdminManageBundle} />
             <Switch>

@@ -7,6 +7,7 @@ import { handleChange } from '../../services/FormService';
 import request from '../../services/Net';
 import Confirm from './Confirm';
 import { withNotification } from '../../services/withNotification';
+import { Button } from './Button';
 
 export default withNotification(class Feedback extends Component {
 
@@ -146,7 +147,6 @@ export default withNotification(class Feedback extends Component {
   render() {
     return (
       <div>
-      <h3 className="text-center">Ajouter une actualité</h3>
       <form onSubmit={this.state.newsTake?this.updateActu.bind(this):this.createActu.bind(this)}>
         <div className="form-group">
           <input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} value={this.state.actuTitle} placeholder='Titre'/>
@@ -183,10 +183,9 @@ export default withNotification(class Feedback extends Component {
             Recommandations : 800x600px, 100ko maximum - {(this.state.actuImg)?'Sélectionné : '+this.state.actuImg:"Aucun fichier sélectionné"}
           </label>
         </div>
-        <button className="btn btn-secondary btn-sm">Soumettre</button>
+        <Button type="submit" primary>Soumettre</Button>
+        {this.state.newsModify ? <Confirm action={this.deleteActu.bind(this)} text="Supprimer cette news" className="btn btn-secondary btn-sm"/>: null}
       </form>
-      <br/>
-      {this.state.newsModify ? <Confirm action={this.deleteActu.bind(this)} text="Supprimer cette news" className="btn btn-secondary btn-sm"/>: null}
       </div>
     )
   }
