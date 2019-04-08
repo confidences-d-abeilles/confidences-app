@@ -5,8 +5,7 @@ import {
   Link,
   Switch,
 } from 'react-router-dom';
-import AdminManageUsers from './manage/Users';
-import AdminManageUser from './manage/users/MainScreen';
+import AdminManageUser from './manage/Users';
 import AdminManageUserId from './manage/users/Fiche';
 import AdminManageFaq from './manage/Faq';
 import AdminManageMails from './manage/Mails';
@@ -28,11 +27,6 @@ export default () => (
         <ul className="list-group">
           <li className="list-group-item active">Gestion clients</li>
           <Link to="/admin/manage/user" className="list-group-item">
-            <FontAwesome name="user" fixedWidth />
-            &nbsp;&nbsp;
-            Utilisateurs
-          </Link>
-          <Link to="/admin/manage/users" className="list-group-item">
             <FontAwesome name="user" fixedWidth />
             &nbsp;&nbsp;
             Utilisateurs
@@ -87,7 +81,6 @@ export default () => (
             <Route exact path="/admin/manage" component={AdminManageHome} />
             <Route exact path="/admin/manage/user" component={AdminManageUser} />
             <Route exact path="/admin/manage/user/:id" component={AdminManageUserId} />
-            <Route exact path="/admin/manage/users" component={AdminManageUsers} />
             <Route exact path="/admin/manage/mails" component={AdminManageMails} />
             <Route exact path="/admin/manage/hives" component={AdminManageHives} />
             <Route exact path="/admin/manage/hive/:hiveId" component={AdminManageHivesBoard} />

@@ -50,6 +50,16 @@ export default withNotification(class Fiche extends Component {
     });
   };
 
+  handlePromotion = ({ target: { value } }) => {
+    const { notification } = this.props;
+    request({
+      url: `/users/${this.getUserId()}/promote/${value}`,
+      method: 'patch',
+    }, notification).then(() => {
+      this.getUser();
+    });
+  };
+
   impersonate = () => {
     const { notification } = this.props;
     request({
@@ -88,6 +98,7 @@ export default withNotification(class Fiche extends Component {
                 data={this.state.user}
                 delete={this.deleteUser}
                 impersonate={this.impersonate}
+                handlePromotion={this.handlePromotion}
               />
               {this.state.user.addresses.map(element => (
                 <div className="newcard" key={element.id}>
