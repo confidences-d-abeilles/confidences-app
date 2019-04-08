@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Loading from './Loading';
 
 export default class FileUpload extends Component {
-
   /**
  * Form component to upload a file
  * Provide a label props
@@ -10,13 +9,11 @@ export default class FileUpload extends Component {
  * You can specify a accept attribute
  */
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      newFile: null
-    }
-    this.identifier = (this.props.identifier)?this.props.identifier:Math.floor(Math.random() * 1000);
-  }
+  state = {
+    newFile: null,
+  };
+
+  identifier = (this.props.identifier)?this.props.identifier:Math.floor(Math.random() * 1000);
 
   render() {
     return (

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
 import request from '../../../../services/Net';
+import { withNotification } from '../../../../services/withNotification';
 
-export default class Pictures extends Component {
+export default withNotification(class Pictures extends Component {
 
   delete = index => {
     const { notification } = this.props;
@@ -28,4 +29,4 @@ export default class Pictures extends Component {
       </div>
     )
   }
-}
+});

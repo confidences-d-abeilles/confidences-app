@@ -9,6 +9,9 @@ import Rating from './Rating';
 import Loading from '../../../utils/Loading';
 import Feedback from '../../../utils/Feedback';
 import Info from './Info';
+import FileUpload from '../../../utils/FileUpload';
+import { Button } from '../../../utils/Button';
+import Pictures from './Pictures';
 
 const Board = ({ notification, match: { params: { hiveId } } }) => {
   const [hive, setHive] = useState(null);
@@ -29,6 +32,23 @@ const Board = ({ notification, match: { params: { hiveId } } }) => {
         [name]: value,
       },
     }, notification).then(() => setHive({ ...hive, [name]: value }));
+  };
+
+  const addPhoto = (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append('id', hiveId);
+    if (document.getElementById('hive-img').files[0]) {
+      data.append('img', document.getElementById('hive-img').files[0]);
+      request({
+        url: '/hive/photo',
+        method: 'post',
+        data,
+        header: {
+          'content-type': 'multipart/form-data',
+        },
+      }, notification).then(() => get());
+    }
   };
 
   if (!hive) {
@@ -63,6 +83,12 @@ const Board = ({ notification, match: { params: { hiveId } } }) => {
             {hive.news.map(news => <option value={news.id} key={news.id}>{news.title}</option>)}
           </select>
           <Feedback name={newsToEdit} hiveId={hiveId} />
+          <h2>Photos</h2>
+          <form onSubmit={addPhoto}>
+            <FileUpload label="Taille recommandé : 400 x 300" identifier="hive-img" />
+            <Button type="submit" primary>Ajouter</Button>
+          </form>
+          <Pictures data={hive.imgs} hiveId={hiveId} refresh={get()} />
         </div>
       </div>
     </>
