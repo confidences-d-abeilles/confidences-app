@@ -22,8 +22,8 @@ export default withNotification(class Feedback extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { notification } = this.props;
-    if (nextProps.name) {
+    const { notification, name } = this.props;
+    if (nextProps.name !== name) {
       const data = new FormData();
       data.append('id_news', nextProps.name);
       request({
