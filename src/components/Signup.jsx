@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
+import ReactPixel from 'react-facebook-pixel';
 import { handleChange } from '../services/FormService'
 import { login, isLoggedIn } from '../services/AuthService'
 import request from '../services/Net.js'
@@ -80,6 +81,7 @@ export default withNotification(class Signup extends Component {
         },
       }, notification)
         .then(() => {
+          ReactPixel.track('Lead', {});
           request({
             url: '/authenticate',
             method: 'post',

@@ -7,7 +7,7 @@ import request from '../../services/Net';
 import Loading from '../utils/Loading';
 import Meta from '../utils/Meta';
 import { withNotification } from '../../services/withNotification';
-
+import ReactPixel from 'react-facebook-pixel';
 export default withNotification(class IndividualWish extends Component {
   constructor(props) {
     super(props);
@@ -31,6 +31,10 @@ export default withNotification(class IndividualWish extends Component {
       },
     }, notification)
       .then((res) => {
+        ReactPixel.track('AddToCart', {
+          value: this.getPrice(this.state.bees),
+          currency: 'EUR',
+        });        
         this.setState({ redirect: true });
       });
   }

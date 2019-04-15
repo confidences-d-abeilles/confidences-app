@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import request from '../../services/Net';
 import Loading from './Loading';
 import { withNotification } from '../../services/withNotification';
+import ReactPixel from 'react-facebook-pixel';
 
 const Pending = () => (
   <Fragment>
@@ -33,13 +34,19 @@ class PayChecker extends PureComponent {
     request({
       url: `/bundle/${bundleId}`,
       method: 'get',
-    }, notification).then(({ state }) => {
-      this.setState({ status: parseInt(state, 10) });
+    }, notification).then(({ state, price }) => {
+      this.setState({ status: parseInt(state, 10), price });
     });
   };
 
   render() {
-    const { status } = this.state;
+    const { status, price } = this.state;
+    if (status === 2 && price) {
+      ReactPixel.track('Purchase', {
+        value: price,
+        currency: 'EUR',
+      });
+    }
     const { children } = this.props;
     return (
       <div>
