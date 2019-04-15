@@ -15,13 +15,14 @@ import PropTypes from 'prop-types';
  */
 const MyLink = ({
   url,
+  to,
   external,
   className,
   children,
   ...props
 }) => (external ? (
   <a
-    href={url}
+    href={url || to}
     target="_blank"
     rel="noopener noreferrer"
     className={className}
