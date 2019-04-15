@@ -21,7 +21,12 @@ export default withNotification(class AdminHome extends Component {
       url: '/bundle',
       method: 'get',
     }, notification).then((res) => {
-      const sorted = res.filter(({ state }) => state >= 2).sort((a, b) => a.end_date.toString().localeCompare(b.end_date.toString()));
+      const filtered = res.filter(({ state }) => state >= 2);
+      const sorted = filtered.sort((a, b) => {
+        const first = new Date(a.end_date).getTime();
+        const second = new Date(b.end_date).getTime();
+        return first - second;
+      });
       this.setState({ bundles: sorted });
     });
   };
