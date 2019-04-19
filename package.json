@@ -52,6 +52,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "babel-plugin-dynamic-import-webpack": "^1.1.0",
     "cypress": "^3.2.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",

@@ -1997,6 +1997,11 @@ babel-plugin-dynamic-import-node@2.2.0:
   dependencies:
     object.assign "^4.1.0"
 
+babel-plugin-dynamic-import-webpack@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-dynamic-import-webpack/-/babel-plugin-dynamic-import-webpack-1.1.0.tgz#955306608cdae6191cd1d3f50cf93826ff69f4e1"
+  integrity sha512-Q/Vxl3zRwC5/DMyg97Ey2UD/f7ApvO+0zXgzwT3G2N7oajGFroqcUEmXZ23QXJsr0Y+DBVNK57saaUnQhCpllA==
+
 babel-plugin-emotion@^10.0.7:
   version "10.0.7"
   resolved "https://registry.yarnpkg.com/babel-plugin-emotion/-/babel-plugin-emotion-10.0.7.tgz#3634ada6dee762140f27db07387feaec8d2cb619"
