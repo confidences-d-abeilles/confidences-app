@@ -23,7 +23,7 @@ export default withNotification(class ContributorManageContract extends Componen
   render() {
     return (
       <div>
-        <object data={(this.state.user)?process.env.REACT_APP_CONTENT_DOMAIN+'/'+this.state.user.id+'.pdf':null} type="application/pdf" style={{ width: '100%' }} height="400" />
+        <object data={(this.state.user)?process.env.REACT_APP_CONTENT_DOMAIN+'/'+this.state.user.id+'.pdf':null} type="application/pdf" style={{ width: '100%' }} height="400" aria-label="contract" />
       </div>
     );
   }
