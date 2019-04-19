@@ -10,45 +10,50 @@ export default withNotification(class Address extends Component {
 
   constructor(props) {
     super(props);
+    const { data } = props;
     this.state = {
       edit: false,
-      address: props.data,
+      address: data,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.data) {
+  componentWillReceiveProps({ data }) {
+    if (data) {
       this.setState({
-        address: { ...nextProps.data, sexe_m: (nextProps.data.sexe_m) ? '1' : '0' },
+        address: { ...data, sexe_m: (data.sexe_m) ? '1' : '0' },
       });
-    } // pres operation
+    }
   }
 
   updateAddress = (event) => {
+    const { address } = this.state;
     this.setState({
-      address: { ...this.state.address, [event.target.name]: event.target.value },
+      address: { ...address, [event.target.name]: event.target.value },
     });
   };
 
   submitAddress = (e) => {
     e.preventDefault();
     const { notification } = this.props;
+    const { address } = this.state;
     request({
-      url: `/address/${this.state.address.id}`,
+      url: `/address/${address.id}`,
       method: 'PUT',
-      data: this.state.address,
+      data: address,
     }, notification).then(() => {
       this.setState({ edit: false });
     });
   };
 
   render() {
+    const { edit, address } = this.state;
+    const { company } = this.props;
     return (
       <div>
-        {(!this.state.edit)
+        {(!edit)
           ? (
             <div>
-              <ViewAddress data={this.state.address} />
+              <ViewAddress data={address} />
               <div className="text-right mt-2">
                 <Button onClick={() => { this.setState({ edit: true }); }} primary>
                   <FontAwesome name="pencil" />
@@ -57,7 +62,7 @@ export default withNotification(class Address extends Component {
               </div>
             </div>
           )
-          : <EditAddress data={this.state.address} onChange={this.updateAddress} onSubmit={this.submitAddress} company={this.props.company} />}
+          : <EditAddress data={address} onChange={this.updateAddress} onSubmit={this.submitAddress} company={company} />}
       </div>
     );
   }
