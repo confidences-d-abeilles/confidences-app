@@ -7,7 +7,6 @@ import { Button } from '../Button';
 import { withNotification } from '../../../services/withNotification';
 
 export default withNotification(class Address extends Component {
-
   constructor(props) {
     super(props);
     const { data } = props;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as Sentry from '@sentry/browser';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 
 const Background = styled('div')({
   width: '100vw',
@@ -35,8 +36,8 @@ export default class ErrorHandler extends Component {
 
   componentDidCatch(error, errorInfo) {
     this.setState({ error });
-    Sentry.withScope(scope => {
-      Object.keys(errorInfo).forEach(key => {
+    Sentry.withScope((scope) => {
+      Object.keys(errorInfo).forEach((key) => {
         scope.setExtra(key, errorInfo[key]);
       });
       Sentry.captureException(error);
@@ -61,3 +62,7 @@ export default class ErrorHandler extends Component {
     return children;
   }
 }
+
+ErrorHandler.propTypes = {
+  children: PropTypes.node,
+};
