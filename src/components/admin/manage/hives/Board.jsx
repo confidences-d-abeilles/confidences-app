@@ -1,4 +1,4 @@
-import React, { useState, useEffect, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -64,8 +64,8 @@ class Board extends PureComponent {
 
 
   render() {
-    const { newsToEdit, hive } = this.state;
-    const { notification, match: { params: { hiveId } } } = this.props;
+    const { hive } = this.state;
+    const { match: { params: { hiveId } } } = this.props;
     if (!this.state.hive) {
       return <Loading />;
     }

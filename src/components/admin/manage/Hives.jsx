@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
-import ReactStars from 'react-stars';
 
 import request from '../../../services/Net';
 import { handleChange } from '../../../services/FormService';
 import Loading from '../../utils/Loading';
-import Feedback from '../../utils/Feedback';
 import Meta from '../../utils/Meta';
 import 'react-datepicker/dist/react-datepicker.css';
-import Pictures from './hives/Pictures';
 import { withNotification } from '../../../services/withNotification';
 import { Button } from '../../utils/Button';
 

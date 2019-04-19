@@ -50,7 +50,7 @@ export default class ErrorHandler extends Component {
       return (
         <Background>
           <Centered>
-            <Error>Une erreur est survenue 😓... Nous nous excusons de la gêne occasionnée</Error>
+            <Error>Une erreur est survenue <span role="img" aria-label="sad">😓</span>... Nous nous excusons de la gêne occasionnée</Error>
             <FeedBackLink onClick={() => Sentry.showReportDialog()}>
               Cliquez ici pour nous en dire plus sur les circonstances et nous aider à améliorer notre service
             </FeedBackLink>
