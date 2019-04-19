@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
+import { withTranslation } from 'react-i18next';
 import '../../assets/styles/parrains_homepage.css';
 import first from '../../assets/img/homepage/1.jpg';
 import second from '../../assets/img/homepage/2.jpg';
@@ -30,19 +31,15 @@ const carouselSlides = [
   { element: seventh, label: 'seventh' },
 ];
 
-export default ({ loading, users }) => (
+export default withTranslation('homepage')(({ loading, users, t }) => (
   <Fragment>
     <Meta title="Accueil" />
     <Rows>
       <Item>
-        <h1>Parrainez une ruche, aidez-nous à protéger les abeilles</h1>
+        <h1>{t('headline')}</h1>
         <p>
-          Confidences d’Abeilles vous propose
-          aujourd’hui de l’aider à poursuivre sa
-          mission. Vous aussi participez à la protection
-          des abeilles, à la préservation de la
-          biodiversité en parrainant une ruche.
-          </p>
+          {t('headblock')}
+        </p>
         <p className="text-center">
           <ButtonLink url="/company/presentation" primary>Service entreprise</ButtonLink>
           <ButtonLink url="/individual/presentation" primary>Service particulier</ButtonLink>
@@ -63,17 +60,12 @@ export default ({ loading, users }) => (
     <div className="container py-4">
       <div className="row justify-content-center align-items-center">
         <div className="col-lg-9 col-md-10 col-sm-12">
-          <p>
-            Cette mission nous la menons avec vous, particuliers, entreprises, citoyens avertis qui nous
-            accompagnez depuis nos débuts. En finançant un rucher pédagogique vous nous avez déjà
-            permis d’organiser des journées découvertes et de formation ; nous sommes fiers
-            aussi d’avoir lancé plusieurs néophytes dans le grand bain de l’apiculture !
-        </p>
+          <p>{t('mission')}</p>
         </div>
       </div>
       <div className="row justify-content-center align-items-center">
         <div className="col">
-          <h2 className="text-center my-4">Ils parrainent déjà des ruches</h2>
+          <h2 className="text-center my-4">{t('ourClients')}</h2>
           {!loading
             ? (
               <Slider
@@ -84,38 +76,34 @@ export default ({ loading, users }) => (
                 slidesToScroll={4}
                 arrows
               >
-              {users.map((user) => {
-                if (user.user_type === 1 || user.user_type === 2) {
-                  let img;
-                  if (user.logo) {
-                    img = process.env.REACT_APP_CONTENT_DOMAIN + '/' + user.logo;
-                  } else if (user.hive_img) {
-                    img = process.env.REACT_APP_CONTENT_DOMAIN + '/' + user.hive_img;
-                  } else {
-                    img = defaultImg;
+                {users.map((user) => {
+                  if (user.user_type === 1 || user.user_type === 2) {
+                    let img;
+                    if (user.logo) {
+                      img = `${process.env.REACT_APP_CONTENT_DOMAIN}/${user.logo}`;
+                    } else if (user.hive_img) {
+                      img = `${process.env.REACT_APP_CONTENT_DOMAIN}/${user.hive_img}`;
+                    } else {
+                      img = defaultImg;
+                    }
+                    return (
+                      <div key={user.id}>
+                        <Link to={(user.namespace) ? `/parrains/${user.namespace}` : `/hive/${user.hive_id}`}>
+                          <img className="img-fluid" src={img} alt={(user.company_name) ? user.company_name : `${user.firstname} ${user.name}`} />
+                          <p className="my-2" style={{ height: '2em', lineHeight: '2em', overflow: 'hidden' }}>{(user.company_name) ? user.company_name : `${user.firstname} ${user.name}`}</p>
+                        </Link>
+                      </div>
+                    );
                   }
-                  return (
-                    <div key={user.id}>
-                      <Link to={(user.namespace) ? '/parrains/' + user.namespace : '/hive/' + user.hive_id}>
-                        <img className="img-fluid" src={img} alt={(user.company_name) ? user.company_name : user.firstname + ' ' + user.name} />
-                        <p className="my-2" style={{ height: '2em', lineHeight: '2em', overflow: 'hidden' }}>{(user.company_name) ? user.company_name : user.firstname + ' ' + user.name}</p>
-                      </Link>
-                    </div>
-                  )
-                }
-                return null;
-              })}
-            </Slider>
-          ): <Loading />}
+                  return null;
+                })}
+              </Slider>
+            ) : <Loading />}
         </div>
       </div>
       <div className="row justify-content-center">
         <div className="col-lg-9 col-md-10 col-sm-12">
-          <p>
-            Vous voulez apporter votre pierre à l’édifice et participer à cette belle aventure ? Nous vous
-            proposons de parrainer une ruche. En échange de quoi, les butineuses vous feront découvrir
-            leur précieux butin : une partie du miel qu’elles auront amassé !
-        </p>
+          <p>{t('ready')}</p>
         </div>
       </div>
       <div className="row align-items-center justify-content-center">
@@ -128,4 +116,4 @@ export default ({ loading, users }) => (
       </div>
     </div>
   </Fragment>
-);
+));

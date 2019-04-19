@@ -2,13 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Sentry from '@sentry/browser';
 import ReactPixel from 'react-facebook-pixel';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import fr from './langs/fr';
 
 import App from './App';
 
 const options = {
-	autoConfig: true, 	// set pixel's autoConfig
-  debug: true, 		// enable logs
+  autoConfig: true,
+  debug: true,
 };
+
+const resources = {
+  fr,
+};
+
+console.log(resources);
+
+i18n.use(initReactI18next).init({
+  resources,
+  lng: 'fr',
+});
 
 ReactPixel.init('281052689206911', {}, options);
 
