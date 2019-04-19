@@ -1,8 +1,9 @@
 import React from 'react';
 
 import Meta from '../utils/Meta';
+import { withTranslation } from 'react-i18next';
 
-export default () => (
+export default withTranslation('about')(({ t }) => (
   <div className="container">
     <Meta title="Histoire" />
     <div className="row">
@@ -12,24 +13,16 @@ export default () => (
     </div>
     <div className="row mt-4 justify-content-center align-items-center">
       <div className="col-lg-4 col-md-6 col-sm-12 my-4">
-        <h2>« Sans la passion, Confidences d’Abeilles ne serait pas ce qu’elle est aujourd’hui »</h2>
+        <h2>{t('quote')}</h2>
       </div>
       <div className="col-lg-5 col-md-6 col-sm-12">
-        <h3>Un héritage</h3>
-        <p>
-          Oui, Confidences d’Abeilles est avant tout un héritage.
-              Légué par notre grand-oncle, apiculteur en son temps, la fièvre nous a pris à l’occasion d’un goûter.<br /><br />
-          <strong>« Et si nous faisions notre propre miel ? »</strong><br /><br />
-          Ni une ni deux, nous voilà parti sur le rucher familial, accompagnés de notre grand-oncle, pour notre première visite.
-          Il n’aura pas fallu beaucoup plus de temps pour que la première ruche voie le jour.
-          Fort du savoir-faire reçu, nous récoltons nos premiers kilos l’été 2007 !
-          Depuis, saisons après saisons, ruches après ruches, notre passion n’a cessé de grandir et nous anime toujours plus intensément.
-            </p>
+        <h3>{t('title1')}</h3>
+        <p>{t('block1')}</p>
       </div>
     </div>
     <div className="row justify-content-center ">
       <div className="col-lg-9 col-md-10 col-sm-12">
-        <h3>Une évidence </h3>
+        <h3>Une évidence</h3>
         <p>
           Pas de révélations ni de plans sur la comète !
           Tout simplement le moyen pour deux apiculteurs de vivre à fond leur passion et surtout, de la faire connaître.
@@ -68,4 +61,4 @@ export default () => (
       </div>
     </div>
   </div>
-);
+));

@@ -22,6 +22,7 @@ console.log(resources);
 i18n.use(initReactI18next).init({
   resources,
   lng: 'fr',
+  returnObjects: true,
 });
 
 ReactPixel.init('281052689206911', {}, options);
@@ -32,3 +33,7 @@ Sentry.init({
 });
 
 ReactDOM.render(<App />, document.getElementById('root'));
+
+if (module.hot) {
+  module.hot.accept();
+}

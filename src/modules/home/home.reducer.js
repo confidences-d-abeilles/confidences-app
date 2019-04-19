@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         users: action.payload.reverse(),
-      }
+      };
     default:
       return state;
   }

@@ -41,8 +41,8 @@ export default withTranslation('homepage')(({ loading, users, t }) => (
           {t('headblock')}
         </p>
         <p className="text-center">
-          <ButtonLink url="/company/presentation" primary>Service entreprise</ButtonLink>
-          <ButtonLink url="/individual/presentation" primary>Service particulier</ButtonLink>
+          <ButtonLink url="/company/presentation" primary>{t('companyService')}</ButtonLink>
+          <ButtonLink url="/individual/presentation" primary>{t('individualService')}</ButtonLink>
         </p>
       </Item>
       <Item>
@@ -108,10 +108,10 @@ export default withTranslation('homepage')(({ loading, users, t }) => (
       </div>
       <div className="row align-items-center justify-content-center">
         <div className="col-lg-4 col-md-6 col-sm-12 text-center my-2">
-          <ButtonLink url="/presignup">Parrainer une ruche</ButtonLink>
+          <ButtonLink url="/presignup">{t('sponsor')}</ButtonLink>
         </div>
         <div className="col-lg-4 col-md-6 col-sm-12 text-center my-2">
-          <ButtonLink url="/hives">Découvrir les ruches</ButtonLink>
+          <ButtonLink url="/hives">{t('discover')}</ButtonLink>
         </div>
       </div>
     </div>

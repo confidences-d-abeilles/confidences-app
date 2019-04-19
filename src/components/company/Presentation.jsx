@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { withTranslation } from 'react-i18next';
 import { Rows, Item } from '../utils/layout/Flex';
 import { ButtonLink } from '../utils/Button';
 import first from '../../assets/img/E/1.jpg';
@@ -13,25 +14,15 @@ import eighth from '../../assets/img/E/8.jpg';
 import Meta from '../utils/Meta';
 import leaflet from '../../assets/leaflet_e.pdf';
 
-export default () => (
+export default withTranslation('company')(({ t }) => (
   <Fragment>
     <Meta title="Parrainer des ruches" />
     <Rows>
       <Item>
-        <h1 className="text-left">
-          Vos abeilles n’ont
-          jamais été aussi
-          proche de prendre leur
-          envol !
-        </h1>
-        <p className="text-left">
-          Pour parrainer votre première ruche c’est très
-          simple : complétez notre formulaire en moins
-          de 3 minutes et voilà ! Vous avez accès à la
-          page dédiée à votre entreprise.
-        </p>
+        <h1 className="text-left">{t('headline')}</h1>
+        <p className="text-left">{t('headblock')}</p>
         <p className="text-center">
-          <ButtonLink url="/signup/company" primary>Parrainer des ruches</ButtonLink>
+          <ButtonLink url="/signup/company" primary>{t('go')}</ButtonLink>
         </p>
       </Item>
       <Item>
@@ -67,76 +58,35 @@ export default () => (
     </Rows>
     <Rows>
       <Item textAlign="center">
-        <h2>Le parrainage de ruche c’est :</h2>
+        <h2>{t('secondTitle')}</h2>
       </Item>
     </Rows>
     <Rows>
       <Item>
-        <h3 className="text-center my-4">Pour l'entreprise</h3>
+        <h3 className="text-center my-4">{t('forCompany')}</h3>
         <ul>
-          <li>
-            Adopter une démarche participative et responsable vis-à- vis de l’environnement
-          </li>
-          <li>
-            S’engager concrètement dans la <strong>protection de la biodiversité</strong>
-          </li>
-          <li>
-            Une stratégie pour <strong>se démarquer de la concurrence</strong>
-          </li>
-          <li>
-            Une histoire à partager avec ses partenaires
-          </li>
-          <li>
-            Un <strong>contenu de qualité</strong>, original et engageant à publier régulièrement sur les <strong>réseaux sociaux</strong>
-          </li>
-          <li>
-            Une ruche au nom et aux couleurs de l’entreprise
-          </li>
-          <li>
-            Une <strong>page, dédiée à l'entreprise</strong>, détaille sa démarche environnementale ; des photos de sa ruche ainsi que des actualités y sont régulièrement postées
-          </li>
-          <li>
-            Une visibilité digitale supplémentaire
-          </li>
-          <li>
-            <strong>40 pots de miel de 250g personnalisés</strong> aux couleurs de l’entreprise : un cadeau unique pour ses collaborateurs, ses partenaires ou encore ses clients</li>
-          <li>
-            La possibilité d'organiser avec son équipe une <strong>visite de la ruche</strong> sous la fameuse tenue d'apiculteur
-          </li>
+          {t('forCompanyPoints').map(point => <li>{point}</li>)}
         </ul>
       </Item>
       <Item>
-        <h3 className="text-center my-4">Pour l'apiculteur</h3>
+        <h3 className="text-center my-4">{t('forUs')}</h3>
         <ul>
-          <li>C’est l’assurance de maintenir notre
-          cheptel et de l’accroitre</li>
-          <li>Un nombre plus important de ruches
-          nous permet plus facilement
-          d’équilibrer les colonies entre elles</li>
-          <li>L’implantation de nouveaux ruchers
-          permet localement d’agir sur la
-          biodiversité (pollinisation) mais aussi
-          d’organiser des visites pédagogiques
-          pour les curieux</li>
-          <li>Une visibilité supplémentaire</li>
-          <li>Un moyen de sensibiliser un grand
-          nombre de personnes à la protection
-          des abeilles</li>
+          {t('forUsPoints').map(point => <li>{point}</li>)}
         </ul>
       </Item>
     </Rows>
     <Rows>
       <Item textAlign="center">
-        <ButtonLink url="/signup/company">Parrainer une ruche</ButtonLink>
+        <ButtonLink url="/signup/company">{t('sponsor')}</ButtonLink>
       </Item>
       <Item textAlign="center">
-        <ButtonLink url="/company/more">En savoir plus</ButtonLink>
+        <ButtonLink url="/company/more">{t('more')}</ButtonLink>
       </Item>
     </Rows>
     <Rows>
       <Item textAlign="center">
-        <ButtonLink url={leaflet} external primary>Télécharger la plaquette de présentation</ButtonLink>
+        <ButtonLink url={leaflet} external primary>{t('download')}</ButtonLink>
       </Item>
     </Rows>
   </Fragment>
-);
+));
