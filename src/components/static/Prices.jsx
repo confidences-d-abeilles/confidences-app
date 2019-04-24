@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 
 import { handleTick } from '../../services/FormService';
 import Meta from '../utils/Meta';
+import { ButtonLink } from '../utils/Button';
 
 const Wrapper = styled('div')({
   display: 'flex',
@@ -46,12 +47,11 @@ export default () => (
 );
 
 class IndividualPrices extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      several: false
-    }
+      several: false,
+    };
 
     this.indPricesMo = [10, 17, 23, 27, 32];
     this.indPricesYe = [85, 160, 230, 295, 350];
@@ -59,15 +59,14 @@ class IndividualPrices extends Component {
 
   render() {
     const pricesArr = (this.state.several) ? this.indPricesMo : this.indPricesYe;
-    const pricesCells = pricesArr.map(price => {
+    const pricesCells = pricesArr.map((price) => {
       let priceDispl;
       if (this.state.several) {
-        priceDispl = price + '€/mois (' + price * 12 + '€/an)';
+        priceDispl = `${price}€/mois (${price * 12}€/an)`;
+      } else {
+        priceDispl = `${price}€/an`;
       }
-      else {
-        priceDispl = price + '€/an';
-      }
-      return <td key={price}>{priceDispl}</td>
+      return <td key={price}>{priceDispl}</td>;
     });
 
     return (
@@ -82,20 +81,31 @@ class IndividualPrices extends Component {
           <table className="table">
             <tbody>
               <tr>
-                <th>10 000 abeilles</th><th>20 000 abeilles</th><th>30 000 abeilles</th><th>40 000 abeilles</th><th>50 000 abeilles (1 ruche complète)</th>
+                <th>10 000 abeilles</th>
+                <th>20 000 abeilles</th>
+                <th>30 000 abeilles</th>
+                <th>40 000 abeilles</th>
+                <th>50 000 abeilles (1 ruche complète)</th>
               </tr>
               <tr>
-                <td>8 pots de 250g</td><td>16 pots de 250g</td><td>24 pots de 250g</td><td>32 pots de 250g</td><td>40 pots de 250g</td>
+                <td>8 pots de 250g</td>
+                <td>16 pots de 250g</td>
+                <td>24 pots de 250g</td>
+                <td>32 pots de 250g</td>
+                <td>40 pots de 250g</td>
               </tr>
               <tr>
                 {pricesCells}
               </tr>
             </tbody>
           </table>
+          <ButtonLink url="/presignup">Parrainer dès maintenant</ButtonLink>
         </div>
         <div className="form-check my-4">
           <label className="form-check-label">
-            <input type="checkbox" className="form-check-input" name="several" onClick={handleTick.bind(this)} /> Paiement en plusieurs fois
+            <input type="checkbox" className="form-check-input" name="several" onClick={handleTick.bind(this)} />
+            {' '}
+Paiement mensuel
           </label>
         </div>
       </div>
@@ -104,7 +114,6 @@ class IndividualPrices extends Component {
 }
 
 class CompanyPrices extends Component {
-
   constructor(props) {
     super(props);
 
@@ -124,18 +133,26 @@ class CompanyPrices extends Component {
           <table className="table">
             <tbody>
               <tr>
-                <th>1 à 4 ruches</th><th>5 ruches ou plus</th>
+                <th>1 à 4 ruches</th>
+                <th>5 ruches ou plus</th>
               </tr>
               <tr>
                 <td>40 pots de miel de 250g par ruche</td>
                 <td>40 pots de miel de 250g par ruche</td>
               </tr>
               <tr>
-                <td>{this.entrPricesYe[0]}€ HT /ruche</td>
-                <td>{this.entrPricesYe[1]}€ HT /ruche</td>
+                <td>
+                  {this.entrPricesYe[0]}
+€ HT /ruche
+                </td>
+                <td>
+                  {this.entrPricesYe[1]}
+€ HT /ruche
+                </td>
               </tr>
             </tbody>
           </table>
+          <ButtonLink url="/presignup">Parrainer dès maintenant</ButtonLink>
         </div>
       </React.Fragment>
     );
