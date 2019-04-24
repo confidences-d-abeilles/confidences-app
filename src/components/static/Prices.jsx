@@ -99,7 +99,7 @@ class IndividualPrices extends Component {
               </tr>
             </tbody>
           </table>
-          <ButtonLink url="/presignup">Parrainer dès maintenant</ButtonLink>
+          <ButtonLink url="/individual/company">Parrainer dès maintenant</ButtonLink>
         </div>
         <div className="form-check my-4">
           <label className="form-check-label">
@@ -152,7 +152,7 @@ class CompanyPrices extends Component {
               </tr>
             </tbody>
           </table>
-          <ButtonLink url="/presignup">Parrainer dès maintenant</ButtonLink>
+          <ButtonLink url="/signup/company">Parrainer dès maintenant</ButtonLink>
         </div>
       </React.Fragment>
     );
