@@ -81,7 +81,6 @@ export default withNotification(class Hive extends Component {
                       if (img === this.state.hive.imgs[0]) {
                         return (null);
                       } else {
-                        if (index !== 1){ index += 1; }
                         return (
                           <div className="col-lg-4">
                             <Imagebox
