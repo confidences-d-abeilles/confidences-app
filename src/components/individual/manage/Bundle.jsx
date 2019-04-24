@@ -57,7 +57,6 @@ pour le faire ou
             <Link to="/individual/payment">ici</Link>
 .
           </p>
-          <a href="/" className="btn btn-secondary m-2 disabled" rel="noopener noreferrer" target="_blank" role="button" aria-disabled="true">Télécharger mon certificat de parrainage</a>
         </div>
       );
     }
