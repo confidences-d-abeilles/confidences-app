@@ -39,7 +39,7 @@ export default withNotification(class AdminHome extends Component {
         <div className="col-4">
           <p>Parrainages arrivant bientôt à expiration :</p>
           <div className="newcard">
-            {bundles.map(bundle => <p>{moment(bundle.end_date).format('DD/MM/YYYY')} <Link to={`/admin/manage/bundle/${bundle.id}`}>Gérer</Link></p>)}
+            {bundles.map(bundle => <p>{moment(bundle.end_date).format('DD/MM/YYYY')} - {bundle.owner.name} {bundle.owner.firstname}<Link to={`/admin/manage/bundle/${bundle.id}`}>Gérer</Link></p>)}
           </div>
         </div>
       </div>
