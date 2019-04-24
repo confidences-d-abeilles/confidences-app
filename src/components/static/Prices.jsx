@@ -99,7 +99,7 @@ class IndividualPrices extends Component {
               </tr>
             </tbody>
           </table>
-          <ButtonLink url="/individual/company">Parrainer dès maintenant</ButtonLink>
+          <ButtonLink url="/signup/individual">Parrainer dès maintenant</ButtonLink>
         </div>
         <div className="form-check my-4">
           <label className="form-check-label">
