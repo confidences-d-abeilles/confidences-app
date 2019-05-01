@@ -41,8 +41,11 @@ function composeHtml(html, meta) {
     if (meta.ogtitle) {
         output = output + '<meta id="og-title" property="og:title" content="' + meta.ogtitle + '" />';
     }
+
+
     if (meta.ogdescription) {
-        output = output + '<meta id="og-description" property="og:description" content="'+meta.ogdescription+'" />';
+      output = `${output}<meta id="og-description" property="og:description" content="${meta.ogdescription}" />`;
+      output = `${output}<meta name="description" content="${meta.ogdescription}" />`;
     }
     if (meta.ogurl) {
         output = output + '<meta id="og-url" property="og:url" content="'+meta.ogurl+'" />';
