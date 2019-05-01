@@ -8,8 +8,9 @@ import { logout } from '../../../services/AuthService';
 import { handleChange } from '../../../services/FormService';
 import Meta from '../../utils/Meta';
 import Loading from '../../utils/Loading';
+import { withNotification } from '../../../services/withNotification';
 
-export default class Account extends Component {
+export default withNotification(class Account extends Component {
   state = {
     sessions: null,
     logout: false,
@@ -163,4 +164,4 @@ ATTENTION ! Vous allez supprimer votre compte ainsi toutes les informations vous
       </div>
     );
   }
-}
+});
