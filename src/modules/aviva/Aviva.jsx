@@ -21,7 +21,7 @@ export default () => (
       <MorphButton />
     </p>
     <h2>Un mot sur le projet</h2>
-    <p>Renouer avec la nature, s'engager pour la biodiversité, protéger les abeilles, préserver le terroir, le savoir-faire français et consommer de la qualité, voilà nos ambitions. Grâce au concours AVIVA et ses généreuses subventions, nos abeilles pourraient enfin aspirer à polliniser toutes les fleurs de France</p>
+    <p>Confidences d'Abeilles participe au grand prix AVIVA en espérant remporter une subvention 🐝 Une subvention pour pérenniser son activité, développer son cheptel, et embaucher. 🤝 Nos ambitions sont toujours de proposer des produits artisanaux de qualité, de préserver l'apiculture française 🍯 et la biodiversité. 🌺</p>
     <h2>Comment gagner un séjour à Annecy ?</h2>
     <ul>
       <li>Cliquez sur le bouton «Je vote» ci-dessus</li>
