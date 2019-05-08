@@ -16,7 +16,9 @@ const MorphButton = () => {
 export default () => (
   <div className="container">
     <img src={Top} alt="Fleurs" className="mb-5 img-fluid" />
-    <h1>Aidez-nous à remporter le concours AVIVA votez pour notre projet 🚀 et gagnez un séjour à Annecy 🏔️ et 2 bons d'achat de 50€ 🎁</h1>
+    <h1>Aidez-nous à remporter le concours AVIVA</h1>
+    <h1>votez pour notre projet 🚀</h1>
+    <h1>et gagnez un séjour à Annecy 🏔️ et 2 bons d'achat de 50€ 🎁</h1>
     <p className="text-center">
       <MorphButton />
     </p>
