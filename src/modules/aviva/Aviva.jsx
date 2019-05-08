@@ -32,7 +32,7 @@ export default () => (
       <li>Rendez-vous sur <a href="https://www.facebook.com/confidencesdabeille/posts/2387733334838485">notre publication Facebook</a>, likez et invitez en commentaire la personne avec qui vous voudriez passer ce séjour à nous soutenir également</li>
     </ul>
     <p>Le 15 juin, nous tirerons les 3 gagnants parmi les personnes respectant les conditions ci-dessus.</p>
-    <h3>3 lots à gagner : unséjour à Annecy avec Alpes Bivouac et 2 bons d’achat de 50€ à valoir sur confidencesdabeilles.fr</h3>
+    <h3>3 lots à gagner : un séjour à Annecy avec <a href="https://www.alpes-bivouac.com/produits/alti-dome/">Alpes Bivouac</a> (valeur 258€) et 2 bons d’achat de 50€ à valoir sur <a href="https://confidencesdabeilles.fr">confidencesdabeilles.fr</a></h3>
     <p>
       Un grand merci pour votre aide 👏<br />
       L'équipe 😘 et les 🐝
