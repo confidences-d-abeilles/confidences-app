@@ -16,7 +16,7 @@ const MorphButton = () => {
 export default () => (
   <div className="container">
     <img src={Top} alt="Fleurs" className="mb-5 img-fluid" />
-    <h1>Aidez-nous à remporter le concours AVIVA votez pour notre projet et gagnez un séjour à Annecy 2 bons d’achat de 50€</h1>
+    <h1>Aidez-nous à remporter le concours AVIVA votez pour notre projet 🚀 et gagnez un séjour à Annecy 🏔️ et 2 bons d'achat de 50€ 🎁</h1>
     <p className="text-center">
       <MorphButton />
     </p>
@@ -32,9 +32,9 @@ export default () => (
     <p>Le 15 juin, nous tirerons les 3 gagnants parmi les personnes respectant les conditions ci-dessus.</p>
     <h3>3 lots à gagner : unséjour à Annecy avec Alpes Bivouac et 2 bons d’achat de 50€ à valoir sur confidencesdabeilles.fr</h3>
     <p>
-      Un grand merci pour votreaide 
+      Un grand merci pour votre aide 
       <br />
-      L’équipeet les 
+      L’équipe  et les 
     </p>
     <img src={Bottom} alt="Champignons" className="mt-3 img-fluid" />
   </div>
