@@ -1,8 +1,11 @@
 import React from 'react';
 import { ButtonLink } from '../../components/utils/Button';
+import Top from '../../assets/img/aviva/top.jpg';
+import Bottom from '../../assets/img/aviva/bottom.jpg';
 
 export default () => (
   <div className="container">
+    <img src={Top} />
     <h1>Aidez-nous à remporter le concours AVIVA votez pour notre projet et gagnez un séjour à Annecy 2 bons d’achat de 50€</h1>
     <p className="text-center">
       <ButtonLink href="https://lafabriqueaviva.fr/fr/project/1105/show" primary external>Voter</ButtonLink>
@@ -19,5 +22,6 @@ export default () => (
     <p>Le 15 juin, nous tirerons les 3 gagnants parmi les personnes respectant les conditions ci-dessus.</p>
     <h3>3 lots à gagner : unséjour à Annecy avec Alpes Bivouac et 2 bons d’achat de 50€ à valoir sur confidencesdabeilles.fr</h3>
     <p>Un grand merci pour votre aide ! L’équipe et les abeilles</p>
+    <img src={Bottom} />
   </div>
 );
