@@ -170,6 +170,11 @@ const Logout = Loadable({
   loading: () => null,
 });
 
+const Aviva = Loadable({
+  loader: () => import('../modules/aviva/Aviva.jsx'),
+  loading: () => null,
+});
+
 export default () => (
   <Switch>
     <Route exact path="/" component={Home} />
@@ -205,6 +210,7 @@ export default () => (
     <Route exact path="/confirm/:token" component={Confirm} />
     <Route exact path="/logout" component={Logout} />
     <Route exact path="/account" component={MyAccount} />
+    <Route exact path="/la-fabrique-aviva-projet-confidences-abeilles-concours" component={Aviva} />
     <Route component={NotFound} />
   </Switch>
 );
