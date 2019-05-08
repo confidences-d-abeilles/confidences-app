@@ -31,7 +31,11 @@ export default () => (
     </ul>
     <p>Le 15 juin, nous tirerons les 3 gagnants parmi les personnes respectant les conditions ci-dessus.</p>
     <h3>3 lots à gagner : unséjour à Annecy avec Alpes Bivouac et 2 bons d’achat de 50€ à valoir sur confidencesdabeilles.fr</h3>
-    <p>Un grand merci pour votre aide ! L’équipe et les abeilles</p>
+    <p>
+      Un grand merci pour votreaide 
+      <br />
+      L’équipeet les 
+    </p>
     <img src={Bottom} alt="Champignons" className="mt-3 img-fluid" />
   </div>
 );
