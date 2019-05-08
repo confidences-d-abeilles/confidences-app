@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ButtonLink } from '../../components/utils/Button';
 import Top from '../../assets/img/aviva/top.jpg';
 import Bottom from '../../assets/img/aviva/bottom.jpg';
+
+const MorphButton = () => {
+  const [text, setText] = useState('Voter');
+
+  const clickHandler = () => {
+    setText('Accéder au projet');
+  };
+
+  return <ButtonLink href="https://lafabriqueaviva.fr/fr/project/1105/show" onClick={clickHandler} primary external className="my-4">{text}</ButtonLink>;
+};
 
 export default () => (
   <div className="container">
     <img src={Top} alt="Fleurs" className="mb-5 img-fluid" />
     <h1>Aidez-nous à remporter le concours AVIVA votez pour notre projet et gagnez un séjour à Annecy 2 bons d’achat de 50€</h1>
     <p className="text-center">
-      <ButtonLink href="https://lafabriqueaviva.fr/fr/project/1105/show" primary external className="my-4">Voter</ButtonLink>
+      <MorphButton />
     </p>
     <h2>Un mot sur le projet</h2>
     <p>Renouer avec la nature, s'engager pour la biodiversité, protéger les abeilles, préserver le terroir, le savoir-faire français et consommer de la qualité, voilà nos ambitions. Grâce au concours AVIVA et ses généreuses subventions, nos abeilles pourraient enfin aspirer à polliniser toutes les fleurs de France</p>
