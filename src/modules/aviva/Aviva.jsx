@@ -26,7 +26,7 @@ export default () => (
     <p>Confidences d'Abeilles participe au grand prix AVIVA en espérant remporter une subvention 🐝 Une subvention pour pérenniser son activité, développer son cheptel, et embaucher. 🤝 Nos ambitions sont toujours de proposer des produits artisanaux de qualité, de préserver l'apiculture française 🍯 et la biodiversité. 🌺</p>
     <h2>Comment gagner un séjour à Annecy ?</h2>
     <ul>
-      <li>Cliquez sur le bouton «Je vote» ci-dessus</li>
+      <li>Cliquez sur le bouton « Voter » ci-dessus</li>
       <li>Créez un compte pour pouvoir voter (15 secondes avec Facebook)</li>
       <li>Attribuez vos 10 votes à notre projet</li>
       <li>Rendez-vous sur <a href="https://www.facebook.com/confidencesdabeille/posts/2387733334838485">notre publication Facebook</a>, likez et invitez en commentaire la personne avec qui vous voudriez passer ce séjour à nous soutenir également</li>
