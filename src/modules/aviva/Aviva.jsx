@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
+import styled from '@emotion/styled';
 import { ButtonLink } from '../../components/utils/Button';
 import Top from '../../assets/img/aviva/top.jpg';
 import Bottom from '../../assets/img/aviva/bottom.jpg';
 
+
+const StyledButton = styled(ButtonLink)`
+  font-size: 1.5rem;
+`;
+
 const MorphButton = () => {
   const [text, setText] = useState('Voter');
-
+  
   const clickHandler = () => {
     setText('Accéder au projet');
   };
-
-  return <ButtonLink href="https://lafabriqueaviva.fr/fr/project/1105/show" onClick={clickHandler} primary external className="my-4">{text}</ButtonLink>;
+  
+  return <StyledButton href="https://lafabriqueaviva.fr/fr/project/1105/show" onClick={clickHandler} primary external className="my-4">{text}</StyledButton>;
 };
+
 
 export default () => (
   <div className="container">
@@ -32,7 +39,7 @@ export default () => (
       <li>Rendez-vous sur <a href="https://www.facebook.com/confidencesdabeille/posts/2387733334838485">notre publication Facebook</a>, likez et invitez en commentaire la personne avec qui vous voudriez passer ce séjour à nous soutenir également</li>
     </ul>
     <p>Le 15 juin, nous tirerons les 3 gagnants parmi les personnes respectant les conditions ci-dessus.</p>
-    <h3>3 lots à gagner : un séjour à Annecy avec <a href="https://www.alpes-bivouac.com/produits/alti-dome/">Alpes Bivouac</a> (valeur 258€) et 2 bons d’achat de 50€ à valoir sur <a href="https://confidencesdabeilles.fr">confidencesdabeilles.fr</a></h3>
+    <h4>3 lots à gagner : un séjour à Annecy avec <a href="https://www.alpes-bivouac.com/produits/alti-dome/">Alpes Bivouac</a> (valeur 258€) et 2 bons d’achat de 50€ à valoir sur <a href="https://confidencesdabeilles.fr">confidencesdabeilles.fr</a></h4>
     <p>
       Un grand merci pour votre aide 👏<br />
       L'équipe 😘 et les 🐝
