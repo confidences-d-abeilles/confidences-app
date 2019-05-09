@@ -89,6 +89,8 @@
     "analyze": "source-map-explorer build/static/js/main.*",
     "dev": "node scripts/start.js",
     "build": "CI=false node scripts/build.js",
+    "deploy": "./scripts/deploy.sh",
+    "deploy:full": "yarn build && yarn deploy",
     "start": "NODE_ENV=production node server.js",
     "test": "node scripts/test.js --env=jsdom",
     "lint": "./node_modules/.bin/eslint --cache --ext .jsx --ext .js src"
