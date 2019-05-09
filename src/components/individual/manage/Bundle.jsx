@@ -78,6 +78,7 @@ pour le faire ou
         <p className="text-center my-5">
           {this.state.user.hive_id
             && <ButtonLink secondary url={`/hive/${this.state.user.hive_id}`}>Voir la page de ma ruche</ButtonLink>}
+          <ButtonLink external url="https://confidences-dabeilles-visites.appointedd.com/" primary>Réserver une visite du rucher</ButtonLink>
           {this.state.user.bundles[0].certif
           && <a href={`${process.env.REACT_APP_CONTENT_DOMAIN}/${this.state.user.bundles[0].certif}`} rel="noopener noreferrer" className="btn btn-secondary m-2 btn-sm" target="_blank">Télécharger mon certificat de parrainage</a>}
         </p>
