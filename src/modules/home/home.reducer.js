@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        users: action.payload.reverse(),
+        users: action.payload,
       };
     default:
       return state;

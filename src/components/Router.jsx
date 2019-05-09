@@ -3,6 +3,7 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import Loadable from 'react-loadable';
 
 import ManageRedirections from './utils/ManageRedirections';
 
@@ -43,7 +44,11 @@ import PublicRouter from '../services/PublicRouter';
 
 // admin
 
-import AdminManage from './admin/Manage';
+
+const AdminManage = Loadable({
+  loader: () => import('./admin/Manage'),
+  loading: () => null,
+});
 
 export default () => (
   <div id="wrapper">
