@@ -3,13 +3,8 @@ import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import { withTranslation } from 'react-i18next';
 import '../../assets/styles/parrains_homepage.css';
-import first from '../../assets/img/homepage/1.jpg';
-import second from '../../assets/img/homepage/2.jpg';
-import third from '../../assets/img/homepage/3.jpg';
-import fourth from '../../assets/img/homepage/4.jpg';
-import fifth from '../../assets/img/homepage/5.jpg';
-import sixth from '../../assets/img/homepage/6.jpg';
-import seventh from '../../assets/img/homepage/7.jpg';
+import styled from '@emotion/styled';
+import first from '../../assets/img/homepage/4.jpg';
 import Loading from '../../components/utils/Loading';
 import Meta from '../../components/utils/Meta';
 
@@ -21,11 +16,56 @@ import { ButtonLink } from '../../components/utils/Button';
 
 const defaultImg = require('../../assets/img/profile.png');
 
+const Jumbotron = styled(Rows)`
+  align-items: stretch;
+  background-color: #111;
+  overflow: hidden;
+  min-height: 20rem;
+`;
+
+const Jumbcontent = styled(Item)`
+  color: #DDD;
+  flex: 1;
+  z-index: 10;
+  position: relative;
+  &::after {
+    content: ' ';
+    width: 100%;
+    transform: rotate(7deg);
+    background-color: #111;
+    right: 0;
+    display: block;
+    right: -10%;
+    top: -200%;
+    z-index: -1;
+    height: 600%;
+    position: absolute;
+  }
+`;
+
+const JumboImage = styled(Item)`
+  width: 100%;
+  align-self: stretch;
+  background-image: ${props => `url("${props.src}")`};
+  background-size: cover;
+  background-position: center;
+  @media(max-width: 800px) {
+    display: none;
+  }
+`;
+
+const TextBlock = styled(Item)`
+  background-color: #F1F1F1;
+  font-size: 1.1rem;
+  font-weight: 300;
+  padding: 5vh 20vw;
+`;
+
 export default withTranslation('homepage')(({ loading, users, t }) => (
   <Fragment>
     <Meta title="Accueil" />
-    <Rows>
-      <Item>
+    <Jumbotron>
+      <Jumbcontent>
         <h1>{t('headline')}</h1>
         <p>
           {t('headblock')}
@@ -34,18 +74,16 @@ export default withTranslation('homepage')(({ loading, users, t }) => (
           <ButtonLink url="/company/presentation" primary>{t('companyService')}</ButtonLink>
           <ButtonLink url="/individual/presentation" primary>{t('individualService')}</ButtonLink>
         </p>
-      </Item>
-      <Item>
-        <img src={first} />
-      </Item>
-    </Rows>
+      </Jumbcontent>
+      <JumboImage src={first} />
+    </Jumbotron>
     <Rows>
-      <Item>
+      <TextBlock>
         <p>{t('mission')}</p>
-      </Item>
+      </TextBlock>
     </Rows>
     <Rows>
-      <Item>
+      <Item style={{ maxWidth: '100vw' }}>
         <h2 className="text-center my-4">{t('ourClients')}</h2>
         {!loading
           ? (
@@ -83,17 +121,17 @@ export default withTranslation('homepage')(({ loading, users, t }) => (
       </Item>
     </Rows>
     <Rows>
-      <Item>
+      <TextBlock>
         <p>{t('ready')}</p>
-      </Item>
+      </TextBlock>
     </Rows>
     <Rows>
-      <Item>
+      <TextBlock>
         <ButtonLink url="/presignup">{t('sponsor')}</ButtonLink>
-      </Item>
-      <Item>
+      </TextBlock>
+      <TextBlock>
         <ButtonLink url="/hives">{t('discover')}</ButtonLink>
-      </Item>
+      </TextBlock>
     </Rows>
   </Fragment>
 ));

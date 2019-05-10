@@ -11,6 +11,7 @@ const BaseString = `
   border-width: 1px;
   transition: all 0.125s;
   cursor: pointer;
+  text-align: center;
 
   &:hover, &:focus, &:active {
     text-decoration: none;
@@ -25,7 +26,7 @@ const SecondaryStyleString = `
   background-color: ${theme.colors.black};
 
   &:hover, &:focus, &:active {
-    background-color: ${theme.colors.white};
+    background-color: rgba(0, 0, 0, 0);
     color: ${theme.colors.black};
   }
 `;
@@ -34,7 +35,7 @@ const PrimaryStyleString = `
   ${BaseString}
   color: ${theme.colors.primary};
   border-color: ${theme.colors.primary};
-  background-color: ${theme.colors.white};
+  background-color: none;
 
   &:hover, &:focus, &:active {
     background-color: ${theme.colors.primary};
