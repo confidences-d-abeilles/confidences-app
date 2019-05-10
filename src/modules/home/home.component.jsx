@@ -55,7 +55,6 @@ const JumboImage = styled(Item)`
 `;
 
 const TextBlock = styled(Item)`
-  background-color: #F1F1F1;
   font-size: 1.1rem;
   font-weight: 300;
   padding: 5vh 20vw;
