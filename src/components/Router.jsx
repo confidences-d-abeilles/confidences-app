@@ -41,6 +41,7 @@ import CompanyRouter from '../services/CompanyRouter';
 // public
 
 import PublicRouter from '../services/PublicRouter';
+import NewHeader from './DesktopHeader';
 
 // admin
 
@@ -54,6 +55,7 @@ export default () => (
   <div id="wrapper">
     <div id="noFooter">
       <Header />
+      <NewHeader />
       <ManageRedirections />
       <Route path="/contributor/wish" component={contributorOnly} />
       <Route path="/contributor/lead" component={contributorOnly} />
