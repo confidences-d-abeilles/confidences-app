@@ -21,16 +21,6 @@ import { ButtonLink } from '../../components/utils/Button';
 
 const defaultImg = require('../../assets/img/profile.png');
 
-const carouselSlides = [
-  { element: first, label: 'first' },
-  { element: second, label: 'second' },
-  { element: third, label: 'third' },
-  { element: fourth, label: 'fourth' },
-  { element: fifth, label: 'fifth' },
-  { element: sixth, label: 'sixth' },
-  { element: seventh, label: 'seventh' },
-];
-
 export default withTranslation('homepage')(({ loading, users, t }) => (
   <Fragment>
     <Meta title="Accueil" />
@@ -46,74 +36,64 @@ export default withTranslation('homepage')(({ loading, users, t }) => (
         </p>
       </Item>
       <Item>
-        <div id="carouselHome" className="carousel slide" data-interval="2500" data-ride="carousel">
-          <div className="carousel-inner" role="listbox">
-            {carouselSlides.map(({ element, label }, key) => (
-              <div className={key === 0 ? 'carousel-item active' : 'carousel-item'} key={label}>
-                <img className="d-block w-100 h-100" src={element} alt={label} />
-              </div>
-            ))}
-          </div>
-        </div>
+        <img src={first} />
       </Item>
     </Rows>
-    <div className="container py-4">
-      <div className="row justify-content-center align-items-center">
-        <div className="col-lg-9 col-md-10 col-sm-12">
-          <p>{t('mission')}</p>
-        </div>
-      </div>
-      <div className="row justify-content-center align-items-center">
-        <div className="col">
-          <h2 className="text-center my-4">{t('ourClients')}</h2>
-          {!loading
-            ? (
-              <Slider
-                dots={false}
-                infinite
-                speed={1000}
-                slidesToShow={4}
-                slidesToScroll={4}
-                arrows
-              >
-                {users.map((user) => {
-                  if (user.user_type === 1 || user.user_type === 2) {
-                    let img;
-                    if (user.logo) {
-                      img = `${process.env.REACT_APP_CONTENT_DOMAIN}/${user.logo}`;
-                    } else if (user.hive_img) {
-                      img = `${process.env.REACT_APP_CONTENT_DOMAIN}/${user.hive_img}`;
-                    } else {
-                      img = defaultImg;
-                    }
-                    return (
-                      <div key={user.id}>
-                        <Link to={(user.namespace) ? `/parrains/${user.namespace}` : `/hive/${user.hive_id}`}>
-                          <img className="img-fluid" src={img} alt={(user.company_name) ? user.company_name : `${user.firstname} ${user.name}`} />
-                          <p className="my-2" style={{ height: '2em', lineHeight: '2em', overflow: 'hidden' }}>{(user.company_name) ? user.company_name : `${user.firstname} ${user.name}`}</p>
-                        </Link>
-                      </div>
-                    );
+    <Rows>
+      <Item>
+        <p>{t('mission')}</p>
+      </Item>
+    </Rows>
+    <Rows>
+      <Item>
+        <h2 className="text-center my-4">{t('ourClients')}</h2>
+        {!loading
+          ? (
+            <Slider
+              dots={false}
+              infinite
+              speed={1000}
+              slidesToShow={4}
+              slidesToScroll={4}
+              arrows
+            >
+              {users.map((user) => {
+                if (user.user_type === 1 || user.user_type === 2) {
+                  let img;
+                  if (user.logo) {
+                    img = `${process.env.REACT_APP_CONTENT_DOMAIN}/${user.logo}`;
+                  } else if (user.hive_img) {
+                    img = `${process.env.REACT_APP_CONTENT_DOMAIN}/${user.hive_img}`;
+                  } else {
+                    img = defaultImg;
                   }
-                  return null;
-                })}
-              </Slider>
-            ) : <Loading />}
-        </div>
-      </div>
-      <div className="row justify-content-center">
-        <div className="col-lg-9 col-md-10 col-sm-12">
-          <p>{t('ready')}</p>
-        </div>
-      </div>
-      <div className="row align-items-center justify-content-center">
-        <div className="col-lg-4 col-md-6 col-sm-12 text-center my-2">
-          <ButtonLink url="/presignup">{t('sponsor')}</ButtonLink>
-        </div>
-        <div className="col-lg-4 col-md-6 col-sm-12 text-center my-2">
-          <ButtonLink url="/hives">{t('discover')}</ButtonLink>
-        </div>
-      </div>
-    </div>
+                  return (
+                    <div key={user.id}>
+                      <Link to={(user.namespace) ? `/parrains/${user.namespace}` : `/hive/${user.hive_id}`}>
+                        <img className="img-fluid" src={img} alt={(user.company_name) ? user.company_name : `${user.firstname} ${user.name}`} />
+                        <p className="my-2" style={{ height: '2em', lineHeight: '2em', overflow: 'hidden' }}>{(user.company_name) ? user.company_name : `${user.firstname} ${user.name}`}</p>
+                      </Link>
+                    </div>
+                  );
+                }
+                return null;
+              })}
+            </Slider>
+          ) : <Loading />}
+      </Item>
+    </Rows>
+    <Rows>
+      <Item>
+        <p>{t('ready')}</p>
+      </Item>
+    </Rows>
+    <Rows>
+      <Item>
+        <ButtonLink url="/presignup">{t('sponsor')}</ButtonLink>
+      </Item>
+      <Item>
+        <ButtonLink url="/hives">{t('discover')}</ButtonLink>
+      </Item>
+    </Rows>
   </Fragment>
 ));
