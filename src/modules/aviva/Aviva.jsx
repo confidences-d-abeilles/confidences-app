@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { ButtonLink } from '../../components/utils/Button';
 import Top from '../../assets/img/aviva/top.jpg';
 import Bottom from '../../assets/img/aviva/bottom.jpg';
+import logAnalytics from '../../services/analytics/logAnalytics';
 
 
 const StyledButton = styled(ButtonLink)`
@@ -11,16 +12,15 @@ const StyledButton = styled(ButtonLink)`
 
 const MorphButton = () => {
   const [text, setText] = useState('Voter');
-  
   const clickHandler = () => {
     setText('Accéder au projet');
   };
-  
+
   return <StyledButton href="https://lafabriqueaviva.fr/fr/project/1105/show" onClick={clickHandler} primary external className="my-4">{text}</StyledButton>;
 };
 
 
-export default () => (
+export default logAnalytics(() => (
   <div className="container">
     <img src={Top} alt="Fleurs" className="mb-5 img-fluid" />
     <h1>Aidez-nous à remporter le concours AVIVA</h1>
@@ -36,14 +36,25 @@ export default () => (
       <li>Cliquez sur le bouton « Voter » ci-dessus</li>
       <li>Créez un compte pour pouvoir voter (15 secondes avec Facebook)</li>
       <li>Attribuez vos 10 votes à notre projet</li>
-      <li>Rendez-vous sur <a href="https://www.facebook.com/confidencesdabeille/posts/2387733334838485">notre publication Facebook</a>, likez et invitez en commentaire la personne avec qui vous voudriez passer ce séjour à nous soutenir également</li>
+      <li>
+Rendez-vous sur
+        <a href="https://www.facebook.com/confidencesdabeille/posts/2387733334838485">notre publication Facebook</a>
+, likez et invitez en commentaire la personne avec qui vous voudriez passer ce séjour à nous soutenir également
+      </li>
     </ul>
     <p>Le 15 juin, nous tirerons les 3 gagnants parmi les personnes respectant les conditions ci-dessus.</p>
-    <h4>3 lots à gagner : un séjour à Annecy avec <a href="https://www.alpes-bivouac.com/produits/alti-dome/">Alpes Bivouac</a> (valeur 258€) et 2 bons d’achat de 50€ à valoir sur <a href="https://confidencesdabeilles.fr">confidencesdabeilles.fr</a></h4>
+    <h4>
+3 lots à gagner : un séjour à Annecy avec
+      <a href="https://www.alpes-bivouac.com/produits/alti-dome/">Alpes Bivouac</a>
+      {' '}
+(valeur 258€) et 2 bons d’achat de 50€ à valoir sur
+      <a href="https://confidencesdabeilles.fr">confidencesdabeilles.fr</a>
+    </h4>
     <p>
-      Un grand merci pour votre aide 👏<br />
+      Un grand merci pour votre aide 👏
+      <br />
       L'équipe 😘 et les 🐝
     </p>
     <img src={Bottom} alt="Champignons" className="mt-3 img-fluid" />
   </div>
-);
+));
