@@ -2,17 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 
-/**
- * @param url
- * @param label
- * @param external
- * @param className
- * @param children
- * @param props
- * @returns {*}
- * @constructor
- */
+const StyleLink = styled(Link)`
+  cursor: pointer;
+`;
+
 const MyLink = ({
   url,
   to,
@@ -32,7 +27,7 @@ const MyLink = ({
     &nbsp;
     <FontAwesome name="external-link" />
   </a>
-) : <Link to={url} className={className}>{children || url}</Link>);
+) : <StyleLink to={url} className={className}>{children || url}</StyleLink>);
 
 MyLink.propTypes = {
   external: PropTypes.bool,
