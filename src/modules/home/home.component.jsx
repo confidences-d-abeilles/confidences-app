@@ -59,6 +59,7 @@ const TextBlock = styled(Item)`
   font-size: 1.1rem;
   font-weight: 300;
   padding: 5vh 20vw;
+  text-align: center;
 `;
 
 export default withTranslation('homepage')(({ loading, users, t }) => (
@@ -123,13 +124,7 @@ export default withTranslation('homepage')(({ loading, users, t }) => (
     <Rows>
       <TextBlock>
         <p>{t('ready')}</p>
-      </TextBlock>
-    </Rows>
-    <Rows>
-      <TextBlock>
         <ButtonLink url="/presignup">{t('sponsor')}</ButtonLink>
-      </TextBlock>
-      <TextBlock>
         <ButtonLink url="/hives">{t('discover')}</ButtonLink>
       </TextBlock>
     </Rows>
