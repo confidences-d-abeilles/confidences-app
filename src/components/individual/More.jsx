@@ -4,14 +4,12 @@ import Banner from '../../assets/img/part_more.jpg';
 import leaflet from '../../assets/leaflet_p.pdf';
 
 import Meta from '../utils/Meta';
+import Cover from '../Cover';
 
 export default () => (
-  <div className="container">
+  <Cover img={Banner}>
     <Meta title="En savoir plus" />
     <div className="row justify-content-center">
-      <div className="col-lg-12">
-        <img src={Banner} alt="Banner" className="img-fluid" />
-      </div>
       <div className="col-9">
         <h2 className="text-center my-5">Le parrainage par les particuliers</h2>
         <p>
@@ -88,5 +86,5 @@ export default () => (
         </p>
       </div>
     </div>
-  </div>
+  </Cover>
 );

@@ -6,10 +6,10 @@ import Appointedd from '../../assets/img/appointedd.png';
 import Allianz from '../../assets/img/allianz.png';
 
 import Partner from './partners/Partner';
+import Cover from '../Cover';
 
-const Partners = props => (
-  <div className="container">
-    <img src={Banner} alt="Les partenaires" className="img-fluid" />
+const Partners = () => (
+  <Cover img={Banner}>
     <h2 className="text-center my-5" >Nos partenaires</h2>
     <Partner
       img={Thomas}
@@ -47,7 +47,7 @@ const Partners = props => (
       "pour le projet, et joue même le rôle d’ambassadeur par le biais de son propre réseau. Confidences d’Abeilles se réjouit d’avoir "+
       "un interlocuteur réactif, aussi proche de « ses clients » et sur lequel elle peut compter !"}
       link="https://agence.allianz.fr/albertville-olympique-73200-H97301" />
-  </div>
-)
+  </Cover>
+);
 
 export default Partners;

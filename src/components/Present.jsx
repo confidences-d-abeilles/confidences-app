@@ -2,57 +2,45 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import presentPict from '../assets/img/present.jpg';
 import Meta from './utils/Meta';
+import Cover from './Cover';
 
 export default () => (
-  <div className="container">
+  <Cover img={presentPict}>
     <Meta title="Offrir un parrainage" />
-    <div className="row mb-4">
-      <div className="col">
-        <img className="img-fluid" src={presentPict} alt="Bannière cadeau" />
-      </div>
-    </div>
-    <div className="row">
-      <div className="col">
-        <h2 className="text-center my-4">Parrainer des abeilles : un cadeau aussi utile qu’original !</h2>
-      </div>
-    </div>
+    <h2 className="text-center my-4">Parrainer des abeilles : un cadeau aussi utile qu’original !</h2>
     <div className="row justify-content-center">
-      <div className="col-lg-9 col-md-10 col-sm-12">
-        <p className="mb-5">
-          <strong>
-            Vous cherchiez un cadeau original qu’on puisse à la fois toucher du regard, expérimenter, déguster et qui soit
-            concrètement bénéfique pour notre
-            environnement ?
-          </strong>
-          Alors vous êtes au bon
-        endroit ! En effet, le parrainage d’Abeilles ou
-        de ruches a la particularité de réunir tous ces
-        atouts !
-          </p>
+      <p className="mb-5">
+        <strong>
+          Vous cherchiez un cadeau original qu’on puisse à la fois toucher du regard, expérimenter, déguster et qui soit
+          concrètement bénéfique pour notre
+          environnement ?
+        </strong>
+        Alors vous êtes au bon
+      endroit ! En effet, le parrainage d’Abeilles ou
+      de ruches a la particularité de réunir tous ces
+      atouts !
+        </p>
+    </div>
+    <ul className="nav nav-tabs justify-content-center" role="tablist">
+      <li className="nav-item">
+        <a className="nav-link active lead" data-toggle="tab" href="#how-offer">Comment offrir un parrainage ?</a>
+      </li>
+      <li className="nav-item">
+        <a className="nav-link lead" data-toggle="tab" href="#presentation">Offrir un parrainage, c’est quoi ?</a>
+      </li>
+    </ul>
+    <div className="tab-content" style={{ overflowX: 'auto' }}>
+      <div id="how-offer" className="tab-pane active" role="tabpanel">
+        <HowOfferPresent />
+      </div>
+      <div id="presentation" className="tab-pane" role="tabpanel">
+        <PresentationPresent />
       </div>
     </div>
-    <div className="row justify-content-center">
-      <div className="col-lg-9 col-md-10 col-sm-12">
-        <ul className="nav nav-tabs justify-content-center" role="tablist">
-          <li className="nav-item">
-            <a className="nav-link active lead" data-toggle="tab" href="#how-offer">Comment offrir un parrainage ?</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link lead" data-toggle="tab" href="#presentation">Offrir un parrainage, c’est quoi ?</a>
-          </li>
-        </ul>
-        <div className="tab-content" style={{ overflowX: 'auto' }}>
-          <div id="how-offer" className="tab-pane active" role="tabpanel">
-            <HowOfferPresent />
-          </div>
-          <div id="presentation" className="tab-pane" role="tabpanel">
-            <PresentationPresent />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  </Cover>
 );
+
+
 const HowOfferPresent = () => (
   <div className="container mt-4">
     <div className="row">
