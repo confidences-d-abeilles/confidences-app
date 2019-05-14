@@ -50,10 +50,16 @@ const CompanyMore = Loadable({
   loading: () => null,
 });
 
+const CompanyPrices = Loadable({
+  loader: () => import('../components/company/Prices'),
+  loading: () => null,
+});
+
 
 export default () => (
   <Switch>
     <Route exact path="/company/presentation" component={CompanyPresentation} />
+    <Route exact path="/company/prices" component={CompanyPrices} />
     <Route exact path="/company/more" component={CompanyMore} />
     <Route exact path="/company/identity" component={CompanyIdentity} />
     <Route exact path="/company/address" component={CompanyAddress} />

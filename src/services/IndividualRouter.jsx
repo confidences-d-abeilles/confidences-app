@@ -45,9 +45,15 @@ const IndividualMore = Loadable({
   loading: () => null,
 });
 
+const IndividualPrices = Loadable({
+  loader: () => import('../components/individual/Prices'),
+  loading: () => null,
+});
+
 export default () => (
   <Switch>
     <Route exact path="/individual/presentation" component={IndividualPresentation} />
+    <Route exact path="/individual/prices" component={IndividualPrices} />
     <Route exact path="/individual/more" component={IndividualMore} />
     <Route exact path="/individual/address" component={IndividualAddress} />
     <Route exact path="/individual/wish" component={IndividualWish} />

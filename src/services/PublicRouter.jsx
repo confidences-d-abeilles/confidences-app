@@ -100,11 +100,6 @@ const Faq = Loadable({
   loading: () => null,
 });
 
-const Prices = Loadable({
-  loader: () => import('../components/static/Prices'),
-  loading: () => null,
-});
-
 const Hives = Loadable({
   loader: () => import('../components/Hives'),
   loading: () => null,
@@ -197,8 +192,6 @@ export default () => (
     <Route exact path="/newsletter/signup" component={Newslettersignup} />
     <Route exact path="/cgv" component={Cgv} />
     <Route exact path="/mentions_legales" component={Mentions} />
-    <Route exact path="/tarifs" component={Prices} />
-    <Route exact path="/prices" component={Prices} />
     <Route exact path="/hives" component={Hives} />
     <Route exact path="/partners" component={Partners} />
     <Route exact path="/hive/:id" component={Hive} />
