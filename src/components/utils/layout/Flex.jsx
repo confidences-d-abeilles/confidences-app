@@ -19,4 +19,5 @@ export const Rows = styled.div`
   display: flex;
   flex-direction: rows;
   flex-wrap: wrap;
+  justify-content: center;
 `;
