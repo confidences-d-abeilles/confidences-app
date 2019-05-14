@@ -10,7 +10,7 @@ const JumbotronWrapper = styled(Rows)`
   align-items: stretch;
   background-color: #111;
   overflow: hidden;
-  min-height: 20rem;
+  min-height: 30rem;
 `;
 
 
