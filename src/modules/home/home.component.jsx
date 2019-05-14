@@ -13,46 +13,9 @@ import {
   Item,
 } from '../../components/utils/layout/Flex';
 import { ButtonLink } from '../../components/utils/Button';
+import Jumbotron from '../../components/Jumbotron';
 
 const defaultImg = require('../../assets/img/profile.png');
-
-const Jumbotron = styled(Rows)`
-  align-items: stretch;
-  background-color: #111;
-  overflow: hidden;
-  min-height: 20rem;
-`;
-
-const Jumbcontent = styled(Item)`
-  color: #DDD;
-  flex: 1;
-  z-index: 10;
-  position: relative;
-  &::after {
-    content: ' ';
-    width: 100%;
-    transform: rotate(7deg);
-    background-color: #111;
-    right: 0;
-    display: block;
-    right: -10%;
-    top: -200%;
-    z-index: -1;
-    height: 600%;
-    position: absolute;
-  }
-`;
-
-const JumboImage = styled(Item)`
-  width: 100%;
-  align-self: stretch;
-  background-image: ${props => `url("${props.src}")`};
-  background-size: cover;
-  background-position: center;
-  @media(max-width: 800px) {
-    display: none;
-  }
-`;
 
 const TextBlock = styled(Item)`
   font-size: 1.1rem;
@@ -64,18 +27,15 @@ const TextBlock = styled(Item)`
 export default withTranslation('homepage')(({ loading, users, t }) => (
   <Fragment>
     <Meta title="Accueil" />
-    <Jumbotron>
-      <Jumbcontent>
-        <h1>{t('headline')}</h1>
-        <p>
-          {t('headblock')}
-        </p>
-        <p className="text-center">
-          <ButtonLink url="/company/presentation" primary>{t('companyService')}</ButtonLink>
-          <ButtonLink url="/individual/presentation" primary>{t('individualService')}</ButtonLink>
-        </p>
-      </Jumbcontent>
-      <JumboImage src={first} />
+    <Jumbotron img={first}>
+      <h1>{t('headline')}</h1>
+      <p>
+        {t('headblock')}
+      </p>
+      <p className="text-center">
+        <ButtonLink url="/company/presentation" primary>{t('companyService')}</ButtonLink>
+        <ButtonLink url="/individual/presentation" primary>{t('individualService')}</ButtonLink>
+      </p>
     </Jumbotron>
     <Rows>
       <TextBlock>
