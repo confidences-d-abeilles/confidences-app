@@ -1,16 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import CoverPic from '../../../assets/img/jobs.jpg';
 import Meta from '../../utils/Meta'
+import Cover from '../../Cover';
 
 export default () => (
-  <div className="container">
+  <Cover img={CoverPic}>
     <Meta title="Jobs" />
-    <div className="row">
-      <div className="col">
-        <img src={require('../../../assets/img/jobs.jpg')} alt="Gaetan et Nicolas" className="img-fluid" />
-      </div>
-    </div>
     <div className="row mt-4 justify-content-center align-items-center">
       <div className="col-lg-9 col-md-10 col-sm-12">
         <h1 className="text-center my-4">
@@ -127,5 +123,5 @@ export default () => (
         </div>
       </div>
     </div>
-  </div>
+  </Cover>
 );

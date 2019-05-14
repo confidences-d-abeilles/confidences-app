@@ -1,17 +1,14 @@
 import React from 'react';
-
 import Banner from '../../assets/img/ourvalues.jpg';
+
 import Meta from '../utils/Meta';
+import Cover from '../Cover';
 
 export default () => (
-  <div className="container">
+  <div>
     <Meta title="Nos valeurs" />
-    <div className="row justify-content-center">
-      <div className="col-lg-12">
-        <img src={Banner} alt="Banner" className="img-fluid" />
-      </div>
-      <div className="col-9">
-        <h2 className="text-center my-5">Nos valeurs</h2>
+    <Cover img={Banner}>
+      <h2 className="text-center my-5">Nos valeurs</h2>
         <h3>Authenticité</h3>
         <p>
           L’apiculture, c’est d’abord un héritage ; celui de notre grand-oncle qui veillait avec soins
@@ -47,8 +44,7 @@ export default () => (
           important. C’est pourquoi, à notre échelle, nous agissons concrètement en organisant des
           réunions d’information, en développant une association d’apiculture et en aidant des
           particuliers à se lancer.
-            </p>
-      </div>
-    </div>
+        </p>
+    </Cover>
   </div>
 );
