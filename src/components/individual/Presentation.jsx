@@ -2,69 +2,31 @@ import React, { Fragment } from 'react';
 import { ButtonLink } from '../utils/Button';
 import { Rows, Item } from '../utils/layout/Flex';
 import first from '../../assets/img/P/1.jpg';
-import second from '../../assets/img/P/2.jpg';
-import third from '../../assets/img/P/3.jpg';
-import fourth from '../../assets/img/P/4.jpg';
-import fifth from '../../assets/img/P/5.jpg';
-import sixth from '../../assets/img/P/6.jpg';
-import seventh from '../../assets/img/P/7.jpg';
-import eighth from '../../assets/img/P/8.jpg';
 import leaflet from '../../assets/leaflet_p.pdf';
 
 import Meta from '../utils/Meta';
+import Jumbotron from '../Jumbotron';
 
 export default () => (
   <Fragment>
     <Meta title="Parrainer des abeilles" />
-    <Rows>
-      <Item>
-        <h1 className="text-left">
-          Vos abeilles n’ont
-          jamais été aussi
-          proche de prendre leur
-          envol !
-        </h1>
-        <p className="text-left">
-          Pour parrainer vos premières abeilles c’est très
-          simple : complétez le formulaire d’inscription,
-          choisissez le nombre d’abeilles et voilà !
-        </p>
-        <p className="text-center">
-          <ButtonLink url="/signup/individual" primary>Parrainer mes permières abeilles</ButtonLink>
-          <ButtonLink url="/present" primary>Offrir un parrainage</ButtonLink>
-        </p>
-      </Item>
-      <Item>
-        <div id="carouselHome" className="carousel slide" data-interval="3000" data-ride="carousel">
-          <div className="carousel-inner" role="listbox">
-            <div className="carousel-item active">
-              <img className="d-block w-100 h-100" src={first} alt="First slide" />
-            </div>
-            <div className="carousel-item">
-              <img className="d-block w-100 h-100" src={second} alt="Second slide" />
-            </div>
-            <div className="carousel-item">
-              <img className="d-block w-100 h-100" src={third} alt="Third slide" />
-            </div>
-            <div className="carousel-item">
-              <img className="d-block w-100 h-100" src={fourth} alt="Fourth slide" />
-            </div>
-            <div className="carousel-item">
-              <img className="d-block w-100 h-100" src={fifth} alt="Fifth slide" />
-            </div>
-            <div className="carousel-item">
-              <img className="d-block w-100 h-100" src={sixth} alt="Sixth slide" />
-            </div>
-            <div className="carousel-item">
-              <img className="d-block w-100 h-100" src={seventh} alt="Seventh slide" />
-            </div>
-            <div className="carousel-item">
-              <img className="d-block w-100 h-100" src={eighth} alt="Eighth slide" />
-            </div>
-          </div>
-        </div>
-      </Item>
-    </Rows>
+    <Jumbotron img={first}>
+      <h1 className="text-left">
+        Vos abeilles n’ont
+        jamais été aussi
+        proche de prendre leur
+        envol !
+      </h1>
+      <p className="text-left">
+        Pour parrainer vos premières abeilles c’est très
+        simple : complétez le formulaire d’inscription,
+        choisissez le nombre d’abeilles et voilà !
+      </p>
+      <p className="text-center">
+        <ButtonLink url="/signup/individual" primary>Parrainer mes permières abeilles</ButtonLink>
+        <ButtonLink url="/present" primary>Offrir un parrainage</ButtonLink>
+      </p>
+    </Jumbotron>
     <Rows>
       <Item textAlign="center">
         <h2>Parrainer une ruche c'est :</h2>
