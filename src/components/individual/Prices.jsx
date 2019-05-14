@@ -1,7 +1,10 @@
 import React from 'react';
 import Meta from '../utils/Meta';
 import PriceCard from '../PriceCard';
-import { Rows } from '../utils/layout/Flex';
+import { Item, Rows } from '../utils/layout/Flex';
+import { ButtonLink } from '../utils/Button';
+
+const UNIT = '/ an';
 
 const tenOffer = [
   { id: 'test', value: 'Votre nom sur une ruche' },
@@ -39,15 +42,21 @@ const fiftyOffer = [
 ];
 
 export default () => (
-  <div className="container">
+  <>
     <Meta title="Tarifs particuliers" />
+    <ButtonLink url="/company/prices" primary>Tarifs entreprises ></ButtonLink>
     <h2 className="text-center my-4">Tarifs particuliers</h2>
     <Rows>
-      <PriceCard title="10 000 abeilles" price={85} items={tenOffer} level={1} />
-      <PriceCard title="20 000 abeilles" price={160} items={twentyOffer} level={2} />
-      <PriceCard title="30 000 abeilles" price={230} items={thirtyOffer} level={3} />
-      <PriceCard title="40 000 abeilles" price={295} items={fourtyOffer} level={4} />
-      <PriceCard title="50 000 abeilles" price={350} items={fiftyOffer} level={5} />
+      <PriceCard title="10 000 abeilles" price={85} items={tenOffer} unit={UNIT} level={1} />
+      <PriceCard title="20 000 abeilles" price={160} items={twentyOffer} unit={UNIT} level={2} />
+      <PriceCard title="30 000 abeilles" price={230} items={thirtyOffer} unit={UNIT} level={3} />
+      <PriceCard title="40 000 abeilles" price={295} items={fourtyOffer} unit={UNIT} level={4} />
+      <PriceCard title="50 000 abeilles" price={350} items={fiftyOffer} unit={UNIT} level={5} />
     </Rows>
-  </div>
+    <Rows>
+      <Item textAlign="center">
+        <ButtonLink url="/signup/individual" primary>Parrainer maintenant</ButtonLink>
+      </Item>
+    </Rows>
+  </>
 );
