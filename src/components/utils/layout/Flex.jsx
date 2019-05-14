@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Item = styled.div`
-  padding: 1rem 5rem;
+  padding: ${({ noGutter }) => (noGutter ? 0 : '1rem 5rem')};
   flex: 1 25rem;
   align-self: center;
   text-align: ${({ textAlign }) => textAlign};
