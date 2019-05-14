@@ -1,9 +1,7 @@
 import styled from '@emotion/styled';
-import { Item, Rows } from './utils/layout/Flex';
-import { ButtonLink } from './utils/Button';
-import first from '../assets/img/homepage/4.jpg';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Item, Rows } from './utils/layout/Flex';
 
 
 const JumbotronWrapper = styled(Rows)`
