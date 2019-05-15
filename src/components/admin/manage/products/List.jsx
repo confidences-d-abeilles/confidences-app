@@ -89,7 +89,7 @@ export default withNotification(class List extends Component {
                 <td>{`${product.price} €`}</td>
                 <td>{`${product.duty} %`}</td>
                 <td>{`${(product.price + (product.price / 100 * product.duty)).toFixed(2)} €`}</td>
-                <td><button className="btn btn-primary btn-sm" type="button" onClick={this.delete(product.id)}>Supprimer</button></td>
+                <td><button className="btn btn-primary btn-sm" type="button" onClick={() => this.delete(product.id)}>Supprimer</button></td>
               </tr>
             ))}
           </tbody>

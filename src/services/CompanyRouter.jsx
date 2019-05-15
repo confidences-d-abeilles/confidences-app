@@ -21,7 +21,7 @@ const CompanyAddress = Loadable({
 });
 
 const CompanyWish = Loadable({
-  loader: () => import('../components/company/Wish'),
+  loader: () => import('../modules/wish/Wish'),
   loading: () => null,
 });
 
