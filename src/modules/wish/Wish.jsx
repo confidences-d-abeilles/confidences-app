@@ -102,7 +102,8 @@ export default class Wish extends Component {
     const tmp3 = [];
     this.state.coupons.map((coupon) => {
       this.state.products.forEach((product) => {
-        if (coupon.type === 0 && coupon.product.id === product.id && product.qty >= coupon.min) {
+        if (coupon.type === 0 && coupon.product.id === product.id
+          && product.qty >= coupon.min && product.qty <= coupon.max) {
           coupon.qty = product.qty;
           tmp.push(coupon);
         }
@@ -110,7 +111,8 @@ export default class Wish extends Component {
           coupon.qty = product.qty;
           tmp2.push(coupon);
         }
-        if (coupon.type === 2 && coupon.product.id === product.id && product.qty <= coupon.max) {
+        if (coupon.type === 2 && coupon.product.id === product.id
+          && product.qty >= coupon.min && product.qty <= coupon.max) {
           coupon.qty = product.qty;
           tmp3.push(coupon);
         }
@@ -224,7 +226,8 @@ export default class Wish extends Component {
   render() {
     return (
       <div className="container py-4">
-        {this.state.redirect && <Redirect to="/company/checkout" />}
+        {this.state.redirect && this.mainProduct === 10 && <Redirect to="/company/checkout" />}
+        {this.state.redirect && this.mainProduct === 20 && <Redirect to="/individual/checkout" />}
         <div className="row justify-content-center">
           <div className="col">
             <div className="progress"><div className="progress-bar" role="progressbar" style={{ width: '80%' }} /></div>
@@ -260,7 +263,7 @@ export default class Wish extends Component {
                     <input type="radio" id={e.id} name="optionSelect" onChange={this.selectOption.bind(this)} value={e.id} checked={this.state.optionSelect === e.id} />
 &nbsp;
                     <label htmlFor={e.id}>
-                      {`${e.designation} ( ${-e.amount} € / ruche )`}
+                      {`${e.designation} ( ${-e.amount} € / unité )`}
                     </label>
                   </div>
                 ))}
@@ -277,14 +280,14 @@ export default class Wish extends Component {
                 && <p>Aucune réduction immédiate n'est applicable</p>}
             {this.state.couponsOk.map(e => (
               <span key={e.id}>
-                {`${e.designation} ( ${-e.amount} € / ruche )`}
+                {`${e.designation} ( ${-e.amount} € / unité )`}
               </span>
             ))}
             {this.state.codesOk.length < 1
                 && <p>Aucun code promotionnel n'a été appliqué</p>}
             {this.state.codesOk.map(e => (
               <span key={e.id}>
-                {`${e.designation} ( ${-e.amount} € / ruche )`}
+                {`${e.designation} ( ${-e.amount} € / unité )`}
               </span>
             ))}
             <p className="lead text-center">
