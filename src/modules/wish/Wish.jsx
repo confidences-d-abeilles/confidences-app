@@ -258,15 +258,20 @@ export default class Wish extends Component {
             <h3><small>Options</small></h3>
             <form>
               <div className="form-group">
-                {this.state.options.map(e => (
-                  <div key={e.id}>
-                    <input type="radio" id={e.id} name="optionSelect" onChange={this.selectOption.bind(this)} value={e.id} checked={this.state.optionSelect === e.id} />
-&nbsp;
-                    <label htmlFor={e.id}>
-                      {`${e.designation} ( ${-e.amount} € / unité )`}
-                    </label>
-                  </div>
-                ))}
+                {this.state.options.map((e, key) => {
+                  if (key === 0) {
+                    this.setState({ optionSelect: e.id });
+                  }
+                  return (
+                    <div key={e.id}>
+                      <input type="radio" id={e.id} name="optionSelect" onChange={this.selectOption.bind(this)} value={e.id} checked={this.state.optionSelect === e.id} />
+                      &nbsp;
+                      <label htmlFor={e.id}>
+                        {`${e.designation} ( ${-e.amount} € / unité )`}
+                      </label>
+                    </div>
+                  );
+                })}
               </div>
             </form>
             <h3><small>Code promo</small></h3>
