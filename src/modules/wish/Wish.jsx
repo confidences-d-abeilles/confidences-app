@@ -103,7 +103,7 @@ export default class Wish extends Component {
     this.state.coupons.map((coupon) => {
       this.state.products.forEach((product) => {
         if (coupon.type === 0 && coupon.product.id === product.id
-          && product.qty >= coupon.min && product.qty <= coupon.max) {
+          && product.qty >= coupon.min && (product.qty <= coupon.max || coupon.max === 0)) {
           coupon.qty = product.qty;
           tmp.push(coupon);
         }
@@ -112,7 +112,7 @@ export default class Wish extends Component {
           tmp2.push(coupon);
         }
         if (coupon.type === 2 && coupon.product.id === product.id
-          && product.qty >= coupon.min && product.qty <= coupon.max) {
+          && product.qty >= coupon.min && (product.qty <= coupon.max || coupon.max === 0)) {
           coupon.qty = product.qty;
           tmp3.push(coupon);
         }
