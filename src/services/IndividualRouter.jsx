@@ -25,8 +25,8 @@ const IndividualCheckout = Loadable({
   loading: () => null,
 });
 
-const IndividualPayement = Loadable({
-  loader: () => import('../components/individual/Payment'),
+const Payement = Loadable({
+  loader: () => import('../components/Payment'),
   loading: () => null,
 });
 
@@ -58,7 +58,7 @@ export default () => (
     <Route exact path="/individual/address" component={IndividualAddress} />
     <Route exact path="/individual/wish" component={IndividualWish} />
     <Route exact path="/individual/checkout" component={IndividualCheckout} />
-    <Route exact path="/individual/payment" component={IndividualPayement} />
+    <Route exact path="/individual/payment" render={() => <Payement redirect="/individual/manage" />} />
     <Route exact path="/individual/end" component={IndividualEnd} />
     <Route path="/individual/manage" component={IndividualManage} />
   </Switch>
