@@ -52,8 +52,6 @@ export default class Wish extends Component {
     }, notification)
       .then(() => {
         this.setState({ redirect: true });
-      })
-      .catch(() => {
       });
   };
 
