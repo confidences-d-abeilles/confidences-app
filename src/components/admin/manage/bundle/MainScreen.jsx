@@ -7,7 +7,7 @@ import { withNotification } from '../../../../services/withNotification';
 
 export default withNotification(class AdminManageBundle extends Component {
   state = {
-    bundles: null,
+    bundles: [],
     filtered: null,
     criteria: '',
     e: true,
