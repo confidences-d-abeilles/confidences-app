@@ -30,8 +30,8 @@ const CompanyCheckout = Loadable({
   loading: () => null,
 });
 
-const CompanyPayment = Loadable({
-  loader: () => import('../components/company/Payment'),
+const Payment = Loadable({
+  loader: () => import('../components/Payment'),
   loading: () => null,
 });
 
@@ -65,7 +65,7 @@ export default () => (
     <Route exact path="/company/address" component={CompanyAddress} />
     <Route exact path="/company/wish" component={CompanyWish} />
     <Route exact path="/company/checkout" component={CompanyCheckout} />
-    <Route exact path="/company/payment" component={CompanyPayment} />
+    <Route exact path="/company/payment" render={() => <Payment redirect="/company/manage" />} />
     <Route exact path="/company/end" component={CompanyEnd} />
     <Route path="/company/manage" component={CompanyManage} />
   </Switch>

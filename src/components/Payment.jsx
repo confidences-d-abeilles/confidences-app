@@ -3,20 +3,17 @@ import { Redirect } from 'react-router-dom';
 import { Elements } from 'react-stripe-elements';
 
 import { withRouter } from 'react-router';
-import request from '../../services/Net';
-import PayForm from '../utils/PayForm';
-import Meta from '../utils/Meta';
-import { withNotification } from '../../services/withNotification';
+import request from '../services/Net';
+import PayForm from './utils/PayForm';
+import Meta from './utils/Meta';
+import { withNotification } from '../services/withNotification';
 
 class IndividualPayement extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      redirect: false,
-    };
+  state = {
+    redirect: false,
+  };
 
-    this.nbBees = undefined;
-  }
+  nbBees = null;
 
   componentDidMount() {
     const { notification } = this.props;
