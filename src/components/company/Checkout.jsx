@@ -11,9 +11,9 @@ import Address from '../utils/Address/Address';
 import ViewAddress from '../utils/Address/ViewAddress';
 import Resume from './Checkout/Resume';
 import { withNotification } from '../../services/withNotification';
+import { withRouter } from 'react-router';
 
-export default withNotification(class CompanyCheckout extends Component {
-
+class CompanyCheckout extends Component {
   constructor(props) {
     super(props);
 
@@ -85,13 +85,14 @@ export default withNotification(class CompanyCheckout extends Component {
       });
   }
 
-  setBankTransfer = done => {
-    this.bankTransfer = done ? this.bankTransferEnum.BANK_TRANSFER_DONE : this.bankTransferEnum.BANK_ACCOUNT_ADDED;
-
-    this.save().then((res) => {
-      this.setState({ redirect: true })
+  setBankTransfer = (done) => {
+    const { history } = this.props;
+    this.bankTransfer = done
+      ? this.bankTransferEnum.BANK_TRANSFER_DONE : this.bankTransferEnum.BANK_ACCOUNT_ADDED;
+    this.save().then(() => {
+      history.push('/company/manage');
     });
-  }
+  };
 
   async save() {
     const { notification } = this.props;
@@ -117,38 +118,25 @@ export default withNotification(class CompanyCheckout extends Component {
     });
   }
 
-  async noAction() {
-    const { notification } = this.props;
+  noAction = async () => {
+    const { history } = this.props;
     await this.save();
-    await request({
-      url: '/user/later',
-      method: 'put'
-    }, null).then(() => {
-      this.setState({
-        redirect: true
-      })
-    }).catch(e => {
-      notification.addNotification({
-        message: 'Erreur de sauvegarde !',
-        level: 'error'
-      });
-    });
-  }
-
+    history.push('/company/manage');
+  };
 
   async saveFeedback() {
     const { notification } = this.props;
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       request({
-        url: '/bundle/' + this.state.bundle_id,
+        url: `/bundle/${  this.state.bundle_id}`,
         method: 'put',
         data: {
-          feedback: this.state.feedback
-        }
-      }, notification).then((res) => {
+          feedback: this.state.feedback,
+        },
+      }, notification).then(() => {
         resolve();
-      })
-    })
+      });
+    });
   }
 
   changeBundle = () => {
@@ -273,4 +261,6 @@ export default withNotification(class CompanyCheckout extends Component {
       </div>
     );
   }
-});
+};
+
+export default withRouter(withNotification(CompanyCheckout));

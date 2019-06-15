@@ -5,6 +5,7 @@ import { Elements } from 'react-stripe-elements';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+import { withRouter } from 'react-router';
 import request from '../../services/Net';
 import { handleChange, handleTick } from '../../services/FormService';
 import PayForm from '../utils/PayForm';
@@ -12,10 +13,10 @@ import Address from '../utils/Address/Address';
 import Meta from '../utils/Meta';
 import ViewAddress from '../utils/Address/ViewAddress';
 import { withNotification } from '../../services/withNotification';
+import { Button } from '../utils/Button';
 
 
-export default withNotification(class IndividualCheckout extends Component {
-
+class IndividualCheckout extends Component {
   constructor(props) {
     super(props);
 
@@ -45,8 +46,8 @@ export default withNotification(class IndividualCheckout extends Component {
       present_name: '',
       present_firstname: '',
       name: '',
-      firstname: ''
-    }
+      firstname: '',
+    };
 
     this.bankTransfer = this.bankTransferEnum.NO_TRANSFER;
   }
@@ -60,8 +61,8 @@ export default withNotification(class IndividualCheckout extends Component {
   componentDidMount() {
     const { notification } = this.props;
     request({
-      url : '/user/me',
-      method : 'get',
+      url: '/user/me',
+      method: 'get',
     }, notification)
       .then((res) => {
         this.setState({
@@ -80,20 +81,19 @@ export default withNotification(class IndividualCheckout extends Component {
           present_name: res.bundles[0].name,
           present_date: res.bundles[0].start_date
             ? moment(res.bundles[0].start_date) : moment(new Date()),
-          bundleState: res.bundles[0].state
+          bundleState: res.bundles[0].state,
         });
 
         request({
-          url: '/bill/bundle/'+res.bundles[0].id,
-          method: 'get'
+          url: `/bill/bundle/${res.bundles[0].id}`,
+          method: 'get',
         }, notification).then((res) => {
           this.setState({ bill_number: res.number });
         });
         res.addresses.forEach((address) => {
           if (address.type === 1) {
             this.setState({ billing_address: address });
-          }
-          else if (address.type === 2) {
+          } else if (address.type === 2) {
             this.setState({
               delivery_address: address,
             });
@@ -102,85 +102,76 @@ export default withNotification(class IndividualCheckout extends Component {
       });
   }
 
-  handleDateChange(date) {
+  handleDateChange = (date) => {
     if (date >= new Date().setDate(new Date().getDate() - 1)) {
       this.setState({
-        present_date: date
+        present_date: date,
       });
     }
-  }
+  };
 
-  setBankTransfer = done => {
+  setBankTransfer = (done) => {
+    const { history } = this.props;
     this.bankTransfer = done
       ? this.bankTransferEnum.BANK_TRANSFER_DONE
       : this.bankTransferEnum.BANK_ACCOUNT_ADDED;
     this.save().then(() => {
-      this.setState({ redirect : true });
+      history.push('/individual/manage');
     });
   };
 
   async save() {
     const { notification } = this.props;
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       request({
-        url: '/bundle/'+this.state.bundle_id,
+        url: `/bundle/${this.state.bundle_id}`,
         method: 'put',
         data: {
-          state : (this.bankTransfer === this.bankTransferEnum.BANK_TRANSFER_DONE) ? 1:0,
-          virementBenefAdd: (this.bankTransfer === this.bankTransferEnum.BANK_ACCOUNT_ADDED) ? true:false,
-          later: (this.state.paytype === '2')?true:false,
+          state: (this.bankTransfer === this.bankTransferEnum.BANK_TRANSFER_DONE) ? 1 : 0,
+          virementBenefAdd: (this.bankTransfer === this.bankTransferEnum.BANK_ACCOUNT_ADDED),
+          later: (this.state.paytype === '2'),
           feedback: this.state.feedback,
           present: this.state.present,
           present_email: this.state.present_email,
           present_message: this.state.present_message,
-          present_date: (this.state.present)?this.state.present_date:new Date(),
+          present_date: (this.state.present) ? this.state.present_date : new Date(),
           present_name: this.state.present_name,
-          present_firstname: this.state.present_firstname
-        }
+          present_firstname: this.state.present_firstname,
+        },
       }, notification).then((res) => {
         resolve();
-      })
+      });
     });
   }
 
-  async noAction() {
+  noAction = async () => {
     await this.save();
-    const { notification } = this.props;
-    await request({
-      url: '/user/later',
-      method: 'put'
-    }, null).then( () => {
-      this.setState({ redirect: true });
-    }).catch(() => {
-      notification.addNotification({
-            message: 'Erreur de sauvegarde !',
-            level: 'error',
-        });
-    });
-  }
+    const { history } = this.props;
+    history.push('/individual/manage');
+  };
 
   changeBundle() {
     const { notification } = this.props;
     request({
-      url: '/bundle/'+this.state.bundle_id,
-      method: 'delete'
+      url: `/bundle/${this.state.bundle_id}`,
+      method: 'delete',
     }, notification).then((res) => {
-      this.setState({ back : true });
-    })
+      this.setState({ back: true });
+    });
   }
 
-    render () {
-        return (
+  render() {
+    return (
       <div className="container py-4">
-        <Meta title="Confirmation et paiement"/>
-        {(this.state.redirect)?<Redirect to="/individual/end" paiement={true}/>:null}
-        {(this.state.back)?<Redirect to="/individual/wish" />:null}
-        {(this.state.dash)?<Redirect to="/individual/manage" />:null}
-        {(this.state.bundleState > 5)?<Redirect to="/individual/manage" />:null}
+        <Meta title="Confirmation et paiement" />
+        {(this.state.redirect) ? <Redirect to="/individual/end" paiement /> : null}
+        {(this.state.back) ? <Redirect to="/individual/wish" /> : null}
+        {(this.state.dash) ? <Redirect to="/individual/manage" /> : null}
+        {(this.state.bundleState > 5) ? <Redirect to="/individual/manage" /> : null}
         <div className="row justify-content-center">
           <div className="col">
             <div className="progress">
-              <div className="progress-bar" role="progressbar" style={{width: '100%'}}></div>
+              <div className="progress-bar" role="progressbar" style={{ width: '100%' }} />
             </div>
           </div>
         </div>
@@ -188,12 +179,14 @@ export default withNotification(class IndividualCheckout extends Component {
           <div className="col-lg-11 col-md-10 col-sm-12">
             <h2 className="text-center my-4">Confirmation et paiement</h2>
             <p>
-              Je parraine {this.state.bees} abeilles d'une ruche sur laquelle sera marqué mon nom.
-              Je recevrais {this.state.bees / 10000 * 8} pots de miel de 250g produits par mes abeilles.
-              De plus, une page internet sera dédiée à ma ruche et je pourrais y retrouver des actualités sur mes abeilles.
-              <br /><br />
-              <strong>Le coût total est de {this.state.price} euros par an.</strong><br /><br />
-              <button className="btn btn-primary" onClick={this.changeBundle.bind(this)}>Changer d'offre</button>
+              {`Je parraine ${this.state.bees} abeilles d'une ruche sur laquelle sera marqué mon nom.
+              Je recevrais ${this.state.bees / 10000 * 8} pots de miel de 250g produits par mes abeilles.
+              De plus, une page internet sera dédiée à ma ruche et je pourrais y retrouver des actualités sur mes abeilles.`}
+              <br />
+              <strong>{`Le coût total est de ${this.state.price} euros par an.`}</strong>
+              <br />
+              <br />
+              <Button onClick={this.changeBundle.bind(this)}>Changer d'offre</Button>
             </p>
             <div className="row justify-content-center">
               <div className="col-lg-6 col-md-10 col-sm-12">
@@ -207,12 +200,16 @@ export default withNotification(class IndividualCheckout extends Component {
               <div className="col-lg-6 col-md-10 col-sm-12">
                 <h3 className="my-4">Adresse de livraison</h3>
                 <Address data={this.state.delivery_address} />
-                <h3 className="mt-5">Ce parrainage est un cadeau {!this.state.present_ok && <input type="checkbox" name="present" checked={this.state.present} onChange={handleTick.bind(this) }/>}</h3>
-                {this.state.present &&
+                <h3 className="mt-5">
+Ce parrainage est un cadeau
+                  {!this.state.present_ok && <input type="checkbox" name="present" checked={this.state.present} onChange={handleTick.bind(this)} />}
+                </h3>
+                {this.state.present
+                  && (
                   <form>
                     <p>L’adresse de votre bénéficiaire est différente ? Merci de sélectionner « Adresse de livraison différente » et de remplir tous les champs.</p>
                     <div className="form-group">
-                      <input type="text" className="form-control"  value={this.state.present_name} name="present_name" onChange={handleChange.bind(this)} placeholder="Nom du bénéficiaire *" />
+                      <input type="text" className="form-control" value={this.state.present_name} name="present_name" onChange={handleChange.bind(this)} placeholder="Nom du bénéficiaire *" />
                     </div>
                     <div className="form-group">
                       <input type="text" className="form-control" value={this.state.present_firstname} name="present_firstname" onChange={handleChange.bind(this)} placeholder="Prénom du bénéficiaire *" />
@@ -228,11 +225,12 @@ export default withNotification(class IndividualCheckout extends Component {
                       <DatePicker
                         dateFormat="DD/MM/YYYY"
                         selected={this.state.present_date}
-                        onChange={this.handleDateChange.bind(this)}
+                        onChange={this.handleDateChange}
                         className="form-control"
                       />
                     </div>
                   </form>
+                  )
                 }
               </div>
             </div>
@@ -242,74 +240,97 @@ export default withNotification(class IndividualCheckout extends Component {
                 <div className="form-group">
                   <div className="form-check">
                     <label className="form-check-label">
-                      <input type="radio" className="form-check-input" name="paytype" value="0" onChange={handleChange.bind(this)} checked={(this.state.paytype === '0')?true:false} />
+                      <input type="radio" className="form-check-input" name="paytype" value="0" onChange={handleChange.bind(this)} checked={(this.state.paytype === '0')} />
                       <span>Carte bancaire</span>
                     </label>
                   </div>
                   <div className="form-check">
                     <label className="form-check-label">
-                      <input type="radio" className="form-check-input" name="paytype" value="1" onChange={handleChange.bind(this)} checked={(this.state.paytype === '1')?true:false} />
+                      <input type="radio" className="form-check-input" name="paytype" value="1" onChange={handleChange.bind(this)} checked={(this.state.paytype === '1')} />
                       <span>Virement bancaire</span>
                     </label>
                   </div>
                   <div className="form-check">
                     <label className="form-check-label">
-                      <input type="radio" className="form-check-input" name="paytype" value="2" onChange={handleChange.bind(this)} checked={(this.state.paytype === '2')?true:false} />
+                      <input type="radio" className="form-check-input" name="paytype" value="2" onChange={handleChange.bind(this)} checked={(this.state.paytype === '2')} />
                       <span>Payer plus tard</span>
                     </label>
                   </div>
                 </div>
               </form>
               <div className="col-lg-9 col-md-10 col-sm-12">
-                {this.state.paytype === '0' &&
+                {this.state.paytype === '0'
+                  && (
                   <Elements locale="fr">
-                    <PayForm price={this.state.price} nbBees={this.state.bees} before={this.save.bind(this)} bundle={this.state.bundle_id} date={(this.state.present_date)?this.state.present_date:new Date()} for={this.state.firstname+' '+this.state.name} endpoint="/individual/end" />
+                    <PayForm price={this.state.price} nbBees={this.state.bees} before={this.save.bind(this)} bundle={this.state.bundle_id} date={(this.state.present_date) ? this.state.present_date : new Date()} for={`${this.state.firstname} ${this.state.name}`} endpoint="/individual/end" />
                   </Elements>
+                  )
                 }
 
-                {this.state.paytype === '1' &&
+                {this.state.paytype === '1'
+                  && (
                   <div>
                     <p>Veuillez trouver nos coordonnées bancaires pour procéder au virement</p>
                     <p>
-                      <strong>Domiciliation : </strong>QONTO - 92641 BOULOGNE-BILLANCOURT<br />
-                      <strong>IBAN : </strong>FR76 1679 8000 0100 0004 1298 259<br/>
-                      <strong>BIC : </strong>TRZOFR21XXX<br/><br />
-                      <strong>Numéro de facture à indiquer dans la référence du virement : </strong>{this.state.bill_number}
+                      <strong>Domiciliation : </strong>
+QONTO - 92641 BOULOGNE-BILLANCOURT
+                      <br />
+                      <strong>IBAN : </strong>
+FR76 1679 8000 0100 0004 1298 259
+                      <br />
+                      <strong>BIC : </strong>
+TRZOFR21XXX
+                      <br />
+                      <br />
+                      <strong>Numéro de facture à indiquer dans la référence du virement : </strong>
+                      {this.state.bill_number}
                     </p>
                     <p>
                       Si	votre	banque	vous	impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
                       invitons	à	sélectionner	«	Bénéficiaire ajouté	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
-                      alors	adressé	3	jours	plus	tard. <br />
+                      alors	adressé	3	jours	plus	tard.
+                      {' '}
+                      <br />
                       De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
                     </p>
                     <p>
-                      <button onClick={this.setBankTransfer.bind(this, false)} className="btn btn-primary">Bénéficiaire ajouté</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <button onClick={this.setBankTransfer.bind(this, false)} className="btn btn-primary">Bénéficiaire ajouté</button>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       <button onClick={this.setBankTransfer.bind(this, true)} className="btn btn-primary">Virement effectué</button>
                     </p>
                   </div>
+                  )
                 }
-                {this.state.paytype === '2' &&
+                {this.state.paytype === '2'
+                  && (
                   <div>
                     <p>
                       Vous pouvez choisir de régler votre parrainage quand bon vous semble. En cliquant sur « Payer plus tard » vous serez redirigé vers votre tableau de bord.
                       Les fonctionnalités sont quelque peu bridées.
-                      En effet, nous avons besoin de la confirmation de paiement pour attribuer une ruche aux abeilles que vous souhaitez parrainer ; <strong>vous ne pouvez donc
-                      pas encore consulter la page de la ruche.</strong>
+                      En effet, nous avons besoin de la confirmation de paiement pour attribuer une ruche aux abeilles que vous souhaitez parrainer ;
+                      {' '}
+                      <strong>
+vous ne pouvez donc
+                      pas encore consulter la page de la ruche.
+                      </strong>
                     </p>
                     <p>N’oubliez pas que pour un parrainage effectué entre :</p>
-                      <ul>
-                        <li>Le 1er juillet et le 31 décembre, vous recevez le miel de vos abeilles à partir du mois de mai de l’année suivante.</li>
-                        <li>Le 1er janvier et le 30 juin, vous recevez le miel de vos abeilles à partir du mois d’octobre.</li>
-                      </ul>
+                    <ul>
+                      <li>Le 1er juillet et le 31 décembre, vous recevez le miel de vos abeilles à partir du mois de mai de l’année suivante.</li>
+                      <li>Le 1er janvier et le 30 juin, vous recevez le miel de vos abeilles à partir du mois d’octobre.</li>
+                    </ul>
                     <p>Bonne visite sur notre plateforme !</p>
-                    <button onClick={this.noAction.bind(this)} className="btn btn-primary">Payer plus tard</button>
+                    <button onClick={this.noAction} className="btn btn-primary">Payer plus tard</button>
                   </div>
+                  )
                 }
               </div>
             </div>
           </div>
         </div>
       </div>
-        );
-    }
-});
+    );
+  }
+}
+
+export default withRouter(withNotification(IndividualCheckout));

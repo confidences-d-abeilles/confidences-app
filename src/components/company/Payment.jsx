@@ -6,8 +6,9 @@ import request from '../../services/Net';
 import PayForm from '../utils/PayForm';
 import Meta from '../utils/Meta';
 import { withNotification } from '../../services/withNotification';
+import { withRouter } from 'react-router';
 
-export default withNotification(class CompanyPayment extends Component {
+class CompanyPayment extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,17 +33,17 @@ export default withNotification(class CompanyPayment extends Component {
   }
 
   updateBundleState = state => new Promise((resolve) => {
-    const { notification } = this.props;
+    const { notification, history } = this.props;
     request({
       url: `/bundle/${this.state.bundle_id}`,
       method: 'put',
       data: {
         state,
       },
-    }, notification).then((res) => {
-      this.setState({ redirect: true });
+    }, notification).then(() => {
+      history.push('/company/manage');
     });
-  })
+  });
 
   async save() {
     const { notification } = this.props;
@@ -111,4 +112,6 @@ TRZOFR21XXX
       </div>
     );
   }
-});
+};
+
+export default withRouter(withNotification(CompanyPayment));
