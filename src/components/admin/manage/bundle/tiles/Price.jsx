@@ -4,8 +4,8 @@ import request from '../../../../../services/Net';
 import { Button } from '../../../../utils/Button';
 import { withNotification } from '../../../../../services/withNotification';
 
-const Price = ({ bundleId, notification }) => {
-  const [price, setPrice] = useState(0);
+const Price = ({ bundleId, notification, price: initialPrice }) => {
+  const [price, setPrice] = useState(initialPrice);
 
   const submit = (e) => {
     e.preventDefault();
@@ -32,6 +32,7 @@ Price.propTypes = {
   notification: PropTypes.shape({
     addNotification: PropTypes.func.isRequired,
   }).isRequired,
+  price: PropTypes.number.isRequired,
 };
 
 export default withNotification(Price);

@@ -99,7 +99,7 @@ Parrainage
           ? (
             <div className="row">
               <div className="col-lg-6">
-                <Price bundleId={this.state.bundle.id} />
+                <Price bundleId={this.state.bundle.id} price={this.state.bundle.price} />
                 <Payment
                   state={this.state.bundle.state.toString()}
                   changeState={this.changeState}
