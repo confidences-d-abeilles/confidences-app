@@ -3,14 +3,18 @@ import { Redirect } from 'react-router-dom';
 import { Elements } from 'react-stripe-elements';
 
 import { withRouter } from 'react-router';
+import { withTranslation } from 'react-i18next';
+import PropTypes from 'prop-types';
 import request from '../services/Net';
 import PayForm from './utils/PayForm';
 import Meta from './utils/Meta';
 import { withNotification } from '../services/withNotification';
+import { Button } from './utils/Button';
 
 class IndividualPayement extends Component {
   state = {
     redirect: false,
+    bill_number: '',
   };
 
   nbBees = null;
@@ -32,7 +36,7 @@ class IndividualPayement extends Component {
       });
   }
 
-  updateBundleState = (state) => {
+  updateBundleState = (state) => () => {
     console.log(this.props);
     const { notification, history } = this.props;
     return new Promise(() => {
@@ -49,6 +53,8 @@ class IndividualPayement extends Component {
   };
 
   render() {
+    const { t, redirect } = this.props;
+    const { bill_number, price, bundle_id, present, start_date, firstname, name } = this.state;
     return (
       <div className="container py-4">
         <Meta title="Paiement" />
@@ -60,38 +66,34 @@ class IndividualPayement extends Component {
           <div className="col-lg-6">
             <h3 className="text-center my-4"><small>Paiement sécurisé par carte bancaire</small></h3>
             <Elements locale="fr">
-              <PayForm price={this.state.price} nbBees={this.nbBees} bundle={this.state.bundle_id} date={(this.state.present) ? this.state.start_date : new Date()} for={`${this.state.firstname} ${this.state.name}`} endpoint="/individual/end" />
+              <PayForm price={price} nbBees={this.nbBees} bundle={bundle_id} date={present ? start_date : new Date()} for={`${firstname} ${name}`} endpoint={redirect} />
             </Elements>
           </div>
           <div className="col-lg-6" style={{ borderStyle: 'solid', borderColor: '#E49C00', borderWidth: '0 0 0 4px' }}>
-            <h3 className="text-center my-4"><small>Paiement par virement bancaire</small></h3>
-            <p>Veuillez trouver nos coordonnées bancaires pour procéder au virement</p>
+            <h3 className="text-center my-4"><small>{t('payByTransfer')}</small></h3>
+            <p>{t('ourTransferInfo')}</p>
             <p>
-              <strong>Domiciliation : </strong>
-QONTO - 92641 BOULOGNE-BILLANCOURT
+              <strong>{t('domiciliation')}</strong>
+              {t('bankName')}
               <br />
-              <strong>IBAN : </strong>
-FR76 1679 8000 0100 0004 1298 259
+              <strong>{t('IBAN')}</strong>
+              {t('IBANValue')}
               <br />
-              <strong>BIC : </strong>
-TRZOFR21XXX
+              <strong>{t('BIC')}</strong>
+              {t('BICValue')}
               <br />
               <br />
-              <strong>Numéro de facture à indiquer dans la référence du virement : </strong>
-              {this.state.bill_number}
+              <strong>{`${t('billNumber')} ${bill_number}`}</strong>
             </p>
             <p>
-              Si votre banque vous impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
-              invitons	à	sélectionner	«	Bénéficiaire ajouté	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
-              alors	adressé	3	jours	plus	tard.
-              {' '}
+              {t('delay')}
               <br />
-              De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
+              {t('validationOnOurSide')}
             </p>
             <p className="text-center">
-              <button onClick={this.updateBundleState.bind(this, 0)} className="btn btn-primary">Bénéficiaire ajouté</button>
+              <Button onClick={this.updateBundleState(0)}>{t('added')}</Button>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <button onClick={this.updateBundleState.bind(this, 1)} className="btn btn-primary">Virement effectué</button>
+              <Button onClick={this.updateBundleState(1)}>{t('done')}</Button>
             </p>
           </div>
         </div>
@@ -100,4 +102,12 @@ TRZOFR21XXX
   }
 }
 
-export default withRouter(withNotification(IndividualPayement));
+IndividualPayement.propTypes = {
+  t: PropTypes.func.isRequired,
+  redirect: PropTypes.string.isRequired,
+  notification: PropTypes.shape({
+    addNotification: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default withRouter(withNotification(withTranslation('payment')(IndividualPayement)));
