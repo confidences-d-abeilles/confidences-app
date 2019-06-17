@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const State = ({ level }) => (
   <div>
@@ -8,5 +9,9 @@ const State = ({ level }) => (
     {(level === 3) ? <span className="badge badge-info">Payé et en place</span> : null}
   </div>
 );
+
+State.propTypes = {
+  level: PropTypes.number.isRequired,
+};
 
 export default State;
