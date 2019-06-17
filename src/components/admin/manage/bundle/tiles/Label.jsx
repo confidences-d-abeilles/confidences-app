@@ -19,32 +19,30 @@ class Label extends Component {
     };
   }
 
-  componentDidUpdate({ prevMention, prevModel }) {
-    const { mention, model } = this.props;
-    if (mention !== prevMention) {
+  componentDidUpdate(prevProps) {
+    if (this.props.mention !== prevProps.mention) {
       this.setState({
-        mention,
+        mention: this.props.mention,
       });
     }
-    if (model !== prevModel) {
+    if (this.props.model !== prevProps.model) {
       this.setState({
-        model,
+        model: this.props.model,
       });
     }
   }
 
   updateLabel = async () => {
     const { notification } = this.props;
-    const { mention, model, userId } = this.state;
     await request({
       method: 'put',
-      url: `/user/${userId}/label`,
+      url: `/user/${this.props.userId}/label`,
       data: {
-        model,
-        mention,
+        model: this.state.model,
+        mention: this.state.mention,
       },
     }, notification);
-  };
+  }
 
   render() {
     const { labelFilename, downloadLabel, loading } = this.props;
