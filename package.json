@@ -1,6 +1,6 @@
 {
   "name": "confidences-app",
-  "version": "1.3.5",
+  "version": "1.3.6",
   "private": true,
   "dependencies": {
     "@babel/core": "7.2.2",
@@ -91,7 +91,7 @@
     "dev": "node scripts/start.js",
     "build": "CI=false node scripts/build.js",
     "deploy": "./scripts/deploy.sh",
-    "deploy:full": "yarn build && yarn deploy",
+    "deploy:full": "yarn version && yarn build && yarn deploy",
     "start": "NODE_ENV=production node server.js",
     "test": "node scripts/test.js --env=jsdom",
     "lint": "./node_modules/.bin/eslint --cache --ext .jsx --ext .js src"
