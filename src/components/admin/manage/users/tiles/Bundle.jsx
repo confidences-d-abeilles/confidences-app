@@ -5,8 +5,8 @@ import State from '../State/State';
 
 const Bundle = ({ bundle }) => {
   if (bundle) {
-    let beginDate = 'unavailable';
-    let endDate = 'unavailable';
+    let beginDate = 'N/A';
+    let endDate = 'N/A';
     if (typeof bundle.start_date !== 'undefined' && bundle.start_date) {
       beginDate = moment(bundle.start_date).format("DD/MM/YYYY à HH[h]mm");
     }
@@ -16,9 +16,12 @@ const Bundle = ({ bundle }) => {
 
     return (<div>
       <p className="newcard">
-        Parrainage de {(bundle.hives)?bundle.hives+' ruches':bundle.bees+' abeilles'} <State level={bundle.state} /><br />
-        Prise d'effet le {beginDate}<br />
-        Expiration le {endDate}
+        Parrainage de {bundle.hives ? `${bundle.hives} ruches ` : `${bundle.bees} abeilles `}
+        <State level={bundle.state} />
+        <br />
+        {`Prise d'effet le ${beginDate}`}
+        <br />
+        {`Expiration le ${endDate}`}
       </p>
     </div>)
   } else {

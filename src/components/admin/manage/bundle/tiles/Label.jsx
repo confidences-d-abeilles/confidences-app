@@ -47,8 +47,8 @@ class Label extends Component {
   render() {
     const { labelFilename, downloadLabel, loading } = this.props;
     return (
-      <div className="card mb-4 bg-light">
-        <h4 className="card-header">Etiquette</h4>
+      <div className="newcard">
+        <h4>Etiquette</h4>
         <div className="card-body p-2">
           {labelFilename
             ? (
