@@ -3,7 +3,7 @@ import moment from 'moment';
 
 import State from '../State/State';
 
-const Bundle = ({ bundle}) => {
+const Bundle = ({ bundle }) => {
   if (bundle) {
     let beginDate = 'unavailable';
     let endDate = 'unavailable';
@@ -15,7 +15,7 @@ const Bundle = ({ bundle}) => {
     }
 
     return (<div>
-      <p className="m-0">
+      <p className="newcard">
         Parrainage de {(bundle.hives)?bundle.hives+' ruches':bundle.bees+' abeilles'} <State level={bundle.state} /><br />
         Prise d'effet le {beginDate}<br />
         Expiration le {endDate}
