@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
+import TopBar from '@cda/top-bar';
 import logoSquare from '../assets/img/logo-square.png';
 import { isLoggedIn } from '../services/AuthService';
 import MyLink from './utils/Link';
 import navLinks from '../config/navLinks';
 import { withNotification } from '../services/withNotification';
-import TopBar from './utils/TopBar';
 
 
 export default withNotification(() => (
