@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { Button } from '@cda/button';
 import request from '../services/Net';
 import { handleChange } from '../services/FormService';
 import Meta from './utils/Meta';
 import { withNotification } from '../services/withNotification';
-import { Button } from './utils/Button';
 
 export default withNotification(class Forgot extends Component {
   state = {

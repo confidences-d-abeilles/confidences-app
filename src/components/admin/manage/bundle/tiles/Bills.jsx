@@ -4,7 +4,7 @@ import request from '../../../../../services/Net';
 import Loading from '../../../../utils/Loading';
 import FileUpload from '../../../../utils/FileUpload';
 import { withNotification } from '../../../../../services/withNotification';
-import { Button } from '../../../../utils/Button';
+import { Button } from '@cda/button';
 
 export default withNotification(class Bills extends Component {
   state = {

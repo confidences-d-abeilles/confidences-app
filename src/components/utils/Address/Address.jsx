@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
+import { Button } from '@cda/button';
 import EditAddress from './EditAddress';
 import ViewAddress from './ViewAddress';
 import request from '../../../services/Net';
-import { Button } from '../Button';
 import { withNotification } from '../../../services/withNotification';
 
 export default withNotification(class Address extends Component {

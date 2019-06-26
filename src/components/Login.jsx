@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import { Button } from '@cda/button';
 import { handleChange } from '../services/FormService';
 import { login, isLoggedIn } from '../services/AuthService';
 import Loading from './utils/Loading';
 import request from '../services/Net';
 import Meta from './utils/Meta';
-import { Button } from './utils/Button';
 import { withNotification } from '../services/withNotification';
 
 export default withNotification(class Login extends Component {

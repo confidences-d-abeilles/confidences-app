@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 
+import MyLink from '@cda/link';
 import logoSquare from '../assets/img/logo-square.png';
 import { isLoggedIn } from '../services/AuthService';
-import MyLink from './utils/Link';
 import { ButtonLink } from './utils/Button';
 import navLinks from '../config/navLinks';
 import { withNotification } from '../services/withNotification';

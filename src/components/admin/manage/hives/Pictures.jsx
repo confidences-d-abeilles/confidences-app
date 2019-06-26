@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-
+import { Button } from '@cda/button';
 import request from '../../../../services/Net';
 import { withNotification } from '../../../../services/withNotification';
-import { Button } from '../../../utils/Button';
 
 export default withNotification(class Pictures extends Component {
 

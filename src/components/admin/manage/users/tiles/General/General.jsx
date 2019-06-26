@@ -3,7 +3,7 @@ import moment from 'moment';
 import Loading from '../../../../../utils/Loading';
 import UserType from '../../UserType/UserType';
 import Confirm from '../../../../../utils/Confirm';
-import { Button } from '../../../../../utils/Button';
+import { Button } from '@cda/button';
 
 const General = ({ delete: deleteUser, data, impersonate, handlePromotion }) => (
   <div className="newcard">

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Button } from '@cda/button';
+
 import { handleChange } from '../../services/FormService';
 import request from '../../services/Net';
-
 import MainProduct from './MainProduct';
 import Product from './Product';
-import { Button } from '../../components/utils/Button';
 
 export default class Wish extends Component {
   static sortProducts = (a, b) => (a.createdAt > b.createdAt);

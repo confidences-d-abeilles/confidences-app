@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { StripeProvider } from 'react-stripe-elements';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-
+import { ThemeProvider } from 'emotion-theming';
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,6 +17,7 @@ import logAnalytics from './services/analytics/logAnalytics';
 import CompanyPage from './components/company/Page';
 import MyRouter from './components/Router';
 import Error from './services/Errors';
+import theme from '../src/config/theme';
 
 
 import Aviva from './modules/aviva/Aviva';
@@ -33,23 +34,25 @@ const store = createStore(
 
 const App = () => (
   <Error>
-    <NotificationProvider>
-      <StripeProvider apiKey={process.env.REACT_APP_STRIPE_API_KEY}>
-        <Provider store={store}>
-          <Router>
-            <Fragment>
-              <Route component={ScrollToTop} />
-              <Switch>
-                <Redirect path="/perus" to="/parrains/perus" />
-                <Route path="/parrains/:namespace" component={logAnalytics(CompanyPage)} />
-                <Route exact path="/la-fabrique-aviva-projet-confidences-abeilles-concours" component={Aviva} />
-                <Route component={logAnalytics(MyRouter)} />
-              </Switch>
-            </Fragment>
-          </Router>
-        </Provider>
-      </StripeProvider>
-    </NotificationProvider>
+    <ThemeProvider theme={theme}>
+      <NotificationProvider>
+        <StripeProvider apiKey={process.env.REACT_APP_STRIPE_API_KEY}>
+          <Provider store={store}>
+            <Router>
+              <Fragment>
+                <Route component={ScrollToTop} />
+                <Switch>
+                  <Redirect path="/perus" to="/parrains/perus" />
+                  <Route path="/parrains/:namespace" component={logAnalytics(CompanyPage)} />
+                  <Route exact path="/la-fabrique-aviva-projet-confidences-abeilles-concours" component={Aviva} />
+                  <Route component={logAnalytics(MyRouter)} />
+                </Switch>
+              </Fragment>
+            </Router>
+          </Provider>
+        </StripeProvider>
+      </NotificationProvider>
+    </ThemeProvider>
   </Error>
 );
 

@@ -3,11 +3,11 @@ import ReactQuill from 'react-quill';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 
+import { Button } from '@cda/button';
 import { handleChange } from '../../services/FormService';
 import request from '../../services/Net';
 import Confirm from './Confirm';
 import { withNotification } from '../../services/withNotification';
-import { Button } from './Button';
 
 export default withNotification(class Feedback extends Component {
 

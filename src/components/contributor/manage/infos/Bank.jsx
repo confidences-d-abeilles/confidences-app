@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { Button } from '@cda/button';
 import request from '../../../../services/Net';
 import { handleChange } from '../../../../services/FormService';
-import { Button } from '../../../utils/Button';
 import { withNotification } from '../../../../services/withNotification';
 
 

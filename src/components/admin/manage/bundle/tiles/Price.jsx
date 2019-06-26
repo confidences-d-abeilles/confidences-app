@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Button } from '@cda/button';
 import request from '../../../../../services/Net';
-import { Button } from '../../../../utils/Button';
 import { withNotification } from '../../../../../services/withNotification';
 
 const Price = ({ bundleId, notification, price: initialPrice }) => {

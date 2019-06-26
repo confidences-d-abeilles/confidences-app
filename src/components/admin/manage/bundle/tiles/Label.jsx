@@ -6,7 +6,7 @@ import Loading from '../../../../utils/Loading';
 import { handleChange } from '../../../../../services/FormService';
 import '../../../../utils/css/LabelPdf.css';
 import { withNotification } from '../../../../../services/withNotification';
-import { Button } from '../../../../utils/Button';
+import { Button } from '@cda/button';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 

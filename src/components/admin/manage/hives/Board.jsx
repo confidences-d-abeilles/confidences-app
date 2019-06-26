@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { Button } from '@cda/button';
 import Parrains from './Parrains';
 import request from '../../../../services/Net';
 import { withNotification } from '../../../../services/withNotification';
@@ -10,7 +11,6 @@ import Loading from '../../../utils/Loading';
 import Feedback from '../../../utils/Feedback';
 import Info from './Info';
 import FileUpload from '../../../utils/FileUpload';
-import { Button } from '../../../utils/Button';
 import Pictures from './Pictures';
 
 class Board extends PureComponent {
