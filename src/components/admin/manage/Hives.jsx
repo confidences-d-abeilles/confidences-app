@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import { Button } from '@cda/button';
 import request from '../../../services/Net';
 import { handleChange } from '../../../services/FormService';
 import Loading from '../../utils/Loading';
 import Meta from '../../utils/Meta';
 import 'react-datepicker/dist/react-datepicker.css';
 import { withNotification } from '../../../services/withNotification';
-import { Button } from '../../utils/Button';
 
 export default withNotification(class AdminManageHives extends Component {
   state = {

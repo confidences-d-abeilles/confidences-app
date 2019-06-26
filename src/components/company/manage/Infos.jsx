@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
 
+import { Button } from '@cda/button';
 import request from '../../../services/Net';
 import { handleChange } from '../../../services/FormService';
 import Meta from '../../utils/Meta';
 import FileUpload from '../../utils/FileUpload';
 import Address from '../../utils/Address/Address';
-import { Button } from '../../utils/Button';
 import { withNotification } from '../../../services/withNotification';
 
 export default withNotification(class CompanyManageInfos extends Component {

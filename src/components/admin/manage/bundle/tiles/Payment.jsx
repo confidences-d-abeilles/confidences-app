@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from '../../../../utils/Button';
+import { Button } from '@cda/button';
 
 const Payment = ({ changeState, submitState, state }) => (
   <div className="newcard">

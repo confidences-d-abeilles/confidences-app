@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 
+import { Button } from '@cda/button';
 import request from '../../../services/Net';
 import Loading from '../../utils/Loading';
 import { withNotification } from '../../../services/withNotification';
-import { Button, ButtonLink } from '../../utils/Button';
+import { ButtonLink } from '../../utils/Button';
 
 export default withNotification(class CompanyManageDashboard extends Component {
   state = {

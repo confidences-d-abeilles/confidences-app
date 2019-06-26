@@ -13,7 +13,7 @@ import Address from '../utils/Address/Address';
 import Meta from '../utils/Meta';
 import ViewAddress from '../utils/Address/ViewAddress';
 import { withNotification } from '../../services/withNotification';
-import { Button } from '../utils/Button';
+import { Button } from '@cda/button';
 
 
 class IndividualCheckout extends Component {

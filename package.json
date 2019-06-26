@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.2.2",
-    "@cda/button": "^0.0.2",
+    "@cda/button": "^0.0.9",
+    "@cda/link": "0.0.9",
     "@cda/top-bar": "^0.0.9",
     "@emotion/core": "^10.0.5",
     "@emotion/styled": "^10.0.5",

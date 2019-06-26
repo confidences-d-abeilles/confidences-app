@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import ReactPixel from 'react-facebook-pixel';
-import { handleChange } from '../services/FormService'
-import { login, isLoggedIn } from '../services/AuthService'
-import request from '../services/Net.js'
+import { Button } from '@cda/button';
+import { handleChange } from '../services/FormService';
+import { login, isLoggedIn } from '../services/AuthService';
+import request from '../services/Net';
 import Meta from './utils/Meta';
 import { withNotification } from '../services/withNotification';
-import { Button } from './utils/Button';
 
 export default withNotification(class Signup extends Component {
   constructor(props) {
