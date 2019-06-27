@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import ButtonLink from '@cda/button-link';
 import Meta from './utils/Meta';
 import { isLoggedIn } from '../services/AuthService';
-import { ButtonLink } from './utils/Button';
 
 export default class Presignup extends Component {
   state = {

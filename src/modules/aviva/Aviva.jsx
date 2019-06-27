@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { ButtonLink } from '../../components/utils/Button';
+import ButtonLink from '@cda/button-link';
 import Top from '../../assets/img/aviva/top.jpg';
 import Bottom from '../../assets/img/aviva/bottom.jpg';
 import logAnalytics from '../../services/analytics/logAnalytics';

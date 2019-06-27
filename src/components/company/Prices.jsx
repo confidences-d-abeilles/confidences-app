@@ -1,8 +1,8 @@
 import React from 'react';
+import ButtonLink from '@cda/button-link';
+import { Item, Rows } from '@cda/flex';
 import Meta from '../utils/Meta';
 import PriceCard from '../PriceCard';
-import { Item, Rows } from '../utils/layout/Flex';
-import { ButtonLink } from '../utils/Button';
 
 const UNIT = '/ an / ruche';
 

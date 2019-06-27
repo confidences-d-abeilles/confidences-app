@@ -5,6 +5,8 @@
   "dependencies": {
     "@babel/core": "7.2.2",
     "@cda/button": "latest",
+    "@cda/button-link": "latest",
+    "@cda/flex": "latest",
     "@cda/link": "latest",
     "@cda/top-bar": "latest",
     "@emotion/core": "^10.0.5",

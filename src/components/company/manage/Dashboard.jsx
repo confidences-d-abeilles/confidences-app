@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 import { Button } from '@cda/button';
+import ButtonLink from '@cda/button-link';
 import request from '../../../services/Net';
 import Loading from '../../utils/Loading';
 import { withNotification } from '../../../services/withNotification';
-import { ButtonLink } from '../../utils/Button';
 
 export default withNotification(class CompanyManageDashboard extends Component {
   state = {
@@ -128,57 +128,57 @@ Vous pouvez maintenant choisir le nom de
                         <form className="col-lg-8" onSubmit={this.saveNames.bind(this)}>
                           {hivesNames.map((val, key) => (
                             <div className="form-group">
-                  <label>
+                              <label>
 Ruche n°
-                              {key + 1}
-                            </label>
-                  <select value={hivesNames[key]} onChange={this.handleName.bind(this, key)} className="form-control">
-                              <option value="">Choisissez un nom pour cette ruche</option>
-                              <option value="Campanule">Campanule</option>
-                              <option value="Épilobe">Épilobe</option>
-                              <option value="Rhododendron">Rhododendron</option>
-                              <option value="Muguet">Muguet</option>
-                              <option value="Arnica">Arnica</option>
-                              <option value="Lis martagon">Lis martagon</option>
-                              <option value="Sainfoin">Sainfoin</option>
-                              <option value="Ail des ours">Ail des ours</option>
-                              <option value="Alchémille">Alchémille</option>
-                              <option value="Marguerite">Marguerite</option>
-                              <option value="Bourache">Bourache</option>
-                              <option value="Linaigrette">Linaigrette</option>
-                              <option value="Colchique">Colchique</option>
-                              <option value="Centaurée ">Centaurée </option>
-                              <option value="Aster">Aster</option>
-                              <option value="Bouton d'or">Bouton d'or</option>
-                              <option value="Coucou">Coucou</option>
-                              <option value="Pensée des Alpes">Pensée des Alpes</option>
-                              <option value="Gentiane jaune">Gentiane jaune</option>
-                              <option value="Anémone">Anémone</option>
-                              <option value="Jonquille">Jonquille</option>
-                              <option value="Menthe">Menthe</option>
-                              <option value="Crocus">Crocus</option>
-                              <option value="Colchique des Alpes">Colchique des Alpes</option>
-                              <option value="Coquelicot">Coquelicot</option>
-                              <option value="Digitale">Digitale</option>
-                              <option value="Iris des marais">Iris des marais</option>
-                              <option value="Ancolie commune">Ancolie commune</option>
-                              <option value="Bleuet de montagne">Bleuet de montagne</option>
-                              <option value="Millepertuis">Millepertuis</option>
-                              <option value="Joubarbe">Joubarbe</option>
-                              <option value="Orchis Vanillé">Orchis Vanillé</option>
-                              <option value="Petite pervenche">Petite pervenche</option>
-                              <option value="Edelweiss">Edelweiss</option>
-                              <option value="Lotier des Alpes">Lotier des Alpes</option>
-                              <option value="Oeillet sauvage">Oeillet sauvage</option>
-                              <option value="Primevère">Primevère</option>
-                              <option value="Muscari">Muscari</option>
-                              <option value="Vipérine">Vipérine</option>
-                              <option value="Safran">Safran</option>
-                              <option value="Chicorée">Chicorée</option>
-                              <option value="Phacélie">Phacélie</option>
-                              <option value="Génépi">Génépi</option>
-                            </select>
-                </div>
+                                {key + 1}
+                              </label>
+                              <select value={hivesNames[key]} onChange={this.handleName.bind(this, key)} className="form-control">
+                                <option value="">Choisissez un nom pour cette ruche</option>
+                                <option value="Campanule">Campanule</option>
+                                <option value="Épilobe">Épilobe</option>
+                                <option value="Rhododendron">Rhododendron</option>
+                                <option value="Muguet">Muguet</option>
+                                <option value="Arnica">Arnica</option>
+                                <option value="Lis martagon">Lis martagon</option>
+                                <option value="Sainfoin">Sainfoin</option>
+                                <option value="Ail des ours">Ail des ours</option>
+                                <option value="Alchémille">Alchémille</option>
+                                <option value="Marguerite">Marguerite</option>
+                                <option value="Bourache">Bourache</option>
+                                <option value="Linaigrette">Linaigrette</option>
+                                <option value="Colchique">Colchique</option>
+                                <option value="Centaurée ">Centaurée </option>
+                                <option value="Aster">Aster</option>
+                                <option value="Bouton d'or">Bouton d'or</option>
+                                <option value="Coucou">Coucou</option>
+                                <option value="Pensée des Alpes">Pensée des Alpes</option>
+                                <option value="Gentiane jaune">Gentiane jaune</option>
+                                <option value="Anémone">Anémone</option>
+                                <option value="Jonquille">Jonquille</option>
+                                <option value="Menthe">Menthe</option>
+                                <option value="Crocus">Crocus</option>
+                                <option value="Colchique des Alpes">Colchique des Alpes</option>
+                                <option value="Coquelicot">Coquelicot</option>
+                                <option value="Digitale">Digitale</option>
+                                <option value="Iris des marais">Iris des marais</option>
+                                <option value="Ancolie commune">Ancolie commune</option>
+                                <option value="Bleuet de montagne">Bleuet de montagne</option>
+                                <option value="Millepertuis">Millepertuis</option>
+                                <option value="Joubarbe">Joubarbe</option>
+                                <option value="Orchis Vanillé">Orchis Vanillé</option>
+                                <option value="Petite pervenche">Petite pervenche</option>
+                                <option value="Edelweiss">Edelweiss</option>
+                                <option value="Lotier des Alpes">Lotier des Alpes</option>
+                                <option value="Oeillet sauvage">Oeillet sauvage</option>
+                                <option value="Primevère">Primevère</option>
+                                <option value="Muscari">Muscari</option>
+                                <option value="Vipérine">Vipérine</option>
+                                <option value="Safran">Safran</option>
+                                <option value="Chicorée">Chicorée</option>
+                                <option value="Phacélie">Phacélie</option>
+                                <option value="Génépi">Génépi</option>
+                              </select>
+                            </div>
                           ))}
                           <div className="form-group text-center">
                             <button className="btn btn-primary">Confirmer mon choix</button>
@@ -193,21 +193,21 @@ Ruche n°
                           ? (
                             <p>
                   Notre offre :
-                  {' '}
-                  {user.bundles[0].hives}
-                  {' '}
+                              {' '}
+                              {user.bundles[0].hives}
+                              {' '}
 ruche
-                  {user.bundles[0].hives > 1 ? 's' : ''}
-                  <br />
+                              {user.bundles[0].hives > 1 ? 's' : ''}
+                              <br />
                   Date de début :
-                  {' '}
-                  {moment(user.bundles[0].start_date).format('DD/MM/YYYY')}
-                  <br />
+                              {' '}
+                              {moment(user.bundles[0].start_date).format('DD/MM/YYYY')}
+                              <br />
                   Date de fin :
-                  {' '}
-                  {moment(user.bundles[0].end_date).format('DD/MM/YYYY')}
-                  <br />
-                </p>
+                              {' '}
+                              {moment(user.bundles[0].end_date).format('DD/MM/YYYY')}
+                              <br />
+                            </p>
                           )
                           : null
               }
