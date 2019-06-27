@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 
 import MyLink from '@cda/link';
+import ButtonLink from '@cda/button-link';
 import logoSquare from '../assets/img/logo-square.png';
 import { isLoggedIn } from '../services/AuthService';
-import { ButtonLink } from './utils/Button';
 import navLinks from '../config/navLinks';
 import { withNotification } from '../services/withNotification';
 
@@ -64,7 +64,7 @@ const DropdownElement = styled(MyLink)`
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleHandler = e => {
+  const toggleHandler = (e) => {
     e.preventDefault();
     setIsOpen(!isOpen);
   };

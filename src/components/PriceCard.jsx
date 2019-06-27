@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Item } from './utils/layout/Flex';
+import { Item } from '@cda/flex';
 
 const Wrapper = styled(Item)`
   margin: 0.5rem;

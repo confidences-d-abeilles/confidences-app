@@ -2,18 +2,19 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import { withTranslation } from 'react-i18next';
-import '../../assets/styles/parrains_homepage.css';
 import styled from '@emotion/styled';
+import ButtonLink from '@cda/button-link';
+import {
+  Rows,
+  Item,
+} from '@cda/flex';
 import first from '../../assets/img/homepage/4.jpg';
 import Loading from '../../components/utils/Loading';
 import Meta from '../../components/utils/Meta';
 
-import {
-  Rows,
-  Item,
-} from '../../components/utils/layout/Flex';
-import { ButtonLink } from '../../components/utils/Button';
 import Jumbotron from '../../components/Jumbotron';
+
+import '../../assets/styles/parrains_homepage.css';
 
 const defaultImg = require('../../assets/img/profile.png');
 

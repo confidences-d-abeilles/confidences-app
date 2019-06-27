@@ -3,13 +3,13 @@ import { Redirect, Link } from 'react-router-dom';
 import moment from 'moment';
 import FontAwesome from 'react-fontawesome';
 
+import ButtonLink from '@cda/button-link';
 import request from '../../../services/Net';
 import Loading from '../../utils/Loading';
 import { handleChange } from '../../../services/FormService';
 import Meta from '../../utils/Meta';
 import Details from './bundle/Details';
 import Hive from './bundle/Hive';
-import { ButtonLink } from '../../utils/Button';
 import { withNotification } from '../../../services/withNotification';
 
 export default withNotification(class Bundle extends Component {

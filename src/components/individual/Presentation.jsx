@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import { ButtonLink } from '../utils/Button';
-import { Rows, Item } from '../utils/layout/Flex';
+import ButtonLink from '@cda/button-link';
+import { Rows, Item } from '@cda/flex';
 import first from '../../assets/img/P/1.jpg';
 import leaflet from '../../assets/leaflet_p.pdf';
 

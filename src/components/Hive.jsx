@@ -4,13 +4,13 @@ import FontAwesome from 'react-fontawesome';
 import moment from 'moment';
 import ReactHtmlParser from 'react-html-parser';
 import ReactStars from 'react-stars';
+import ButtonLink from '@cda/button-link';
 import request from '../services/Net';
 import Loading from './utils/Loading';
 import ImgHive from '../assets/img/logo_ruche_entreprise.png';
 import Meta from './utils/Meta';
 import Imagebox from './utils/Imagebox';
 import { withNotification } from '../services/withNotification';
-import { ButtonLink } from './utils/Button';
 
 export default withNotification(class Hive extends Component {
   state = {

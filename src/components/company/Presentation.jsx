@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { withTranslation } from 'react-i18next';
-import { Rows, Item } from '../utils/layout/Flex';
-import { ButtonLink } from '../utils/Button';
+import ButtonLink from '@cda/button-link';
+import { Rows, Item } from '@cda/flex';
 import first from '../../assets/img/E/1.jpg';
 
 import Meta from '../utils/Meta';
