@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-import TopBar from '@cda/top-bar';
 import MyLink from '@cda/link';
 import logoSquare from '../assets/img/logo-square.png';
 import { isLoggedIn } from '../services/AuthService';
@@ -11,7 +10,6 @@ import { withNotification } from '../services/withNotification';
 
 export default withNotification(() => (
   <>
-    <TopBar>{'Comme vous l\'avez peut-être constaté, notre site internet a changé de nom de domaine. ↑ Nous avons fait cette modification volontairement pour harmoniser notre identité. Rien de change pour autant ! Bonne visite !'}</TopBar>
     <nav className="navbar navbar-toggleable-lg navbar-light hidden-xl-up">
       <button
         className="navbar-toggler navbar-toggler-right align-self-center"
