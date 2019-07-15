@@ -24,6 +24,6 @@ jobs:
       - run: yarn build
       - run: yarn test:e2e
       - store_artifacts:
-        path: cypress/videos
+          path: cypress/videos
       - store_artifacts:
-        path: cypress/screenshots
+          path: cypress/screenshots
