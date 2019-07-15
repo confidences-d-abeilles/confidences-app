@@ -1,6 +1,18 @@
 version: 2
 jobs:
-  build & deploy production:
+  lint:
+    docker:
+      - image: circleci/node:latest
+
+    working_directory: ~/confidences-app
+
+    steps:
+      - checkout
+      - add_ssh_keys
+      - run: yarn
+      - run: yarn lint
+
+  test:
     docker:
       - image: circleci/node:latest
 
@@ -11,37 +23,3 @@ jobs:
       - add_ssh_keys
       - run: yarn
       - run: yarn build
-      - run: sudo apt install rsync
-      - run: rsync -av -e 'ssh -oStrictHostKeyChecking=no -p 1023' --include "./*" ./* $SSH_USER@$SSH_HOST:/srv/confidences-app
-      - run: ssh $SSH_USER@$SSH_HOST -oStrictHostKeyChecking=no -p 1023 '. /home/dev/.zshrc; pm2 reload app'
-  
-  build & deploy development:
-    docker:
-      - image: circleci/node:latest
-
-    working_directory: ~/confidences-app
-
-    steps:
-      - checkout
-      - add_ssh_keys
-      - run: sudo apt install rsync
-      - run: rsync -av -e 'ssh -oStrictHostKeyChecking=no -p 1023' --include ".*" ./* $SSH_USER@$SSH_HOST_DEV:/srv/confidences-app
-      - run: ssh $SSH_USER@$SSH_HOST_DEV -oStrictHostKeyChecking=no -p 1023 '. /home/dev/.zshrc; cd /srv/confidences-app; yarn; pm2 reload app'
-
-
-workflows:
-  version: 2
-  build & deploy:
-    jobs:
-      - build & deploy production:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only:
-                - /v.*\..*\..*/
-      - build & deploy development:
-          filters:
-            branches:
-              only:
-                - master
