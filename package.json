@@ -99,10 +99,12 @@
     "deploy:full": "yarn version && yarn build && yarn deploy",
     "start": "NODE_ENV=production node server.js",
     "test": "node scripts/test.js --env=jsdom",
+    "test:e2e": "concurrently \"serve -s build\" \"cypress run\"",
     "lint": "./node_modules/.bin/eslint --cache --ext .jsx --ext .js src"
   },
   "devDependencies": {
     "babel-plugin-dynamic-import-webpack": "^1.1.0",
+    "concurrently": "^4.1.1",
     "cypress": "^3.4.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
@@ -111,6 +113,7 @@
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.2",
+    "serve": "^11.1.0",
     "webpack-bundle-analyzer": "^3.3.2"
   },
   "browserslist": [
