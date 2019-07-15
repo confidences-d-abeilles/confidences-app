@@ -17,7 +17,7 @@ import logAnalytics from './services/analytics/logAnalytics';
 import CompanyPage from './components/company/Page';
 import MyRouter from './components/Router';
 import Error from './services/Errors';
-import theme from '../src/config/theme';
+import theme from '@cda/theme';
 
 
 import Aviva from './modules/aviva/Aviva';
