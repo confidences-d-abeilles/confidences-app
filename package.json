@@ -99,7 +99,7 @@
     "deploy:full": "yarn version && yarn build && yarn deploy",
     "start": "NODE_ENV=production node server.js",
     "test": "node scripts/test.js --env=jsdom",
-    "test:e2e": "concurrently \"serve -s build\" \"cypress run\"",
+    "test:e2e": "concurrently -k \"serve -s build\" \"cypress run\"",
     "lint": "./node_modules/.bin/eslint --cache --ext .jsx --ext .js src"
   },
   "devDependencies": {
