@@ -6,7 +6,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:latest
+      - image: cypress/base:latest
+        environment:
+          TERM: xterm
     working_directory: ~/repo
     steps:
       - checkout
@@ -21,3 +23,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn build
       - run: yarn test:e2e
+      - store_artifacts:
+        path: cypress/videos
+      - store_artifacts:
+        path: cypress/screenshots
