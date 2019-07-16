@@ -95,7 +95,7 @@
     "start": "NODE_ENV=production node server.js",
     "test": "node scripts/test.js --env=jsdom",
     "serve": "serve -s build",
-    "test:e2e": "start-server-and-test serve http://localhost:5000 cypress",
+    "test:e2e": "start-server-and-test dev http://localhost:3000 cypress",
     "cypress": "./node_modules/.bin/cypress run",
     "lint": "./node_modules/.bin/eslint --cache --ext .jsx --ext .js src"
   },
