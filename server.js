@@ -26,7 +26,7 @@ app.get('/*', (req, res) => {
     res.end(composeHtml(html.toString(), req.meta ? req.meta : metaLoader.load(req.url)));
 });
 
-app.listen(5000, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log("Server started");
 });
 
