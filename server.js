@@ -1,5 +1,5 @@
 require('dotenv').config({
-    path: process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env',
+    path: process.env.NODE_ENV ? `.env.${process.env.NODE_ENV}` : '.env.production',
 });
 const express = require('express');
 const app = express();
@@ -24,11 +24,11 @@ app.use('/', metaResolverMiddleware);
 
 app.get('/*', (req, res) => {
     res.end(composeHtml(html.toString(), req.meta ? req.meta : metaLoader.load(req.url)));
-})
+});
 
 app.listen(5000, () => {
     console.log("Server started");
-})
+});
 
 
 function composeHtml(html, meta) {
