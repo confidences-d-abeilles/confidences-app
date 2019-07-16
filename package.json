@@ -92,7 +92,7 @@
     "build": "CI=false node scripts/build.js",
     "deploy": "./scripts/deploy.sh",
     "deploy:full": "yarn version && yarn build && yarn deploy",
-    "start": "NODE_ENV=production node server.js",
+    "start": "node server.js",
     "test": "node scripts/test.js --env=jsdom",
     "serve": "serve -s build",
     "test:e2e": "start-server-and-test dev http://localhost:3000 cypress",
