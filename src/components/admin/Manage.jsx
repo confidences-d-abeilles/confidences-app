@@ -18,6 +18,7 @@ import AdminManageServer from './manage/Server';
 import AdminManageHome from './manage/Home';
 import Products from './manage/Products';
 import Coupons from './manage/Coupons';
+import AdminManageLabel from './manage/Label';
 
 
 export default () => (
@@ -46,6 +47,11 @@ export default () => (
             &nbsp;&nbsp;
             Parrainages
           </Link>
+          <Link to="/admin/manage/label" className="list-group-item">
+            <FontAwesome name="tag" fixedWidth />
+            &nbsp;&nbsp;
+            Etiquettes
+          </Link>
           <Link to="/admin/manage/mails" className="list-group-item">
             <FontAwesome name="envelope" fixedWidth />
             &nbsp;&nbsp;
@@ -58,7 +64,7 @@ export default () => (
             Produits
           </Link>
           <Link to="/admin/manage/coupons" className="list-group-item">
-            <FontAwesome name="tag" fixedWidth />
+            <FontAwesome name="ticket" fixedWidth />
             &nbsp;&nbsp;
             Coupons
           </Link>
@@ -86,6 +92,7 @@ export default () => (
             <Route exact path="/admin/manage/hive/:hiveId" component={AdminManageHivesBoard} />
             <Route exact path="/admin/manage/bundles" component={AdminManageBundles} />
             <Route exact path="/admin/manage/bundle" component={AdminManageBundle} />
+            <Route exact path="/admin/manage/Label" component={AdminManageLabel} />
             <Switch>
               <Route exact path="/admin/manage/bundle/unpaid" component={AdminManageBundle} />
               <Route exact path="/admin/manage/bundle/pending" component={AdminManageBundle} />

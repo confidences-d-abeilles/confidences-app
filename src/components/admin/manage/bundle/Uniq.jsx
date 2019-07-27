@@ -75,7 +75,7 @@ export default withNotification(class AdminManageBundleId extends Component {
         retrievedFileName = regexp.exec(response.headers['content-disposition'])[1];
       } catch (err) {
         console.log('erreur filename');
-        retrievedFileName = `label_${this.state.bundle.owner.name}.pdf`;
+        retrievedFileName = `${this.state.bundle.owner.name}.pdf`;
       }
       fileDownload(response.data, retrievedFileName);
     } catch (error) {
