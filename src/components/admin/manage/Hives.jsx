@@ -8,6 +8,7 @@ import Loading from '../../utils/Loading';
 import Meta from '../../utils/Meta';
 import 'react-datepicker/dist/react-datepicker.css';
 import { withNotification } from '../../../services/withNotification';
+import Search from './hives/Search';
 
 export default withNotification(class AdminManageHives extends Component {
   state = {
@@ -20,7 +21,7 @@ export default withNotification(class AdminManageHives extends Component {
     ratio: 0,
     stateFeedback: 0,
     feedback: '',
-  }
+  };
 
   componentDidMount() {
     this.get();
@@ -69,7 +70,18 @@ export default withNotification(class AdminManageHives extends Component {
     });
   }
 
-
+  searchHandler = queryString => {
+    const { notification } = this.props;
+    console.log(queryString);
+    request({
+      url: `/hive/bundle/owner/${queryString}`,
+      method: 'GET',
+    }, notification).then((res) => {
+      this.setState({
+        hives: res,
+      });
+    });
+  };
 
   changeImg(e) {
     const { selected } = this.state;
@@ -98,11 +110,13 @@ export default withNotification(class AdminManageHives extends Component {
         </div>
         <div className="row">
           <div className="col">
-            <h3>Créer une ruche</h3>
-            <form className="form-inline my-3" onSubmit={this.addHive.bind(this)}>
-              <input type="text" className="form-control mx-2" name="newHive" value={newHive} placeholder="Nom commun de la nouvelle ruche" onChange={handleChange.bind(this)} />
-              <Button type="submit">Créer la ruche</Button>
-            </form>
+            <div className="row">
+              <Search handler={this.searchHandler} className="col" />
+              <form className="col form-inline" onSubmit={this.addHive.bind(this)}>
+                <input type="text" className="mx-2" name="newHive" value={newHive} placeholder="Nom commun de la nouvelle ruche" onChange={handleChange.bind(this)} />
+                <Button type="submit">Créer la ruche</Button>
+              </form>
+            </div>
             <div style={{ maxHeight: '50vh', overflowY: 'scroll' }}>
               {this.state.hives
                 ? (
