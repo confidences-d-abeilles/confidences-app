@@ -42,7 +42,7 @@ class Label extends Component {
         mention: this.state.mention,
       },
     }, notification);
-  }
+  };
 
   render() {
     const { labelFilename, downloadLabel, loading } = this.props;
