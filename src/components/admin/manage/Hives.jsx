@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Button } from '@cda/button';
+import Input from '@cda/input';
+
 import request from '../../../services/Net';
 import { handleChange } from '../../../services/FormService';
 import Loading from '../../utils/Loading';
@@ -113,7 +115,7 @@ export default withNotification(class AdminManageHives extends Component {
             <div className="row">
               <Search handler={this.searchHandler} className="col" />
               <form className="col form-inline" onSubmit={this.addHive.bind(this)}>
-                <input type="text" className="mx-2" name="newHive" value={newHive} placeholder="Nom commun de la nouvelle ruche" onChange={handleChange.bind(this)} />
+                <Input type="text" className="mx-2" name="newHive" value={newHive} placeholder="Nom commun de la nouvelle ruche" onChange={handleChange.bind(this)} />
                 <Button type="submit">Créer la ruche</Button>
               </form>
             </div>

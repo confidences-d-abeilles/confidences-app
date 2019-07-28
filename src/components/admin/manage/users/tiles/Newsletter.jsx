@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Input from '@cda/input';
 
 import request from '../../../../../services/Net';
 import { handleChange } from '../../../../../services/FormService';
@@ -54,7 +55,7 @@ export default withNotification(class Newsletter extends Component {
             <option key={e.ID} value={e.ID}>{e.Name}</option>
           ))}
         </select>
-        <input type="submit" value="Ajouter à cette liste" className="my-2 btn form-control btn-sm btn-secondary" />
+        <Input type="submit" value="Ajouter à cette liste" className="my-2 btn form-control btn-sm btn-secondary" />
         <hr />
       </form>
     )

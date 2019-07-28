@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { Button } from '@cda/button';
+import Input from '@cda/input';
 import { handleChange } from '../services/FormService';
 import { login, isLoggedIn } from '../services/AuthService';
 import Loading from './utils/Loading';
@@ -76,10 +77,9 @@ export default withNotification(class Login extends Component {
               : (
                 <form className="text-center">
                   <div className="form-group">
-                    <input
+                    <Input
                       type="email"
                       name="email"
-                      className="form-control"
                       placeholder="Adresse email"
                       onChange={handleChange.bind(this)}
                       autoComplete="email"
@@ -88,10 +88,9 @@ export default withNotification(class Login extends Component {
                     />
                   </div>
                   <div className="form-group">
-                    <input
+                    <Input
                       type="password"
                       name="password"
-                      className="form-control"
                       placeholder="Mot de passe"
                       onChange={handleChange.bind(this)}
                       value={password}

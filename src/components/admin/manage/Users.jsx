@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { CSVLink } from 'react-csv';
+import Input from '@cda/Input';
 
 import List from './users/List';
 import request from '../../../services/Net';
@@ -151,7 +152,7 @@ export default withNotification(class MainScreen extends Component {
         </div>
         <div className="row">
           <div className="col">
-            <input type="text" className="form-control" value={this.state.criteria} ref="searchInput" onChange={this.search} placeholder="Rechercher..." onKeyDown={this.checkValidation} />
+            <Input type="text" value={this.state.criteria} ref="searchInput" onChange={this.search} placeholder="Rechercher..." onKeyDown={this.checkValidation} />
             <small className="form-text text-muted">Appuyez sur ⏎ pour accéder au premier utilisateur, ⇩ ou ⇧ pour naviguer</small>
             <CSVLink data={csvData}>Exporter</CSVLink>
           </div>

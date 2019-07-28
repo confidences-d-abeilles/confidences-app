@@ -937,6 +937,15 @@
   resolved "https://registry.yarnpkg.com/@cda/flex/-/flex-0.3.0.tgz#c221c29f4fbaa135bbed114b839787cbaac18808"
   integrity sha512-Vs7lnWXkRlYp2eU4YUC+oZ2IbA599PW1OsYZxYeYYzcNx1EHjl+dARCti8ZzBkB5GLuP7uhHVkcQVMNgL6xROg==
 
+"@cda/input@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@cda/input/-/input-0.4.0.tgz#568be07781ac8c0811efb9e9c0748d58a670473f"
+  integrity sha512-HxX9GJQwpHYncSt+6wOFwiSD2ZuCd/9Oikpw2XjWfBAU6eWyIAQyjeXtaLckFC1AF2MH8ZkJ+y16bonBRSkkzA==
+  dependencies:
+    "@emotion/core" "^10.0.14"
+    "@emotion/styled" "^10.0.14"
+    react "^16.8.6"
+
 "@cda/link@0.3.1":
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@cda/link/-/link-0.3.1.tgz#eff038f344c8b0a5c08712800fb383a5961fce72"

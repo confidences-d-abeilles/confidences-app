@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
+import Input from '@cda/input';
 
 import request from '../../../services/Net';
 import Confirm from '../../utils/Confirm';
@@ -117,10 +118,10 @@ export default withNotification(class Account extends Component {
               <hr />
               <form onSubmit={this.changePassword.bind(this)}>
                 <div className="form-group">
-                  <input type="password" name="password" onChange={handleChange.bind(this)} value={this.state.password} className="form-control" placeholder="Nouveau mot de passe" />
+                  <Input type="password" name="password" onChange={handleChange.bind(this)} value={this.state.password} className="form-control" placeholder="Nouveau mot de passe" />
                 </div>
                 <div className="form-group">
-                  <input type="password" name="conf" onChange={handleChange.bind(this)} value={this.state.conf} className="form-control" placeholder="Confirmation du nouveau mot de passe" />
+                  <Input type="password" name="conf" onChange={handleChange.bind(this)} value={this.state.conf} className="form-control" placeholder="Confirmation du nouveau mot de passe" />
                 </div>
                 <div className="text-center">
                   <button className="btn btn-secondary btn-sm mb-4">Enregistrer</button>
