@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Input from '@cda/input';
+import Button from '@cda/button';
 
 import request from '../../../services/Net';
 import { handleChange } from '../../../services/FormService';
@@ -30,7 +32,7 @@ export default withNotification(class AdminManageFaq extends Component {
   delete(id) {
     const { notification } = this.props;
     request({
-      url: '/faq/'+id,
+      url: `/faq/${id}`,
       method: 'delete',
     }, notification).then(() => {
       this.getQA();
@@ -62,27 +64,19 @@ export default withNotification(class AdminManageFaq extends Component {
     return  (
       <div className="row">
         <div className="col">
-          <h2 className="text-center my-4">Gerer la FAQ</h2>
+          <h2>Gerer la FAQ</h2>
           <form>
             <h3>Ajouter une question / réponse</h3>
-            <div className="form-group">
-              <input type="text" className="form-control" placeholder="Question" name="newQuestion" value={this.state.newQuestion} onChange={handleChange.bind(this)} />
-            </div>
-            <div className="form-group">
-              <textarea className="form-control" placeholder="Réponse" name="newAnswer" value={this.state.newAnswer} onChange={handleChange.bind(this)} />
-            </div>
-            <div className="form-group">
-              <select className="form-control" name="type" value={this.state.type} onChange={handleChange.bind(this)}>
-                <option value="0">Cible</option>
-                <option value="1">Général</option>
-                <option value="2">Entreprise</option>
-                <option value="3">Particulier</option>
-                <option value="4">Apporteur d'affaire</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <input className="btn btn-primary" type="submit" value="Ajouter" onClick={this.addQA.bind(this)} />
-            </div>
+            <Input type="text" placeholder="Question" name="newQuestion" value={this.state.newQuestion} onChange={handleChange.bind(this)} />
+            <textarea className="form-control" placeholder="Réponse" name="newAnswer" value={this.state.newAnswer} onChange={handleChange.bind(this)} />
+            <select className="form-control" name="type" value={this.state.type} onChange={handleChange.bind(this)}>
+              <option value="0">Cible</option>
+              <option value="1">Général</option>
+              <option value="2">Entreprise</option>
+              <option value="3">Particulier</option>
+              <option value="4">Apporteur d'affaire</option>
+            </select>
+            <Button type="submit" onClick={this.addQA.bind(this)}>Ajouter</Button>
           </form>
           {this.state.items?
           <table className="table">

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import Input from '@cda/input';
+import Button from '@cda/button';
+import ButtonLink from '@cda/button-link';
 
 import { handleChange, handleTick } from '../../../services/FormService';
 import request from '../../../services/Net';
@@ -158,23 +161,20 @@ export default withNotification(class CompanyManageMyPage extends Component {
 				<h2 className="text-center my-4">Modifier ma page</h2>
 				<div className="row mb-4">
 					<div className="col text-center">
-						<a href={require('../../../assets/page_ent.pdf')} target="_blank" rel="noopener noreferrer" className="btn btn-secondary my-2">Comment personnaliser ma page ?</a>
+						<ButtonLink href={require('../../../assets/page_ent.pdf')} external>Comment personnaliser ma page ?</ButtonLink>
 					</div>
 					<div className="col text-center">
-						<a href={(this.state.user)?"/parrains/"+this.state.user.namespace:'/'} target="_blank" rel="noopener noreferrer" className="btn btn-secondary my-2">Voir ma page</a>
+						<ButtonLink href={(this.state.user)?"/parrains/"+this.state.user.namespace:'/'} external>Voir ma page</ButtonLink>
 					</div>
 				</div>
 				{(this.state.user)?
 				<form>
-					<div className="form-group">
-						<label>Nom de l'entreprise</label>
-						<input type="text" placeholder="Nom de l'entreprise" name="name" value={this.state.name} onChange={handleChange.bind(this)} className="form-control" />
-					</div>
-					<div className="form-group">
-						<label>URL personnalisée de votre entreprise</label>
-						<input type="text" placeholder="Nom de l url" name="fakeNamespace" value={this.state.fakeNamespace} onChange={this.replaceNamespace.bind(this)} className="form-control" /><br />
-						<label>{"https://parrainagederuches.fr/parrains/"+this.state.namespace}</label>
-					</div>
+          <label>Nom de l'entreprise</label>
+          <Input type="text" placeholder="Nom de l'entreprise" name="name" value={this.state.name} onChange={handleChange.bind(this)} />
+          <label>URL personnalisée de votre entreprise</label>
+          <Input type="text" placeholder="Nom de l url" name="fakeNamespace" value={this.state.fakeNamespace} onChange={this.replaceNamespace.bind(this)} /><br />
+          <label>{"https://parrainagederuches.fr/parrains/"+this.state.namespace}</label>
+          <hr />
 					<div className="form-group">
 						<label>Photo de couverture de votre page {(this.state.cover)?<a href={process.env.REACT_APP_CONTENT_DOMAIN+'/'+this.state.cover} target="_blank" rel="noopener noreferrer">Visualiser l'image actuelle</a>:null}</label>
 						<label htmlFor="cover" className={(this.state.newCover)?'active-upload':'upload'} style={{ position: 'relative' }}>
@@ -200,47 +200,39 @@ export default withNotification(class CompanyManageMyPage extends Component {
 						<label>Notre engagement en faveur de la biodiversité ({800 - this.state.involvement.length} caractères restants)</label>
 						<textarea name="involvement" maxLength="800" className="form-control" value={this.state.involvement} onChange={handleChange.bind(this)} placeholder="Notre engagement en faveur de la biodiversité (800 caractères max. espaces compris)" />
 					</div>
-					<div className="form-group">
-						<label>Bouton d'action 1</label>
-						<input type="texte" name="link1_name" className="form-control" value={this.state.link1_name} placeholder="Texte à afficher" onChange={handleChange.bind(this)} />
-					</div>
-					<div className="form-group">
-						<input type="texte" name="link1_url" className="form-control" value={this.state.link1_url} placeholder="URL du bouton d'action 1" onChange={handleChange.bind(this)} />
-					</div>
-					<div className="form-group">
-						<label>Bouton d'action 2</label>
-						<input type="texte" name="link2_name" className="form-control" value={this.state.link2_name} placeholder="Texte à afficher" onChange={handleChange.bind(this)} />
-					</div>
-					<div className="form-group">
-						<input type="texte" name="link2_url" className="form-control" value={this.state.link2_url} placeholder="URL du bouton d'action 2" onChange={handleChange.bind(this)} />
-					</div>
+          <label>Bouton d'action 1</label>
+          <Input type="text" name="link1_name" value={this.state.link1_name} placeholder="Texte à afficher" onChange={handleChange.bind(this)} />
+          <Input type="text" name="link1_url" value={this.state.link1_url} placeholder="URL du bouton d'action 1" onChange={handleChange.bind(this)} /><br />
+          <label>Bouton d'action 2</label>
+          <Input type="text" name="link2_name" value={this.state.link2_name} placeholder="Texte à afficher" onChange={handleChange.bind(this)} />
+          <Input type="text" name="link2_url" value={this.state.link2_url} placeholder="URL du bouton d'action 2" onChange={handleChange.bind(this)} />
 						<div className="form-group">
-							<label htmlFor="english"><input disabled={this.state.bundle_state >= 2  ? false: true} type="checkbox" name="english" id="english" onChange={handleTick.bind(this)} checked={this.state.english} /> Version anglaise</label>
+							<label htmlFor="english"><Input disabled={this.state.bundle_state >= 2  ? false: true} type="checkbox" name="english" id="english" onChange={handleTick.bind(this)} checked={this.state.english} /> Version anglaise</label>
 						</div>
 						<div className="form-group">
-							<label htmlFor="visible"><input disabled={this.state.bundle_state >= 2 ? false: true} type="checkbox" name="visible" id="visible" onChange={handleTick.bind(this)} checked={this.state.visible} /> Rendre ma page publique</label> {(this.state.bundle_state < 2) ? <span>(Fonctionnalité indisponible tant que le paiement du parrainage n’est pas validé)</span> : null}
+							<label htmlFor="visible"><Input disabled={this.state.bundle_state >= 2 ? false: true} type="checkbox" name="visible" id="visible" onChange={handleTick.bind(this)} checked={this.state.visible} /> Rendre ma page publique</label> {(this.state.bundle_state < 2) ? <span>(Fonctionnalité indisponible tant que le paiement du parrainage n’est pas validé)</span> : null}
 						</div>
 
 
 					<div className="form-group">
-						<input type="submit" value="Enregistrer les modifications" className="btn btn-primary" onClick={this.submit.bind(this)} />
+            <Button type="submit" onClick={this.submit.bind(this)}>Enregistrer les modifications</Button>
 					</div>
 				</form>:<Loading />}
-				<Feedback name={this.state.newsModify?this.state.newsModify:null} />
-				{this.state.actus ?
-				<div>
-					<h3 className="my-4">Modifier une news</h3>
-					<select className="form-control" onChange={this.launchModify.bind(this)} name="newsModify">
-						<option selected disabled>News a modifier</option>
-						{this.state.actus.map((actu) => {
-							const date = (actu.date)?moment(actu.date):moment(actu.createdAt);
-							return (
-								<option value={actu.id}>{actu.title} ( {date.format("DD/MM/YYYY")} )</option>
-							)
-						})}
-					</select>
-				</div>
-				:null}
+				{/*<Feedback name={this.state.newsModify?this.state.newsModify:null} />*/}
+				{/*{this.state.actus ?*/}
+        {/*  <div>*/}
+        {/*    <h3 className="my-4">Modifier une news</h3>*/}
+        {/*    <select className="form-control" onChange={this.launchModify.bind(this)} name="newsModify">*/}
+        {/*      <option selected disabled>News a modifier</option>*/}
+        {/*      {this.state.actus.map((actu) => {*/}
+        {/*        const date = (actu.date)?moment(actu.date):moment(actu.createdAt);*/}
+        {/*        return (*/}
+        {/*          <option value={actu.id}>{actu.title} ( {date.format("DD/MM/YYYY")} )</option>*/}
+        {/*        )*/}
+        {/*      })}*/}
+        {/*    </select>*/}
+        {/*  </div>*/}
+				{/*:null}*/}
 			</div>
 		)
 	}

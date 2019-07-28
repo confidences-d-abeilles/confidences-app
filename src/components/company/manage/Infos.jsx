@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
+import Button from '@cda/button';
+import Input from '@cda/input';
 
-import { Button } from '@cda/button';
 import request from '../../../services/Net';
 import { handleChange } from '../../../services/FormService';
 import Meta from '../../utils/Meta';
@@ -126,14 +127,10 @@ export default withNotification(class CompanyManageInfos extends Component {
                 </div>
                 :
                 <form onSubmit={this.changeInfos.bind(this)}>
-                  <div className="form-group">
-                    <label>Numéro de téléphone</label>
-                    <input type="tel" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="Numéro de téléphone" />
-                  </div>
-                  <div className="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" onChange={handleChange.bind(this)} value={this.state.email} className="form-control form-control-sm" placeholder="Email" />
-                  </div>
+                  <label>Numéro de téléphone</label>
+                  <Input type="tel" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} placeholder="Numéro de téléphone" />
+                  <label>Email</label>
+                  <Input type="email" name="email" onChange={handleChange.bind(this)} value={this.state.email} placeholder="Email" />
                   <div className="form-group text-center">
                     <Button type="submit">Enregistrer</Button>
                   </div>

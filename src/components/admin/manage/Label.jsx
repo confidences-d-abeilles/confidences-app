@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Button } from '@cda/button';
 import ButtonLink from '@cda/button-link';
 import Input from '@cda/input';
+import { Columns, Item } from '@cda/flex';
+
 import { withNotification } from '../../../services/withNotification';
 import request from '../../../services/Net';
 
@@ -26,11 +28,21 @@ const Label = ({ notification }) => {
 
   return (
     <>
+      <h2>Générer les étiquettes</h2>
       <form onSubmit={generate}>
-        <Input type="text" onChange={harvestHandler} placeholder="Récolte"/>
-        <Input type="text" onChange={dluoHandler} placeholder="Dluo"/>
-        <Button type="submit">Générer</Button>
+        <Columns>
+          <Item>
+            <Input type="text" onChange={harvestHandler} placeholder="Récolte"/>
+          </Item>
+          <Item>
+            <Input type="text" onChange={dluoHandler} placeholder="Dluo"/>
+          </Item>
+          <Item>
+            <Button type="submit">Générer</Button>
+          </Item>
+        </Columns>
       </form>
+      <h2>Télécharger les étiquettes</h2>
       <ButtonLink external url={`${process.env.REACT_APP_API_DOMAIN}/label/bulk`}>Télécharger</ButtonLink>
     </>
   )

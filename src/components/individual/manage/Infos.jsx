@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
+import { Button } from '@cda/button';
+import Input from '@cda/input';
 
 import request from '../../../services/Net';
 import { handleChange } from '../../../services/FormService';
@@ -170,10 +172,10 @@ export default withNotification(class IndividualManageInfos extends Component {
               {' '}
               {this.state.email}
               <div className="text-right mt-2">
-                  <button className="btn btn-secondary btn-sm" onClick={() => { this.setState({ editInfos: true }); }}>
+                  <Button primary onClick={() => { this.setState({ editInfos: true }); }}>
                   <FontAwesome name="pencil" />
 &nbsp;Editer ces informations
-                </button>
+                </Button>
                 </div>
             </div>
                       )
@@ -181,14 +183,14 @@ export default withNotification(class IndividualManageInfos extends Component {
                     <form onSubmit={this.changeInfos.bind(this)}>
               <div className="form-group">
                   <label>Numéro de téléphone</label>
-                  <input type="tel" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} className="form-control form-control-sm" placeholder="Numéro de téléphone" />
+                  <Input type="tel" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} placeholder="Numéro de téléphone" />
                 </div>
               <div className="form-group">
                   <label>Email</label>
-                  <input type="email" name="email" onChange={handleChange.bind(this)} value={this.state.email} className="form-control form-control-sm" placeholder="Email" />
+                  <Input type="email" name="email" onChange={handleChange.bind(this)} value={this.state.email} placeholder="Email" />
                 </div>
               <div className="form-group text-center">
-                  <button className="btn btn-secondary btn-sm">Enregistrer</button>
+                  <Button>Enregistrer</Button>
                 </div>
             </form>
                       )}

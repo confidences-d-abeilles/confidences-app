@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactQuill from 'react-quill';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
+import Input from '@cda/input';
 
 import { Button } from '@cda/button';
 import { handleChange } from '../../services/FormService';
@@ -10,16 +11,12 @@ import Confirm from './Confirm';
 import { withNotification } from '../../services/withNotification';
 
 export default withNotification(class Feedback extends Component {
-
-  constructor (props) {
-    super (props);
-    this.state = {
-      name : '',
-      newsTake: 0,
-      actuDate: moment(new Date()),
-      actu: ''
-    }
-  }
+  state = {
+    name : '',
+    newsTake: 0,
+    actuDate: moment(new Date()),
+    actu: ''
+  };
 
   componentWillReceiveProps(nextProps) {
     const { notification, name } = this.props;
@@ -63,7 +60,7 @@ export default withNotification(class Feedback extends Component {
       url: `/news/${this.state.newsModify}`,
       method: 'put',
       data: data
-    }, notification).then((res) => {
+    }, notification).then(() => {
       this.setState({
         selected: '',
         content: '',
@@ -148,9 +145,7 @@ export default withNotification(class Feedback extends Component {
     return (
       <div>
       <form onSubmit={this.state.newsTake?this.updateActu.bind(this):this.createActu.bind(this)}>
-        <div className="form-group">
-          <input type="text" className="form-control" name="actuTitle" onChange={handleChange.bind(this)} value={this.state.actuTitle} placeholder='Titre'/>
-        </div>
+        <Input type="text" name="actuTitle" onChange={handleChange.bind(this)} value={this.state.actuTitle} placeholder='Titre'/>
         <div className="form-group">
           <label>Date de l'actualité</label>
           <DatePicker
