@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import moment from 'moment';
 import FontAwesome from 'react-fontawesome';
+import Input from '@cda/input';
 
 import ButtonLink from '@cda/button-link';
 import request from '../../../services/Net';
@@ -172,15 +173,15 @@ Modifier ces informations
               <h3 className="text-center"><small>J'ai choisi d'offrir mon parrainage à</small></h3>
               <div className="form-group">
                 <label>Nom</label>
-                <input type="text" name="present_name" value={this.state.present_name} onChange={handleChange.bind(this)} className="form-control form-control-sm" placeholder="Nom" />
+                <Input type="text" name="present_name" value={this.state.present_name} onChange={handleChange.bind(this)} className="form-control form-control-sm" placeholder="Nom" />
               </div>
               <div className="form-group">
                 <label>Prénom</label>
-                <input type="text" name="present_firstname" value={this.state.present_firstname} onChange={handleChange.bind(this)} className="form-control form-control-sm" placeholder="Prénom" />
+                <Input type="text" name="present_firstname" value={this.state.present_firstname} onChange={handleChange.bind(this)} className="form-control form-control-sm" placeholder="Prénom" />
               </div>
               <div className="form-group">
                 <label>Adresse email</label>
-                <input type="email" name="present_email" value={this.state.present_email} onChange={handleChange.bind(this)} className="form-control form-control-sm" placeholder="Email" />
+                <Input type="email" name="present_email" value={this.state.present_email} onChange={handleChange.bind(this)} className="form-control form-control-sm" placeholder="Email" />
               </div>
               <div className="form-group text-center">
                 <button className="btn btn-primary">Enregistrer</button>

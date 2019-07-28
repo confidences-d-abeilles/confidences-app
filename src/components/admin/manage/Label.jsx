@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '@cda/button';
 import ButtonLink from '@cda/button-link';
+import Input from '@cda/input';
 import { withNotification } from '../../../services/withNotification';
 import request from '../../../services/Net';
 
@@ -26,8 +27,8 @@ const Label = ({ notification }) => {
   return (
     <>
       <form onSubmit={generate}>
-        <input type="text" onChange={harvestHandler} placeholder="Récolte"/>
-        <input type="text" onChange={dluoHandler} placeholder="Dluo"/>
+        <Input type="text" onChange={harvestHandler} placeholder="Récolte"/>
+        <Input type="text" onChange={dluoHandler} placeholder="Dluo"/>
         <Button type="submit">Générer</Button>
       </form>
       <ButtonLink external url={`${process.env.REACT_APP_API_DOMAIN}/label/bulk`}>Télécharger</ButtonLink>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import ReactPixel from 'react-facebook-pixel';
 import { Button } from '@cda/button';
+import Input from '@cda/input';
+
 import { handleChange } from '../services/FormService';
 import { login, isLoggedIn } from '../services/AuthService';
 import request from '../services/Net';
@@ -142,7 +144,7 @@ export default withNotification(class Signup extends Component {
               {message && <p className="alert alert-danger">{message}</p>}
               <div className="form-group d-flex">
                 <label className="radio-inline form-check-label">
-                  <input
+                  <Input
                     type="radio"
                     className="form-check-input"
                     name="sexe_m"
@@ -155,7 +157,7 @@ export default withNotification(class Signup extends Component {
                   &nbsp;M *
                 </label>
                 <label className="radio-inline form-check-label ml-4">
-                  <input
+                  <Input
                     type="radio"
                     className="form-check-input"
                     name="sexe_m"
@@ -168,10 +170,9 @@ export default withNotification(class Signup extends Component {
                 </label>
               </div>
               <div className="form-group">
-                <input
+                <Input
                   type="text"
                   name="firstname"
-                  className="form-control"
                   placeholder="Prénom *"
                   onChange={handleChange.bind(this)}
                   autoComplete="given-name"
@@ -179,16 +180,15 @@ export default withNotification(class Signup extends Component {
                 />
               </div>
               <div className="form-group">
-                <input type="text" name="name" className="form-control" placeholder="Nom *" onChange={handleChange.bind(this)} autoComplete="lastName" data-cy="lastName" />
+                <Input type="text" name="name" placeholder="Nom *" onChange={handleChange.bind(this)} autoComplete="lastName" data-cy="lastName" />
               </div>
               <div className="form-group">
-                <input type="email" name="email" className="form-control" placeholder="Adresse email *" onChange={handleChange.bind(this)} autoComplete="email" data-cy="email" />
+                <Input type="email" name="email" placeholder="Adresse email *" onChange={handleChange.bind(this)} autoComplete="email" data-cy="email" />
               </div>
               <div className="form-group">
-                <input
+                <Input
                   type={(userType === 3)?'text':'tel'}
                   name={(userType === 3)?'school':'phone'}
-                  className="form-control"
                   placeholder={(userType === 3)?'Ecole ou établissement':'Numéro de telephone *'}
                   onChange={handleChange.bind(this)}
                   autoComplete={(userType === 3)?'organization':'tel'}
@@ -196,10 +196,10 @@ export default withNotification(class Signup extends Component {
                 />
               </div>
               <div className="form-group">
-                <input type="password" name="password" className="form-control" placeholder="Mot de passe *" onChange={handleChange.bind(this)} autoComplete="new-password" data-cy="password" />
+                <Input type="password" name="password" placeholder="Mot de passe *" onChange={handleChange.bind(this)} autoComplete="new-password" data-cy="password" />
               </div>
               <div className="form-group">
-                <input type="password" name="confirmation" className="form-control" placeholder="Confirmation du mot de passe *" onChange={handleChange.bind(this)} data-cy="confirmation" />
+                <Input type="password" name="confirmation" placeholder="Confirmation du mot de passe *" onChange={handleChange.bind(this)} data-cy="confirmation" />
               </div>
               <Button type="submit" onClick={this.register}>Valider</Button>
             </form>

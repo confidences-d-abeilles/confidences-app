@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Input from '@cda/input';
 
 import request from '../../../../services/Net'
 import Meta from '../../../utils/Meta'
@@ -107,7 +108,7 @@ export default withNotification(class Custom extends Component {
                 <p>Veuillez saisir le nom ou la mention qui doit figurer sur votre étiquette. Par défaut il s'agit de votre prénom nom. Vous êtes limité à 38 caractères.</p>
               </div>
               <div className="col-lg-6">
-                <input type="text" className="form-control" name="mention" placeholder="Mention au centre de l'étiquette..." value={this.state.mention} onChange={handleChange.bind(this)} />
+                <Input type="text" className="form-control" name="mention" placeholder="Mention au centre de l'étiquette..." value={this.state.mention} onChange={handleChange.bind(this)} />
               </div>
               <div className="col-lg-12 text-center mt-4">
                 <button className="btn btn-primary" onClick={() => { this.setState({ step : 3 }); this.generate(); } }>Étape suivante <FontAwesome name="chevron-right" /></button>

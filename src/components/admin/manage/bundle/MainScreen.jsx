@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import Input from '@cda/input';
 
 import request from '../../../../services/Net';
 import List from './List';
@@ -154,7 +155,7 @@ export default withNotification(class AdminManageBundle extends Component {
           </ol>}
           <div className="row my-2">
             <div className="col-4">
-              <input type="text" className="form-control" value={this.state.criteria} ref="searchInput" onChange={this.search} placeholder="Rechercher..." onKeyDown={this.checkValidation} />
+              <Input type="text" value={this.state.criteria} ref="searchInput" onChange={this.search} placeholder="Rechercher..." onKeyDown={this.checkValidation} />
               <small className="form-text text-muted">Appuyez sur ⏎ pour accéder au premier parrainage, ⇩ ou ⇧ pour naviguer</small>
             </div>
             <div className="col-2 my-2">

@@ -7,6 +7,7 @@
     "@cda/button": "0.3.0",
     "@cda/button-link": "latest",
     "@cda/flex": "latest",
+    "@cda/input": "^0.4.0",
     "@cda/link": "0.3.1",
     "@cda/theme": "^0.3.0",
     "@cda/top-bar": "0.3.0",

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '@cda/button';
-
+import Input from '@cda/input';
 
 const Search = ({
   handler,
@@ -16,7 +16,7 @@ const Search = ({
 
   return (
     <form className={className} onSubmit={submitHandler}>
-      <input type="text" value={queryString} placeholder="Nom de parrain..." onChange={inputHandler} />
+      <Input type="text" value={queryString} placeholder="Nom de parrain..." onChange={inputHandler} />
       <Button type="submit">Rechercher</Button>
     </form>
   );
