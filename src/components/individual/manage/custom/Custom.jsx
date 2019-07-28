@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Input from '@cda/input';
+import { Button } from '@cda/button';
 
 import request from '../../../../services/Net'
 import Meta from '../../../utils/Meta'
@@ -83,7 +84,7 @@ export default withNotification(class Custom extends Component {
                 <Document file={process.env.REACT_APP_CONTENT_DOMAIN+'/label/'+this.state.label} >
                   <Page pageNumber={1} width={500} className="label" />
                 </Document>
-                <button className="btn btn-secondary" onClick={() => { this.setState({ step : 1 }); }}>Recommencer la personnalisation <FontAwesome name="magic" /></button>
+                <Button onClick={() => { this.setState({ step : 1 }); }}>Recommencer la personnalisation <FontAwesome name="magic" /></Button>
               </div>)
           }
           {this.state.step  === 1 &&
@@ -98,7 +99,7 @@ export default withNotification(class Custom extends Component {
                 <img className={(this.state.model === 2)?'img-fluid model-etiq':"img-fluid"} src={Eti2} onClick={() => { this.setState({ model : 2 }); }} alt="Modèle 2"/>
               </div>
               <div className="col-lg-12 text-center mt-4">
-                <button className="btn btn-primary" onClick={() => { this.setState({ step: 2 })}}>Étape suivante <FontAwesome name="chevron-right" /></button>
+                <Button onClick={() => { this.setState({ step: 2 })}}>Étape suivante <FontAwesome name="chevron-right" /></Button>
               </div>
             </div>
           }
@@ -111,7 +112,7 @@ export default withNotification(class Custom extends Component {
                 <Input type="text" className="form-control" name="mention" placeholder="Mention au centre de l'étiquette..." value={this.state.mention} onChange={handleChange.bind(this)} />
               </div>
               <div className="col-lg-12 text-center mt-4">
-                <button className="btn btn-primary" onClick={() => { this.setState({ step : 3 }); this.generate(); } }>Étape suivante <FontAwesome name="chevron-right" /></button>
+                <Button onClick={() => { this.setState({ step : 3 }); this.generate(); } }>Étape suivante <FontAwesome name="chevron-right" /></Button>
               </div>
             </div>
           }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
+import Input from '@cda/input';
+import Button from '@cda/button';
 
 import request from '../../../services/Net';
 import Confirm from '../../utils/Confirm';
@@ -127,12 +129,12 @@ export default withNotification(class Account extends Component {
               <h3 className="text-center my-4"><small>Modifier mon mot de passe</small></h3>
               <form onSubmit={this.changePassword.bind(this)}>
                 <div className="form-group">
-                  <input type="password" name="password" onChange={handleChange.bind(this)} value={this.state.password} className="form-control" placeholder="Nouveau mot de passe" />
+                  <Input type="password" name="password" onChange={handleChange.bind(this)} value={this.state.password} placeholder="Nouveau mot de passe" />
                 </div>
                 <div className="form-group">
-                  <input type="password" name="conf" onChange={handleChange.bind(this)} value={this.state.conf} className="form-control" placeholder="Confirmation du nouveau mot de passe" />
+                  <Input type="password" name="conf" onChange={handleChange.bind(this)} value={this.state.conf} placeholder="Confirmation du nouveau mot de passe" />
                 </div>
-                <button className="btn btn-primary mb-4">Enregistrer</button>
+                <Button primary>Enregistrer</Button>
               </form>
               <h3 className="my-2"><small>Newsletter</small></h3>
               <hr />
@@ -143,7 +145,7 @@ export default withNotification(class Account extends Component {
                     <div>
                       <p>Vous êtes inscrit à la newsletter.</p>
                       <div className="text-center">
-                        <button className="btn btn-secondary btn-sm" value={false} onClick={this.unsub.bind(this)}>Me désinscrire</button>
+                        <Button primary value={false} onClick={this.unsub.bind(this)}>Me désinscrire</Button>
                       </div>
                     </div>
                   )
@@ -151,7 +153,7 @@ export default withNotification(class Account extends Component {
                     <div>
                       <p>Vous n'êtes pas inscrit à la newsletter.</p>
                       <div className="text-center">
-                        <button className="btn btn-secondary btn-sm" value onClick={this.sub.bind(this)}>M'inscrire</button>
+                        <Button primary value onClick={this.sub.bind(this)}>M'inscrire</Button>
                       </div>
                     </div>
                   )

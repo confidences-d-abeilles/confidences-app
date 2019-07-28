@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@cda/button';
+import Button from '@cda/button';
 
 export default ({ text, action }) => (
   <div>
@@ -26,8 +26,8 @@ export default ({ text, action }) => (
             <p>Etes vous certain d&apos;effectuer ceci ?</p>
           </div>
           <div className="modal-footer">
-            <button type="button" className="btn btn-primary" onClick={action} data-dismiss="modal">Oui, je confirme</button>
-            <button type="button" className="btn btn-secondary" data-dismiss="modal">Non</button>
+            <Button type="button" onClick={action} data-dismiss="modal">Oui, je confirme</Button>
+            <Button type="button" data-dismiss="modal">Non</Button>
           </div>
         </div>
       </div>

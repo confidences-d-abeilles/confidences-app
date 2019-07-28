@@ -93,7 +93,7 @@ export default withNotification(() => (
         <img src={logoSquare} width="auto" height="64" alt="Logo Confidences d'Abeilles" />
       </Link>
       {navLinks.desktop.visitors.map(({ label, ...props }) => (
-        <MyLink className="nav-link" {...props}>{label}</MyLink>
+        <MyLink className="nav-link" key={label} {...props}>{label}</MyLink>
       ))}
     </Section>
     <RightSection>
