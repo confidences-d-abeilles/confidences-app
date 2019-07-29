@@ -36,12 +36,12 @@ export default class ErrorHandler extends Component {
 
   componentDidCatch(error, errorInfo) {
     this.setState({ error });
-    Sentry.withScope((scope) => {
-      Object.keys(errorInfo).forEach((key) => {
-        scope.setExtra(key, errorInfo[key]);
-      });
-      Sentry.captureException(error);
-    });
+    // Sentry.withScope((scope) => {
+    //   Object.keys(errorInfo).forEach((key) => {
+    //     scope.setExtra(key, errorInfo[key]);
+    //   });
+    //   Sentry.captureException(error);
+    // });
   }
 
   render() {
