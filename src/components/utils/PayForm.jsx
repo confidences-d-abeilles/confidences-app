@@ -104,11 +104,6 @@ class PayForm extends Component {
       <div className="row">
         <div className="col-lg-6">
           <form onSubmit={this.handleSubmit.bind(this)} className="text-center" style={{ padding: '10px', margin: '10px'}} >
-            {/*(getUserType() === '1')?
-              <div className="form-group">
-                <label><input type="checkbox" className="form-check-input" onChange={this.monthlyPaymentChanged} checked={this.state.monthlyPayment}/>Paiement mensuel</label>
-              </div>
-            :null*/}
             <label>Numéro de carte bancaire</label>
             <CardNumberElement style={{ base: { fontSize: '18px' }}} />
             <label>Date d'expiration</label>

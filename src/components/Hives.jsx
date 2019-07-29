@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
 import request from '../services/Net';
 import imgPlaceholder from '../assets/img/logo_ruche_entreprise.png';
 import Loading from './utils/Loading';
@@ -8,10 +9,10 @@ import Meta from './utils/Meta';
 import SquareImg from './utils/SquareImg';
 import { withNotification } from '../services/withNotification';
 
-export default withNotification(class Hives extends Component {
+class Hives extends Component {
   state = {
     hives: null,
-  }
+  };
 
   componentDidMount() {
     const { notification } = this.props;
@@ -52,4 +53,12 @@ export default withNotification(class Hives extends Component {
       </div>
     );
   }
-});
+}
+
+Hives.propTypes = {
+  notification: PropTypes.shape({
+    addNotification: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default withNotification(Hives);
