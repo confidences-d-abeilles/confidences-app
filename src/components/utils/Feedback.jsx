@@ -5,26 +5,27 @@ import DatePicker from 'react-datepicker';
 import Input from '@cda/input';
 
 import { Button } from '@cda/button';
+import PropTypes from 'prop-types';
 import { handleChange } from '../../services/FormService';
 import request from '../../services/Net';
 import Confirm from './Confirm';
 import { withNotification } from '../../services/withNotification';
 
-export default withNotification(class Feedback extends Component {
+class Feedback extends Component {
   state = {
-    name : '',
+    name: '',
     newsTake: 0,
     actuDate: moment(new Date()),
-    actu: ''
+    actu: '',
   };
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps({ name: nextName }) {
     const { notification, name } = this.props;
-    if (nextProps.name !== name) {
+    if (nextName !== name) {
       const data = new FormData();
-      data.append('id_news', nextProps.name);
+      data.append('id_news', nextName);
       request({
-        url:'/news/getOneNews/',
+        url: '/news/getOneNews/',
         method: 'POST',
         data,
       }, notification).then((res) => {
@@ -33,33 +34,35 @@ export default withNotification(class Feedback extends Component {
           actu: res[0].content,
           actuTitle: res[0].title,
           actuImg: res[0].img,
-          oldImg:res[0].img,
+          oldImg: res[0].img,
           actuDate: moment(res[0].date),
-          newsModify: nextProps.name
+          newsModify: nextName,
         }, () => {
-          console.log(this.state.actuDate);
-        })
-      })
+        });
+      });
     }
   }
 
   updateActu(e) {
-    e.preventDefault()
+    e.preventDefault();
     const { notification } = this.props;
+    const {
+      actu, actuTitle, actuDate, oldImg, actuImg, newsModify,
+    } = this.state;
     const data = new FormData();
-    data.append('content', this.state.actu);
-    data.append('title', this.state.actuTitle);
-    data.append('date', this.state.actuDate);
-    data.append('oldImg', this.state.oldImg);
-    if (document.getElementById("actu-img").files[0]) {
+    data.append('content', actu);
+    data.append('title', actuTitle);
+    data.append('date', actuDate);
+    data.append('oldImg', oldImg);
+    if (document.getElementById('actu-img').files[0]) {
       data.append('img', document.getElementById('actu-img').files[0]);
     } else {
-      data.append('img', this.state.actuImg);
+      data.append('img', actuImg);
     }
     request({
-      url: `/news/${this.state.newsModify}`,
+      url: `/news/${newsModify}`,
       method: 'put',
-      data: data
+      data,
     }, notification).then(() => {
       this.setState({
         selected: '',
@@ -71,29 +74,31 @@ export default withNotification(class Feedback extends Component {
         actu: '',
         actuImg: '',
         newsModify: null,
-        oldImg: ''
-      })
+        oldImg: '',
+      });
     });
   }
 
   createActu(e) {
     e.preventDefault();
-    const { notification } = this.props;
+    const { notification, hiveId } = this.props;
+    const {
+      actu, actuTitle, actuDate,
+    } = this.state;
     const data = new FormData();
-    console.log(this.state.actuTitle);
-    data.append('content', this.state.actu);
-    data.append('title', this.state.actuTitle);
-    data.append('date', this.state.actuDate);
-    data.append('date_formated', moment(this.state.actuDate).format("DD/MM/YYYY"))
-    if (document.getElementById("actu-img").files[0]) {
+    data.append('content', actu);
+    data.append('title', actuTitle);
+    data.append('date', actuDate);
+    data.append('date_formated', moment(actuDate).format('DD/MM/YYYY'));
+    if (document.getElementById('actu-img').files[0]) {
       data.append('img', document.getElementById('actu-img').files[0]);
     }
     request({
-      url: '/news'+ (this.props.hiveId ? '/hive/'+this.props.hiveId : ''),
+      url: `/news${hiveId ? `/hive/${hiveId}` : ''}`,
       method: 'post',
-      data: data,
+      data,
       header: {
-        'content-type' : 'multipart/form-data',
+        'content-type': 'multipart/form-data',
       },
     }, notification).then(() => {
       this.setState({
@@ -102,86 +107,112 @@ export default withNotification(class Feedback extends Component {
         actuTitle: '',
         actuDate: moment(new Date()),
         actuImg: '',
-      })
-      document.getElementById('actu-img').value = "";
-    })
+      });
+      document.getElementById('actu-img').value = '';
+    });
   }
 
   handleDateChange(date) {
     this.setState({
-      actuDate: date
+      actuDate: date,
     });
   }
 
   deleteActu() {
     const { notification } = this.props;
+    const { newsModify } = this.state;
     request({
-      url: '/news/delete/'+this.state.newsModify,
-      method: 'DELETE'
-    }, notification).then((res) => {
+      url: `/news/delete/${newsModify}`,
+      method: 'DELETE',
+    }, notification).then(() => {
       this.setState({
         newsModify: null,
         content: '',
         actuTitle: '',
         actuDate: moment(new Date()),
         actuImg: '',
-        actu: ''
-      })
-    })
+        actu: '',
+      });
+    });
   }
 
   updateImg() {
-    if (document.getElementById('actu-img').files[0].size < 5100000){
+    if (document.getElementById('actu-img').files[0].size < 5100000) {
       this.setState({
-        actuImg : document.getElementById("actu-img").files[0].name
-      })
+        actuImg: document.getElementById('actu-img').files[0].name,
+      });
     } else {
-      console.log("taille pas bonne");
-      document.getElementById('actu-img').value = "";
+      console.log('taille pas bonne');
+      document.getElementById('actu-img').value = '';
     }
   }
 
   render() {
+    const {
+      newsModify, newsTake, actuTitle, actuDate, actu, actuImg,
+    } = this.state;
     return (
       <div>
-      <form onSubmit={this.state.newsTake?this.updateActu.bind(this):this.createActu.bind(this)}>
-        <Input type="text" name="actuTitle" onChange={handleChange.bind(this)} value={this.state.actuTitle} placeholder='Titre'/>
-        <div className="form-group">
-          <label>Date de l'actualité</label>
-          <DatePicker
-            dateFormat="DD/MM/YYYY"
-            selected={this.state.actuDate}
-            onChange={this.handleDateChange.bind(this)}
-            className="form-control"
+        <form onSubmit={newsTake ? this.updateActu.bind(this) : this.createActu.bind(this)}>
+          <Input type="text" name="actuTitle" onChange={handleChange.bind(this)} value={actuTitle} placeholder="Titre" />
+          <div className="form-group">
+            <label>Date de l'actualité</label>
+            <DatePicker
+              dateFormat="DD/MM/YYYY"
+              selected={actuDate}
+              onChange={this.handleDateChange.bind(this)}
+              className="form-control"
+              dropdownMode
             />
-        </div>
-        <div className="form-group">
-          <ReactQuill
-            name="actu"
-            className="form-control"
-            onChange={(value) => { this.setState({ actu: value })}}
-            value={this.state.actu}
-            placeholder='actualité'
-            modules={{
-              toolbar: [
-                ['bold', 'italic', 'underline','strike', 'blockquote'],
-                [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-                ['link'],
-                ['clean']
-              ]
-            }}/>
-        </div>
-        <div className="form-group">
-          <label htmlFor="actu-img" className={(this.state.actuImg)?'active-upload':'upload'} style={{ position: 'relative' }}>
-            <input type="file" className="form-control" id="actu-img" onChange={() => { this.updateImg() }} style={{ position: 'absolute', height: '5.5em', top: '0', left: "0", opacity: '0.0001'}}/>
-            Glissez une image ou cliquez pour en sélectionner une parmi vos fichiers<br/>
-            Recommandations : 800x600px, 100ko maximum - {(this.state.actuImg)?'Sélectionné : '+this.state.actuImg:"Aucun fichier sélectionné"}
-          </label>
-        </div>
-        <Button type="submit" primary>Soumettre</Button>
-        {this.state.newsModify ? <Confirm action={this.deleteActu.bind(this)} text="Supprimer cette news" className="btn btn-secondary btn-sm"/>: null}
-      </form>
+          </div>
+          <div className="form-group">
+            <ReactQuill
+              name="actu"
+              className="form-control"
+              onChange={(value) => { this.setState({ actu: value }); }}
+              value={actu}
+              placeholder="actualité"
+              modules={{
+                toolbar: [
+                  ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                  [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+                  ['link'],
+                  ['clean'],
+                ],
+              }}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="actu-img" className={(actuImg) ? 'active-upload' : 'upload'} style={{ position: 'relative' }}>
+              <input
+                type="file"
+                className="form-control"
+                id="actu-img"
+                onChange={() => { this.updateImg(); }}
+                style={{
+                  position: 'absolute', height: '5.5em', top: '0', left: '0', opacity: '0.0001',
+                }}
+              />
+            Glissez une image ou cliquez pour en sélectionner une parmi vos fichiers
+              <br />
+            Recommandations : 800x600px, 100ko maximum -
+              {' '}
+              {(actuImg) ? `Sélectionné : ${actuImg}` : 'Aucun fichier sélectionné'}
+            </label>
+          </div>
+          <Button type="submit" primary>Soumettre</Button>
+          {newsModify ? <Confirm action={this.deleteActu.bind(this)} text="Supprimer cette news" className="btn btn-secondary btn-sm" /> : null}
+        </form>
       </div>
-    )
+    );
   }
-});
+}
+
+Feedback.propTypes = {
+  notification: PropTypes.shape({
+    addNotification: PropTypes.func.isRequired,
+  }).isRequired,
+  hiveId: PropTypes.string.isRequired,
+};
+
+export default withNotification(Feedback);
