@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import moment from 'moment';
@@ -12,8 +14,9 @@ import Meta from '../../utils/Meta';
 import Details from './bundle/Details';
 import Hive from './bundle/Hive';
 import { withNotification } from '../../../services/withNotification';
+import PropTypes from 'prop-types';
 
-export default withNotification(class Bundle extends Component {
+class Bundle extends Component {
   state = {
     user: null,
     edit_present: false,
@@ -39,10 +42,11 @@ export default withNotification(class Bundle extends Component {
   }
 
   checkInfos() {
-    if (this.state.user.addresses && !this.state.user.addresses[0]) {
+    const { user } = this.state;
+    if (user.addresses && !user.addresses[0]) {
       return (<Redirect to="/individual/address" />);
     }
-    if (this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].state === 0) {
+    if (user && user.bundles[0] && user.bundles[0].state === 0) {
       return (
         <div className="text-center">
           <p className="alert alert-danger mt-4">
@@ -62,7 +66,7 @@ pour le faire ou
       );
     }
 
-    if (this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].state === 1) {
+    if (user && user.bundles[0] && user.bundles[0].state === 1) {
       return (
         <div className="text-center">
           <p className="alert alert-warning mt-4">La validation du règlement de votre parrainage est en cours</p>
@@ -70,18 +74,18 @@ pour le faire ou
       );
     }
 
-    if (this.state.user && !this.state.user.bundles[0]) {
+    if (user && !user.bundles[0]) {
       return (<Redirect to="/individual/wish" />);
     }
 
-    if (this.state.user && this.state.user.bundles[0]) {
+    if (user && user.bundles[0]) {
       return (
         <p className="text-center my-5">
-          {this.state.user.hive_id
-            && <ButtonLink secondary url={`/hive/${this.state.user.hive_id}`}>Voir la page de ma ruche</ButtonLink>}
+          {user.hive_id
+            && <ButtonLink secondary url={`/hive/${user.hive_id}`}>Voir la page de ma ruche</ButtonLink>}
           <ButtonLink external url="https://confidences-dabeilles-visites.appointedd.com/" primary>Réserver une visite du rucher</ButtonLink>
-          {this.state.user.bundles[0].certif
-          && <a href={`${process.env.REACT_APP_CONTENT_DOMAIN}/${this.state.user.bundles[0].certif}`} rel="noopener noreferrer" className="btn btn-secondary m-2 btn-sm" target="_blank">Télécharger mon certificat de parrainage</a>}
+          {user.bundles[0].certif
+          && <a href={`${process.env.REACT_APP_CONTENT_DOMAIN}/${user.bundles[0].certif}`} rel="noopener noreferrer" className="btn btn-secondary m-2 btn-sm" target="_blank">Télécharger mon certificat de parrainage</a>}
         </p>
       );
     }
@@ -89,16 +93,17 @@ pour le faire ou
 
   savePresent(e) {
     e.preventDefault();
+    const { user, present_firstname, present_name, present_email } = this.state;
     const { notification } = this.props;
     request({
-      url: `/bundle/${this.state.user.bundles[0].id}`,
+      url: `/bundle/${user.bundles[0].id}`,
       method: 'put',
       data: {
-        present_firstname: this.state.present_firstname,
-        present_name: this.state.present_name,
-        present_email: this.state.present_email,
+        present_firstname,
+        present_name,
+        present_email,
       },
-    }, notification).then((res) => {
+    }, notification).then(() => {
       this.setState({ edit_present: false });
     });
   }
@@ -106,12 +111,13 @@ pour le faire ou
 
   render() {
     let dispDateInfoCadeau;
-    if (this.state.user && this.state.user.bundles[0]) {
-      if (this.state.user.bundles[0].state < 2 && this.state.user.bundles[0].present
-        && moment(this.state.user.bundles[0].start_date).isBefore(moment())) {
+    const { user, edit_present, present_firstname, present_name, present_email } = this.state;
+    if (user && user.bundles[0]) {
+      if (user.bundles[0].state < 2 && user.bundles[0].present
+        && moment(user.bundles[0].start_date).isBefore(moment())) {
         dispDateInfoCadeau = moment().format('DD/MM/YYYY');
       } else {
-        dispDateInfoCadeau = moment(this.state.user.bundles[0].start_date).format('DD/MM/YYYY');
+        dispDateInfoCadeau = moment(user.bundles[0].start_date).format('DD/MM/YYYY');
       }
     }
 
@@ -121,33 +127,33 @@ pour le faire ou
         <div className="row">
           <div className="col-lg-12">
             <h2 className="my-2 text-center">Mon parrainage</h2>
-            {(this.state.user) ? this.checkInfos() : ''}
+            {(user) ? this.checkInfos() : ''}
           </div>
         </div>
-        {(this.state.user && this.state.user.bundles[0])
+        {(user && user.bundles[0])
           ? (
             <div className="row">
-              <Details data={this.state.user.bundles[0]} />
-              {this.state.user.bundles[0].contain && <Hive hive={this.state.user.bundles[0].contain[0]} />}
+              <Details data={user.bundles[0]} />
+              {user.bundles[0].contain && <Hive hive={user.bundles[0].contain[0]} />}
             </div>
           )
           : <Loading />}
         <div className="row mt-4">
           <div className="col-lg-12">
-            {this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].present && !this.state.edit_present
+            {user && user.bundles[0] && user.bundles[0].present && !edit_present
               && (
               <div>
                 <h3 className="text-center"><small>J'ai choisi d'offrir mon parrainage à</small></h3>
                 <hr />
                 <strong>
-                  {this.state.present_firstname}
+                  {present_firstname}
                   {' '}
-                  {this.state.present_name}
+                  {present_name}
                 </strong>
                 <br />
                 dont l'adresse mail est
                 {' '}
-                <strong>{this.state.present_email}</strong>
+                <strong>{present_email}</strong>
                 <br />
                 Les premières informations sur ce cadeau seront envoyées le
                 {' '}
@@ -167,21 +173,21 @@ Modifier ces informations
                 </button>
               </div>
               )}
-            {this.state.user && this.state.user.bundles[0] && this.state.user.bundles[0].present && this.state.edit_present
+            {user && user.bundles[0] && user.bundles[0].present && edit_present
             && (
             <form onSubmit={this.savePresent.bind(this)}>
               <h3 className="text-center"><small>J'ai choisi d'offrir mon parrainage à</small></h3>
               <div className="form-group">
                 <label>Nom</label>
-                <Input type="text" name="present_name" value={this.state.present_name} onChange={handleChange.bind(this)} className="form-control form-control-sm" placeholder="Nom" />
+                <Input type="text" name="present_name" value={present_name} onChange={handleChange.bind(this)} className="form-control form-control-sm" placeholder="Nom" />
               </div>
               <div className="form-group">
                 <label>Prénom</label>
-                <Input type="text" name="present_firstname" value={this.state.present_firstname} onChange={handleChange.bind(this)} className="form-control form-control-sm" placeholder="Prénom" />
+                <Input type="text" name="present_firstname" value={present_firstname} onChange={handleChange.bind(this)} className="form-control form-control-sm" placeholder="Prénom" />
               </div>
               <div className="form-group">
                 <label>Adresse email</label>
-                <Input type="email" name="present_email" value={this.state.present_email} onChange={handleChange.bind(this)} className="form-control form-control-sm" placeholder="Email" />
+                <Input type="email" name="present_email" value={present_email} onChange={handleChange.bind(this)} className="form-control form-control-sm" placeholder="Email" />
               </div>
               <div className="form-group text-center">
                 <button className="btn btn-primary">Enregistrer</button>
@@ -193,4 +199,12 @@ Modifier ces informations
       </div>
     );
   }
-});
+};
+
+Bundle.propTypes = {
+  notification: PropTypes.shape({
+    addNotification: PropTypes.func.isRequired,
+  }).isRequired,
+}
+
+export default withNotification(Bundle);
