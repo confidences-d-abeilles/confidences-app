@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
 import request from '../../services/Net';
 import { isLoggedIn } from '../../services/AuthService';
 import Meta from '../utils/Meta';
 import EditAddress from '../utils/Address/EditAddress';
 import { withNotification } from '../../services/withNotification';
 
-export default withNotification(class IndividualAddress extends Component {
+class IndividualAddress extends Component {
   state = {
     redirect: false,
     address: {
@@ -18,13 +19,14 @@ export default withNotification(class IndividualAddress extends Component {
 
   componentDidMount() {
     const { notification } = this.props;
+    const { address } = this.state;
     request({
       url: '/user/me',
       method: 'get',
     }, notification).then((res) => {
       this.setState({
         address: {
-          ...this.state.address,
+          ...address,
           sexe_m: res.sexe_m ? '1' : '0',
           name: res.name,
           firstname: res.firstname,
@@ -35,8 +37,9 @@ export default withNotification(class IndividualAddress extends Component {
   }
 
   changeAddress = (e) => {
+    const { address } = this.state;
     this.setState({
-      address: { ...this.state.address, [e.target.name]: e.target.value },
+      address: { ...address, [e.target.name]: e.target.value },
     });
   };
 
@@ -90,4 +93,12 @@ export default withNotification(class IndividualAddress extends Component {
       </div>
     );
   }
-});
+}
+
+IndividualAddress.propTypes = {
+  notification: PropTypes.shape({
+    addNotification: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default withNotification(IndividualAddress);
