@@ -15,6 +15,7 @@ import { withNotification } from '../services/withNotification';
 export default withNotification(class Hive extends Component {
   state = {
     hive: null,
+    news: null,
   };
 
   componentDidMount() {

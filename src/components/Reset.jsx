@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
+import Input from '@cda/input';
+import Button from '@cda/button';
+
 import request from '../services/Net';
 import { handleChange } from '../services/FormService';
 import Meta from './utils/Meta';
@@ -62,12 +65,12 @@ export default withNotification(class Reset extends Component {
               </p>
             :<form onSubmit={this.resetPassword.bind(this)} className="text-center">
               <div className="form-group">
-                <input type="password" className="form-control" name="password" onChange={handleChange.bind(this)} placeholder="Nouveau mot de passe"/>
+                <Input type="password" name="password" onChange={handleChange.bind(this)} placeholder="Nouveau mot de passe"/>
               </div>
               <div className="form-group">
-                <input type="password" className="form-control" name="confirmation" onChange={handleChange.bind(this)} placeholder="Confirmation du nouveau mot de passe"/>
+                <Input type="password" name="confirmation" onChange={handleChange.bind(this)} placeholder="Confirmation du nouveau mot de passe"/>
               </div>
-              <button className="btn btn-primary">Définir</button>
+              <Button>Définir</Button>
             </form>}
           </div>
         </div>
