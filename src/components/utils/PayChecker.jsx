@@ -31,6 +31,9 @@ class PayChecker extends PureComponent {
 
   checkStatus = () => {
     const { bundleId, notification } = this.props;
+    if (!bundleId) {
+      return;
+    }
     request({
       url: `/bundle/${bundleId}`,
       method: 'get',

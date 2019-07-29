@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import PayChecker from '../utils/PayChecker';
@@ -8,13 +8,12 @@ import { withNotification } from '../../services/withNotification';
 
 import Main from '../../assets/img/end_part.jpg';
 
-export default withNotification(class IndividualEnd extends Component {
-  state = {
-    bundleId: null,
-  };
+const IndividualEnd = ({ notification }) => {
+  const [bundleId, setBundleId] = useState(null);
+  const [bundleState, setBundleState] = useState(null);
+  console.log(notification);
 
-  componentDidMount() {
-    const { notification } = this.props;
+  useEffect(() => {
     request({
       url: '/user/me',
       method: 'get',
@@ -23,36 +22,33 @@ export default withNotification(class IndividualEnd extends Component {
         url: `/bundle/owner/${res.id}`,
         method: 'get',
       }, notification).then((res) => {
-        this.setState({
-          bundleState: res.state,
-          bundleId: res.id,
-        });
+        setBundleState(res.state);
+        setBundleId(res.id);
       });
     });
-  }
+  }, []);
 
-  render() {
-    const { bundleId } = this.state;
-    return (
-      <div className="container py-4">
-        <Meta title="Félicitations" />
-        <PayChecker bundleId={bundleId}>
-          <div className="row justify-content-center">
-            <div className="col-8">
-              <h2 className="text-center my-4">Félicitations ! Vous faites désormais partie de la grande famille des parrains d'abeilles.</h2>
-              <p className="text-center">
-                <img src={Main} className="img-fluid mx-auto d-block" alt="Img temp" />
-              </p>
-              {!this.state.bundleState ? <h4 className="text-center my-4">Toute l'équipe de Confidences d'Abeilles vous souhaite la bienvenue.</h4>
-                : <h4 className="text-center my-4">Toute l'équipe de Confidences d'Abeilles vous remercie !</h4>
-                    }
-              <p className="text-center">
-                <Link to="/individual/manage" className="btn btn-primary">{!this.state.bundleState ? 'Découvrir mon espace' : 'Mon compte'}</Link>
-              </p>
-            </div>
+  return (
+    <div className="container py-4">
+      <Meta title="Félicitations" />
+      <PayChecker bundleId={bundleId}>
+        <div className="row justify-content-center">
+          <div className="col-8">
+            <h2 className="text-center my-4">Félicitations ! Vous faites désormais partie de la grande famille des parrains d'abeilles.</h2>
+            <p className="text-center">
+              <img src={Main} className="img-fluid mx-auto d-block" alt="Img temp" />
+            </p>
+            {!bundleState ? <h4 className="text-center my-4">Toute l'équipe de Confidences d'Abeilles vous souhaite la bienvenue.</h4>
+              : <h4 className="text-center my-4">Toute l'équipe de Confidences d'Abeilles vous remercie !</h4>
+            }
+            <p className="text-center">
+              <Link to="/individual/manage" className="btn btn-primary">{!bundleState ? 'Découvrir mon espace' : 'Mon compte'}</Link>
+            </p>
           </div>
-        </PayChecker>
-      </div>
-    );
-  }
-});
+        </div>
+      </PayChecker>
+    </div>
+  )
+};
+
+export default withNotification(IndividualEnd);
