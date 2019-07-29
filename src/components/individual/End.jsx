@@ -1,5 +1,6 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import PayChecker from '../utils/PayChecker';
 import Meta from '../utils/Meta';
@@ -11,7 +12,6 @@ import Main from '../../assets/img/end_part.jpg';
 const IndividualEnd = ({ notification }) => {
   const [bundleId, setBundleId] = useState(null);
   const [bundleState, setBundleState] = useState(null);
-  console.log(notification);
 
   useEffect(() => {
     request({
@@ -21,9 +21,9 @@ const IndividualEnd = ({ notification }) => {
       request({
         url: `/bundle/owner/${res.id}`,
         method: 'get',
-      }, notification).then((res) => {
-        setBundleState(res.state);
-        setBundleId(res.id);
+      }, notification).then(({ state, id }) => {
+        setBundleState(state);
+        setBundleId(id);
       });
     });
   }, []);
@@ -48,7 +48,13 @@ const IndividualEnd = ({ notification }) => {
         </div>
       </PayChecker>
     </div>
-  )
+  );
+};
+
+IndividualEnd.propTypes = {
+  notification: PropTypes.shape({
+    addNotification: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default withNotification(IndividualEnd);

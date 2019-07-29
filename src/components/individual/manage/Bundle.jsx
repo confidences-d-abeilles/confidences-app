@@ -89,11 +89,14 @@ pour le faire ou
         </p>
       );
     }
+    return null;
   }
 
   savePresent(e) {
     e.preventDefault();
-    const { user, present_firstname, present_name, present_email } = this.state;
+    const {
+      user, present_firstname, present_name, present_email,
+    } = this.state;
     const { notification } = this.props;
     request({
       url: `/bundle/${user.bundles[0].id}`,
@@ -111,7 +114,9 @@ pour le faire ou
 
   render() {
     let dispDateInfoCadeau;
-    const { user, edit_present, present_firstname, present_name, present_email } = this.state;
+    const {
+      user, edit_present, present_firstname, present_name, present_email,
+    } = this.state;
     if (user && user.bundles[0]) {
       if (user.bundles[0].state < 2 && user.bundles[0].present
         && moment(user.bundles[0].start_date).isBefore(moment())) {
