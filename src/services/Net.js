@@ -1,4 +1,5 @@
 import axios from 'axios';
+import * as Sentry from '@sentry/browser';
 
 export const client = axios.create({
   baseURL: process.env.REACT_APP_API_DOMAIN,
@@ -33,6 +34,7 @@ export default (options, notification) => {
       console.error('Error Message:', error.message);
     }
 
+    Sentry.captureException(error);
     return Promise.reject(error.response || error.message);
   };
 

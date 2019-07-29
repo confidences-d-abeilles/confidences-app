@@ -14,6 +14,7 @@
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
     "@sentry/browser": "^5.5.0",
+    "@sentry/integrations": "^5.5.0",
     "@svgr/webpack": "4.3.2",
     "axios": "^0.19.0",
     "babel-jest": "24.8.0",
@@ -101,6 +102,7 @@
     "lint": "./node_modules/.bin/eslint --cache --ext .jsx --ext .js src"
   },
   "devDependencies": {
+    "@sentry/webpack-plugin": "^1.7.0",
     "babel-plugin-dynamic-import-webpack": "^1.1.0",
     "cypress": "^3.4.0",
     "enzyme": "^3.10.0",
