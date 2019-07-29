@@ -1,12 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class RuchesList extends Component {
-
-    render () {
-        return (
-            <div>
-                <h1>Les ruches parrainees</h1>
-            </div>
-        );
-    }
-}
+export default () => (
+    <div>
+        <h1>Les ruches parrainees</h1>
+    </div>
+);
