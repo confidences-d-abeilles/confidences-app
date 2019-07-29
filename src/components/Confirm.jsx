@@ -10,7 +10,7 @@ export default withNotification(class Confirm extends Component {
   state = {
     loading: true,
     redirect: false,
-  }
+  };
 
   componentDidMount() {
     const { match : { params : { token } }, notification } = this.props;

@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default ({ src }) => (
+const SquareImg = ({ src }) => (
   <div
     style={{
       width: '100%',
@@ -10,3 +11,9 @@ export default ({ src }) => (
     }}
   />
 );
+
+SquareImg.propTypes = {
+  src: PropTypes.string.isRequired,
+};
+
+export default SquareImg;

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import { Item, Rows } from '@cda/flex';
 
 const CoverPicture = styled('div')`
   background-image: ${({ src }) => `url("${src}")`};
