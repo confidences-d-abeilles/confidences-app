@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+
 import { Button } from '@cda/button';
+import Input from '@cda/input';
+
 import request from '../services/Net';
 import { handleChange } from '../services/FormService';
 import Meta from './utils/Meta';
@@ -43,7 +46,7 @@ export default withNotification(class Forgot extends Component {
             ) : (
               <form onSubmit={this.resetPassword} className="text-center">
                 <div className="form-group">
-                  <input type="email" className="form-control" name="email" onChange={handleChange.bind(this)} placeholder="Adresse email"/>
+                  <Input type="email" name="email" onChange={handleChange.bind(this)} placeholder="Adresse email"/>
                 </div>
                 <Button type="submit">Envoyer un email de récupération</Button>
               </form>

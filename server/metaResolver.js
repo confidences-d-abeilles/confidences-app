@@ -2,6 +2,8 @@ const MongoClient = require('mongodb').MongoClient;
 
 const url = process.env.REACT_APP_MONGO_URL;
 
+console.log(url);
+
 const client = MongoClient(url, {
   useNewUrlParser: true,
 });
