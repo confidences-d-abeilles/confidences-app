@@ -97,7 +97,7 @@
     "test": "node scripts/test.js --env=jsdom",
     "serve": "serve -s build",
     "test:e2e": "start-server-and-test dev http://localhost:3000 cypress",
-    "cypress": "./node_modules/.bin/cypress run",
+    "cypress": "./node_modules/.bin/cypress run --record --key d5676b7a-ac68-4b9c-9bf9-08144055529e",
     "lint": "./node_modules/.bin/eslint --cache --ext .jsx --ext .js src"
   },
   "devDependencies": {
