@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { CSVLink } from 'react-csv';
-import Input from '@cda/Input';
+import Input from '@cda/input';
 
 import List from './users/List';
 import request from '../../../services/Net';
