@@ -1,6 +1,6 @@
 {
   "name": "confidences-app",
-  "version": "1.12.5",
+  "version": "1.13.0",
   "private": true,
   "dependencies": {
     "@babel/core": "7.5.4",
@@ -13,6 +13,7 @@
     "@cda/top-bar": "latest",
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
+    "@fortawesome/free-solid-svg-icons": "^5.10.0",
     "@sentry/browser": "^5.5.0",
     "@sentry/integrations": "^5.5.0",
     "@svgr/webpack": "4.3.2",
