@@ -984,7 +984,7 @@
     react-fontawesome "^1.6.1"
     react-router-dom "^5.0.1"
 
-"@cda/sidebar@^0.6.0":
+"@cda/sidebar@latest":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@cda/sidebar/-/sidebar-0.6.0.tgz#e5466ce247e6b2043aac123c0a7e1dc203172936"
   integrity sha512-U4olaXKreen++WMtzJJji/+q8YqbitAnEffG9tb5xA+GZygF/yY9OOZrrj6y+Mla4GHDBtkutBWRS1YG7CArtQ==
