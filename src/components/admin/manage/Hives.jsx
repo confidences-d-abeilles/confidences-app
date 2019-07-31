@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import { Button } from '@cda/button';
 import Input from '@cda/input';
@@ -11,9 +11,8 @@ import Meta from '../../utils/Meta';
 import 'react-datepicker/dist/react-datepicker.css';
 import { withNotification } from '../../../services/withNotification';
 import Search from './hives/Search';
-import Board from './hives/Board';
 
-export default withNotification(class AdminManageHives extends Component {
+class AdminManageHives extends Component {
   state = {
     hives: null,
     newHive: '',
@@ -87,6 +86,7 @@ export default withNotification(class AdminManageHives extends Component {
 
   render() {
     const { newHive } = this.state;
+    const { history } = this.props;
     return (
       <div>
         <div className="row">
@@ -99,7 +99,7 @@ export default withNotification(class AdminManageHives extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-4">
+          <div className="col">
             <div className="row">
               <Search handler={this.searchHandler} className="col" />
               <form className="col form-inline" onSubmit={this.addHive.bind(this)}>
@@ -116,7 +116,7 @@ export default withNotification(class AdminManageHives extends Component {
                         <th>Nom</th>
                       </tr>
                       {this.state.hives && this.state.hives.map(hive => (
-                        <tr key={hive.id} onClick={() => this.setState({ selected: hive.id })} style={{ cursor: 'pointer' }}>
+                        <tr key={hive.id} onClick={() => history.push(`/admin/manage/hive/${hive.id}`)} style={{ cursor: 'pointer' }}>
                           <td>{hive.name}</td>
                         </tr>
                       ))}
@@ -126,11 +126,10 @@ export default withNotification(class AdminManageHives extends Component {
                 : <Loading />}
             </div>
           </div>
-          <div className="col">
-            {this.state.selected && <Board {...this.props} directHiveId={this.state.selected} />}
-          </div>
         </div>
       </div>
     );
   }
-});
+};
+
+export default withNotification(withRouter(AdminManageHives));
