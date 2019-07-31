@@ -9,6 +9,7 @@
     "@cda/flex": "latest",
     "@cda/input": "latest",
     "@cda/link": "latest",
+    "@cda/sidebar": "^0.6.0",
     "@cda/theme": "latest",
     "@cda/top-bar": "latest",
     "@emotion/core": "^10.0.14",
