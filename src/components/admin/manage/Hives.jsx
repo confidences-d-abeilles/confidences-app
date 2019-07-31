@@ -11,12 +11,13 @@ import Meta from '../../utils/Meta';
 import 'react-datepicker/dist/react-datepicker.css';
 import { withNotification } from '../../../services/withNotification';
 import Search from './hives/Search';
+import Board from './hives/Board';
 
 export default withNotification(class AdminManageHives extends Component {
   state = {
     hives: null,
     newHive: '',
-    selected: '',
+    selected: null,
     actu: '',
     actuTitle: '',
     actuDate: '',
@@ -37,19 +38,6 @@ export default withNotification(class AdminManageHives extends Component {
     }, notification).then((res) => {
       this.setState({
         hives: res,
-      });
-    });
-  }
-
-  getOne() {
-    const { idSelected } = this.state;
-    const { notification } = this.props;
-    request({
-      url: `/hive/${idSelected}`,
-      method: 'get',
-    }, notification).then((res) => {
-      this.setState({
-        selected: res,
       });
     });
   }
@@ -111,7 +99,7 @@ export default withNotification(class AdminManageHives extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col">
+          <div className="col-4">
             <div className="row">
               <Search handler={this.searchHandler} className="col" />
               <form className="col form-inline" onSubmit={this.addHive.bind(this)}>
@@ -122,27 +110,14 @@ export default withNotification(class AdminManageHives extends Component {
             <div style={{ maxHeight: '50vh', overflowY: 'scroll' }}>
               {this.state.hives
                 ? (
-                  <table className="table table-sm">
+                  <table className="table table-hover">
                     <tbody>
                       <tr>
                         <th>Nom</th>
-                        <th>Occupation</th>
-                        <th />
                       </tr>
                       {this.state.hives && this.state.hives.map(hive => (
-                        <tr key={hive.id} className={(this.state.selected.id === hive.id) ? 'table-info' : null}>
+                        <tr key={hive.id} onClick={() => this.setState({ selected: hive.id })} style={{ cursor: 'pointer' }}>
                           <td>{hive.name}</td>
-                          <td>
-                            {`${hive.occupation} %`}
-                          </td>
-                          <td>
-                            <Link to={`/admin/manage/hive/${hive.id}`} className="btn btn-link btn-sm">
-                              Gérer
-                            </Link>
-                            <Link to={`/hive/${hive.id}`} className="btn btn-link btn-sm">
-                              Voir
-                            </Link>
-                          </td>
                         </tr>
                       ))}
                     </tbody>
@@ -150,6 +125,9 @@ export default withNotification(class AdminManageHives extends Component {
                 )
                 : <Loading />}
             </div>
+          </div>
+          <div className="col">
+            {this.state.selected && <Board {...this.props} directHiveId={this.state.selected} />}
           </div>
         </div>
       </div>

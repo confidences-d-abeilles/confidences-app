@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { Button } from '@cda/button';
@@ -23,14 +22,21 @@ class Board extends PureComponent {
     this.get();
   }
 
+  componentWillReceiveProps({ directHiveId }, { directHiveId: nextDirectHiveId }) {
+    if (directHiveId !== nextDirectHiveId) {
+      this.setState({ hive: null });
+      this.get();
+    }
+  }
+
   get = () => {
-    const { notification, match: { params: { hiveId } } } = this.props;
+    const { notification, match: { params: { hiveId } }, directHiveId } = this.props;
     request({
-      url: `/hive/${hiveId}`,
+      url: `/hive/${directHiveId || hiveId}`,
       method: 'get',
     }, notification)
       .then(res => this.setState({ hive: res }));
-  }
+  };
 
   updateInfo = (name, value) => (e) => {
     if (e) { e.preventDefault(); }
@@ -71,15 +77,6 @@ class Board extends PureComponent {
     }
     return (
       <>
-        <div className="row">
-          <div className="col">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
-              <li className="breadcrumb-item"><Link to="/admin/manage/hives">Ruches</Link></li>
-              <li className="breadcrumb-item active">{hive && hive.name}</li>
-            </ol>
-          </div>
-        </div>
         <div className="row">
           <div className="col-lg-4">
             <Parrains parrainsList={(hive && hive.parrains) || []} />

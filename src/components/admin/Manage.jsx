@@ -1,10 +1,14 @@
 import React from 'react';
-import FontAwesome from 'react-fontawesome';
+import {
+  faIdCard, faArchive, faFolder, faTag, faEnvelope, faShoppingCart, faTicketAlt, faComment, faTools,
+} from '@fortawesome/free-solid-svg-icons';
 import {
   Route,
-  Link,
   Switch,
 } from 'react-router-dom';
+import Sidebar from '@cda/sidebar';
+import { Columns, Item } from '@cda/flex';
+
 import AdminManageUser from './manage/Users';
 import AdminManageUserId from './manage/users/Fiche';
 import AdminManageFaq from './manage/Faq';
@@ -20,93 +24,54 @@ import Products from './manage/Products';
 import Coupons from './manage/Coupons';
 import AdminManageLabel from './manage/Label';
 
+const items = [
+  { icon: faIdCard, link: '/admin/manage/user', label: 'Utilisateurs' },
+  { icon: faArchive, link: '/admin/manage/hives', label: 'Ruches' },
+  { icon: faFolder, link: '/admin/manage/bundles', label: 'Parrainages' },
+  { icon: faFolder, link: '/admin/manage/bundle', label: 'Parrainages' },
+  { icon: faTag, link: '/admin/manage/label', label: 'Etiquettes' },
+  { icon: faEnvelope, link: '/admin/manage/mails', label: 'Emailing' },
+  { icon: faShoppingCart, link: '/admin/manage/products', label: 'Produits' },
+  { icon: faTicketAlt, link: '/admin/manage/coupons', label: 'Coupons' },
+  { icon: faComment, link: '/admin/manage/faq', label: 'FAQ' },
+  { icon: faTools, link: '/admin/manage/server', label: 'Espace technique' },
+];
+
 
 export default () => (
   <div className="container-fluid py-4">
-    <div className="row justify-content-center">
-      <div className="col-lg-2 col-md-6">
-        <ul className="list-group">
-          <li className="list-group-item active">Gestion clients</li>
-          <Link to="/admin/manage/user" className="list-group-item">
-            <FontAwesome name="user" fixedWidth />
-            &nbsp;&nbsp;
-            Utilisateurs
-          </Link>
-          <Link to="/admin/manage/hives" className="list-group-item">
-            <FontAwesome name="archive" fixedWidth />
-            &nbsp;&nbsp;
-            Ruches
-          </Link>
-          <Link to="/admin/manage/bundles" className="list-group-item">
-            <FontAwesome name="folder" fixedWidth />
-            &nbsp;&nbsp;
-            Parrainages
-          </Link>
-          <Link to="/admin/manage/bundle" className="list-group-item">
-            <FontAwesome name="folder" fixedWidth />
-            &nbsp;&nbsp;
-            Parrainages
-          </Link>
-          <Link to="/admin/manage/label" className="list-group-item">
-            <FontAwesome name="tag" fixedWidth />
-            &nbsp;&nbsp;
-            Etiquettes
-          </Link>
-          <Link to="/admin/manage/mails" className="list-group-item">
-            <FontAwesome name="envelope" fixedWidth />
-            &nbsp;&nbsp;
-            Emailing
-          </Link>
-          <li className="list-group-item active">Gestion du contenu</li>
-          <Link to="/admin/manage/products" className="list-group-item">
-            <FontAwesome name="shopping-basket" fixedWidth />
-            &nbsp;&nbsp;
-            Produits
-          </Link>
-          <Link to="/admin/manage/coupons" className="list-group-item">
-            <FontAwesome name="ticket" fixedWidth />
-            &nbsp;&nbsp;
-            Coupons
-          </Link>
-          <Link to="/admin/manage/faq" className="list-group-item">
-            <FontAwesome name="comment" fixedWidth />
-            &nbsp;&nbsp;
-            FAQ
-          </Link>
-          <li className="list-group-item active">Administration plateforme</li>
-          <Link to="/admin/manage/server" className="list-group-item">
-            <FontAwesome name="wrench" fixedWidth />
-            &nbsp;&nbsp;
-            Espace technique
-          </Link>
-        </ul>
-      </div>
-      <div className="col-lg-10 col-md-12">
-        <div className="row">
-          <div className="col-12">
-            <Route exact path="/admin/manage" component={AdminManageHome} />
-            <Route exact path="/admin/manage/user" component={AdminManageUser} />
-            <Route exact path="/admin/manage/user/:id" component={AdminManageUserId} />
-            <Route exact path="/admin/manage/mails" component={AdminManageMails} />
-            <Route exact path="/admin/manage/hives" component={AdminManageHives} />
-            <Route exact path="/admin/manage/hive/:hiveId" component={AdminManageHivesBoard} />
-            <Route exact path="/admin/manage/bundles" component={AdminManageBundles} />
-            <Route exact path="/admin/manage/bundle" component={AdminManageBundle} />
-            <Route exact path="/admin/manage/Label" component={AdminManageLabel} />
-            <Switch>
-              <Route exact path="/admin/manage/bundle/unpaid" component={AdminManageBundle} />
-              <Route exact path="/admin/manage/bundle/pending" component={AdminManageBundle} />
-              <Route exact path="/admin/manage/bundle/paid" component={AdminManageBundle} />
-              <Route exact path="/admin/manage/bundle/ok" component={AdminManageBundle} />
-              <Route exact path="/admin/manage/bundle/:id" component={AdminManageBundleId} />
-            </Switch>
-            <Route exact path="/admin/manage/faq" component={AdminManageFaq} />
-            <Route exact path="/admin/manage/products" component={Products} />
-            <Route exact path="/admin/manage/coupons" component={Coupons} />
-            <Route exact path="/admin/manage/server" component={AdminManageServer} />
+    <Columns alignItems="flex-start">
+      <Item flex={1} alignSelf="top" noGutter>
+        <Sidebar items={items} />
+      </Item>
+      <Item flex={20} alignSelf="top" noGutter>
+        <div className="col-lg-12 col-md-12">
+          <div className="row">
+            <div className="col-12">
+              <Route exact path="/admin/manage" component={AdminManageHome} />
+              <Route exact path="/admin/manage/user" component={AdminManageUser} />
+              <Route exact path="/admin/manage/user/:id" component={AdminManageUserId} />
+              <Route exact path="/admin/manage/mails" component={AdminManageMails} />
+              <Route exact path="/admin/manage/hives" component={AdminManageHives} />
+              <Route exact path="/admin/manage/hive/:hiveId" component={AdminManageHivesBoard} />
+              <Route exact path="/admin/manage/bundles" component={AdminManageBundles} />
+              <Route exact path="/admin/manage/bundle" component={AdminManageBundle} />
+              <Route exact path="/admin/manage/Label" component={AdminManageLabel} />
+              <Switch>
+                <Route exact path="/admin/manage/bundle/unpaid" component={AdminManageBundle} />
+                <Route exact path="/admin/manage/bundle/pending" component={AdminManageBundle} />
+                <Route exact path="/admin/manage/bundle/paid" component={AdminManageBundle} />
+                <Route exact path="/admin/manage/bundle/ok" component={AdminManageBundle} />
+                <Route exact path="/admin/manage/bundle/:id" component={AdminManageBundleId} />
+              </Switch>
+              <Route exact path="/admin/manage/faq" component={AdminManageFaq} />
+              <Route exact path="/admin/manage/products" component={Products} />
+              <Route exact path="/admin/manage/coupons" component={Coupons} />
+              <Route exact path="/admin/manage/server" component={AdminManageServer} />
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </Item>
+    </Columns>
   </div>
 );
