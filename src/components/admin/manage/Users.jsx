@@ -136,6 +136,12 @@ class MainScreen extends Component {
       address: addresses[0] && addresses[0].address_line1,
       zipcode: addresses[0] && addresses[0].zipcode,
       city: addresses[0] && addresses[0].city,
+      shipping_name: addresses[1] && addresses[1].name,
+      shipping_firstname: addresses[1] && addresses[1].firstname,
+      shipping_address: addresses[1] && addresses[1].address_line1,
+      shipping_zipcode: addresses[1] && addresses[1].zipcode,
+      shipping_city: addresses[1] && addresses[1].city,
+      shipping_phone: addresses[1] && addresses[1].phone,
       price: bundles[0] && bundles[0].price,
     }));
     return (
@@ -158,13 +164,13 @@ class MainScreen extends Component {
           </div>
           <div className="col">
             <label htmlFor="p">
-              <input type="checkbox" name="p" id="p" checked={this.state.filters.p} onChange={this.checkFilter} />
+              <Input type="checkbox" name="p" id="p" checked={this.state.filters.p} onChange={this.checkFilter} />
               {' '}
 Particuliers
             </label>
             <br />
             <label htmlFor="e">
-              <input type="checkbox" name="e" id="e" checked={this.state.filters.e} onChange={this.checkFilter} />
+              <Input type="checkbox" name="e" id="e" checked={this.state.filters.e} onChange={this.checkFilter} />
               {' '}
 Entreprises
             </label>

@@ -9,7 +9,6 @@ const List = ({ data, select }) => (
       <table className="table table-hover">
         <thead>
           <tr>
-            <th><input type="checkbox" /></th>
             <th>Type d'utilisateur</th>
             <th>Nom de l'utilisateur</th>
             <th>État du parrainage</th>
@@ -18,7 +17,6 @@ const List = ({ data, select }) => (
         <tbody>
           {data.map(user => (
             <tr key={user.id} onClick={select.bind(this, user.id)} style={{ cursor: 'pointer' }}>
-              <td><input type="checkbox" /></td>
               <td><UserType type={user.user_type} /></td>
               <td>{`${user.firstname} ${user.name} ${user.company_name}`}</td>
               <td>{(user.bundles[0]) ? <State level={user.bundles[0].state} /> : 'Pas de parrainage'}</td>
