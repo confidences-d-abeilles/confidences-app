@@ -156,32 +156,29 @@ class Feedback extends Component {
         <form onSubmit={newsTake ? this.updateActu.bind(this) : this.createActu.bind(this)}>
           <Input type="text" name="actuTitle" onChange={handleChange.bind(this)} value={actuTitle} placeholder="Titre" />
           <div className="form-group">
-            <label>Date de l'actualité</label>
+            <label>Date de l'actualité :&nbsp;</label>
             <DatePicker
               dateFormat="DD/MM/YYYY"
               selected={actuDate}
               onChange={this.handleDateChange.bind(this)}
-              className="form-control"
               dropdownMode
             />
           </div>
-          <div className="form-group">
-            <ReactQuill
-              name="actu"
-              className="form-control"
-              onChange={(value) => { this.setState({ actu: value }); }}
-              value={actu}
-              placeholder="actualité"
-              modules={{
-                toolbar: [
-                  ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-                  [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
-                  ['link'],
-                  ['clean'],
-                ],
-              }}
-            />
-          </div>
+          <ReactQuill
+            name="actu"
+            style={{ height: '20rem', paddingBottom: '50px' }}
+            onChange={(value) => { this.setState({ actu: value }); }}
+            value={actu}
+            placeholder="actualité"
+            modules={{
+              toolbar: [
+                ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+                [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+                ['link'],
+                ['clean'],
+              ],
+            }}
+          />
           <div className="form-group">
             <label htmlFor="actu-img" className={(actuImg) ? 'active-upload' : 'upload'} style={{ position: 'relative' }}>
               <input
