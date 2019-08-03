@@ -106,7 +106,7 @@ class AdminManageHives extends Component {
               </form>
             </div>
             <Columns>
-              <Item flex={1}>
+              <Item flex={1} style={{ height: '25rem', overflowY: 'scroll' }}>
                 {hives
                   ? (
                     <table className="table table-hover">
