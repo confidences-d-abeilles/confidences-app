@@ -59,7 +59,7 @@ class AdminManageHives extends Component {
     });
   }
 
-  searchHandler = queryString => {
+  searchHandler = (queryString) => {
     const { notification } = this.props;
     console.log(queryString);
     request({
@@ -85,19 +85,15 @@ class AdminManageHives extends Component {
   }
 
   render() {
-    const { newHive } = this.state;
+    const { newHive, hives } = this.state;
     const { history } = this.props;
     return (
       <div>
-        <div className="row">
-          <Meta title="Gérer les ruches" />
-          <div className="col">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
-              <li className="breadcrumb-item active">Ruches</li>
-            </ol>
-          </div>
-        </div>
+        <Meta title="Gérer les ruches" />
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
+          <li className="breadcrumb-item active">Ruches</li>
+        </ol>
         <div className="row">
           <div className="col">
             <div className="row">
@@ -107,8 +103,8 @@ class AdminManageHives extends Component {
                 <Button type="submit">Créer la ruche</Button>
               </form>
             </div>
-            <div style={{ maxHeight: '50vh', overflowY: 'scroll' }}>
-              {this.state.hives
+            <div>
+              {hives
                 ? (
                   <table className="table table-hover">
                     <tbody>
@@ -130,6 +126,6 @@ class AdminManageHives extends Component {
       </div>
     );
   }
-};
+}
 
 export default withNotification(withRouter(AdminManageHives));
