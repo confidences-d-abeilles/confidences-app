@@ -25,7 +25,7 @@ export default () => (
     <Meta title="Tarifs particuliers" />
     <ButtonLink url="/individual/prices" primary>Tarifs particuliers ></ButtonLink>
     <h2 className="text-center my-4">Tarifs entreprises</h2>
-    <Rows>
+    <Rows justifyContent="center">
       <PriceCard title="1 à 4 ruches" price={635} items={tenOffer} unit={UNIT} level={1} />
       <PriceCard title="5 ruches ou +" price={560} items={twentyOffer} unit={UNIT} level={2} />
     </Rows>
