@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
 
 import { Button } from '@cda/button';
 import Input from '@cda/input';
+import { Columns, Item } from '@cda/flex';
 
 import request from '../../../services/Net';
 import { handleChange } from '../../../services/FormService';
@@ -11,6 +12,7 @@ import Meta from '../../utils/Meta';
 import 'react-datepicker/dist/react-datepicker.css';
 import { withNotification } from '../../../services/withNotification';
 import Search from './hives/Search';
+import AdminManageHivesBoard from './hives/Board';
 
 class AdminManageHives extends Component {
   state = {
@@ -96,31 +98,34 @@ class AdminManageHives extends Component {
         </ol>
         <div className="row">
           <div className="col">
-            <div className="row">
+            <div className="row mb-4">
               <Search handler={this.searchHandler} className="col" />
               <form className="col form-inline" onSubmit={this.addHive.bind(this)}>
                 <Input type="text" className="mx-2" name="newHive" value={newHive} placeholder="Nom commun de la nouvelle ruche" onChange={handleChange.bind(this)} />
                 <Button type="submit">Créer la ruche</Button>
               </form>
             </div>
-            <div>
-              {hives
-                ? (
-                  <table className="table table-hover">
-                    <tbody>
-                      <tr>
-                        <th>Nom</th>
-                      </tr>
-                      {this.state.hives && this.state.hives.map(hive => (
-                        <tr key={hive.id} onClick={() => history.push(`/admin/manage/hive/${hive.id}`)} style={{ cursor: 'pointer' }}>
-                          <td>{hive.name}</td>
+            <Columns>
+              <Item flex={1}>
+                {hives
+                  ? (
+                    <table className="table table-hover">
+                      <tbody>
+                        <tr>
+                          <th>Nom</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                )
-                : <Loading />}
-            </div>
+                        {this.state.hives && this.state.hives.map(hive => (
+                          <tr key={hive.id} onClick={() => history.push(`/admin/manage/hive/${hive.id}`)} style={{ cursor: 'pointer' }}>
+                            <td>{hive.name}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  )
+                  : <Loading />}
+              </Item>
+              <Route exact path="/admin/manage/hive/:hiveId" component={AdminManageHivesBoard} />
+            </Columns>
           </div>
         </div>
       </div>

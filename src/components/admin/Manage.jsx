@@ -26,7 +26,7 @@ import AdminManageLabel from './manage/Label';
 
 const items = [
   { icon: faIdCard, link: '/admin/manage/user', label: 'Utilisateurs' },
-  { icon: faArchive, link: '/admin/manage/hives', label: 'Ruches' },
+  { icon: faArchive, link: '/admin/manage/hive', label: 'Ruches' },
   { icon: faFolder, link: '/admin/manage/bundles', label: 'Parrainages' },
   { icon: faFolder, link: '/admin/manage/bundle', label: 'Parrainages' },
   { icon: faTag, link: '/admin/manage/label', label: 'Etiquettes' },
@@ -52,8 +52,7 @@ export default () => (
               <Route exact path="/admin/manage/user" component={AdminManageUser} />
               <Route exact path="/admin/manage/user/:id" component={AdminManageUserId} />
               <Route exact path="/admin/manage/mails" component={AdminManageMails} />
-              <Route exact path="/admin/manage/hives" component={AdminManageHives} />
-              <Route exact path="/admin/manage/hive/:hiveId" component={AdminManageHivesBoard} />
+              <Route path="/admin/manage/hive" component={AdminManageHives} />
               <Route exact path="/admin/manage/bundles" component={AdminManageBundles} />
               <Route exact path="/admin/manage/bundle" component={AdminManageBundle} />
               <Route exact path="/admin/manage/Label" component={AdminManageLabel} />

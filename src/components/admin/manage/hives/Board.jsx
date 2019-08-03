@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { Button } from '@cda/button';
+import { Item } from '@cda/flex';
 import Parrains from './Parrains';
 import request from '../../../../services/Net';
 import { withNotification } from '../../../../services/withNotification';
@@ -22,8 +23,9 @@ class Board extends PureComponent {
     this.get();
   }
 
-  componentWillReceiveProps({ directHiveId }, { directHiveId: nextDirectHiveId }) {
-    if (directHiveId !== nextDirectHiveId) {
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.hiveId !== prevProps.match.params.hiveId) {
+      console.log('Route change!');
       this.setState({ hive: null });
       this.get();
     }
@@ -72,11 +74,11 @@ class Board extends PureComponent {
   render() {
     const { hive } = this.state;
     const { match: { params: { hiveId } } } = this.props;
-    if (!this.state.hive) {
-      return <Loading />;
+    if (!hive) {
+      return <Item flex={3}><Loading /></Item>;
     }
     return (
-      <>
+      <Item flex={3}>
         <div className="row">
           <div className="col-lg-4">
             <Parrains parrainsList={(hive && hive.parrains) || []} />
@@ -101,7 +103,7 @@ class Board extends PureComponent {
             <Pictures data={hive.imgs} hiveId={hiveId} refresh={this.get} />
           </div>
         </div>
-      </>
+      </Item>
     );
   }
 }
