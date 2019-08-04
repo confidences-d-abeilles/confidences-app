@@ -124,35 +124,6 @@ export default withNotification(class AdminManageBundle extends Component {
       <div className="row">
         {this.state.redirectId && <Redirect push to={"/admin/manage/bundle/"+this.state.redirectId} />}
         <div className="col">
-        {(this.props.match.path === '/admin/manage/bundle/unpaid') &&
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
-            <li className="breadcrumb-item"><Link to="/admin/manage/bundle">Parrainages</Link></li>
-            <li className="breadcrumb-item active">Non payés</li>
-          </ol>}
-          {(this.props.match.path === '/admin/manage/bundle/pending') &&
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
-            <li className="breadcrumb-item"><Link to="/admin/manage/bundle">Parrainages</Link></li>
-            <li className="breadcrumb-item active">En attente de validation</li>
-          </ol>}
-          {(this.props.match.path === '/admin/manage/bundle/paid') &&
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
-            <li className="breadcrumb-item"><Link to="/admin/manage/bundle">Parrainages</Link></li>
-            <li className="breadcrumb-item active">Payés</li>
-          </ol>}
-          {(this.props.match.path === '/admin/manage/bundle/ok') &&
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
-            <li className="breadcrumb-item"><Link to="/admin/manage/bundle">Parrainages</Link></li>
-            <li className="breadcrumb-item active">Payés et en place</li>
-          </ol>}
-          {(this.props.match.path === '/admin/manage/bundle') &&
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
-            <li className="breadcrumb-item active">Parrainages</li>
-          </ol>}
           <div className="row my-2">
             <div className="col-4">
               <Input type="text" value={this.state.criteria} ref="searchInput" onChange={this.search} placeholder="Rechercher..." onKeyDown={this.checkValidation} />

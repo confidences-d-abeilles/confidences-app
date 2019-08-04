@@ -27,7 +27,7 @@ import AdminManageLabel from './manage/Label';
 const items = [
   { icon: faIdCard, link: '/admin/manage/user', label: 'Utilisateurs' },
   { icon: faArchive, link: '/admin/manage/hive', label: 'Ruches' },
-  { icon: faFolder, link: '/admin/manage/bundles', label: 'Parrainages' },
+  { icon: faFolder, link: '/admin/manage/bundles', label: 'Parrainages (legacy)' },
   { icon: faFolder, link: '/admin/manage/bundle', label: 'Parrainages' },
   { icon: faTag, link: '/admin/manage/label', label: 'Etiquettes' },
   { icon: faEnvelope, link: '/admin/manage/mails', label: 'Emailing' },

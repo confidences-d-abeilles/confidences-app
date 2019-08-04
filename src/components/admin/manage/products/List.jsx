@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '@cda/button';
 
 import request from '../../../../services/Net';
 import Loading from '../../../utils/Loading';
@@ -81,15 +82,16 @@ export default withNotification(class List extends Component {
               <th>Prix HT</th>
               <th>TVA</th>
               <th>Prix TTC</th>
+              <th>Action</th>
             </tr>
             {products.map(product => (
-              <tr>
+              <tr key={product.id}>
                 <td>{product.designation}</td>
                 <td>{this.decode(product.type)}</td>
                 <td>{`${product.price} €`}</td>
                 <td>{`${product.duty} %`}</td>
                 <td>{`${(product.price + (product.price / 100 * product.duty)).toFixed(2)} €`}</td>
-                <td><button className="btn btn-primary btn-sm" type="button" onClick={() => this.delete(product.id)}>Supprimer</button></td>
+                <td><Button type="button" primary onClick={() => this.delete(product.id)}>Supprimer</Button></td>
               </tr>
             ))}
           </tbody>

@@ -18,7 +18,6 @@ export default class Products extends Component {
     return (
       <div className="container-fluid">
         <h1>Gérer les produits</h1>
-        <hr />
         <div className="row">
           <div className="col">
             <Create refresh={this.refresh.bind(this)} />
