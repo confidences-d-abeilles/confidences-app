@@ -8,6 +8,7 @@ const JumbotronWrapper = styled(Columns)`
   background-color: #111;
   overflow: hidden;
   min-height: 30rem;
+  margin-bottom: 2rem;
 `;
 
 
