@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Redirect, Route, Switch,
 } from 'react-router-dom';
-import { faFolder } from '@fortawesome/free-solid-svg-icons';
+import { faArchive, faTags, faAddressCard, faTools, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 import Sidebar from '@cda/sidebar';
 import { Rows, Item } from '@cda/flex';
@@ -16,21 +16,21 @@ import Meta from '../utils/Meta';
 import NotFound from '../utils/NotFound';
 
 const menu = [
-  { label: 'Mon parrainage', icon: faFolder, link: '/individual/manage' },
-  { label: 'Mes pots de miel', icon: faFolder, link: '/individual/manage/customize' },
-  { label: 'Mes informations', icon: faFolder, link: '/individual/manage/infos' },
-  { label: 'Mon compte', icon: faFolder, link: '/individual/manage/account' },
-  { label: 'Deconnexion', icon: faFolder, link: '/logout' },
+  { label: 'Mon parrainage', icon: faArchive, link: '/individual/manage' },
+  { label: 'Mes pots de miel', icon: faTags, link: '/individual/manage/customize' },
+  { label: 'Mes informations', icon: faAddressCard, link: '/individual/manage/infos' },
+  { label: 'Mon compte', icon: faTools, link: '/individual/manage/account' },
+  { label: 'Deconnexion', icon: faSignOutAlt, link: '/logout' },
 ];
 
 export default () => (
   <Rows>
     <Meta title="Mon espace personnel" />
     {(!isLoggedIn) ? <Redirect to="/" /> : null}
-    <Item>
+    <Item flex="0 0 10rem">
       <Sidebar items={menu} compact={false} />
     </Item>
-    <Item>
+    <Item flex={1}>
       <Switch>
         <Route exact path="/individual/manage" component={Bundle} />
         <Route exact path="/individual/manage/customize" component={Custom} />
