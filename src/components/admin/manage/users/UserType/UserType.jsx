@@ -5,7 +5,7 @@ const Type = ({ type }) => {
     case 1:
       return (<span className="badge badge-info">Particulier</span>);
     case 2:
-      return (<span className="badge badge-alert">Entreprise</span>);
+      return (<span className="badge danger">Entreprise</span>);
     case 3:
       return (<span className="badge badge-warning">Apporteur d&apos;Affaires</span>);
     case 4:
