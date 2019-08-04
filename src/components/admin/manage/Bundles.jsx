@@ -33,10 +33,6 @@ export default withNotification(class AdminManageBundles extends Component {
     return (
       <div className="row">
         <div className="col">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
-            <li className="breadcrumb-item active">Parrainages</li>
-          </ol>
           <div className="row">
             <div className="col" style={{ maxHeight: '50vh', overflowY: 'scroll' }}>
               {bundles ? (

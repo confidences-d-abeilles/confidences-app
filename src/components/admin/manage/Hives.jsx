@@ -92,10 +92,6 @@ class AdminManageHives extends Component {
     return (
       <div>
         <Meta title="Gérer les ruches" />
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
-          <li className="breadcrumb-item active">Ruches</li>
-        </ol>
         <div className="row">
           <div className="col">
             <div className="row mb-4">

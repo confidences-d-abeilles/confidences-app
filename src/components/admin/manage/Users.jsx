@@ -156,14 +156,6 @@ class MainScreen extends Component {
         {this.state.selectedId && <Redirect to={`/admin/manage/user/${this.state.selectedId}`} push />}
         <div className="row">
           <div className="col">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item"><Link to="/admin/manage">Panel d'Administration</Link></li>
-              <li className="breadcrumb-item active">Utilisateurs</li>
-            </ol>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
             <Input type="text" value={this.state.criteria} ref="searchInput" onChange={this.search} placeholder="Rechercher..." onKeyDown={this.checkValidation} />
             <small className="form-text text-muted">Appuyez sur ⏎ pour accéder au premier utilisateur, ⇩ ou ⇧ pour naviguer</small>
             <CSVLink data={csvData}>Exporter</CSVLink>

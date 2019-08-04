@@ -183,11 +183,11 @@ export default withNotification(class Bundle extends Component {
                     <form onSubmit={this.updatePayment.bind(this)}>
                       <div className="form-group">
                         <select className="form-control" onChange={handleChange.bind(this)} name="stateSelector" value={this.state.stateSelector}>
-              <option value="0">Non reglé</option>
-              <option value="1">Paiement en attente de validation</option>
-              <option value="2">Payé</option>
-              <option value="3">Payé et en place</option>
-            </select>
+                          <option value="0">Non reglé</option>
+                          <option value="1">Paiement en attente de validation</option>
+                          <option value="2">Payé</option>
+                          <option value="3">Payé et en place</option>
+                        </select>
                       </div>
                       <button className="btn btn-primary">Mettre a jour le status</button>
                     </form>
@@ -203,20 +203,20 @@ export default withNotification(class Bundle extends Component {
                       <select name="hive" onChange={handleChange.bind(this)} className="form-control">
                         <option value="0">Choisir une ruche...</option>
                         {this.state.hives.map((hive) => {
-              if ((this.state.bundle.bees && hive.occupation <= (50000 - this.state.bundle.bees) / 50000 * 100) || (this.state.bundle.hives > 0 && hive.occupation === 0)) {
-                return (
-                            <option value={hive.id} key={hive.id}>
-                              {hive.name}
-                              {' '}
+                          if ((this.state.bundle.bees && hive.occupation <= (50000 - this.state.bundle.bees) / 50000 * 100) || (this.state.bundle.hives > 0 && hive.occupation === 0)) {
+                            return (
+                              <option value={hive.id} key={hive.id}>
+                                {hive.name}
+                                {' '}
 (occupé à
-                              {' '}
-                              {hive.occupation}
+                                {' '}
+                                {hive.occupation}
 %)
-                            </option>
-                );
-              }
-              return null;
-            })}
+                              </option>
+                            );
+                          }
+                          return null;
+                        })}
                       </select>
                       <button className="btn btn-secondary my-2">Associer cette ruche</button>
                     </form>
@@ -235,14 +235,14 @@ Actuel
                     <div className="form-group">
                       <label htmlFor="certif" className={(this.state.certif) ? 'active-upload' : 'upload'} style={{ position: 'relative' }}>
                         <input
-              type="file"
-              className="form-control"
-              id="certif"
-              onChange={() => { this.setState({ certif: document.getElementById('certif').files[0].name }); }}
-              style={{
-                          position: 'absolute', height: '5.5em', top: '0', left: '0', opacity: '0.0001',
-                        }}
-            />
+                          type="file"
+                          className="form-control"
+                          id="certif"
+                          onChange={() => { this.setState({ certif: document.getElementById('certif').files[0].name }); }}
+                          style={{
+                            position: 'absolute', height: '5.5em', top: '0', left: '0', opacity: '0.0001',
+                          }}
+                        />
                       Glisser un PDF ou cliquez pour en sélectionner un parmi vos fichiers
                         <br />
                         {(this.state.certif) ? `Sélectionné : ${this.state.certif}` : 'Aucun fichier sélectionné'}
@@ -293,20 +293,20 @@ abeilles
                       <br />
                       {(this.state.bundle.present)
                         ? (
-              <form onSubmit={this.updatePresent.bind(this)}>
-                          <strong>Ce parrainage est un cadeau pour :</strong>
-                          <br />
-                          <div className="form-group">
-                            <input type="text" name="present_firstname" onChange={handleChange.bind(this)} value={this.state.present_firstname} placeholder="Prenom" className="form-control" />
-                          </div>
-                          <div className="form-group">
-                            <input type="text" name="present_name" onChange={handleChange.bind(this)} value={this.state.present_name} placeholder="Nom" className="form-control" />
-                          </div>
-                          <div className="form-group">
-                            <input type="text" name="present_email" onChange={handleChange.bind(this)} value={this.state.present_email} placeholder="Email" className="form-control" />
-                          </div>
-                          <button className="btn btn-secondary btn-sm my-2">Valider</button>
-                        </form>
+                          <form onSubmit={this.updatePresent.bind(this)}>
+                            <strong>Ce parrainage est un cadeau pour :</strong>
+                            <br />
+                            <div className="form-group">
+                              <input type="text" name="present_firstname" onChange={handleChange.bind(this)} value={this.state.present_firstname} placeholder="Prenom" className="form-control" />
+                            </div>
+                            <div className="form-group">
+                              <input type="text" name="present_name" onChange={handleChange.bind(this)} value={this.state.present_name} placeholder="Nom" className="form-control" />
+                            </div>
+                            <div className="form-group">
+                              <input type="text" name="present_email" onChange={handleChange.bind(this)} value={this.state.present_email} placeholder="Email" className="form-control" />
+                            </div>
+                            <button className="btn btn-secondary btn-sm my-2">Valider</button>
+                          </form>
                         )
                         : 'Ce parrainage n\'est pas un cadeau'}
                     </p>
