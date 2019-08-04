@@ -13,37 +13,31 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { withNotification } from '../../../services/withNotification';
 import Search from './hives/Search';
 import AdminManageHivesBoard from './hives/Board';
+import UserType from './users/UserType/UserType';
 
 class AdminManageHives extends Component {
   state = {
     hives: null,
     newHive: '',
-    selected: null,
-    actu: '',
-    actuTitle: '',
-    actuDate: '',
-    ratio: 0,
-    stateFeedback: 0,
-    feedback: '',
   };
 
   componentDidMount() {
     this.get();
   }
 
-  get() {
+  get = () => {
     const { notification } = this.props;
     request({
-      url: '/hive',
+      url: '/hive/bundle/owner',
       method: 'get',
     }, notification).then((res) => {
       this.setState({
         hives: res,
       });
     });
-  }
+  };
 
-  addHive(e) {
+  addHive = (e) => {
     e.preventDefault();
     const { notification } = this.props;
     const { newHive } = this.state;
@@ -59,7 +53,7 @@ class AdminManageHives extends Component {
         newHive: '',
       });
     });
-  }
+  };
 
   searchHandler = (queryString) => {
     const { notification } = this.props;
@@ -74,18 +68,6 @@ class AdminManageHives extends Component {
     });
   };
 
-  changeImg(e) {
-    const { selected } = this.state;
-    const { notification } = this.props;
-    request({
-      url: `hive/img/${selected.id}`,
-      method: 'PUT',
-      data: {
-        img: e,
-      },
-    }, notification);
-  }
-
   render() {
     const { newHive, hives } = this.state;
     const { history } = this.props;
@@ -96,7 +78,7 @@ class AdminManageHives extends Component {
           <div className="col">
             <div className="row mb-4">
               <Search handler={this.searchHandler} className="col" />
-              <form className="col form-inline" onSubmit={this.addHive.bind(this)}>
+              <form className="col form-inline" onSubmit={this.addHive}>
                 <Input type="text" className="mx-2" name="newHive" value={newHive} placeholder="Nom commun de la nouvelle ruche" onChange={handleChange.bind(this)} />
                 <Button type="submit">Créer la ruche</Button>
               </form>
@@ -110,9 +92,12 @@ class AdminManageHives extends Component {
                         <tr>
                           <th>Nom</th>
                         </tr>
-                        {this.state.hives && this.state.hives.map(hive => (
+                        {hives && hives.map(hive => (
                           <tr key={hive.id} onClick={() => history.push(`/admin/manage/hive/${hive.id}`)} style={{ cursor: 'pointer' }}>
-                            <td>{hive.name}</td>
+                            <td>
+                              <UserType type={hive.parrainType} />&nbsp;
+                              {hive.name}
+                            </td>
                           </tr>
                         ))}
                       </tbody>
