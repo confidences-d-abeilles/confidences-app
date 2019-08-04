@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Route, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 
 import { Button } from '@cda/button';
 import Input from '@cda/input';
@@ -74,41 +74,42 @@ class AdminManageHives extends Component {
     return (
       <div>
         <Meta title="Gérer les ruches" />
-        <div className="row">
-          <div className="col">
-            <div className="row mb-4">
-              <Search handler={this.searchHandler} className="col" />
-              <form className="col form-inline" onSubmit={this.addHive}>
-                <Input type="text" className="mx-2" name="newHive" value={newHive} placeholder="Nom commun de la nouvelle ruche" onChange={handleChange.bind(this)} />
-                <Button type="submit">Créer la ruche</Button>
-              </form>
-            </div>
-            <Columns>
-              <Item flex={1} style={{ height: '25rem', overflowY: 'scroll' }}>
-                {hives
-                  ? (
-                    <table className="table table-hover">
-                      <tbody>
-                        <tr>
-                          <th>Nom</th>
-                        </tr>
-                        {hives && hives.map(hive => (
-                          <tr key={hive.id} onClick={() => history.push(`/admin/manage/hive/${hive.id}`)} style={{ cursor: 'pointer' }}>
-                            <td>
-                              <UserType type={hive.parrainType} />&nbsp;
-                              {hive.name}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  )
-                  : <Loading />}
-              </Item>
-              <Route exact path="/admin/manage/hive/:hiveId" component={AdminManageHivesBoard} />
-            </Columns>
-          </div>
-        </div>
+        <Columns>
+          <Item>
+            <Search handler={this.searchHandler} />
+          </Item>
+          <Item>
+            <form className="col form-inline" onSubmit={this.addHive}>
+              <Input type="text" name="newHive" value={newHive} placeholder="Nom commun de la nouvelle ruche" onChange={handleChange.bind(this)} />
+              <Button type="submit">Créer la ruche</Button>
+            </form>
+          </Item>
+        </Columns>
+        <Columns>
+          <Item flex={1} style={{ height: '25rem', overflowY: 'scroll' }}>
+            {hives
+              ? (
+                <table className="table table-hover">
+                  <tbody>
+                    <tr>
+                      <th>Nom</th>
+                    </tr>
+                    {hives && hives.map(hive => (
+                      <tr key={hive.id} onClick={() => history.push(`/admin/manage/hive/${hive.id}`)} style={{ cursor: 'pointer' }}>
+                        <td>
+                          <UserType type={hive.parrainType} />
+&nbsp;
+                          {hive.name}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )
+              : <Loading />}
+          </Item>
+          <Route exact path="/admin/manage/hive/:hiveId" component={AdminManageHivesBoard} />
+        </Columns>
       </div>
     );
   }

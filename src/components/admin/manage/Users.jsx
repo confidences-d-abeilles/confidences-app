@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { CSVLink } from 'react-csv';
+
 import Input from '@cda/input';
+import { Columns, Item } from '@cda/flex';
 
 import List from './users/List';
 import request from '../../../services/Net';
@@ -48,21 +50,19 @@ class MainScreen extends Component {
   }
 
   checkFilter = (e) => {
-    this.setState({
+    this.setState(({ filters }) => ({
       filters: {
-        ...this.state.filters,
-        [e.target.name]: !this.state.filters[e.target.name],
+        ...filters,
+        [e.target.name]: !filters[e.target.name],
       },
-    }, () => { this.filter(); });
-  }
+    }), () => { this.filter(); });
+  };
 
-  search = (e) => {
-    this.setState({
-      criteria: e.target.value,
-    }, () => {
-      this.filter();
-    });
-  }
+  search = e => this.setState({
+    criteria: e.target.value,
+  }, () => {
+    this.filter();
+  });
 
   filter = () => {
     let tmp = this.state.users.filter(e => (
@@ -88,20 +88,19 @@ class MainScreen extends Component {
     this.setState({
       filtered: tmp,
     });
-  }
+  };
 
-  select = (id) => {
-    this.setState({
-      selectedId: id,
-    });
-  }
+  select = id => this.setState({
+    selectedId: id,
+  });
 
   checkValidation = (e) => {
+    const { filtered } = this.state;
     if (e.key === 'Enter') {
-      this.setState({ selectedId: this.state.filtered[0].id });
+      this.setState({ selectedId: filtered[0].id });
     }
     if (e.key === 'ArrowDown') {
-      const tmp = this.state.filtered;
+      const tmp = filtered;
       const row = tmp.shift();
       tmp.push(row);
       this.setState({
@@ -109,17 +108,18 @@ class MainScreen extends Component {
       });
     }
     if (e.key === 'ArrowUp') {
-      const tmp = this.state.filtered;
+      const tmp = filtered;
       const row = tmp.pop();
       tmp.unshift(row);
       this.setState({
         filtered: tmp,
       });
     }
-  }
+  };
 
   render() {
-    const csvData = this.state.filtered.map(({
+    const { filtered } = this.state;
+    const csvData = filtered.map(({
       firstname,
       name,
       createdAt,
@@ -154,13 +154,13 @@ class MainScreen extends Component {
       <div>
         <Meta title="Gérer les utilisateurs" />
         {this.state.selectedId && <Redirect to={`/admin/manage/user/${this.state.selectedId}`} push />}
-        <div className="row">
-          <div className="col">
+        <Columns>
+          <Item>
             <Input type="text" value={this.state.criteria} ref="searchInput" onChange={this.search} placeholder="Rechercher..." onKeyDown={this.checkValidation} />
             <small className="form-text text-muted">Appuyez sur ⏎ pour accéder au premier utilisateur, ⇩ ou ⇧ pour naviguer</small>
             <CSVLink data={csvData}>Exporter</CSVLink>
-          </div>
-          <div className="col">
+          </Item>
+          <Item>
             <label htmlFor="p">
               <Input type="checkbox" name="p" id="p" checked={this.state.filters.p} onChange={this.checkFilter} />
               {' '}
@@ -191,7 +191,7 @@ Editeurs
 Admins
             </label>
             <br />
-          </div>
+          </Item>
           <div className="col">
             <label htmlFor="unpaid">
               <input type="checkbox" name="unpaid" id="unpaid" checked={this.state.filters.unpaid} onChange={this.checkFilter} />
@@ -224,13 +224,11 @@ Pas de parraiange
             </label>
             <br />
           </div>
-        </div>
-        <div className="row">
-          <List data={this.state.filtered} select={this.select} />
-        </div>
+        </Columns>
+        <List data={this.state.filtered} select={this.select} />
       </div>
     );
   }
-};
+}
 
 export default withNotification(MainScreen);

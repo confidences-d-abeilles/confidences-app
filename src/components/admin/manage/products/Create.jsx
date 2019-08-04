@@ -47,55 +47,47 @@ class Create extends Component {
     } = this.state;
     return (
       <form onSubmit={this.create}>
-        <div className="row">
-          <div className="col-lg-6">
-            <div className="form-group">
-              <Input
-                type="text"
-                name="designation"
-                placeholder="Designation du produit"
-                value={designation}
-                onChange={handleChange.bind(this)}
-              />
-            </div>
-            <div className="form-group">
-              <select
-                name="type"
-                onChange={handleChange.bind(this)}
-                value={type}
-              >
-                <option value="">Choisissez un type de produit</option>
-                <option value="10">Parrainage entreprise</option>
-                <option value="11">Produit supplémentaire entreprise</option>
-                <option value="20">Parrainage particulier</option>
-                <option value="21">Produit supplementaire particulier</option>
-              </select>
-            </div>
-          </div>
-          <div className="col-lg-6">
-            <Input
-              type="number"
-              name="price"
-              min="0"
-              step="0.01"
-              placeholder="Prix HT du produit"
-              value={price}
-              onChange={
+        <Input
+          type="text"
+          name="designation"
+          placeholder="Designation du produit"
+          value={designation}
+          onChange={handleChange.bind(this)}
+        />
+        <select
+          name="type"
+          onChange={handleChange.bind(this)}
+          value={type}
+        >
+          <option value="">Choisissez un type de produit</option>
+          <option value="10">Parrainage entreprise</option>
+          <option value="11">Produit supplémentaire entreprise</option>
+          <option value="20">Parrainage particulier</option>
+          <option value="21">Produit supplementaire particulier</option>
+        </select>
+        <Input
+          type="number"
+          name="price"
+          min="0"
+          step="0.01"
+          placeholder="Prix HT du produit"
+          value={price}
+          onChange={
                     (e) => {
                       this.setState({
                         price: e.target.value,
                         ttc: (parseFloat(e.target.value, 10) + (parseFloat(this.state.duty, 10) / 100) * parseFloat(e.target.value, 10)).toFixed(2),
                       });
                     }}
-            />
-            <Input
-              type="number"
-              step="0.01"
-              name="duty"
-              min="0"
-              placeholder="TVA"
-              value={duty}
-              onChange={
+        />
+        <Input
+          type="number"
+          step="0.01"
+          name="duty"
+          min="0"
+          placeholder="TVA"
+          value={duty}
+          onChange={
                     (e) => {
                       this.setState({
                         duty: e.target.value,
@@ -110,25 +102,23 @@ class Create extends Component {
                         });
                       }
                     }}
-            />
-            <Input
-              type="number"
-              name="ttc"
-              min="0"
-              step="0.01"
-              placeholder="Prix TTC du produit"
-              value={ttc}
-              onChange={
+        />
+        <Input
+          type="number"
+          name="ttc"
+          min="0"
+          step="0.01"
+          placeholder="Prix TTC du produit"
+          value={ttc}
+          onChange={
                     (e) => {
                       this.setState({
                         ttc: e.target.value,
                         price: (e.target.value / (parseFloat(duty) + 100) * 100).toFixed(2),
                       });
                     }}
-            />
-            <Button>Créer le produit</Button>
-          </div>
-        </div>
+        />
+        <Button>Créer le produit</Button>
       </form>
     );
   }
