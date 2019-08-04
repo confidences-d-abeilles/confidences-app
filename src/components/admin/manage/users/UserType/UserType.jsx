@@ -3,11 +3,11 @@ import React from 'react';
 const Type = ({ type }) => {
   switch (type) {
     case 1:
-      return (<span className="badge badge-default">Particulier</span>);
+      return (<span className="badge badge-info">Particulier</span>);
     case 2:
-      return (<span className="badge badge-default">Entreprise</span>);
+      return (<span className="badge badge-alert">Entreprise</span>);
     case 3:
-      return (<span className="badge badge-default">Apporteur d&apos;Affaires</span>);
+      return (<span className="badge badge-warning">Apporteur d&apos;Affaires</span>);
     case 4:
       return (<span className="badge badge-default">Editeur</span>);
     case 5:
