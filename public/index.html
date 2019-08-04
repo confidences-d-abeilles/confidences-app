@@ -11,15 +11,10 @@
 -->
 <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
 <link rel="shortcut icon" href="%PUBLIC_URL%/favicons/favicon_32.png">
-<link rel="stylesheet" href="%PUBLIC_URL%/css/bootstrap.min.css">
 <link rel="stylesheet" href="%PUBLIC_URL%/css/style.css">
 <link rel="stylesheet" href="//cdn.quilljs.com/1.2.6/quill.snow.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/slick.min.css" />
 <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/slick-theme.css" />
-<script src="%PUBLIC_URL%/js/tether.min.js"></script>
-<script src="%PUBLIC_URL%/js/jquery-3.2.1.min.js"></script>
-<script src="%PUBLIC_URL%/js/bootstrap.min.js"></script>
 <script src="https://js.stripe.com/v3/"></script>
 <meta id="og-type" property="og:type" content="website" />
 <meta id="og-type" property="fb:app_id" content="174764873149457" />
@@ -29,7 +24,6 @@
 <meta id="og-description" property="og:description" content="Le parrainage est une action commune. Ensemble, nous agissons en faveur de la filière française du miel et, plus largement, nous protégeons nos chères butineuses et notre environnement." />
 <meta id="og-url" property="og:url" content="https://parrainagederuches.fr" />
 <meta id="og-image" property="og:image" content="https://parrainagederuches.fr/metastatic/general.jpg" />
-<title>Confidences d'Abeilles</title>
 
 <style>
 	@keyframes blinker {
@@ -52,20 +46,12 @@ work correctly both with client-side routing and a non-root public URL.
 Learn how to configure a non-root public URL by running `npm run build`.
 -->
 </head>
-<body>
+<body style="margin: 0;">
 	<noscript>
 		You need to enable JavaScript to run this app.
 	</noscript>
-	<div id="bootstrapCssTest" class="d-none"></div>
-	<script>
-	$(function() {
-		if ($('#bootstrapCssTest').is(':visible')) {
-			$("head").append('<link rel="stylesheet" href="%PUBLIC_URL%/css/bootstrap.css">');
-		}
-	});
-	</script>
 	<div id="root">
-		<img src="%PUBLIC_URL%/logo.png" style="position: fixed; top : 50%; max-height : 10em; max-width: 80%; left : 50%; transform: translate(-50%, -50%); animation: blinker 1s linear infinite;" />
+		<img src="%PUBLIC_URL%/logo.png" style="position: fixed; top : 50%; max-height : 10em; max-width: 80%; left : 50%; transform: translate(-50%, -50%); animation: blinker 0.5s ease-in-out infinite;" />
 	</div>
 	<!--
 	This HTML file is a template.

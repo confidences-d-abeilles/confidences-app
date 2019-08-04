@@ -31,7 +31,7 @@ class Hives extends Component {
     return (
       <div className="container-fluid">
         <Meta title="Les ruches" />
-        <h1 style={{ fontFamily: 'HighTo', color: '#E49C00' }} className="text-center my-4">LES RUCHES</h1>
+        <h1>Les ruches</h1>
         {hives ? (
           <div className="row justify-content-center">
             {hives.map((hive) => {

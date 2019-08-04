@@ -14,7 +14,6 @@ import {
   companyOnly,
 } from '../services/AuthService';
 
-import Header from './Header';
 import Footer from './Footer';
 
 // AA
@@ -54,7 +53,6 @@ const AdminManage = Loadable({
 export default () => (
   <div id="wrapper">
     <div id="noFooter">
-      <Header />
       <NewHeader />
       <ManageRedirections />
       <Route path="/contributor/wish" component={contributorOnly} />

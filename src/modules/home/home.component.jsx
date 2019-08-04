@@ -21,7 +21,7 @@ const defaultImg = require('../../assets/img/profile.png');
 const TextBlock = styled(Item)`
   font-size: 1.1rem;
   font-weight: 300;
-  padding: 5vh 20vw;
+  padding: 0 20vw;
   text-align: center;
 `;
 
@@ -33,7 +33,7 @@ export default withTranslation('homepage')(({ loading, users, t }) => (
       <p>
         {t('headblock')}
       </p>
-      <p className="text-center">
+      <p>
         <ButtonLink url="/company/presentation" primary>{t('companyService')}</ButtonLink>
         <ButtonLink url="/individual/presentation" primary>{t('individualService')}</ButtonLink>
       </p>
@@ -45,7 +45,7 @@ export default withTranslation('homepage')(({ loading, users, t }) => (
     </Rows>
     <Rows>
       <Item style={{ maxWidth: '100vw' }}>
-        <h2 className="text-center my-4">{t('ourClients')}</h2>
+        <h2>{t('ourClients')}</h2>
         {!loading
           ? (
             <Slider
