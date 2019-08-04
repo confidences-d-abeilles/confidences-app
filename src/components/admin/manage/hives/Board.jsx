@@ -79,23 +79,24 @@ class Board extends PureComponent {
     }
     return (
       <Item flex={3}>
+        <h2>{hive.name}</h2>
         <div className="row">
           <div className="col-lg-4">
             <Parrains parrainsList={(hive && hive.parrains) || []} />
             <Rating value={(hive && parseFloat(hive.ratio)) || 2.5} handler={value => this.updateInfo('ratio', value)()} />
-            <h2>Informations</h2>
+            <h3>Informations</h3>
             <Info name="info" handler={this.updateInfo} defaultValue={hive.info} />
-            <h2>Mémo technique</h2>
+            <h3>Mémo technique</h3>
             <Info name="feedback" handler={this.updateInfo} defaultValue={hive.feedback} />
           </div>
           <div className="col-lg-8">
-            <h2>Actualités</h2>
+            <h3>Actualités</h3>
             <select onChange={({ target: { value: toEdit } }) => this.setState({ newsToEdit: toEdit })} className="my-2">
               <option value={null}>Choisissez une actualité à modifier</option>
               {hive.news.map(news => <option value={news.id} key={news.id}>{news.title}</option>)}
             </select>
             <Feedback name={this.state.newsToEdit} hiveId={hiveId} />
-            <h2>Photos</h2>
+            <h3>Photos</h3>
             <form onSubmit={this.addPhoto}>
               <FileUpload label="Taille recommandé : 400 x 300" identifier="hive-img" />
               <Button type="submit" primary>Ajouter</Button>

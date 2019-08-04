@@ -57,7 +57,7 @@ class AdminManageHives extends Component {
 
   searchHandler = (queryString) => {
     const { notification } = this.props;
-    console.log(queryString);
+    this.setState({ hives: null });
     request({
       url: `/hive/bundle/owner/${queryString}`,
       method: 'GET',

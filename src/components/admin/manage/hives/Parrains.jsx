@@ -5,7 +5,7 @@ const getDisplayName = ({ name, firstname, company_name }) => (company_name ? co
 
 const Parrains = ({ parrainsList }) => (
   <>
-    <h2>Les Parrains</h2>
+    <h3>Les Parrains</h3>
     {parrainsList.map(parrain => <p key={getDisplayName(parrain)}>{getDisplayName(parrain)}</p>)}
   </>
 );

@@ -3,43 +3,47 @@ import { Button } from '@cda/button';
 import request from '../../../../services/Net';
 import { withNotification } from '../../../../services/withNotification';
 
-export default withNotification(class Pictures extends Component {
-
-  delete = index => {
-    const { notification } = this.props;
+class Pictures extends Component {
+  delete = (index) => {
+    const { notification, hiveId, refresh } = this.props;
     request({
-      url : '/hive/'+this.props.hiveId+'/picture/'+index,
-      method: 'delete'
-    }, notification).then(res => {
-      this.props.refresh();
-    })
-  }
+      url: `/hive/${hiveId}/picture/${index}`,
+      method: 'delete',
+    }, notification).then(() => {
+      refresh();
+    });
+  };
 
-  setAsDefault = index => {
-    const { notification } = this.props;
+  setAsDefault = (index) => {
+    const { notification, refresh, hiveId } = this.props;
     request({
-      url : '/hive/img/'+this.props.hiveId,
-      method: 'put'
-    }, notification).then(res => {
-      this.props.refresh();
-    })
-  }
+      url: `/hive/img/${hiveId}`,
+      method: 'put',
+    }, notification).then(() => {
+      refresh();
+    });
+  };
 
-  render () {
+  render() {
+    const { data } = this.props;
     return (
       <div className="mt-4">
-        {(this.props.data && this.props.data.length !== 0)?
-          <div>
-            {this.props.data.map((img, index) => (
-              <>
-                <img key={index} alt={img} className="w-25 p-2" src={process.env.REACT_APP_CONTENT_DOMAIN+'/'+img} style={{ cursor: 'pointer' }} />
-                <Button onClick={this.delete.bind(this, index)}>Supprimer</Button>
-                <Button onClick={this.setAsDefault.bind(this, index)}>Par defaut</Button>
-              </>
-            ))}
-          </div>
-        :<p>Aucune image à afficher pour cette ruche</p>}
+        {(data && data.length !== 0)
+          ? (
+            <div>
+              {data.map((img, index) => (
+                <>
+                  <img key={index} alt={img} className="w-25 p-2" src={`${process.env.REACT_APP_CONTENT_DOMAIN}/${img}`} style={{ cursor: 'pointer' }} />
+                  <Button onClick={() => this.delete(index)}>Supprimer</Button>
+                  <Button onClick={() => this.setAsDefault(index)}>Par defaut</Button>
+                </>
+              ))}
+            </div>
+          )
+          : <p>Aucune image à afficher pour cette ruche</p>}
       </div>
-    )
+    );
   }
-});
+};
+
+export default withNotification(Pictures);
