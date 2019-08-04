@@ -5,16 +5,19 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Columns, Item } from '@cda/flex';
+import { Rows, Item } from '@cda/flex';
 import Link from '@cda/link';
 
 import logo from '../assets/img/logo.png';
 
-const Footer = styled(Columns)`
+const Footer = styled(Rows)`
   background-color: rgb(247, 247, 247);
   text-align: center;
   padding: 1rem;
   margin-top: 1rem;
+  flex-wrap: wrap;
+  position: relative;
+  bottom: 0;
 `;
 
 const Section = styled('ul')`
@@ -24,7 +27,7 @@ const Section = styled('ul')`
 
 export default () => (
   <Footer>
-    <Item>
+    <Item flex={2}>
       <Link to="/">
         <img src={logo} alt="Logo Confidences d'Abeilles" className="img-fluid" style={{ maxHeight: '128px' }} />
       </Link>
@@ -43,7 +46,7 @@ export default () => (
         <FontAwesomeIcon icon={faLinkedin} size="2x" />
       </Link>
     </Item>
-    <Item>
+    <Item flex={1}>
       <h3>Services</h3>
       <Section>
         <li><Link to="/company/presentation">Entreprise</Link></li>
@@ -53,7 +56,7 @@ export default () => (
         <li><Link to="/hives">Les ruches</Link></li>
       </Section>
     </Item>
-    <Item>
+    <Item flex={1}>
       <h3>La société</h3>
       <Section>
         <li><Link to="/about">Notre histoire</Link></li>
@@ -64,7 +67,7 @@ export default () => (
         <li><Link to="https://confidencesdabeilles.fr/blog" external>Blog</Link></li>
       </Section>
     </Item>
-    <Item>
+    <Item flex={1}>
       <h3>Ressources</h3>
       <Section>
         <li><Link to="/faq">FAQ</Link></li>

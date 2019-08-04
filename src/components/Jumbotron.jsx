@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Item, Columns } from '@cda/flex';
+import { Item, Rows } from '@cda/flex';
 
 
-const JumbotronWrapper = styled(Columns)`
+const JumbotronWrapper = styled(Rows)`
   background-color: #111;
   overflow: hidden;
   min-height: 30rem;
@@ -34,7 +34,7 @@ const Jumbcontent = styled(Item)`
 `;
 
 const JumboImage = styled(Item)`
-  width: 100%;
+  flex: 1;
   align-self: stretch;
   background-image: ${props => `url("${props.src}")`};
   background-size: cover;

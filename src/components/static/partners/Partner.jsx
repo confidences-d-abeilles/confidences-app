@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import { Columns, Item } from '@cda/flex';
+import { Rows, Item } from '@cda/flex';
 import Link from '@cda/link';
 
 const ImageSection = styled(Item)`
@@ -15,7 +15,7 @@ const StyledImg = styled('img')`
 `;
 
 const Partner = ({ img, title, content, link }) => (
-  <Columns>
+  <Rows>
     <ImageSection alignSelf="center" flex={1}>
       <StyledImg src={img} alt="Thomas Apiculture" />
     </ImageSection>
@@ -26,7 +26,7 @@ const Partner = ({ img, title, content, link }) => (
         <Link href={link} external>En savoir plus</Link>
       </p>
     </Item>
-  </Columns>
+  </Rows>
 );
 
 export default Partner;
