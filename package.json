@@ -1,6 +1,6 @@
 {
   "name": "confidences-app",
-  "version": "1.14.8",
+  "version": "1.14.9",
   "private": true,
   "dependencies": {
     "@babel/core": "7.5.4",
