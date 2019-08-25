@@ -3,7 +3,8 @@ FROM node:latest
 COPY . .
 
 RUN yarn
-RUN yarn build
+RUN yarn run env
+RUN yarn run build
 
 EXPOSE 5000
 

@@ -8,7 +8,7 @@ steps:
         - name: docker
           path: /var/run/docker.sock
     commands:
-      - docker-compose build
+      - docker-compose build preview
   - name: deploy-preview
     image: docker/compose:1.24.1
     volumes:
