@@ -3,12 +3,12 @@ name: default
 
 steps:
   - name: build
-    image: docker
-    commands:
-      - docker build . -t cda-app:latest
+    image: docker/compose:1.24.1
     volumes:
-      - name: docker
-        path: /var/run/docker.sock
+        - name: docker
+          path: /var/run/docker.sock
+    commands:
+      - docker-compose build
   - name: deploy-preview
     image: docker/compose:1.24.1
     volumes:

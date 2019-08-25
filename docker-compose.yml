@@ -6,6 +6,8 @@ services:
     restart: always
     ports:
       - 5000:5000
+    environment:
+      REACT_APP_STRIPE_API_KEY: pk_test_mLWoutIWlytgJmEvWuSL3xSB
     labels:
       - "traefik.frontend.rule=Host:cda.cchampou.me"
       - "traefik.backend.port=5000"
