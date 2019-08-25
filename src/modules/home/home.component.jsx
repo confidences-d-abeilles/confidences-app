@@ -43,7 +43,7 @@ export default withTranslation('homepage')(({ loading, users, t }) => (
         <p>{t('mission')}</p>
       </TextBlock>
     </Rows>
-    <Rows>
+    <Rows justifyContent="center">
       <Item style={{ maxWidth: '100vw' }}>
         <h2 className="text-center my-4">{t('ourClients')}</h2>
         {!loading

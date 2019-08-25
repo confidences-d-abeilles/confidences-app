@@ -101,13 +101,13 @@ export default withNotification(() => (
       {isLoggedIn()
         ? (
           <>
-            <ButtonLink url="/account" primary>Mon Compte</ButtonLink>
-            <ButtonLink url="/logout">Deconnexion</ButtonLink>
+            <ButtonLink to="/account" primary>Mon Compte</ButtonLink>
+            <ButtonLink to="/logout">Deconnexion</ButtonLink>
           </>
         ) : (
           <>
-            <ButtonLink url="/login" primary>Se connecter</ButtonLink>
-            <ButtonLink url="/presignup" data-cy="create-account">Créer un compte</ButtonLink>
+            <ButtonLink to="/login" primary>Se connecter</ButtonLink>
+            <ButtonLink to="/presignup" data-cy="create-account">Créer un compte</ButtonLink>
           </>
         )}
     </RightSection>

@@ -37,7 +37,7 @@ export default withNotification(class Hive extends Component {
         <Meta title="La ruche" />
         {hive ? (
           <div>
-            <ButtonLink url="/hives">Retourner aux ruches</ButtonLink>
+            <ButtonLink to="/hives">Retourner aux ruches</ButtonLink>
             <h1 className="text-center my-4" style={{ fontFamily: "HighTo" , padding: "0.4em 2.5em", zIndex: '5', color: '#E49C00' }}>RUCHE {this.state.hive.name.toUpperCase()}</h1>
             <div className="row">
               <div className="col-lg-5 col-md-7 col-sm-12 pr-4">

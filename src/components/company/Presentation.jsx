@@ -15,15 +15,15 @@ export default withTranslation('company')(({ t }) => (
       <h1 className="text-left">{t('headline')}</h1>
       <p className="text-left">{t('headblock')}</p>
       <p className="text-center">
-        <ButtonLink url="/signup/company" primary>{t('go')}</ButtonLink>
+        <ButtonLink to="/signup/company" primary>{t('go')}</ButtonLink>
       </p>
     </Jumbotron>
-    <Rows>
+    <Rows justifyContent="center">
       <Item textAlign="center">
         <h2>{t('secondTitle')}</h2>
       </Item>
     </Rows>
-    <Rows>
+    <Rows justifyContent="center">
       <Item>
         <h3 className="text-center my-4">{t('forCompany')}</h3>
         <ul>
@@ -37,17 +37,17 @@ export default withTranslation('company')(({ t }) => (
         </ul>
       </Item>
     </Rows>
-    <Rows>
+    <Rows justifyContent="center">
       <Item textAlign="center">
-        <ButtonLink url="/signup/company">{t('sponsor')}</ButtonLink>
+        <ButtonLink to="/signup/company">{t('sponsor')}</ButtonLink>
       </Item>
       <Item textAlign="center">
-        <ButtonLink url="/company/more">{t('more')}</ButtonLink>
+        <ButtonLink to="/company/more">{t('more')}</ButtonLink>
       </Item>
     </Rows>
-    <Rows>
+    <Rows justifyContent="center">
       <Item textAlign="center">
-        <ButtonLink url={leaflet} external primary>{t('download')}</ButtonLink>
+        <ButtonLink to={leaflet} external primary>{t('download')}</ButtonLink>
       </Item>
     </Rows>
   </Fragment>

@@ -44,7 +44,7 @@ const fiftyOffer = [
 export default () => (
   <>
     <Meta title="Tarifs particuliers" />
-    <ButtonLink url="/company/prices" primary>Tarifs entreprises ></ButtonLink>
+    <ButtonLink to="/company/prices" primary>Tarifs entreprises ></ButtonLink>
     <h2 className="text-center my-4">Tarifs particuliers</h2>
     <Rows justifyContent="center">
       <PriceCard title="10 000 abeilles" price={85} items={tenOffer} unit={UNIT} level={1} />
@@ -53,9 +53,9 @@ export default () => (
       <PriceCard title="40 000 abeilles" price={295} items={fourtyOffer} unit={UNIT} level={4} />
       <PriceCard title="50 000 abeilles" price={350} items={fiftyOffer} unit={UNIT} level={5} />
     </Rows>
-    <Rows>
+    <Rows justifyContent="center">
       <Item textAlign="center">
-        <ButtonLink url="/signup/individual" primary>Parrainer maintenant</ButtonLink>
+        <ButtonLink to="/signup/individual" primary>Parrainer maintenant</ButtonLink>
       </Item>
     </Rows>
   </>

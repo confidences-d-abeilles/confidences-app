@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Item, Columns } from '@cda/flex';
+import { Item, Rows } from '@cda/flex';
 
 
-const JumbotronWrapper = styled(Columns)`
+const JumbotronWrapper = styled(Rows)`
   background-color: #111;
   overflow: hidden;
   min-height: 30rem;
@@ -46,10 +46,10 @@ const JumboImage = styled(Item)`
 
 const Jumbotron = ({ children, img }) => (
   <JumbotronWrapper alignItems="center">
-    <Jumbcontent>
+    <Jumbcontent flex={1}>
       {children}
     </Jumbcontent>
-    <JumboImage src={img} />
+    <JumboImage src={img} flex={1} />
   </JumbotronWrapper>
 );
 
