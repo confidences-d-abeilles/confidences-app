@@ -19,6 +19,7 @@ yarn-error.log*
 .sass-cache
 
 *.local
+.env*
 
 cypress/videos
 cypress/screenshots
