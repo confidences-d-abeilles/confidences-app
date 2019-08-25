@@ -15,7 +15,7 @@ steps:
         - name: docker
           path: /var/run/docker.sock
     commands:
-      - docker-compose up -d -p cda-app preview
+      - docker-compose  -p cda-app up -d preview
 
 volumes:
   - name: docker
