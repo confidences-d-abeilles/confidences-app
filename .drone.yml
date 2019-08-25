@@ -4,9 +4,6 @@ name: default
 steps:
   - name: build
     image: docker/compose:1.24.1
-    environment:
-      REACT_APP_STRIPE_API_KEY:
-        from_secret: REACT_APP_STRIPE_API_KEY
     volumes:
         - name: docker
           path: /var/run/docker.sock
@@ -14,9 +11,6 @@ steps:
       - docker-compose build preview
   - name: deploy-preview
     image: docker/compose:1.24.1
-    environment:
-      REACT_APP_STRIPE_API_KEY:
-        from_secret: REACT_APP_STRIPE_API_KEY
     volumes:
         - name: docker
           path: /var/run/docker.sock
