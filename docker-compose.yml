@@ -4,6 +4,8 @@ services:
     build: .
     image: cda-app:latest
     restart: always
+    ports:
+      - 5000:5000
     labels:
       - "traefik.frontend.rule=Host:cda.cchampou.me"
       - "traefik.backend.port=5000"
