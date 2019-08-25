@@ -1,0 +1,16 @@
+version: '3'
+services:
+  preview:
+    build: .
+    image: cda-app:latest
+    restart: always
+    labels:
+      - "traefik.frontend.rule=Host:cda.cchampou.me"
+      - "traefik.backend.port=5000"
+      - "traefik.enable=true"
+      - "traefik.docker.network=layko_layko_net"
+
+networks:
+  default:
+    external:
+      name: layko_layko_net
