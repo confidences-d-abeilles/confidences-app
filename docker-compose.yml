@@ -1,7 +1,10 @@
 version: '3'
 services:
   preview:
-    build: .
+    build:
+      context: .
+      args:
+        - NODE_ENV=staging
     image: cda-app:latest
     restart: always
     labels:

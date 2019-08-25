@@ -1,11 +1,13 @@
 FROM node:latest
 
+ARG NODE_ENV
+
 COPY . .
 
 RUN yarn
 
-RUN yarn run build
+RUN NODE_ENV=$NODE_ENV yarn run build
 
 EXPOSE 5000
 
-CMD yarn start
+CMD NODE_ENV=$NODE_ENV yarn start
