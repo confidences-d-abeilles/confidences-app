@@ -2,9 +2,11 @@ FROM node:latest
 
 COPY . .
 
+RUN echo $REACT_APP_STRIPE_API_KEY
+
 RUN yarn
-RUN yarn run env
-RUN yarn run build
+
+RUN REACT_APP_STRIPE_API_KEY=$REACT_APP_STRIPE_API_KEY yarn run build
 
 EXPOSE 5000
 
