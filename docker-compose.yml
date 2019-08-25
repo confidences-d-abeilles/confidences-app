@@ -7,8 +7,6 @@ services:
         - REACT_APP_STRIPE_API_KEY=pk_test_mLWoutIWlytgJmEvWuSL3xSB
     image: cda-app:latest
     restart: always
-    environment:
-      - REACT_APP_STRIPE_API_KEY=pk_test_mLWoutIWlytgJmEvWuSL3xSB
     labels:
       - "traefik.frontend.rule=Host:cda.cchampou.me"
       - "traefik.backend.port=5000"
