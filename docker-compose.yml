@@ -4,7 +4,7 @@ services:
     build:
       context: .
       args:
-        - REACT_APP_STRIPE_API_KEY=pk_test_mLWoutIWlytgJmEvWuSL3xSB
+        - REACT_APP_STRIPE_API_KEY=${REACT_APP_STRIPE_API_KEY}
     image: cda-app:latest
     restart: always
     labels:
