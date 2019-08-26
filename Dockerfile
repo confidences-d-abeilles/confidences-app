@@ -4,10 +4,13 @@ ARG NODE_ENV
 
 COPY . .
 
+RUN if [ "$NODE_ENV" == "staging" ] ; then mv .env.staging .env.production ; else rm .env.staging ;
+
 RUN yarn
 
-RUN NODE_ENV=$NODE_ENV yarn run build
+
+RUN yarn run build
 
 EXPOSE 5000
 
-CMD NODE_ENV=$NODE_ENV yarn start
+CMD yarn start
