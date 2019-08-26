@@ -4,7 +4,7 @@ ARG NODE_ENV
 
 COPY . .
 
-RUN if [ "$NODE_ENV" == "staging" ] ; then mv .env.staging .env.production ; else rm .env.staging ; fi
+RUN if [ "$NODE_ENV" = "staging" ] ; then mv .env.staging .env.production ; else rm .env.staging ; fi
 
 RUN yarn
 

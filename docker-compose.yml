@@ -4,7 +4,7 @@ services:
     build:
       context: .
       args:
-        - NODE_ENV=development
+        - NODE_ENV=staging
     image: cda-app:latest
     restart: always
     labels:
