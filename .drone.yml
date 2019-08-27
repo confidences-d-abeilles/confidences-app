@@ -1,0 +1,23 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: build
+    image: docker/compose:1.24.1
+    volumes:
+        - name: docker
+          path: /var/run/docker.sock
+    commands:
+      - docker-compose build preview
+  - name: deploy-preview
+    image: docker/compose:1.24.1
+    volumes:
+        - name: docker
+          path: /var/run/docker.sock
+    commands:
+      - docker-compose -p cda-app up -d preview
+
+volumes:
+  - name: docker
+    host:
+      path: /var/run/docker.sock
