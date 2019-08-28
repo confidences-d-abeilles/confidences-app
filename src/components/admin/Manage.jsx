@@ -13,7 +13,7 @@ import AdminManageUser from './manage/Users';
 import AdminManageUserId from './manage/users/Fiche';
 import AdminManageFaq from './manage/Faq';
 import AdminManageMails from './manage/Mails';
-import AdminManageHives from './manage/Hives';
+import AdminManageHives from './manage/hives/Hives';
 import AdminManageHivesBoard from './manage/hives/Board';
 import AdminManageBundles from './manage/Bundles';
 import AdminManageBundle from './manage/bundle/MainScreen';

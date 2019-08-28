@@ -7,14 +7,15 @@ import { Rows, Item } from '@cda/flex';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-import request from '../../../services/Net';
-import { handleChange } from '../../../services/FormService';
-import Loading from '../../utils/Loading';
-import Meta from '../../utils/Meta';
-import { withNotification } from '../../../services/withNotification';
-import Search from './hives/Search';
-import AdminManageHivesBoard from './hives/Board';
-import UserType from './users/UserType/UserType';
+import PropTypes from 'prop-types';
+import request from '../../../../services/Net';
+import { handleChange } from '../../../../services/FormService';
+import Loading from '../../../utils/Loading';
+import Meta from '../../../utils/Meta';
+import { withNotification } from '../../../../services/withNotification';
+import Search from './Search';
+import AdminManageHivesBoard from './Board';
+import UserType from '../users/UserType/UserType';
 
 class AdminManageHives extends Component {
   state = {
@@ -93,10 +94,13 @@ class AdminManageHives extends Component {
                         <tr>
                           <th>Nom</th>
                         </tr>
-                        {hives && hives.map(({ id, identifier, parrainType, name }) => (
+                        {hives && hives.map(({
+                          id, identifier, parrainType, name,
+                        }) => (
                           <tr key={id} onClick={() => history.push(`/admin/manage/hive/${id}`)} style={{ cursor: 'pointer' }}>
                             <td>
-                              <UserType type={parrainType} />&nbsp;
+                              <UserType type={parrainType} />
+&nbsp;
                               {`${name} ${identifier ? ` (${identifier})` : ''}`}
                             </td>
                           </tr>
@@ -114,5 +118,11 @@ class AdminManageHives extends Component {
     );
   }
 }
+
+AdminManageHives.propTypes = {
+  notification: PropTypes.shape({
+    addNotification: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default withNotification(withRouter(AdminManageHives));
