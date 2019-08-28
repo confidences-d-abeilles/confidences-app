@@ -5,6 +5,8 @@ import { Button } from '@cda/button';
 import Input from '@cda/input';
 import { Rows, Item } from '@cda/flex';
 
+import 'react-datepicker/dist/react-datepicker.css';
+
 import request from '../../../services/Net';
 import { handleChange } from '../../../services/FormService';
 import Loading from '../../utils/Loading';
