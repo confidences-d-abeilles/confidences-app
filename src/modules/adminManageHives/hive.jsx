@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 import { Button } from '@cda/button';
 import { Item } from '@cda/flex';
-import Parrains from './Parrains';
+import Parrains from './parrains';
 import request from '../../services/Net';
 import { withNotification } from '../../services/withNotification';
-import Rating from './Rating';
+import Rating from './rating';
 import Loading from '../../components/utils/Loading';
 import Feedback from '../../components/utils/Feedback';
-import Info from './Info';
+import Info from './info';
 import FileUpload from '../../components/utils/FileUpload';
-import Pictures from './Pictures';
-import Identifier from './Identifier';
+import Pictures from './pictures';
+import Identifier from './identifier';
 
 class Hive extends PureComponent {
   state = {
@@ -26,7 +26,6 @@ class Hive extends PureComponent {
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.hiveId !== prevProps.match.params.hiveId) {
-      console.log('Route change!');
       this.setState({ hive: null });
       this.get();
     }
@@ -53,8 +52,7 @@ class Hive extends PureComponent {
     }, notification)
       .then(() => {
         this.setState({ hive: { ...this.state.hive, [name]: value } });
-        console.log(this.props);
-        this.props.fetchHives();
+        fetchHives();
       });
   };
 
@@ -124,7 +122,7 @@ Hive.propTypes = {
   }).isRequired,
   notification: PropTypes.shape({
     addNotification: PropTypes.func.isRequired,
-  }),
+  }).isRequired,
 };
 
 export default withNotification(Hive);

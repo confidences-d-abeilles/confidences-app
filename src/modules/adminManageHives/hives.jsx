@@ -13,7 +13,7 @@ import { handleChange } from '../../services/FormService';
 import Loading from '../../components/utils/Loading';
 import Meta from '../../components/utils/Meta';
 import { withNotification } from '../../services/withNotification';
-import Search from './Search';
+import Search from './search';
 import AdminManageHivesBoard from './hive.connector';
 import UserType from '../../components/admin/manage/users/UserType/UserType';
 
@@ -71,7 +71,7 @@ class AdminManageHives extends Component {
           </form>
         </Rows>
         <Rows>
-          <Item flex={1} style={{ height: '25rem', overflowY: 'scroll' }}>
+          <Item flex={1} style={{ height: '100vh', overflowY: 'scroll' }}>
             {hives
               ? (
                 <table className="table table-hover">

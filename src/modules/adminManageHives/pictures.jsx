@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Button } from '@cda/button';
 import request from '../../services/Net';
 import { withNotification } from '../../services/withNotification';
@@ -14,7 +14,7 @@ class Pictures extends Component {
     });
   };
 
-  setAsDefault = (index) => {
+  setAsDefault = () => {
     const { notification, refresh, hiveId } = this.props;
     request({
       url: `/hive/img/${hiveId}`,
@@ -32,11 +32,11 @@ class Pictures extends Component {
           ? (
             <div>
               {data.map((img, index) => (
-                <>
-                  <img key={index} alt={img} className="w-25 p-2" src={`${process.env.REACT_APP_CONTENT_DOMAIN}/${img}`} style={{ cursor: 'pointer' }} />
+                <Fragment key={img.id}>
+                  <img alt={img} className="w-25 p-2" src={`${process.env.REACT_APP_CONTENT_DOMAIN}/${img}`} style={{ cursor: 'pointer' }} />
                   <Button onClick={() => this.delete(index)}>Supprimer</Button>
-                  <Button onClick={() => this.setAsDefault(index)}>Par defaut</Button>
-                </>
+                  {/* <Button onClick={() => this.setAsDefault(index)}>Par defaut</Button> */}
+                </Fragment>
               ))}
             </div>
           )
@@ -44,6 +44,6 @@ class Pictures extends Component {
       </div>
     );
   }
-};
+}
 
 export default withNotification(Pictures);
