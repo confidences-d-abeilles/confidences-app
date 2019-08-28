@@ -51,7 +51,7 @@ export default () => (
               <li><Link to="/team" className="noStyleLink">L&apos;équipe</Link></li>
               <li><Link to="/contact" className="noStyleLink">Contact</Link></li>
               <li><Link to="/jobs" className="noStyleLink">Jobs</Link></li>
-              <li><a href="https://confidencesdabeilles.fr/blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
+              <li><a href="https://shop.confidencesdabeilles.fr/blogs/all" target="_blank" rel="noopener noreferrer">Blog</a></li>
             </ul>
           </div>
           <div className="col-lg-4 col-md-4 col-sm-6 mb-4">
