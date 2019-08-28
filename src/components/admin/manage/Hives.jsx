@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { Link, Route, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 
 import { Button } from '@cda/button';
 import Input from '@cda/input';
-import { Columns, Item } from '@cda/flex';
+import { Rows, Item } from '@cda/flex';
 
 import request from '../../../services/Net';
 import { handleChange } from '../../../services/FormService';
 import Loading from '../../utils/Loading';
 import Meta from '../../utils/Meta';
-import 'react-datepicker/dist/react-datepicker.css';
 import { withNotification } from '../../../services/withNotification';
 import Search from './hives/Search';
 import AdminManageHivesBoard from './hives/Board';
@@ -83,7 +82,7 @@ class AdminManageHives extends Component {
                 <Button type="submit">Créer la ruche</Button>
               </form>
             </div>
-            <Columns>
+            <Rows>
               <Item flex={1} style={{ height: '25rem', overflowY: 'scroll' }}>
                 {hives
                   ? (
@@ -106,7 +105,7 @@ class AdminManageHives extends Component {
                   : <Loading />}
               </Item>
               <Route exact path="/admin/manage/hive/:hiveId" component={AdminManageHivesBoard} />
-            </Columns>
+            </Rows>
           </div>
         </div>
       </div>
