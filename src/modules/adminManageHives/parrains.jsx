@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const getDisplayName = ({ name, firstname, company_name }) => (company_name ? company_name : `${firstname} ${name}`);
+const getDisplayName = ({ name, firstname, company_name: companyName }) => (companyName || `${firstname} ${name}`);
 
 const Parrains = ({ parrainsList }) => (
   <>
