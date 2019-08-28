@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import { StripeProvider } from 'react-stripe-elements';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import { ThemeProvider } from 'emotion-theming';
 import {
   BrowserRouter as Router,
@@ -26,7 +27,8 @@ const ScrollToTop = () => {
 
 const store = createStore(
   reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  compose(applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()),
 );
 
 const App = () => (
