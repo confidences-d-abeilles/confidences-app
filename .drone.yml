@@ -26,7 +26,7 @@ steps:
       - name: docker
         path: /var/run/docker.sock
     commands:
-      - docker-compose build preview
+      - docker-compose build production
     when:
       branch:
         - master
@@ -38,7 +38,7 @@ steps:
       - name: docker
         path: /var/run/docker.sock
     commands:
-      - docker-compose -p cda-app up -d preview
+      - docker-compose -p cda-app up -d production
     when:
       branch:
         - master
