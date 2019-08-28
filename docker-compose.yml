@@ -5,7 +5,7 @@ services:
       context: .
       args:
         - NODE_ENV=staging
-    image: cda-app:latest
+    image: cda-app:staging
     restart: always
     labels:
       - "traefik.frontend.rule=Host:cda.cchampou.me"
@@ -17,7 +17,7 @@ services:
       context: .
       args:
         - NODE_ENV=production
-    image: cda-app:latest
+    image: cda-app:production
     restart: always
     labels:
       - "traefik.frontend.rule=Host:parrainage.confidencesdabeilles.fr"
