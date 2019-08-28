@@ -37,7 +37,7 @@ class Hives extends Component {
             {hives.map((hive) => {
               if (hive.imgs && hive.imgs[0]) {
                 return (
-                  <div className="card col-lg-3 col-md-5 col-sm-11 m-1" style={{ maxWidth: '20em' }}>
+                  <div key={hive.id} className="card col-lg-3 col-md-5 col-sm-11 m-1" style={{ maxWidth: '20em' }}>
                     <SquareImg className="card-img-top img-fluid" src={(hive.imgs && hive.imgs[0]) ? `${process.env.REACT_APP_CONTENT_DOMAIN}/${hive.imgs[0]}` : imgPlaceholder} alt="Card image cap" />
                     <div className="card-block" style={{ height: 'auto', flex: '0' }}>
                       <h2 className="card-title text-center" style={{ fontFamily: 'HighTo' }}>{hive.name}</h2>

@@ -62,7 +62,7 @@ const PriceCard = ({
 
 PriceCard.propTypes = {
   title: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf.isRequired,
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
   unit: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   level: PropTypes.number.isRequired,

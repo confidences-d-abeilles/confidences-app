@@ -27,13 +27,13 @@ export default withTranslation('company')(({ t }) => (
       <Item>
         <h3 className="text-center my-4">{t('forCompany')}</h3>
         <ul>
-          {t('forCompanyPoints').map(point => <li>{point}</li>)}
+          {t('forCompanyPoints').map(point => <li key={point}>{point}</li>)}
         </ul>
       </Item>
       <Item>
         <h3 className="text-center my-4">{t('forUs')}</h3>
         <ul>
-          {t('forUsPoints').map(point => <li>{point}</li>)}
+          {t('forUsPoints').map(point => <li key={point}>{point}</li>)}
         </ul>
       </Item>
     </Rows>

@@ -75,7 +75,7 @@ const Dropdown = () => {
       <DropdownWrapper onMouseLeave={toggleHandler} isOpen={isOpen}>
         {navLinks.desktop.dropdown.map(({ label, ...props }) => (
           <DropdownElement
-            key={props.url}
+            key={props.to}
             {...props}
           >
             {label}
