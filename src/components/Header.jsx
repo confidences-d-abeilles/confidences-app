@@ -47,13 +47,13 @@ export default withNotification(() => (
       >
         <ul className="navbar-nav">
           {isLoggedIn() ? navLinks.mobile.loggedIn.map(({ label, ...props }) => (
-            <li key={props.url} className="nav-item">
+            <li key={`mobile-${props.to}`} className="nav-item">
               <MyLink className="nav-link" {...props}>{label}</MyLink>
             </li>
           )) : (
             <Fragment>
               {navLinks.mobile.visitors.map(({ label, ...props }) => (
-                <li key={props.url} className="nav-item">
+                <li key={`mobile-${props.to}`} className="nav-item">
                   <MyLink className="nav-link" {...props}>{label}</MyLink>
                 </li>
               ))}
