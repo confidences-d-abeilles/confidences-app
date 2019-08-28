@@ -20,8 +20,6 @@ import MyRouter from './components/Router';
 import Error from './services/Errors';
 
 
-import Aviva from './modules/aviva/Aviva';
-
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
   return null;
@@ -44,7 +42,6 @@ const App = () => (
                 <Switch>
                   <Redirect path="/perus" to="/parrains/perus" />
                   <Route path="/parrains/:namespace" component={logAnalytics(CompanyPage)} />
-                  <Route exact path="/la-fabrique-aviva-projet-confidences-abeilles-concours" component={Aviva} />
                   <Route component={logAnalytics(MyRouter)} />
                 </Switch>
               </Fragment>
