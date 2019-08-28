@@ -12,6 +12,7 @@ import Feedback from '../../../utils/Feedback';
 import Info from './Info';
 import FileUpload from '../../../utils/FileUpload';
 import Pictures from './Pictures';
+import Identifier from './Identifier';
 
 class Board extends PureComponent {
   state = {
@@ -83,6 +84,7 @@ class Board extends PureComponent {
         <div className="row">
           <div className="col-lg-4">
             <Parrains parrainsList={(hive && hive.parrains) || []} />
+            <Identifier handler={value => this.updateInfo('identifier', value)()} initialValue={hive.identifier} />
             <Rating value={(hive && parseFloat(hive.ratio)) || 2.5} handler={value => this.updateInfo('ratio', value)()} />
             <h3>Informations</h3>
             <Info name="info" handler={this.updateInfo} defaultValue={hive.info} />

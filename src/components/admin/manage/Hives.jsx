@@ -91,11 +91,11 @@ class AdminManageHives extends Component {
                         <tr>
                           <th>Nom</th>
                         </tr>
-                        {hives && hives.map(hive => (
-                          <tr key={hive.id} onClick={() => history.push(`/admin/manage/hive/${hive.id}`)} style={{ cursor: 'pointer' }}>
+                        {hives && hives.map(({ id, identifier, parrainType, name }) => (
+                          <tr key={id} onClick={() => history.push(`/admin/manage/hive/${id}`)} style={{ cursor: 'pointer' }}>
                             <td>
-                              <UserType type={hive.parrainType} />&nbsp;
-                              {hive.name}
+                              <UserType type={parrainType} />&nbsp;
+                              {`${name} ${identifier ? ` (${identifier})` : ''}`}
                             </td>
                           </tr>
                         ))}
