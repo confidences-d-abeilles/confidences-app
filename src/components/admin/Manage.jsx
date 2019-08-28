@@ -7,7 +7,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import Sidebar from '@cda/sidebar';
-import { Columns, Item } from '@cda/flex';
+import { Rows, Item } from '@cda/flex';
 
 import AdminManageUser from './manage/Users';
 import AdminManageUserId from './manage/users/Fiche';
@@ -39,38 +39,30 @@ const items = [
 
 
 export default () => (
-  <div className="container-fluid py-4">
-    <Columns alignItems="flex-start">
-      <Item flex={1} alignSelf="top" noGutter>
-        <Sidebar items={items} />
-      </Item>
-      <Item flex={20} alignSelf="top" noGutter>
-        <div className="col-lg-12 col-md-12">
-          <div className="row">
-            <div className="col-12">
-              <Route exact path="/admin/manage" component={AdminManageHome} />
-              <Route exact path="/admin/manage/user" component={AdminManageUser} />
-              <Route exact path="/admin/manage/user/:id" component={AdminManageUserId} />
-              <Route exact path="/admin/manage/mails" component={AdminManageMails} />
-              <Route path="/admin/manage/hive" component={AdminManageHives} />
-              <Route exact path="/admin/manage/bundles" component={AdminManageBundles} />
-              <Route exact path="/admin/manage/bundle" component={AdminManageBundle} />
-              <Route exact path="/admin/manage/Label" component={AdminManageLabel} />
-              <Switch>
-                <Route exact path="/admin/manage/bundle/unpaid" component={AdminManageBundle} />
-                <Route exact path="/admin/manage/bundle/pending" component={AdminManageBundle} />
-                <Route exact path="/admin/manage/bundle/paid" component={AdminManageBundle} />
-                <Route exact path="/admin/manage/bundle/ok" component={AdminManageBundle} />
-                <Route exact path="/admin/manage/bundle/:id" component={AdminManageBundleId} />
-              </Switch>
-              <Route exact path="/admin/manage/faq" component={AdminManageFaq} />
-              <Route exact path="/admin/manage/products" component={Products} />
-              <Route exact path="/admin/manage/coupons" component={Coupons} />
-              <Route exact path="/admin/manage/server" component={AdminManageServer} />
-            </div>
-          </div>
-        </div>
-      </Item>
-    </Columns>
-  </div>
+  <Rows alignItems="flex-start">
+    <Item flex={1} alignSelf="top" noGutter>
+      <Sidebar items={items} />
+    </Item>
+    <Item flex={40} alignSelf="top" noGutter>
+      <Route exact path="/admin/manage" component={AdminManageHome} />
+      <Route exact path="/admin/manage/user" component={AdminManageUser} />
+      <Route exact path="/admin/manage/user/:id" component={AdminManageUserId} />
+      <Route exact path="/admin/manage/mails" component={AdminManageMails} />
+      <Route path="/admin/manage/hive" component={AdminManageHives} />
+      <Route exact path="/admin/manage/bundles" component={AdminManageBundles} />
+      <Route exact path="/admin/manage/bundle" component={AdminManageBundle} />
+      <Route exact path="/admin/manage/Label" component={AdminManageLabel} />
+      <Switch>
+        <Route exact path="/admin/manage/bundle/unpaid" component={AdminManageBundle} />
+        <Route exact path="/admin/manage/bundle/pending" component={AdminManageBundle} />
+        <Route exact path="/admin/manage/bundle/paid" component={AdminManageBundle} />
+        <Route exact path="/admin/manage/bundle/ok" component={AdminManageBundle} />
+        <Route exact path="/admin/manage/bundle/:id" component={AdminManageBundleId} />
+      </Switch>
+      <Route exact path="/admin/manage/faq" component={AdminManageFaq} />
+      <Route exact path="/admin/manage/products" component={Products} />
+      <Route exact path="/admin/manage/coupons" component={Coupons} />
+      <Route exact path="/admin/manage/server" component={AdminManageServer} />
+    </Item>
+  </Rows>
 );
