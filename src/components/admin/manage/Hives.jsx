@@ -95,7 +95,7 @@ class AdminManageHives extends Component {
                           <tr key={id} onClick={() => history.push(`/admin/manage/hive/${id}`)} style={{ cursor: 'pointer' }}>
                             <td>
                               <UserType type={parrainType} />&nbsp;
-                              {`${name} (${identifier})`}
+                              {`${name} ${identifier ? ` (${identifier})` : ''}`}
                             </td>
                           </tr>
                         ))}
