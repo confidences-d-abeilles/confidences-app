@@ -17,7 +17,7 @@ export default (options, notification) => {
   };
 
   const onError = (error) => {
-    if (error.response) {
+    if (error.response && notification) {
       if (error.response.status === '400') {
         notification.addNotification({
           message: error.response.data,
