@@ -28,7 +28,8 @@ const Label = ({ notification }) => {
 
   return (
     <>
-      <h2>Générer les étiquettes</h2>
+      <h2>Étiquettes</h2>
+      <h3>Générer</h3>
       <form onSubmit={generate}>
         <Columns>
           <Item>
@@ -42,10 +43,10 @@ const Label = ({ notification }) => {
           </Item>
         </Columns>
       </form>
-      <h2>Télécharger les étiquettes</h2>
+      <h3>Télécharger</h3>
       <ButtonLink external url={`${process.env.REACT_APP_API_DOMAIN}/label/bulk`}>Télécharger</ButtonLink>
     </>
-  )
+  );
 };
 
 export default withNotification(Label);

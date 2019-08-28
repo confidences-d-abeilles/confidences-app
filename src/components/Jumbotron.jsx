@@ -34,7 +34,7 @@ const Jumbcontent = styled(Item)`
 `;
 
 const JumboImage = styled(Item)`
-  width: 100%;
+  flex: 1;
   align-self: stretch;
   background-image: ${props => `url("${props.src}")`};
   background-size: cover;

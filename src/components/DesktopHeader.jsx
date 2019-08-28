@@ -16,12 +16,8 @@ const Wrapper = styled('nav')`
   justify-content: space-between;
   flex-wrap: no-wrap;
   padding: 1rem;
-  width: 100%;
-  height: 100px;
+  width: calc(100% - 2rem);
   background-color: white;
-  @media (max-width: 1201px) {
-    display: none;
-  }
 `;
 
 const Section = styled('div')`
@@ -71,11 +67,12 @@ const Dropdown = () => {
 
   return (
     <DropdownPostion>
-      <a href="/" onClick={toggleHandler}>La société</a>
+      <MyLink to="/" onClick={toggleHandler} disabled>La société</MyLink>
       <DropdownWrapper onMouseLeave={toggleHandler} isOpen={isOpen}>
-        {navLinks.desktop.dropdown.map(({ label, ...props }) => (
+        {navLinks.desktop.dropdown.map(({ label, url, ...props }) => (
           <DropdownElement
-            key={props.to}
+            key={url}
+            to={url}
             {...props}
           >
             {label}
@@ -86,14 +83,20 @@ const Dropdown = () => {
   );
 };
 
-export default withNotification(() => (
+const Item = styled(MyLink)`
+  text-decoration: none;
+  padding: 0 0.5rem;
+  color: black;
+`;
+
+const Header = () => (
   <Wrapper>
     <Section>
       <Link to="/">
         <img src={logoSquare} width="auto" height="64" alt="Logo Confidences d'Abeilles" />
       </Link>
-      {navLinks.desktop.visitors.map(({ label, ...props }) => (
-        <MyLink className="nav-link" key={label} {...props}>{label}</MyLink>
+      {navLinks.desktop.visitors.map(({ label, url, ...props }) => (
+        <Item key={label} to={url} {...props}>{label}</Item>
       ))}
     </Section>
     <RightSection>
@@ -112,4 +115,6 @@ export default withNotification(() => (
         )}
     </RightSection>
   </Wrapper>
-));
+);
+
+export default withNotification(Header);

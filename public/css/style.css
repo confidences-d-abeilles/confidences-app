@@ -3,8 +3,8 @@
 	src: url('../fonts/HighTower.ttf');
 }
 
-h1, h2, h3 {
-    font-family: "HighTo", sans-serif;
+body {
+    font-family: sans-serif;
 }
 
 .btn-company {

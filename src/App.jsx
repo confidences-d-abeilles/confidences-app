@@ -20,7 +20,6 @@ import CompanyPage from './components/company/Page';
 import MyRouter from './components/Router';
 import Error from './services/Errors';
 
-
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
   return null;

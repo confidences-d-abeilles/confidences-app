@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import FontAwesome from 'react-fontawesome';
-import { Button } from '@cda/button';
+
+import Button from '@cda/button';
 import Input from '@cda/input';
+import { Rows, Item } from '@cda/flex';
 
 import request from '../../../services/Net';
 import { handleChange } from '../../../services/FormService';
@@ -138,76 +139,70 @@ export default withNotification(class IndividualManageInfos extends Component {
   }
 
   render() {
+    const { logout, user, editInfos } = this.state;
     return (
       <div>
         <Meta title="Mes informations" />
-        {this.state.logout && <Redirect to="/" />}
+        {logout && <Redirect to="/" />}
         <h2 className="text-center my-2">
 					Mes informations
 
         </h2>
-        {(this.state.user)
+        {user
           ? (
-            <div>
-              <div className="row">
-                <div className="col-lg-6 col-sm-12">
-                  <div className="newcard">
-                    {(!this.state.editInfos)
-                      ? (
-                    <div>
-              <h3 className="mb-2"><small>Informations générales</small></h3>
-              <strong>Nom :</strong>
-              {' '}
-              {this.state.user.name}
-              <br />
-              <strong>Prénom :</strong>
-              {' '}
-              {this.state.user.firstname}
-              <br />
-              <strong>Numéro de téléphone :</strong>
-              {' '}
-              {this.state.phone}
-              <br />
-              <strong>Email :</strong>
-              {' '}
-              {this.state.email}
-              <div className="text-right mt-2">
-                  <Button primary onClick={() => { this.setState({ editInfos: true }); }}>
-                  <FontAwesome name="pencil" />
-&nbsp;Editer ces informations
-                </Button>
+            <Rows>
+              <Item>
+                  {!editInfos
+                    ? (
+                      <div>
+                        <h3 className="mb-2"><small>Informations générales</small></h3>
+                        <strong>Nom :</strong>
+                        {' '}
+                        {this.state.user.name}
+                        <br />
+                        <strong>Prénom :</strong>
+                        {' '}
+                        {this.state.user.firstname}
+                        <br />
+                        <strong>Numéro de téléphone :</strong>
+                        {' '}
+                        {this.state.phone}
+                        <br />
+                        <strong>Email :</strong>
+                        {' '}
+                        {this.state.email}
+                        <div className="text-right mt-2">
+                          <Button primary onClick={() => { this.setState({ editInfos: true }); }}>
+                              &nbsp;Editer ces informations
+                          </Button>
+                        </div>
+                      </div>
+                    )
+                    : (
+                      <form onSubmit={this.changeInfos.bind(this)}>
+                        <div className="form-group">
+                          <label>Numéro de téléphone</label>
+                          <Input type="tel" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} placeholder="Numéro de téléphone" />
+                        </div>
+                        <div className="form-group">
+                          <label>Email</label>
+                          <Input type="email" name="email" onChange={handleChange.bind(this)} value={this.state.email} placeholder="Email" />
+                        </div>
+                        <div className="form-group text-center">
+                          <Button>Enregistrer</Button>
+                        </div>
+                      </form>
+                    )}
+                  <h3 className="mb-2"><small>Adresse de facturation</small></h3>
+                  <Address data={this.state.billing_address} />
+              </Item>
+              <Item>
+                <div>
+                  <h3 className="mb-2"><small>Informations de livraison</small></h3>
+                  <Address data={this.state.delivery_address} />
                 </div>
-            </div>
-                      )
-                      :										(
-                    <form onSubmit={this.changeInfos.bind(this)}>
-              <div className="form-group">
-                  <label>Numéro de téléphone</label>
-                  <Input type="tel" name="phone" onChange={handleChange.bind(this)} value={this.state.phone} placeholder="Numéro de téléphone" />
-                </div>
-              <div className="form-group">
-                  <label>Email</label>
-                  <Input type="email" name="email" onChange={handleChange.bind(this)} value={this.state.email} placeholder="Email" />
-                </div>
-              <div className="form-group text-center">
-                  <Button>Enregistrer</Button>
-                </div>
-            </form>
-                      )}
-                  </div>
-                  <div className="newcard">
-                    <h3 className="mb-2"><small>Adresse de facturation</small></h3>
-                    <Address data={this.state.billing_address} />
-                  </div>
-                </div>
-                <div className="col-lg-6 col-sm-12">
-                  <div className="newcard">
-                    <h3 className="mb-2"><small>Informations de livraison</small></h3>
-                    <Address data={this.state.delivery_address} />
-                  </div>
-                </div>
-              </div>
-            </div>
+              </Item>
+            </Rows>
           )
 				  : <Loading />}
       </div>

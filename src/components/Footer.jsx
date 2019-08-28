@@ -1,70 +1,80 @@
 import React from 'react';
-import FontAwesome from 'react-fontawesome';
-import { Link } from 'react-router-dom';
+import styled from '@emotion/styled';
+import {
+  faFacebookSquare, faInstagram, faLinkedin, faTwitter,
+} from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { Rows, Item } from '@cda/flex';
+import Link from '@cda/link';
+
 import logo from '../assets/img/logo.png';
-import '../assets/styles/footer.css';
+
+const Footer = styled(Rows)`
+  background-color: rgb(247, 247, 247);
+  text-align: center;
+  padding: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  position: relative;
+  bottom: 0;
+`;
+
+const Section = styled('ul')`
+  list-style: none;
+  text-align: left;
+`;
 
 export default () => (
-  <footer className="bg-faded">
-    <div className="container-fluid">
-      <div className="row justify-content-around">
-        <div className="col-lg-4 mb-4">
-          <div>
-            <Link to="/">
-              <img src={logo} alt="Logo Confidences d'Abeilles" className="img-fluid" style={{ maxHeight: '128px' }} />
-            </Link>
-            <br />
-            <br />
-            <a href="https://www.facebook.com/confidencesdabeille" target="_blank" rel="noopener noreferrer">
-              <FontAwesome name="facebook-official" size="2x" />
-            </a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="https://twitter.com/cdabeille" target="_blank" rel="noopener noreferrer">
-              <FontAwesome name="twitter" size="2x" />
-            </a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="https://www.instagram.com/confidences_dabeilles/" target="_blank" rel="noopener noreferrer">
-              <FontAwesome name="instagram" size="2x" />
-            </a>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="https://www.linkedin.com/company/confidences-d'abeilles/" target="_blank" rel="noopener noreferrer">
-              <FontAwesome name="linkedin" size="2x" />
-            </a>
-          </div>
-        </div>
-        <div className="col-lg-6 col-md-12 row">
-          <div className="col-lg-4 col-md-4 col-sm-6 mb-4">
-            <h3 className="text-left">Services</h3>
-            <ul>
-              <li><Link to="/company/presentation" className="noStyleLink">Entreprise</Link></li>
-              <li><Link to="/individual/presentation" className="noStyleLink">Particulier</Link></li>
-              <li><Link to="/partners" className="noStyleLink">Partenaires</Link></li>
-              <li><Link to="/individual/prices" className="noStyleLink">Tarifs</Link></li>
-              <li><Link to="/hives" className="noStyleLink">Les ruches</Link></li>
-            </ul>
-          </div>
-          <div className="col-lg-4 col-md-4 col-sm-6 mb-4">
-            <h3 className="text-left">La société</h3>
-            <ul>
-              <li><Link to="/about" className="noStyleLink">Notre histoire</Link></li>
-              <li><Link to="/ourvalues" className="noStyleLink">Nos valeurs</Link></li>
-              <li><Link to="/team" className="noStyleLink">L&apos;équipe</Link></li>
-              <li><Link to="/contact" className="noStyleLink">Contact</Link></li>
-              <li><Link to="/jobs" className="noStyleLink">Jobs</Link></li>
-              <li><a href="https://shop.confidencesdabeilles.fr/blogs/all" target="_blank" rel="noopener noreferrer">Blog</a></li>
-            </ul>
-          </div>
-          <div className="col-lg-4 col-md-4 col-sm-6 mb-4">
-            <h3 className="text-left">Ressources</h3>
-            <ul>
-              <li><Link to="/faq" className="noStyleLink">FAQ</Link></li>
-              <li><Link to="/presse" className="noStyleLink">Presse</Link></li>
-              <li><Link to="/mentions_legales" className="noStyleLink">Mentions légales</Link></li>
-              <li><Link to="/cgv" className="noStyleLink">CGV</Link></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <Footer>
+    <Item flex={2}>
+      <Link to="/">
+        <img src={logo} alt="Logo Confidences d'Abeilles" className="img-fluid" style={{ maxHeight: '128px' }} />
+      </Link>
+      <br />
+      <br />
+      <Link to="https://www.facebook.com/confidencesdabeille" external>
+        <FontAwesomeIcon icon={faFacebookSquare} size="2x" />
+      </Link>
+      <Link to="https://twitter.com/cdabeille" external>
+        <FontAwesomeIcon icon={faTwitter} size="2x" />
+      </Link>
+      <Link to="https://www.instagram.com/confidences_dabeilles/" external>
+        <FontAwesomeIcon icon={faInstagram} size="2x" />
+      </Link>
+      <Link to="https://www.linkedin.com/company/confidences-d'abeilles/" external>
+        <FontAwesomeIcon icon={faLinkedin} size="2x" />
+      </Link>
+    </Item>
+    <Item flex={1}>
+      <h3>Services</h3>
+      <Section>
+        <li><Link to="/company/presentation">Entreprise</Link></li>
+        <li><Link to="/individual/presentation">Particulier</Link></li>
+        <li><Link to="/partners">Partenaires</Link></li>
+        <li><Link to="/individual/prices">Tarifs</Link></li>
+        <li><Link to="/hives">Les ruches</Link></li>
+      </Section>
+    </Item>
+    <Item flex={1}>
+      <h3>La société</h3>
+      <Section>
+        <li><Link to="/about">Notre histoire</Link></li>
+        <li><Link to="/ourvalues">Nos valeurs</Link></li>
+        <li><Link to="/team">L&apos;équipe</Link></li>
+        <li><Link to="/contact">Contact</Link></li>
+        <li><Link to="/jobs">Jobs</Link></li>
+        <li><Link to="https://shop.confidencesdabeilles.fr/blogs/all" external>Blog</Link></li>
+      </Section>
+    </Item>
+    <Item flex={1}>
+      <h3>Ressources</h3>
+      <Section>
+        <li><Link to="/faq">FAQ</Link></li>
+        <li><Link to="/presse">Presse</Link></li>
+        <li><Link to="/mentions_legales">Mentions légales</Link></li>
+        <li><Link to="/cgv">CGV</Link></li>
+      </Section>
+    </Item>
+  </Footer>
 );

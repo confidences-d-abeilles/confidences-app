@@ -1,12 +1,13 @@
 /* eslint-disable camelcase */
-
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import moment from 'moment';
-import FontAwesome from 'react-fontawesome';
-import Input from '@cda/input';
+import PropTypes from 'prop-types';
 
+import Input from '@cda/input';
+import { Rows, Item } from '@cda/flex';
 import ButtonLink from '@cda/button-link';
+
 import request from '../../../services/Net';
 import Loading from '../../utils/Loading';
 import { handleChange } from '../../../services/FormService';
@@ -14,7 +15,6 @@ import Meta from '../../utils/Meta';
 import Details from './bundle/Details';
 import Hive from './bundle/Hive';
 import { withNotification } from '../../../services/withNotification';
-import PropTypes from 'prop-types';
 
 class Bundle extends Component {
   state = {
@@ -129,18 +129,18 @@ pour le faire ou
     return (
       <div>
         <Meta title="Mon parrainage" />
-        <div className="row">
-          <div className="col-lg-12">
-            <h2 className="my-2 text-center">Mon parrainage</h2>
-            {(user) ? this.checkInfos() : ''}
-          </div>
-        </div>
+        <h2 className="my-2 text-center">Mon parrainage</h2>
+        {(user) ? this.checkInfos() : ''}
         {(user && user.bundles[0])
           ? (
-            <div className="row">
-              <Details data={user.bundles[0]} />
-              {user.bundles[0].contain && <Hive hive={user.bundles[0].contain[0]} />}
-            </div>
+            <Rows>
+              <Item>
+                <Details data={user.bundles[0]} />
+              </Item>
+              <Item>
+                {user.bundles[0].contain && <Hive hive={user.bundles[0].contain[0]} />}
+              </Item>
+            </Rows>
           )
           : <Loading />}
         <div className="row mt-4">
@@ -172,7 +172,6 @@ pour le faire ou
                 ) : null}
                 <br />
                 <button className="btn btn-secondary btn-sm pull-right" onClick={() => { this.setState({ edit_present: true }); }}>
-                  <FontAwesome name="pencil" />
                   {' '}
 Modifier ces informations
                 </button>
@@ -204,12 +203,12 @@ Modifier ces informations
       </div>
     );
   }
-};
+}
 
 Bundle.propTypes = {
   notification: PropTypes.shape({
     addNotification: PropTypes.func.isRequired,
   }).isRequired,
-}
+};
 
 export default withNotification(Bundle);
