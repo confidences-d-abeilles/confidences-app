@@ -2,20 +2,40 @@ kind: pipeline
 name: default
 
 steps:
-  - name: build
+  - name: build preview
     image: docker/compose:1.24.1
     volumes:
         - name: docker
           path: /var/run/docker.sock
     commands:
       - docker-compose build preview
-  - name: deploy-preview
+  - name: deploy preview
     image: docker/compose:1.24.1
     volumes:
         - name: docker
           path: /var/run/docker.sock
     commands:
       - docker-compose -p cda-app up -d preview
+  - name: build production
+    image: docker/compose:1.24.1
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+    commands:
+      - docker-compose build preview
+    when:
+      branch:
+        - master
+  - name: deploy production
+    image: docker/compose:1.24.1
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+    commands:
+      - docker-compose -p cda-app up -d preview
+    when:
+      branch:
+        - master
 
 volumes:
   - name: docker

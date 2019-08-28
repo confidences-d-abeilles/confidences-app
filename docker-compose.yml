@@ -12,6 +12,18 @@ services:
       - "traefik.backend.port=5000"
       - "traefik.enable=true"
       - "traefik.docker.network=layko_layko_net"
+  production:
+    build:
+      context: .
+      args:
+        - NODE_ENV=production
+    image: cda-app:latest
+    restart: always
+    labels:
+      - "traefik.frontend.rule=Host:parrainage.confidencesdabeilles.fr"
+      - "traefik.backend.port=5000"
+      - "traefik.enable=true"
+      - "traefik.docker.network=layko_layko_net"
 
 networks:
   default:
