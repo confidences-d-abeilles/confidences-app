@@ -27,7 +27,7 @@ export default withNotification(() => (
             position: 'absolute',
             top: '75px',
             left: '75px',
-            fontSize: '1.5em',
+            fontSize: '0.5em',
             zIndex: 1000,
           }}
         >

@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { Button } from '@cda/button';
 import Input from '@cda/input';
 
-const Search = ({
+const Add = ({
   handler,
-  value,
 }) => {
-  const [queryString, setQueryString] = useState(value);
+  const [queryString, setQueryString] = useState('');
   const inputHandler = e => setQueryString(e.target.value);
 
   const submitHandler = (e) => {
@@ -16,10 +15,10 @@ const Search = ({
 
   return (
     <form onSubmit={submitHandler}>
-      <Input type="text" value={queryString} placeholder="Nom de parrain..." onChange={inputHandler} />
-      <Button type="submit">Rechercher</Button>
+      <Input type="text" value={queryString} placeholder="Nom de la ruche..." onChange={inputHandler} />
+      <Button type="submit">Ajouter</Button>
     </form>
   );
 };
 
-export default Search;
+export default Add;

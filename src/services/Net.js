@@ -7,7 +7,7 @@ export const client = axios.create({
 
 export default (options, notification) => {
   const onSuccess = (response) => {
-    if (response.data.message) {
+    if (response.data.message && notification) {
       notification.addNotification({
         message: response.data.message,
         level: 'success',
