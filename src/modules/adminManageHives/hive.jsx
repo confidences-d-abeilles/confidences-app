@@ -4,17 +4,17 @@ import PropTypes from 'prop-types';
 import { Button } from '@cda/button';
 import { Item } from '@cda/flex';
 import Parrains from './Parrains';
-import request from '../../../../services/Net';
-import { withNotification } from '../../../../services/withNotification';
+import request from '../../services/Net';
+import { withNotification } from '../../services/withNotification';
 import Rating from './Rating';
-import Loading from '../../../utils/Loading';
-import Feedback from '../../../utils/Feedback';
+import Loading from '../../components/utils/Loading';
+import Feedback from '../../components/utils/Feedback';
 import Info from './Info';
-import FileUpload from '../../../utils/FileUpload';
+import FileUpload from '../../components/utils/FileUpload';
 import Pictures from './Pictures';
 import Identifier from './Identifier';
 
-class Board extends PureComponent {
+class Hive extends PureComponent {
   state = {
     hive: null,
     newsToEdit: null,
@@ -43,14 +43,19 @@ class Board extends PureComponent {
 
   updateInfo = (name, value) => (e) => {
     if (e) { e.preventDefault(); }
-    const { notification, match: { params: { hiveId } } } = this.props;
+    const { notification, fetchHives, match: { params: { hiveId } } } = this.props;
     request({
       url: `/hive/${hiveId}`,
       method: 'patch',
       data: {
         [name]: value,
       },
-    }, notification).then(() => this.setState({ hive: { ...this.state.hive, [name]: value } }));
+    }, notification)
+      .then(() => {
+        this.setState({ hive: { ...this.state.hive, [name]: value } });
+        console.log(this.props);
+        this.props.fetchHives();
+      });
   };
 
   addPhoto = (e) => {
@@ -111,7 +116,7 @@ class Board extends PureComponent {
   }
 }
 
-Board.propTypes = {
+Hive.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       hiveId: PropTypes.string.isRequired,
@@ -122,4 +127,4 @@ Board.propTypes = {
   }),
 };
 
-export default withNotification(Board);
+export default withNotification(Hive);
