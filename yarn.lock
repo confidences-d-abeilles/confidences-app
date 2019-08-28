@@ -941,17 +941,17 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@cda/button-link@latest":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@cda/button-link/-/button-link-0.5.0.tgz#e58bc759d648446f8e0bf2a58bedbfe3c774c6d6"
-  integrity sha512-Vk2OGENgvKetwYMwWgBwYaghqNbyRoca6ig0Lh5MGDPbKbKJB0Uj6NSpJhFYFOdlDrrT27tjnV29r2u66fsLaw==
+"@cda/button-link@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@cda/button-link/-/button-link-0.6.1.tgz#9588dbd06eecd172f6f4dfe10d8de2f11499d962"
+  integrity sha512-+dRsNkHi2xksxAEWCKJc/eMnwUK0Opa9YVFWwe0uzaRYTFcXDR3wmMHcE968zujM/fhkAVe8xfV0ndN8x5sWmQ==
   dependencies:
     react "^16.8.6"
 
-"@cda/button@latest":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@cda/button/-/button-0.5.0.tgz#0f3687c68bc1f0284753227743f86701cac8c5de"
-  integrity sha512-H7yOMZsTjkto4ug08Yn991YaTyKpLuR6ABPkwidJo63QMicv76bxNS8/ALFop++/ZiEgQ0RtqgOXJbhm5OqxzA==
+"@cda/button@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@cda/button/-/button-0.6.1.tgz#febe351c4bf07637f682f8e7e1ee951a9b5de946"
+  integrity sha512-vDeYn0pf8t8bJqJVs1Qtzl+c/zsd+Wmi1KV2bDHYcG5UYQii+dsG6A3ky5kbRA9Nj62uuSwag/71FIlqF4e5/g==
   dependencies:
     "@emotion/core" "^10.0.14"
     "@emotion/styled" "^10.0.14"
@@ -959,35 +959,34 @@
     react "^16.8.6"
     react-dom "^16.8.6"
 
-"@cda/flex@latest":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@cda/flex/-/flex-0.5.0.tgz#59579cf3fa29aed3b73d62a2a28bea0611bc63ec"
-  integrity sha512-gwVeTV+GIDFrIUyf7QFwm/Tf+Pynd+McTgBwAFiAKmiwE0s3jrbXJ1mFrkEhamJ+iSpqgyEUTFJY84RnqKJpKg==
+"@cda/flex@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@cda/flex/-/flex-0.6.1.tgz#2eee0f62ff0b18434906f31da175e74ecd95eeac"
+  integrity sha512-RkfgfCmkSEkOBbZ3LEYQQhbFHJO3Fpic/Hb39qw43/XzR9HhjN5i+aFuDBmQoym8uDybnb+4jEeL3YqP8IGDoQ==
 
-"@cda/input@latest":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@cda/input/-/input-0.5.0.tgz#9ca3c366e8e65d0fad7713be5eda8b3aae353fd5"
-  integrity sha512-7gTYmc3UzNlgUQO6oM6ze6siRQh/XGT5CHXf2tAtEenhrKVrgzDkjgSkXxaB468MITV9ZZNcrGnvDER8wa6WLg==
+"@cda/input@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@cda/input/-/input-0.6.1.tgz#bd47d6b478bafaf1484728fea38f31235dd4d98f"
+  integrity sha512-ZBaEb6r1zzLCCRO1jB9qTg0KvoTInhUmopQvHHX5QP9a2r3VOhg6UEtWswqottIXZGfddTmymKfVqPUptYqilA==
   dependencies:
     "@emotion/core" "^10.0.14"
     "@emotion/styled" "^10.0.14"
     react "^16.8.6"
 
-"@cda/link@latest":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@cda/link/-/link-0.5.1.tgz#e77a5bcf951b1cc0cf0cbbcdee6408f52516ccc6"
-  integrity sha512-Kzyuf7q3aOMxE7AviHriwM1erZ/DWY3tknsOurbH2IobM08UUFbBTEq8fYF9jYk3fCJ13V8hCsQeP/5XZBPm+Q==
+"@cda/link@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@cda/link/-/link-0.6.1.tgz#3899ec2781b0e021080136994032d4b8a34d72c0"
+  integrity sha512-CbPVeEQOd13JNKkMteoT4+bXKhF8QZUtSR5LKB82A863KCiy5szhxmjB+y1PTeyQhvUI1eL1gFXYvl1Wd36SOg==
   dependencies:
     "@emotion/core" "^10.0.14"
     "@emotion/styled" "^10.0.14"
     react "^16.8.6"
-    react-fontawesome "^1.6.1"
     react-router-dom "^5.0.1"
 
-"@cda/sidebar@latest":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@cda/sidebar/-/sidebar-0.6.0.tgz#e5466ce247e6b2043aac123c0a7e1dc203172936"
-  integrity sha512-U4olaXKreen++WMtzJJji/+q8YqbitAnEffG9tb5xA+GZygF/yY9OOZrrj6y+Mla4GHDBtkutBWRS1YG7CArtQ==
+"@cda/sidebar@^0.6.2":
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/@cda/sidebar/-/sidebar-0.6.2.tgz#3e9b0c35dd26df17b601e832756e69192bbe2798"
+  integrity sha512-Tb6ap0uMohlkHLL/CAjChurH8CvFDCZJEOdWmNoBV0s30urGhYTsvkw8994hDZa/8VBFwo8CUOmcx9LUOUkZVA==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.20"
     "@fortawesome/free-solid-svg-icons" "^5.10.0"
@@ -995,15 +994,15 @@
     react "^16.8.6"
     react-router "^5.0.1"
 
-"@cda/theme@latest":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@cda/theme/-/theme-0.5.0.tgz#f25e09dfae3f8b0866eff58889724facd366f074"
-  integrity sha512-BC1rurVZODZzwCZLdL4OPQ2/6Z2lUy+geq698nI2179X+hz0uIo8FRuVB4xU6ATLUtHWG+AERuaG7BMWqrVFww==
+"@cda/theme@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@cda/theme/-/theme-0.6.1.tgz#d68a58165768026322f3008733ebc746864642a1"
+  integrity sha512-P3DEiyzwdt7N6Ij8ZchMXOOvScLM/57gp+cpQ1DP8jwEx9W17iYN5f1XHgeqpOvnbV8uwf2Pbw0UmskKU/2Efw==
 
-"@cda/top-bar@latest":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@cda/top-bar/-/top-bar-0.5.0.tgz#31248cfd1cf4b1e822fe7bcc96a487e3441cea35"
-  integrity sha512-JFpam1phK/NWeaU3/fFRJRKu5eGdehsZ38EWyXPfk/U4ENWjFH1iBTy9dwxe0HCC8fBbu20cg4V09tn17BbtUw==
+"@cda/top-bar@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@cda/top-bar/-/top-bar-0.6.1.tgz#a50fe244e6e2cc0ce29a5f8e38fe639b497be5a2"
+  integrity sha512-pApcRYiT5Lylcv22yfUjfone0NXVSUew8iXMvVy23zb9YngmxBxm14h/H3X/0aVbj8qD4lKeoGaGEyIPnKcTMw==
   dependencies:
     "@emotion/core" "^10.0.14"
     "@emotion/styled" "^10.0.14"
@@ -1141,10 +1140,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.3.tgz#dfa0c92efe44a1d1a7974fb49ffeb40ef2da5a27"
   integrity sha512-zVgvPwGK7c1aVdUVc9Qv7SqepOGRDrqCw7KZPSZziWGxSlbII3gmvGLPzLX4d0n0BMbamBacUrN22zOMyFFEkQ==
 
-"@fortawesome/fontawesome-common-types@^0.2.20":
-  version "0.2.20"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.20.tgz#b5450b07400aea96d87d24e98e22d4a3d8d59305"
-  integrity sha512-5wo0pMNS4gWTkplFAPSfNq4poXwLcgj8+khZs9/zbWMxC0hi6qnehXOrX7i7+Y7XyTQForja2WpR7Nz6LY2BtQ==
+"@fortawesome/fontawesome-common-types@^0.2.20", "@fortawesome/fontawesome-common-types@^0.2.22":
+  version "0.2.22"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.22.tgz#3f1328d232a0fd5de8484d833c8519426f39f016"
+  integrity sha512-QmEuZsipX5/cR9JOg0fsTN4Yr/9lieYWM8AQpmRa0eIfeOcl/HLYoEa366BCGRSrgNJEexuvOgbq9jnJ22IY5g==
 
 "@fortawesome/fontawesome-common-types@^0.2.21":
   version "0.2.21"
@@ -1152,11 +1151,11 @@
   integrity sha512-iJtcrU2BtF9Wyr0zm3tHEJy3HqA6sADExhCqCv3SKaJJKKp4ORJ40t4nyHvcWXSVFtd7r1gcdqcRsAfoREGTFA==
 
 "@fortawesome/fontawesome-svg-core@^1.2.20":
-  version "1.2.20"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.20.tgz#2b562dd73df08c835e1f42c04061029ee77b90b5"
-  integrity sha512-p18GsDaPeZOFKENyigYcEg0ez9UHqUO7wxcdxpoxsb0pMxvt4kW8RTrgUIW1z3/19E/Z1iRQDmB3ZyfZ+CcpSQ==
+  version "1.2.22"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.22.tgz#9a6117c96c8b823c7d531000568ac75c3c02e123"
+  integrity sha512-Q941E4x8UfnMH3308n0qrgoja+GoqyiV846JTLoCcCWAKokLKrixCkq6RDBs8r+TtAWaLUrBpI+JFxQNX/WNPQ==
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.2.20"
+    "@fortawesome/fontawesome-common-types" "^0.2.22"
 
 "@fortawesome/fontawesome-svg-core@^1.2.21":
   version "1.2.21"
@@ -9977,7 +9976,7 @@ react-dom-factories@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-dom-factories/-/react-dom-factories-1.0.2.tgz#eb7705c4db36fb501b3aa38ff759616aa0ff96e0"
   integrity sha1-63cFxNs2+1AbOqOP91lhaqD/luA=
 
-react-dom@16.8.6, react-dom@^16.8.6:
+react-dom@16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.6.tgz#71d6303f631e8b0097f56165ef608f051ff6e10f"
   integrity sha512-1nL7PIq9LTL3fthPqwkvr2zY7phIPjYrT0jp4HjyEQrEROnw4dG41VVwi/wfoCneoleqrNX7iAD+pXebJZwrwA==
@@ -9986,6 +9985,16 @@ react-dom@16.8.6, react-dom@^16.8.6:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.13.6"
+
+react-dom@^16.8.6:
+  version "16.9.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.9.0.tgz#5e65527a5e26f22ae3701131bcccaee9fb0d3962"
+  integrity sha512-YFT2rxO9hM70ewk9jq0y6sQk8cL02xm4+IzYBz75CQGlClQQ1Bxq0nhHF6OtSbit+AIahujJgb/CPRibFkMNJQ==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
+    scheduler "^0.15.0"
 
 react-error-overlay@^5.1.6:
   version "5.1.6"
@@ -10024,10 +10033,15 @@ react-i18next@^10.11.4:
     "@babel/runtime" "^7.3.1"
     html-parse-stringify2 "2.0.1"
 
-react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
+react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.4, react-is@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
+
+react-is@^16.8.1:
+  version "16.9.0"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
+  integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
 
 react-lifecycles-compat@^3.0.0:
   version "3.0.4"
@@ -10732,6 +10746,14 @@ scheduler@^0.13.6:
   version "0.13.6"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.13.6.tgz#466a4ec332467b31a91b9bf74e5347072e4cd889"
   integrity sha512-IWnObHt413ucAYKsD9J1QShUKkbKLQQHdxRyw73sw4FN26iWr3DY/H34xGPe4nmL1DwXyWmSWmMrA9TfQbE/XQ==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
+scheduler@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.15.0.tgz#6bfcf80ff850b280fed4aeecc6513bc0b4f17f8e"
+  integrity sha512-xAefmSfN6jqAa7Kuq7LIJY0bwAPG3xlCj0HMEBQk1lxYiDKZscY2xJ5U/61ZTrYbmNQbXa+gc7czPkVo11tnCg==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"

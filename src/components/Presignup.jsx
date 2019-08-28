@@ -25,8 +25,8 @@ export default class Presignup extends Component {
           <div className="col-lg-6">
             <h2 className="text-center my-5">Je suis ...</h2>
             <p className="text-center">
-              <ButtonLink url="/signup/company" primary>Une entreprise</ButtonLink>
-              <ButtonLink url="/signup/individual" data-cy="individual" primary>Un particulier</ButtonLink>
+              <ButtonLink to="/signup/company" primary>Une entreprise</ButtonLink>
+              <ButtonLink to="/signup/individual" data-cy="individual" primary>Un particulier</ButtonLink>
             </p>
           </div>
         </div>

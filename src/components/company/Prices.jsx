@@ -29,9 +29,9 @@ export default () => (
       <PriceCard title="1 à 4 ruches" price={635} items={tenOffer} unit={UNIT} level={1} />
       <PriceCard title="5 ruches ou +" price={560} items={twentyOffer} unit={UNIT} level={2} />
     </Rows>
-    <Rows>
+    <Rows justifyContent="center">
       <Item textAlign="center">
-        <ButtonLink url="/signup/company" primary>Parrainer maintenant</ButtonLink>
+        <ButtonLink to="/signup/company" primary>Parrainer maintenant</ButtonLink>
       </Item>
     </Rows>
   </>

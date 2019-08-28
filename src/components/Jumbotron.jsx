@@ -46,10 +46,10 @@ const JumboImage = styled(Item)`
 
 const Jumbotron = ({ children, img }) => (
   <JumbotronWrapper alignItems="center">
-    <Jumbcontent>
+    <Jumbcontent flex={1}>
       {children}
     </Jumbcontent>
-    <JumboImage src={img} />
+    <JumboImage src={img} flex={1} />
   </JumbotronWrapper>
 );
 

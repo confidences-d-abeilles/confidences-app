@@ -64,7 +64,7 @@ export default () => (
         <li><Link to="/team">L&apos;équipe</Link></li>
         <li><Link to="/contact">Contact</Link></li>
         <li><Link to="/jobs">Jobs</Link></li>
-        <li><Link to="https://confidencesdabeilles.fr/blog" external>Blog</Link></li>
+        <li><Link to="https://shop.confidencesdabeilles.fr/blogs/all" external>Blog</Link></li>
       </Section>
     </Item>
     <Item flex={1}>

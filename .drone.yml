@@ -1,0 +1,51 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: build preview
+    image: docker/compose:1.24.1
+    volumes:
+        - name: docker
+          path: /var/run/docker.sock
+    commands:
+      - docker-compose build preview
+    depends_on:
+      - clone
+  - name: deploy preview
+    image: docker/compose:1.24.1
+    volumes:
+        - name: docker
+          path: /var/run/docker.sock
+    commands:
+      - docker-compose -p cda-app up -d preview
+    depends_on:
+      - build preview
+  - name: build production
+    image: docker/compose:1.24.1
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+    commands:
+      - docker-compose build production
+    when:
+      branch:
+        - master
+    depends_on:
+      - clone
+  - name: deploy production
+    image: docker/compose:1.24.1
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+    commands:
+      - docker-compose -p cda-app up -d production
+    when:
+      branch:
+        - master
+    depends_on:
+      - build production
+
+volumes:
+  - name: docker
+    host:
+      path: /var/run/docker.sock

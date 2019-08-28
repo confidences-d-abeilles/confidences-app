@@ -33,9 +33,9 @@ export default withTranslation('homepage')(({ loading, users, t }) => (
       <p>
         {t('headblock')}
       </p>
-      <p>
-        <ButtonLink url="/company/presentation" primary>{t('companyService')}</ButtonLink>
-        <ButtonLink url="/individual/presentation" primary>{t('individualService')}</ButtonLink>
+      <p className="text-center">
+        <ButtonLink to="/company/presentation" primary>{t('companyService')}</ButtonLink>
+        <ButtonLink to="/individual/presentation" primary>{t('individualService')}</ButtonLink>
       </p>
     </Jumbotron>
     <Rows>
@@ -43,7 +43,7 @@ export default withTranslation('homepage')(({ loading, users, t }) => (
         <p>{t('mission')}</p>
       </TextBlock>
     </Rows>
-    <Rows>
+    <Rows justifyContent="center">
       <Item style={{ maxWidth: '100vw' }}>
         <h2>{t('ourClients')}</h2>
         {!loading
@@ -84,8 +84,8 @@ export default withTranslation('homepage')(({ loading, users, t }) => (
     <Rows>
       <TextBlock>
         <p>{t('ready')}</p>
-        <ButtonLink url="/presignup">{t('sponsor')}</ButtonLink>
-        <ButtonLink url="/hives">{t('discover')}</ButtonLink>
+        <ButtonLink to="/presignup">{t('sponsor')}</ButtonLink>
+        <ButtonLink to="/hives">{t('discover')}</ButtonLink>
       </TextBlock>
     </Rows>
   </Fragment>

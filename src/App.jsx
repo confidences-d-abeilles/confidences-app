@@ -9,8 +9,8 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import theme from '@cda/theme';
 
+import theme from '@cda/theme';
 import reducers from './modules';
 import initAnalytics from './services/analytics/init';
 import { NotificationProvider } from './services/withNotification';
@@ -18,9 +18,6 @@ import logAnalytics from './services/analytics/logAnalytics';
 import CompanyPage from './components/company/Page';
 import MyRouter from './components/Router';
 import Error from './services/Errors';
-
-
-import Aviva from './modules/aviva/Aviva';
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
@@ -44,7 +41,6 @@ const App = () => (
                 <Switch>
                   <Redirect path="/perus" to="/parrains/perus" />
                   <Route path="/parrains/:namespace" component={logAnalytics(CompanyPage)} />
-                  <Route exact path="/la-fabrique-aviva-projet-confidences-abeilles-concours" component={Aviva} />
                   <Route component={logAnalytics(MyRouter)} />
                 </Switch>
               </Fragment>

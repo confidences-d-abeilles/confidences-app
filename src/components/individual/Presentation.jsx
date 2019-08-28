@@ -23,16 +23,16 @@ export default () => (
         choisissez le nombre d’abeilles et voilà !
       </p>
       <p className="text-center">
-        <ButtonLink url="/signup/individual" primary>Parrainer mes permières abeilles</ButtonLink>
-        <ButtonLink url="/present" primary>Offrir un parrainage</ButtonLink>
+        <ButtonLink to="/signup/individual" primary>Parrainer mes permières abeilles</ButtonLink>
+        <ButtonLink to="/present" primary>Offrir un parrainage</ButtonLink>
       </p>
     </Jumbotron>
-    <Rows>
+    <Rows justifyContent="center">
       <Item textAlign="center">
         <h2>Parrainer une ruche c'est :</h2>
       </Item>
     </Rows>
-    <Rows>
+    <Rows justifyContent="center">
       <Item>
         <h3 className="text-center my-4">Pour vous</h3>
         <ul>
@@ -76,18 +76,18 @@ export default () => (
         </ul>
       </Item>
     </Rows>
-    <Rows>
+    <Rows justifyContent="center">
       <Item textAlign="center">
-        <ButtonLink url="/signup/individual">Parrainer des abeilles</ButtonLink>
+        <ButtonLink to="/signup/individual">Parrainer des abeilles</ButtonLink>
       </Item>
       <Item textAlign="center">
-        <ButtonLink url="/individual/more">En savoir plus</ButtonLink>
+        <ButtonLink to="/individual/more">En savoir plus</ButtonLink>
       </Item>
     </Rows>
-    <Rows>
+    <Rows justifyContent="center">
       <Item textAlign="center">
         <ButtonLink
-          url={leaflet}
+          to={leaflet}
           external
           primary
         >
