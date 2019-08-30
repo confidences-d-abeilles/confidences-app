@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import { Button } from '@cda/button';
 import { Item } from '@cda/flex';
 import Parrains from './parrains';
-import request from '../../services/Net';
-import { withNotification } from '../../services/withNotification';
+import request from '../../../services/Net';
+import { withNotification } from '../../../services/withNotification';
 import Rating from './rating';
-import Loading from '../../components/utils/Loading';
-import Feedback from '../../components/utils/Feedback';
+import Loading from '../../../components/utils/Loading';
+import Feedback from '../../../components/utils/Feedback';
 import Info from './info';
-import FileUpload from '../../components/utils/FileUpload';
+import FileUpload from '../../../components/utils/FileUpload';
 import Pictures from './pictures';
 import Identifier from './identifier';
 

@@ -1,15 +1,11 @@
-import { takeEvery, all } from 'redux-saga/effects';
+import { all } from 'redux-saga/effects';
+import homeSaga from './home/home.saga';
+import hivesSaga from './adminManageHives/hives.saga';
 
-function* testSaga() {
-  console.log('Hello Sagas!');
-}
-
-function* testSaga2() {
-  yield takeEvery('HOME_FETCH_START', testSaga);
-}
 
 export default function* rootSaga() {
-  yield all(
-    testSaga2,
-  );
+  yield all([
+    homeSaga(),
+    hivesSaga(),
+  ]);
 }

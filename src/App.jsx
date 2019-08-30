@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import { StripeProvider } from 'react-stripe-elements';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import { ThemeProvider } from 'emotion-theming';
 import {
@@ -36,9 +37,10 @@ const middlewares = [
 
 const store = createStore(
   reducers,
-  compose(applyMiddleware(...middlewares)),
+  composeWithDevTools(applyMiddleware(...middlewares)),
 );
 
+console.log(sagas);
 sagaMiddleware.run(sagas);
 
 const App = () => (

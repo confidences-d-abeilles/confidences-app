@@ -8,13 +8,13 @@ import 'react-datepicker/dist/react-datepicker.css';
 import PropTypes from 'prop-types';
 import Loading from '../../components/utils/Loading';
 import Meta from '../../components/utils/Meta';
-import Search from './search';
-import Add from './add';
+import Search from './components/search';
+import Add from './components/add';
 import AdminManageHivesBoard from './hive.connector';
 import UserType from '../../components/admin/manage/users/UserType/UserType';
 
 const AdminManageHives = ({
-  history, hives, fetchHives, addHive, needle,
+  history, hives, fetchHives, addHive, needle, loading,
 }) => {
   useEffect(() => {
     fetchHives();
@@ -29,7 +29,7 @@ const AdminManageHives = ({
       </Rows>
       <Rows>
         <Item flex={1} style={{ height: '100vh', overflowY: 'scroll' }}>
-          {hives
+          {!loading
             ? (
               <table className="table table-hover">
                 <tbody>
