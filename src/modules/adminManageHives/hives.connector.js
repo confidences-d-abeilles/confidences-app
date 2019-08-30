@@ -8,6 +8,7 @@ const mapStateToProps = ({ adminHives }) => ({
 
 const mapDispatchToProp = dispatch => ({
   fetchHives: needle => dispatch(fetchHives(needle)),
+  addHive: name => dispatch(addHive(name)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProp)(Hives);

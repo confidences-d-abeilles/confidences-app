@@ -40,7 +40,6 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(...middlewares)),
 );
 
-console.log(sagas);
 sagaMiddleware.run(sagas);
 
 const App = () => (

@@ -1,9 +1,11 @@
-import { put, takeLatest, all, select } from 'redux-saga/effects';
+import {
+  put, takeLatest, all, select,
+} from 'redux-saga/effects';
 import request from '../../services/Net';
 import {
   HIVES_FETCH,
   HIVES_FETCH_SUCCESS,
-  HIVES_FETCH_FAIL,
+  HIVES_FETCH_FAIL, HIVES_ADD_FAIL, HIVES_ADD_SUCCESS, HIVES_ADD,
 } from './hives.actions';
 
 
@@ -19,8 +21,24 @@ function* hivesFetch({ needle }) {
   }
 }
 
+function* addHive({ name }) {
+  try {
+    yield request({
+      url: '/hive',
+      method: 'post',
+      data: {
+        name,
+      },
+    });
+    yield put({ type: HIVES_ADD_SUCCESS });
+  } catch (e) {
+    yield put({ type: HIVES_ADD_FAIL });
+  }
+}
+
 function* listen() {
   yield takeLatest(HIVES_FETCH, hivesFetch);
+  yield takeLatest(HIVES_ADD, addHive);
 }
 
 export default function* rootSaga() {
