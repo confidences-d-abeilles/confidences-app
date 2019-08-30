@@ -1,15 +1,14 @@
 import { connect } from 'react-redux';
-import Hives from './hives';
+import Hives from './hives.component';
 import { addHive, fetchHives } from './hives.actions';
 
-const mapStateToProps = ({ adminHives: { hives, needle } }) => ({
-  hives,
-  needle,
+const mapStateToProps = ({ adminHives }) => ({
+  ...adminHives,
 });
 
-const mapDispatchToProp = {
-  fetchHives,
-  addHive,
-};
+const mapDispatchToProp = dispatch => ({
+  fetchHives: needle => dispatch(fetchHives(needle)),
+  addHive: name => dispatch(addHive(name)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProp)(Hives);

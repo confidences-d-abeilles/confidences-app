@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
 import { StripeProvider } from 'react-stripe-elements';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
 import { ThemeProvider } from 'emotion-theming';
 import {
   BrowserRouter as Router,
@@ -12,7 +13,8 @@ import {
 } from 'react-router-dom';
 
 import theme from '@cda/theme';
-import reducers from './modules';
+import reducers from './modules/index.reducer';
+import sagas from './modules/index.saga';
 import initAnalytics from './services/analytics/init';
 import { NotificationProvider } from './services/withNotification';
 import logAnalytics from './services/analytics/logAnalytics';
@@ -26,10 +28,19 @@ const ScrollToTop = () => {
   return null;
 };
 
+const sagaMiddleware = createSagaMiddleware();
+
+const middlewares = [
+  sagaMiddleware,
+];
+
+
 const store = createStore(
   reducers,
-  compose(applyMiddleware(thunk)),
+  composeWithDevTools(applyMiddleware(...middlewares)),
 );
+
+sagaMiddleware.run(sagas);
 
 const App = () => (
   <Error>

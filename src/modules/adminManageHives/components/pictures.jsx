@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { Button } from '@cda/button';
-import request from '../../services/Net';
-import { withNotification } from '../../services/withNotification';
+import request from '../../../services/Net';
+import { withNotification } from '../../../services/withNotification';
 
 class Pictures extends Component {
   delete = (index) => {
