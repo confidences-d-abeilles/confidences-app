@@ -39,6 +39,7 @@ function* addHive({ name }) {
 function* listen() {
   yield takeLatest(HIVES_FETCH, hivesFetch);
   yield takeLatest(HIVES_ADD, addHive);
+  yield takeLatest(HIVES_ADD_SUCCESS, hivesFetch);
 }
 
 export default function* rootSaga() {
