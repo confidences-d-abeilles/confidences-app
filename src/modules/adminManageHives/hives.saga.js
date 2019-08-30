@@ -1,5 +1,5 @@
 import {
-  put, takeLatest, all, select,
+  put, takeLatest, all,
 } from 'redux-saga/effects';
 import request from '../../services/Net';
 import {
