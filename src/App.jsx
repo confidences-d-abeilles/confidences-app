@@ -29,8 +29,6 @@ const ScrollToTop = () => {
 
 const sagaMiddleware = createSagaMiddleware();
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
 const middlewares = [
   sagaMiddleware,
 ];
@@ -38,7 +36,7 @@ const middlewares = [
 
 const store = createStore(
   reducers,
-  composeEnhancers(applyMiddleware(...middlewares)),
+  compose(applyMiddleware(...middlewares)),
 );
 
 sagaMiddleware.run(sagas);
