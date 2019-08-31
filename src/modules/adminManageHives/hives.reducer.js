@@ -2,11 +2,10 @@ import {
   HIVES_FETCH,
   HIVES_FETCH_FAIL,
   HIVES_FETCH_SUCCESS,
-  HIVES_SET_NEEDLE
 } from './hives.actions';
 
 const initialState = {
-  hives: [],
+  hives: {},
   loading: true,
 };
 
@@ -21,7 +20,7 @@ export default (state = initialState, action) => {
     case HIVES_FETCH_SUCCESS:
       return {
         ...state,
-        hives: action.data,
+        hives: action.data.reduce((acc, hive) => ({ ...acc, [hive.id]: hive }), {}),
         loading: false,
       };
     case HIVES_FETCH_FAIL:

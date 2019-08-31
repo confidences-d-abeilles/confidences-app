@@ -10,21 +10,22 @@ import Loading from '../../components/utils/Loading';
 import Meta from '../../components/utils/Meta';
 import Search from './components/search';
 import Add from './components/add';
-import AdminManageHivesBoard from './hive.connector';
+import AdminManageHivesBoard from './hive/hive.connector';
 import UserType from '../../components/admin/manage/users/UserType/UserType';
 
 const AdminManageHives = ({
-  history, hives, fetchHives, addHive, needle, loading,
+  history, hives, fetchHives, addHive, loading,
 }) => {
   useEffect(() => {
     fetchHives();
   }, []);
 
+  console.log(Object.values(hives));
   return (
     <>
       <Meta title="Gérer les ruches" />
       <Rows>
-        <Search handler={fetchHives} value={needle} />
+        <Search handler={fetchHives} />
         <Add handler={addHive} />
       </Rows>
       <Rows>
@@ -36,7 +37,7 @@ const AdminManageHives = ({
                   <tr>
                     <th>Nom</th>
                   </tr>
-                  {hives && hives.map(({
+                  {hives && Object.values(hives).map(({
                     id, identifier, parrainType, name,
                   }) => (
                     <tr key={id} onClick={() => history.push(`/admin/manage/hive/${id}`)} style={{ cursor: 'pointer' }}>
