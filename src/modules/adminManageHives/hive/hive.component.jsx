@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { Button } from '@cda/button';
@@ -8,21 +8,23 @@ import request from '../../../services/Net';
 import { withNotification } from '../../../services/withNotification';
 import Rating from '../components/rating';
 import Loading from '../../../components/utils/Loading';
-import Feedback from '../../../components/utils/Feedback';
 import Info from '../components/info';
 import FileUpload from '../../../components/utils/FileUpload';
 import Pictures from '../components/pictures';
 import Identifier from '../components/identifier';
 
-const Hive = ({
-  getHive, updateInfo, addPhoto, match: { params: { hiveId } },
+const HiveComponent = ({
+  getHive, updateInfo, addPhoto, match: { params: { hiveId } }, fetchHive,
 }) => {
   const hive = getHive(hiveId);
+
+  useEffect(() => {
+    fetchHive(hiveId);
+  }, [hiveId]);
 
   const addPicture = (e) => {
     e.preventDefault();
     const file = document.getElementById('hive-img').files[0];
-    console.log(file);
     if (file) {
       addPhoto({ id: hiveId, file });
     }
@@ -42,17 +44,13 @@ const Hive = ({
       <h3>Mémo technique</h3>
       <Info name="feedback" handler={(name, value) => updateInfo(hiveId, name, value)} defaultValue={hive.feedback} />
       <h3>Actualités</h3>
-      {/* <select onChange={({ target: { value: toEdit } }) => this.setState({ newsToEdit: toEdit })} className="my-2"> */}
-      {/*  <option value={null}>Choisissez une actualité à modifier</option> */}
-      {/*  {hive.news.map(news => <option value={news.id} key={news.id}>{news.title}</option>)} */}
-      {/* </select> */}
-      {/* <Feedback name={this.state.newsToEdit} hiveId={hiveId} /> */}
+      Cette section est momentanément indisponible.
       <h3>Photos</h3>
       <form onSubmit={addPicture}>
         <FileUpload label="Taille recommandé : 400 x 300" identifier="hive-img" />
         <Button type="submit" primary>Ajouter</Button>
       </form>
-      {/* <Pictures data={hive.imgs} hiveId={hiveId} /> */}
+      <Pictures data={hive.imgs} hiveId={hiveId} />
     </Item>
   );
 };
@@ -128,7 +126,7 @@ const Hive = ({
 //   }
 // }
 
-Hive.propTypes = {
+HiveComponent.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       hiveId: PropTypes.string.isRequired,
@@ -139,4 +137,4 @@ Hive.propTypes = {
   }).isRequired,
 };
 
-export default withNotification(Hive);
+export default withNotification(HiveComponent);

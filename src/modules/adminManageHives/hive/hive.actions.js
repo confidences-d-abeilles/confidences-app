@@ -1,4 +1,10 @@
 
+export const FETCH_HIVE = 'admin/manage/hives/hive/FETCH_HIVE';
+export const FETCH_HIVE_SUCCESS = 'admin/manage/hives/hive/FETCH_HIVE_SUCCESS';
+export const FETCH_HIVE_FAIL = 'admin/manage/hives/hive/FETCH_HIVE_FAIL';
+
+export const fetchHive = id => ({ type: FETCH_HIVE, id });
+
 export const UPDATE_INFO = 'admin/manage/hives/hive/UPDATE_INFO';
 export const UPDATE_INFO_SUCCESS = 'admin/manage/hives/hive/UPDATE_INFO_SUCCESS';
 export const UPDATE_INFO_FAIL = 'admin/manage/hives/hive/UPDATE_INFO_FAIL';
