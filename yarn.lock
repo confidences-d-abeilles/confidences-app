@@ -984,9 +984,9 @@
     react-router-dom "^5.0.1"
 
 "@cda/sidebar@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@cda/sidebar/-/sidebar-0.6.2.tgz#3e9b0c35dd26df17b601e832756e69192bbe2798"
-  integrity sha512-Tb6ap0uMohlkHLL/CAjChurH8CvFDCZJEOdWmNoBV0s30urGhYTsvkw8994hDZa/8VBFwo8CUOmcx9LUOUkZVA==
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/@cda/sidebar/-/sidebar-0.6.3.tgz#192cf2511683aab961cfa642a7008c54d9516da7"
+  integrity sha512-9Q0gp6Cp0a4rJxelL/hWdtfg+uR1STRSUE5rLHGuYODrKrLbWnPqb9ud7lV0cVk2uWrT2EZfOQMLxuZ7Uh+clQ==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.20"
     "@fortawesome/free-solid-svg-icons" "^5.10.0"
