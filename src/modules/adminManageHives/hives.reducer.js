@@ -3,6 +3,7 @@ import {
   HIVES_FETCH_FAIL,
   HIVES_FETCH_SUCCESS,
 } from './hives.actions';
+import { UPDATE_INFO_SUCCESS } from './hive/hive.actions';
 
 const initialState = {
   hives: {},
@@ -27,6 +28,17 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
+      };
+    case UPDATE_INFO_SUCCESS:
+      return {
+        ...state,
+        hives: {
+          ...state.hives,
+          [action.id]: {
+            ...state.hives[action.id],
+            ...action.data,
+          },
+        },
       };
     default:
       return state;

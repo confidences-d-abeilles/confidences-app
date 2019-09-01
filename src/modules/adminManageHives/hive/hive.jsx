@@ -14,8 +14,19 @@ import FileUpload from '../../../components/utils/FileUpload';
 import Pictures from '../components/pictures';
 import Identifier from '../components/identifier';
 
-const Hive = ({ getHive, match: { params: { hiveId } } }) => {
+const Hive = ({
+  getHive, updateInfo, addPhoto, match: { params: { hiveId } },
+}) => {
   const hive = getHive(hiveId);
+
+  const addPicture = (e) => {
+    e.preventDefault();
+    const file = document.getElementById('hive-img').files[0];
+    console.log(file);
+    if (file) {
+      addPhoto({ id: hiveId, file });
+    }
+  };
 
   if (!hive) {
     return null;
@@ -23,31 +34,25 @@ const Hive = ({ getHive, match: { params: { hiveId } } }) => {
   return (
     <Item flex={3}>
       <h2>{hive.name}</h2>
-      <div className="row">
-        <div className="col-lg-4">
-          <Parrains parrainsList={(hive && hive.parrains) || []} />
-          {/* <Identifier handler={value => this.updateInfo('identifier', value)()} initialValue={hive.identifier} /> */}
-          {/* <Rating value={(hive && parseFloat(hive.ratio)) || 2.5} handler={value => this.updateInfo('ratio', value)()} /> */}
-          <h3>Informations</h3>
-          {/* <Info name="info" handler={this.updateInfo} defaultValue={hive.info} /> */}
-          <h3>Mémo technique</h3>
-          {/* <Info name="feedback" handler={this.updateInfo} defaultValue={hive.feedback} /> */}
-        </div>
-        <div className="col-lg-8">
-          <h3>Actualités</h3>
-          {/* <select onChange={({ target: { value: toEdit } }) => this.setState({ newsToEdit: toEdit })} className="my-2"> */}
-          {/*  <option value={null}>Choisissez une actualité à modifier</option> */}
-          {/*  {hive.news.map(news => <option value={news.id} key={news.id}>{news.title}</option>)} */}
-          {/* </select> */}
-          {/* <Feedback name={this.state.newsToEdit} hiveId={hiveId} /> */}
-          <h3>Photos</h3>
-          {/* <form onSubmit={this.addPhoto}> */}
-          {/*  <FileUpload label="Taille recommandé : 400 x 300" identifier="hive-img" /> */}
-          {/*  <Button type="submit" primary>Ajouter</Button> */}
-          {/* </form> */}
-          {/*<Pictures data={hive.imgs} hiveId={hiveId} refresh={this.get} />*/}
-        </div>
-      </div>
+      <Parrains parrainsList={(hive && hive.parrains) || []} />
+      <Identifier handler={value => updateInfo(hiveId, 'identifier', value)} initialValue={hive.identifier} />
+      <Rating value={parseFloat(hive.ratio) || 2.5} handler={value => updateInfo(hiveId, 'ratio', value)} />
+      <h3>Informations</h3>
+      <Info name="info" handler={(name, value) => updateInfo(hiveId, name, value)} defaultValue={hive.info} />
+      <h3>Mémo technique</h3>
+      <Info name="feedback" handler={(name, value) => updateInfo(hiveId, name, value)} defaultValue={hive.feedback} />
+      <h3>Actualités</h3>
+      {/* <select onChange={({ target: { value: toEdit } }) => this.setState({ newsToEdit: toEdit })} className="my-2"> */}
+      {/*  <option value={null}>Choisissez une actualité à modifier</option> */}
+      {/*  {hive.news.map(news => <option value={news.id} key={news.id}>{news.title}</option>)} */}
+      {/* </select> */}
+      {/* <Feedback name={this.state.newsToEdit} hiveId={hiveId} /> */}
+      <h3>Photos</h3>
+      <form onSubmit={addPicture}>
+        <FileUpload label="Taille recommandé : 400 x 300" identifier="hive-img" />
+        <Button type="submit" primary>Ajouter</Button>
+      </form>
+      {/* <Pictures data={hive.imgs} hiveId={hiveId} /> */}
     </Item>
   );
 };
@@ -102,7 +107,7 @@ const Hive = ({ getHive, match: { params: { hiveId } } }) => {
 //     if (document.getElementById('hive-img').files[0]) {
 //       data.append('img', document.getElementById('hive-img').files[0]);
 //       request({
-//         url: '/hive/photo',
+//         url: '/hive/pho§to',
 //         method: 'post',
 //         data,
 //         header: {

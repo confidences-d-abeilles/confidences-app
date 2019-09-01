@@ -1,11 +1,12 @@
-export const HIVES_FETCH = 'admin/manage/hives/FETCH';
-export const HIVES_FETCH_SUCCESS = 'admin/manage/hives/FETCH_SUCCESS';
-export const HIVES_FETCH_FAIL = 'admin/manage/hives/FETCH_FAIL';
 
-export const fetchHives = needle => ({ type: HIVES_FETCH, needle });
+export const UPDATE_INFO = 'admin/manage/hives/hive/UPDATE_INFO';
+export const UPDATE_INFO_SUCCESS = 'admin/manage/hives/hive/UPDATE_INFO_SUCCESS';
+export const UPDATE_INFO_FAIL = 'admin/manage/hives/hive/UPDATE_INFO_FAIL';
 
-export const HIVES_ADD = 'admin/manage/hives/ADD';
-export const HIVES_ADD_SUCCESS = 'admin/manage/hives/ADD_SUCCESS';
-export const HIVES_ADD_FAIL = 'admin/manage/hives/ADD_FAIL';
+export const updateInfo = (id, key, value) => ({ type: UPDATE_INFO, id, data: { [key]: value } });
 
-export const addHive = name => ({ type: HIVES_ADD, name });
+export const ADD_PHOTO = 'admin/manage/hives/hive/ADD_PHOTO';
+export const ADD_PHOTO_SUCCESS = 'admin/manage/hives/hive/ADD_PHOTO_SUCCESS';
+export const ADD_PHOTO_FAIL = 'admin/manage/hives/hive/ADD_PHOTO_FAIL';
+
+export const addPhoto = (id, file) => ({ type: ADD_PHOTO, id, file });

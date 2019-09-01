@@ -20,7 +20,6 @@ const AdminManageHives = ({
     fetchHives();
   }, []);
 
-  console.log(Object.values(hives));
   return (
     <>
       <Meta title="Gérer les ruches" />

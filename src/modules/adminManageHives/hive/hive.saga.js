@@ -3,43 +3,48 @@ import {
 } from 'redux-saga/effects';
 import request from '../../../services/Net';
 import {
-  HIVES_FETCH,
-  HIVES_FETCH_SUCCESS,
-  HIVES_FETCH_FAIL, HIVES_ADD_FAIL, HIVES_ADD_SUCCESS, HIVES_ADD,
-} from './hives.actions';
+  ADD_PHOTO, ADD_PHOTO_FAIL, ADD_PHOTO_SUCCESS,
+  UPDATE_INFO,
+  UPDATE_INFO_FAIL,
+  UPDATE_INFO_SUCCESS,
+} from './hive.actions';
 
 
-function* hivesFetch({ needle }) {
+function* updateInfos({ id, data }) {
   try {
-    const data = yield request({
-      url: `/hive/bundle/owner${needle ? `/${needle}` : ''}`,
-      method: 'GET',
+    yield request({
+      url: `/hive/${id}`,
+      method: 'patch',
+      data,
     });
-    yield put({ type: HIVES_FETCH_SUCCESS, data });
+    yield put({ type: UPDATE_INFO_SUCCESS, id, data });
   } catch (e) {
-    yield put({ type: HIVES_FETCH_FAIL });
+    yield put({ type: UPDATE_INFO_FAIL });
   }
 }
 
-function* addHive({ name }) {
+function* addPhoto({ id, file }) {
   try {
+    const data = yield new FormData();
+    yield data.append('id', id);
+    yield data.append('img', file);
     yield request({
-      url: '/hive',
+      url: '/hive/photo',
       method: 'post',
-      data: {
-        name,
+      data,
+      header: {
+        'content-type': 'multipart/form-data',
       },
     });
-    yield put({ type: HIVES_ADD_SUCCESS });
+    yield put({ type: ADD_PHOTO_SUCCESS });
   } catch (e) {
-    yield put({ type: HIVES_ADD_FAIL });
+    yield put({ type: ADD_PHOTO_FAIL });
   }
 }
 
 function* listen() {
-  yield takeLatest(HIVES_FETCH, hivesFetch);
-  yield takeLatest(HIVES_ADD, addHive);
-  yield takeLatest(HIVES_ADD_SUCCESS, hivesFetch);
+  yield takeLatest(UPDATE_INFO, updateInfos);
+  yield takeLatest(ADD_PHOTO, addPhoto);
 }
 
 export default function* rootSaga() {
