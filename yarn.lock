@@ -983,7 +983,7 @@
     react "^16.8.6"
     react-router-dom "^5.0.1"
 
-"@cda/sidebar@^0.6.2":
+"@cda/sidebar@^0.6.3":
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/@cda/sidebar/-/sidebar-0.6.3.tgz#192cf2511683aab961cfa642a7008c54d9516da7"
   integrity sha512-9Q0gp6Cp0a4rJxelL/hWdtfg+uR1STRSUE5rLHGuYODrKrLbWnPqb9ud7lV0cVk2uWrT2EZfOQMLxuZ7Uh+clQ==
