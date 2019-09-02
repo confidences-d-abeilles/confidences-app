@@ -161,10 +161,10 @@ export default withNotification(class CompanyManageMyPage extends Component {
 				<h2 className="text-center my-4">Modifier ma page</h2>
 				<div className="row mb-4">
 					<div className="col text-center">
-						<ButtonLink href={require('../../../assets/page_ent.pdf')} external>Comment personnaliser ma page ?</ButtonLink>
+						<ButtonLink to={require('../../../assets/page_ent.pdf')} external>Comment personnaliser ma page ?</ButtonLink>
 					</div>
 					<div className="col text-center">
-						<ButtonLink href={(this.state.user)?"/parrains/"+this.state.user.namespace:'/'} external>Voir ma page</ButtonLink>
+						<ButtonLink to={(this.state.user)?"/parrains/"+this.state.user.namespace:'/'} external>Voir ma page</ButtonLink>
 					</div>
 				</div>
 				{(this.state.user)?
