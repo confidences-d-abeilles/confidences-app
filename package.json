@@ -9,7 +9,7 @@
     "@cda/flex": "^0.6.1",
     "@cda/input": "^0.6.1",
     "@cda/link": "^0.6.1",
-    "@cda/sidebar": "^0.6.3",
+    "@cda/sidebar": "^0.6.4",
     "@cda/theme": "^0.6.1",
     "@cda/top-bar": "^0.6.1",
     "@emotion/core": "^10.0.14",

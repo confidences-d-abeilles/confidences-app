@@ -983,10 +983,10 @@
     react "^16.8.6"
     react-router-dom "^5.0.1"
 
-"@cda/sidebar@^0.6.3":
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/@cda/sidebar/-/sidebar-0.6.3.tgz#192cf2511683aab961cfa642a7008c54d9516da7"
-  integrity sha512-9Q0gp6Cp0a4rJxelL/hWdtfg+uR1STRSUE5rLHGuYODrKrLbWnPqb9ud7lV0cVk2uWrT2EZfOQMLxuZ7Uh+clQ==
+"@cda/sidebar@^0.6.4":
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/@cda/sidebar/-/sidebar-0.6.4.tgz#1bffca7859829c5c7f49086d50a199db71e0857c"
+  integrity sha512-uhkFHNkwvPJkMH6LVoe9pukTJWRdPV3ffz5SevDMc/eI8EFKOo+6JTENRtx0FQ63brlzrUVyv4NW9kEc4PUSvQ==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.20"
     "@fortawesome/free-solid-svg-icons" "^5.10.0"
