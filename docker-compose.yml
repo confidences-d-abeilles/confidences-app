@@ -20,7 +20,8 @@ services:
     image: cda-app:production
     restart: always
     labels:
-      - "traefik.frontend.rule=Host:parrainage.confidencesdabeilles.fr"
+      - "traefik.parrainage.frontend.rule=Host:parrainage.confidencesdabeilles.fr"
+      - "traefik.association.frontend.rule=Host:association.confidencesdabeilles.fr"
       - "traefik.backend.port=5000"
       - "traefik.enable=true"
       - "traefik.docker.network=layko_layko_net"
