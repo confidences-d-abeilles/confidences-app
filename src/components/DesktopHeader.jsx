@@ -58,10 +58,10 @@ const DropdownWrapper = styled('div')`
 const DropdownElement = styled(MyLink)`
   padding: 0.5rem 1rem;
   flex: 1;
-  width: 10rem;
+  width: 20rem;
 `;
 
-const Dropdown = () => {
+const Dropdown = ({ data, title }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleHandler = (e) => {
@@ -71,9 +71,9 @@ const Dropdown = () => {
 
   return (
     <DropdownPostion>
-      <a href="/" onClick={toggleHandler}>La société</a>
+      <a href="/" onClick={toggleHandler} style={{ color: 'black' }}>{title}</a>
       <DropdownWrapper onMouseLeave={toggleHandler} isOpen={isOpen}>
-        {navLinks.desktop.dropdown.map(({ label, ...props }) => (
+        {data.map(({ label, ...props }) => (
           <DropdownElement
             key={props.to}
             {...props}
@@ -95,9 +95,10 @@ export default withNotification(() => (
       {navLinks.desktop.visitors.map(({ label, ...props }) => (
         <MyLink className="nav-link" key={label} {...props}>{label}</MyLink>
       ))}
+      <Dropdown title="Agir" data={navLinks.desktop.dropdown1} />
     </Section>
     <RightSection>
-      <Dropdown />
+      <Dropdown title="L'association" data={navLinks.desktop.dropdown2} />
       {isLoggedIn()
         ? (
           <>
