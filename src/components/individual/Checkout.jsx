@@ -6,6 +6,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { withRouter } from 'react-router';
+import { Button } from '@cda/button';
 import request from '../../services/Net';
 import { handleChange, handleTick } from '../../services/FormService';
 import PayForm from '../utils/PayForm';
@@ -13,7 +14,7 @@ import Address from '../utils/Address/Address';
 import Meta from '../utils/Meta';
 import ViewAddress from '../utils/Address/ViewAddress';
 import { withNotification } from '../../services/withNotification';
-import { Button } from '@cda/button';
+import { withTranslation } from 'react-i18next';
 
 
 class IndividualCheckout extends Component {
@@ -161,6 +162,7 @@ class IndividualCheckout extends Component {
   }
 
   render() {
+    const { t } = this.props;
     return (
       <div className="container py-4">
         <Meta title="Confirmation et paiement" />
@@ -270,28 +272,24 @@ Ce parrainage est un cadeau
                 {this.state.paytype === '1'
                   && (
                   <div>
-                    <p>Veuillez trouver nos coordonnées bancaires pour procéder au virement</p>
+                    <p>{t('ourTransferInfo')}</p>
                     <p>
-                      <strong>Domiciliation : </strong>
-QONTO - 92641 BOULOGNE-BILLANCOURT
+                      <strong>{t('domiciliation')}</strong>
+                      {t('bankName')}
                       <br />
-                      <strong>IBAN : </strong>
-FR76 1679 8000 0100 0004 1298 259
+                      <strong>{t('IBAN')}</strong>
+                      {t('IBANValue')}
                       <br />
-                      <strong>BIC : </strong>
-TRZOFR21XXX
+                      <strong>{t('BIC')}</strong>
+                      {t('BICValue')}
                       <br />
                       <br />
-                      <strong>Numéro de facture à indiquer dans la référence du virement : </strong>
-                      {this.state.bill_number}
+                      <strong>{`${t('billNumber')} ${this.state.bill_number}`}</strong>
                     </p>
                     <p>
-                      Si	votre	banque	vous	impose	un	délai	concernant	l’ajout	d’un	nouveau	compte	bénéficiaire,	nous	vous
-                      invitons	à	sélectionner	«	Bénéficiaire ajouté	».	Un	mail	vous	conviant	à	confirmer	votre	virement	vous	sera
-                      alors	adressé	3	jours	plus	tard.
-                      {' '}
+                      {t('delay')}
                       <br />
-                      De	notre	côté,	la	validation	de	votre	virement	sera	faite	sous	48h.
+                      {t('validationOnOurSide')}
                     </p>
                     <p>
                       <button onClick={this.setBankTransfer.bind(this, false)} className="btn btn-primary">Bénéficiaire ajouté</button>
@@ -333,4 +331,4 @@ vous ne pouvez donc
   }
 }
 
-export default withRouter(withNotification(IndividualCheckout));
+export default withRouter(withNotification(withTranslation('payment')(IndividualCheckout)));
