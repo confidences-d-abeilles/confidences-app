@@ -11,7 +11,7 @@ const Wrapper = styled(Item)`
 `;
 
 const Header = styled(Item)`
-  background-color: black;
+  background-color: #E49C00;
   color: #f7f7f7;
   text-align: center;
   padding: 1rem 0.25rem;

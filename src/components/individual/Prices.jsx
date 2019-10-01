@@ -3,6 +3,7 @@ import ButtonLink from '@cda/button-link';
 import { Item, Rows } from '@cda/flex';
 import Meta from '../utils/Meta';
 import PriceCard from '../PriceCard';
+import camambert from '../../assets/img/P/utilisation-don-ruche-particulier.png';
 
 const UNIT = '/ an';
 
@@ -54,8 +55,28 @@ export default () => (
       <PriceCard title="50 000 abeilles" price={350} items={fiftyOffer} unit={UNIT} level={5} />
     </Rows>
     <Rows justifyContent="center">
-      <Item textAlign="center">
+      <Item textAlign="center" gutters>
         <ButtonLink to="/signup/individual" primary>Parrainer maintenant</ButtonLink>
+      </Item>
+    </Rows>
+    <Rows justifyContent="center">
+      <Item textAlign="center" gutters>
+        <img src={camambert} alt="Utilisation dons" />
+        <h3>*Dons aux associations et organismes d'intérêt général</h3>
+        <p>
+          L'association Confidences d’Abeilles est un organisme d’intérêt
+          général. A ce titre et en contrepartie des dons qu'elle reçoit, elle
+          émet des reçus fiscaux (CERFA N°11580*03) qui permettent à ses
+          donateurs de bénéficier d’une réduction d’impôt sur le revenu.
+          Celle-ci est de 66 % du montant des dons et elle s'applique dans la
+          limite de 20 % du revenu imposable. Lorsque le montant des dons
+          dépasse la limite de 20 % du revenu imposable, l'excédent est
+          reporté sur les 5 années suivantes et ouvre droit à la réduction
+          d'impôt dans les mêmes conditions.
+          <br /><br />
+          Plus d’information sur ce lien :&nbsp;
+          <a href="https://www.service-public.fr/particuliers/vosdroits/F426" target="_blank" rel="noopener noreferrer">https://www.service-public.fr/particuliers/vosdroits/F426</a>
+        </p>
       </Item>
     </Rows>
   </>

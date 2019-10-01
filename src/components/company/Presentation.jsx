@@ -26,15 +26,9 @@ export default withTranslation('company')(({ t }) => (
     <Rows justifyContent="center">
       <Item>
         <h3 className="text-center my-4">{t('forCompany')}</h3>
-        <ul>
-          {t('forCompanyPoints').map(point => <li key={point}>{point}</li>)}
-        </ul>
       </Item>
       <Item>
         <h3 className="text-center my-4">{t('forUs')}</h3>
-        <ul>
-          {t('forUsPoints').map(point => <li key={point}>{point}</li>)}
-        </ul>
       </Item>
     </Rows>
     <Rows justifyContent="center">
@@ -46,7 +40,12 @@ export default withTranslation('company')(({ t }) => (
       </Item>
     </Rows>
     <Rows justifyContent="center">
-      <Item textAlign="center">
+      <Item textAlign="center" gutters>
+        <p>{t('paragraph')}</p>
+      </Item>
+    </Rows>
+    <Rows justifyContent="center">
+      <Item textAlign="center" gutters>
         <ButtonLink to={leaflet} external primary>{t('download')}</ButtonLink>
       </Item>
     </Rows>

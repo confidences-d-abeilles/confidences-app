@@ -12,19 +12,15 @@ export default () => (
     <Meta title="Parrainer des abeilles" />
     <Jumbotron img={first}>
       <h1 className="text-left">
-        Vos abeilles n’ont
-        jamais été aussi
-        proche de prendre leur
-        envol !
+        Prêt(e) à soutenir vos abeilles ? à profiter de votre miel ?
       </h1>
       <p className="text-left">
-        Pour parrainer vos premières abeilles c’est très
-        simple : complétez le formulaire d’inscription,
-        choisissez le nombre d’abeilles et voilà !
+        Pour parrainer vos premières abeilles c’est simple : complétez le formulaire, supportez autant d’abeilles que souhaité,
+        et on s’occupe de les installer dans une ruche
       </p>
       <p className="text-center">
-        <ButtonLink to="/signup/individual" primary>Parrainer mes permières abeilles</ButtonLink>
-        <ButtonLink to="/present" primary>Offrir un parrainage</ButtonLink>
+        <ButtonLink to="/signup/individual" primary>C’est parti</ButtonLink>
+        <ButtonLink to="/present" primary>Je veux l’offrir 🎁</ButtonLink>
       </p>
     </Jumbotron>
     <Rows justifyContent="center">
@@ -34,58 +30,27 @@ export default () => (
     </Rows>
     <Rows justifyContent="center">
       <Item>
-        <h3 className="text-center my-4">Pour vous</h3>
-        <ul>
-          <li>
-            Adopter une démarche participative et responsable vis-à-vis de l’environnement</li>
-          <li>
-            S’engager concrètement dans la <strong>protection de la biodiversité</strong>
-          </li>
-          <li>
-            Une histoire à partager avec vos amis
-							</li>
-          <li>
-            Une ruche portant votre nom
-							</li>
-          <li>
-            Une page dédiée à la ruche dans laquelle vos abeilles évoluent, des photos de la ruche et des abeilles ainsi que des actualités seront régulièrement postées</li>
-          <li>
-            Entre 8 et 40 <strong>pots de miel personnalisés avec votre nom</strong> ou celui de la personne à qui est offert le parrainage : un cadeau unique qui ravira votre famille et vos amis.
-							</li>
-          <li>
-            La possibilité de <strong>rendre visite à vos abeilles</strong> équipé(e) de la fameuse tenue de protection de l'apiculteur
-							</li>
-        </ul>
+        <h3 className="text-center my-4">...pour vous</h3>
       </Item>
       <Item>
-        <h3 className="text-center my-4">Pour nous les apiculteurs</h3>
-        <ul>
-          <li>C’est l’assurance de maintenir notre
-							cheptel et de l’accroitre</li>
-          <li>Un nombre plus important de ruches
-          nous permet plus facilement
-							d’équilibrer les colonies entre elles</li>
-          <li>L’implantation de nouveaux ruchers
-          permet localement d’agir sur la
-          biodiversité (pollinisation) mais aussi
-          d’organiser des visites pédagogiques
-							pour les curieux</li>
-          <li>Un moyen de sensibiliser un grand
-          nombre de personnes à la protection
-							des abeilles</li>
-        </ul>
+        <h3 className="text-center my-4">...pour l’apiculteur</h3>
       </Item>
     </Rows>
     <Rows justifyContent="center">
       <Item textAlign="center">
-        <ButtonLink to="/signup/individual">Parrainer des abeilles</ButtonLink>
+        <ButtonLink to="/signup/individual">C’est parti</ButtonLink>
       </Item>
       <Item textAlign="center">
         <ButtonLink to="/individual/more">En savoir plus</ButtonLink>
       </Item>
     </Rows>
     <Rows justifyContent="center">
-      <Item textAlign="center">
+      <Item textAlign="center" gutters>
+        <p>
+          Vous voulez en parler autour de vous et nous aider à
+          diffuser cette initiative ? Récupérez donc une
+          présentation en version PDF.
+        </p>
         <ButtonLink
           to={leaflet}
           external
