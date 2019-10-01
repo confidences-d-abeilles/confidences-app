@@ -1,11 +1,13 @@
 {
-  "headline": "Parrainez une ruche, aidez-nous à protéger les abeilles",
-  "headblock": "Confidences d’Abeilles vous propose aujourd’hui de l’aider à poursuivre sa mission. Vous aussi participez à la protection des abeilles, à la préservation de la biodiversité en parrainant une ruche.",
-  "mission": "Cette mission nous la menons avec vous, particuliers, entreprises, citoyens avertis qui nous accompagnez depuis nos débuts. En finançant un rucher pédagogique vous nous avez déjà permis d’organiser des journées découvertes et de formation ; nous sommes fiers aussi d’avoir lancé plusieurs néophytes dans le grand bain de l’apiculture !",
-  "ourClients": "Nos derniers parrains",
-  "ready": "Vous voulez apporter votre pierre à l’édifice et participer à cette belle aventure ? Nous vous proposons de parrainer une ruche. En échange de quoi, les butineuses vous feront découvrir leur précieux butin : une partie du miel qu’elles auront amassé !",
-  "individualService": "Service particulier",
-  "companyService": "Service entreprise",
-  "discover": "Découvrir les ruches",
-  "sponsor": "Parrainer une ruche"
+  "headline": "Aidez-nous à installer des ruches, profitez du miel de vos abeilles. Aidez-nous à prendre soin des abeilles, profitez de leur miel. Stop ! Devenez un consom’acteurs en parrainant une ruche.",
+  "headblock": "L’association Confidences d’Abeilles prend soin des abeilles, de la biodiversité, et invite à découvrir un monde fascinant. Elle est soutenue par des parrains et des marraines géniaux qui ont décidé d’agir concrètement.",
+  "mission": "Depuis le départ, nous menons cette mission avec vous, particuliers, entreprises, et citoyens avertis. Ensemble, nous avons déjà pu financer un rucher pédagogique, organiser des visites découvertes, mettre en place une formation, et accompagner plusieurs néophytes dans la gestion de leurs premières ruches.",
+  "ourClients": "Les derniers parrains et mécènes",
+  "ready": "<strong>Vous souhaitez vous investir en faveur des abeilles, de l’apiculture française, du vrai miel, et de la biodiversité ?</strong> Oui, mais voilà : vous habitez en ville, vous n’avez pas la place d’accueillir une ruche ni le temps nécessaire à lui consacrer. Aucun problème, rejoignez l’aventure de 3 manières différentes et découvrez le monde fascinant des abeilles.",
+  "individualService": "Je suis un particulier",
+  "companyService": "Je suis une entreprise",
+  "discover": "Découvrir les ruches parrainées",
+  "sponsor": "Je parraine des abeilles",
+  "apply": "J’adhère à l’association",
+  "visit": "Je visite le rucher"
 }

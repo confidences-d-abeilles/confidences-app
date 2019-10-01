@@ -5,7 +5,7 @@ import { Item, Rows } from '@cda/flex';
 
 
 const JumbotronWrapper = styled(Rows)`
-  background-color: #111;
+  background-color: #E49C00;
   overflow: hidden;
   min-height: 30rem;
   margin-bottom: 2rem;
@@ -13,7 +13,7 @@ const JumbotronWrapper = styled(Rows)`
 
 
 const Jumbcontent = styled(Item)`
-  color: #DDD;
+  color: black;
   padding: 1rem; 
   flex: 1;
   z-index: 10;
@@ -22,7 +22,7 @@ const Jumbcontent = styled(Item)`
     content: ' ';
     width: 100%;
     transform: rotate(7deg);
-    background-color: #111;
+    background-color: #E49C00;
     right: 0;
     display: block;
     right: -10%;
@@ -36,6 +36,7 @@ const Jumbcontent = styled(Item)`
 const JumboImage = styled(Item)`
   width: 100%;
   align-self: stretch;
+  flex: 2;
   background-image: ${props => `url("${props.src}")`};
   background-size: cover;
   background-position: center;
