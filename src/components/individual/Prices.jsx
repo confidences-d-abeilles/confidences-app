@@ -47,21 +47,21 @@ export default () => (
     <Meta title="Tarifs particuliers" />
     <ButtonLink to="/company/prices" primary>Tarifs entreprises ></ButtonLink>
     <h2 className="text-center my-4">Tarifs particuliers</h2>
-    <Rows justifyContent="center">
-      <PriceCard title="10 000 abeilles" price={85} items={tenOffer} unit={UNIT} level={1} />
-      <PriceCard title="20 000 abeilles" price={160} items={twentyOffer} unit={UNIT} level={2} />
-      <PriceCard title="30 000 abeilles" price={230} items={thirtyOffer} unit={UNIT} level={3} />
-      <PriceCard title="40 000 abeilles" price={295} items={fourtyOffer} unit={UNIT} level={4} />
-      <PriceCard title="50 000 abeilles" price={350} items={fiftyOffer} unit={UNIT} level={5} />
+    <Rows justifyContent="center" wrap="wrap">
+      <PriceCard title="10 000 abeilles" price={85} items={tenOffer} unit={UNIT} level={1} subtitle="soit 29€ après réduction d’impôt*" />
+      <PriceCard title="20 000 abeilles" price={160} items={twentyOffer} unit={UNIT} level={2} subtitle="soit 55€ après réduction d’impôt*" />
+      <PriceCard title="30 000 abeilles" price={231} items={thirtyOffer} unit={UNIT} level={3} subtitle="soit 79€ après réduction d’impôt*" />
+      <PriceCard title="40 000 abeilles" price={295} items={fourtyOffer} unit={UNIT} level={4} subtitle="soit 101€ après réduction d’impôt*" />
+      <PriceCard title="50 000 abeilles" price={350} items={fiftyOffer} unit={UNIT} level={5} subtitle="soit 119€ après réduction d’impôt*" />
     </Rows>
     <Rows justifyContent="center">
       <Item textAlign="center" gutters>
         <ButtonLink to="/signup/individual" primary>Parrainer maintenant</ButtonLink>
       </Item>
     </Rows>
-    <Rows justifyContent="center">
+    <Rows justifyContent="center" wrap="wrap">
       <Item textAlign="center" gutters>
-        <img src={camambert} alt="Utilisation dons" />
+        <img src={camambert} alt="Utilisation dons" style={{ maxWidth: '100%' }} />
       </Item>
       <Item textAlign="center" gutters>
         <h3>*Dons aux associations et organismes d'intérêt général</h3>

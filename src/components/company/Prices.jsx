@@ -27,17 +27,17 @@ export default () => (
     <ButtonLink to="/individual/prices" primary>Tarifs particuliers ></ButtonLink>
     <h2 className="text-center my-4">Tarifs entreprises</h2>
     <Rows justifyContent="center">
-      <PriceCard title="1 à 4 ruches" price={635} items={tenOffer} unit={UNIT} level={1} />
-      <PriceCard title="5 ruches ou +" price={560} items={twentyOffer} unit={UNIT} level={2} />
+      <PriceCard title="1 à 4 ruches" price={635} items={tenOffer} unit={UNIT} level={1} subtitle="soit 380€ après réduction d’impôt*" />
+      <PriceCard title="5 ruches ou +" price={560} items={twentyOffer} unit={UNIT} level={2} subtitle="soit 350€ après réduction d’impôt*" />
     </Rows>
     <Rows justifyContent="center">
       <Item textAlign="center" gutters>
         <ButtonLink to="/signup/company" primary>Parrainer maintenant</ButtonLink>
       </Item>
     </Rows>
-    <Rows justifyContent="center">
+    <Rows justifyContent="center" wrap="wrap">
       <Item textAlign="center" gutters>
-        <img src={camambert} alt="Utilisation dons" />
+        <img src={camambert} alt="Utilisation dons" style={{ maxWidth: '100%' }} />
       </Item>
       <Item textAlign="center" gutters>
         <h3>*Mécénat d'entreprise et dons aux associations</h3>
