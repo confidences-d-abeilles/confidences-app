@@ -62,6 +62,8 @@ export default () => (
     <Rows justifyContent="center">
       <Item textAlign="center" gutters>
         <img src={camambert} alt="Utilisation dons" />
+      </Item>
+      <Item textAlign="center" gutters>
         <h3>*Dons aux associations et organismes d'intérêt général</h3>
         <p>
           L'association Confidences d’Abeilles est un organisme d’intérêt
