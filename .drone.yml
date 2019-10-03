@@ -8,7 +8,7 @@ steps:
         - name: docker
           path: /var/run/docker.sock
         - name: cache
-          path: node_modules
+          path: /node_modules
     commands:
       - docker-compose build preview
     depends_on:
