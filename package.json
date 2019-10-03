@@ -101,15 +101,12 @@
     "start": "node server.js",
     "test": "node scripts/test.js --env=jsdom",
     "serve": "serve -s build",
-    "test:e2e": "start-server-and-test dev http://localhost:3000 cypress",
-    "cypress": "./node_modules/.bin/cypress run --record --key d5676b7a-ac68-4b9c-9bf9-08144055529e",
     "lint": "./node_modules/.bin/eslint --cache --ext .jsx --ext .js src"
   },
   "devDependencies": {
     "@sentry/webpack-plugin": "^1.7.0",
     "babel-eslint": "^10.0.2",
     "babel-plugin-dynamic-import-webpack": "^1.1.0",
-    "cypress": "^3.4.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^5.16.0",
