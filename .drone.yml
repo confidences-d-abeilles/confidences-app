@@ -11,6 +11,9 @@ steps:
       - docker-compose build preview
     depends_on:
       - clone
+    cache:
+      mount:
+        - node_modules
   - name: deploy preview
     image: docker/compose:1.24.1
     volumes:
@@ -20,9 +23,6 @@ steps:
       - docker-compose -p cda-app up -d preview
     depends_on:
       - build preview
-    cache:
-      mount:
-        - node_modules
   - name: build production
     image: docker/compose:1.24.1
     volumes:
