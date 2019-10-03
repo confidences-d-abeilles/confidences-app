@@ -20,6 +20,9 @@ steps:
       - docker-compose -p cda-app up -d preview
     depends_on:
       - build preview
+    cache:
+      mount:
+        - node_modules
   - name: build production
     image: docker/compose:1.24.1
     volumes:
