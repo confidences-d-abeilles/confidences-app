@@ -6,7 +6,6 @@ COPY . .
 
 RUN if [ "$NODE_ENV" = "staging" ] ; then mv .env.staging .env.production ; else rm .env.staging ; fi;
 
-RUN ls
 RUN yarn
 
 ENV NODE_ENV production
