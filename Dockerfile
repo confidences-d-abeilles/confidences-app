@@ -1,4 +1,4 @@
-FROM cda-app:staging
+FROM node:12
 
 ARG NODE_ENV
 
