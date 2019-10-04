@@ -13,6 +13,8 @@ export default class Wish extends Component {
 
   mainProduct = this.props.mainProduct || 10;
 
+  isIndividual = this.mainProduct === 20;
+
   state = {
     products: [],
     coupons: [],
@@ -222,10 +224,13 @@ export default class Wish extends Component {
 
 
   render() {
+    const {
+      pots, couponsOk, codesOk, redirect, products, options, codeResult, price,
+    } = this.state;
     return (
       <div className="container py-4">
-        {this.state.redirect && this.mainProduct === 10 && <Redirect to="/company/checkout" />}
-        {this.state.redirect && this.mainProduct === 20 && <Redirect to="/individual/checkout" />}
+        {redirect && this.mainProduct === 10 && <Redirect to="/company/checkout" />}
+        {redirect && this.mainProduct === 20 && <Redirect to="/individual/checkout" />}
         <div className="row justify-content-center">
           <div className="col">
             <div className="progress"><div className="progress-bar" role="progressbar" style={{ width: '80%' }} /></div>
@@ -233,17 +238,31 @@ export default class Wish extends Component {
         </div>
         <div className="row">
           <div className="col-lg-6">
-            {this.state.products.map((e) => {
+            {products.map((e) => {
               if (e.type === this.mainProduct) {
                 return (
-                  <MainProduct product={e} key={e.id} update={this.updateProducts.bind(this)} pots={this.state.pots} individual={this.mainProduct === 20} />
+                  <MainProduct
+                    product={e}
+                    key={e.id}
+                    update={this.updateProducts.bind(this)}
+                    pots={pots}
+                    individual={this.isIndividual}
+                  />
                 );
               }
               return null;
             })}
-            <h3 className="my-2"><small>Produits supplémentaires</small></h3>
-            <p>Merci de sélectionner le nombre de produits à ajouter à votre offre.</p>
-            {this.state.products.map((e) => {
+            <h3 className="my-2">
+              <small>
+                {this.isIndividual ? 'Je souhaite en plus' : 'Nous voulons en plus'}
+              </small>
+            </h3>
+            <p>
+              Merci de saisir un chiffre ou un montant
+              selon ce que vous souhaitez ajouter à votre
+              don.
+            </p>
+            {products.map((e) => {
               if (e.type === this.mainProduct + 1) {
                 return (
                   <Product product={e} key={e.id} update={this.updateProducts} />
@@ -256,11 +275,11 @@ export default class Wish extends Component {
             <h3><small>Options</small></h3>
             <form>
               <div className="form-group">
-                {this.state.options.map(e => (
+                {options.map(e => (
                   <div key={e.id}>
-                    <input type="radio" id={e.id} name="optionSelect" onChange={this.selectOption.bind(this)} value={e.id} checked={this.state.optionSelect === e.id} />
-                    &nbsp;
                     <label htmlFor={e.id}>
+                      <input type="radio" id={e.id} name="optionSelect" onChange={this.selectOption.bind(this)} value={e.id} checked={this.state.optionSelect === e.id} />
+                    &nbsp;
                       {`${e.designation} ( ${-e.amount} € / unité )`}
                     </label>
                   </div>
@@ -268,30 +287,30 @@ export default class Wish extends Component {
               </div>
             </form>
             <h3><small>Code promo</small></h3>
-            {this.state.codeResult}
+            {codeResult}
             <form className="form-inline my-2" onSubmit={this.handleCode.bind(this)}>
               <input type="text" className="form-control" name="code" onChange={handleChange.bind(this)} value={this.state.code} placeholder="Entrez un code promo..." />
               <Button>Vérifier le code</Button>
             </form>
             <h3><small>Réductions</small></h3>
-            {this.state.couponsOk.length < 1
+            {couponsOk.length < 1
                 && <p>Aucune réduction immédiate n'est applicable</p>}
-            {this.state.couponsOk.map(e => (
+            {couponsOk.map(e => (
               <span key={e.id}>
                 {`${e.designation} ( ${-e.amount} € / unité )`}
               </span>
             ))}
-            {this.state.codesOk.length < 1
+            {codesOk.length < 1
                 && <p>Aucun code promotionnel n'a été appliqué</p>}
-            {this.state.codesOk.map(e => (
+            {codesOk.map(e => (
               <span key={e.id}>
                 {`${e.designation} ( ${-e.amount} € / unité )`}
               </span>
             ))}
             <p className="lead text-center">
-              {`Total : ${this.state.price} €`}
+              {`Total : ${price} €`}
               <br />
-              <Button onClick={this.handleSubmit}>Valider et passer au paiement</Button>
+              <Button onClick={this.handleSubmit}>{this.isIndividual ? 'Valider et passer au paiement' : 'Valider et passer au versement'}</Button>
             </p>
           </div>
         </div>
