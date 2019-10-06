@@ -16,7 +16,7 @@ export default () => (
       </h1>
       <p className="text-left">
         Pour parrainer vos premières abeilles c’est simple : complétez le formulaire, supportez autant d’abeilles que souhaité,
-        et on s’occupe de les installer dans une ruche
+        et on s’occupe de les installer dans une ruche !
       </p>
       <p className="text-center">
         <ButtonLink to="/signup/individual" primary>C’est parti</ButtonLink>
