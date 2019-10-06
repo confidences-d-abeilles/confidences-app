@@ -251,7 +251,7 @@ FR76 1679 8000 0100 0004 1298 259
 TRZOFR21XXX
                       <br />
                       <br />
-                      <strong>Numéro d’ordre du reçu à indiquer dans la référence du virement :</strong>
+                      <strong>Numéro d’ordre du reçu à indiquer dans la référence du virement : </strong>
                       {this.state.bill_number}
                     </p>
                     <p>
