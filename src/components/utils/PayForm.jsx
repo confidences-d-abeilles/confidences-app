@@ -148,7 +148,7 @@ Verser&nbsp;
             &nbsp;
             et le paiement est compatible 3D Secure, MasterCard SecureCode, Verified by VISA.
             Dans un soucis de sécurité,&nbsp;
-            Confidences d&apos;Abeilles ne conserve pas vos informations bancaires.
+            l'association Confidences d&apos;Abeilles ne conserve pas vos informations bancaires.
           </p>
         </div>
       </div>
