@@ -29,7 +29,7 @@ const thirtyOffer = [
 ];
 
 const fourtyOffer = [
-  { id: 'test', value: 'Votre nom sur une ruche' },
+  { id: 'test', value: 'Une ruche complète à votre nom' },
   { id: 'test', value: 'Une page dédiée' },
   { id: 'miel', value: '32 pots de 250g', bold: true },
   { id: 'post', value: 'Frais d\'expedition inclus' },
