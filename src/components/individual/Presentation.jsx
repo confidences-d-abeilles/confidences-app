@@ -25,7 +25,7 @@ export default () => (
     </Jumbotron>
     <Rows justifyContent="center">
       <Item textAlign="center">
-        <h2>Parrainer une ruche c'est :</h2>
+        <h2>Parrainer des abeilles c’est...</h2>
       </Item>
     </Rows>
     <Rows justifyContent="center">
