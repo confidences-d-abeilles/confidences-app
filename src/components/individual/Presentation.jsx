@@ -3,6 +3,8 @@ import ButtonLink from '@cda/button-link';
 import { Rows, Item } from '@cda/flex';
 import first from '../../assets/img/P/1.jpg';
 import leaflet from '../../assets/leaflet_p.pdf';
+import forYou from '../../assets/img/schema-parrainage-apport-pour-les-P.png';
+import forUs from '../../assets/img/schema-apport-pour-les-api.png';
 
 import Meta from '../utils/Meta';
 import Jumbotron from '../Jumbotron';
@@ -31,9 +33,11 @@ export default () => (
     <Rows justifyContent="center">
       <Item>
         <h3 className="text-center my-4">...pour vous</h3>
+        <img src={forYou} alt="for you" width="100%" />
       </Item>
       <Item>
         <h3 className="text-center my-4">...pour l’apiculteur</h3>
+        <img src={forUs} alt="for you" width="100%" />
       </Item>
     </Rows>
     <Rows justifyContent="center">
