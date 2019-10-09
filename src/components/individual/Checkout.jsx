@@ -314,8 +314,8 @@ vous ne pouvez donc
                     </p>
                     <p>N’oubliez pas que pour un parrainage effectué entre :</p>
                     <ul>
-                      <li>Le 1er juillet et le 31 décembre, vous recevez le miel de vos abeilles à partir du mois de mai de l’année suivante.</li>
-                      <li>Le 1er janvier et le 30 juin, vous recevez le miel de vos abeilles à partir du mois d’octobre.</li>
+                      <li>Le 1er février et le 31 juillet, vous recevrez le miel de vos abeilles en automne.</li>
+                      <li>Le 1er août et le 31 janvier, vous recevrez le miel de vos abeilles au printemps suivant.</li>
                     </ul>
                     <p>Bonne visite sur notre plateforme !</p>
                     <button onClick={this.noAction} className="btn btn-primary">Payer plus tard</button>
