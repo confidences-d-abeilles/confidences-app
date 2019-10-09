@@ -30,12 +30,12 @@ export default () => (
         <h2>Parrainer des abeilles c’est...</h2>
       </Item>
     </Rows>
-    <Rows justifyContent="center">
-      <Item>
+    <Rows justifyContent="center" wrap="wrap">
+      <Item flex="1 0 20rem">
         <h3 className="text-center my-4">...pour vous</h3>
         <img src={forYou} alt="for you" width="100%" />
       </Item>
-      <Item>
+      <Item flex="1 0 20rem">
         <h3 className="text-center my-4">...pour l’apiculteur</h3>
         <img src={forUs} alt="for you" width="100%" />
       </Item>

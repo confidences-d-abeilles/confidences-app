@@ -25,12 +25,12 @@ export default withTranslation('company')(({ t }) => (
         <h2>{t('secondTitle')}</h2>
       </Item>
     </Rows>
-    <Rows justifyContent="center" wrap>
-      <Item gutter>
+    <Rows justifyContent="center" wrap="wrap">
+      <Item flex="1 0 20rem">
         <h3 className="text-center my-4">{t('forCompany')}</h3>
         <img src={forYou} alt="for you" width="100%" />
       </Item>
-      <Item>
+      <Item flex="1 0 20rem">
         <h3 className="text-center my-4">{t('forUs')}</h3>
         <img src={forUs} alt="for you" width="100%" />
       </Item>
