@@ -22,6 +22,9 @@ i18n.use(initReactI18next).init({
   resources,
   lng: 'fr',
   returnObjects: true,
+  interpolation: {
+    escapeValue: false,
+  },
 });
 
 ReactPixel.init('281052689206911', {}, options);

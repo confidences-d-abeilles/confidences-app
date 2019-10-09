@@ -30,11 +30,6 @@ const Presignup = Loadable({
   loading: () => null,
 });
 
-const Cgv = Loadable({
-  loader: () => import('../components/static/Cgv'),
-  loading: () => null,
-});
-
 const Mentions = Loadable({
   loader: () => import('../components/static/Mentions'),
   loading: () => null,
@@ -190,7 +185,6 @@ export default () => (
     <Route exact path="/jobs/businessdev" component={JobsBusinessDev} />
     <Route exact path="/jobs/event" component={JobsEvent} />
     <Route exact path="/newsletter/signup" component={Newslettersignup} />
-    <Route exact path="/cgv" component={Cgv} />
     <Route exact path="/mentions_legales" component={Mentions} />
     <Route exact path="/hives" component={Hives} />
     <Route exact path="/partners" component={Partners} />

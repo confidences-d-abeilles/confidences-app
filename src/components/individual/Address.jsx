@@ -80,7 +80,7 @@ class IndividualAddress extends Component {
         </div>
         <div className="row justify-content-center">
           <div className="col-lg-6 col-md-10 col-sm-12">
-            <h2 className="text-center my-4">Adresse de facturation</h2>
+            <h2 className="text-center my-4">Adresse de reçu fiscal</h2>
             <EditAddress
               company={false}
               data={address}

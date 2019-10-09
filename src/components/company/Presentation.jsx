@@ -7,6 +7,8 @@ import first from '../../assets/img/E/1.jpg';
 import Meta from '../utils/Meta';
 import leaflet from '../../assets/leaflet_e.pdf';
 import Jumbotron from '../Jumbotron';
+import forUs from '../../assets/img/schema-apport-pour-les-api.png';
+import forYou from '../../assets/img/schema-parrainage-apport-pour-les-E.png';
 
 export default withTranslation('company')(({ t }) => (
   <Fragment>
@@ -23,18 +25,14 @@ export default withTranslation('company')(({ t }) => (
         <h2>{t('secondTitle')}</h2>
       </Item>
     </Rows>
-    <Rows justifyContent="center">
-      <Item>
+    <Rows justifyContent="center" wrap="wrap">
+      <Item flex="1 0 20rem">
         <h3 className="text-center my-4">{t('forCompany')}</h3>
-        <ul>
-          {t('forCompanyPoints').map(point => <li key={point}>{point}</li>)}
-        </ul>
+        <img src={forYou} alt="for you" width="100%" />
       </Item>
-      <Item>
+      <Item flex="1 0 20rem">
         <h3 className="text-center my-4">{t('forUs')}</h3>
-        <ul>
-          {t('forUsPoints').map(point => <li key={point}>{point}</li>)}
-        </ul>
+        <img src={forUs} alt="for you" width="100%" />
       </Item>
     </Rows>
     <Rows justifyContent="center">
@@ -46,7 +44,12 @@ export default withTranslation('company')(({ t }) => (
       </Item>
     </Rows>
     <Rows justifyContent="center">
-      <Item textAlign="center">
+      <Item textAlign="center" gutters>
+        <p>{t('paragraph')}</p>
+      </Item>
+    </Rows>
+    <Rows justifyContent="center">
+      <Item textAlign="center" gutters>
         <ButtonLink to={leaflet} external primary>{t('download')}</ButtonLink>
       </Item>
     </Rows>

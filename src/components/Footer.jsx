@@ -34,33 +34,33 @@ export default () => (
         </div>
         <div className="col-lg-6 col-md-12 row">
           <div className="col-lg-4 col-md-4 col-sm-6 mb-4">
-            <h3 className="text-left">Services</h3>
+            <h3 className="text-left">Soutenir</h3>
             <ul>
-              <li><Link to="/company/presentation" className="noStyleLink">Entreprise</Link></li>
-              <li><Link to="/individual/presentation" className="noStyleLink">Particulier</Link></li>
-              <li><Link to="/partners" className="noStyleLink">Partenaires</Link></li>
-              <li><Link to="/individual/prices" className="noStyleLink">Tarifs</Link></li>
-              <li><Link to="/hives" className="noStyleLink">Les ruches</Link></li>
+              <li><Link to="/company/presentation" className="noStyleLink">Entreprises</Link></li>
+              <li><Link to="/individual/presentation" className="noStyleLink">Particuliers</Link></li>
+              <li><Link to="/individual/prices" className="noStyleLink">Coût</Link></li>
+              <li><Link to="/hives" className="noStyleLink">Les ruches de nos mécènes</Link></li>
+              <li><Link to="/#" className="noStyleLink">Adhérer</Link></li>
+              <li><Link to="/#" className="noStyleLink">Participer aux visites</Link></li>
             </ul>
           </div>
           <div className="col-lg-4 col-md-4 col-sm-6 mb-4">
-            <h3 className="text-left">La société</h3>
+            <h3 className="text-left">L&apos;association</h3>
             <ul>
-              <li><Link to="/about" className="noStyleLink">Notre histoire</Link></li>
-              <li><Link to="/ourvalues" className="noStyleLink">Nos valeurs</Link></li>
-              <li><Link to="/team" className="noStyleLink">L&apos;équipe</Link></li>
-              <li><Link to="/contact" className="noStyleLink">Contact</Link></li>
-              <li><Link to="/jobs" className="noStyleLink">Jobs</Link></li>
-              <li><a href="https://shop.confidencesdabeilles.fr/blogs/all" target="_blank" rel="noopener noreferrer">Blog</a></li>
+              <li><Link to="/about" className="noStyleLink">L&apos;histoire</Link></li>
+              <li><Link to="/ourvalues" className="noStyleLink">Les valeurs</Link></li>
+              <li><Link to="/team" className="noStyleLink">L&apos;équipe et le conseil d&apos;administration</Link></li>
+              <li><Link to="/partners" className="noStyleLink">Les partenaires</Link></li>
+              <li><Link to="/jobs" className="noStyleLink">Rejoindre l&apos;aventure</Link></li>
             </ul>
           </div>
           <div className="col-lg-4 col-md-4 col-sm-6 mb-4">
-            <h3 className="text-left">Ressources</h3>
+            <h3 className="text-left">En savoir plus</h3>
             <ul>
+              <li><Link to="/#" className="noStyleLink">Les rapports d&apos;activité</Link></li>
               <li><Link to="/faq" className="noStyleLink">FAQ</Link></li>
-              <li><Link to="/presse" className="noStyleLink">Presse</Link></li>
+              <li><Link to="/contact" className="noStyleLink">Contacter</Link></li>
               <li><Link to="/mentions_legales" className="noStyleLink">Mentions légales</Link></li>
-              <li><Link to="/cgv" className="noStyleLink">CGV</Link></li>
             </ul>
           </div>
         </div>

@@ -40,7 +40,7 @@ export default withTranslation('homepage')(({ loading, users, t }) => (
     </Jumbotron>
     <Rows>
       <TextBlock>
-        <p>{t('mission')}</p>
+        <p dangerouslySetInnerHTML={{ __html: t('mission') }} />
       </TextBlock>
     </Rows>
     <Rows justifyContent="center">
@@ -81,11 +81,16 @@ export default withTranslation('homepage')(({ loading, users, t }) => (
           ) : <Loading />}
       </Item>
     </Rows>
+    <Rows justifyContent="center">
+      <Item>
+        <ButtonLink to="/hives">{t('discover')}</ButtonLink>
+      </Item>
+    </Rows>
     <Rows>
       <TextBlock>
-        <p>{t('ready')}</p>
-        <ButtonLink to="/presignup">{t('sponsor')}</ButtonLink>
-        <ButtonLink to="/hives">{t('discover')}</ButtonLink>
+        <p dangerouslySetInnerHTML={{ __html: t('ready') }} />
+        <ButtonLink to="/presignup">{t('apply')}</ButtonLink>
+        <ButtonLink to="/presignup">{t('visit')}</ButtonLink>
       </TextBlock>
     </Rows>
   </Fragment>

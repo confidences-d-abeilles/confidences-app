@@ -11,7 +11,7 @@ const Wrapper = styled(Item)`
 `;
 
 const Header = styled(Item)`
-  background-color: black;
+  background-color: #E49C00;
   color: #f7f7f7;
   text-align: center;
   padding: 1rem 0.25rem;
@@ -41,18 +41,19 @@ const List = styled('ul')`
 
 
 const PriceCard = ({
-  title, items, price, level, unit,
+  title, items, price, level, unit, subtitle,
 }) => (
   <Wrapper noGutter>
     <Header noGutter level={level}>
-      <h1>
+      <h1>{title}</h1>
+      <h4>
         <strong>€</strong>
         {' '}
         {price}
         {' '}
         <small>{unit}</small>
-      </h1>
-      <h4>{title}</h4>
+      </h4>
+      <h5>{subtitle}</h5>
     </Header>
     <List>
       {items.map(e => <li key={title + e.id}>{e.bold ? <strong>{e.value}</strong> : e.value }</li>)}
