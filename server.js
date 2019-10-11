@@ -24,7 +24,7 @@ app.use('/static', express.static('build/static'));
 app.use('/', metaResolverMiddleware);
 
 function composeHtml(html, meta) {
-  const splitted = html.split('<title>Association Confidences d\'Abeilles</title>');
+  const splitted = html.split('<!-- SSR -->');
   let output = '';
   if (meta.title) {
     output = `${output}<title>${meta.title}</title>`;
