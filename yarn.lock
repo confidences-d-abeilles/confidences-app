@@ -941,17 +941,17 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@cda/button-link@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@cda/button-link/-/button-link-0.7.0.tgz#8b6612f22b3b3fde579aa945b7ce762ec4d47a84"
-  integrity sha512-OPhNmYcaQWGy6FReZOS9a8JQA+ne3nFTC9Id42gdvXHLwLFocPiy/1jJ9Fl7MFRhNI2k3LOPgQb2xIZa6352zA==
+"@cda/button-link@latest":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@cda/button-link/-/button-link-0.8.0.tgz#7720076e93bc5a3fbf53c0f33a7c10453922cb82"
+  integrity sha512-9Q3ovxKBQtZsAB81EK9jTytYOuHVYgwfPGjQGhkRxHSBqKcrjV/2bHRLMFwKpdXugvjanZbCuV6Sh+5e8Z1zRg==
   dependencies:
     react "^16.8.6"
 
-"@cda/button@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@cda/button/-/button-0.7.0.tgz#9cf2cb1b086bb9bf8d9a4d0e591877b4cac5d172"
-  integrity sha512-xIWUhyRqz65Pz732Du/pquZBhGcXvcRunhmkxoj51LX42RAQKtO/CheqGeJsUpupx5dRDWSvINnCFwmSgYtnyA==
+"@cda/button@latest":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@cda/button/-/button-0.8.0.tgz#88141c1f941bcdafc5fb5f4a46fbeed8048c10ed"
+  integrity sha512-LABANcqxz2NK3G1MC6WlJORY0yatLnlhBfvx1uh4mViJ2mk3AHWjQvq0MeiqpwBWL+gHZUwUrqlnFs7uCdMb3w==
   dependencies:
     "@emotion/core" "^10.0.14"
     "@emotion/styled" "^10.0.14"
@@ -959,34 +959,34 @@
     react "^16.8.6"
     react-dom "^16.8.6"
 
-"@cda/flex@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@cda/flex/-/flex-0.7.0.tgz#b8f171b42a3123aaf92f47e372d9bff682409ccf"
-  integrity sha512-E8d3+h/E8H3S8ehczSSyDOJ70RJjcjDBkN3EJNbee+tN2IIyjlLQdrHqzyL6JuLOAFgCUX0Yu7UzBqYSCW7ibQ==
+"@cda/flex@latest":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@cda/flex/-/flex-0.8.0.tgz#364efc73c68a01617941dba8ed60945668495d8f"
+  integrity sha512-O0rqYYnkPcubH3t+QD5FXmCmNy6VGllG9DkV8KJBr54g1aP7nLUC3eu07jzBz1xX7Vj89iVjA/tuzwPfzU9jkQ==
 
-"@cda/input@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@cda/input/-/input-0.7.0.tgz#89bd08b16e325285652d320602dd46835c828bed"
-  integrity sha512-6C1SGTPFum2qhv90/vdEX1mNCuZgdGe4xDMeDNZxGrFDU6D2w/16lwB9+ZhXaOa51XdTOkS3WvYLfnMTKdjyxw==
+"@cda/input@latest":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@cda/input/-/input-0.8.0.tgz#774549fa1fef62afb0aabecfcd7d2149ee60899c"
+  integrity sha512-P3qkRu4T+rONlclrxrJ7TXtKkunecmuc6x8/l3O+XKdeOaxqT1jC9zn0ycJG0avFJ9xck4QKWtknof2PGR6WLQ==
   dependencies:
     "@emotion/core" "^10.0.14"
     "@emotion/styled" "^10.0.14"
     react "^16.8.6"
 
-"@cda/link@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@cda/link/-/link-0.7.0.tgz#d6cbe5e7683b5cb726d3e9273a8d7a1ecea09a8e"
-  integrity sha512-hgRn43knCOWH4z71gWR3wrOsiNR27Mnywo6psIDPpJGIzTlR/nr1/RjPEdjiGKsdjPmEe32guepZ7U5vqnJQTA==
+"@cda/link@latest":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@cda/link/-/link-0.8.0.tgz#08115be228510428eeafaef109dfbdde360f095e"
+  integrity sha512-A7zqOEw36JN+Q00mg5knvDsh/gPfn1Kagz3ChAHB/EXvoVvA3AZipPd11YRNaZrvIH0Tf0yKe43BqDKUjNgSzw==
   dependencies:
     "@emotion/core" "^10.0.14"
     "@emotion/styled" "^10.0.14"
     react "^16.8.6"
     react-router-dom "^5.0.1"
 
-"@cda/sidebar@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@cda/sidebar/-/sidebar-0.7.0.tgz#2bed5d7ac19b0ea5512b13ef2f595e6e554e1c44"
-  integrity sha512-DpDzBiZgR/N3Os+AVInhGWZVfYQyt+Ji4u7hJPnlYCLjM2GpL4/SyKlt2FV4TrpNFrjc1LUuoAeB61eCGdHzXA==
+"@cda/sidebar@latest":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@cda/sidebar/-/sidebar-0.8.0.tgz#2a0f0352fcae9ea94a4d34c6f34b7ec1c05293c8"
+  integrity sha512-te1y5qz+2tC6f3dgk51EuQcB+CIfOTm9//kURTKVNPkbCKSVwb4vrM/sND5iDN1jZhSv259lQ30kACZJID7zOg==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.20"
     "@fortawesome/free-solid-svg-icons" "^5.10.0"
@@ -994,15 +994,15 @@
     react "^16.8.6"
     react-router "^5.0.1"
 
-"@cda/theme@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@cda/theme/-/theme-0.7.0.tgz#6002ab7ad21e35c140c292923df02b4cb6cce824"
-  integrity sha512-h4CsT0ivmLTUy0GgY4z78eZcIUaDaVX10L55WmFcF9TvA2uuvNUMpTgWQBN03car4m7QQtDgf00WE4R1QzZxyw==
+"@cda/theme@latest":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@cda/theme/-/theme-0.8.0.tgz#d4ba0aac1216a3ec0e5532fbbc009170cbb0d42d"
+  integrity sha512-MaBcCo8NKhdYtl/AMI61FUfMQypQ8uLnbhceG3pOZ5yAMzyifyXQQ9e8wJJQhoo3o9jdP8YPMwOdJ6cnqJDlBw==
 
-"@cda/top-bar@0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@cda/top-bar/-/top-bar-0.7.0.tgz#632f13369e4b314bedf2ee3999179fa934756578"
-  integrity sha512-fX5kBIlLTEsGoflutsLyvS7LZji080d72qm4EVRMD4TY9R+CRMQPqV784XY3m7gp8mOvaKt0Z5SRYyYZ9QUrkg==
+"@cda/top-bar@latest":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@cda/top-bar/-/top-bar-0.8.0.tgz#5c79b06fe4d5452bf3e5b5eaf3ff37eec226f5e4"
+  integrity sha512-DCXwUamOWv164kb6UcT97ZVSyu7x0DbzoLdTYREnlNTG6mauYtand+94Sp7pA/Gd8CeGeYjYld86wMGKyZ/h2Q==
   dependencies:
     "@emotion/core" "^10.0.14"
     "@emotion/styled" "^10.0.14"

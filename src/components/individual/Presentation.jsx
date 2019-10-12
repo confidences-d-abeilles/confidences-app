@@ -42,7 +42,7 @@ export default () => (
     </Rows>
     <Rows justifyContent="center">
       <Item textAlign="center">
-        <ButtonLink to="/signup/individual">C’est parti</ButtonLink>
+        <ButtonLink to="/signup/individual" primary>C’est parti</ButtonLink>
       </Item>
       <Item textAlign="center">
         <ButtonLink to="/individual/more">En savoir plus</ButtonLink>
@@ -58,7 +58,6 @@ export default () => (
         <ButtonLink
           to={leaflet}
           external
-          primary
         >
           Télécharger la plaquette de présentation
         </ButtonLink>

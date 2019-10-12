@@ -5,6 +5,7 @@ import broch from '../../assets/brochure.pdf';
 
 import Meta from '../utils/Meta';
 import Cover from '../Cover';
+import ButtonLink from '@cda/button-link';
 
 export default class More extends Component {
   state = {
@@ -54,7 +55,7 @@ export default class More extends Component {
             <br />
             <br />
             <p className="text-center">
-              <Link to="/signup/company" className="btn btn-secondary btn-warning mr-4">Devenir parrain</Link>
+              <ButtonLink to="/signup/company" primary>Devenir parrain</ButtonLink>
             </p>
             <br />
           </p>
@@ -164,8 +165,8 @@ Votre parrainage peut être un réel atout dans votre communication
               </li>
             </ul>
             <p className="text-center">
-              <Link to="/signup/company" className="btn btn-secondary btn-warning mr-4">Parrainer une ruche</Link>
-              <a href={broch} className="btn btn-secondary btn-warning m-4" rel="noopener noreferrer" target="_blank">Découvrir la brochure</a>
+              <ButtonLink to="/signup/company">Parrainer une ruche</ButtonLink>
+              <ButtonLink to={broch} external rel="noopener noreferrer" target="_blank">Découvrir la brochure</ButtonLink>
             </p>
           </p>
           <h3 className="text-warning my-4">Tarifs et Conditions</h3>
@@ -230,9 +231,9 @@ les tarifs
             </ul>
           </p>
           <p className="text-center">
-            <Link to="/signup/company" className="btn btn-secondary btn-warning mr-4">Devenir parrain</Link>
-            <a href={broch} className="btn btn-secondary btn-warning m-4" rel="noopener noreferrer" target="_blank">Consulter la brochure</a>
-            <Link to="/faq" className="btn btn-secondary btn-warning mr-4">FAQ</Link>
+            <ButtonLink to="/signup/company" primary>Devenir parrain</ButtonLink>
+            <ButtonLink to={broch} external rel="noopener noreferrer" target="_blank">Consulter la brochure</ButtonLink>
+            <ButtonLink to="/faq">FAQ</ButtonLink>
           </p>
         </div>
       </Cover>
