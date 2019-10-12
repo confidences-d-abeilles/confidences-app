@@ -23,6 +23,10 @@ export default {
       { to: '/presignup', label: 'Créer un compte' },
     ],
     loggedIn: [
+      { to: '/company/presentation', label: 'Entreprise' },
+      { to: '/individual/presentation', label: 'Particulier' },
+      { to: '/individual/prices', label: 'Coût' },
+      { to: '/hives', label: 'Les ruches de nos mécènes' },
       { to: '/adherer', label: 'Adhérer' },
       { to: '/visites', label: 'Participer aux visites' },
       { to: '/formations', label: 'Se former' },
