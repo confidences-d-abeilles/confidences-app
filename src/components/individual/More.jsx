@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ButtonLink from '@cda/button-link';
 import Banner from '../../assets/img/part_more.jpg';
 import leaflet from '../../assets/leaflet_p.pdf';
 
@@ -81,8 +82,8 @@ export default () => (
           abeilles. Frissons et miel frais garantis !
 						</p>
         <p className="text-center">
-          <Link to="/signup/individual" className="btn btn-secondary mr-4">Devenir parrain</Link>
-          <a href={leaflet} className="btn btn-secondary mr-4" target="_blank" rel="noopener noreferrer">Découvrir la plaquette</a>
+          <ButtonLink to="/signup/individual" primary>Devenir parrain</ButtonLink>
+          <ButtonLink to={leaflet} external target="_blank" rel="noopener noreferrer">Découvrir la plaquette</ButtonLink>
         </p>
       </div>
     </div>
