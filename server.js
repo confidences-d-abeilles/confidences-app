@@ -24,7 +24,7 @@ app.use('/static', express.static('build/static'));
 app.use('/', metaResolverMiddleware);
 
 function composeHtml(html, meta) {
-  const splitted = html.split('<!-- SSR -->');
+  const splitted = html.split('<title>Association Confidences d\'Abeilles</title>');
   let output = '';
   if (meta.title) {
     output = `${output}<title>${meta.title}</title>`;
@@ -44,7 +44,7 @@ function composeHtml(html, meta) {
   if (meta.ogimg) {
     output = `${output}<meta id="og-image" property="og:image" content="${meta.ogimg}" />`;
   }
-  return splitted[0] + output + splitted[2];
+  return splitted[0] + output + splitted[1];
 }
 
 app.get('/*', (req, res) => {
