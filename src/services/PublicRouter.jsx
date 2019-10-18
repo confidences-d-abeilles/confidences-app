@@ -15,6 +15,11 @@ const Home = Loadable({
   loading: () => null,
 });
 
+const Maintenance = Loadable({
+  loader: () => import('../components/utils/Maintenance'),
+  loading: () => null,
+});
+
 const Login = Loadable({
   loader: () => import('../components/Login'),
   loading: () => null,
@@ -184,6 +189,11 @@ export default () => (
     <Route exact path="/jobs/marketing" component={JobsMarketing} />
     <Route exact path="/jobs/businessdev" component={JobsBusinessDev} />
     <Route exact path="/jobs/event" component={JobsEvent} />
+    <Route exact path="/adherer" component={Maintenance} />
+    <Route exact path="/visites" component={Maintenance} />
+    <Route exact path="/formations" component={Maintenance} />
+    <Route exact path="/planter" component={Maintenance} />
+    <Route exact path="/ressources" component={Maintenance} />
     <Route exact path="/newsletter/signup" component={Newslettersignup} />
     <Route exact path="/mentions_legales" component={Mentions} />
     <Route exact path="/hives" component={Hives} />
