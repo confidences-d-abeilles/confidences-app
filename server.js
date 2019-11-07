@@ -48,7 +48,7 @@ function composeHtml(html, meta) {
 }
 
 app.get('/*', (req, res) => {
-  res.end(composeHtml(htmlContent.toString(), req.meta ? req.meta : metaLoader.load(req.url)));
+  res.end(composeHtml(htmlContent.toString(), req.meta));
 });
 
 app.listen(process.env.PORT || 5000, () => {
