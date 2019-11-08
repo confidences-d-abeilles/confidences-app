@@ -6,7 +6,7 @@ COPY . .
 
 RUN if [ "$NODE_ENV" = "staging" ] ; then mv .env.staging .env.production ; else rm .env.staging ; fi;
 
-RUN yarn
+RUN yarn install --network-timeout 1000000000
 
 ENV NODE_ENV production
 
