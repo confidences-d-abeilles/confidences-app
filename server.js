@@ -13,8 +13,6 @@ const metaResolverMiddleware = require('./server/metaResolver').middleware;
 
 const htmlContent = fs.readFileSync('./build/index.html');
 
-const metaLoader = require('./public/meta/meta');
-
 app.use(compression());
 
 app.use('/', express.static('build'));
@@ -48,7 +46,7 @@ function composeHtml(html, meta) {
 }
 
 app.get('/*', (req, res) => {
-  res.end(composeHtml(htmlContent.toString(), req.meta ? req.meta : metaLoader.load(req.url)));
+  res.end(composeHtml(htmlContent.toString(), req.meta);
 });
 
 app.listen(process.env.PORT || 5000, () => {
