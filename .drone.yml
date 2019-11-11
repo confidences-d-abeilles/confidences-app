@@ -4,9 +4,12 @@ name: default
 steps:
   - name: build preview
     image: docker/compose:1.24.1
+    environment:
+      REACT_APP_STRIPE_API_KEY:
+        from_secret: REACT_APP_STRIPE_API_KEY
     volumes:
-        - name: docker
-          path: /var/run/docker.sock
+      - name: docker
+        path: /var/run/docker.sock
     commands:
       - docker-compose build preview
     depends_on:
@@ -14,8 +17,8 @@ steps:
   - name: deploy preview
     image: docker/compose:1.24.1
     volumes:
-        - name: docker
-          path: /var/run/docker.sock
+      - name: docker
+        path: /var/run/docker.sock
     commands:
       - docker-compose -p cda-app up -d preview
     depends_on:
