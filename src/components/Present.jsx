@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 import presentPict from '../assets/img/present.jpg';
 import Meta from './utils/Meta';
 import Cover from './Cover';
+import ButtonLink from '@cda/button-link';
 
 export default () => (
   <Cover img={presentPict}>
     <Meta title="Offrir un parrainage" />
-    <h2 className="text-center my-4">Parrainer des abeilles : un cadeau aussi utile qu’original !</h2>
+    <h2 className="text-center my-4">Offrir des abeilles : un cadeau aussi utile qu’original !</h2>
     <div className="row justify-content-center">
       <p className="mb-5">
         <strong>
           Vous cherchiez un cadeau original qu’on puisse à la fois toucher du regard, expérimenter, déguster et qui soit
           concrètement bénéfique pour notre
           environnement ?
-        </strong>
-        Alors vous êtes au bon
+        </strong>&nbsp;Alors vous êtes au bon
       endroit ! En effet, le parrainage d’Abeilles ou
       de ruches a la particularité de réunir tous ces
       atouts !
@@ -46,38 +46,27 @@ const HowOfferPresent = () => (
     <div className="row">
       <div className="col">
         <p className="">
-          Dans le but de garantir une bonne saisie des
-              informations <strong>nous vous invitons à lire toutes
-              ces étapes avant de commencer.</strong>
+          <strong>C’est simple et rapide en suivant ces étapes :</strong>
         </p>
         <ol className="lead">
           <li className="my-4">
-            Inscrivez vous avec vos propres
-            informations (elles sont nécessaires à la
-            gestion de votre compte / à la
-            facturation)
-              </li>
-          <li className="my-4">
-            Choisissez un nombre d’abeilles à offrir
-              </li>
-          <li className="my-4">
-            Désignez votre bénéficiaire en cochant
-            « Ce parrainage est un cadeau » et en
-            renseignant ses coordonnées.
-
-              </li>
-          <li className="my-4">
-            ATTENTION à la date à partir de
-              laquelle doit être notifié le bénéficiaire.<br /><strong>Un délai de 3 jours est recommandé.</strong>
+            Inscrivez-vous avec vos propres informations (elles sont nécessaires à la gestion du compte)
           </li>
           <li className="my-4">
-            Terminez en réglant votre cadeau (la
-            confirmation de règlement est
-            nécessaire pour la génération du
-            parrainage)
-              </li>
+            Choisissez le nombre d’abeilles à offrir
+          </li>
           <li className="my-4">
-            <span className="align-middle">C’est terminé </span>
+            Désignez votre bénéficiaire en cochant « Ce parrainage est un cadeau » et en renseignant ses coordonnées.
+          </li>
+          <li className="my-4">
+            Votre bénéficiaire recevra un mail à la date que vous aurez sélectionnée (le 25 décembre à Noël).
+            Vous avez la possibilité d’imprimer un certificat de parrainage à offrir (disponible 4 jours après l’inscription).
+          </li>
+          <li className="my-4">
+            Terminez en réglant votre cadeau
+          </li>
+          <li className="my-4">
+            <span className="align-middle">C’est fait </span>
             <img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy"
               style={{ height: '1em' }} />
           </li>
@@ -87,7 +76,7 @@ const HowOfferPresent = () => (
     <div className="row">
       <div className="col">
         <p className="text-center">
-          <Link to="/signup/individual" className="btn btn-secondary">J'offre un parrainage<br />d’abeilles</Link>
+          <ButtonLink to="/signup/individual">J’offre des abeilles</ButtonLink>
         </p>
       </div>
     </div>
