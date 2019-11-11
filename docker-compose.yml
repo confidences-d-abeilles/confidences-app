@@ -21,7 +21,7 @@ services:
     restart: always
     labels:
       - "traefik.parrainage.frontend.rule=Host:parrainage.confidencesdabeilles.fr"
-      - "traefik.parrainage.frontend.rule=Host:parrainerdesabeilles.fr"
+      - "traefik.parrainerdesabeilles.frontend.rule=Host:parrainerdesabeilles.fr"
       - "traefik.association.frontend.rule=Host:association.confidencesdabeilles.fr"
       - "traefik.backend.port=5000"
       - "traefik.enable=true"
