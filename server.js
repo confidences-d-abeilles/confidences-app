@@ -13,7 +13,13 @@ const metaResolverMiddleware = require('./server/metaResolver').middleware;
 
 const htmlContent = fs.readFileSync('./build/index.html');
 
-const metaLoader = require('./public/meta/meta');
+const defaultMeta = {
+  title: 'Confidences d\'Abeilles',
+  ogtitle: 'Engagez-vous à nos côtés et soutenez les abeilles',
+  ogdescription: 'Une association qui prend soin des abeilles et qui invite les curieux, les amoureux des produits de la ruche à découvrir ce monde fascinant.',
+  ogurl: 'https://parrainage.confidencesdabeilles.fr/',
+  ogimg: 'https://parrainage.confidencesdabeilles.fr/metastatic/general.jpg',
+};
 
 app.use(compression());
 
@@ -48,7 +54,7 @@ function composeHtml(html, meta) {
 }
 
 app.get('/*', (req, res) => {
-  res.end(composeHtml(htmlContent.toString(), req.meta ? req.meta : metaLoader.load(req.url)));
+  res.end(composeHtml(htmlContent.toString(), req.meta ? req.meta : defaultMeta));
 });
 
 app.listen(process.env.PORT || 5000, () => {
