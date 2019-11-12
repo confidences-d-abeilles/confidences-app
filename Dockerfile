@@ -10,6 +10,8 @@ RUN yarn install --network-timeout 1000000000
 
 ENV NODE_ENV production
 
+RUN env
+
 RUN yarn run build
 
 EXPOSE 5000
