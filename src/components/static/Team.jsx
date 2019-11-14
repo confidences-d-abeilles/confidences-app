@@ -28,7 +28,7 @@ const profilePics = {
 export default withTranslation('team')(logAnalytics(({ t }) => (
   <>
     <Meta title="L'équipe" />
-    <h2 className="text-center my-4">Notre équipe</h2>
+    <h2 className="text-center my-4">L'équipe</h2>
     <Rows wrap="wrap" justifyContent="center">
       {Object.keys(profilePics).map(firstname => (
         <TeamMember
