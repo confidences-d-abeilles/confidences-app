@@ -36,6 +36,14 @@ export default withTranslation('team')(logAnalytics(({ t }) => (
           name={t(`${firstname}.name`)}
           job={t(`${firstname}.job`)}
           bio={t(`${firstname}.bio`)}
+          linkedIn={t(`${firstname}.linkedIn`)}
+          facebook={t(`${firstname}.facebook`)}
+          twitter={t(`${firstname}.twitter`)}
+          medium={t(`${firstname}.medium`)}
+          mail={t(`${firstname}.mail`)}
+          behance={t(`${firstname}.behance`)}
+          website={t(`${firstname}.website`)}
+          instagram={t(`${firstname}.instagram`)}
         />
       ))}
     </Rows>

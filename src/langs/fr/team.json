@@ -2,36 +2,53 @@
   "gaetan": {
     "name": "Gaëtan Ekszterowicz",
     "job": "Membre fondateur",
-    "bio": "Gaëtan a découvert l’apiculture à l’âgede 14 ans et s’y passionne depuis. Entrepreneur dans l’âme et convaincu que c’est en partageant qu’on apprend, il a créé 2 associations et 2 entreprises autour des abeilles. Il anime des formations, rédige des articles de vulgarisation, et participe à des programmes de recherches sur les abeilles."
+    "bio": "Gaëtan a découvert l’apiculture à l’âgede 14 ans et s’y passionne depuis. Entrepreneur dans l’âme et convaincu que c’est en partageant qu’on apprend, il a créé 2 associations et 2 entreprises autour des abeilles. Il anime des formations, rédige des articles de vulgarisation, et participe à des programmes de recherches sur les abeilles.",
+    "linkedIn": "https://www.linkedin.com/in/gaetaneksz",
+    "facebook": "https://www.facebook.com/popowych",
+    "twitter": "https://twitter.com/GaetanEksz",
+    "medium": "https://medium.com/@geksz",
+    "mail": "mailto:gaetan@confidencesdabeilles.fr"
   },
   "nico": {
     "name": "Nicolas Ekszterowicz",
     "job": "Membre fondateur",
-    "bio": "Nicolas, grand amateur de miel, a enfilé sa première tenue d’apiculteur à l’âge de 12 ans. C’est la curiosité qui l’a pousséàcomprendred’où venait le précieux nectar et c’est la gourmandise qui l’a incité à développé le rucher familial."
+    "bio": "Nicolas, grand amateur de miel, a enfilé sa première tenue d’apiculteur à l’âge de 12 ans. C’est la curiosité qui l’a poussé à comprendre d’où venait le précieux nectar et c’est la gourmandise qui l’a incité à développé le rucher familial.",
+    "linkedIn": "https://www.linkedin.com/in/nicolas-ekszterowicz-113271a8/",
+    "facebook": "https://www.facebook.com/nicolas.ekszterowicz",
+    "mail": "mailto:nicolas@confidencesdabeilles.fr"
   },
   "clem": {
     "name": "Clément Champouillon",
     "job": "Développeur web & contributeur",
-    "bio": "Clément, web developerchez M6, est également apiculteur amateur. Persuadé que les abeilles jouent un rôle crucial dans notre environnement, il met ses compétences techniques à leur service en contribuant très largement à la réalisation du site sur lequel vous vous trouvez."
+    "bio": "Clément, web developerchez M6, est également apiculteur amateur. Persuadé que les abeilles jouent un rôle crucial dans notre environnement, il met ses compétences techniques à leur service en contribuant très largement à la réalisation du site sur lequel vous vous trouvez.",
+    "linkedIn": "https://www.linkedin.com/in/cchampou/"
   },
   "mick": {
     "name": "Mickael Philipot",
     "job": "Membre fondateur",
-    "bio": "Après des années dans le sport de haut niveau, Mickaël a décidé de ranger ses spatules pour s'engager sur un nouveau projet. Grand amateur de miel lui aussi, il avait à cœur d’allier plaisir, entrepreneuriat, et investissement responsable."
+    "bio": "Après des années dans le sport de haut niveau, Mickaël a décidé de ranger ses spatules pour s'engager sur un nouveau projet. Grand amateur de miel lui aussi, il avait à cœur d’allier plaisir, entrepreneuriat, et investissement responsable.",
+    "linkedIn": "https://www.linkedin.com/in/micka%C3%ABl-philipot-083475144/",
+    "twitter": "https://twitter.com/mickaelphilipot"
   },
   "lea": {
     "name": "Léa",
     "job": "Membre fondateur",
-    "bio": "Amoureuse des produits de la ruche et d’Annecy, Léa a fortement contribué à la création de l’association."
+    "bio": "Amoureuse des produits de la ruche et d’Annecy, Léa a fortement contribué à la création de l’association.",
+    "linkedIn": "https://www.linkedin.com/in/l%C3%A9a-seng%C3%A8le-147b63149"
   },
   "marion": {
     "name": "Marion Letur",
     "job": "Graphiste & contributrice",
-    "bio": "Illustratrice freelance depuis Janvier 2016, Marion met à disposition de l’association ses compétences de Graphiste-Webdesigner."
+    "bio": "Illustratrice freelance depuis Janvier 2016, Marion met à disposition de l’association ses compétences de Graphiste-Webdesigner.",
+    "linkedIn": "https://www.linkedin.com/in/marion-letur-642427107/",
+    "behance": "https://www.behance.net/leturm",
+    "website": "http://marionletur.com/",
+    "instagram": "https://www.instagram.com/larecruedesign/"
   },
   "laure": {
     "name": "Laure Guillemant",
     "job": "Contributrice",
-    "bio": "Amoureuse elle aussi des produits de la ruche et de tous les soins dérivés pour le corps, Laure apporte son aide en communication ainsi que pour la mise en place de partenariats."
+    "bio": "Amoureuse elle aussi des produits de la ruche et de tous les soins dérivés pour le corps, Laure apporte son aide en communication ainsi que pour la mise en place de partenariats.",
+    "linkedIn": "https://www.linkedin.com/in/laure-guillemant-b79049174/"
   }
 }
