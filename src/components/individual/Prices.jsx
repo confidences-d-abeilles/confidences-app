@@ -45,8 +45,7 @@ const fiftyOffer = [
 export default () => (
   <>
     <Meta title="Tarifs particuliers" />
-    <ButtonLink to="/company/prices" primary>Coûts entreprises ></ButtonLink>
-    <h2 className="text-center my-4">Coûts particuliers</h2>
+    <h2 className="text-center my-4">Coûts pour les particuliers <ButtonLink to="/company/prices" primary>Entreprises ></ButtonLink></h2>
     <Rows justifyContent="center" wrap="wrap">
       <PriceCard title="10 000 abeilles" price={85} items={tenOffer} unit={UNIT} level={1} subtitle="soit 29€ après réduction d’impôt*" />
       <PriceCard title="20 000 abeilles" price={160} items={twentyOffer} unit={UNIT} level={2} subtitle="soit 55€ après réduction d’impôt*" />
