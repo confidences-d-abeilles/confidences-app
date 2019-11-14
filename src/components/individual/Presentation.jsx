@@ -12,7 +12,7 @@ import Jumbotron from '../Jumbotron';
 export default () => (
   <Fragment>
     <Meta title="Parrainer des abeilles" />
-    <Jumbotron img={first}>
+    <Jumbotron img={[first]}>
       <h1 className="text-left">
         Prêt(e) à soutenir vos abeilles ? à profiter de votre miel ?
       </h1>

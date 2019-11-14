@@ -13,7 +13,7 @@ import forYou from '../../assets/img/schema-parrainage-apport-pour-les-E.png';
 export default withTranslation('company')(({ t }) => (
   <Fragment>
     <Meta title="Parrainer des ruches" />
-    <Jumbotron img={first}>
+    <Jumbotron img={[first]}>
       <h1 className="text-left">{t('headline')}</h1>
       <p className="text-left">{t('headblock')}</p>
       <p className="text-center">

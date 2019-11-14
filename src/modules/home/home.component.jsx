@@ -9,6 +9,7 @@ import {
   Item,
 } from '@cda/flex';
 import first from '../../assets/img/homepage/4.jpg';
+import second from '../../assets/img/homepage/3.jpg';
 import Loading from '../../components/utils/Loading';
 import Meta from '../../components/utils/Meta';
 
@@ -28,7 +29,7 @@ const TextBlock = styled(Item)`
 export default withTranslation('homepage')(({ loading, users, t }) => (
   <Fragment>
     <Meta title="Accueil" />
-    <Jumbotron img={first}>
+    <Jumbotron img={[first, second]}>
       <h1>{t('headline')}</h1>
       <p>
         {t('headblock')}
