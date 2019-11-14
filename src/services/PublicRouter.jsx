@@ -45,18 +45,18 @@ const About = Loadable({
   loading: () => null,
 });
 
-const Ourvalues = Loadable({
-  loader: () => import('../components/static/Ourvalues'),
-  loading: () => null,
-});
-
 const Team = Loadable({
-  loader: () => import('../components/Team'),
+  loader: () => import('../components/static/Team'),
   loading: () => null,
 });
 
 const Contact = Loadable({
   loader: () => import('../components/static/Contact'),
+  loading: () => null,
+});
+
+const Video = Loadable({
+  loader: () => import('../components/static/Video'),
   loading: () => null,
 });
 
@@ -177,11 +177,11 @@ export default () => (
     <Route exact path="/present" component={Present} />
     <Route exact path="/faq" component={Faq} />
     <Route exact path="/about" component={About} />
-    <Route exact path="/ourvalues" component={Ourvalues} />
     <Route exact path="/team" component={Team} />
     <Route exact path="/contact" component={Contact} />
     <Route exact path="/apply" component={Apply} />
     <Route exact path="/requestlabel" component={RequestLabel} />
+    <Route exact path="/presentation" component={Video} />
     <Route exact path="/jobs" component={Jobs} />
     <Route exact path="/jobs/reactjs" component={JobsReact} />
     <Route exact path="/jobs/designer" component={JobsDesigner} />
@@ -190,6 +190,7 @@ export default () => (
     <Route exact path="/jobs/businessdev" component={JobsBusinessDev} />
     <Route exact path="/jobs/event" component={JobsEvent} />
     <Route exact path="/adherer" component={Maintenance} />
+    <Route exact path="/rapports-activite" component={Maintenance} />
     <Route exact path="/visites" component={Maintenance} />
     <Route exact path="/formations" component={Maintenance} />
     <Route exact path="/planter" component={Maintenance} />

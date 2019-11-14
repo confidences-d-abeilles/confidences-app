@@ -25,6 +25,7 @@ i18n.use(initReactI18next).init({
   interpolation: {
     escapeValue: false,
   },
+  parseMissingKeyHandler: () => '',
 });
 
 ReactPixel.init('281052689206911', {}, options);
