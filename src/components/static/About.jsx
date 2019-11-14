@@ -1,9 +1,15 @@
 import React from 'react';
-
 import { withTranslation } from 'react-i18next';
+import styled from '@emotion/styled';
+
 import Meta from '../utils/Meta';
 import CoverPic from '../../assets/img/about.jpg';
 import Cover from '../Cover';
+
+const Signature = styled('p')`
+  text-align: right;
+  font-style: italic;
+`;
 
 export default withTranslation('about')(({ t }) => (
   <>
@@ -19,7 +25,8 @@ export default withTranslation('about')(({ t }) => (
         </div>
       </div>
       <h3>{t('title2')}</h3>
-      <p>{t('block2')}</p>
+      <p dangerouslySetInnerHTML={{ __html: t('block2') }} />
+      <Signature>{t('signature')}</Signature>
     </Cover>
   </>
 ));

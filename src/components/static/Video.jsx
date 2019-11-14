@@ -16,12 +16,10 @@ const StyledButton = styled(ButtonLink)`
   margin: 3rem;
 `;
 
-export default () => {
-
-  return (
-    <Wrapper>
-      <StyledVideo src={Video} controls /><br />
-      <StyledButton to="/presignup">Je soutiens mes abeilles</StyledButton>
-    </Wrapper>
-  );
-};
+export default () => (
+  <Wrapper>
+    <StyledVideo src={Video} controls />
+    <br />
+    <StyledButton to="/presignup">Je soutiens mes abeilles</StyledButton>
+  </Wrapper>
+);
