@@ -6,6 +6,8 @@ import payment from './payment';
 import team from './team';
 import join from './join';
 import visits from './visits';
+import formations from './formations';
+import resources from './resources';
 
 export default {
   homepage,
@@ -16,4 +18,6 @@ export default {
   team,
   join,
   visits,
+  formations,
+  resources,
 };

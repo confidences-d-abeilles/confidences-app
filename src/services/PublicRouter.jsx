@@ -135,6 +135,16 @@ const Visits = Loadable({
   loading: () => null,
 });
 
+const Formations = Loadable({
+  loader: () => import('../components/static/Formations'),
+  loading: () => null,
+});
+
+const Resources = Loadable({
+  loader: () => import('../components/static/Resources'),
+  loading: () => null,
+});
+
 const RequestLabel = Loadable({
   loader: () => import('../components/RequestLabel'),
   loading: () => null,
@@ -202,9 +212,8 @@ export default () => (
     <Route exact path="/adherer" component={Join} />
     <Route exact path="/rapports-activite" component={Maintenance} />
     <Route exact path="/visites" component={Visits} />
-    <Route exact path="/formations" component={Maintenance} />
-    <Route exact path="/planter" component={Maintenance} />
-    <Route exact path="/ressources" component={Maintenance} />
+    <Route exact path="/formations" component={Formations} />
+    <Route exact path="/ressources" component={Resources} />
     <Route exact path="/newsletter/signup" component={Newslettersignup} />
     <Route exact path="/mentions_legales" component={Mentions} />
     <Route exact path="/hives" component={Hives} />
