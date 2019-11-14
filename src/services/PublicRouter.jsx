@@ -45,13 +45,8 @@ const About = Loadable({
   loading: () => null,
 });
 
-const Ourvalues = Loadable({
-  loader: () => import('../components/static/Ourvalues'),
-  loading: () => null,
-});
-
 const Team = Loadable({
-  loader: () => import('../components/Team'),
+  loader: () => import('../components/static/Team'),
   loading: () => null,
 });
 
@@ -182,7 +177,6 @@ export default () => (
     <Route exact path="/present" component={Present} />
     <Route exact path="/faq" component={Faq} />
     <Route exact path="/about" component={About} />
-    <Route exact path="/ourvalues" component={Ourvalues} />
     <Route exact path="/team" component={Team} />
     <Route exact path="/contact" component={Contact} />
     <Route exact path="/apply" component={Apply} />
