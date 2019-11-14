@@ -9,7 +9,7 @@ import Cover from '../Cover';
 
 export default withTranslation('join')(({ t }) => (
   <div>
-    <Meta title="Nos valeurs" />
+    <Meta title={t('title')} />
     <Cover img={Banner}>
       <h2 className="text-center my-5">{t('title')}</h2>
       <h3>{t('subtitle1')}</h3>

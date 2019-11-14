@@ -130,6 +130,11 @@ const Join = Loadable({
   loading: () => null,
 });
 
+const Visits = Loadable({
+  loader: () => import('../components/static/Visits'),
+  loading: () => null,
+});
+
 const RequestLabel = Loadable({
   loader: () => import('../components/RequestLabel'),
   loading: () => null,
@@ -196,7 +201,7 @@ export default () => (
     <Route exact path="/jobs/event" component={JobsEvent} />
     <Route exact path="/adherer" component={Join} />
     <Route exact path="/rapports-activite" component={Maintenance} />
-    <Route exact path="/visites" component={Maintenance} />
+    <Route exact path="/visites" component={Visits} />
     <Route exact path="/formations" component={Maintenance} />
     <Route exact path="/planter" component={Maintenance} />
     <Route exact path="/ressources" component={Maintenance} />

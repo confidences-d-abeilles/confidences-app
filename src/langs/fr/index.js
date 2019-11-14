@@ -5,6 +5,7 @@ import partners from './partners';
 import payment from './payment';
 import team from './team';
 import join from './join';
+import visits from './visits';
 
 export default {
   homepage,
@@ -14,4 +15,5 @@ export default {
   payment,
   team,
   join,
+  visits,
 };
