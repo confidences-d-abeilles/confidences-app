@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
+
 import Gaetan from '../../assets/img/gaetan.jpg';
 import Nico from '../../assets/img/nico.jpg';
 import Clem from '../../assets/img/clement.jpg';
@@ -9,6 +10,7 @@ import Benoit from '../../assets/img/benoit.jpg';
 import Lea from '../../assets/img/lea.jpg';
 import Marion from '../../assets/img/marion.jpg';
 import Profile from '../../assets/img/profile.png';
+import Happy from '../../assets/img/smiley/happy.svg';
 import Meta from '../utils/Meta';
 import logAnalytics from '../../services/analytics/logAnalytics';
 
@@ -128,7 +130,7 @@ export default logAnalytics(() => (
         <h3 className="text-center mt-4">VOUS</h3>
         <h4 className="text-center mb-4"><small>STAGIAIRE</small></h4>
         <p className="text-justify">
-          Vous cherchez un stage ? Vous voulez rejoindre une équipe jeune, dynamique, passionnée par son travail et qui adore le challenge ? Alors vous êtes au bon endroit <img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy" style={{ height: '1em' }} /><br /><br />
+          Vous cherchez un stage ? Vous voulez rejoindre une équipe jeune, dynamique, passionnée par son travail et qui adore le challenge ? Alors vous êtes au bon endroit <img src={Happy} alt="smiley happy" style={{ height: '1em' }} /><br /><br />
           Pour accompagner notre développement nous avons constamment besoin de nouveaux talents, de personnes passionnées. Nous cherchons donc des stagiaires pour ces différents postes : <strong>Web Designer</strong>, <strong>ReactJS / NodeJS Developer</strong>, <strong>UI/UX Designer</strong>, <strong>Community Manager</strong>, <strong>Communication</strong>, <strong>Marketing et Business Developer</strong>.
           <br />
           <br />
