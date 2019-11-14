@@ -3,6 +3,7 @@ import company from './company';
 import about from './about';
 import partners from './partners';
 import payment from './payment';
+import team from './team';
 
 export default {
   homepage,
@@ -10,4 +11,5 @@ export default {
   about,
   partners,
   payment,
+  team,
 };
