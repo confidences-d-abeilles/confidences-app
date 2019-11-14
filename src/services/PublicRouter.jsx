@@ -190,6 +190,7 @@ export default () => (
     <Route exact path="/jobs/businessdev" component={JobsBusinessDev} />
     <Route exact path="/jobs/event" component={JobsEvent} />
     <Route exact path="/adherer" component={Maintenance} />
+    <Route exact path="/rapports-activite" component={Maintenance} />
     <Route exact path="/visites" component={Maintenance} />
     <Route exact path="/formations" component={Maintenance} />
     <Route exact path="/planter" component={Maintenance} />
