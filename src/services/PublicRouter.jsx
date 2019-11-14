@@ -60,6 +60,11 @@ const Contact = Loadable({
   loading: () => null,
 });
 
+const Video = Loadable({
+  loader: () => import('../components/static/Video'),
+  loading: () => null,
+});
+
 const Jobs = Loadable({
   loader: () => import('../components/static/jobs/Jobs'),
   loading: () => null,
@@ -182,6 +187,7 @@ export default () => (
     <Route exact path="/contact" component={Contact} />
     <Route exact path="/apply" component={Apply} />
     <Route exact path="/requestlabel" component={RequestLabel} />
+    <Route exact path="/presentation" component={Video} />
     <Route exact path="/jobs" component={Jobs} />
     <Route exact path="/jobs/reactjs" component={JobsReact} />
     <Route exact path="/jobs/designer" component={JobsDesigner} />
