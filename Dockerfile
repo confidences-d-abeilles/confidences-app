@@ -8,7 +8,10 @@ ARG REACT_APP_STRIPE_API_KEY
 
 COPY package.json package.json
 COPY yarn.lock yarn.lock
+
 RUN yarn install --network-timeout 1000000000
+
+COPY . .
 
 RUN if [ "$NODE_ENV" = "staging" ] ; then mv .env.staging .env.production ; else rm .env.staging ; fi;
 

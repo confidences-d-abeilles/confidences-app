@@ -1,7 +1,14 @@
 import React, { Fragment } from 'react';
 import ButtonLink from '@cda/button-link';
 import { Rows, Item } from '@cda/flex';
-import first from '../../assets/img/P/1.jpg';
+import first from '../../assets/img/P/slideP01.jpg';
+import second from '../../assets/img/P/slideP02.jpg';
+import third from '../../assets/img/P/slideP03.jpg';
+import fourth from '../../assets/img/P/slideP04.jpg';
+import fivth from '../../assets/img/P/slideP05.jpg';
+import sixth from '../../assets/img/P/slideP06.jpg';
+import seventh from '../../assets/img/P/slideP07.jpg';
+import heigth from '../../assets/img/P/slideP08.jpg';
 import leaflet from '../../assets/leaflet_p.pdf';
 import forYou from '../../assets/img/schema-parrainage-apport-pour-les-P.png';
 import forUs from '../../assets/img/schema-apport-pour-les-api.png';
@@ -12,7 +19,7 @@ import Jumbotron from '../Jumbotron';
 export default () => (
   <Fragment>
     <Meta title="Parrainer des abeilles" />
-    <Jumbotron img={first}>
+    <Jumbotron img={[first, second, third, fourth, fivth, sixth, seventh, heigth]}>
       <h1 className="text-left">
         Prêt(e) à soutenir vos abeilles ? à profiter de votre miel ?
       </h1>
