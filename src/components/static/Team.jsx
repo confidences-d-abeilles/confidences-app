@@ -1,20 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome';
-import Gaetan from '../assets/img/gaetan.jpg';
-import Nico from '../assets/img/nico.jpg';
-import Clem from '../assets/img/clement.jpg';
-import Mick from '../assets/img/mickael.jpg';
-import Benoit from '../assets/img/benoit.jpg';
-import Lea from '../assets/img/lea.jpg';
-import Marion from '../assets/img/marion.jpg';
-import Profile from '../assets/img/profile.png';
-import Meta from './utils/Meta';
-import logAnalytics from '../services/analytics/logAnalytics';
+import Gaetan from '../../assets/img/gaetan.jpg';
+import Nico from '../../assets/img/nico.jpg';
+import Clem from '../../assets/img/clement.jpg';
+import Mick from '../../assets/img/mickael.jpg';
+import Benoit from '../../assets/img/benoit.jpg';
+import Lea from '../../assets/img/lea.jpg';
+import Marion from '../../assets/img/marion.jpg';
+import Profile from '../../assets/img/profile.png';
+import Meta from '../utils/Meta';
+import logAnalytics from '../../services/analytics/logAnalytics';
 
 export default logAnalytics(() => (
   <div className="container">
-    <Meta title="L'équipe"/>
+    <Meta title="L'équipe" />
     <h2 className="text-center my-4">Notre équipe</h2>
     <div className="row justify-content-around">
       <div className="col-lg-5 col-md-10 col-sm-12 text-center mt-4">
