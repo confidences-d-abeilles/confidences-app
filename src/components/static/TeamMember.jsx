@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 import {
   faBehanceSquare,
   faFacebookSquare, faInstagram,
   faLinkedin,
   faMedium,
-  faTwitterSquare
+  faTwitterSquare,
 } from '@fortawesome/free-brands-svg-icons';
 
 import { Item } from '@cda/flex';
@@ -50,8 +51,19 @@ const NoStyleA = styled('a')`
   }
 `;
 
-export default ({
-  profilePic, name, job, bio, linkedIn, facebook, twitter, medium, mail, behance, website, instagram,
+const TeamMember = ({
+  profilePic,
+  name,
+  job,
+  bio,
+  linkedIn,
+  facebook,
+  twitter,
+  medium,
+  mail,
+  behance,
+  website,
+  instagram,
 }) => (
   <Wrapper flex="0 0 25rem">
     <ProfilePic src={profilePic} alt={name} />
@@ -70,3 +82,31 @@ export default ({
     </Bio>
   </Wrapper>
 );
+
+TeamMember.defaultProps = {
+  linkedIn: null,
+  facebook: null,
+  twitter: null,
+  medium: null,
+  mail: null,
+  behance: null,
+  website: null,
+  instagram: null,
+};
+
+TeamMember.propTypes = {
+  profilePic: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  job: PropTypes.string.isRequired,
+  bio: PropTypes.string.isRequired,
+  linkedIn: PropTypes.string,
+  facebook: PropTypes.string,
+  twitter: PropTypes.string,
+  medium: PropTypes.string,
+  mail: PropTypes.string,
+  behance: PropTypes.string,
+  website: PropTypes.string,
+  instagram: PropTypes.string,
+};
+
+export default TeamMember;
