@@ -46,12 +46,33 @@ const JumboImage = styled(Item)`
 `;
 
 const Image = styled('img')`
-  opacity: ${({ show }) => show ? 1 : 0};
+  opacity: ${({ show }) => (show ? 1 : 0)};
   width: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: opacity 1s ease-in-out;
+`;
+
+const Indicator = styled(Rows)`
+  z-index: 10;
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 2rem;
+`;
+
+const IndicatorDot = styled(Item)`
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: white;
+  opacity: ${({ focus }) => (focus ? 0.9 : 0.2)};
+  box-shadow: 0 0 5px gray;
+  margin: 0.5rem;
+  cursor: pointer;
+  border-radius: 50%;
   transition: opacity 1s ease-in-out;
 `;
 
@@ -71,13 +92,19 @@ const Jumbotron = ({ children, img }) => {
       </Jumbcontent>
       <JumboImage flex={1}>
         {img.map((currentImg, index) => <Image src={currentImg} show={index === currentIndex} />)}
+        {img.length > 1 && (
+        <Indicator>
+          {img.map((_, index) =>
+            <IndicatorDot focus={index === currentIndex} onClick={() => setCurrentIndex(index)} />)}
+        </Indicator>
+        )}
       </JumboImage>
     </JumbotronWrapper>
   );
 };
 
 Jumbotron.propTypes = {
-  img: PropTypes.array.isRequired,
+  img: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   children: PropTypes.node.isRequired,
 };
 

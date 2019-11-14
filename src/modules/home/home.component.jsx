@@ -8,8 +8,14 @@ import {
   Rows,
   Item,
 } from '@cda/flex';
-import first from '../../assets/img/homepage/4.jpg';
-import second from '../../assets/img/homepage/3.jpg';
+import first from '../../assets/img/homepage/slidehome01.jpg';
+import second from '../../assets/img/homepage/slidehome02.jpg';
+import third from '../../assets/img/homepage/slidehome03.jpg';
+import fourth from '../../assets/img/homepage/slidehome04.jpg';
+import fifth from '../../assets/img/homepage/slidehome05.jpg';
+import sixth from '../../assets/img/homepage/slidehome06.jpg';
+import seventh from '../../assets/img/homepage/slidehome07.jpg';
+import heigth from '../../assets/img/homepage/slidehome08.jpg';
 import Loading from '../../components/utils/Loading';
 import Meta from '../../components/utils/Meta';
 
@@ -29,7 +35,7 @@ const TextBlock = styled(Item)`
 export default withTranslation('homepage')(({ loading, users, t }) => (
   <Fragment>
     <Meta title="Accueil" />
-    <Jumbotron img={[first, second]}>
+    <Jumbotron img={[first, second, third, fourth, fifth, sixth, seventh, heigth]}>
       <h1>{t('headline')}</h1>
       <p>
         {t('headblock')}

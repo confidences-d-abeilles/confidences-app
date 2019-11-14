@@ -2,7 +2,14 @@ import React, { Fragment } from 'react';
 import { withTranslation } from 'react-i18next';
 import ButtonLink from '@cda/button-link';
 import { Rows, Item } from '@cda/flex';
-import first from '../../assets/img/E/1.jpg';
+import first from '../../assets/img/E/slideE01.jpg';
+import second from '../../assets/img/E/slideE02.jpg';
+import third from '../../assets/img/E/slideE03.jpg';
+import fourth from '../../assets/img/E/slideE04.jpg';
+import fivth from '../../assets/img/E/slideE05.jpg';
+import sixth from '../../assets/img/E/slideE06.jpg';
+import seventh from '../../assets/img/E/slideE07.jpg';
+import heigth from '../../assets/img/E/slideE08.jpg';
 
 import Meta from '../utils/Meta';
 import leaflet from '../../assets/leaflet_e.pdf';
@@ -13,7 +20,7 @@ import forYou from '../../assets/img/schema-parrainage-apport-pour-les-E.png';
 export default withTranslation('company')(({ t }) => (
   <Fragment>
     <Meta title="Parrainer des ruches" />
-    <Jumbotron img={[first]}>
+    <Jumbotron img={[first, second, third, fourth, fivth, sixth, seventh, heigth]}>
       <h1 className="text-left">{t('headline')}</h1>
       <p className="text-left">{t('headblock')}</p>
       <p className="text-center">
