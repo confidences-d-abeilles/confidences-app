@@ -13,5 +13,25 @@
     "name": "Clément Champouillon",
     "job": "Développeur web & contributeur",
     "bio": "Clément, web developerchez M6, est également apiculteur amateur. Persuadé que les abeilles jouent un rôle crucial dans notre environnement, il met ses compétences techniques à leur service en contribuant très largement à la réalisation du site sur lequel vous vous trouvez."
+  },
+  "mick": {
+    "name": "Mickael Philipot",
+    "job": "Membre fondateur",
+    "bio": "Après des années dans le sport de haut niveau, Mickaël a décidé de ranger ses spatules pour s'engager sur un nouveau projet. Grand amateur de miel lui aussi, il avait à cœur d’allier plaisir, entrepreneuriat, et investissement responsable."
+  },
+  "lea": {
+    "name": "Léa",
+    "job": "Membre fondateur",
+    "bio": "Amoureuse des produits de la ruche et d’Annecy, Léa a fortement contribué à la création de l’association."
+  },
+  "marion": {
+    "name": "Marion Letur",
+    "job": "Graphiste & contributrice",
+    "bio": "Illustratrice freelance depuis Janvier 2016, Marion met à disposition de l’association ses compétences de Graphiste-Webdesigner."
+  },
+  "laure": {
+    "name": "Laure Guillemant",
+    "job": "Contributrice",
+    "bio": "Amoureuse elle aussi des produits de la ruche et de tous les soins dérivés pour le corps, Laure apporte son aide en communication ainsi que pour la mise en place de partenariats."
   }
 }

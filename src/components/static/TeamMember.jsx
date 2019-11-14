@@ -30,7 +30,7 @@ const Bio = styled('p')`
 export default ({
   profilePic, name, job, bio,
 }) => (
-  <Wrapper flex="1 0 30rem">
+  <Wrapper flex="0 0 30rem">
     <ProfilePic src={profilePic} alt={name} />
     <Name>{name}</Name>
     <Job>{job}</Job>
