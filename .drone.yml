@@ -14,7 +14,7 @@ steps:
         path: /var/run/docker.sock
     commands:
       - docker-compose build preview
-      - docker system image -af
+      - docker image prune -af
     depends_on:
       - clone
   - name: deploy preview
