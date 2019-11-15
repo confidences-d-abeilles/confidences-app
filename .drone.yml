@@ -13,8 +13,8 @@ steps:
       - name: docker
         path: /var/run/docker.sock
     commands:
-      - docker image prune
 #      - docker-compose build preview
+      - docker images prune -f
     depends_on:
       - clone
   - name: deploy preview
