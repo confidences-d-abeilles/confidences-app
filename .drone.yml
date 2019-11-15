@@ -1,5 +1,5 @@
 kind: pipeline
-name: default
+name: Build & Deploy
 
 steps:
   - name: build preview
