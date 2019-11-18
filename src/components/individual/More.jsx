@@ -68,7 +68,7 @@ export default () => (
 
         <h3 className="text-center">Tarifs & conditions</h3>
         <p>
-          <Link to="/prices">Consulter les tarifs</Link><br /><br />
+          <Link to="/individual/prices">Consulter les tarifs</Link><br /><br />
           L’installation des ruches parrainées se fait sur nos ruchers situés en Haute-Savoie ou en
 							Savoie.<br />
           Ces tarifs comprennent l’ensemble des éléments cités ci-dessus ainsi que les frais de port
