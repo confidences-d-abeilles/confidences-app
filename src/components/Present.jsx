@@ -1,25 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ButtonLink from '@cda/button-link';
 import presentPict from '../assets/img/present.jpg';
 import Meta from './utils/Meta';
 import Cover from './Cover';
-import ButtonLink from '@cda/button-link';
 
 export default () => (
   <Cover img={presentPict}>
     <Meta title="Offrir un parrainage" />
-    <h2 className="text-center my-4">Offrir des abeilles : un cadeau aussi utile qu’original !</h2>
+    <h2 className="text-center my-4">Offrir un parrainage d'abeilles : un cadeau aussi utile qu’original !</h2>
     <div className="row justify-content-center">
       <p className="mb-5">
         <strong>
           Vous cherchiez un cadeau original qu’on puisse à la fois toucher du regard, expérimenter, déguster et qui soit
           concrètement bénéfique pour notre
           environnement ?
-        </strong>&nbsp;Alors vous êtes au bon
+        </strong>
+&nbsp;Alors vous êtes au bon
       endroit ! En effet, le parrainage d’Abeilles ou
       de ruches a la particularité de réunir tous ces
       atouts !
-        </p>
+      </p>
+      <p className="text-center">
+        <ButtonLink to="/signup/individual">J’offre des abeilles</ButtonLink>
+      </p>
     </div>
     <ul className="nav nav-tabs justify-content-center" role="tablist">
       <li className="nav-item">
@@ -67,8 +71,11 @@ const HowOfferPresent = () => (
           </li>
           <li className="my-4">
             <span className="align-middle">C’est fait </span>
-            <img src={require('../assets/img/smiley/happy.svg')} alt="smiley happy"
-              style={{ height: '1em' }} />
+            <img
+              src={require('../assets/img/smiley/happy.svg')}
+              alt="smiley happy"
+              style={{ height: '1em' }}
+            />
           </li>
         </ol>
       </div>
@@ -96,23 +103,26 @@ const PresentationPresent = () => (
           possibilité de prendre part aux visites des ruches au cours de l’année ! L’occasion pour eux
           d’enfiler la fameuse combinaison de l’apiculteur et de plonger littéralement au cœur de la
           colonie !
-          </p>
+        </p>
         <p>
           Enfin, après avoir bien travaillé, les abeilles partageront une partie de leur trésor pour le
           plus grand plaisir des petits et des grands. Un moment gastronomique inoubliable.
-          </p>
+        </p>
         <p>
-          <strong>Par votre cadeau, les parrains prennent plaisir à suivre l’évolution de leur ruche via une
-            page dédiée et participent également à la sauvegarde d’un métier et d’une espèce menacée.</strong><br />
+          <strong>
+Par votre cadeau, les parrains prennent plaisir à suivre l’évolution de leur ruche via une
+            page dédiée et participent également à la sauvegarde d’un métier et d’une espèce menacée.
+          </strong>
+          <br />
           Les abeilles, par leur activité de pollinisation, protègent la biodiversité et préservent donc
           notre environnement. Celui-ci étant plus fécond il nécessite moins de traitements
           nuisibles aux abeilles. C’est un cercle vertueux qu’il faut réussir à amorcer !
-          </p>
+        </p>
       </div>
     </div>
     <div className="row">
       <div className="col">
-        <p className="text-center" >
+        <p className="text-center">
           <Link to="/individual/more" className="btn btn-secondary">En savoir plus</Link>
         </p>
       </div>
