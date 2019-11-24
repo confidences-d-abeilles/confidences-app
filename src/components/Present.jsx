@@ -22,7 +22,8 @@ export default () => (
       atouts !
       </p>
       <p className="text-center">
-        <ButtonLink to="/signup/individual">J’offre des abeilles</ButtonLink>
+        <ButtonLink to="/signup/individual" primary>J’offre des abeilles</ButtonLink>
+        <ButtonLink to="/prices/individual">Je découvres les coût</ButtonLink>
       </p>
     </div>
     <ul className="nav nav-tabs justify-content-center" role="tablist">
