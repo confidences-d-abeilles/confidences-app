@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Elements } from 'react-stripe-elements';
 import moment from 'moment';
+import { withTranslation } from 'react-i18next';
 
 import { withRouter } from 'react-router';
 import Button from '@cda/button';
@@ -154,6 +155,7 @@ class CompanyCheckout extends Component {
 
 
   render() {
+    const { t } = this.props;
     const {
       redirect,
       dash,
@@ -239,20 +241,19 @@ class CompanyCheckout extends Component {
                 {this.state.paytype === '1'
                   && (
                   <div>
-                    <p>Voici les coordonnées bancaires de l’association pour procéder au virement</p>
+                    <p>{t('ourTransferInfo')}</p>
                     <p>
-                      <strong>Domiciliation : </strong>
-QONTO - 92641 BOULOGNE-BILLANCOURT
+                      <strong>{t('domiciliation')}</strong>
+                      {t('bankName')}
                       <br />
-                      <strong>IBAN : </strong>
-FR76 1679 8000 0100 0004 1298 259
+                      <strong>{t('IBAN')}</strong>
+                      {t('IBANValue')}
                       <br />
-                      <strong>BIC : </strong>
-TRZOFR21XXX
+                      <strong>{t('BIC')}</strong>
+                      {t('BICValue')}
                       <br />
                       <br />
-                      <strong>Numéro d’ordre du reçu à indiquer dans la référence du virement : </strong>
-                      {this.state.bill_number}
+                      <strong>{`${t('billNumber')} ${this.state.bill_number}`}</strong>
                     </p>
                     <p>
                       Si votre banque vous impose un délai concernant l’ajout d’un nouveau compte bénéficiaire, nous vous
@@ -301,4 +302,4 @@ TRZOFR21XXX
   }
 }
 
-export default withRouter(withNotification(CompanyCheckout));
+export default withRouter(withNotification(withTranslation('payment')(CompanyCheckout)));

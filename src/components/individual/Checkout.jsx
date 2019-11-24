@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { Elements } from 'react-stripe-elements';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { withTranslation } from 'react-i18next';
 
 import { withRouter } from 'react-router';
 import { Button } from '@cda/button';
@@ -14,7 +15,6 @@ import Address from '../utils/Address/Address';
 import Meta from '../utils/Meta';
 import ViewAddress from '../utils/Address/ViewAddress';
 import { withNotification } from '../../services/withNotification';
-import { withTranslation } from 'react-i18next';
 
 
 class IndividualCheckout extends Component {
