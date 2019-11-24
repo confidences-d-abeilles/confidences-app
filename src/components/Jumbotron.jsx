@@ -5,7 +5,7 @@ import { Item, Rows } from '@cda/flex';
 
 
 const JumbotronWrapper = styled(Rows)`
-  background-color: #E49C00;
+  background-color: white;
   overflow: hidden;
   min-height: 30rem;
   margin-bottom: 2rem;
@@ -22,7 +22,7 @@ const Jumbcontent = styled(Item)`
     content: ' ';
     width: 100%;
     transform: rotate(7deg);
-    background-color: #E49C00;
+    background-color: white;
     right: 0;
     display: block;
     right: -10%;
