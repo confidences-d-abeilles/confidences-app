@@ -23,7 +23,7 @@ export default () => (
       </p>
       <p className="text-center">
         <ButtonLink to="/signup/individual" primary>J’offre des abeilles</ButtonLink>
-        <ButtonLink to="/prices/individual">Je découvres les coût</ButtonLink>
+        <ButtonLink to="/individual/prices">Je découvres les coût</ButtonLink>
       </p>
     </div>
     <ul className="nav nav-tabs justify-content-center" role="tablist">
