@@ -122,7 +122,6 @@ class MainScreen extends Component {
     const csvData = this.state.filtered.map(({
       firstname,
       name,
-      createdAt,
       email,
       phone,
       addresses,
@@ -130,7 +129,7 @@ class MainScreen extends Component {
     }) => ({
       firstname,
       name,
-      createdAt,
+      begin_date: bundles[0] && bundles[0].start_date,
       email,
       email_parrain: bundles[0] && bundles[0].email,
       nom_parrain: bundles[0] && bundles[0].name,
@@ -149,6 +148,8 @@ class MainScreen extends Component {
       country: addresses[1] && addresses[1].country,
       shipping_phone: addresses[1] && addresses[1].phone,
       price: bundles[0] && bundles[0].price,
+      present: bundles[0] && bundles[0].present ? 'oui' : 'non',
+      label: bundles[0] && bundles[0].label,
     }));
     return (
       <div>
@@ -231,6 +232,6 @@ Pas de parraiange
       </div>
     );
   }
-};
+}
 
 export default withNotification(MainScreen);
