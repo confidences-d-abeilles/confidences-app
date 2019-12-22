@@ -82,10 +82,10 @@ pour le faire ou
       return (
         <p className="text-center my-5">
           {user.hive_id
-            && <ButtonLink secondary url={`/hive/${user.hive_id}`}>Voir la page de ma ruche</ButtonLink>}
-          <ButtonLink external url="https://confidences-dabeilles-visites.appointedd.com/" primary>Réserver une visite du rucher</ButtonLink>
+            && <ButtonLink to={`/hive/${user.hive_id}`}>Voir la page de ma ruche</ButtonLink>}
+          {/*<ButtonLink external url="https://confidences-dabeilles-visites.appointedd.com/" primary>Réserver une visite du rucher</ButtonLink>*/}
           {user.bundles[0].certif
-          && <a href={`${process.env.REACT_APP_CONTENT_DOMAIN}/${user.bundles[0].certif}`} rel="noopener noreferrer" className="btn btn-secondary m-2 btn-sm" target="_blank">Télécharger mon certificat de parrainage</a>}
+          && <ButtonLink to={`${process.env.REACT_APP_CONTENT_DOMAIN}/${user.bundles[0].certif}`} external>Télécharger mon certificat de parrainage</ButtonLink>}
         </p>
       );
     }
