@@ -6,8 +6,12 @@ import ReactPixel from 'react-facebook-pixel';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import fr from './langs/fr';
+import { pdfjs } from 'react-pdf';
+
 
 import App from './App';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const options = {
   autoConfig: true,
