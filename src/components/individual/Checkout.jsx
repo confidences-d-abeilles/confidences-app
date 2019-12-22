@@ -179,13 +179,13 @@ class IndividualCheckout extends Component {
         </div>
         <div className="row justify-content-center">
           <div className="col-lg-11 col-md-10 col-sm-12">
-            <h2 className="text-center my-4">Confirmation et paiement</h2>
+            <h2 className="text-center my-4">Confirmation et versement</h2>
             <p>
               {`Je parraine ${this.state.bees} abeilles d'une ruche sur laquelle sera marqué mon nom.
               Je recevrais ${this.state.bees / 10000 * 8} pots de miel de 250g produits par mes abeilles.
               De plus, une page internet sera dédiée à ma ruche et je pourrais y retrouver des actualités sur mes abeilles.`}
               <br />
-              <strong>{`Le coût total est de ${this.state.price} euros par an.`}</strong>
+              <strong>{`Le montant total du don est de ${this.state.price} euros.`}</strong>
               <br />
               <br />
               <Button onClick={this.changeBundle.bind(this)}>Changer d'offre</Button>
