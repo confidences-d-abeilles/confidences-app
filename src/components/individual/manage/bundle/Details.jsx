@@ -13,7 +13,7 @@ const Details = props => (
 					Date de début : {moment(props.data.start_date).format("DD/MM/YYYY")}<br />
 					Date de fin: {moment(props.data.end_date).format("DD/MM/YYYY")}
 				</div>
-			:<p>Votre offre débutera dès la réception du paiement</p>}
+			:<p>Votre soutien débutera dès la réception du paiement</p>}
 		</div>
 	:<Loading />
 )
