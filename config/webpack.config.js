@@ -143,6 +143,7 @@ module.exports = function(webpackEnv) {
       // changing JS code would still trigger a refresh.
     ].filter(Boolean),
     output: {
+      globalObject: 'this',
       // The build folder.
       path: paths.appBuild,
       // Add /* filename */ comments to generated require()s in the output.

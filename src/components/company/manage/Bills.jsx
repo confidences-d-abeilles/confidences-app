@@ -32,9 +32,13 @@ export default withNotification(class CompanyManageBills extends Component {
             <table className="table">
               <tbody>
                 <tr><th>Numero</th><th>Montant</th><th>Date</th><th></th></tr>
-                {this.state.bills.map((bill) => (
-                    <tr key={bill.id}><td>{bill.number}</td><td>{bill.price} €</td><td>{moment(bill.date).format('DD/MM/YYYY')}</td><td>{(bill.file)?<a href={process.env.REACT_APP_CONTENT_DOMAIN+'/bills/'+bill.file} target="_blank" rel="noopener noreferrer" download><FontAwesome name="cloud-download" /></a>:''}</td></tr>
-                  )
+                {this.state.bills.map((bill) => {
+                  console.log(bill);
+
+                  return (
+                      <tr key={bill.id}><td>{bill.number}</td><td>{bill.price} €</td><td>{moment(bill.date).format('DD/MM/YYYY')}</td><td>{(bill.file)?<a href={process.env.REACT_APP_CONTENT_DOMAIN+'/bills/'+bill.file} target="_blank" rel="noopener noreferrer" download><FontAwesome name="cloud-download" /></a>:''}</td></tr>
+                    )
+                  }
                 )}
               </tbody>
             </table>

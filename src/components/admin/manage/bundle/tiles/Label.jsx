@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
 
 import request from '../../../../../services/Net';
 import Loading from '../../../../utils/Loading';
@@ -8,7 +7,6 @@ import '../../../../utils/css/LabelPdf.css';
 import { withNotification } from '../../../../../services/withNotification';
 import { Button } from '@cda/button';
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 class Label extends Component {
   constructor(props) {
@@ -53,11 +51,8 @@ class Label extends Component {
           {labelFilename
             ? (
               <p className="card-text text-center">
-                <Button onClick={downloadLabel}>Télécharger</Button>
                 <a href={`${process.env.REACT_APP_CONTENT_DOMAIN}/label/${labelFilename}`} target="_blank" rel="noopener noreferrer">
-                  <Document file={`${process.env.REACT_APP_CONTENT_DOMAIN}/label/${labelFilename}`}>
-                    <Page pageNumber={1} width={500} className="label" />
-                  </Document>
+                  Télécharger
                 </a>
               </p>
             )
