@@ -7,7 +7,6 @@ import Meta from '../../../utils/Meta'
 import Loading from '../../../utils/Loading'
 import { handleChange } from '../../../../services/FormService'
 import FontAwesome from 'react-fontawesome'
-import {Document, Page } from 'react-pdf';
 import '../../../utils/css/LabelPdf.css';
 
 import Eti1 from '../../../../assets/img/label/sample_Etiquette_P1.jpg';
@@ -78,10 +77,10 @@ export default withNotification(class Custom extends Component {
               <Loading />
               :
               <div>
-                <p>Visuel actuel de votre étiquette. Pour le modifier veuillez cliquer sur "Recommencer la personnalisation" en dessous de celui-ci.</p>
-                <Document file={process.env.REACT_APP_CONTENT_DOMAIN+'/label/'+this.state.label} >
-                  <Page pageNumber={1} width={500} className="label" />
-                </Document>
+                <p>Cliquer sur télécharger pour consulter votre étiquette. Pour le modifier veuillez cliquer sur "Recommencer la personnalisation" en dessous de celui-ci.</p>
+                <a href={process.env.REACT_APP_CONTENT_DOMAIN+'/label/'+this.state.label} target="_blank">
+                  Télécharger
+                </a>
                 <Button onClick={() => { this.setState({ step : 1 }); }}>Recommencer la personnalisation <FontAwesome name="magic" /></Button>
               </div>)
           }
@@ -124,11 +123,11 @@ export default withNotification(class Custom extends Component {
                   </div>
                 :
                 <div>
-                  <p className="lead">Voici le rendu de votre étiquette personnalisée !</p>
+                  <p className="lead">Vous pouvez télécharger le rendu de votre étiquette personnalisée !</p>
+                  <a href={process.env.REACT_APP_CONTENT_DOMAIN+'/label/'+this.state.label} target="_blank">
+                    Télécharger
+                  </a>
                   <p>Les mentions entre parenthèses sont provisoires et seront remplacées lorsque les informations seront disponibles.</p>
-                  <Document file={process.env.REACT_APP_CONTENT_DOMAIN+'/label/'+this.state.label} >
-                    <Page pageNumber={1} width={500} className="label" />
-                  </Document>
                   <button className="btn btn-secondary" onClick={() => { this.setState({ step : 1 }); }}>Recommencer la personnalisation <FontAwesome name="magic" /></button>
                 </div>}
               </div>
