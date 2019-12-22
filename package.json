@@ -104,8 +104,7 @@
     "start": "node server.js",
     "test": "node scripts/test.js --env=jsdom",
     "serve": "serve -s build",
-    "lint": "./node_modules/.bin/eslint --cache --ext .jsx --ext .js src",
-    "postinstall": "cp node_modules/pdfjs-dist/build/pdf.worker.min.js public/pdf.worker.min.js"
+    "lint": "./node_modules/.bin/eslint --cache --ext .jsx --ext .js src"
   },
   "devDependencies": {
     "@sentry/webpack-plugin": "^1.7.0",
