@@ -66,13 +66,13 @@ export default withNotification(class Bills extends Component {
                 <strong>Montant</strong>
                 {` : ${bills.price} €`}
                 <br />
-                <strong>Document</strong>
-                {` : ${bills.file ? (
+                <strong>Document&nbsp;</strong>
+                {bills.file ? (
                   <span>
                     <a href={`${process.env.REACT_APP_CONTENT_DOMAIN}/bills/${bills.file}`} target="_blank" rel="noopener noreferrer">Fichier actuel</a>
                     <br />
                   </span>
-                ) : 'Aucun document pour cette facturation'}`}
+                ) : 'Aucun document pour cette facturation'}
                 <FileUpload identifier="billDoc" label="Uploader un fichier" />
                 <div className="text-center">
                   <Button onClick={this.uploadFile}>Envoyer le fichier</Button>
