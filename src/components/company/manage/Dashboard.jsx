@@ -192,7 +192,7 @@ Ruche n°
                         {(user && user.bundles[0])
                           ? (
                             <p>
-                  Notre offre :
+                  Nous soutenons
                               {' '}
                               {user.bundles[0].hives}
                               {' '}
