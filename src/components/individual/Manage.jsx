@@ -8,6 +8,7 @@ import IndividualManageInfos from './manage/Infos';
 import Account from './manage/Account';
 import Custom from './manage/custom/Custom';
 import Bundle from './manage/Bundle';
+import Bills from '../company/manage/Bills';
 import Meta from '../utils/Meta';
 import NotFound from '../utils/NotFound';
 
@@ -21,6 +22,10 @@ export default () => (
           <Link to="/individual/manage" className="list-group-item">
             <FontAwesome name="archive" fixedWidth />
             &nbsp;&nbsp;Mon parrainage
+          </Link>
+          <Link to="/individual/manage/bills" className="list-group-item">
+            <FontAwesome name="file" fixedWidth />
+            &nbsp;&nbsp;Mes reçus fiscaux
           </Link>
           <Link to="/individual/manage/customize" className="list-group-item">
             <FontAwesome name="flask" fixedWidth />
@@ -44,6 +49,7 @@ export default () => (
         <Switch>
           <Route exact path="/individual/manage" component={Bundle} />
           <Route exact path="/individual/manage/customize" component={Custom} />
+          <Route exact path="/individual/manage/bills" component={Bills} />
           <Route exact path="/individual/manage/infos" component={IndividualManageInfos} />
           <Route exact path="/individual/manage/account" component={Account} />
           <Route component={NotFound} />
