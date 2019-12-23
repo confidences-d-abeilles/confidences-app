@@ -9,8 +9,6 @@ import { withNotification } from '../../services/withNotification';
 
 class MainScreen extends Component {
   state = {
-    users: [],
-    filtered: [],
     selectedId: null,
     filters: {
       e: true,
@@ -24,21 +22,11 @@ class MainScreen extends Component {
       done: true,
       no: true,
     },
-    criteria: '',
   };
 
   componentDidMount() {
     this.props.fetchUsers();
     this.refs.searchInput.focus();
-  }
-
-  checkFilter = (e) => {
-    this.setState({
-      filters: {
-        ...this.state.filters,
-        [e.target.name]: !this.state.filters[e.target.name],
-      },
-    }, () => { this.filter(); });
   }
 
   filter = () => {
@@ -63,7 +51,7 @@ class MainScreen extends Component {
     this.setState({
       selectedId: id,
     });
-  }
+  };
 
   checkValidation = (e) => {
     if (e.key === 'Enter') {
