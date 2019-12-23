@@ -1,8 +1,8 @@
 import React from 'react';
 import moment from 'moment';
-import Loading from '../../../../../utils/Loading';
+import Loading from '../../../../components/utils/Loading';
 import UserType from '../../UserType/UserType';
-import Confirm from '../../../../../utils/Confirm';
+import Confirm from '../../../../components/utils/Confirm';
 import { Button } from '@cda/button';
 
 const General = ({ delete: deleteUser, data, impersonate, handlePromotion }) => (

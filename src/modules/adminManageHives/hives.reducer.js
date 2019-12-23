@@ -16,7 +16,7 @@ export default (state = initialState, action) => {
     case HIVES_FETCH:
       return {
         ...state,
-        loading: true,
+        loading: state.hives.length <= 0, // Only show loader if no data present
       };
     case HIVES_FETCH_SUCCESS:
       return {

@@ -11,7 +11,7 @@ import Meta from '../../components/utils/Meta';
 import Search from './components/search';
 import Add from './components/add';
 import AdminManageHivesBoard from './hive.connector';
-import UserType from '../../components/admin/manage/users/UserType/UserType';
+import UserType from '../adminManageUsers/UserType/UserType';
 
 const AdminManageHives = ({
   history, hives, fetchHives, addHive, needle, loading,

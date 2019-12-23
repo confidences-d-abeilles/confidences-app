@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import ViewMemo from './ViewMemo';
 import EditMemo from './EditMemo';
-import request from '../../../../../../services/Net';
-import { withNotification } from '../../../../../../services/withNotification';
+import request from '../../../../services/Net';
+import { withNotification } from '../../../../services/withNotification';
 
 export default withNotification(class Memo extends Component {
   constructor(props) {

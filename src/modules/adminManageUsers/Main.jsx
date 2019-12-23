@@ -3,10 +3,9 @@ import { Redirect, Link } from 'react-router-dom';
 import { CSVLink } from 'react-csv';
 import Input from '@cda/input';
 
-import List from './users/List';
-import request from '../../../services/Net';
-import Meta from '../../utils/Meta';
-import { withNotification } from '../../../services/withNotification';
+import List from './List';
+import Meta from '../../components/utils/Meta';
+import { withNotification } from '../../services/withNotification';
 
 class MainScreen extends Component {
   state = {
@@ -29,22 +28,8 @@ class MainScreen extends Component {
   };
 
   componentDidMount() {
-    this.getUsers();
+    this.props.fetchUsers();
     this.refs.searchInput.focus();
-  }
-
-  getUsers() {
-    const { notification } = this.props;
-    request({
-      url: '/user',
-      method: 'get',
-    }, notification).then((res) => {
-      this.setState({
-        users: res,
-      }, () => {
-        this.filter();
-      });
-    });
   }
 
   checkFilter = (e) => {
@@ -54,14 +39,6 @@ class MainScreen extends Component {
         [e.target.name]: !this.state.filters[e.target.name],
       },
     }, () => { this.filter(); });
-  }
-
-  search = (e) => {
-    this.setState({
-      criteria: e.target.value,
-    }, () => {
-      this.filter();
-    });
   }
 
   filter = () => {
@@ -77,18 +54,10 @@ class MainScreen extends Component {
       || ((e.bundles[0] && e.bundles[0].state === 2) && this.state.filters.paid)
       || ((e.bundles[0] && e.bundles[0].state === 3) && this.state.filters.done))
     ));
-    tmp = tmp.filter((e) => {
-      if ((e.firstname.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0)
-      || (e.name.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0)
-      || (e.company_name.toLowerCase().indexOf(this.state.criteria.toLowerCase()) >= 0) || this.state.criteria === '') {
-        return true;
-      }
-      return false;
-    });
     this.setState({
       filtered: tmp,
     });
-  }
+  };
 
   select = (id) => {
     this.setState({
@@ -119,7 +88,7 @@ class MainScreen extends Component {
   }
 
   render() {
-    const csvData = this.state.filtered.map(({
+    const csvData = this.props.filteredUsers.map(({
       firstname,
       name,
       email,
@@ -157,7 +126,7 @@ class MainScreen extends Component {
         {this.state.selectedId && <Redirect to={`/admin/manage/user/${this.state.selectedId}`} push />}
         <div className="row">
           <div className="col">
-            <Input type="text" value={this.state.criteria} ref="searchInput" onChange={this.search} placeholder="Rechercher..." onKeyDown={this.checkValidation} />
+            <Input type="text" ref="searchInput" onChange={e => this.props.searchUser(e.target.value)} placeholder="Rechercher..." onKeyDown={this.checkValidation} />
             <small className="form-text text-muted">Appuyez sur ⏎ pour accéder au premier utilisateur, ⇩ ou ⇧ pour naviguer</small>
             <CSVLink data={csvData}>Exporter</CSVLink>
           </div>
@@ -227,7 +196,7 @@ Pas de parraiange
           </div>
         </div>
         <div className="row">
-          <List data={this.state.filtered} select={this.select} />
+          <List data={this.props.filteredUsers} select={this.select} />
         </div>
       </div>
     );

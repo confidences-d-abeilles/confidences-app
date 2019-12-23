@@ -8,7 +8,7 @@ import Payment from './tiles/Payment';
 import Bills from './tiles/Bills';
 import Parrains from './tiles/Parrains';
 import Label from './tiles/Label';
-import Bundle from '../users/tiles/Bundle';
+import Bundle from '../../../../modules/adminManageUsers/tiles/Bundle';
 import { withNotification } from '../../../../services/withNotification';
 import Price from './tiles/Price';
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import request from '../../../../../../services/Net';
-import { withNotification } from '../../../../../../services/withNotification';
+import request from '../../../../services/Net';
+import { withNotification } from '../../../../services/withNotification';
 
 export default withNotification(class Sendmail extends Component {
   sendMail = (id) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Loading from '../../../utils/Loading';
+import Loading from '../../components/utils/Loading';
 import State from './State/State';
 import UserType from './UserType/UserType';
 

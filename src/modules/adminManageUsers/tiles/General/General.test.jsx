@@ -5,7 +5,7 @@ import Adapter from 'enzyme-adapter-react-16'
 configure({ adapter : new Adapter() });
 
 import General from './General'
-import Loading from '../../../../../utils/Loading'
+import Loading from '../../../../components/utils/Loading'
 import UserType from '../../UserType/UserType'
 
 describe('<General />', () => {

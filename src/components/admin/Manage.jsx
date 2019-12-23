@@ -9,8 +9,8 @@ import {
 import Sidebar from '@cda/sidebar';
 import { Rows, Item } from '@cda/flex';
 
-import AdminManageUser from './manage/Users';
-import AdminManageUserId from './manage/users/Fiche';
+import AdminManageUser from '../../modules/adminManageUsers/users.connector';
+import AdminManageUserId from '../../modules/adminManageUsers/Fiche';
 import AdminManageFaq from './manage/Faq';
 import AdminManageMails from './manage/Mails';
 import AdminManageHives from '../../modules/adminManageHives/hives.connector';

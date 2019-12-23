@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-import request from '../../../../services/Net';
+import request from '../../services/Net';
 import General from './tiles/General/General';
 import Bundle from './tiles/Bundle';
-import Address from '../../../utils/Address/Address';
+import Address from '../../components/utils/Address/Address';
 import Email from './tiles/Email';
 import Memo from './tiles/Memo/Memo';
-import { login } from '../../../../services/AuthService';
-import { withNotification } from '../../../../services/withNotification';
+import { login } from '../../services/AuthService';
+import { withNotification } from '../../services/withNotification';
 
 export default withNotification(class Fiche extends Component {
   state = {

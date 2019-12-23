@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Input from '@cda/input';
 
-import request from '../../../../../services/Net';
-import { handleChange } from '../../../../../services/FormService';
-import { withNotification } from '../../../../../services/withNotification';
+import request from '../../../services/Net';
+import { handleChange } from '../../../services/FormService';
+import { withNotification } from '../../../services/withNotification';
 
 export default withNotification(class Newsletter extends Component {
   state = {
