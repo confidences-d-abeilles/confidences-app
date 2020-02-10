@@ -1,8 +1,15 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router-dom';
+import styled from '@emotion/styled';
+
 import logo from '../assets/img/logo.png';
+import onePercent from '../assets/img/1percent.png';
 import '../assets/styles/footer.css';
+
+const WithMarginImage = styled('img')`
+  margin: 10px;
+`;
 
 export default () => (
   <footer className="bg-faded">
@@ -11,7 +18,8 @@ export default () => (
         <div className="col-lg-4 mb-4">
           <div>
             <Link to="/">
-              <img src={logo} alt="Logo Confidences d'Abeilles" className="img-fluid" style={{ maxHeight: '128px' }} />
+              <WithMarginImage src={logo} alt="Logo Confidences d'Abeilles" className="img-fluid" style={{ maxHeight: '128px' }} />
+              <WithMarginImage src={onePercent} alt="Logo Confidences d'Abeilles" className="img-fluid" style={{ maxHeight: '128px' }} />
             </Link>
             <br />
             <br />
