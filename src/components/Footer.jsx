@@ -8,7 +8,14 @@ import onePercent from '../assets/img/1percent.png';
 import '../assets/styles/footer.css';
 
 const WithMarginImage = styled('img')`
-  margin: 10px;
+  margin: 10px 5vw;
+  height: 128px;
+`;
+
+const LogoWrapper = styled('div')`
+  display: flex;
+  // height: 128px;
+  justify-content: space-around;
 `;
 
 export default () => (
@@ -18,8 +25,10 @@ export default () => (
         <div className="col-lg-4 mb-4">
           <div>
             <Link to="/">
-              <WithMarginImage src={logo} alt="Logo Confidences d'Abeilles" className="img-fluid" style={{ maxHeight: '128px' }} />
-              <WithMarginImage src={onePercent} alt="Logo Confidences d'Abeilles" className="img-fluid" style={{ maxHeight: '128px' }} />
+              <LogoWrapper>
+                <WithMarginImage src={logo} alt="Logo Confidences d'Abeilles" className="img-fluid" style={{ marginTop: '3px' }} />
+                <WithMarginImage src={onePercent} alt="Logo Confidences d'Abeilles" className="img-fluid" />
+              </LogoWrapper>
             </Link>
             <br />
             <br />
