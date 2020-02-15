@@ -65,7 +65,6 @@ export default () => (
             <h3 className="text-left">L&apos;association</h3>
             <ul>
               <li><Link to="/about" className="noStyleLink">L&apos;histoire</Link></li>
-              <li><Link to="/ourvalues" className="noStyleLink">Les valeurs</Link></li>
               <li><Link to="/team" className="noStyleLink">L&apos;équipe et le conseil d&apos;administration</Link></li>
               <li><Link to="/partners" className="noStyleLink">Les partenaires</Link></li>
               <li><Link to="/jobs" className="noStyleLink">Rejoindre l&apos;aventure</Link></li>
