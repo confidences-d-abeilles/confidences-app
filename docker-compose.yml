@@ -7,6 +7,7 @@ services:
         - NODE_ENV=staging
         - REACT_APP_MONGO_URL=${REACT_APP_MONGO_URL}
         - REACT_APP_STRIPE_API_KEY=${REACT_APP_STRIPE_API_KEY}
+        - REACT_APP_HUBSPOT_API_KEY=${REACT_APP_HUBSPOT_API_KEY}
     image: cda-app:staging
     restart: always
     labels:
@@ -21,6 +22,7 @@ services:
         - NODE_ENV=production
         - REACT_APP_MONGO_URL=${REACT_APP_MONGO_URL}
         - REACT_APP_STRIPE_API_KEY=${REACT_APP_STRIPE_API_KEY}
+        - REACT_APP_HUBSPOT_API_KEY={$REACT_APP_HUBSPOT_API_KEY}
     image: cda-app:production
     restart: always
     labels:

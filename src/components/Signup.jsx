@@ -9,6 +9,7 @@ import { login, isLoggedIn } from '../services/AuthService';
 import request from '../services/Net';
 import Meta from './utils/Meta';
 import { withNotification } from '../services/withNotification';
+import { addLead } from './utils/hubspot';
 
 export default withNotification(class Signup extends Component {
   constructor(props) {
@@ -84,6 +85,7 @@ export default withNotification(class Signup extends Component {
       }, notification)
         .then(() => {
           ReactPixel.track('Lead', {});
+          addLead({ email, firstname, name, phone });
           request({
             url: '/authenticate',
             method: 'post',

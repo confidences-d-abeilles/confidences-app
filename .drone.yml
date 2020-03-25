@@ -1,4 +1,5 @@
 kind: pipeline
+type: docker
 name: Build & Deploy
 
 steps:
@@ -9,6 +10,8 @@ steps:
         from_secret: REACT_APP_STAGING_STRIPE_API_KEY
       REACT_APP_MONGO_URL:
         from_secret: REACT_APP_MONGO_URL
+      REACT_APP_HUBSPOT_API_KEY:
+        from_secret: REACT_APP_HUBSPOT_API_KEY
     volumes:
       - name: docker
         path: /var/run/docker.sock
@@ -32,6 +35,8 @@ steps:
         from_secret: REACT_APP_STRIPE_API_KEY
       REACT_APP_MONGO_URL:
         from_secret: REACT_APP_MONGO_URL
+      REACT_APP_HUBSPOT_API_KEY:
+        from_secret: REACT_APP_HUBSPOT_API_KEY
     volumes:
       - name: docker
         path: /var/run/docker.sock
