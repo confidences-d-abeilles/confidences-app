@@ -10,35 +10,35 @@ const UNIT = '/ an';
 const tenOffer = [
   { id: 'test', value: 'Votre nom sur une ruche' },
   { id: 'test', value: 'Une page dédiée' },
-  { id: 'miel', value: '8 pots de 250g', bold: true },
+  { id: 'miel', value: '6 pots de 250g', bold: true },
   { id: 'post', value: 'Frais d\'expedition inclus' },
 ];
 
 const twentyOffer = [
   { id: 'test', value: 'Votre nom sur une ruche' },
   { id: 'test', value: 'Une page dédiée' },
-  { id: 'miel', value: '16 pots de 250g', bold: true },
+  { id: 'miel', value: '12 pots de 250g', bold: true },
   { id: 'post', value: 'Frais d\'expedition inclus' },
 ];
 
 const thirtyOffer = [
   { id: 'test', value: 'Votre nom sur une ruche' },
   { id: 'test', value: 'Une page dédiée' },
-  { id: 'miel', value: '24 pots de 250g', bold: true },
+  { id: 'miel', value: '18 pots de 250g', bold: true },
   { id: 'post', value: 'Frais d\'expedition inclus' },
 ];
 
 const fourtyOffer = [
   { id: 'test', value: 'Votre nom sur une ruche' },
   { id: 'test', value: 'Une page dédiée' },
-  { id: 'miel', value: '32 pots de 250g', bold: true },
+  { id: 'miel', value: '24 pots de 250g', bold: true },
   { id: 'post', value: 'Frais d\'expedition inclus' },
 ];
 
 const fiftyOffer = [
   { id: 'test', value: 'Une ruche complète à votre nom' },
   { id: 'test', value: 'Une page dédiée' },
-  { id: 'miel', value: '40 pots de 250g', bold: true },
+  { id: 'miel', value: '30 pots de 250g', bold: true },
   { id: 'post', value: 'Frais d\'expedition inclus' },
 ];
 

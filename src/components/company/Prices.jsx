@@ -10,14 +10,14 @@ const UNIT = '/ an / ruche';
 const tenOffer = [
   { id: 'beehive', value: 'Ruches aux couleurs de votre entreprise' },
   { id: 'page', value: 'Une page dédiée à votre entreprise' },
-  { id: 'miel', value: '40 pots de miel de 250g par ruche (ou 80 de 125g)', bold: true },
+  { id: 'miel', value: '30 pots de miel de 250g par ruche (ou 60 de 125g)', bold: true },
   { id: 'post', value: 'Frais d\'expedition inclus' },
 ];
 
 const twentyOffer = [
   { id: 'beehive', value: 'Ruches aux couleurs de votre entreprise' },
   { id: 'page', value: 'Une page dédiée à votre entreprise' },
-  { id: 'miel', value: '40 pots de miel de 250g par ruche (ou 80 de 125g)', bold: true },
+  { id: 'miel', value: '30 pots de miel de 250g par ruche (ou 60 de 125g)', bold: true },
   { id: 'post', value: 'Frais d\'expedition inclus' },
 ];
 
