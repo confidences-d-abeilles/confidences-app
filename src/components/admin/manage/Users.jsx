@@ -148,6 +148,8 @@ class MainScreen extends Component {
       country: addresses[1] && addresses[1].country,
       shipping_phone: addresses[1] && addresses[1].phone,
       price: bundles[0] && bundles[0].price,
+      bees: bundles[0] && bundles[0].bees,
+      hives: bundles[0] && bundles[0].hives,
       present: bundles[0] && bundles[0].present ? 'oui' : 'non',
       label: bundles[0] && bundles[0].label,
     }));
