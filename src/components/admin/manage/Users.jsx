@@ -121,7 +121,7 @@ class MainScreen extends Component {
   render() {
     const csvData = this.state.filtered.map(({
       id,
-      created_at,
+      createdAt,
       firstname,
       name,
       sexe_m,
@@ -130,7 +130,7 @@ class MainScreen extends Component {
       addresses,
       bundles,
     }) => ({
-      created_at,
+      createdAt,
       firstname,
       name,
       gender: sexe_m,
