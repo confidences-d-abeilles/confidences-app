@@ -130,7 +130,6 @@ class MainScreen extends Component {
       addresses,
       bundles,
     }) => ({
-      id,
       created_at,
       firstname,
       name,
