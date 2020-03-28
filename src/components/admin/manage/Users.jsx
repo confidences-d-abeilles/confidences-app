@@ -120,15 +120,21 @@ class MainScreen extends Component {
 
   render() {
     const csvData = this.state.filtered.map(({
+      id,
+      created_at,
       firstname,
       name,
+      sexe_m,
       email,
       phone,
       addresses,
       bundles,
     }) => ({
+      id,
+      created_at,
       firstname,
       name,
+      sexe_m,
       begin_date: bundles[0] && bundles[0].start_date,
       email,
       email_parrain: bundles[0] && bundles[0].email,
