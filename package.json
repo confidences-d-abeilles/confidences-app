@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.5.4",
-    "@cda/button": "^0.9.0",
+    "@cda/button": "0.10.2",
     "@cda/button-link": "^0.9.0",
     "@cda/flex": "^0.9.0",
     "@cda/input": "^0.9.0",
