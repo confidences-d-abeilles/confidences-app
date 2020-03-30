@@ -15,7 +15,7 @@ import Meta from '../utils/Meta';
 import leaflet from '../../assets/leaflet_e.pdf';
 import Jumbotron from '../Jumbotron';
 import forUs from '../../assets/img/schema-apport-pour-les-api.png';
-import forYou from '../../assets/img/schema-parrainage-apport-pour-les-E.png';
+import forYou from '../../assets/img/schema-parrainage-apport-pour-les-E.jpg';
 
 export default withTranslation('company')(({ t }) => (
   <Fragment>
