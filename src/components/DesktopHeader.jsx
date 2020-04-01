@@ -8,6 +8,7 @@ import logoSquare from '../assets/img/logo-square.png';
 import { isLoggedIn } from '../services/AuthService';
 import navLinks from '../config/navLinks';
 import { withNotification } from '../services/withNotification';
+import NewsletterPopup from './NewsletterPopup';
 
 const Wrapper = styled('nav')`
   display: flex;
@@ -98,6 +99,7 @@ export default withNotification(() => (
       <Dropdown title="Agir" data={navLinks.desktop.dropdown1} />
     </Section>
     <RightSection>
+      <a href="#">S'inscrire à la Newsletter</a>&nbsp;&nbsp;&nbsp;
       <Dropdown title="L'association" data={navLinks.desktop.dropdown2} />
       {isLoggedIn()
         ? (
@@ -112,5 +114,6 @@ export default withNotification(() => (
           </>
         )}
     </RightSection>
+    <NewsletterPopup />
   </Wrapper>
 ));
