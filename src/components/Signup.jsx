@@ -191,7 +191,7 @@ export default withNotification(class Signup extends Component {
                 <Input
                   type={(userType === 3)?'text':'tel'}
                   name={(userType === 3)?'school':'phone'}
-                  placeholder={(userType === 3)?'Ecole ou établissement':'Numéro de telephone *'}
+                  placeholder={(userType === 3)?'Ecole ou établissement':'Numéro de téléphone *'}
                   onChange={handleChange.bind(this)}
                   autoComplete={(userType === 3)?'organization':'tel'}
                   data-cy="phone"

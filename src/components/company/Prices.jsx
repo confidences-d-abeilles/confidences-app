@@ -11,14 +11,14 @@ const tenOffer = [
   { id: 'beehive', value: 'Ruches aux couleurs de votre entreprise' },
   { id: 'page', value: 'Une page dédiée à votre entreprise' },
   { id: 'miel', value: '30 pots de miel de 250g par ruche (ou 60 de 125g)', bold: true },
-  { id: 'post', value: 'Frais d\'expedition inclus' },
+  { id: 'post', value: 'Frais d\'expédition inclus' },
 ];
 
 const twentyOffer = [
   { id: 'beehive', value: 'Ruches aux couleurs de votre entreprise' },
   { id: 'page', value: 'Une page dédiée à votre entreprise' },
   { id: 'miel', value: '30 pots de miel de 250g par ruche (ou 60 de 125g)', bold: true },
-  { id: 'post', value: 'Frais d\'expedition inclus' },
+  { id: 'post', value: 'Frais d\'expédition inclus' },
 ];
 
 export default () => (
@@ -41,7 +41,7 @@ export default () => (
       <Item textAlign="center" gutters>
         <h3>*Mécénat d'entreprise et dons aux associations</h3>
         <p>
-          L'association Confidences d’Abeilles est un organisme d’intérêt
+          L'Association Confidences d’Abeilles est un organisme d’intérêt
           général. A ce titre et en contrepartie des dons qu'elle reçoit, elle
           émet des reçus fiscaux (CERFA N°11580*03) qui permettent à ses
           mécènes de bénéficier d’une réduction d’impôt sur le revenu ou sur
@@ -52,7 +52,7 @@ export default () => (
           reportés ne peuvent s'ajouter aux dons effectués chaque année que
           dans la limite du plafond annuel.
           <br /><br />
-          Plus d’information sur ce lien :&nbsp;
+          Plus d’informations sur ce lien :&nbsp;
           <a href="https://www.service-public.fr/professionnels-entreprises/vosdroits/F22263" target="_blank" rel="noopener noreferrer">
             https://www.service-public.fr/professionnels-entreprises/vosdroits/F22263
           </a>

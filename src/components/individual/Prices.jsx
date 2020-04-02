@@ -11,35 +11,35 @@ const tenOffer = [
   { id: 'test', value: 'Votre nom sur une ruche' },
   { id: 'test', value: 'Une page dédiée' },
   { id: 'miel', value: '6 pots de 250g', bold: true },
-  { id: 'post', value: 'Frais d\'expedition inclus' },
+  { id: 'post', value: 'Frais d\'expédition inclus' },
 ];
 
 const twentyOffer = [
   { id: 'test', value: 'Votre nom sur une ruche' },
   { id: 'test', value: 'Une page dédiée' },
   { id: 'miel', value: '12 pots de 250g', bold: true },
-  { id: 'post', value: 'Frais d\'expedition inclus' },
+  { id: 'post', value: 'Frais d\'expédition inclus' },
 ];
 
 const thirtyOffer = [
   { id: 'test', value: 'Votre nom sur une ruche' },
   { id: 'test', value: 'Une page dédiée' },
   { id: 'miel', value: '18 pots de 250g', bold: true },
-  { id: 'post', value: 'Frais d\'expedition inclus' },
+  { id: 'post', value: 'Frais d\'expédition inclus' },
 ];
 
 const fourtyOffer = [
   { id: 'test', value: 'Votre nom sur une ruche' },
   { id: 'test', value: 'Une page dédiée' },
   { id: 'miel', value: '24 pots de 250g', bold: true },
-  { id: 'post', value: 'Frais d\'expedition inclus' },
+  { id: 'post', value: 'Frais d\'expédition inclus' },
 ];
 
 const fiftyOffer = [
   { id: 'test', value: 'Une ruche complète à votre nom' },
   { id: 'test', value: 'Une page dédiée' },
   { id: 'miel', value: '30 pots de 250g', bold: true },
-  { id: 'post', value: 'Frais d\'expedition inclus' },
+  { id: 'post', value: 'Frais d\'expédition inclus' },
 ];
 
 export default () => (
@@ -65,7 +65,7 @@ export default () => (
       <Item textAlign="center" gutters>
         <h3>*Dons aux associations et organismes d'intérêt général</h3>
         <p>
-          L'association Confidences d’Abeilles est un organisme d’intérêt
+          L'Association Confidences d’Abeilles est un organisme d’intérêt
           général. A ce titre et en contrepartie des dons qu'elle reçoit, elle
           émet des reçus fiscaux (CERFA N°11580*03) qui permettent à ses
           donateurs de bénéficier d’une réduction d’impôt sur le revenu.
@@ -75,7 +75,7 @@ export default () => (
           reporté sur les 5 années suivantes et ouvre droit à la réduction
           d'impôt dans les mêmes conditions.
           <br /><br />
-          Plus d’information sur ce lien :&nbsp;
+          Plus d’informations sur ce lien :&nbsp;
           <a href="https://www.service-public.fr/particuliers/vosdroits/F426" target="_blank" rel="noopener noreferrer">https://www.service-public.fr/particuliers/vosdroits/F426</a>
         </p>
       </Item>

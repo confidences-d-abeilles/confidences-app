@@ -15,10 +15,10 @@ export default () => (
             style={{ height: '1em' }} />
         </h1>
         <p>
-          Chez Confidences d’Abeilles il y a précisément 5.504.152
+          Chez Confidences d’Abeilles, il y a précisément 5.504.152
           collaborateurs ; <strong>des collaboratrices à 98%</strong> même !
-          Oui, vous avez bien lu ! Et au niveau du management cela se passe
-          comment ? En fait, il faut savoir qu’une ruche c’est <strong>50 000 ouvrières</strong> qui
+          Oui, vous avez bien lu ! Et au niveau du management, cela se passe
+          comment ? En fait, il faut savoir qu’une ruche, c’est <strong>50 000 ouvrières</strong> qui
           travaillent de concert pour servir leur reine mère.<br />
           <span className="align-middle">Ceci explique donc cela&nbsp; </span>
           <img src={require('../../../assets/img/smiley/nerd.svg')} alt="smiley nerd"
@@ -32,7 +32,7 @@ export default () => (
           Nous sommes comme vous, jeunes et entreprenants, nous croyons au travail passionné et à la réussite !
         </p>
         <p>
-          Pour accompagner notre développement ou celui de nos partenaires nous avons
+          Pour accompagner notre développement ou celui de nos partenaires, nous avons
           besoin de nouveaux talents, de personnes passionnées ; non, nous ne cherchons
           pas que des apiculteurs, bien au contraire !
         </p>
