@@ -35,7 +35,7 @@ const SpecialOfferWidget = () => {
       method: 'get',
       url: '/special'
     }).then((res) => {
-      setCounter(res + 100);
+      setCounter(res);
     }).catch(console.error);
   };
 
@@ -43,7 +43,7 @@ const SpecialOfferWidget = () => {
     fetch();
   }, []);
 
-  if (!counter) {
+  if (!counter || counter < 1) {
     return null;
   }
   return <Card>
