@@ -49,7 +49,7 @@ export default () => (
     </Rows>
     <Rows justifyContent="center">
       <Item textAlign="center">
-        <ButtonLink to="/signup/individual" primary>C’est parti</ButtonLink>
+        <ButtonLink to="/individual/prices">Les tarifs</ButtonLink>
       </Item>
       <Item textAlign="center">
         <ButtonLink to="/individual/more">En savoir plus</ButtonLink>
