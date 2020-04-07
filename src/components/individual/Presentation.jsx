@@ -15,6 +15,7 @@ import forUs from '../../assets/img/schema-apport-pour-les-api.png';
 
 import Meta from '../utils/Meta';
 import Jumbotron from '../Jumbotron';
+import SpecialOfferWidget from '../utils/specialOffer';
 
 export default () => (
   <Fragment>
@@ -27,6 +28,7 @@ export default () => (
         Pour parrainer vos premières abeilles c’est simple : complétez le formulaire, supportez autant d’abeilles que souhaité,
         et on s’occupe de les installer dans une ruche !
       </p>
+      <SpecialOfferWidget />
       <p className="text-center">
         <ButtonLink to="/signup/individual" primary>C’est parti</ButtonLink>
         <ButtonLink to="/present" primary>Je veux l’offrir 🎁</ButtonLink>
