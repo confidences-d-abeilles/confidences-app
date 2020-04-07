@@ -22,6 +22,7 @@ import Meta from '../../components/utils/Meta';
 import Jumbotron from '../../components/Jumbotron';
 
 import '../../assets/styles/parrains_homepage.css';
+import SpecialOfferWidget from '../../components/utils/specialOffer';
 
 const defaultImg = require('../../assets/img/profile.png');
 
@@ -40,6 +41,7 @@ export default withTranslation('homepage')(({ loading, users, t }) => (
       <p>
         {t('headblock')}
       </p>
+      <SpecialOfferWidget />
       <p className="text-center">
         <ButtonLink to="/company/presentation" primary>{t('companyService')}</ButtonLink>
         <ButtonLink to="/individual/presentation" primary>{t('individualService')}</ButtonLink>
