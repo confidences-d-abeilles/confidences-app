@@ -5,7 +5,7 @@ export const client = axios.create({
   baseURL: process.env.REACT_APP_API_DOMAIN,
 });
 
-export default (options, notification) => {
+export default (options, notification, withPagination = false) => {
   const onSuccess = (response) => {
     if (response.data.message && notification) {
       notification.addNotification({
@@ -13,7 +13,10 @@ export default (options, notification) => {
         level: 'success',
       });
     }
-    return response.data.payload;
+    return withPagination ? {
+      payload: response.data.payload,
+      pages: response.data.pages,
+    } : response.data.payload;
   };
 
   const onError = (error) => {

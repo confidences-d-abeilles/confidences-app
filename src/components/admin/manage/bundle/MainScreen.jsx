@@ -1,35 +1,40 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import { Columns } from '@cda/flex';
 import Input from '@cda/input';
 
 import request from '../../../../services/Net';
 import List from './List';
 import { withNotification } from '../../../../services/withNotification';
+import usePages from '../../../../services/pagination/usePages';
+import Pages from '../../../../services/pagination/pages';
 
 const BundlesMainScreen = ({ notification }) => {
   const [bundles, setBundles] = useState([]);
+  const pageData = usePages();
+  const { page, setPages } = pageData;
 
 
   const fetch = () => {
     request({
-      url: '/bundle?page=1',
+      url: `/bundle?page=${page}`,
       method: 'get',
-    }, notification).then((res) => {
-      setBundles(res);
+    }, notification, true).then(({ payload, pages }) => {
+      setBundles(payload);
+      setPages(pages)
     });
   };
 
   useEffect(() => {
     fetch();
-  }, []);
+  }, [page]);
 
 
   return (
-    <div className="row">
-      <div className="col">
-        <List data={bundles} />
-      </div>
-    </div>
+    <Columns>
+      <List data={bundles} />
+      <Pages {...pageData} />
+    </Columns>
   );
 };
 
