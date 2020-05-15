@@ -32,7 +32,7 @@ const BundlesMainScreen = ({ notification }) => {
 
 
   return (
-    <Columns>
+    <Columns alignItems="flex-end">
       <Pages {...pageData} />
       <List data={bundles} />
       <Pages {...pageData} />
