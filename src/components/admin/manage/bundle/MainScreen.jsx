@@ -16,6 +16,7 @@ const BundlesMainScreen = ({ notification }) => {
 
 
   const fetch = () => {
+    setBundles([]);
     request({
       url: `/bundle?page=${page}`,
       method: 'get',
@@ -32,6 +33,7 @@ const BundlesMainScreen = ({ notification }) => {
 
   return (
     <Columns>
+      <Pages {...pageData} />
       <List data={bundles} />
       <Pages {...pageData} />
     </Columns>
