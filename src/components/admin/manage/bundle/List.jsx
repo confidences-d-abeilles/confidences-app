@@ -1,9 +1,10 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
+import { withRouter } from 'react-router';
 import Loading from '../../../utils/Loading';
 import State from './State';
 
-const List = ({ data, select }) => (
+const List = ({ data, history }) => (
   data
     ? (
       <table className="table table-hover">
@@ -16,7 +17,7 @@ const List = ({ data, select }) => (
         </thead>
         <tbody>
           {data.map(bundle => (
-            <tr key={bundle.id} onClick={select.bind(this, bundle.id)} style={{ cursor: 'pointer' }}>
+            <tr key={bundle.id} onClick={() => history.push(`/admin/manage/bundle/${bundle.id}`)} style={{ cursor: 'pointer' }}>
               <td>
                 {(bundle.present) ? (
                   <span>
@@ -37,4 +38,4 @@ const List = ({ data, select }) => (
 );
 
 
-export default List;
+export default withRouter(List);
