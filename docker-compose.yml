@@ -27,6 +27,7 @@ services:
     restart: always
     labels:
       - "traefik.parrainage.frontend.rule=Host:parrainage.confidencesdabeilles.fr"
+      - "traefik.parrainagelegacy.frontend.rule=Host:legacy-app.confidencesdabeilles.fr"
       - "traefik.parrainagederuches.frontend.rule=Host:parrainagederuches.fr"
       - "traefik.parrainerdesabeilles.frontend.rule=Host:parrainerdesabeilles.fr"
       - "traefik.association.frontend.rule=Host:association.confidencesdabeilles.fr"
